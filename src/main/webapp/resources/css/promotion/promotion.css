@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* @font-face{
+	font-family: 'SpeedeeK';
+	font-size: 500;
+	font-style: normal;
+	src: url('/resources/font/Speedee_K_R.woff') format('woff'),
+		 url('/resources/font/Speedee_K_R.tff') format('truetype')
+}
+
+@font-face{
+	font-family: 'SpeedeeK';
+	font-size: 600;
+	font-style: normal;
+	src: url('/resources/font/Speedee_K_B.woff') format('woff'),
+		 url('/resources/font/Speedee_K_B.tff') format('truetype')
+}
+
+html {
+	font-family: SpeedeeK, "Helvetica Neue", Helvetica, Malgun Gothic, '맑은 고딕', Dotum, '돋움', Arial,
+		sans-serif;
+	margin: 0;
+	height: 100%
+}
+
+body {
+	font-family: SpeedeeK, Malgun Gothic, '맑은 고딕', Dotum, '돋움', Arial, sans-serif;
+	color: #808080;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.9;
+	height: 100%;
+	background: #fff;
+	word-wrap: break-word;
+	word-break: keep-all
+} */
+
+.visualArea.bgWhats01 {
+	color: #fff;
+	background: url(https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/promotion_banner.jpg) 50%
+		50% no-repeat
+}

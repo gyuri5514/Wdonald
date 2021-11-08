@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/*payment.css*/
+div {
+display: block;
+}
+.panel {
+   margin-top : 35px;
+   margin-left : 170px;
+   margin-bottom: 50px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    width: 50%;
+    min-width: 590px;
+    float : left;
+}
+.panel-default{
+   border-color:#ddd;
+}
+.h1-area{
+   margin-top: 80px;
+   margin-left: 150px;
+   margin-bottom: 20px;
+   width:70%;
+}
+.h1-area hr{
+   background-color: yellow;
+   
+}
+hr{
+   background-color: #ddd;
+   }
+.panel-heading{
+   padding:15px 24px;
+}
+.panel-body{
+   border-radius:0 0 4px 4px;
+}
+.panel-heading .panel-body, .panel-product .panel-footer 
+, .panel-shaded, .table-panel tbody{
+   backgroud-clip: padding-box;
+}
+#cashbill{
+   height: 25px;
+   width: 25px;
+}
+fieldset {
+    margin: 0;
+    min-width: 0;
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+}
+.fieldset:last-child {
+    margin-bottom: 0;
+}
+
+fieldset, legend {
+    padding: 0;
+    border: 0;
+}
+.radio:first-child{
+   margin-top:0;
+}
+.radio{
+   padding: 15px;
+   overflow:hidden;
+   zoom:1;
+   position: relative;
+    display: block;
+}
+
+ input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #ffa500;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }

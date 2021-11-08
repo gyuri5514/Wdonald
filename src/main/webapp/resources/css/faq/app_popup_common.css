@@ -1,0 +1,477 @@
+@charset "UTF-8";
+/* base */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+/* google webfont 불러오기 */
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: #fff;
+  word-wrap: break-word;
+  word-break: keep-all;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body, div,
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6, a,
+pre, form, fieldset, input, select, textarea,
+p, blockquote, th, td, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* 맥도날드에서 가져온 font 지정 */
+body, input, select, textarea, button, pre {
+  font-family: SpeedeeK, Malgun Gothic, "맑은 고딕", Dotum, "돋움", Arial, sans-serif;
+  color: #808080;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+section, nav, article,
+aside, hgroup, header, footer, iframe {
+  display: block;
+}
+
+form, fieldset, img, input, button {
+  border: 0 none;
+  background: none;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  vertical-align: top;
+}
+
+em {
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 500;
+}
+
+ul, ol, li {
+  list-style: none outside;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+legend {
+  display: block;
+  width: 0;
+  height: 0;
+  text-indent: -9000px;
+  overflow: hidden;
+}
+
+caption {
+  overflow: hidden;
+  margin-left: -9999px;
+  width: 1px;
+  height: 1px;
+  font-size: 1px;
+  line-height: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+.hide, .skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+input[type="email"],
+input[type="date"] {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+}
+
+/* input 기본 설정 막음
+input[type='text'], input[type='password'], input[type='tel'], input[type='number'], input[type='search'], input[type='email'], input[type='date'] {
+  color: #292929;
+  height: 70px;
+  padding: 0 28px;
+  line-height: 1;
+  border: 1px solid #d1d1d1;
+  border-radius: 70px;
+  background: #fff;
+}
+*/
+button, input[type='button'], input[type='submit'], input[type='reset'] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  vertical-align: middle;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+button, input[type="button"],
+input[type="submit"], input[type="reset"] {
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  border: 0;
+  vertical-align: middle;
+  background: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+input {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  vertical-align: middle;
+}
+
+/* variables */
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: middle;
+  align-items: center;
+}
+
+.w587 {
+  width: 587px;
+}
+
+.w432 {
+  width: 432px;
+}
+
+.w112 {
+  width: 112px;
+}
+
+.w1029 {
+  width: 1029px;
+}
+
+.gap-21 {
+  gap: 21px;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  line-height: 48px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 120px;
+  margin-left: 10px;
+  color: #292929;
+}
+
+.bg-mcdgold {
+  background: #FFBC0D;
+}
+
+.bg-gray {
+  background: #d1d1d1;
+}
+
+.color-mcdRed {
+  color: #DB0007 !important;
+}
+
+/* radio button custom */
+.check-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 50%;
+}
+
+/* When the radio button is checked, add a yellow background */
+.check-container input:checked ~ .checkmark {
+  background-color: #FFBC0D;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.check-container .checkmark:after {
+  top: 7px;
+  left: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.int {
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  text-align: left;
+  font-size: 16px;
+  height: 48px;
+}
+
+/* 공동 content 영역 */
+/* visual Area */
+.visualArea {
+  display: flex;
+  min-height: 220px;
+  padding: 10px 0;
+  color: #fff;
+  text-align: left;
+  justify-content: center;
+}
+
+.visualArea .inner {
+  width: 1168px;
+  margin: auto;
+}
+
+.visualArea .titDep1 {
+  color: inherit;
+  font-size: 50px;
+}
+
+.titDep1 {
+  display: block;
+  color: #2D2D2D;
+  font-size: 55px;
+  line-height: 1;
+  text-align: left;
+}
+
+.visualArea .subCopy {
+  min-height: 34px;
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: left;
+}
+
+/* content Area */
+.content .contArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0 60px;
+}
+
+/* button */
+.btnM {
+  min-width: 172px;
+  padding: 0 38px;
+  font-size: 15px;
+  line-height: 70px;
+  border-radius: 70px;
+}
+
+.btnMC {
+  display: inline-block;
+  color: #292929;
+  font-weight: 600;
+  background: #ffbc0d;
+}
+
+/* side-box start */
+.side-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 180px;
+  position: fixed;
+  top: 60%;
+  right: 0;
+  z-index: 999;
+}
+
+@media (max-width: 1599px) {
+  .side-box {
+    display: none;
+  }
+}
+
+.side-box > span {
+  color: #292929;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.side-box > strong {
+  color: #DB0007;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.side-box > p {
+  font-size: 16px;
+  color: #808080;
+  line-height: 22px;
+}
+
+.side-box > button {
+  border-radius: 100px;
+  background: #DB0007;
+  height: 50px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 600;
+  padding: 13px 24px 13px 62px;
+  position: relative;
+  margin-top: 16px;
+}
+
+.side-box > button::before {
+  content: "";
+  background: url(../images/common/logo_sm.png) no-repeat;
+  position: absolute;
+  top: 6px;
+  left: 22px;
+  width: 38px;
+  height: 38px;
+}
+
+/* 공통 header 영역 */
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  min-width: 1280px;
+  min-height: 100%;
+  padding: 140px 0 230px;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-width: 1280px;
+  height: 141px;
+  text-align: center;
+  border-bottom: 1px solid #FFBC0D;
+  background: #fff;
+}
+
+.header .headArea {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.headArea {
+  width: 1168px;
+  margin: 0 auto;
+}
+
+.header .hLogo {
+  z-index: 1;
+}
+
+.header .hLogo > a {
+  display: block;
+}
+
+.header .hMenu ul {
+  display: flex;
+  justify-content: space-between;
+  width: 502px;
+  text-align: center;
+  color: #000;
+}
+
+.header .hMenu ul li {
+  display: inline-block;
+  text-align: center;
+}
+
+/* header menu 클릭 시 효과 */
+.header .hMenu ul li > a {
+  cursor: pointer;
+  outline: none;
+}
+
+/* 클릭되었을 때 밑줄, 두께변화 필요 */
+.header .hMenu ul li > a:hover,
+.header .hMenu ul li > a:focus,
+.header .hMenu ul li > a:visited {
+  cursor: pointer;
+  font-weight: 700;
+  color: #292929;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=common.css.map */

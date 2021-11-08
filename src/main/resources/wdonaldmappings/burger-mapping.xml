@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdelivery.menu.burger.dao.BurgerDAO">
+	<select id="selectBurger" resultType="burgerVO">
+		<![CDATA[
+			SELECT * FROM burger ORDER BY burger ASC
+		]]>
+	</select>
+	
+	<select id="detailBurger" resultType="burgerVO">
+		<![CDATA[
+			SELECT * FROM burger WHERE b_code = #{b_code}
+		]]>
+	</select>
+  
+	<insert id="insertBurger">
+		INSERT INTO burger (b_code, b_name, b_price, b_regdate, b_img_path, b_img, b_status, b_n_img_path, b_n_img, category_code, b_e_name) VALUES
+		(#{b_code}, #{b_name}, #{b_price}, #{b_regdate}, #{b_img_path}, #{b_img}, #{b_status}, #{b_n_img_path}, #{b_n_img}, #{category_code}, #{b_e_name})
+	</insert>
+	
+	<update id="updateburger">
+		UPDATE burger SET b_name = #{b_name}, b_price = #{b_price}, b_e_name = #{b_e_name}
+		WHERE b_code = #{b_code}
+	</update>
+	
+	<delete id="deleteburger">
+		DELETE FROM burger WHERE b_code = #{b_code}
+	</delete>
+</mapper>

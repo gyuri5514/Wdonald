@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdelivery.menu.burgerSet.dao.BurgerSetDAO">
+	<select id="selectBurgerSet" resultType="burgerSetVO">
+		<![CDATA[
+			SELECT * FROM burger_set
+		]]>
+	</select>
+	
+	<select id="detailBurgerSet" resultType="burgerSetVO">
+		SELECT * FROM burger_set WHERE b_set_code = #{b_code}
+	</select>
+  
+</mapper>

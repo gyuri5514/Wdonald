@@ -1,0 +1,1100 @@
+@charset "UTF-8";
+/*=============================================================
+    Table of Contents:
+    =============================
+    A. Base
+        01. Base Styles
+        02. Template Styles
+        03. Typography Styles
+    B. Global
+        01. Color Styles
+        02. Mixin Styles
+        03. Variables Styles
+    C. Layouts
+        01. App Layout Styles
+        02. Header Styles
+        03. Main Content Styles
+        04. Left Sidebar Styles
+        05. Footer Styles
+        06. Ie Styles
+    D. UI Components
+        01. Alert Styles
+        02. Badges Styles
+        03. Button Styles
+        04. Button Group Styles
+        05. Cards Styles
+        06. Charts Styles
+        07. Form Styles
+        08. Icons Styles
+        09. Input Styles
+        10. Label Styles
+        11. List Styles
+        12. Nav Style
+        13. Popover Styles
+        14. Progressbar Styles
+        15. Tables Styles
+        16. Tabs Styles
+        17. Time Lines Style
+    E. Pages
+        01. Login Styles
+        02. Error Styles
+        03. Editor Styles
+        04. Contact Page Styles
+        07. Dashboard Styles
+        08. Classic Dashboard Style
+        09. Dropzone Style
+    F. Modules
+        01. App Module Style
+        02. Chat Module Styles
+        03. Mails Module Styles
+        04. Contact Module Styles
+        05. Calendar Module Styles
+        06. Profile Module Styles
+  =============================================================*/
+/* Base
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: #fff;
+  word-wrap: break-word;
+  word-break: keep-all;
+  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body, div,
+dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6, a,
+pre, form, fieldset, input, select, textarea,
+p, blockquote, th, td, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body, input, select, textarea, button, pre {
+  /* font-family: SpeedeeK, Malgun Gothic, "맑은 고딕", Dotum, "돋움", Arial, sans-serif; */
+  color: #808080;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+section, nav, article,
+aside, hgroup, header, footer, iframe {
+  display: block;
+}
+
+form, fieldset, img, input, button {
+  border: 0 none;
+  background: none;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  vertical-align: top;
+}
+
+em {
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-weight: 500;
+}
+
+ul, ol, li {
+  list-style: none outside;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+legend {
+  display: block;
+  width: 0;
+  height: 0;
+  text-indent: -9000px;
+  overflow: hidden;
+}
+
+caption {
+  overflow: hidden;
+  margin-left: -9999px;
+  width: 1px;
+  height: 1px;
+  font-size: 1px;
+  line-height: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+.hide, .skip {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="search"],
+input[type="email"],
+input[type="date"] {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+}
+
+button, input[type='button'], input[type='submit'], input[type='reset'] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  vertical-align: middle;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+button, input[type="button"],
+input[type="submit"], input[type="reset"] {
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  border: 0;
+  vertical-align: middle;
+  background: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+input {
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  vertical-align: middle;
+}
+/*
+.srchBox .form .selectWrap .ui-selectmenu-button {
+  //background: #fff;
+  background: #f8f8f8;
+  color: #808080;
+  font-weight:500;
+}*/
+/*
+.ui-menu-item {
+  background: #f8f8f8;
+  color: #808080;
+  font-weight:500;
+}
+*/
+/* Globals
+   ========================================================================== */
+.d-flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: middle;
+  align-items: center;
+}
+
+.w587 {
+  width: 587px;
+}
+
+.w432 {
+  width: 432px;
+}
+
+.w112 {
+  width: 112px;
+}
+
+.w1029 {
+  width: 1029px;
+}
+
+.gap-21 {
+  gap: 21px;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  line-height: 48px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 120px;
+  margin-left: 10px;
+  color: #292929;
+}
+
+.bg-mcdgold {
+  background: #FFBC0D;
+}
+
+.bg-gray {
+  background: #d1d1d1;
+}
+
+.color-mcdRed {
+  color: #DB0007 !important;
+}
+
+.check-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+  /* Hide the browser's default radio button */
+}
+
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 50%;
+}
+
+/* When the radio button is checked, add a yellow background */
+.check-container input:checked ~ .checkmark {
+  background-color: #FFBC0D;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.check-container .checkmark:after {
+  top: 7px;
+  left: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.int {
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  text-align: left;
+  font-size: 16px;
+  height: 48px;
+}
+
+/* Layouts
+   ========================================================================== */
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  min-width: 1280px;
+  min-height: 100%;
+  padding: 140px 0 230px;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-width: 1280px;
+  height: 141px;
+  text-align: center;
+  border-bottom: 1px solid #FFBC0D;
+  background: #fff;
+}
+
+.header .headArea {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.headArea {
+  width: 1168px;
+  margin: 0 auto;
+}
+
+.header .hLogo {
+  z-index: 1;
+}
+
+.header .hLogo > a {
+  display: block;
+}
+
+.header .hMenu ul {
+  display: flex;
+  justify-content: space-evenly;
+  width: 502px;
+  text-align: center;
+  color: #000000;
+}
+
+.header .hMenu ul li {
+  display: inline-block;
+  text-align: center;
+}
+
+.visualArea {
+  display: flex;
+  min-height: 220px;
+  padding: 10px 0;
+  color: #fff;
+  text-align: left;
+  justify-content: center;
+}
+
+.visualArea .titDep1 {
+  color: inherit;
+  font-size: 50px;
+}
+
+.titDep1 {
+  display: block;
+  color: #2D2D2D;
+  font-size: 55px;
+  line-height: 1;
+  text-align: left;
+}
+
+.visualArea .subCopy {
+  min-height: 34px;
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: left;
+}
+
+.content .contArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0 60px;
+}
+
+
+
+
+
+
+
+
+
+.storeFind {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: #F7F7F7;
+  padding: 40px 0;
+  margin-bottom: 50px;
+}
+
+.srvcFilter {
+  width: 100%;
+  background: #F7F7F7;
+}
+
+.visualArea .inner,
+.storeFind .srvcFilter,
+.storeFind .faqFind,
+.contArea .faqResult {
+  width: 1168px;
+  margin: auto;
+}
+
+.storeFind .srvcFilter .service {
+  display: flex;
+  justify-content: space-between;
+}
+
+.storeFind .srvcFilter .service > span {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  background: #fff;
+}
+/*
+.storeFind .srvcFilter .service > span:hover,
+.storeFind .srvcFilter .service > span:focus,
+.storeFind .srvcFilter .service > span:visited {
+ //background-color: #ffbc0d;
+ //border: 3px solid #ffbc0d;
+}*/
+
+.storeFind .srvcFilter .service > span input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.storeFind .srvcFilter .service > span label {
+  display: block;
+  color: #000;
+  position: relative;
+  height: 100%;
+  padding: 96px 0 16px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 15px;
+  z-index: 1;
+}
+
+.storeFind .srvcFilter .service > span label .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  margin-top: 40%;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+legend {
+  display: block;
+  width: 0;
+  height: 0;
+  text-indent: -9000px;
+  overflow: hidden;
+}
+
+.srchBox .form {
+  display: flex;
+  gap: 12px;
+  padding-top: 40px;
+}
+
+.srchBox .form .selectWrap {
+  vertical-align: middle;
+}
+
+.selectWrap {
+  display: inline-block;
+  height: 70px;
+  position: relative;
+}
+
+.selectWrap select {
+  display: none;
+}
+
+.selectWrap .ui-selectmenu-menu .ui-menu {
+  box-sizing: border-box;
+}
+
+.srchBox .form .selectWrap + input {
+  display: inline-block;
+  width: 720px;
+  vertical-align: middle;
+}
+
+.selectWrap .ui-selectmenu-button:after {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  right: 39px;
+  top: 28px;
+  width: 22px;
+  height: 12px;
+  background: url(https://voc.mcd.co.kr/common/images/common/bg_form.png) -88px 0 no-repeat;
+}
+
+.selectWrap .ui-menu-item {
+  background: #fff;
+  border: 1px solid #d1d1d1;
+  border-top: none;
+}
+
+.selectWrap .ui-state-active {
+  background: #164b34;
+  color: #fff;
+}
+
+.selectWrap .ui-menu-item-wrapper {
+  display: block;
+  padding: 25px 38px 25px 38px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.selectWrap .ui-menu-item:last-child, .selectWrap .ui-menu-item:last-child .ui-menu-item-wrapper {
+  border-radius: 0 0 35px 35px;
+}
+
+.srchBox .form input {
+  width: 100%;
+  padding: 0 38px;
+  color: #292929;
+  height: 70px;
+  line-height: 1;
+  border: 1px solid #d1d1d1;
+  border-radius: 70px;
+  background: #fff;
+}
+
+.srchBox .form > button {
+  width: 172px;
+}
+
+.btnM {
+  min-width: 172px;
+  padding: 0 38px;
+  font-size: 15px;
+  line-height: 70px;
+  border-radius: 70px;
+}
+
+.btnMC {
+  display: inline-block;
+  color: #292929;
+  font-weight: 600;
+  background: #ffbc0d;
+}
+
+.faqResult .faqToggle {
+  /*
+  border-top: 2px solid #292929;
+  border-bottom: 2px solid #292929;
+  */
+}
+
+.faqResult .faqToggle .toggle {
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.toggle {
+  position: relative;
+}
+
+.faqResult .faqToggle .toggle .question {
+  display: table;
+  position: relative;
+  width: 100%;
+  height: 80px;
+}
+
+.faqResult .faqToggle .toggle .question:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 99px;
+  width: 1px;
+  height: 19px;
+  margin-top: -10px;
+  background: #d1d1d1;
+}
+
+.faqResult .faqToggle .toggle .question .sortItem {
+  width: 140px;
+  padding-left: 20px;
+}
+
+.faqResult .faqToggle .toggle .question > * {
+  display: table-cell;
+  font-size: 15px;
+  color: #292929;
+  vertical-align: middle;
+}
+
+.faqResult .faqToggle .toggle .question > strong {
+  color: #808080;
+}
+
+.faqResult .faqToggle .toggle button {
+  top: 0;
+  height: 80px;
+}
+
+.toggle > button {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  text-indent: -9999px;
+  font-size: 1px;
+  line-height: 1px;
+}
+
+.faqResult .faqToggle .toggle button:before {
+  top: 50%;
+  width: 21px;
+  height: 21px;
+  margin-top: -11px;
+  background-position: 0 -54px;
+}
+
+.toggle > button:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 27px;
+  height: 27px;
+  background: url(../images/common/btn_toggle.png) 0 0 no-repeat;
+}
+
+.faqResult .faqToggle .toggle .toggleCon {
+  padding: 50px 140px;
+  background: #f8f8f8;
+}
+
+.toggle > button[aria-selected="false"] + .toggleCon {
+  display: none;
+}
+
+.toggle .toggleCon {
+  padding-bottom: 70px;
+}
+
+.faqResult .faqToggle .toggle + .toggle {
+  margin-top: 0;
+}
+
+.btnMore {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.btnMore .more {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+  vertical-align: top;
+  text-indent: -9999px;
+  background: url(https://voc.mcd.co.kr/common/images/common/btn_more.png) 0 0 no-repeat;
+}
+
+/* // 도윤 작업 분
+.side-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 180px;
+  position: fixed;
+  top: 30%;
+  right: 5%;
+  z-index: 999;
+}
+*/
+@media (max-width: 1599px) {
+  .side-box {
+    display: none !important; 
+  }
+  .latte-plugin-core{
+  	display: none !important; 
+  }
+}
+
+.side-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 180px;
+  position: fixed;
+  top: 60%;
+  left: 1.5%;
+  z-index: 999;
+}
+
+.side-box > span {
+  color: #292929;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.side-box > strong {
+  color: #DB0007;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.side-box > p {
+  font-size: 16px;
+  color: #808080;
+  line-height: 22px;
+}
+
+.side-box > button {
+  border-radius: 100px;
+  background: #DB0007;
+  height: 50px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 600;
+  padding: 13px 24px 13px 62px;
+  position: relative;
+  margin-top: 16px;
+}
+
+.side-box > button::before {
+  content: "";
+  background: url(../images/common/logo_sm.png) no-repeat;
+  position: absolute;
+  top: 6px;
+  left: 22px;
+  width: 38px;
+  height: 38px;
+}
+
+.faqBg {
+  background: url(https://voc.mcd.co.kr/common/images/menu/visual_bg01_new.png) 50% no-repeat;
+  color: #2D2D2D;
+  background-color: #f8f2ed;
+}
+
+.inquiryBg {
+  background: url(https://voc.mcd.co.kr/common/images/menu/visual_bg02_new.png) 50% no-repeat;
+  color: #fff;
+  background-color: #ebaf1a;
+}
+
+.faq-form-warp {
+  width: 1168px;
+  margin-bottom: 60px;
+}
+
+.tabType01 {
+  text-align: center;
+}
+
+.tabType01 li {
+  display: inline-block;
+  margin: 0 40px;
+  vertical-align: top;
+}
+
+.tabType01 li a[aria-selected="true"] {
+  color: #db0007;
+  font-weight: 600;
+  border-bottom: 1px solid #db0007;
+}
+
+.tabType01 li a {
+  display: block;
+  height: 40px;
+  font-size: 20px;
+  line-height: 39px;
+}
+
+.agree-area {
+  margin-top: 60px;
+  border-top: 2px solid #000000;
+  padding-top: 25px;
+}
+
+.agree-area span > strong {
+  color: #000000;
+  font-size: 18px;
+  display: block;
+}
+
+.agree-area span > strong > p {
+  margin-top: 24px;
+}
+
+.agree-area .tbl-list, .agree-area th {
+  border-top: 1px solid #2D2D2D;
+  border-bottom: 1px solid #2D2D2D;
+}
+
+.tbl-list {
+  margin: 24px auto 16px;
+}
+
+.tbl-list th {
+  color: #292929;
+}
+
+.tbl-list td {
+  color: #808080;
+}
+
+.tbl-list th, .tbl-list td {
+  padding: 25px 0;
+  text-align: center;
+  border-right: 1px solid #d1d1d1;
+  border-bottom: 1px solid #292929;
+}
+
+.tbl-list th:nth-last-child(1),
+.tbl-list td:nth-last-child(1) {
+  border-right: none;
+}
+
+.check-agree {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px 0 80px;
+  color: #2D2D2D;
+}
+
+.check-agree > input {
+  appearance: radio;
+  margin-left: 40px;
+}
+
+.qna-form-area {
+  border-top: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  padding: 24px 0;
+}
+
+.qna-form-area th, .qna-form-area td {
+  padding: 13px 0;
+}
+
+.qna-form-area .qna-form {
+  color: #292929;
+}
+
+.qna-form-area .qna-form textarea {
+  height: 370px;
+  max-height: 370px;
+  overflow-y: scroll;
+}
+
+.qna-form-area > p {
+  padding-left: 139px;
+}
+
+.reply-check {
+  margin-top: 60px;
+}
+
+.reply-check > strong {
+  font-size: 18px;
+  color: #000000;
+}
+
+.reply-form {
+  margin-top: 32px;
+  border-top: 2px solid #2D2D2D;
+  border-bottom: 2px solid #2D2D2D;
+  padding: 25px 0;
+}
+
+.reply-form .d-flex-row:nth-child(1) {
+  margin-bottom: 24px;
+}
+
+.reply-form label {
+  padding-left: 30px;
+  font-size: 16px;
+  color: #292929;
+  font-weight: 700;
+  display: inline-block;
+  width: 139px;
+}
+
+.reply-view-area {
+  width: 1168px;
+  margin-top: 60px;
+}
+
+.reply-view {
+  border-top: 2px solid #2D2D2D;
+  border-bottom: 2px solid #2D2D2D;
+}
+
+.reply-view thead {
+  background-color: #eee;
+}
+
+.reply-view thead, .reply-view th {
+  color: #292929;
+}
+
+.reply-view th, .reply-view td {
+  border-bottom: 1px solid #d1d1d1;
+  padding: 24px 0;
+}
+
+.reply-view td {
+  padding-left: 24px;
+}
+
+.storyBg {
+  background: url(../images/menu/visual_bg03_new.png) 50% no-repeat;
+  color: #fff;
+  background-color: #948d86;
+}
+
+.contArea .story-warp {
+  width: 1168px;
+}
+
+.contArea .story-warp > h3 {
+  font-size: 18px;
+  color: #292929;
+  font-weight: 700;
+  margin: 10px 0 25px 0;
+}
+
+.contArea .story-warp .story-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 2px solid #2D2D2D;
+  border-bottom: 2px solid #2D2D2D;
+  padding: 40px 0;
+}
+
+.contArea .story-warp .story-img > img {
+  width: 800px;
+  height: auto;
+}
+
+.story-list {
+  position: relative;
+  width: 100%;
+  color: #292929;
+  border-bottom: 2px solid #2D2D2D;
+}
+
+.story-list th, .story-list td {
+  padding: 30px 0;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.story-list th::before {
+  content: "";
+  width: 1px;
+  height: 19px;
+  left: 102px;
+  margin-top: 5px;
+  background: #d1d1d1;
+  position: absolute;
+  display: block;
+}
+
+.story-list td {
+  padding-left: 24px;
+}
+
+
+
+/* freddy 수정 부분 */
+.realForm{
+	position: absolute;
+	left: 260px;
+	top: 40px;
+	width: 720px;
+}
+
+.table01{
+  border-top: 3px solid #292929;
+  border-bottom: 3px solid #292929;
+}
+
+.table01 tr{
+  height: 80px;
+  border-bottom: 1px solid #292929;
+}
+
+.table01 tr td{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.ui-selectmenu-button {
+font-family:SpeedeeK, Malgun Gothic,'맑은 고딕', Dotum,'돋움', Arial, sans-serif;color:#808080;font-size: 16px;font-weight: 500;line-height:1.9;
+}
+
+/* pagination 작업 추가 */
+/* 클릭되었을 때 속성 추가되어야 할 부분
+    background-color: #ffbc0d;
+    border: 1px solid #ffbc0d;
+ */
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 60px;
+  font-size: 16px;
+  text-align: center;
+  color: #2d2d2d;
+}
+
+.pagination a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #d1d1d1;
+  background: #fff;
+  border-radius: 5px;
+  margin: 0 3px;
+  line-height: 40px;
+}
+
+/*# sourceMappingURL=App.css.map */

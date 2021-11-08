@@ -1,0 +1,773 @@
+@charset "UTF-8";
+.panel-product .product-cost {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.panel-product .product-cost .starting-price {
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+.country-82.page-guest-enter-delivery-address .form-column {
+	padding: 0;
+}
+
+.country-82.page-guest-enter-delivery-address .form-column .fieldset-heading
+	{
+	padding: 0 60px;
+	margin-bottom: 10px;
+}
+
+.country-82.page-guest-enter-delivery-address .form-column .iframe {
+	background: #fff;
+	padding: 30px 0 0 60px;
+}
+
+.country-82.page-guest-enter-delivery-address .form-column .iframe iframe
+	{
+	height: 732px;
+}
+
+.country-82 .page-header {
+	margin-bottom: 10px;
+	padding: 10px 0;
+}
+
+.country-82 .form-register, .country-82 .register-sidebar, .country-82 .form_deliveryaddress
+	{
+	padding-top: 20px;
+}
+
+.country-82 .iframe iframe {
+	height: 702px;
+}
+
+.country-82 .configurator-header .product-nutritional-info a.action-link
+	{
+	font-size: 32px;
+}
+
+.country-82 .configurator-header .product-nutritional-info a.action-link .text-default
+	{
+	font-size: 32px;
+}
+
+.country-82 .configurator-header .item-name {
+	font-size: 32px;
+}
+
+.country-82 .product-nutritional-info, .country-82 .product-allergen-info
+	{
+	font-size: 18px;
+}
+
+.country-82 .table-select-meal .tax-column, .country-82 .table-select-meal .cost-column,
+	.country-82 .table-select-meal .calories-column {
+	font-size: 24px;
+	font-size: 1.5rem;
+}
+
+.country-82 .form-group .checkbox-indent {
+	padding-left: 48px;
+}
+
+.country-82 .form-group .checkbox-label>span.instructions {
+	font-size: 12px;
+	font-size: 0.75rem;
+	color: #b0b0b0;
+}
+
+.country-82.page-order-payment .section-label {
+	margin-top: 30px;
+}
+
+.country-82 .card-type-logo .card-icon {
+	float: none;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.country-82 .global-navbar .navbar-header, .country-82 .modal-login .modal-header .logo,
+	.country-82 .paymentintermediate .modal-content .modal-header .logo {
+	background-color: #ffffff;
+}
+
+@media screen and (max-width: 1199px) {
+	.country-82 .global-navbar .navbar-nav .menu-item {
+		padding-right: 15px;
+		margin-right: 15px;
+	}
+	.country-82 .global-navbar .navbar-nav .menu-item:first-child {
+		padding-left: 15px;
+	}
+}
+
+
+
+.faq-help { 
+margin-top:5px; 
+}
+
+
+.faq-help .faq-help-title {
+	margin-top: 5px;
+}
+
+.faq-help .faq-help-note {
+	margin-top: 16px;
+}
+
+
+.country-82 .product-card--standard {
+	position: relative;
+	float: left;
+	width: 50%;
+	min-height: 1px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.country-82 .product-card--standard .panel-body {
+	padding-left: 35px;
+	padding-right: 35px;
+	padding-top: 35px;
+}
+
+.country-82.page-menu .panel-product .panel-footer .product-controls>.btn,
+	.country-82.page-menu .panel-product .panel-footer .col-xs-2>.btn {
+	font-size: 16px;
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.lang-ko {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .food-icons-sprite, .lang-ko .food-icons-new, .lang-ko .food-icons-spicy
+	{
+	background-image: url('../img/sprite-food-icons.png');
+	background-repeat: no-repeat;
+}
+
+.lang-ko .food-icons-new {
+	background-position: 0 0;
+	height: 42px;
+	width: 42px;
+}
+
+.lang-ko .food-icons-spicy {
+	background-position: 0 -42px;
+	height: 42px;
+	width: 42px;
+}
+
+@media screen and (max-width: 1199px) {
+	.lang-ko .global-navbar .navbar-nav .menu-item {
+		padding-right: 15px;
+		margin-right: 15px;
+	}
+	.lang-ko .global-navbar .navbar-nav .menu-item:first-child {
+		padding-left: 15px;
+	}
+}
+
+.lang-ko .browsehappy {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .btn {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .list-group-form-control, .lang-ko .form-control {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .action-secondary {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .fieldset-heading .instructions {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko label.control-hint, .lang-ko label.error {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .field-label {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.lang-ko html {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif; /* 1 */
+}
+
+.lang-ko .product-nutritional-info i.mcd {
+	font-size: 14px;
+	line-height: 1.15;
+}
+
+.lang-ko .product-nutritional-info .text-default {
+	font-size: 14px;
+}
+
+.lang-ko code, .lang-ko kbd, .lang-ko pre, .lang-ko samp {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko h1, .lang-ko h2, .lang-ko h3, .lang-ko h4, .lang-ko h5,
+	.lang-ko h6, .lang-ko .h1, .lang-ko .h2, .lang-ko .h3, .lang-ko .h4,
+	.lang-ko .h5, .lang-ko .h6 {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .text-flama {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .text-din, .lang-ko .table-product-detail tr .quantity {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .text-sans-serif {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .text-default-font {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .type-flama, .lang-ko .field-label, .lang-ko .table-trackorder tbody td,
+	.lang-ko .sidebar-menu .menu, .lang-ko .table-price-charge, .lang-ko .table-contact-detail th,
+	.lang-ko .table-product-detail tr .product-name, .lang-ko .table-product-detail tr .total,
+	.lang-ko .table-product-detail tr .tax, .lang-ko .faq .faq-title,
+	.lang-ko .faq-help .faq-help-title {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .type-sans, .lang-ko .error-container, .lang-ko .table-addressbook,
+	.lang-ko .modal-alert .modal-content .modal-agreement, .lang-ko .table-receipt-order-detail,
+	.lang-ko .table-contact-detail td, .lang-ko .table-product-detail tr .product-name ul li,
+	.lang-ko .special-instructions .copy, .lang-ko .special-instructions .thank-you,
+	.lang-ko .copyright {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .food-menu .primary-menu {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+.lang-ko a.action-link {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+.lang-ko .panel-product {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-addressbook .address-number {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-delivery-address, .lang-ko .table-delivery-datetime,
+	.lang-ko .table-cost {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-product>tbody>tr .quantity {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-product>tbody>tr .product-name>ul li {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-details .quantity {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-details .product-name {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-details .product-name>ul li {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-details .cost {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-size: 1.25rem;
+}
+
+.lang-ko .table-menu-order-detail .quantity {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-menu-order-detail .product-name>ul li {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .configurator-header {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .configurator-header .instruction {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .configurator-footer .subtotal, .lang-ko .configurator-footer .tax
+	{
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	font-size: 0.9375rem;
+	line-height: 41px;
+}
+
+.lang-ko .configurator-footer .action-cancel {
+	line-height: 41px;
+}
+
+.lang-ko .configurator-footer .loading {
+	padding: 5px;
+}
+
+.lang-ko .table-select-meal .tax-column, .lang-ko .table-select-meal .cost-column,
+	.lang-ko .table-select-meal .calories-column {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.lang-ko .modal-select-toys p {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .sidebar-menu a i.icon {
+	vertical-align: middle;
+}
+
+.lang-ko .page-menu .sidebar-menu {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .ordering-steps {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .menu-detail {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .action-edit {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .notes {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-menu-availability {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-menu-availability tr td>.last-order {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .global-header .header-actions {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .global-navbar .navbar-nav .menu-item-target {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .global-navbar .navbar-nav>.open .dropdown-menu {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .global-footer {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .footer-disclaimer {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .home-section.promotions .promotion-description {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .home-section.promotions .promotion-title {
+	font-size: 18px;
+}
+
+.lang-ko .panel-home-masthead {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .address-status {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .home-myorders .empty-template .media-body {
+	font-size: 15px;
+	font-size: 0.9375rem;
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+}
+
+.lang-ko .home-myorders .empty-template .media-heading {
+	font-size: 20px;
+	font-size: 1.25rem;
+}
+
+.lang-ko .modal-login .header-new-customer {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	font-size: 1.375rem;
+}
+
+.lang-ko .modal-login .action-forgot-password, .lang-ko .modal-login .action-advance-order
+	{
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .modal-alert .modal-content .time-disclaimer {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .modal-alert .modal-content .alert-content {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .modal-deliveryoptions .note, .lang-ko .modal-advanceorder .note
+	{
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .modal-deliveryoptions .deliverydatetime-status, .lang-ko .modal-advanceorder .deliverydatetime-status
+	{
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .order-verification .order-verification-detail {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .empty-template {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-history {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-history .order-address, .lang-ko .table-order-history .order-id,
+	.lang-ko .table-order-history .order-controls {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-order-history .order-cost {
+	font-size: 20px;
+	font-size: 1.25rem;
+}
+
+.lang-ko .table-order-history .order-id a {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-size: 1.125rem;
+}
+
+.lang-ko .condiment-item .item-name {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .order-summary .empty-template {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .order-items .quantity {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .order-items .details ul {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .order-items .tax, .lang-ko .order-items .cost {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .customization-note {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-price-charge .total-charge {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .table-price-charge .total-charge-price {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .special-instructions .title {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .btn.selectpicker {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .checkbox .checkbox-label {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-size: 0.8125rem;
+}
+
+.lang-ko .radio .radio-label {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .ui-selectmenu-menu {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko .ui-state-default {
+	font-family: "Malgun Gothic", Helvetica, Arial, sans-serif;
+}
+
+.lang-ko h1 {
+	font-size: 24px;
+	font-size: 1.5rem;
+}
+
+.lang-ko .page-header {
+	padding: 0 0 10px;
+}
+
+.lang-ko .register-benefits ul>li {
+	font-size: 13px;
+	font-size: 0.8125rem;
+}
+
+.lang-ko .ordering-steps .steps-header, .lang-ko .ordering-steps .steps
+	{
+	font-size: 12px;
+	font-size: 0.75rem;
+}
+
+.lang-ko .panel-product .product-cost {
+	font-size: 12px;
+	font-size: 0.75rem;
+}
+
+.lang-ko .panel-product .product-cost .starting-price {
+	font-size: 14px;
+	font-size: 0.875rem;
+}
+
+.lang-ko .panel-home-masthead-form .header-new-customer {
+	font-size: 18px;
+	font-size: 1.125rem;
+}
+
+.lang-ko .panel-home-masthead-form .action-check-address {
+	font-size: 1.2rem;
+}
+
+.lang-ko .panel-home-masthead-login .panel-heading h2 {
+	font-size: 18px;
+	font-size: 1.125rem;
+}
+
+.lang-ko .table-delivery-address td {
+	font-size: 14px;
+	font-size: 0.875rem;
+}
+
+.lang-ko .table-delivery-datetime td {
+	font-size: 12px;
+	font-size: 0.75rem;
+}
+
+.lang-ko .table-delivery-datetime .how-long-to-deliver {
+	font-size: 12px;
+	font-size: 0.75rem;
+}
+
+.lang-ko .table-delivery-datetime .how-long-to-deliver b {
+	font-size: 14px;
+	font-size: 0.875rem;
+}
+
+.lang-ko .order-summary .action-edit-promocode {
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+.lang-ko .table-cost tfoot.total th {
+	font-size: 20px;
+	font-size: 1.25rem;
+}
+
+.lang-ko .table-cost tfoot.total td {
+	font-size: 30px;
+	font-size: 1.875rem;
+}
+
+.lang-ko h5, .lang-ko .h5, .lang-ko .condiment-item .item-name, .lang-ko .order-items .details .product-name
+	{
+	font-size: 14px;
+	font-size: 0.875rem;
+}
+
+.lang-ko .text-default {
+	font-size: 14px;
+	font-size: 0.875rem;
+}
+
+.lang-ko .mcd.mcd-detail, .lang-ko .mcd.mcd-allergen {
+	vertical-align: bottom;
+}
+
+.lang-ko .table-menu-availability tr .days {
+	font-size: 19px;
+	font-size: 1.1875rem;
+}
+
+.lang-ko .table-menu-availability tr .menu-type {
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+.lang-ko .table-menu-availability tr td {
+	font-size: 18px;
+	font-size: 1.125rem;
+}
+
+.lang-ko h4, .lang-ko .h4 {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.lang-ko h3, .lang-ko .h3 {
+	font-size: 18px;
+	font-size: 1.125rem;
+}
+
+.lang-ko h2, .lang-ko .h2 {
+	font-size: 20px;
+	font-size: 1.25rem;
+}
+
+.lang-ko .panel-section .panel-section-title {
+	line-height: 1.8;
+}
+
+.lang-ko .table-trackorder tbody td h4, .lang-ko .table-trackorder tbody td p
+	{
+	font-size: 16px;
+	font-size: 1rem;
+	height: auto;
+}
+
+.lang-ko .table-order-history-detail td {
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+.lang-ko .fieldset-title {
+	font-size: 20px;
+	font-size: 1.25rem;
+	line-height: 1.5;
+}
+
+.lang-ko .modal-alert .modal-content .modal-header>h1 {
+	margin: 40px 0 10px 0;
+	font-size: 24px;
+	font-size: 1.5rem;
+}
+
+.lang-ko .actions a, .lang-ko .btn-lg {
+	font-size: 15px;
+	font-size: 0.9375rem;
+}
+
+.lang-ko .btn-xl {
+	font-size: 24px;
+	font-size: 1.5rem;
+}
+
+.lang-ko .order-history .date {
+	font-size: 21px;
+	font-size: 1.3125rem;
+}
+
+.lang-ko .order-history .total {
+	font-size: 21px;
+	font-size: 1.3125rem;
+}
+
+.lang-ko .order-history .price {
+	font-size: 21px;
+	font-size: 1.3125rem;
+}
+
+.lang-ko .my-favourite-title {
+	line-height: 1.2;
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+.lang-ko .meal-customization h3 {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.lang-ko #countdowntimer-title {
+	font-size: 31px;
+	font-size: 1.9375rem;
+}
+
+.lang-ko .modal-alert .modal-content .time-disclaimer {
+	font-size: 18px;
+	font-size: 1.125rem;
+}
+
+.lang-ko .footer-nav h3 {
+	font-size: 20px;
+	font-size: 1.25rem;
+}
+
+.lang-ko .customize-item-header .item-title {
+	font-size: 18px;
+	font-size: 1.125rem;
+	line-height: 1.5;
+}
+
+.lang-ko .customization-group .group-title {
+	font-size: 18px;
+	font-size: 1.125rem;
+	text-align: center;
+}
+
+.footer-nav .menu-item-target.font-yellow, .font-yellow {
+	color: #ffbc0d;
+	font-weight: bold;
+}
+
+.footer-nav .menu-item-target.font-yellow:hover, .font-yellow:hover {
+	color: #989898;
+}
+
+/*# sourceMappingURL=local.css.map */

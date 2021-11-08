@@ -1,0 +1,102 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+@charset "UTF-8";
+.popwrap {
+  height: 100%;
+}
+
+.popwrap .popup-content {
+  width: 650px;
+  padding: 64px 40px;
+  color: #292929;
+}
+
+.popwrap .popup-content > p {
+  margin-top: 32px;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.popwrap .popup-content .head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 16px;
+}
+
+.popwrap .popup-content .head > img {
+  width: 39px;
+  height: 34px;
+}
+
+.popwrap .popup-content .head > h1 {
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+/* 매장검색영역 row로 정렬 */
+.popwrap .popup-content .search-shop {
+  margin-top: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+/* input 가로 창 넓히기 */
+.popup-content .search-shop > input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* 매장검색 결과값 table */
+.popwrap .popup-content .tbl-popup {
+  margin-top: 64px;
+  border-top: 2px solid #292929;
+  border-bottom: 2px solid #292929;
+}
+
+.popwrap .popup-content .tbl-popup th, .popwrap .popup-content .tbl-popup td {
+  padding: 13px 20px;
+}
+
+.popwrap .popup-content .tbl-popup th {
+  background-color: #eee;
+}
+
+.popwrap .popup-content .tbl-popup td {
+  color: #808080;
+}
+
+.popwrap .popup-content .tbl-popup tr > td:nth-child(1) {
+  text-align: center;
+}
+
+.popwrap .popup-content .tbl-popup tr > td:nth-child(1):hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.popwrap .popup-content .tbl-popup tr {
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.table03 { margin-top:30px; margin-bottom:10px; border-top:3px solid #808080;}
+.table03 th { font-weight:bold; color:#000000; background-color:#eee; height:45px; text-align:center; border-bottom:2px solid #808080;}
+.table03 tr { height:55px; }
+.table03 td { text-align:left; padding:10px; border-bottom:1px solid #ddd; font-weight:500;}
+.table03 .line { border-top:1px solid #ddd; }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdelivery.member.dao.MemberDAO">
+	<select id="findUser" resultType="userVO" parameterType="userVO">
+		<![CDATA[
+			select * from user_info where user_email = #{user_email}
+		]]>
+	</select>
+	<!-- JOIN -->
+	<insert id="winMemJoin">
+		<![CDATA[
+			insert into user_info (user_email, user_password, user_name, user_gender, user_phone, terms_agree, user_agreedate, sms_agree, email_agree, user_birth,user_regdate,user_status) 
+			values (#{user_email},#{user_password},#{user_name},#{user_gender},#{user_phone},#{terms_agree},now(),#{sms_agree},#{email_agree},#{user_birth},now(),3)
+		]]>
+	</insert>
+	
+	<insert id="winAddressJoin">
+		<![CDATA[
+			insert into user_address(user_email, address1, address2,d_key) values (#{user_email},#{address1},#{address2},1)
+		]]>
+	</insert>
+	<insert id="naverMemJoin"  parameterType="userVO">
+		<![CDATA[
+			insert into user_info (user_email, user_gender,user_name, user_phone, user_birth,user_regdate,user_status) 
+			values (#{user_email},#{user_gender},#{user_name},#{user_phone},#{user_birth},now(),5)
+		]]>
+	</insert>
+	<insert id="kakaoMemJoin"  parameterType="userVO">
+		<![CDATA[
+			insert into user_info (user_email, user_gender, user_birth,user_regdate,user_status) 
+			values (#{user_email},#{user_gender},#{user_birth},now(),4)
+		]]>
+	</insert>
+
+	<select id="userSelect" resultType="userVO" parameterType="userVO">
+		<![CDATA[
+			select * from user_info where user_email = #{user_email}	
+		]]>
+	</select>
+	<update id="mypageUpdate">
+		<![CDATA[
+			update user_info
+			set user_name = #{user_name}, user_phone = #{user_phone}, user_password = #{user_password}
+			where user_seq = #{user_seq}
+		]]>
+	</update>
+	<update id="mypageDelete">
+		<![CDATA[
+			update user_info set user_status = 0 where user_email = #{user_email}
+		]]>
+	</update>
+
+	<select id="emailChk" resultType="int" parameterType="userVO">
+		<![CDATA[
+			select count(*) from user_info where user_email = #{user_email};
+		]]>
+	</select>
+	
+	<insert id="insertAuthData" parameterType="userVO">
+	<![CDATA[
+			insert into authkey(user_email) values (#{user_email})
+		]]>
+	</insert>
+	<update id="updateAuthKey" parameterType="java.util.HashMap">
+	<![CDATA[
+			update authkey set auth_key = #{authKey} where user_email = #{user_email}
+		]]>
+	</update>
+	
+	<update id="signUpConfirm" parameterType="String">
+	<![CDATA[
+			update user_info set user_status = 1 where user_email = #{user_email}
+		]]>
+	</update>
+	
+	<select id="isThisKakaoMemberInService" resultType="userVO" parameterType="String">
+		<![CDATA[
+			select * from user_info where user_email = #{email}
+		]]>
+	</select>
+	<select id="isThisNaverMemberInService" resultType="userVO" parameterType="String">
+		<![CDATA[
+			select * from user_info where user_email = #{email}
+		]]>
+	</select>
+	
+	<select id="isAuthKeyAvailable" resultType="int"  parameterType="java.util.HashMap">
+		<![CDATA[
+			select count(*) from authkey where user_email = #{email} and auth_key = #{authKey}
+		]]>
+	</select>
+	
+	<!-- Address -->
+	<select id="addressShow" resultType="addressVO" parameterType="addressVO">
+		<![CDATA[
+			select * from user_address where user_email = #{user_email}
+		]]>
+	</select>
+	<insert id="addressInsert">
+		<![CDATA[
+			insert into user_address (address1, address2, d_key, user_email, order_comment) values (#{address1}, #{address2}, 0, #{user_email}, #{order_comment})
+		]]>
+	</insert>
+	<update id="addressUpdate">
+		<![CDATA[
+			update user_address set address1=#{address1}, address2 = #{address2}, order_comment = #{order_comment} where user_email = #{user_email}
+		]]>
+	</update>	
+	<delete id="addressDelete">
+		<![CDATA[
+			delete from user_address where address_seq = #{address_seq}
+		]]>
+	</delete>
+</mapper>
