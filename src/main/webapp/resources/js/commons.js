@@ -131,33 +131,33 @@ $(document).ready(function() {
 		});
 	};
 	clickItem();
-	
-/*------네이버 로그인------*/
-//loginWithnaverId Javascript 설정 정보 및 초기화
-var naverLogin = new naver.LoginWithNaverId(
-	{
-		clientId: "Xh_il_8tTurOD_pU6D37", //내 애플리케이션 정보에 clientId를 입력해준다 
-		callbackUrl: "http://localhost:8080/controller/naverCallback.do", //내 애플리케이션 API설정의 CallbackURL을 입력해준다.
-		isPopup: false,
-		callbackHandle: true
-	}
-);
-//네아로 로그인 정보를 초기화 하기 위하여 init호출
-naverLogin.init();
 
-var testPopUp;
-function openPopUp() {
-	testPopUp = window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=1, height=1");
-}
-function closePopUp() {
-	testPopUp.close();
-}
-function naverLogout() {
-	openPopUp();
-	setTimeout(function() {
-		closePopUp();
-	}, 1000);
-}
+	/*------네이버 로그인------*/
+	//loginWithnaverId Javascript 설정 정보 및 초기화
+	var naverLogin = new naver.LoginWithNaverId(
+		{
+			clientId: "Xh_il_8tTurOD_pU6D37", //내 애플리케이션 정보에 clientId를 입력해준다 
+			callbackUrl: "http://localhost:8080/controller/naverCallback.do", //내 애플리케이션 API설정의 CallbackURL을 입력해준다.
+			isPopup: false,
+			callbackHandle: true
+		}
+	);
+	//네아로 로그인 정보를 초기화 하기 위하여 init호출
+	naverLogin.init();
+
+	var testPopUp;
+	function openPopUp() {
+		testPopUp = window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes, width=1, height=1");
+	}
+	function closePopUp() {
+		testPopUp.close();
+	}
+	function naverLogout() {
+		openPopUp();
+		setTimeout(function() {
+			closePopUp();
+		}, 1000);
+	}
 }); //End document	
 
 /*------카카오 로그인------*/
@@ -170,18 +170,20 @@ function kakaoLogin() {
 			Kakao.API.request({
 				url: '/v2/user/me',
 				success: function(response) {
-					console.log(response);
-					alert(response);
+					console.log(response)
 					$.ajax({
 						type: "POST",
 						url: "kakaoLogin.do",
-						data: JSON.stringify(response.kakao_account),
+						data: JSON.stringify({
+							"email": response.kakao_account.email,
+							"gender": response.kakao_account.gender,
+							"birthday": response.kakao_account.birthday,
+							"nickname": response.kakao_account.profile.nickname
+						}),
 						contentType: "application/json",
 						succcess: function() {
-												
-								}
+						}
 					})
-					window.location.href="http://localhost:8080/controller/main.do";
 				},
 				fail: function(error) {
 					console.log(error)
@@ -194,27 +196,27 @@ function kakaoLogin() {
 	})
 }
 /* */
-					 
-function kakaoLogout(){
+
+function kakaoLogout() {
 	console.log(Kakao.isInitialized());
-	
-	if(!Kakao.Auth.getAccessToken()){
+
+	if (!Kakao.Auth.getAccessToken()) {
 		alert('Not logged in');
-		return;		
+		return;
 	}
-	Kakao.Auth.logout(function(){
+	Kakao.Auth.logout(function() {
 		console.log(Kakao.Auth.getAccessToken());
 		$.post("logout.do");
-	})	
+	})
 	/*window.location.href="http://localhost:8080/controller/main.do";*/
 }
-function naverLogout(accessKey){
-	$.post("logout.do",function(){
-		window.location.href="https://nid.naver.com/oauth2.0/token?grant_type="+
-		"delete&client_id=Xh_il_8tTurOD_pU6D37&client_secret=JHDMkT0G7N&access_token="
-		+accessKey+"&service_provider=NAVER";		
+function naverLogout(accessKey) {
+	$.post("logout.do", function() {
+		window.location.href = "https://nid.naver.com/oauth2.0/token?grant_type=" +
+			"delete&client_id=Xh_il_8tTurOD_pU6D37&client_secret=JHDMkT0G7N&access_token="
+			+ accessKey + "&service_provider=NAVER";
 	})
-	window.location.href="http://localhost:8080/controller/main.do";
+	window.location.href = "http://localhost:8080/controller/main.do";
 	//https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=Xh_il_8tTurOD_pU6D37&client_secret=JHDMkT0G7N&access_token=&service_provider=NAVER		
 }
 

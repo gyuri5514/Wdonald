@@ -109,7 +109,7 @@
 					<div class="util">
 					
 					<c:choose>
-						<c:when test="${not empty sessionScope.user_email}">
+						<c:when test="${not empty sessionScope.userInfo}">
 							<a href="logout.do" class="btn_register" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
@@ -124,7 +124,7 @@
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
-						<c:when test="${empty sessionScope.user_email && empty sessionScope.kakaoSession && empty sessionScope.naverSession}">
+						<c:when test="${empty sessionScope.userInfo && empty sessionScope.kakaoSession && empty sessionScope.naverSession}">
 							<a href="#login_pop" class="btn_login" title="로그인으로 이동">로그인</a>					
 						<a href="join.do" class="btn_register" title="회원가입으로 이동">회원가입</a>
 						<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
