@@ -208,7 +208,7 @@
 									<fieldset class="fieldset form-actions">
 									<div class="form-group">
 										<button type="button" class="btn btn-red btn-xl btn-submit" id="join_ok" onclick="updatego()">수정사항 저장</button>	
-										<a id="button" class="btn btn-red btn-xl btn-submit" href="mypageDelete.do?user_email=${sessionScope.user_email }">회원 탈퇴</a>		
+										<a id="button" class="btn btn-red btn-xl btn-submit" href="mypageDelete.do?user_email=${userVO.user_email }">회원 탈퇴</a>		
 									</div>
 							</fieldset>
 						</form>
@@ -276,12 +276,9 @@ function updatego() {
  	}
 }
 
-/* function delete() {
-	alert("탈퇴");
-	var mypageDeleteForm = document.getElementById("form_accountsetting");
-	mypageDeleteForm.action="mypageDelete.do";
-	mypageDeleteForm.submit();
-} */
+	/* if($("#memDelete").equalse(sessionScope.user_eamil)){
+		
+	} */
 
 </script>
 

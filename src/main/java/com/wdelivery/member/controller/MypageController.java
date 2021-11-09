@@ -18,15 +18,13 @@ public class MypageController {
 	private MemberService memberService;
 	
 	
-	//회원정보 수정
+	//������蹂� ����
 	@GetMapping("/mypageupdate.do")
 	public String mypageupdate(UserVO userVO, Model model, HttpSession session) {
 		
-		String user_email = (String) session.getAttribute("user_email"); //설정한 session 아이디
-		//System.out.println("mypage : " + user_email );
+		String user_email = (String) session.getAttribute("user_email");
 		
-		userVO = memberService.userSelect(user_email); //세션 아이디 VO에 넣기
-		//System.out.println("mypage !!!!!!!!=>" + userVO.toString());
+		userVO = memberService.userSelect(user_email);
 		model.addAttribute("userVO", memberService.userSelect(userVO.getUser_email()));
 		
 		return "mypageupdate";
@@ -34,7 +32,7 @@ public class MypageController {
 	@PostMapping("/mypageUpdate.do")
 	public String mypageUpdate(UserVO userVO) {
 		//String user_email = (String) session.getAttribute("user_email");
-		//System.out.println("mypageupdate하는중 : " + user_email );
+		//System.out.println("mypageupdate����以� : " + user_email );
 		System.out.println("mypageupdateController" + userVO.getUser_seq());
 		//session.setAttribute("userVO", memberService.mypageUpdate(userVO));
 		memberService.mypageUpdate(userVO);
@@ -42,11 +40,17 @@ public class MypageController {
 		return "mypageupdate";
 	}
 	@GetMapping("/mypageDelete.do")
-	public String mypageDelete(UserVO userVo, HttpSession session) {
-		System.out.println("mypage delete");
-		
-		memberService.mypageDelete(userVo);
-		session.invalidate();
+	public String mypageDelete(UserVO userVO, HttpSession session) {
+		String user = (String) session.getAttribute("user_eamil");
+		System.out.println("mypage delete => " + user);
+	
+		if(user != null || user != "") { //하는 중
+			System.out.println("mypageDelete success");
+			memberService.mypageDelete(userVO);
+			session.invalidate();
+		}else {
+			System.out.println("mypageDelete failed");
+		}
 		return "main";
 	}
 	 
