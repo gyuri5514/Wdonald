@@ -22,7 +22,7 @@ public class SideServiceImpl implements SideService {
 
 	@Override
 	public SideVO detailSide(int side_code) {
-		
+		System.out.println("detailSide");
 		return sideDAO.detailSide(side_code);
 	}
 

@@ -25,8 +25,8 @@
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectDrink}" var="selectDrink">
 									<li>
-										<a href="javascript:goDetail(300)" data-seq="300">
-											<div class="thum">
+										<a href="#" data-seq="300">
+											<div class="thum" onclick="location.href='detail.do?d_code=${selectDrink.d_code}';">
 												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}">
 											</div>
 											<div class="name">
@@ -38,7 +38,9 @@
 											</div>
 										</a>
 										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-													onclick="javascript:location.href='order.do?d_code=${selectDrink.d_code}'"><h4>주문하기</h4></button>
+													onclick="javascript:location.href='order.do?d_code=${selectDrink.d_code}'">
+											<h4>주문하기</h4>
+										</button>
 									</li>
 								</c:forEach>
 							</ul>
@@ -48,7 +50,7 @@
 						</div>
 					</div>
 				</div>
-			 <form id="searchForm" method="post">
+			 <form id="searchForm" method="get">
 				<input type="hidden" name="page" id="page" value="1">
 				<input type="hidden" name="seq" id="seq">
 				<input type="hidden" name="sub_category_seq" id="sub_category_seq" value="1">

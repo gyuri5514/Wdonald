@@ -5778,3 +5778,7 @@ img {vertical-align: middle;}
 @media only screen and (max-width: 300px) {
   .pprev, .nnext {font-size: 11px}
 }
+
+#nutrition_img {
+	width: 100%;
+}

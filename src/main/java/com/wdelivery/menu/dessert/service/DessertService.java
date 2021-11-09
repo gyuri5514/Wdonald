@@ -7,4 +7,6 @@ import com.wdelivery.menu.dessert.vo.DessertVO;
 public interface DessertService {
 
 	public List<DessertVO> selectDessert();
+	
+	public DessertVO detailDessert(Integer dessert_code);
 }

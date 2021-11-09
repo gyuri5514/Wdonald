@@ -20,4 +20,10 @@ public class DessertServiceImpl implements DessertService {
 		return dessertDAO.selectDessert();
 	}
 
+	@Override
+	public DessertVO detailDessert(Integer dessert_code) {
+		System.out.println("detailDessert");
+		return dessertDAO.detailDessert(dessert_code);
+	}
+
 }
