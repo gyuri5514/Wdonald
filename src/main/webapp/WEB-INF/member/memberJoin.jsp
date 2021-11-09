@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="ko">
 <head profile="http://www.w3.org/2005/10/profile">
@@ -22,7 +23,12 @@
 <link rel="stylesheet" href="resources/css/join/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/join/theme-style.min.css">
 <link rel="stylesheet" href="resources/css/join/custom-style_sh.css">
-
+<c:if test="${sessionScope.kakaoSession ne null || !sessionScope.naverSession ne null || !sessionScope.userInfo ne null}">
+	<script>
+		alert("로그인한 회원은 할 수 없는 작업입니다.");
+		window.location.href="/controller/main.do"
+	</script>
+</c:if>
 </head>
 
 <body class="page page-join">
@@ -78,9 +84,10 @@
 					<!-- //menu -->
 					<form id="commonSearchForm" method="post">
 					<div class="util">
-						<a href="#login_pop" class="btn_login" title="로그인으로 이동">로그인</a>					
+							<a href="#login_pop" class="btn_login" title="로그인으로 이동">로그인</a>					
 						<a href="join.do" class="btn_register" title="회원가입으로 이동">회원가입</a>
-						<a href="cart.do" class="btn_cart" title="카트로 이동">카트</a>
+						<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
+						
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
 							<button type="button" class="srch">검색 열기</button>
 							<fieldset class="srchField">

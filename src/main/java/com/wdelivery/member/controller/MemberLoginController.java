@@ -57,10 +57,10 @@ public class MemberLoginController {
 			}
 			if(userVO.getUser_password().equals(findUserVO.getUser_password())) {
 				if(findUserVO.getUser_status()==1) {
-					session.setAttribute("user_email", findUserVO.getUser_email());
+					session.setAttribute("userInfo", findUserVO);
 					model.addAttribute("status" , findUserVO.getUser_status());	
 				}else if(findUserVO.getUser_status()==3){
-					session.setAttribute("user_email", findUserVO.getUser_email());
+					session.setAttribute("userInfo", findUserVO);
 					model.addAttribute("status" , findUserVO.getUser_status());	
 				}else if(findUserVO.getUser_status()==2){
 					//user_status = 2, 
@@ -92,7 +92,7 @@ public class MemberLoginController {
 			userVO.setUser_email("kakao#"+kakaoVO.getEmail());
 			userVO.setUser_gender((kakaoVO.getGender().equals("male")?"man":"woman"));
 			userVO.setUser_birth(kakaoVO.getBirthday());
-		
+			userVO.setUser_name(kakaoVO.getNickname());
 			System.out.println("start socialMemJoin() => "+userVO.toString());
 			
 			memberService.socialMemJoin("kakao",userVO);

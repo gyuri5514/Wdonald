@@ -8,8 +8,8 @@ public class MemberEmailVO {
 	private String password;
 	private String nickname;
 	private Date createdDate;
-	private String authKey; //ÀÎÁõÅ°
-	private int authstatus; //±ÇÇÑÈ®ÀÎ
+	private String authKey; //ï¿½ï¿½ï¿½ï¿½Å°
+	private int authstatus; //ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½
 	private String idPhoto;
 	public int getMemberNo() {
 		return memberNo;
@@ -65,6 +65,4 @@ public class MemberEmailVO {
 				+ nickname + ", createdDate=" + createdDate + ", authKey=" + authKey + ", authstatus=" + authstatus
 				+ ", idPhoto=" + idPhoto + "]";
 	}
-	
-	
 }

@@ -29,8 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	<insert id="kakaoMemJoin"  parameterType="userVO">
 		<![CDATA[
-			insert into user_info (user_email, user_gender, user_birth,user_regdate,user_status) 
-			values (#{user_email},#{user_gender},#{user_birth},now(),4)
+			insert into user_info (user_email,user_name, user_gender, user_birth,user_regdate,user_status) 
+			values (#{user_email},#{user_name},#{user_gender},#{user_birth},now(),4)
 		]]>
 	</insert>
 
