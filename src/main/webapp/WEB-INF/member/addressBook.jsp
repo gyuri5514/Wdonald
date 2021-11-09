@@ -66,46 +66,23 @@ th {
 						<a class="btn btn-red btn-lg" href="main.do">메인화면으로 이동</a>
 					</td>
 				</tfoot>
-				<c:forEach items="addressBook" var="addressBook" varStatus="status"> 
-				
+				<c:forEach items="${addressVO}" var="addressBook" varStatus="status"> 
 				<tbody>
 					<tr>
-						<td class="address-number">${status.index}</td>
+						<td class="address-number">${status.count}</td>
 						<td class="address-details">
-							<div>${addressBook.address1}</div> <!-- gogogo -->
-							<!-- <div th:text="${addressEntry.street}">Address Line 2</div>
-							<div th:text="${addressEntry.Unit}">Address Line 3</div>
-							<div th:text="${addressEntry.building}">Address Line 4</div>
-							<div th:text="${addressEntry.zipCode}">Address Line 5</div> -->
+							<!-- <div>${addressBook.address1}</div> gogogo -->
+							<div>${addressBook.address1}</div>
+							 <div>${addressBook.address2}</div>
 						</td>
-						<!-- <td class="special-instructions"></td> -->
+						<td class="special-instructions">${addressBook.order_comment}</td>
 						<td class="controls">
-						 <a class="text-gray-light" href="addressupdate.do" title="주소 변경하기"><i class="far fa-edit"></i></a>
-						 
+						 <a class="text-gray-light" title="주소 삭제하기" onclick="del(${addressBook.address_seq})"><i class="far fa-trash-alt"></i>
+						<!-- <input id="key" value="0" type="text"/> --> </a>
 						 </td>
 					</tr>
-					<!-- <tr>
-						<td class="address-number">1</td>
-						<td class="address-details">
-							<div>Address Line 1</div>
-							<div>Address Line 2</div>
-							<div>Address Line 3</div>
-						</td>
-						<td class="special-instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quidem vitae mollitia commodi corporis suscipit esse laboriosam blanditiis labore minus.</td>
-						<td class="controls"><a href="/index.php?r=site/page&amp;view=account-edit-address" class="text-gray-light"><i class="fa mcd mcd-edit icon"></i></a> <a href="" class="text-gray-light"><i class="fa mcd mcd-remove icon"></i></a></td>
-					</tr>
-					<tr>
-						<td class="address-number">2</td>
-						<td class="address-details">
-							<div>Address Line 1</div>
-							<div>Address Line 2</div>
-							<div>Address Line 3</div>
-						</td>
-						<td class="special-instructions">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum quidem vitae mollitia commodi corporis suscipit esse laboriosam blanditiis labore minus.</td>
-						<td class="controls"><a href="/index.php?r=site/page&amp;view=account-edit-address" class="text-gray-light"><i class="fa mcd mcd-edit icon"></i></a> <a href="" class="text-gray-light"><i class="fa mcd mcd-remove icon"></i></a></td>
-					</tr> -->
 				</tbody>
-				</c:forEach>
+			</c:forEach>
 			</table>
 		</div>
 	
@@ -113,4 +90,17 @@ th {
 </div>
 </div>
 
+
 <%@ include file = "footer.jsp"%>
+<script>
+function del(seq){
+	var chk = confirm('정말 삭제하시겠습니까? ');
+	if(chk){
+		//alert( 'ddd : '+ $('#key').val());
+		location.href = 'delete.do?address_seq=' + seq;
+		
+	}else{
+		alert('주소 수정은 삭제 후 다시 작성 부탁드립니다.');
+	}
+}
+</script>
