@@ -1,6 +1,3 @@
-/*
-테스트 중
-*/
 @charset "utf-8";
 
 @font-face {
@@ -47,7 +44,7 @@ blockquote, body, button, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h
 }
 
 body, button, input, pre, select, textarea {
-    font-family: SpeedeeK, Malgun Gothic,'맑은 고딕', Dotum,'돋움', Arial, sans-serif;
+    font-family: SpeedeeK, Malgun Gothic,'留묒� 怨좊뵓', Dotum,'�룍��', Arial, sans-serif;
     color: #808080;
     font-size: 16px;
     font-weight: 500;
@@ -321,7 +318,7 @@ textarea {
     padding-right: 0;
     padding-left: 54px;
 }
-/* label이 오른쪽에 오는 경우*/
+/* label�씠 �삤瑜몄そ�뿉 �삤�뒗 寃쎌슦*/
 .formWrap.labelR input[type=checkbox] + label:before, .formWrap.labelR input[type=radio] + label:before {
     right: auto;
     left: 0;
@@ -564,7 +561,7 @@ textarea {
     display: none;
     position: relative;
 }
-/* .tabMn �대� �� �붾툝 class */
+/* .tabMn 占쎈�占� 占쏙옙 占쎈뗀�닜 class */
 
 /* table */
 .tableType01 {
@@ -813,7 +810,7 @@ ul.notiTxt:before {
 .popLayer.layerType02 .layCont .scroll {
     padding: 60px 60px 5px;
 }
-/* �곸뿭 諛붽묑履쎌쑝濡� 踰꾪듉�� �꾩튂�섎뒗 type */
+/* 占쎄낯肉� 獄쏅떽臾묕쭫�럩�몵嚥∽옙 甕곌쑵�뱣占쏙옙 占쎄쑴�뒄占쎌꼶�뮉 type */
 .popLayer.layerType02 .btnArea {
     margin-top: 0;
     padding-top: 40px;
@@ -822,7 +819,7 @@ ul.notiTxt:before {
 .popLayer.layerType03 .layCont {
     border: 0;
 }
-/* �앹뾽 �곷떒�� �щ갚 �녿뒗 type */
+/* 占쎌빘毓� 占쎄낮�뼊占쏙옙 占싼됯컶 占쎈끏�뮉 type */
 .popLayer.layerType03 .layCont .scroll {
     padding: 0;
 }
@@ -957,7 +954,7 @@ ul.notiTxt:before {
     text-align: center;
     background: #fff;
 }
-/* 2021.05.31 �섏젙 */
+/* 2021.05.31 占쎌꼷�젟 */
 .header .hMenu .menu .depth1 {
     display: inline-block;
     padding-left: 0;
@@ -965,7 +962,7 @@ ul.notiTxt:before {
     vertical-align: top;
     margin-left: -136px;
 }
-/* 2021.05.31 �섏젙 �� */
+/* 2021.05.31 占쎌꼷�젟 占쏙옙 */
 .header .hMenu .menu .depth1 a {
     display: inline-block;
     vertical-align: top;
@@ -1023,7 +1020,7 @@ ul.notiTxt:before {
     float: right;
     margin: 0 0 0 50px;
 }
-/*2021.5.31 異붽�*/
+/*2021.5.31 �빊遺쏙옙*/
 .header .hMenu .util .renter {
     display: inline-block;
     width: 80px;
@@ -1036,7 +1033,7 @@ ul.notiTxt:before {
     border-radius: 48px;
     background: #db0007;
 }
-/*2021.5.31 異붽� ��*/
+/*2021.5.31 �빊遺쏙옙 占쏙옙*/
 .header .hMenu .util .lang {
     display: inline-block;
     width: 80px;
@@ -1123,7 +1120,7 @@ ul.notiTxt:before {
     height: 100%;
     overflow: hidden;
 }
-/* 媛��대뱶 */
+/* 揶쏉옙占쎈�諭� */
 .header.fixed .dummy img {
     margin-top: -140px;
 }
@@ -1381,17 +1378,17 @@ ul.notiTxt:before {
     margin: 0 -100%;
     vertical-align: top;
 }
-/* 2021.1.4 �뱀젒洹쇱꽦 */
+/* 2021.1.4 占쎈��젔域뱀눘苑� */
 .mainEvent .swiper li span {
     display: inline-block;
     margin: 0 -100%;
     vertical-align: top;
 }
-/* 2021.1.4 �뱀젒洹쇱꽦 �� */
+/* 2021.1.4 占쎈��젔域뱀눘苑� 占쏙옙 */
 .mainEvent .swiper li img {
     height: 100%;
 }
-/* 2020.6.4 KV 鍮꾨뵒�� 異붽� */
+/* 2020.6.4 KV �뜮袁⑤탵占쏙옙 �빊遺쏙옙 */
 .mainEvent .swiper li video {
     width: 100%;
 }
@@ -1414,7 +1411,7 @@ ul.notiTxt:before {
 .mainEvent .swiper li.video .sound.off {
     background-image: url("../images/main/icon_sound_off.png");
 }
-/* 2020.6.4 KV 鍮꾨뵒�� 異붽� �� */
+/* 2020.6.4 KV �뜮袁⑤탵占쏙옙 �빊遺쏙옙 占쏙옙 */
 .mainEvent .indicator {
     position: absolute;
     left: 50%;
@@ -1442,7 +1439,7 @@ ul.notiTxt:before {
     border-radius: 6px;
     background: #ffbc0d;
 }
-/* 2020.6.4 css �섏젙 */
+/* 2020.6.4 css 占쎌꼷�젟 */
 .mainEvent .indicator .play {
     position: absolute;
     top: 50%;
@@ -1457,7 +1454,7 @@ ul.notiTxt:before {
 .mainEvent .indicator .play.pause {
     background-position: -92px -36px;
 }
-/* 2020.6.4 css �섏젙 �� */
+/* 2020.6.4 css 占쎌꼷�젟 占쏙옙 */
 .mainEvent .ctrl {
     position: absolute;
     top: 50%;
@@ -1676,19 +1673,19 @@ ul.notiTxt:before {
 
 /* menu */
 .visualArea.bgMenu01 {
-    background: url("/uploadFolder/images/menu/2020/bg_visual_menu01.jpg") 50% 50% no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/burger_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu02 {
-    background: url("/uploadFolder/images/menu/bg_visual_menu02.jpg") 50% 50% no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/morning_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu03 {
     background: url("/uploadFolder/images/menu/bg_visual_menu03.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu04 {
-    background: url("/uploadFolder/images/menu/bg_visual_menu04.jpg") 50% 50% no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/side_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu05 {
-    background: url("/uploadFolder/images/menu/2021/bg_visual_menu05.jpg") 50% 50% no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/mc_cafe_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu06 {
     background: url("/uploadFolder/images/menu/2020/bg_visual_menu06.jpg") 50% 50% no-repeat;
@@ -1955,7 +1952,7 @@ ul.notiTxt:before {
     right: 45px;
     width: 106px;
     height: 22px;
-    background: url("../images/menu/bg_flow.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/bg_flow.png") 0 0 no-repeat;
 }
 .menuView .viewCon {
     margin: 0 54px;
@@ -1992,7 +1989,7 @@ ul.notiTxt:before {
     right: 0;
     width: 27px;
     height: 27px;
-    background: url("../images/common/btn_toggle.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_toggle.png") 0 0 no-repeat;
 }
 .toggle > button[aria-selected="true"]:before {
     background-position: 0 -27px;
@@ -2775,7 +2772,7 @@ p.nutrDesc {
     color: #292929;
 }
 
-/* 吏��꾩뿉�� 李얠븘蹂닿린 layerpop */
+/* 筌욑옙占쎄쑴肉됵옙占� 筌≪뼚釉섋퉪�떯由� layerpop */
 .storeSch .schTop {
     color: #292929;
 }
@@ -2906,7 +2903,7 @@ p.nutrDesc {
     background: url("../images/common/bg_noresult_s.png") 0 0 no-repeat;
 }
 
-/* �대깽�몃ℓ�� */
+/* 占쎈�源쏙옙紐꺿꼻占쏙옙 */
 .eventStore .topInfo {
     position: relative;
     width: 780px;
@@ -2966,7 +2963,7 @@ p.nutrDesc {
     background: none;
 }
 
-/* �대깽�몃ℓ��2 */
+/* 占쎈�源쏙옙紐꺿꼻占쏙옙2 */
 .eventStore2 .topInfo {
     position: relative;
     width: 780px;
@@ -3797,7 +3794,7 @@ p.nutrDesc {
 .social {
     margin: 0 0 340px -50px;
 }
-/* �섎떒 媛꾧꺽 �뺤씤 �꾩슂 */
+/* 占쎌꼶�뼊 揶쏄쑨爰� 占쎈벡�뵥 占쎄쑴�뒄 */
 .social:after {
     content: '';
     display: block;
@@ -4194,7 +4191,7 @@ p.nutrDesc {
     margin: -23px 0 0 -23px;
     background: url("../images/story/ico_crew_over.png") 0 0 no-repeat;
 }
-/* �щ（�댁빞湲� layerpop */
+/* 占싼됵펷占쎈똻鍮욄묾占� layerpop */
 .crewDetail .crewCont .tit {
     font-size: 20px;
     font-weight: 600;
@@ -4210,7 +4207,7 @@ p.nutrDesc {
     color: #292929;
 }
 
-/* �몄옱梨꾩슜 */
+/* 占쎈챷�삺筌�袁⑹뒠 */
 .inner.type02 .tabType01 {
     width: 1168px;
     margin: 0 auto 60px;
@@ -4543,4 +4540,8 @@ p.nutrDesc {
     top: 0.5%;
     margin-left: -3.5%;
     z-index: 1;
+}
+
+#menu_order_list {
+	padding: 10px 0px;
 }

@@ -6,11 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectDrink" resultType="drinkVO">
 		<![CDATA[
-			SELECT * FROM drink
+			SELECT * FROM drink ORDER BY d_code
 		]]>
 	</select>
 	<select id="detailDrink" resultType="drinkVO">
-			SELECT * FROM drink WHERE d_code = #{drink_code}
+		<![CDATA[
+			SELECT * FROM drink WHERE d_code = #{d_code}
+		]]>
 	</select>
 	
 </mapper>
