@@ -1,29 +1,24 @@
-package com.wdelivery.cart.service;
+package com.wdelivery.order.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wdelivery.cart.dao.CartDAO;
 import com.wdelivery.cart.vo.CartVO;
+import com.wdelivery.order.dao.OrderDAO;
+import com.wdelivery.order.vo.OrderVO;
 
 @Service
-public class CartServiceImpl implements CartService{
+public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
-	private CartDAO	cartDAO;
+	private OrderDAO orderDAO;
 
 	@Override
-	public void cartInsert(CartVO orderVO) {
-		cartDAO.cartInsert(orderVO);
+	public void orderInsert(OrderVO orderVO) {
+		orderDAO.orderInsert(orderVO);
 	}
 
-	@Override
-	public List<CartVO> cartList() {
-		List<CartVO> cartList = cartDAO.cartList();
-		
-		return cartList;
-	}
 	
 }

@@ -15,7 +15,7 @@ b, label, strong {
 
 a, a:focus, a:hover {
 	text-decoration: none
-}	
+}
 
 .btn-toolbar:after, .colsize-2-row:after, .colsize-3-row:after,
 	.colsize-4-row:after, .colsize-5-row:after, .container-fluid:after,
@@ -240,10 +240,12 @@ hr {
 		width: 1170px
 	}
 }
+
 #col-xs-4 {
-	margin-right:50px;
+	margin-right: 50px;
 	width: 450px;
 }
+
 #col-xs-8 {
 	width: 800px;
 }
@@ -1003,6 +1005,17 @@ caption {
 	margin-bottom: 20px
 }
 
+.table-order-details>tbody>tr>.many {
+	font-family: "Flama Condensed Medium", sans-serif;
+	text-align: right;
+	white-space: nowrap;
+	width: 20%;
+	font-size: 26px;
+	font-size: 3rem;
+	color: black;
+	padding-right: 40px;
+}
+
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,
 	.table>thead>tr>td, .table>thead>tr>th {
 	padding: 8px;
@@ -1362,7 +1375,7 @@ textarea.form-control {
 	.radio input[type=radio], .radio-inline input[type=radio] {
 	position: absolute;
 	margin-left: -20px;
-	margin-top: 4px\9
+	margin-top: 4px\9
 }
 
 .checkbox+.checkbox, .radio+.radio {
@@ -1572,26 +1585,26 @@ textarea.form-control {
 }
 
 .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=incrementHours]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=incrementMinutes]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=decrementHours]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=decrementMinutes]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=showHours]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=showMinutes]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=togglePeriod]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=clear]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=today]::after
-	~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.picker-switch::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=incrementHours]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=incrementMinutes]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=decrementHours]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=decrementMinutes]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=showHours]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=showMinutes]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=togglePeriod]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=clear]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=today]::after
-	~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.picker-switch::after
-	~.form-control-feedback, .has-feedback label.sr-only ~.form-control-feedback
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=incrementMinutes]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=decrementHours]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=decrementMinutes]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=showHours]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=showMinutes]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=togglePeriod]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=clear]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.btn[data-action=today]::after
+	 ~.form-control-feedback, .bootstrap-datetimepicker-widget .has-feedback label.picker-switch::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=incrementHours]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=incrementMinutes]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=decrementHours]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=decrementMinutes]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=showHours]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=showMinutes]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=togglePeriod]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=clear]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.btn[data-action=today]::after
+	 ~.form-control-feedback, .has-feedback .bootstrap-datetimepicker-widget label.picker-switch::after
+	 ~.form-control-feedback, .has-feedback label.sr-only ~.form-control-feedback
 	{
 	top: 0
 }
@@ -3640,16 +3653,13 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover {
 	color: #843534
 }
 
-
 -webkit-keyframes progress-bar-stripes {
 	background-position: 40px 0;
-	}
-	
+}
 
 to {
 	background-position: 0 0;
 }
-
 
 keyframes progress-bar-stripes {
 	background-position: 40px 0;
@@ -3658,7 +3668,6 @@ keyframes progress-bar-stripes {
 to {
 	background-position: 0 0
 }
-
 
 .progress {
 	height: 20px;
@@ -6640,8 +6649,7 @@ input[type=number] {
 	animation: spin 2s infinite linear
 }
 
-
--moz-keyframes spin { 
+-moz-keyframes spin {
 	-moz-transform: rotate(0)
 }
 
@@ -10965,7 +10973,7 @@ ul.ui-selectmenu-menu-popup {
 
 .main {
 	position: relative;
-	margin-left:350px;
+	margin-left: 350px;
 }
 
 .global-header .header-actions {
@@ -14088,12 +14096,10 @@ form #form_order_payment_card_number.unionpay {
 	margin-top: 20px
 }
 
-
 /* supports (-webkit-appearance:-apple-pay-button) { 
 	apple-pay-button {display: inline-block;
 	-webkit-appearance: -apple-pay-button;
 } */
-
 .apple-pay-button-black {
 	-apple-pay-button-style: #000
 }
@@ -14109,8 +14115,6 @@ form #form_order_payment_card_number.unionpay {
 /* supports not (-webkit-appearance:-apple-pay-button) { .
 	apple-pay-button ,.applepay-payment{display: none
 } */
-
-
 .card-icons-applepay {
 	height: 26px;
 	width: 40px;
@@ -14798,7 +14802,6 @@ supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
 	display:inline-block;
 	-webkit-appearance: -apple-pay-button;
 } */
-
 .apple-pay-button-white-with-line {
 	-apple-pay-button-style: white-outline;
 }
@@ -14815,7 +14818,6 @@ supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
 	min-height: 32px;
 	max-height: 64px;
 } */
-
 .apple-pay-button-white-with-line {
 	background-image: -webkit-named-image(apple-pay-logo-black);
 	background-color: white;

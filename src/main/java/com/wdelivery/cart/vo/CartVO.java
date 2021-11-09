@@ -2,32 +2,41 @@ package com.wdelivery.cart.vo;
 
 public class CartVO {
 
-	private int cart_b_code;
+	private Integer cart_b_code;
 	private String cart_b_name;
-	private String cart_b_price;
+	private Integer cart_b_price;
 	private String cart_b_img_path;
-	private int cart_b_set_code;
+	private Integer cart_b_set_code;
 	private String cart_b_set_name;
-	private String cart_b_set_price;
+	private Integer cart_b_set_price;
 	private String cart_b_set_img_path;
-	private int cart_b_Lgset_code;
+	private Integer cart_b_Lgset_code;
 	private String cart_b_Lgset_name;
-	private String cart_b_Lgset_price;
+	private Integer cart_b_Lgset_price;
 	private String cart_b_Lgset_img_path;
-	private int cart_s_code;
-	private String cart_s_price;
+	private Integer cart_s_code;
+	private Integer cart_s_price;
 	private String cart_s_img_path;
 	private String cart_s_name;
-	private int cart_d_code;
-	private String cart_d_price;
+	private Integer cart_d_code;
+	private Integer cart_d_price;
 	private String cart_d_img_path;
 	private String cart_d_name;
+	private Integer cart_many;
 
-	public int getCart_b_Lgset_code() {
+	public Integer getCart_many() {
+		return cart_many;
+	}
+
+	public void setCart_many(Integer cart_many) {
+		this.cart_many = cart_many;
+	}
+
+	public Integer getCart_b_Lgset_code() {
 		return cart_b_Lgset_code;
 	}
 
-	public void setCart_b_Lgset_code(int cart_b_Lgset_code) {
+	public void setCart_b_Lgset_code(Integer cart_b_Lgset_code) {
 		this.cart_b_Lgset_code = cart_b_Lgset_code;
 	}
 
@@ -39,11 +48,11 @@ public class CartVO {
 		this.cart_b_Lgset_name = cart_b_Lgset_name;
 	}
 
-	public String getCart_b_Lgset_price() {
+	public Integer getCart_b_Lgset_price() {
 		return cart_b_Lgset_price;
 	}
 
-	public void setCart_b_Lgset_price(String cart_b_Lgset_price) {
+	public void setCart_b_Lgset_price(Integer cart_b_Lgset_price) {
 		this.cart_b_Lgset_price = cart_b_Lgset_price;
 	}
 
@@ -55,11 +64,11 @@ public class CartVO {
 		this.cart_b_Lgset_img_path = cart_b_Lgset_img_path;
 	}
 
-	public int getCart_b_set_code() {
+	public Integer getCart_b_set_code() {
 		return cart_b_set_code;
 	}
 
-	public void setCart_b_set_code(int cart_b_set_code) {
+	public void setCart_b_set_code(Integer cart_b_set_code) {
 		this.cart_b_set_code = cart_b_set_code;
 	}
 
@@ -71,11 +80,11 @@ public class CartVO {
 		this.cart_b_set_name = cart_b_set_name;
 	}
 
-	public String getCart_b_set_price() {
+	public Integer getCart_b_set_price() {
 		return cart_b_set_price;
 	}
 
-	public void setCart_b_set_price(String cart_b_set_price) {
+	public void setCart_b_set_price(Integer cart_b_set_price) {
 		this.cart_b_set_price = cart_b_set_price;
 	}
 
@@ -87,19 +96,19 @@ public class CartVO {
 		this.cart_b_set_img_path = cart_b_set_img_path;
 	}
 
-	public int getCart_s_code() {
+	public Integer getCart_s_code() {
 		return cart_s_code;
 	}
 
-	public void setCart_s_code(int cart_s_code) {
+	public void setCart_s_code(Integer cart_s_code) {
 		this.cart_s_code = cart_s_code;
 	}
 
-	public String getCart_s_price() {
+	public Integer getCart_s_price() {
 		return cart_s_price;
 	}
 
-	public void setCart_s_price(String cart_s_price) {
+	public void setCart_s_price(Integer cart_s_price) {
 		this.cart_s_price = cart_s_price;
 	}
 
@@ -111,19 +120,19 @@ public class CartVO {
 		this.cart_s_img_path = cart_s_img_path;
 	}
 
-	public int getCart_d_code() {
+	public Integer getCart_d_code() {
 		return cart_d_code;
 	}
 
-	public void setCart_d_code(int cart_d_code) {
+	public void setCart_d_code(Integer cart_d_code) {
 		this.cart_d_code = cart_d_code;
 	}
 
-	public String getCart_d_price() {
+	public Integer getCart_d_price() {
 		return cart_d_price;
 	}
 
-	public void setCart_d_price(String cart_d_price) {
+	public void setCart_d_price(Integer cart_d_price) {
 		this.cart_d_price = cart_d_price;
 	}
 
@@ -151,11 +160,11 @@ public class CartVO {
 		this.cart_d_name = cart_d_name;
 	}
 
-	public int getCart_b_code() {
+	public Integer getCart_b_code() {
 		return cart_b_code;
 	}
 
-	public void setCart_b_code(int cart_b_code) {
+	public void setCart_b_code(Integer cart_b_code) {
 		this.cart_b_code = cart_b_code;
 	}
 
@@ -167,11 +176,11 @@ public class CartVO {
 		this.cart_b_name = cart_b_name;
 	}
 
-	public String getCart_b_price() {
+	public Integer getCart_b_price() {
 		return cart_b_price;
 	}
 
-	public void setCart_b_price(String cart_b_price) {
+	public void setCart_b_price(Integer cart_b_price) {
 		this.cart_b_price = cart_b_price;
 	}
 

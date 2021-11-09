@@ -25,9 +25,9 @@
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectDrink}" var="selectDrink">
 									<li>
-										<a href="javascript:goDetail(300)" data-seq="300">
+										<a href="#" data-seq="300">
 											<div class="thum">
-												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}">
+												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}" onclick="javascript:goDetail(300)">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectDrink.d_name}</strong>
@@ -36,9 +36,10 @@
 													<span class="starting-price" style="margin-top:5px;">${selectDrink.d_price}</span>
 												</div>
 											</div>
-										</a>
-										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
+										
+										<button style="background-color:#ffbc0d; color:white; margin-left:30px; border-radius:25px; width:90px; height:30px;" 
 													onclick="javascript:location.href='order.do?d_code=${selectDrink.d_code}'"><h4>주문하기</h4></button>
+										</a>
 									</li>
 								</c:forEach>
 							</ul>

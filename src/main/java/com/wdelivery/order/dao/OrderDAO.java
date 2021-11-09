@@ -1,12 +1,9 @@
-package com.wdelivery.cart.dao;
+package com.wdelivery.order.dao;
 
-import java.util.List;
+import com.wdelivery.order.vo.OrderVO;
 
-import com.wdelivery.cart.vo.CartVO;
-
-public interface CartDAO {
+public interface OrderDAO {
 	
-	void cartInsert(CartVO orderVO);
+	void orderInsert(OrderVO orderVO);
 	
-	List<CartVO> cartList();
 }

@@ -1,12 +1,9 @@
-package com.wdelivery.cart.service;
+package com.wdelivery.order.service;
 
-import java.util.List;
+import com.wdelivery.order.vo.OrderVO;
 
-import com.wdelivery.cart.vo.CartVO;
+public interface OrderService {
 
-public interface CartService {
-
-	void cartInsert(CartVO cartVO);
+	void orderInsert(OrderVO orderVO);
 	
-	List<CartVO> cartList();
 }

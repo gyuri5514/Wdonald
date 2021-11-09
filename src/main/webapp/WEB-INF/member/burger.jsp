@@ -26,20 +26,20 @@
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectBurger}" var="selectBurger">
 									<li>
-										<a href="javascript:location.href='detail.do?b_code=${selectBurger.b_code}'" data-seq="${selectBurger.b_code}">
+										<a href="#" data-seq="${selectBurger.b_code}">
 											<div class="thum">
-												<img src="${selectBurger.b_img_path}" alt="${selectBurger.b_name}">
+												<img src="${selectBurger.b_img_path}" alt="${selectBurger.b_name}" onclick="javascript:location.href='detail.do?b_code=${selectBurger.b_code}'">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectBurger.b_name}</strong>
 												<em class="en">${selectBurger.b_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">${selectBurger.b_price}</span>
+													<span class="starting-price" style="margin-top:5px;">₩${selectBurger.b_price}</span>
 												</div>
 											</div>
-										</a>
-										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
+											<button style="background-color:#ffbc0d; color:white; margin-top:30px;border-radius:25px; width:90px; height:30px;" 
 													onclick="javascript:location.href='order.do?b_code=${selectBurger.b_code}'"><h4>주문하기</h4></button>
+										</a>
 									</li>
 								</c:forEach>
 							</ul>

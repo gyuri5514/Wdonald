@@ -6,7 +6,7 @@ public class BurgerVO {
 
 	private Integer b_code;
 	private String b_name;
-	private String b_price;
+	private int b_price;
 	private String b_kcal;
 	private Date b_regdate;
 	private String b_img_path;
@@ -42,11 +42,11 @@ public class BurgerVO {
 		this.b_name = b_name;
 	}
 
-	public String getB_price() {
+	public int getB_price() {
 		return b_price;
 	}
 
-	public void setB_price(String b_price) {
+	public void setB_price(int b_price) {
 		this.b_price = b_price;
 	}
 
