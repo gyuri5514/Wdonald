@@ -6,7 +6,7 @@ public class BurgerVO {
 
 	private Integer b_code;
 	private String b_name;
-	private String b_price;
+	private int b_price;
 	private String b_kcal;
 	private Date b_regdate;
 	private String b_img_path;
@@ -17,6 +17,24 @@ public class BurgerVO {
 	private int category_code;
 	private String b_e_name;
 	private String b_detail_img_path;
+	private String b_btn_img_path;
+	private String b_detail_comment;
+
+	public String getB_btn_img_path() {
+		return b_btn_img_path;
+	}
+
+	public void setB_btn_img_path(String b_btn_img_path) {
+		this.b_btn_img_path = b_btn_img_path;
+	}
+
+	public String getB_detail_comment() {
+		return b_detail_comment;
+	}
+
+	public void setB_detail_comment(String b_detail_comment) {
+		this.b_detail_comment = b_detail_comment;
+	}
 
 	public String getB_detail_img_path() {
 		return b_detail_img_path;
@@ -42,11 +60,11 @@ public class BurgerVO {
 		this.b_name = b_name;
 	}
 
-	public String getB_price() {
+	public int getB_price() {
 		return b_price;
 	}
 
-	public void setB_price(String b_price) {
+	public void setB_price(int b_price) {
 		this.b_price = b_price;
 	}
 

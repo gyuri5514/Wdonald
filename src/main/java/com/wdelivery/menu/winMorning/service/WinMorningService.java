@@ -8,4 +8,5 @@ public interface WinMorningService {
 	
 	public List<WinMorningVO> selectWinMorning();
 
+	public WinMorningVO detailMorning(Integer w_code);
 }

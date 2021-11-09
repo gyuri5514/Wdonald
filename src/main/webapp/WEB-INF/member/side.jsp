@@ -39,7 +39,9 @@
 											</div>
 										</a>
 										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-													onclick="javascript:location.href='order.do?s_code=${selectSide.s_code}'"><h4>주문하기</h4></button>
+													onclick="javascript:location.href='order.do?s_code=${selectSide.s_code}'">
+											<h4>주문하기</h4>
+										</button>
 									</li>
 								</c:forEach>
 							</ul>
@@ -49,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-			 <form id="searchForm" method="post">
+			 <form id="searchForm" method="get">
 				<input type="hidden" name="page" id="page" value="1">
 				<input type="hidden" name="seq" id="seq">
 				<input type="hidden" name="sub_category_seq" id="sub_category_seq" value="1">

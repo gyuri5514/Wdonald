@@ -5,7 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.menu.winMorning.dao.WinMorningDAO">
 	<select id="selectWinMorning" resultType="winMorningVO">
 		<![CDATA[
-			SELECT * FROM winmorning
+			SELECT * FROM winmorning ORDER BY w_code
+		]]>
+	</select>
+	
+	<select id="detailMorning" resultType="winMorningVO">
+		<![CDATA[
+			SELECT * FROM winmorning WHERE w_code = #{w_code}
 		]]>
 	</select>
 	
