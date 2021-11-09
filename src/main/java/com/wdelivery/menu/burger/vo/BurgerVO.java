@@ -17,6 +17,24 @@ public class BurgerVO {
 	private int category_code;
 	private String b_e_name;
 	private String b_detail_img_path;
+	private String b_btn_img_path;
+	private String b_detail_comment;
+
+	public String getB_btn_img_path() {
+		return b_btn_img_path;
+	}
+
+	public void setB_btn_img_path(String b_btn_img_path) {
+		this.b_btn_img_path = b_btn_img_path;
+	}
+
+	public String getB_detail_comment() {
+		return b_detail_comment;
+	}
+
+	public void setB_detail_comment(String b_detail_comment) {
+		this.b_detail_comment = b_detail_comment;
+	}
 
 	public String getB_detail_img_path() {
 		return b_detail_img_path;

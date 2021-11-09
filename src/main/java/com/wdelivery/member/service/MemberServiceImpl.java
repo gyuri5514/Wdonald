@@ -1,10 +1,10 @@
 package com.wdelivery.member.service;
 
 import java.util.HashMap;
-
-import org.json.simple.JSONObject;
+import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -121,16 +121,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public UserAddressVO addressShow(String user_email) {
+	public List<UserAddressVO> addressShow(String user_email) {
 		
 		return memberDAO.addressShow(user_email);
 	}
 
-	@Override
-	public void addressInsert(UserAddressVO addressVO) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void addressUpdate(UserAddressVO addressVO) {
@@ -140,14 +135,20 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void addressDelete(int address_seq) {
-		// TODO Auto-generated method stub
-		
+		memberDAO.addressDelete(address_seq);
 	}
 
 
 	@Override
-	public void mypageDelete(UserVO userVO) { //don �ϴ� ��
+	public void mypageDelete(UserVO userVO) { //don ing
 		memberDAO.mypageDelete(userVO);
+	}
+
+	@Override
+	public void addressInsert(UserAddressVO addressVO) {
+		
+		 memberDAO.addressInsert(addressVO);
+		
 	}
 
 }

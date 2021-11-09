@@ -36,7 +36,6 @@
 													<span class="starting-price" style="margin-top:5px;">${selectDrink.d_price}</span>
 												</div>
 											</div>
-										
 										<button style="background-color:#ffbc0d; color:white; margin-left:30px; border-radius:25px; width:90px; height:30px;" 
 													onclick="javascript:location.href='order.do?d_code=${selectDrink.d_code}'"><h4>주문하기</h4></button>
 										</a>
@@ -49,7 +48,7 @@
 						</div>
 					</div>
 				</div>
-			 <form id="searchForm" method="post">
+			 <form id="searchForm" method="get">
 				<input type="hidden" name="page" id="page" value="1">
 				<input type="hidden" name="seq" id="seq">
 				<input type="hidden" name="sub_category_seq" id="sub_category_seq" value="1">

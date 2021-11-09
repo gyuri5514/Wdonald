@@ -18,7 +18,7 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li data-title="윈모닝" data-desc="윈모닝메뉴"><a href="morning.do" role="button" aria-selected="true">메뉴</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
+							<!-- <li data-title="윈모닝" data-desc="윈모닝메뉴"><a href="morning.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
 							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
 						</ul>
 						<div class="mcMenu">
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 				</div>
-			 <form id="searchForm" method="post">
+			 <form id="searchForm" method="get">
 				<input type="hidden" name="page" id="page" value="1">
 				<input type="hidden" name="seq" id="seq">
 				<input type="hidden" name="sub_category_seq" id="sub_category_seq" value="1">

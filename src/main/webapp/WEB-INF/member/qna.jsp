@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +27,12 @@
 </head>
 <body class="bg_customer_new" scroll="auto" style="overflow-x: hidden">
 	<form id="qnaForm" name="mainForm" method="post" onsubmit="return false;">
+	<c:if test="${value != null}">
+		<input type="hidden" id="value" name="value" value="${value}">
+	</c:if>
+	<c:if test="${value == null}">
+		<input type="hidden" id="value" name="value">
+	</c:if>
 		<!-- <input type="hidden" name="RECVER_TYPE_CD" value="01"> <input
 			type="hidden" name="VOC_CHANNEL_CD" value="02"> <input
 			type="hidden" name="ACPT_ID" id="ACPT_ID" value=""> -->
@@ -205,13 +212,13 @@
 										</colgroup>
 										<tr>
 											<th scope="row">매장명(매장위치)</th>
-											<td colspan="3"><input type="hidden" name="STORE_SEQ"
-												id="STORE_SEQ" value=""> <input type="hidden"
-												name="qa_store" id="STORE_ADDRESS" value=""> <input
-												class="int w587" type="text" name="STORE_NM" id="STORE_NM"
-												value="" readonly> &nbsp;&nbsp;&nbsp;
+											<td colspan="3">
+												<input type="hidden" name="STORE_SEQ" id="STORE_SEQ" value=""> 
+												<input type="hidden" name="qa_store" id="STORE_ADDRESS" value=""> 
+												<input class="int w587" type="text" name="qa_store" id="STORE_NM" readonly> &nbsp;&nbsp;&nbsp;
 												<button class="btnMC btnM" onclick="storeSearchPop();">매장검색</button>
 											</td>
+											
 										</tr>
 										<tr>
 											<th scope="row">이름</th>
@@ -302,7 +309,7 @@
 							</div>
 							<!-- submit button -->
 							<button type="button" class="btnMC btnM" onclick="search();">문의 조회하기</button>
-							<span id="req" style="red"></span> <!-- 필요없음 -->
+							<span id="req" style="red"></span>
 	
 
 							<div id="LIST_DIV"></div>
@@ -417,7 +424,6 @@
 					//모드 탭 (Editor/HTML/TEXT) 사용 여부
 					bUseModeChanger : false
 				}
-				
 			});
 			
 			$("#btnInsert").click(function() { 
@@ -513,7 +519,7 @@
 			
 			var qa_email = document.getElementById('EMAIL2').value;
 			var qa_password = document.getElementById('CUST_PASSWORD2').value;
-
+			//alert("qa_ : " + qa_password)
 					$.ajax({
 						url:"qnaSelect.do",
 						data:{
@@ -523,7 +529,7 @@
 						dataType: "json",  
 						type: "post",
 						success:function(data){
-							//alert(data);
+							alert(data);
 							//alert("ajax 성공");
 							
 							$("#req").html(

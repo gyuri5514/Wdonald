@@ -94,11 +94,8 @@
 									<div class="row">
 										<div class="col-xs-12">
 										<script type="text/javascript" src="resources/js/join/memJoin.js"></script>
-											<form  method="post"
-												role="form" data-form-sync="#form_consentnewnumber"
-												class="form form-register" id="form_accountsetting"
-												name="form_accountsetting" data-required-symbol="*"
-												autocomplete="off">
+											<form  method="post" role="form" data-form-sync="#form_consentnewnumber"
+												class="form form-register" id="form_accountsetting" name="form_accountsetting" data-required-symbol="*" autocomplete="off">
 												<input type="hidden" name="user_seq"value="${userVO.user_seq }"> <!-- 여기 수정 중 -->
 												<input type="hidden" name="" id="m_email" value="${userVO.user_email}">
 												<div class="form-register error-container">
@@ -208,7 +205,7 @@
 									<fieldset class="fieldset form-actions">
 									<div class="form-group">
 										<button type="button" class="btn btn-red btn-xl btn-submit" id="join_ok" onclick="updatego()">수정사항 저장</button>	
-										<a id="button" class="btn btn-red btn-xl btn-submit" href="mypageDelete.do?user_email=${sessionScope.user_email }">회원 탈퇴</a>		
+										<a id="button" class="btn btn-red btn-xl btn-submit" href="mypageDelete.do?user_email=${userVO.user_email }">회원 탈퇴</a>		
 									</div>
 							</fieldset>
 						</form>
@@ -257,6 +254,7 @@ function updatego() {
  			$("#m_password2").focus();
  	        return false;
  		}
+ 		
  		var pwd_chk = $("#login_pwd_chk").val();
  		if(pwd_chk == 0){
  			alert('비밀번호 안전도 올려올려');
@@ -264,7 +262,7 @@ function updatego() {
  			return false;
  		}
    		//alert("회원이 비번 변경 함"); 
-
+		
 		if(confirm("변경하시겠습니까?")){
 			var mypageUpdateForm = document.getElementById("form_accountsetting");
 			mypageUpdateForm.action="mypageUpdate.do";
@@ -276,12 +274,9 @@ function updatego() {
  	}
 }
 
-/* function delete() {
-	alert("탈퇴");
-	var mypageDeleteForm = document.getElementById("form_accountsetting");
-	mypageDeleteForm.action="mypageDelete.do";
-	mypageDeleteForm.submit();
-} */
+	/* if($("#memDelete").equalse(sessionScope.user_eamil)){
+		
+	} */
 
 </script>
 

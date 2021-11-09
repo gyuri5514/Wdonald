@@ -26,22 +26,34 @@ public class BurgerServiceImpl implements BurgerService {
 		return burgerDAO.detailBurger(b_code);
 	}
 
+
+	@Override
+	public BurgerVO prevBurger(int b_code) {
+		System.out.println("prevBurger");
+		return burgerDAO.prevBurger(b_code);
+	}
+
+	@Override
+	public BurgerVO nextBurger(int b_code) {
+		System.out.println("nextBurger");
+		return burgerDAO.nextBurger(b_code);
+	}
+
 	@Override
 	public void updateBurger(BurgerVO burgerVO) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void deleteBurger(String b_code) {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	@Override
 	public void insertBurger(BurgerVO burgerVO) {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

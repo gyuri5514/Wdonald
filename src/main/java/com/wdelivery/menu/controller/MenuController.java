@@ -88,20 +88,58 @@ public class MenuController {
 	}
 	
 	@GetMapping("/detail.do")
-	public String detailBurger(Model model, @RequestParam(value = "b_code", required = false) Integer b_code) {
+	public String detailBurger(Model model, @RequestParam(value = "b_code", required = false) Integer b_code,
+			@RequestParam(value = "w_code", required = false) Integer w_code,
+			@RequestParam(value = "dessert_code", required = false) Integer dessert_code,
+			@RequestParam(value = "s_code", required = false) Integer s_code,
+			@RequestParam(value = "d_code", required = false) Integer d_code) {
 		
 		if (b_code != null) {
 			BurgerVO burgerVO = burgerService.detailBurger(b_code);
 			System.out.println("detailBurger : " + burgerVO.getB_code());
 			System.out.println("detailBurger : " + burgerVO.getB_name());
 			System.out.println("detailBurger : " + burgerVO.getB_img_path());
-			System.out.println("detailBurger : " + burgerVO.getB_n_img_path());
+			System.out.println("detailBurger : " + burgerVO.getB_n_img_path());	
+			
 			model.addAttribute("detailBurger", burgerVO);
 			
 			return "detail";
+		} else if (w_code != null) {
+			WinMorningVO winMorningVO = winMorningService.detailMorning(w_code);
+			System.out.println("detailMorning : " + winMorningVO.getW_code());
+			System.out.println("detailMorning : " + winMorningVO.getW_name());
+			System.out.println("detailMorning : " + winMorningVO.getW_img_path());
+			System.out.println("detailMorning : " + winMorningVO.getW_n_img_path());	
+			model.addAttribute("detailMorning", winMorningVO);
+			
+			return "detail";
+		} else if (dessert_code != null) {
+			DessertVO dessertVO = dessertService.detailDessert(d_code);
+			System.out.println("detailDessert : " + dessertVO.getDessert_code());
+			System.out.println("detailDessert : " + dessertVO.getDessert_name());
+			System.out.println("detailDessert : " + dessertVO.getDessert_img_path());
+			
+			model.addAttribute("detailDessert", dessertVO);
+			
+			return "detail";
+		} else if (s_code != null) {
+			SideVO sideVO = sideService.detailSide(s_code);
+			System.out.println("detailDessert : " + sideVO.getS_code());
+			System.out.println("detailDessert : " + sideVO.getS_name());
+			System.out.println("detailDessert : " + sideVO.getS_img_path());
+
+			return "detail";
+
+		} else if (d_code != null) {
+			DrinkVO drinkVO = drinkService.detailDrink(d_code);
+			System.out.println("detailDrink : " + drinkVO.getD_code());
+			System.out.println("detailDrink : " + drinkVO.getD_name());
+			System.out.println("detailDrink : " + drinkVO.getD_img_path());
+			
+			return "detail";
 		} else {
-			return "redirect:burger.do";
+			return "burger.do";
 		}
+		
 	}
-	
 }

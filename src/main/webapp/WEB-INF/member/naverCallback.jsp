@@ -50,11 +50,11 @@ var naverLogin = new naver.LoginWithNaverId(
 								"accessToken" : naverLogin.accessToken.accessToken
 							}),
 							contentType: "application/json",
-							succcess: function() {
-											
-							}
-						})
-						location.replace("http://localhost:8080/controller/main.do");
+						
+						}).always(function(){
+							location.replace("http://localhost:8080/controller/main.do");	
+						});
+						
 				//window.location.replace("http://" + window.location.hostname + ((location.port == "" || location.port == undefined) ? "" : ":" + location.port) + "/controller/main.do");
 			} else {
 				console.log("callback 처리에 실패하였습니다.");

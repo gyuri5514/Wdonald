@@ -13,6 +13,7 @@ public class AdminVO {
 	private int store_drivethru;
 	private int store_status;
 	private String store_code;
+	
 	public int getAdmin_seq() {
 		return admin_seq;
 	}
@@ -87,12 +88,13 @@ public class AdminVO {
 	}
 	@Override
 	public String toString() {
-		return "adminVO [admin_seq=" + admin_seq + ", admin_id=" + admin_id + ", admin_password=" + admin_password
+		return "AdminVO [admin_seq=" + admin_seq + ", admin_id=" + admin_id + ", admin_password=" + admin_password
 				+ ", admin_name=" + admin_name + ", admin_phone=" + admin_phone + ", store_name=" + store_name
 				+ ", store_address=" + store_address + ", store_phone=" + store_phone + ", store_delivery="
 				+ store_delivery + ", store_drivethru=" + store_drivethru + ", store_status=" + store_status
 				+ ", store_code=" + store_code + "]";
 	}
+	
 	
 	
 	
