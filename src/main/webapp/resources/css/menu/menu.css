@@ -4558,7 +4558,7 @@ button.close {
 
 @media ( min-width :768px) {
 	.modal-dialog {
-		width: 600px;
+		width: 700px;
 		margin: 10px 0 0 500px;
 	}
 	#sideModal .modal-content {
@@ -10032,6 +10032,7 @@ rotate
 
 .radio .iradio1 {
 	margin-right: 10px;
+	margin-top : 5px;
 }
 
 .radio .iradio2 {

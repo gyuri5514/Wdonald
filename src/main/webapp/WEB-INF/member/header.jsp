@@ -112,22 +112,22 @@
 						<c:when test="${not empty sessionScope.userInfo}">
 							<a href="logout.do" class="btn_register" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
-							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
+							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 						<c:when test="${not empty sessionScope.kakaoSession}">
 							<a href="#" class="btn_register"  onclick="javascript:kakaoLogout()" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
-							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
+							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 						<c:when test="${not empty sessionScope.naverSession}">
 							<a href="#" onclick="naverLogout('${sessionScope.naverAccessKey}')" class="btn_register" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
-							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
+							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 						<c:when test="${empty sessionScope.userInfo && empty sessionScope.kakaoSession && empty sessionScope.naverSession}">
 							<a href="#login_pop" class="btn_login" title="로그인으로 이동">로그인</a>					
 						<a href="join.do" class="btn_register" title="회원가입으로 이동">회원가입</a>
-						<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
+						<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 					</c:choose>
 						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->

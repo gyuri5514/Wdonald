@@ -6,7 +6,7 @@ public class WinMorningVO {
 
 	private Integer w_code;
 	private String w_name;
-	private String w_price;
+	private Integer w_price;
 	private int w_kcal;
 	private Date w_regdate;
 	private String w_img_path;
@@ -41,10 +41,10 @@ public class WinMorningVO {
 	public void setW_name(String w_name) {
 		this.w_name = w_name;
 	}
-	public String getW_price() {
+	public Integer getW_price() {
 		return w_price;
 	}
-	public void setW_price(String w_price) {
+	public void setW_price(Integer w_price) {
 		this.w_price = w_price;
 	}
 	public int getW_kcal() {

@@ -15,10 +15,10 @@
 	<div class="page-content">
 		<div class="row row-narrow">
 			<div class="col-xs-8" id="col-xs-8">
-				<form name="form_my_order" id="form_my_order" role="form" data-required-symbol="*" method="post" action="/kr/submit-order-payment.html" novalidate="novalidate">
+				<form name="orderForm" id="orderForm" role="form"  method="get"  >
 					<div class="panel panel-lg panel-default">
 						<div class="panel-heading">
-							<h3>
+							<h3>	
 								<span>내 주문 정보</span>
 							</h3>
 						</div>
@@ -28,16 +28,18 @@
 									<c:if test="${cartList != null}">
 									<tbody>
 										<c:forEach var="cartList" items="${cartList}" varStatus="status">
-											<tr>
-												<td class="quantity">${status.count}</td>
-												<td class="picture-img"><img src="//www.mcdelivery.co.kr/kr//static/1635300416887/assets/82/products/2085.png" class="img-block" alt="">
-												<div class="controls">
-													<a class="text-gray-light btn-action action-edit" href="/kr/menu.html#edit/1" title="변경"><i class="fas fa-pen"></i></a>
-													<a class="text-gray-light btn-action action-delete" href="/kr/configurator/deletecart.json?cartId=1" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
-													<i class="far fa-trash-alt"></i></a>
-												</div>
-												</td>
-												<c:if test="${cartList.cart_b_Lgset_code != null}">
+											<c:if test="${cartList.cart_b_Lgset_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_b_Lgset_img_path}" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_Lgset_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
 													<td class="product-name">
 														<div>${cartList.cart_b_Lgset_name}</div>
 														<ul style="padding-left:3px; padding-top:10px;">
@@ -46,9 +48,22 @@
 															<li>${cartList.cart_s_name}</li>
 														</ul>
 													</td>
-													<td class="cost">${cartList.cart_b_Lgset_price}</td>
-												</c:if>
-												<c:if test="${cartList.cart_b_set_code != null}">
+													<td class="cost">₩${cartList.cart_b_Lgset_price}</td>
+													<td class="many">3</td>
+												</tr>
+											</c:if>
+											<c:if test="${cartList.cart_b_set_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_b_set_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_set_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
 													<td class="product-name">
 														<div>${cartList.cart_b_set_name}</div>
 														<ul style="padding-left:3px; padding-top:10px;">
@@ -58,20 +73,62 @@
 														</ul>
 													</td>
 													<td class="cost">${cartList.cart_b_set_price}</td>
-												</c:if>
-												<c:if test="${cartList.cart_s_code != null}">
-													<td class="product-name">
-														<div>${cartList.cart_s_name}</div>
+												</tr>
+											</c:if>
+											<c:if test="${cartList.cart_b_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_b_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
 													</td>
-													<td class="cost">${cartList.cart_s_price}</td>
+													<td class="product-name">
+														<div>${cartList.cart_b_name}</div>
+													</td>
+													<td class="cost">${cartList.cart_b_price}</td>
+												</tr>
+											</c:if>
+												<c:if test="${cartList.cart_s_code != null}">
+													<tr id="${status.count}">
+														<td class="quantity">${status.count}</td>
+														<td class="picture-img">
+															<img src="${cartList.cart_s_img_path}" class="img-block" alt="">
+															<div class="controls">
+																<a class="text-gray-light btn-action action-edit" href="order.do?s_code=${cartList.cart_s_code}&va=변경&num=${status.index}" title="변경">
+																	<i class="fas fa-pen"></i></a>
+																<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																	<i class="far fa-trash-alt"></i></a>
+															</div>
+														</td>
+														<td class="product-name">
+															<div>${cartList.cart_s_name}</div>
+														</td>
+														<td class="cost">${cartList.cart_s_price}</td>
+													</tr>
 												</c:if>
 												<c:if test="${cartList.cart_d_code != null}">
-													<td class="product-name">
-														<div>${cartList.cart_d_name}</div>
-													</td>
-													<td class="cost">${cartList.cart_d_price}</td>
+													<tr id="${status.count}">
+														<td class="quantity">${status.count}</td>
+														<td class="picture-img">
+															<img src="${cartList.cart_d_img_path}" class="img-block" alt="">
+															<div class="controls">
+																<a class="text-gray-light btn-action action-edit" href="order.do?d_code=${cartList.cart_d_code}&va=변경&num=${status.index}" title="변경">
+																	<i class="fas fa-pen"></i></a>
+																<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																	<i class="far fa-trash-alt"></i></a>
+															</div>
+														</td>
+														<td class="product-name">
+															<div>${cartList.cart_d_name}</div>
+														</td>
+														<td class="cost">${cartList.cart_d_price}</td>
+													</tr>
 												</c:if>
-											</tr>
 										</c:forEach>
 									</tbody>
 									</c:if>
@@ -85,7 +142,8 @@
 										</section>
 -->						</div>
 					</div>
-					<input type="hidden" name="csrfValue" value="99a855278a33d122cdd4705a315822bd"></form>
+						<input type="hidden" id="price" name="price" value="${price}">
+					</form>
 				</div>
 				<div class="col-xs-4" id="col-xs-4">
 					<!-- <form name="form_order_summary" id="form_order_summary" th:action="@{/applyCoupon.html}" method="post" role="form" data-required-symbol="*" accept-charset="utf-8">  -->
@@ -124,7 +182,6 @@
 									<a href="#enter-promocode" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>쿠폰 코드 입력</span> <i class="fa"></i></a>
 									<div id="enter-promocode" class="collapse">
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="/kr/applyCoupon.html">
-	
 											<div class="form-group">
 												<div class="input-group">
 													<input type="text" name="couponCode" id="couponCode" class="form-control">
@@ -136,7 +193,7 @@
 												</div>
 												<label for="enter-promocode" class="control-hint"></label>
 											</div>
-										<input type="hidden" name="csrfValue" value="99a855278a33d122cdd4705a315822bd"></form>
+										</form>
 									</div>
 								</div>
 							</section>	
@@ -151,7 +208,7 @@
 												</c:when>
 												<c:when test="${cartList != null}">
 													<th scope="row"><span>총 주문합계:</span></th>
-													<td><span>₩ </span></td>
+													<td><span>₩${price} </span></td>
 												</c:when>
 											</c:choose>
 										</tr>
@@ -159,7 +216,7 @@
 									<tbody>
 										<tr>
 											<th scope="row"><span>배달료:</span></th>
-											<td>₩ 2,000</td>
+											<td>₩ 7,000</td>
 										</tr>
 										<!-- MDSAP-11635-v1 -->
 										
@@ -168,7 +225,7 @@
 								</table>
 								<fieldset class="form-actions text-center">
 									<div class="form-group">
-										<button type="button" class="btn btn-red btn-block btn-xl" data-associated-form="#form_my_order">
+										<button type="button" class="btn btn-red btn-block btn-xl" onclick="order();">
 											<span>주문 확인</span>
 										</button>
 									</div>
@@ -192,5 +249,10 @@
 			</div>
 		</div>
 	</div>
-
+<script type="text/javascript">
+	function order() {
+		document.getElementById("orderForm").action = "paymentWin.do";
+		document.getElementById("orderForm").submit();
+	}
+</script>
 <%@ include file="footer.jsp"%>

@@ -26,9 +26,9 @@
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectSide}" var="selectSide">
 									<li>
-										<a href="javascript:goDetail(300)" data-seq="300">
+										<a href="#" data-seq="300">
 											<div class="thum">
-												<img src="${selectSide.s_img_path}" alt="${selectSide.s_name}">
+												<img src="${selectSide.s_img_path}" alt="${selectSide.s_name}" onclick="javascript:goDetail(300)">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectSide.s_name}</strong>
@@ -37,11 +37,10 @@
 													<span class="starting-price" style="margin-top:5px;">${selectSide.s_price}</span>
 												</div>
 											</div>
-										</a>
+										
 										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-													onclick="javascript:location.href='order.do?s_code=${selectSide.s_code}'">
-											<h4>주문하기</h4>
-										</button>
+													onclick="javascript:location.href='order.do?s_code=${selectSide.s_code}'"><h4>주문하기</h4></button>
+                    </a>
 									</li>
 								</c:forEach>
 							</ul>
