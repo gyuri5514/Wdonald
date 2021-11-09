@@ -28,26 +28,23 @@
 	<br>
 	<hr>
 </div>
-<form id="payform" name="payform">
+<form id="payform" name="payform" action="#" method="post">
 	<div class="panel panel-lg panel-default" id="pay-body">
 		<c:choose>
 			<c:when test="${not empty sessionScope.userInfo}">
 				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.userInfo.user_email}">
 				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.userInfo.user_name}">
+				<input type="hidden" name="user_seq" id="user_seq" value="${sessionScope.userInfo.user_seq}">
 			</c:when>
 			<c:when test="${not empty sessionScope.kakaoSession}">
-				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.kakaoSession.email}">
-				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.kakaoSession.nickname}">
+				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.kakaoSession.user_email}">
+				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.kakaoSession.user_name}">
+				<input type="hidden" name="user_seq" id="user_seq" value="${sessionScope.kakaoSession.user_seq}">
 			</c:when>
 			<c:when test="${not empty sessionScope.naverSession}">
-				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.naverSession.email}">
-				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.naverSession.nickname}">
-			</c:when>
-			<c:when
-				test="${empty sessionScope.userInfo && empty sessionScope.kakaoSession && empty sessionScope.naverSession}">
-				<a href="#login_pop" class="btn_login" title="로그인으로 이동">로그인</a>
-				<a href="join.do" class="btn_register" title="회원가입으로 이동">회원가입</a>
-				<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
+				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.naverSession.user_email}">
+				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.naverSession.user_name}">
+				<input type="hidden" name="user_seq" id="user_seq" value="${sessionScope.naverSession.user_seq}">
 			</c:when>
 		</c:choose>
 		<div class="form-payment">
@@ -155,9 +152,7 @@
 				<section class="panel-section">
 					<fieldset class="form-actions text-center">
 						<div class="form-group">
-							<!--<button type="submit" id="confirmBtn" class="btn btn-red btn-block btn-xl" onclick="submitPayment()" style="display: none;">결제 진행하기</button>
- -->
-
+				<!--<button type="submit" id="confirmBtn" class="btn btn-red btn-block btn-xl" onclick="submitPayment()" style="display: none;">결제 진행하기</button>-->
 							<button type="button" id="confirmBtn" onclick="submitCashless()"
 								class="btn btn-red btn-block btn-xl" style="margin-top: 0px;">
 								<span>결제 진행하기</span>

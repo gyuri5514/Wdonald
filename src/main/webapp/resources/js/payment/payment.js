@@ -47,6 +47,11 @@ function submitCashless() {
 	var total_price = $('#total_price').val();
 	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"1":$('#user_address').val();
 	var user_email = $('#user_email').val();
+	
+	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
+		user_email = user_email.substring(6);
+	}
+	
 	var user_name = $('#user_name').val();
 	var user_phone = $('#user_phone').val()==null||$('#user_phone').val()==""?"010-0000-0000":$('#user_phone').val();
 	IMP.init('imp43424363');
@@ -98,17 +103,27 @@ function submitCashless() {
 		*/
 	}, function(rsp) {
 		console.log(rsp);
-		if (rsp.success) {
-			var msg = '결제가 완료되었습니다.';
-			msg += '고유ID : ' + rsp.imp_uid;
-			msg += '상점 거래ID : ' + rsp.merchant_uid;
-			msg += '결제 금액 : ' + rsp.paid_amount;
-			msg += '카드 승인번호 : ' + rsp.apply_num;
-		} else {
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-		}
-		console.log(msg);
+		$.ajax({
+			type:"POST",
+			url: "payment/verifyIamport.do?imp_uid="+rsp.imp_uid
+		}).done(function(data){
+			console.log(data);
+			if(rsp.paid_amount==data.response.amount){
+				alert("결제 및 결제검증완료");
+				$.ajax({
+					type:"POST",
+					url : "payment/paywinCredit.do",
+					data: JSON.stringify({
+						
+					}),
+					dataType:"application/json"
+				})
+			}else{
+					alert("결제 및 결제검증 실패");
+			}
+			//위의 rsp.paid_amount 와 data.response.amount를 비교한후 로직 실행(import 서버검증)
+		})
+		
 	});
 }
 function onsitePayment() {

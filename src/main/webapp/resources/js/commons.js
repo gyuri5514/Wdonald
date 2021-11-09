@@ -181,9 +181,10 @@ function kakaoLogin() {
 							"nickname": response.kakao_account.profile.nickname
 						}),
 						contentType: "application/json",
-						succcess: function() {
-						}
-					})
+						
+					}).always(function(){
+							window.location.href("http://localhost:8080/controller/main.do");
+					});
 				},
 				fail: function(error) {
 					console.log(error)
@@ -198,16 +199,14 @@ function kakaoLogin() {
 /* */
 
 function kakaoLogout() {
-	console.log(Kakao.isInitialized());
-
 	if (!Kakao.Auth.getAccessToken()) {
 		alert('Not logged in');
 		return;
 	}
 	Kakao.Auth.logout(function() {
 		console.log(Kakao.Auth.getAccessToken());
-		$.post("logout.do");
 	})
+	$.post("logout.do")
 	/*window.location.href="http://localhost:8080/controller/main.do";*/
 }
 function naverLogout(accessKey) {
