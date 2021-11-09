@@ -94,11 +94,8 @@
 									<div class="row">
 										<div class="col-xs-12">
 										<script type="text/javascript" src="resources/js/join/memJoin.js"></script>
-											<form  method="post"
-												role="form" data-form-sync="#form_consentnewnumber"
-												class="form form-register" id="form_accountsetting"
-												name="form_accountsetting" data-required-symbol="*"
-												autocomplete="off">
+											<form  method="post" role="form" data-form-sync="#form_consentnewnumber"
+												class="form form-register" id="form_accountsetting" name="form_accountsetting" data-required-symbol="*" autocomplete="off">
 												<input type="hidden" name="user_seq"value="${userVO.user_seq }"> <!-- 여기 수정 중 -->
 												<input type="hidden" name="" id="m_email" value="${userVO.user_email}">
 												<div class="form-register error-container">
@@ -257,6 +254,7 @@ function updatego() {
  			$("#m_password2").focus();
  	        return false;
  		}
+ 		
  		var pwd_chk = $("#login_pwd_chk").val();
  		if(pwd_chk == 0){
  			alert('비밀번호 안전도 올려올려');
@@ -264,7 +262,7 @@ function updatego() {
  			return false;
  		}
    		//alert("회원이 비번 변경 함"); 
-
+		
 		if(confirm("변경하시겠습니까?")){
 			var mypageUpdateForm = document.getElementById("form_accountsetting");
 			mypageUpdateForm.action="mypageUpdate.do";

@@ -18,7 +18,7 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li data-title="윈모닝" data-desc="윈모닝메뉴"><a href="morning.do" role="button" aria-selected="true">메뉴</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
+							<!-- <li data-title="윈모닝" data-desc="윈모닝메뉴"><a href="morning.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
 							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
 						</ul>
 						<div class="mcMenu">
@@ -26,8 +26,8 @@
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectWinMorning}" var="selectWinMorning">
 									<li>
-										<a href="javascript:goDetail(300)" data-seq="300">
-											<div class="thum">
+										<a href="#" data-seq="300">
+											<div class="thum" onclick="location.href='detail.do?b_code=${selectWinMorning.w_code}';">
 												<img src="${selectWinMorning.w_img_path}" alt="${selectWinMorning.w_name}">
 											</div>
 											<div class="name">
@@ -39,7 +39,9 @@
 											</div>
 										</a>
 										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-													onclick="javascript:location.href='order.do?b_code=${selectWinMorning.w_code}'"><h4>주문하기</h4></button>
+													onclick="javascript:location.href='order.do?b_code=${selectWinMorning.w_code}'">
+											<h4>주문하기</h4>
+										</button>
 									</li>
 								</c:forEach>
 							</ul>
@@ -49,7 +51,7 @@
 						</div>
 					</div>
 				</div>
-			 <form id="searchForm" method="post">
+			 <form id="searchForm" method="get">
 				<input type="hidden" name="page" id="page" value="1">
 				<input type="hidden" name="seq" id="seq">
 				<input type="hidden" name="sub_category_seq" id="sub_category_seq" value="1">

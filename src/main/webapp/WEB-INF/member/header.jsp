@@ -9,7 +9,7 @@
 <title>Wcdonald's</title>
 <meta name="description" id="description" content="메뉴, 레스토랑, 프로모션 등 안내"/>
 <meta name="keywords" content="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
-<link rel="shortcut icon" type="image/x-icon" href="https://www.mcdonalds.co.kr/kor/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 <link rel="stylesheet" href="resources/css/main/custom.css?t=20211031"> 
 <link rel="alternate" href="https://www.mcdonalds.co.kr">
 <script src="/kor/js/libs.js"></script>
@@ -109,7 +109,7 @@
 					<div class="util">
 					
 					<c:choose>
-						<c:when test="${not empty sessionScope.user_email}">
+						<c:when test="${not empty sessionScope.userInfo}">
 							<a href="logout.do" class="btn_register" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
@@ -124,7 +124,7 @@
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
-						<c:when test="${empty sessionScope.user_email && empty sessionScope.kakaoSession && empty sessionScope.naverSession}">
+						<c:when test="${empty sessionScope.userInfo && empty sessionScope.kakaoSession && empty sessionScope.naverSession}">
 							<a href="#login_pop" class="btn_login" title="로그인으로 이동">로그인</a>					
 						<a href="join.do" class="btn_register" title="회원가입으로 이동">회원가입</a>
 						<a href="order.do" class="btn_cart" title="카트로 이동">카트</a>

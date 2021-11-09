@@ -19,4 +19,10 @@ public class WinMorningServiceImpl implements WinMorningService {
 		System.out.println("selectWinMorning");
 		return winMorningDAO.selectWinMorning();
 	}
+
+	@Override
+	public WinMorningVO detailMorning(Integer w_code) {
+		System.out.println("detailWinMorning");
+		return winMorningDAO.detailMorning(w_code);
+	}
 }
