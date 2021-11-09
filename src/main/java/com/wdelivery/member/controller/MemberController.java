@@ -264,10 +264,10 @@ public class MemberController {
 	}
 
 	@GetMapping("/qna.do")
-	public String qnapage() {
+	public String qnapage(Model model, @RequestParam(name="value", required=false)String value) {
 		return "qna";
 	}
-
+	
 	@GetMapping("/trackOrder.do")
 	public String trackOrder() {
 		return "trackOrder";
@@ -327,12 +327,16 @@ public class MemberController {
 
 	@PostMapping("/qnaStoreSearchP.do")
 	@ResponseBody
-	public AdminVO qnaStoreSearchP(AdminVO adminVO, @RequestParam(name = "qa_store") String qa_store) {
-		AdminVO adminVo = qnaServie.storeSelect(adminVO);
+	public List<AdminVO> qnaStoreSearchP(@RequestParam(value = "store_address", required = false) String store_address, Model model) {
+		List<AdminVO> adminVO = new ArrayList<AdminVO>();
+		adminVO = qnaServie.storeSelect(store_address);
+		System.out.println("qnaStoreSearchP" + store_address);
+		
+		model.addAttribute("adminVO",adminVO);
+		
+		System.out.println("qnaStoreSerarch : " + adminVO.toString());
 
-		System.out.println("qnaStoreSerarch : " + adminVo.toString());
-
-		return adminVo;
+		return adminVO;
 	}
 
 	@GetMapping("/competition.do")

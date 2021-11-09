@@ -1,5 +1,7 @@
 package com.wdelivery.qna.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class QnaServiceImpl implements QnaService {
 	public void qnaInsert(QnaVO qnaVO) {
 		qnaDAO.qnaInsert(qnaVO);
 		System.out.println("insertServiceImpl => " + qnaVO.toString());
-		//System.out.println("qna 성공");
+		//System.out.println("qna �깃났");
 	}
 
 	
@@ -29,9 +31,9 @@ public class QnaServiceImpl implements QnaService {
 
 
 	@Override
-	public AdminVO storeSelect(AdminVO adminVO) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AdminVO> storeSelect(String store_address ) {
+		
+		return qnaDAO.storeSelect(store_address);
 	}
 	  
 	  
