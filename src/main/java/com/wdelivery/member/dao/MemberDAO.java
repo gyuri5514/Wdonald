@@ -1,5 +1,6 @@
 package com.wdelivery.member.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.wdelivery.member.vo.UserAddressVO;
@@ -29,7 +30,7 @@ public interface MemberDAO {
 
 	public void kakaoMemJoin(UserVO userVO);
 	
-	public UserAddressVO addressShow(String user_email);
+	public List<UserAddressVO> addressShow(String user_email);
 	public void addressInsert(UserAddressVO addressVO);
 	public void addressUpdate(UserAddressVO addressVO);
 	public void addressDelete(int address_seq);
