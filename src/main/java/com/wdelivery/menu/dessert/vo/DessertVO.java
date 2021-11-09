@@ -4,7 +4,7 @@ public class DessertVO {
 
 	private Integer dessert_code;
 	private String dessert_name;
-	private String dessert_price;
+	private int dessert_price;
 	private String dessert_img_path;
 	private String dessert_img;
 	private String dessert_n_img_path;
@@ -26,10 +26,10 @@ public class DessertVO {
 	public void setDessert_name(String dessert_name) {
 		this.dessert_name = dessert_name;
 	}
-	public String getDessert_price() {
+	public int getDessert_price() {
 		return dessert_price;
 	}
-	public void setDessert_price(String dessert_price) {
+	public void setDessert_price(int dessert_price) {
 		this.dessert_price = dessert_price;
 	}
 	public String getDessert_img_path() {

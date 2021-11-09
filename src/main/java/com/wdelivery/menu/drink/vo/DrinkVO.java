@@ -4,7 +4,7 @@ public class DrinkVO {
 	
 	private Integer d_code;
 	private String d_name;
-	private String d_price;
+	private Integer d_price;
 	private String d_hotcold;
 	private String d_img_path;
 	private String d_img;
@@ -33,10 +33,10 @@ public class DrinkVO {
 	public void setD_name(String d_name) {
 		this.d_name = d_name;
 	}
-	public String getD_price() {
+	public Integer getD_price() {
 		return d_price;
 	}
-	public void setD_price(String d_price) {
+	public void setD_price(Integer d_price) {
 		this.d_price = d_price;
 	}
 	public String getD_hotcold() {

@@ -24,37 +24,34 @@
 						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count">21 Products</p>
-								<div id="menu_order_list">
-									<p>
-									<a href="javascript:recentlist();">최신순</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-									<a href="javascript:pricelist();">낮은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-									<a href="javascript:pricelistdesc();">높은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-								</div>
-								<ul class="menuList" id="menuList">
-									<c:forEach items="${selectBurger}" var="selectBurger">
-										<li>
-											<a href="#" data-seq="${selectBurger.b_code}">
-												<div class="thum" onclick="location.href='detail.do?b_code=${selectBurger.b_code}';">
-													<img src="${selectBurger.b_img_path}" alt="${selectBurger.b_name}">
+            <div id="menu_order_list">
+                <p>
+                <a href="javascript:recentlist();">최신순</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+                <a href="javascript:pricelist();">낮은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+                <a href="javascript:pricelistdesc();">높은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+              </div>
+							<ul class="menuList" id="menuList">
+								<c:forEach items="${selectBurger}" var="selectBurger">
+									<li>
+										<a href="#" data-seq="${selectBurger.b_code}">
+											<div class="thum">
+												<img src="${selectBurger.b_img_path}" alt="${selectBurger.b_name}" onclick="javascript:location.href='detail.do?b_code=${selectBurger.b_code}'">
+											</div>
+											<div class="name">
+												<strong class="ko">${selectBurger.b_name}</strong>
+												<em class="en">${selectBurger.b_e_name}</em>
+												<div class="product-cost">
+													<span class="starting-price" style="margin-top:5px;">&#8361;${selectBurger.b_price}</span>
 												</div>
-												<div class="name">
-													<strong class="ko">${selectBurger.b_name}</strong>
-													<em class="en">${selectBurger.b_e_name}</em>
-													<div class="product-cost">
-														<span class="starting-price" style="margin-top:5px;">&#8361; ${selectBurger.b_price}</span>
-													</div>
-												</div>
-											</a>
-											<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-														onclick="javascript:location.href='order.do?b_code=${selectBurger.b_code}'">
-												<h4>주문하기</h4>
-											</button>
-										</li>
-									</c:forEach>
-								</ul>
-								<div class="btnMore" id="btnMore">
-									<button type="button" class="more" onclick="more()">더보기</button>
-								</div>
+											</div>
+											<button style="background-color:#ffbc0d; color:white; margin-top:30px;border-radius:25px; width:90px; height:30px;" 
+													onclick="javascript:location.href='order.do?b_code=${selectBurger.b_code}'"><h4>주문하기</h4></button>
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+							<div class="btnMore" id="btnMore">
+								<button type="button" class="more" onclick="more()">더보기</button>
 							</div>
 						</div>
 					</div>

@@ -26,6 +26,7 @@
 										<th colspan="2" class="side-column">사이드</th>
 										<th colspan="2"class="drink-column">음료</th>
 										<th class="change-column">변경</th>
+										<th colspan="2" class="change-column">수량</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -47,6 +48,25 @@
 										<td colspan="2" class="side-column">선택안함</td>
 										<td colspan="2" class="drink-column">선택안함</td>
 										<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+										<td colspan="2" class="controls-column">
+											<!-- <div class="input-group item-quantity item-quantity-picker">
+											<span class="input-group-btn">
+											<input type="button" onclick="count('plus')" value="+" style=" float: left; padding-right:10px"/>
+											</span>
+											<div id="result" style=" float: left; padding-right:10px">0</div>
+											<input type="button" onclick="count('minus')" value="--"/ style=" float: left"></div>  -->
+											
+											<div class="input-group item-quantity item-quantity-picker">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
+												</span>
+												<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+												</span>
+											</div>
+											
+										</td>
 									</tr>
 									<tr id="row" class="rowCheck">
 										<td class="controls-column">
@@ -65,7 +85,18 @@
 										<td class="calories-column">${burgerSetVO.b_set_kcal}kcal</td>
 										<td colspan="2" class="side-column">선택안함</td>
 										<td colspan="2" class="drink-column">선택안함</td>
-										<td class="change-column"><a href="#" onclick="sideOpen(1)">변경</a></td>
+										<td  class="change-column"><a href="#" onclick="sideOpen(1)">변경</a></td>
+										<td colspan="2">
+											<div class="input-group item-quantity item-quantity-picker">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
+												</span>
+												<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
+												</span>
+											</div>
+										</td>
 									</tr>
 									<tr id="row" class="rowCheck">
 										<td class="controls-column">
@@ -85,6 +116,17 @@
 										<td colspan="2" class="side-column"></td>
 										<td colspan="2" class="drink-column"></td>
 										<td class="change-column"></td>
+										<td colspan="2">
+											<div class="input-group item-quantity item-quantity-picker">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',3)"disabled><i class="fas fa-minus"></i></button>
+												</span>
+												<input type="number" name="" id="result3" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',3)" disabled><i class="fas fa-plus"></i></button>
+												</span>
+											</div>
+										</td>
 									</tr>
 									</c:if>
 									<c:if test="${sideVO != null}">
@@ -119,6 +161,7 @@
 											<td class="calories-column">${sideVO.s_kcal}kcal</td>
 											<td colspan="2" class="side-column">선택안함</td>
 											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+											
 										</tr>
 									</c:if>
 									<c:if test="${drinkVO != null}">
@@ -298,18 +341,19 @@
 	</form>
 </div>
 <script type="text/javascript">
-var side = "";
-var drink = "";
-var va = "";
-
 //변경 폼
 $(function(){
+	var side = "";
+	var drink = "";
+	var va = "";
+		
 	var b_code = $('#b_code').val();
 	var s_code = $('#s_code').val();
 	var d_code = $('#d_code').val();
-	console.log(b_code);
-	console.log(s_code);
-	console.log(d_code);
+	
+	console.log("b_code : " + b_code);
+	console.log("s_code : " + s_code);
+	console.log("d_code : " + d_code);
 	
  	if(b_code == null && s_code == null && d_code == null) {
 		alert("메뉴를 골라라");
@@ -317,8 +361,6 @@ $(function(){
 	} 
 	
 	$("#sideOkbtn").click(function() {
-		$("#sideModal").attr("style", "display:none");
-		
 		if(b_code != null){
 			$('.form-radio1').each(function(){
 				if($(this).is(":checked")) {
@@ -340,17 +382,16 @@ $(function(){
 			$('.form-radio1').each(function(){
 				if($(this).is(":checked")) {
 					drink = $(this).val();
-					console.log(side);
+					console.log(drink);
 					
 					$('.rowCheck').find('.drink-column').html(drink);
 				} 
 			});
 		}
+		$("#sideModal").attr("style", "display:none");
 	});
 	
 	$("#drinkOkbtn").click(function() {
-		$("#drinkModal").attr("style", "display:none");
-		
 		$('.form-radio').each(function(){
 			if($(this).is(":checked")) {
 				drink = $(this).val();
@@ -363,6 +404,7 @@ $(function(){
 				$(this).find('.drink-column').html(drink);
 			} 
 		});
+		$("#drinkModal").attr("style", "display:none");
 	});
 	
 	$(".fas").click(function() {
@@ -375,21 +417,56 @@ $(function(){
 			if($(this).is(":checked")) {
 				va = $(this).val();
 				if(va == "라지세트"){
-					location.href="cart.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"";
+					console.log(b_code);
+					console.log(va);
+					console.log(side);
+					console.log(drink);
+					if(b_code != null && va != "" && side != "" && drink != "") 
+						location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"";
+					
 				} else if(va == "세트"){ 
-					location.href="cart.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"";
+					if(b_code != null && va != "" && side != "" && drink != "")  
+						location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"";
+					
 				} else if(va == "단품"){ 
-					location.href="cart.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"";
+					if(b_code != null && va != "")  					
+						location.href="orderConfirm.do?burger="+b_code+"&va="+va+"";
+					
 				} else if(va == "사이드"){ 
-					location.href="cart.do?&va="+va+"&side="+s_code+"";
+					if(va != "" && s_code != null && side != "") 					
+						location.href="orderConfirm.do?&va="+va+"&side="+s_code+"&s_name="+side+"";
+					
 				} else if(va == "음료"){ 
-					location.href="cart.do?&va="+va+"&drink="+d_code+"";
-				} 
+					if(va != "" && d_code != null && drink != "") 		
+						location.href="orderConfirm.do?&va="+va+"&drink="+d_code+"&d_name="+drink+"";
+				
+				} else
+					return;
 			} 
 		});
 		if(va == "") {
-			alert("메뉴를 선택해주세요");
+			alert("메뉴를 선택하세요");
 			return;
+		} else if(va == "사이드") {
+			if(side == "") {
+				alert("사이드를 선택하세요");
+				return;
+			} 
+		} else if(va == "음료") {
+			if(drink == "") {
+				alert("음료를 선택해주세요");
+				return;
+			}
+		} else {
+			if(va != "단품") {
+				if(side == "") {
+					alert("사이드를 선택하세요");
+					return;
+				} else if(drink == "") {
+					alert("음료를 선택하세요");
+					return;
+				} 
+			}
 		}
 	});
 	
@@ -398,8 +475,10 @@ $(function(){
 		if($(this).prop('checked')) {
 			$('.form-controla').prop('checked', false);
 			$('.form-controla').closest('tr').removeClass("selected");
+			$('.form-controla').closest('tr').find('button').attr('disabled',true);
 			$(this).prop('checked', true); 
 			$(this).closest('tr').addClass("selected");
+			$(this).closest('tr').find('button').attr('disabled',false);
 		} else { 
 			$(this).closest('tr').removeClass("selected");
 			return;
@@ -434,8 +513,6 @@ $(function(){
 function sideOpen(index) {
 	var val = "";
 	$('.rowCheck').each(function(i){
-		console.log(i);
-		console.log(index);
 		if($(this).find('.form-controla').prop('checked') && i == index){
 			val = $(this).find('.form-controla').val();
 			if(val == "라지세트"){ 
@@ -457,19 +534,19 @@ function sideOpen(index) {
 				console.log($('label[for="side2"]').text());
 				console.log($('#side-label2').val());
 			} else if(val == "사이드"){ 
-				$('label[for="side1"]').text($('#s_name').val() + " - 라지");
-				$('#side-label1').val($('#s_name').val());
-				$('label[for="side2"]').text($('#s_name').val() + " - 미디움");
-				$('#side-label2').val($('#s_name').val());
+				$('label[for="side1"]').text($('#s_name').val() + " - 라지 +1000원");
+				$('#side-label1').val($('#s_name').val() + " - 라지");
+				$('label[for="side2"]').text($('#s_name').val() + " - 미디움 +500원");
+				$('#side-label2').val($('#s_name').val() + " - 미디움");
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
 				console.log($('label[for="side2"]').text());
 				console.log($('#side-label2').val());
 			} else if(val == "음료"){ 
-				$('label[for="side1"]').text($('#d_name').val() + " - 라지");
-				$('#side-label1').val($('#d_name').val());
-				$('label[for="side2"]').text($('#d_name').val() + " - 미디움");
-				$('#side-label2').val($('#d_name').val());
+				$('label[for="side1"]').text($('#d_name').val() + " - 라지 +1000원");
+				$('#side-label1').val($('#d_name').val()+" - 라지");
+				$('label[for="side2"]').text($('#d_name').val() + " - 미디움 +500원");
+				$('#side-label2').val($('#d_name').val()+" - 미디움");
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
 				console.log($('label[for="side2"]').text());
@@ -497,5 +574,47 @@ function drinkOpen(index) {
 			$("#drinkModal").slideDown(200);
 		}
 	});		 
+}
+
+function count(type, index) {
+	  var resultElement = document.getElementById("result");
+	  var number = $('#result').val();
+	  var number2 = $('#result2').val();
+	  var number3 = $('#result3').val();
+	  //var number = resultElement.innerText;
+	  //var number = document.getElementById("result");
+	  
+	  if(type === "plus"){
+		if(index === 1){
+			number = parseInt(number) + 1;
+		}
+		else if(index === 2){
+			number2 = parseInt(number2) + 1;
+		}
+		else if(index === 3){
+			number3 = parseInt(number3) + 1;
+		}
+	  }else if(type === "minus") { 
+			if(number > 0 || number2 > 0 || number3 > 0){
+				if(index === 1){
+					number = parseInt(number) - 1;
+				}
+				else if(index === 2){
+					number2 = parseInt(number2) - 1;
+				}
+				else if(index === 3){
+					number3 = parseInt(number3) - 1;
+				}
+				
+			}else{
+				number = 0;
+			}
+			
+			
+	  }
+	  document.getElementById("result").value = number;
+	  document.getElementById("result2").value = number2;
+	  document.getElementById("result3").value = number3;
+	 
 }
 </script>

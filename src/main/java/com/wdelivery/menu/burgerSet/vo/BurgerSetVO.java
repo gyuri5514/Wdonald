@@ -6,7 +6,7 @@ public class BurgerSetVO {
 	
 	private Integer b_set_code;
 	private String b_set_name;
-	private String b_set_price;
+	private int b_set_price;
 	private int b_set_kcal;
 	private Date b_set_regdate;
 	private String b_set_img_path;
@@ -25,10 +25,10 @@ public class BurgerSetVO {
 	public void setB_set_name(String b_set_name) {
 		this.b_set_name = b_set_name;
 	}
-	public String getB_set_price() {
+	public int getB_set_price() {
 		return b_set_price;
 	}
-	public void setB_set_price(String b_set_price) {
+	public void setB_set_price(int b_set_price) {
 		this.b_set_price = b_set_price;
 	}
 	public int getB_set_kcal() {

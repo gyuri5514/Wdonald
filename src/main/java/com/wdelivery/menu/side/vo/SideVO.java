@@ -4,7 +4,7 @@ public class SideVO {
 
 	private Integer s_code;
 	private String s_name;
-	private String s_price;
+	private int s_price;
 	private String s_img_path;
 	private String s_img;
 	private String s_n_img_path;
@@ -26,10 +26,10 @@ public class SideVO {
 	public void setS_name(String s_name) {
 		this.s_name = s_name;
 	}
-	public String getS_price() {
+	public int getS_price() {
 		return s_price;
 	}
-	public void setS_price(String s_price) {
+	public void setS_price(int s_price) {
 		this.s_price = s_price;
 	}
 	public String getS_img_path() {
