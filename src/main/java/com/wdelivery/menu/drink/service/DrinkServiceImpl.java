@@ -21,9 +21,9 @@ public class DrinkServiceImpl implements DrinkService {
 	}
 
 	@Override
-	public DrinkVO detailDrink(Integer drink_code) {
+	public DrinkVO detailDrink(Integer d_code) {
 		System.out.println("detailDrink");
-		return drinkDAO.detailDrink(drink_code); 
+		return drinkDAO.detailDrink(d_code); 
 	}
 
 }

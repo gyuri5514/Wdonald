@@ -200,10 +200,11 @@
 						<div class="section-menu">
 							<ul class="nav nav-list">
 								<li class="nav-header lnb-header">마이페이지<span>MyPage</span></li>
-								<li class=""><a href="mypageupdate.do" class="first">마이페이지<small>MyPage</small><i class="fa fa-angle-right"></i></a></li>
-								<li class=""><a href="addressBook.do" class="first">주소<small>Address</small><i class="fa fa-angle-right"></i></a></li>
-								<li class=""><a href="trackOrder.do" class="first">주문조회<small>Order check</small><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="mypageupdate.do" class="first">마이페이지<small>MyPage</small><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="addressBook.do" class="first">주소<small>Address</small><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="trackOrder.do" class="first">주문조회<small>Order check</small><i class="fa fa-angle-right"></i></a></li>
 								<li class="active"><a href="orderHistory.do" class="first">주문내역<small>Order details</small><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="coupon.do" class="first">쿠폰함<small>Coupon</small><i class="fa fa-angle-right"></i></a></li>
 							</ul>
 						</div>			
 					</div>
@@ -237,9 +238,9 @@ $(function () {
 			         </thead>
 			         <tbody class="table_body_historyorder">
 			            <tr>
-			               <td class="table_head_td">주문 번호</td>
-			               <td class="table_head_td">주문 날짜</td>
-			               <td class="table_head_td">배송지</td>               
+			               <td class="table_head_td">2</td>
+			               <td class="table_head_td">2021/11/10</td>
+			               <td class="table_head_td">address</td>               
 			            </tr>
 			         </tbody>
 			      </table>

@@ -342,6 +342,7 @@
 								<li class=""><a href="addressBook.do" class="first">주소<small>Address</small><i class="fa fa-angle-right"></i></a></li>
 								<li class="active"><a href="trackOrder.do" class="first">주문조회<small>Order check</small><i class="fa fa-angle-right"></i></a></li>
 								<li class=""><a href="orderHistory.do" class="first">주문내역<small>Order details</small><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="coupon.do" class="first">쿠폰함<small>Coupon</small><i class="fa fa-angle-right"></i></a></li>
 							</ul>
 						</div>			
 					</div>
@@ -386,11 +387,11 @@ function order_detail_show() {
 			</tbody>
 			<tfoot class="table_foot_trackorder">
 				<tr class="table_foot_tr">
-					<td colspan="6" class="table_foot_td"><a data-toggle="modal" class="btn btn-red btn-lg" href="list.do">새로운 주문하기</a>
+					<td colspan="6" class="table_foot_td"><a data-toggle="modal" class="btn btn-red btn-lg" href="burger.do">새로운 주문하기</a>
 						<p>
-							<a href="#trackOrder" data-toggle="modal" class="action-secondary action-link">
+							<!-- <a href="#trackOrder" data-toggle="modal" class="action-secondary action-link">
 								<i class="fa fa-caret-right"></i> 주문 조회가 안 되시나요?
-							</a>
+							</a> -->
 						</p>
 					</td>
 				</tr>

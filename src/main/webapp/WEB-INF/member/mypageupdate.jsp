@@ -84,14 +84,11 @@
 				<div class="section-menu">
 					<ul class="nav nav-list">
 						<li class="nav-header lnb-header">마이페이지<span>MyPage</span></li>
-						<li class="active"><a href="mypageupdate.do" class="first">마이페이지<small>MyPage</small><i
-								class="fa fa-angle-right"></i></a></li>
-						<li class=""><a href="addressBook.do" class="first">주소<small>Address</small><i
-								class="fa fa-angle-right"></i></a></li>
-						<li class=""><a href="trackOrder.do" class="first">주문조회<small>Order
-									check</small><i class="fa fa-angle-right"></i></a></li>
-						<li class=""><a href="orderHistory.do" class="first">주문내역<small>Order
-									details</small><i class="fa fa-angle-right"></i></a></li>
+						<li class="active"><a href="mypageupdate.do" class="first">마이페이지<small>MyPage</small><i class="fa fa-angle-right"></i></a></li>
+						<li><a href="addressBook.do" class="first">주소<small>Address</small><i class="fa fa-angle-right"></i></a></li>
+						<li><a href="trackOrder.do" class="first">주문조회<small>Order check</small><i class="fa fa-angle-right"></i></a></li>
+						<li><a href="orderHistory.do" class="first">주문내역<small>Order details</small><i class="fa fa-angle-right"></i></a></li>
+						<li><a href="coupon.do" class="first">쿠폰함<small>Coupon</small><i class="fa fa-angle-right"></i></a></li>
 					</ul>
 				</div>
 			</div>
@@ -350,7 +347,7 @@
 
 					if (($("#m_password").val()).trim() == "") {
 
-						var user_pw = "${userVO.user_password}";
+						var user_pw = "${sessionScope.userInfo.user_password}";
 						//alert("회원이 비번변경안함 : " + user_pw);
 
 						document.getElementById("m_password").value = user_pw;
@@ -405,4 +402,4 @@
 				} */
 			</script>
 
-			<%@ include file="footer.jsp"%>
+<%@ include file="footer.jsp"%>

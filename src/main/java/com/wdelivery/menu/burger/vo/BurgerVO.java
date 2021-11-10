@@ -19,6 +19,15 @@ public class BurgerVO {
 	private String b_detail_img_path;
 	private String b_btn_img_path;
 	private String b_detail_comment;
+	private String b_allergy;
+
+	public String getB_allergy() {
+		return b_allergy;
+	}
+
+	public void setB_allergy(String b_allergy) {
+		this.b_allergy = b_allergy;
+	}
 
 	public String getB_btn_img_path() {
 		return b_btn_img_path;

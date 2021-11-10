@@ -6,11 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectSide" resultType="sideVO">
 		<![CDATA[
-			SELECT * FROM side
+			SELECT * FROM side order by s_code
 		]]>
 	</select>
 	<select id="detailSide" resultType="sideVO">
-			SELECT * FROM side WHERE s_code = #{side_code}
+			SELECT * FROM side WHERE s_code = #{s_code}
 	</select>
 	
 </mapper>
