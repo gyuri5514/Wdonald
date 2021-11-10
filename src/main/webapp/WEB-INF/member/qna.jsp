@@ -430,11 +430,15 @@
 				oEditors.getById["ACPT_DESC"].exec("UPDATE_CONTENTS_FIELD", []); //textarea의 id를 적어줍니다. 
 				var selcatd = $("#selcatd > option:selected").val(); 
 				var title = $("#ACPT_TITLE").val(); 
-				var content = document.getElementById("ACPT_DESC").value; 
+				var content = document.getElementById("ACPT_DESC").value;
 				if (selcatd == "") { 
 					alert("카테고리를 선택해주세요."); 
 					return; 
-				} 
+				}
+				if(($("#STORE_NM").val()) == ""){
+					alert("매장명 검색해주세요.");
+					return false;
+				}
 				if(($("#CUST_NM").val()).trim() == ""){
 					alert("이름을 입력해 주세요.");
 					$('#CUST_NM').focus();
@@ -474,7 +478,7 @@
 					alert("내용을 작성해주세요."); 
 					oEditors.getById["ACPT_DESC"].exec("FOCUS"); //포커싱 
 					return; 
-				} //이 부분은 스마트에디터 유효성 검사 부분이니 참고하시길 바랍니다.
+				} //이 부분은 스마트에디터 유효성 검사 부분이니 참고
 				
 				var result = confirm("문의등록 하시겠습니까?"); 
 				alert("뭐냐 " +document.getElementsByName("qa_email").length);
@@ -529,8 +533,14 @@
 						dataType: "json",  
 						type: "post",
 						success:function(data){
-							alert(data);
+							//alert(data);
 							//alert("ajax 성공");
+							var qaaContent = ""; //qaa_content null값 처리
+							if(data["qaa_content"] == null ){
+								qaaContent = "";
+							}else{
+								qaaContent = data["qaa_content"];
+							}
 							
 							$("#req").html(
 								"<div class='reply-view-area' id='LIST_REPLY_DIV'>" + 
@@ -565,7 +575,7 @@
 									"</tr>" +
 									"<tr>" +
 										"<th scope='row' class='color-mcdRed'>답변</th>" + 
-										"<td colspan='4' class='color-mcdRed'>" + data["qaa_content"] +"</td>" + 
+										"<td colspan='4' class='color-mcdRed'>" + qaaContent +"</td>" + 
 									"</tr>" +
 								"</tbody>" +
 								"</table>" + 
