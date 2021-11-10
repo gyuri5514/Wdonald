@@ -50,9 +50,9 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<div class="btnMore" id="btnMore">
+							<!-- <div class="btnMore" id="btnMore">
 								<button type="button" class="more" onclick="more()">더보기</button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				 <form id="searchForm" method="get">

@@ -88,7 +88,7 @@ public class MenuController {
 	}
 	
 	@GetMapping("/detail.do")
-	public String detailBurger(Model model, @RequestParam(value = "b_code", required = false) Integer b_code,
+	public String detailMenu(Model model, @RequestParam(value = "b_code", required = false) Integer b_code,
 			@RequestParam(value = "w_code", required = false) Integer w_code,
 			@RequestParam(value = "dessert_code", required = false) Integer dessert_code,
 			@RequestParam(value = "s_code", required = false) Integer s_code,
@@ -104,6 +104,7 @@ public class MenuController {
 			model.addAttribute("detailBurger", burgerVO);
 			
 			return "detail";
+			
 		} else if (w_code != null) {
 			WinMorningVO winMorningVO = winMorningService.detailMorning(w_code);
 			System.out.println("detailMorning : " + winMorningVO.getW_code());
@@ -124,22 +125,25 @@ public class MenuController {
 			return "detail";
 		} else if (s_code != null) {
 			SideVO sideVO = sideService.detailSide(s_code);
-			System.out.println("detailDessert : " + sideVO.getS_code());
-			System.out.println("detailDessert : " + sideVO.getS_name());
-			System.out.println("detailDessert : " + sideVO.getS_img_path());
+			System.out.println("detailSide : " + sideVO.getS_code());
+			System.out.println("detailSide : " + sideVO.getS_name());
+			System.out.println("detailSide : " + sideVO.getS_img_path());
+			
+			model.addAttribute("detailSide" + sideVO);
 
 			return "detail";
-
+			
 		} else if (d_code != null) {
 			DrinkVO drinkVO = drinkService.detailDrink(d_code);
 			System.out.println("detailDrink : " + drinkVO.getD_code());
 			System.out.println("detailDrink : " + drinkVO.getD_name());
 			System.out.println("detailDrink : " + drinkVO.getD_img_path());
 			
+			model.addAttribute("detailDrink", drinkVO);
+			
 			return "detail";
 		} else {
 			return "burger.do";
 		}
-		
 	}
 }

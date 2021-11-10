@@ -16,18 +16,14 @@
 				</div>
     			<div class="contArea">
 					<div class="inner">
-						<ul class="tabType01">
-							<li data-title="음료" data-desc="음료메뉴"><a href="drink.do" role="button" aria-selected="true">메뉴</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
-							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
-						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count">19 Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectDrink}" var="selectDrink">
 									<li>
-										<a href="#" data-seq="300">
+										<a href="#" data-seq="${selectDrink.d_code}">
 											<div class="thum">
-												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}" onclick="javascript:goDetail(300)">
+												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}" onclick="javascript:location.href='detail.do?d_code=${selectDrink.d_code}'">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectDrink.d_name}</strong>
@@ -42,9 +38,9 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<div class="btnMore" id="btnMore">
+							<!-- <div class="btnMore" id="btnMore">
 								<button type="button" class="more" onclick="more()">더보기</button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
