@@ -115,7 +115,7 @@
 							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 						<c:when test="${not empty sessionScope.kakaoSession}">
-							<a href="#" class="btn_register"  onclick="javascript:kakaoLogout()" title="로그아웃">로그아웃</a>					
+							<a href="logout.do" class="btn_register"  onclick="kakaoLogout()" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
