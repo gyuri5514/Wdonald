@@ -48,7 +48,7 @@ public class MypageController {
 		//session.setAttribute("userVO", memberService.mypageUpdate(userVO));
 		memberService.mypageUpdate(userVO);
 		System.out.println(userVO.toString());
-		return "mypageupdate";
+		return "redirect:mypageupdate.do";
 	}
 	@GetMapping("/mypageDelete.do")
 	public String mypageDelete(UserVO userVO, HttpSession session) {
@@ -110,5 +110,13 @@ public class MypageController {
 	public String orderHistory() {
 		return "orderHistory";
 	}
-
+	
+	
+	//coupon
+	@GetMapping("/coupon.do")
+	public String coupon() { //doing
+		
+		
+		return "coupon";
+	}
 }
