@@ -91,7 +91,11 @@ public class MemberLoginController {
 		}else {
 			UserVO userVO = new UserVO();
 			userVO.setUser_email("kakao#"+kakaoVO.getEmail());
+			if(kakaoVO.getGender()==null) {
+				userVO.setUser_gender("선택안함");
+			}else {
 			userVO.setUser_gender((kakaoVO.getGender().equals("male")?"man":"woman"));
+			}
 			userVO.setUser_birth(kakaoVO.getBirthday());
 			userVO.setUser_name(kakaoVO.getNickname());
 			System.out.println("start socialMemJoin() => "+userVO.toString());

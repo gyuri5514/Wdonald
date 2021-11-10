@@ -21,11 +21,9 @@ import com.wdelivery.member.vo.UserVO;
 public class MypageController {
 	@Autowired
 	private MemberService memberService;
-	
-	
 
 	@GetMapping("/mypageupdate.do")
-	public String mypageupdate( Model model, HttpSession session) {
+	public String mypageupdate(Model model, HttpSession session) {
 		/*
 		 * if(session.getAttribute("userInfo")!=null) { UserVO userVO = (UserVO)
 		 * session.getAttribute("userInfo");
@@ -35,77 +33,93 @@ public class MypageController {
 		 * 
 		 * model.addAttribute("userVO",
 		 * memberService.userSelect(userVO.getUser_email()));
-		 */		
+		 */
 		return "mypageupdate";
 	}
+
 	@PostMapping("/mypageUpdate.do")
 	public String mypageUpdate(UserVO userVO) {
-		//String user_email = (String) session.getAttribute("user_email");
+		// String user_email = (String) session.getAttribute("user_email");
 
-		//System.out.println("mypageupdate����以� : " + user_email );
+		// System.out.println("mypageupdate����以� : " + user_email );
 
 		System.out.println("mypageupdateController" + userVO.getUser_seq());
-		//session.setAttribute("userVO", memberService.mypageUpdate(userVO));
+		// session.setAttribute("userVO", memberService.mypageUpdate(userVO));
 		memberService.mypageUpdate(userVO);
 		System.out.println(userVO.toString());
 		return "mypageupdate";
 	}
+
 	@GetMapping("/mypageDelete.do")
 	public String mypageDelete(UserVO userVO, HttpSession session) {
 		String user = (String) session.getAttribute("user_eamil");
 		System.out.println("mypage delete => " + user);
-	
-		if(user != null || user != "") { //하는 중
+
+		if (user != null || user != "") { // 하는 중
 			System.out.println("mypageDelete success");
 			memberService.mypageDelete(userVO);
 			session.invalidate();
-		}else {
-			System.out.println("mypageDelete failed");
 		}
 		return "main";
 	}
-	 
-	
+
 	/*-----------address------------*/
 	@GetMapping("/addressBook.do")
-	public String addressBook(@RequestParam(value = "addressVO", required = false) List<UserAddressVO> addressVO, Model model, HttpSession session) {
-		String user_email = (String) session.getAttribute("user_email");
+	public String addressBook(@RequestParam(value = "addressVO", required = false) List<UserAddressVO> addressVO,
+			Model model, HttpSession session) {
+		UserVO userVO = null;
+		if (session.getAttribute("userInfo") != null) {
+			userVO = (UserVO) session.getAttribute("userInfo");
+		} else if (session.getAttribute("kakaoSession") != null) {
+			userVO = (UserVO) session.getAttribute("kakaoSession");
+		} else if (session.getAttribute("naverSession") != null) {
+			userVO = (UserVO) session.getAttribute("naverSession");
+		}
+		String user_email = userVO.getUser_email();
 		addressVO = new ArrayList<UserAddressVO>();
-		addressVO= memberService.addressShow(user_email);
-		
-		//System.out.println("ddd " + addressVO.toString());
+		addressVO = memberService.addressShow(user_email);
+
+		// System.out.println("ddd " + addressVO.toString());
 		model.addAttribute("addressVO", addressVO);
-		
+
 		return "addressBook";
 	}
 
 	@GetMapping("/addressupdate.do")
 	public String addressUpdate() {
-		
+
 		return "addressupdate";
 	}
-	
+
 	@PostMapping("/addressupdate.do")
 	public String addressInsert(UserAddressVO addressVO, Model model, HttpSession session) {
-		
-	     //String user_email = (String) session.getAttribute("user_email");
-		 memberService.addressInsert(addressVO);
-	     //System.out.println("addressInsert : "+ addressVO.getAddress1());
-     
-		 //model.addAttribute("user_email", user_email);
-		 //System.out.println("addressupdate : " + user_email);
-		 model.addAttribute("addressVO", addressVO);
-		  
+		UserVO userVO = null;
+			if (session.getAttribute("userInfo") != null) {
+				userVO = (UserVO) session.getAttribute("userInfo");
+			} else if (session.getAttribute("kakaoSession") != null) {
+				userVO = (UserVO) session.getAttribute("kakaoSession");
+			} else if (session.getAttribute("naverSession") != null) {
+				userVO = (UserVO) session.getAttribute("naverSession");
+			}
+		String user_email = userVO.getUser_email();
+		addressVO.setUser_email(user_email);
+		memberService.addressInsert(addressVO);
+		// System.out.println("addressInsert : "+ addressVO.getAddress1());
+
+		// model.addAttribute("user_email", user_email);
+		// System.out.println("addressupdate : " + user_email);
+		model.addAttribute("addressVO", addressVO);
+
 		return "redirect:addressBook.do";
 	}
-	
+
 	@GetMapping("delete.do")
-	public String addressDelete(@RequestParam(value = "address_seq", required = false)int address_seq) {
-		
+	public String addressDelete(@RequestParam(value = "address_seq", required = false) int address_seq) {
+
 		memberService.addressDelete(address_seq);
 		return "redirect:addressBook.do";
 	}
-	
+
 	@GetMapping("/orderHistory.do")
 	public String orderHistory() {
 		return "orderHistory";
