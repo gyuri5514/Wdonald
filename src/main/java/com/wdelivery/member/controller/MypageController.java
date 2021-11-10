@@ -25,16 +25,17 @@ public class MypageController {
 	
 
 	@GetMapping("/mypageupdate.do")
-	public String mypageupdate(UserVO userVO, Model model, HttpSession session) {
-		
-		String user_email = (String) session.getAttribute("user_email"); //�꽕�젙�븳 session �븘�씠�뵒
-		//System.out.println("mypage : " + user_email );
-		
-		userVO = memberService.userSelect(user_email); //�꽭�뀡 �븘�씠�뵒 VO�뿉 �꽔湲�
-		//System.out.println("mypage !!!!!!!!=>" + userVO.toString());
-
-		model.addAttribute("userVO", memberService.userSelect(userVO.getUser_email()));
-		
+	public String mypageupdate( Model model, HttpSession session) {
+		/*
+		 * if(session.getAttribute("userInfo")!=null) { UserVO userVO = (UserVO)
+		 * session.getAttribute("userInfo");
+		 * 
+		 * } userVO = memberService.userSelect(user_email); //�꽭�뀡 �븘�씠�뵒 VO�뿉 �꽔湲�
+		 * //System.out.println("mypage !!!!!!!!=>" + userVO.toString());
+		 * 
+		 * model.addAttribute("userVO",
+		 * memberService.userSelect(userVO.getUser_email()));
+		 */		
 		return "mypageupdate";
 	}
 	@PostMapping("/mypageUpdate.do")
