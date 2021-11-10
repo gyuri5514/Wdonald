@@ -386,11 +386,11 @@ function order_detail_show() {
 			</tbody>
 			<tfoot class="table_foot_trackorder">
 				<tr class="table_foot_tr">
-					<td colspan="6" class="table_foot_td"><a data-toggle="modal" class="btn btn-red btn-lg" href="list.do">새로운 주문하기</a>
+					<td colspan="6" class="table_foot_td"><a data-toggle="modal" class="btn btn-red btn-lg" href="burger.do">새로운 주문하기</a>
 						<p>
-							<a href="#trackOrder" data-toggle="modal" class="action-secondary action-link">
+							<!-- <a href="#trackOrder" data-toggle="modal" class="action-secondary action-link">
 								<i class="fa fa-caret-right"></i> 주문 조회가 안 되시나요?
-							</a>
+							</a> -->
 						</p>
 					</td>
 				</tr>

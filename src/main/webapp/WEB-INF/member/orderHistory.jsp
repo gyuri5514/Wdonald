@@ -237,9 +237,9 @@ $(function () {
 			         </thead>
 			         <tbody class="table_body_historyorder">
 			            <tr>
-			               <td class="table_head_td">주문 번호</td>
-			               <td class="table_head_td">주문 날짜</td>
-			               <td class="table_head_td">배송지</td>               
+			               <td class="table_head_td">2</td>
+			               <td class="table_head_td">2021/11/10</td>
+			               <td class="table_head_td">address</td>               
 			            </tr>
 			         </tbody>
 			      </table>
