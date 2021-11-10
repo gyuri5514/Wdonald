@@ -388,11 +388,12 @@ public class MemberController {
 	}
 
 	@GetMapping("/paymentWin.do")
-	public String paymentWin(Model model, @RequestParam(value="price") String price) {
-		model.addAttribute(price);
-		for(CartVO cartVO : cartList) {
-			
-		}
+	public String paymentWin(Model model, @RequestParam(value="price",required = false) String price) {
+		/*
+		 * model.addAttribute(price); for(CartVO cartVO : cartList) {
+		 * 
+		 * }
+		 */
 		return "paymentWin";
 	}
 
