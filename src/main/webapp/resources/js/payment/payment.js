@@ -53,6 +53,7 @@ function submitCashless() {
 	var order_comment = "";
 	var store_code = "aaabbbccc";
 	var coupon_no = "112233";
+	var order_comment="상냥하게 주세요";
 	var final_price = total_price - discount;
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);
@@ -118,7 +119,8 @@ function submitCashless() {
 				alert("결제 및 결제검증완료");
 				$.ajax({
 					type:"POST",
-					url : "payment/paywinCredit.do",
+					url : "paywinCredit.do",
+					asnyc: false,
 					data: JSON.stringify({
 						"user_name": user_name,
 						"user_address": user_address,
@@ -132,9 +134,10 @@ function submitCashless() {
 						"store_code" : store_code,
 						"coupon_no" : coupon_no,
 						"merchantuid" : data.response.merchantUid,
-						"pay_status" : data.response.status
+						"pay_status" : data.response.status,
+						"order_comment" : order_comment
 					}),
-					dataType:"application/json"
+					contentType:"application/json"
 				}).done(function(){
 					window.location.href = "http://localhost:8080/controller/main.do";
 				})
