@@ -269,6 +269,19 @@ public class MemberController {
 		}
 		return faqList;
 	}
+	
+	@PostMapping("/faqKeyword.do")
+	@ResponseBody
+	public List<FaqVO> faqKeyword(@RequestParam(value = "KeywordSelect", required = false)String KeywordSelect, @RequestParam(value = "MenuSelect", required = false) String MenuSelect ){
+		List<FaqVO> faqKeyword = faqService.KeywordSelect(MenuSelect, KeywordSelect);
+		for(FaqVO faqKeyword1 : faqKeyword) {
+			System.out.println(faqKeyword1.getFaq_seq());
+			System.out.println(faqKeyword1.getFaq_name());
+			System.out.println(faqKeyword1.getFaq_title());
+			System.out.println(faqKeyword1.getFaq_content());
+		}
+		return faqService.KeywordSelect(MenuSelect, KeywordSelect);
+	}
 
 	@GetMapping("/join.do")
 	public String join() {

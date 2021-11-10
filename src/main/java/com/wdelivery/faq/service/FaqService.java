@@ -8,4 +8,6 @@ public interface FaqService {
 	public List<FaqVO> faqSelect();
 	
 	public List<FaqVO> MenuSelect(String faq_name);
+	
+	public List<FaqVO> KeywordSelect(String menuSelect, String keyword);
 }
