@@ -129,62 +129,6 @@ function search(type,type2)
       }
    });
    
-   var MenuSelect = "";
-   
-   if(type == "04"){
-      MenuSelect = "메뉴";
-   }else if(type == "01"){
-      MenuSelect = "구매";
-   }else if(type == "02"){
-      MenuSelect = "매장이용";
-   }else if(type == "03"){
-      MenuSelect = "맥딜리버리";
-   }else if(type == "05"){
-      MenuSelect = "채용";
-   }else if(type == "07"){
-      MenuSelect = "프랜차이즈";
-   }else if(type == "08"){
-      MenuSelect = "기타";
-   }else if(type == "09"){
-      MenuSelect = "맥도날드앱";
-   }else if(type == "80"){
-   	  MenuSelect = "";
-   }
-   
-   $.ajax({
-		
-		type : "post",
-		url : "faqKeyword.do",
-		data : {
-			MenuSelect : KeywordSelect
-		},
-		dataType : "json",
-		success : function(data) {
-			console.log(data);
-			console.log(data.length);
-		$('#ajaxTable').html("");
-		var content = "";
-		for(var i = 0; i < data.length; i++){
-		content += "<tr id='LIST_TR_ID"+i+"'"
-				content += 'onmouseover="javascript:SELECTED_ROW_IDX['+data[i].faq_seq+'] = '+i+' ;rOver(this.id,'+i+', LIST_DIV,'+(i+1)+');"'
-				content += 'onmouseout="javascript:rOut(this.id,'+(i+1)+');"'
-				content += 'onclick="javascript:changeClass(this.id, LIST_DIV,'+i+');'
-				content += 'tableClickEvent(\'LIST_ON_CLICK\','+(i+1)+');"'
-				content += 'ondblclick="tableClickEvent(\'LIST_ON_DBL_CLICK\','+i+');"'
-				content += 'style="cursor: pointer" class="">'
-				content += "<td width='7%' align='center'>"+(i+1)+"</td>"
-				content += "<td style='text-align: center; padding-left: 0px;'>"+data[i].faq_name+"</td>"
-				content += "<td style='text-align: left; padding-left: 5px;'>"+data[i].faq_title+"</td> </tr>"
-				content += "<tr style='display: none' id='LIST_TR_ID"+(i+1)+"_DT'>"
-				content += "<td style='text-align: left; padding-left: 10px; padding-right: 10px;'>"
-				content += "<img src='https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/A.gif'></td>"
-				content += "<td colspan='3' style='text-align: left; padding-left: 10px; padding-right: 10px;'>"
-				content += "<font color='#920000'>"+data[i].faq_content+"</font></td></tr>"
-		}
-		$('#ajaxTable').html(content);
-		}   
-   });
-   
    if(type2 == "C")
    {
       //console.log("type2 : C");
