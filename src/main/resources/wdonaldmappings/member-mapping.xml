@@ -98,6 +98,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select * from user_address where user_email = #{user_email} order by address_seq
 		]]>
 	</select>
+	<select id="addressSelect" resultType="addressVO">
+		<![CDATA[
+			select * from user_address where user_email = #{user_email}
+		]]>
+	</select>
 	<insert id="addressInsert">
 		<![CDATA[
 			insert into user_address (address1, address2, d_key, user_email, order_comment) values (#{address1}, #{address2}, 0, #{user_email}, #{order_comment})

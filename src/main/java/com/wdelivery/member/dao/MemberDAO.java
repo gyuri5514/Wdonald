@@ -17,7 +17,7 @@ public interface MemberDAO {
 
 	public UserVO userSelect(String user_email);
 	public void mypageUpdate(UserVO userVO);
-	public void mypageDelete(UserVO userVO); //don ÇÏ´Â Áß
+	public void mypageDelete(UserVO userVO); //don ï¿½Ï´ï¿½ ï¿½ï¿½
 	public void insertAuthData(UserVO userVO);
 	public void updateAuthKey(Map<String, String> map);
 	public void signUpConfirm(String email);
@@ -34,4 +34,5 @@ public interface MemberDAO {
 	public void addressInsert(UserAddressVO addressVO);
 	public void addressUpdate(UserAddressVO addressVO);
 	public void addressDelete(int address_seq);
+	public UserAddressVO addressSelect(String user_email);
 }

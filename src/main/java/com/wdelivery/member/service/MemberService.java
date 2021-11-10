@@ -28,4 +28,5 @@ public interface MemberService {
 	public void addressInsert(UserAddressVO addressVO);
 	public void addressUpdate(UserAddressVO addressVO);
 	public void addressDelete(int address_seq);
+	public UserAddressVO addressSelect(String user_email);
 }
