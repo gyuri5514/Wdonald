@@ -2,6 +2,9 @@ package com.wdelivery.member.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,9 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
+import com.wdelivery.member.service.MemberService;
+import com.wdelivery.member.vo.UserAddressVO;
+import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.menu.burger.service.BurgerService;
 import com.wdelivery.menu.burger.vo.BurgerVO;
 import com.wdelivery.menu.burgerLgSet.service.BurgerLgSetService;
@@ -63,8 +69,12 @@ public class MemberController {
 	@Autowired
 	private DrinkService drinkService;
 	private List<CartVO> cartList = new ArrayList<CartVO>();
+	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private MemberService memberService;
 
 	@GetMapping("/main.do")
 	public String main() {
@@ -129,16 +139,27 @@ public class MemberController {
 			@RequestParam(value = "va", required = false) String va,
 			@RequestParam(value = "side", required = false) String side,
 			@RequestParam(value = "drink", required = false) String drink,
+			@RequestParam(value = "s_code", required = false) String s_code,
+			@RequestParam(value = "d_code", required = false) String d_code,
 			@RequestParam(value = "w_code", required = false) String w_code,
 			@RequestParam(value = "dessert_code", required = false) String dessert_code,
 			@RequestParam(value = "s_name", required = false) String s_name,
 			@RequestParam(value = "d_name", required = false) String d_name,
 			@RequestParam(value = "num", required = false) String num,
-			@RequestParam(value = "quantity", required = false) String quantity) {
-
+			@RequestParam(value = "quantity", required = false) String quantity, 
+			@RequestParam(value = "price", required = false) String total_price, 
+			@RequestParam(value = "delivery_price", required = false) String deliveryPrice, HttpSession session) {
+		
 		if (va == null)
 			return "orderConfirm";
-
+		if (va.equals("새로고침")) {
+			System.out.println("새로고침");
+			model.addAttribute("cartList", cartList);
+			model.addAttribute("price", total_price);
+			model.addAttribute("delivery_price", deliveryPrice);
+			return "orderConfirm";
+		}
+		
 		if (va.equals("삭제")) {
 			cartList.remove(Integer.parseInt(num));
 
@@ -153,16 +174,17 @@ public class MemberController {
 			cartVO.setCart_b_Lgset_price(burgerLgSetVO.getB_lgset_price());
 			cartVO.setCart_b_code(burgerVO.getB_code());
 			cartVO.setCart_b_name(burgerVO.getB_name());
+			cartVO.setCart_s_code(Integer.parseInt(s_code));
 			cartVO.setCart_s_name(side);
+			cartVO.setCart_d_code(Integer.parseInt(d_code));
 			cartVO.setCart_d_name(drink);
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
 
 			cartList.add(cartVO);
-
-			model.addAttribute("cartList", cartList);
-
+			
 		} else if (va.equals("세트")) {
 			CartVO cartVO = new CartVO();
+			
 			if(b_code != null) {
 				BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
 				BurgerSetVO burgerSetVO = burgerSetService.detailBurgerSet(Integer.parseInt(b_code) + 100);
@@ -173,9 +195,13 @@ public class MemberController {
 				cartVO.setCart_b_set_price(burgerSetVO.getB_set_price());
 				cartVO.setCart_b_code(burgerVO.getB_code());
 				cartVO.setCart_b_name(burgerVO.getB_name());
+				cartVO.setCart_s_code(Integer.parseInt(s_code));
 				cartVO.setCart_s_name(side);
+				cartVO.setCart_d_code(Integer.parseInt(d_code));
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
+				
+				
 			} else if(w_code != null) {
 				WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
 				
@@ -185,15 +211,15 @@ public class MemberController {
 				cartVO.setCart_w_set_price(winMorningVO.getW_price());
 				cartVO.setCart_w_name(winMorningVO.getW_name());
 				cartVO.setCart_w_code(winMorningVO.getW_code());
+				cartVO.setCart_s_code(Integer.parseInt(s_code));
 				cartVO.setCart_s_name(side);
+				cartVO.setCart_d_code(Integer.parseInt(d_code));
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
 			}
 			
 			cartList.add(cartVO);
-
-			model.addAttribute("cartList", cartList);
-
+			
 		} else if (va.equals("단품")) {
 			CartVO cartVO = new CartVO();
 			if(b_code != null) {
@@ -217,8 +243,6 @@ public class MemberController {
 			
 			cartList.add(cartVO);
 			
-			model.addAttribute("cartList", cartList);
-			
 		} else if (va.equals("사이드")) {
 			int side_price = 0;
 
@@ -237,9 +261,7 @@ public class MemberController {
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
 
 			cartList.add(cartVO);
-
-			model.addAttribute("cartList", cartList);
-
+			
 		} else if (va.equals("음료")) {
 			int drink_price = 0;
 
@@ -255,10 +277,8 @@ public class MemberController {
 			cartVO.setCart_d_name(d_name);
 			cartVO.setCart_d_price(drinkVO.getD_price() + drink_price);
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
-
+			
 			cartList.add(cartVO);
-
-			model.addAttribute("cartList", cartList);
 			
 		}  else if (va.equals("디저트")) {
 			int side_price = 0;
@@ -277,11 +297,11 @@ public class MemberController {
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
 
 			cartList.add(cartVO);
-
-			model.addAttribute("cartList", cartList);
+			
 		}
-
+		
 		int price = 0;
+		
 		int b_Lgset_price = 0;
 		int b_price = 0;
 		int b_set_price = 0;
@@ -291,6 +311,7 @@ public class MemberController {
 		int w_set_price = 0;
 		int dessert_price = 0;
 		int product_quantity = 0;
+		int delivery_price = 7000;
 		
 		for (CartVO vo : cartList) {
 			if (vo.getCart_b_Lgset_price() != null)
@@ -309,8 +330,8 @@ public class MemberController {
 				w_price = vo.getCart_w_price();
 			if (vo.getCart_dessert_price() != null)
 				dessert_price = vo.getCart_dessert_price();
-			if (quantity != null)
-				product_quantity = Integer.parseInt(quantity);
+			if (vo.getCart_quantity() != null)
+				product_quantity = vo.getCart_quantity();
 			
 			System.out.println("---------------------------------");
 			System.out.println("b_Lgset_price : " + b_Lgset_price);
@@ -321,14 +342,25 @@ public class MemberController {
 			System.out.println("w_price : " + w_price);
 			System.out.println("w_set_price : " + w_set_price);
 			System.out.println("dessert_price : " + dessert_price);
+			System.out.println("product_quantity : " + product_quantity);
 			System.out.println("---------------------------------");
 			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
-					+ dessert_price + w_price + w_set_price) * product_quantity + 7000;
+					+ dessert_price + w_price + w_set_price) * product_quantity + delivery_price;
+			System.out.println("price : " + price);
+			System.out.println("---------------------------------");
 		}
-		System.out.println("price : " + price);
-		System.out.println("---------------------------------");
+		
+		model.addAttribute("cartList", cartList);
 		model.addAttribute("price", price);
-
+		model.addAttribute("delivery_price", delivery_price);
+		
+		UserVO userVO = (UserVO) session.getAttribute("userinfo");
+		if(userVO != null) {
+			UserAddressVO addressVO = memberService.addressSelect(userVO.getUser_email());
+			String address = addressVO.getAddress1() + addressVO.getAddress2();
+			model.addAttribute("address", address);
+		}
+		
 		return "orderConfirm";
 	}
 
@@ -490,8 +522,9 @@ public class MemberController {
 	}
 
 	@GetMapping("/paymentWin.do")
-	public String paymentWin(Model model, @RequestParam(value = "price") String price) {
+	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) String delivery_price) {
 		model.addAttribute(price);
+		model.addAttribute(delivery_price);
 		for (CartVO cartVO : cartList) {
 
 		}
