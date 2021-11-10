@@ -46,6 +46,7 @@ public class PaymentController {
 	@PostMapping("paywinCredit.do")
 	public String paywinDelivery(@RequestBody PaymentVO paymentVO,
 								HttpSession session) {
+		System.out.println(paymentVO.toString());
 		return "main";
 	}
 }
