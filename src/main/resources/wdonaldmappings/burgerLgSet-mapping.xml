@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdelivery.menu.burgerLgSet.dao.BurgerLgSetDAO">
+	
+	<select id="detailBurgerLgSet" resultType="burgerLgSetVO">
+		SELECT * FROM burger_lgset WHERE b_lgset_code = #{b_code}
+	</select>
+  
+</mapper>

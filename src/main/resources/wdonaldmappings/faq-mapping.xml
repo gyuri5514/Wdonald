@@ -4,9 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.faq.dao.FaqDAO">
 	<select id="faqSelect" resultType="faqVO"> 
-		SELECT * FROM faq ORDER BY faq_seq ASC 
+		SELECT * FROM faq ORDER BY faq_seq ASC
 	</select>
 	<select id="MenuSelect" resultType="faqVO"> 
-		SELECT * FROM faq WHERE faq_name=#{faq_name} ORDER BY faq_seq
+		SELECT * FROM faq WHERE faq_name LIKE (concat('%',#{faq_name},'%')) ORDER BY faq_seq ASC
+	</select>
+	<select id="KeywordSelect" resultType="faqVO">
+		WHERE faq_name LIKE '%'||#{keyword}||'%' OR faq_title LIKE '%'||#{keyword}||'%' OR faq_content LIKE '%'||#{keyword}||'%' ORDER BY faq_seq ASC		
 	</select>
 </mapper>

@@ -4,6 +4,20 @@
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" href="resources/css/order/orderMain.css" />
 <link rel="stylesheet" href="resources/css/order/orderLocal.css" />
+<script type="text/javascript">
+	$(function(){
+		window.onkeydown = function() {	//새로고침시 파라미터값 제거
+			var kcode = event.keyCode;
+			if(kcode == 116) {
+				history.replaceState({}, null, location.pathname);
+			}
+		}
+	});
+	function order() {
+		document.getElementById("orderForm").action = "paymentWin.do";
+		document.getElementById("orderForm").submit();
+	}
+</script>
 <div class="main" role="main">
 	<div class="clearfix">
 		<div class="page-title pull-left">
@@ -34,7 +48,7 @@
 													<td class="picture-img">
 														<img src="${cartList.cart_b_Lgset_img_path}" alt="">
 														<div class="controls">
-															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_Lgset_code}&va=변경&num=${status.index}" title="변경">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_code}&va=변경&num=${status.index}" title="변경">
 																<i class="fas fa-pen"></i></a>
 															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
 																<i class="far fa-trash-alt"></i></a>
@@ -49,7 +63,7 @@
 														</ul>
 													</td>
 													<td class="cost">₩${cartList.cart_b_Lgset_price}</td>
-													<td class="many">3</td>
+													<td class="many">${cartList.cart_many}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_b_set_code != null}">
@@ -58,7 +72,7 @@
 													<td class="picture-img">
 														<img src="${cartList.cart_b_set_img_path}" class="img-block" alt="">
 														<div class="controls">
-															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_set_code}&va=변경&num=${status.index}" title="변경">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_b_code}&va=변경&num=${status.index}" title="변경">
 																<i class="fas fa-pen"></i></a>
 															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
 																<i class="far fa-trash-alt"></i></a>
@@ -72,10 +86,11 @@
 															<li>${cartList.cart_s_name}</li>
 														</ul>
 													</td>
-													<td class="cost">${cartList.cart_b_set_price}</td>
+													<td class="cost">₩${cartList.cart_b_set_price}</td>
+													<td class="many">${cartList.cart_many}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_b_code != null}">
+											<c:if test="${cartList.cart_b_code != null && cartList.cart_b_set_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -90,45 +105,110 @@
 													<td class="product-name">
 														<div>${cartList.cart_b_name}</div>
 													</td>
-													<td class="cost">${cartList.cart_b_price}</td>
+													<td class="cost">₩${cartList.cart_b_price}</td>
+													<td class="many">${cartList.cart_many}</td>
 												</tr>
 											</c:if>
-												<c:if test="${cartList.cart_s_code != null}">
-													<tr id="${status.count}">
-														<td class="quantity">${status.count}</td>
-														<td class="picture-img">
-															<img src="${cartList.cart_s_img_path}" class="img-block" alt="">
-															<div class="controls">
-																<a class="text-gray-light btn-action action-edit" href="order.do?s_code=${cartList.cart_s_code}&va=변경&num=${status.index}" title="변경">
-																	<i class="fas fa-pen"></i></a>
-																<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
-																	<i class="far fa-trash-alt"></i></a>
-															</div>
-														</td>
-														<td class="product-name">
-															<div>${cartList.cart_s_name}</div>
-														</td>
-														<td class="cost">${cartList.cart_s_price}</td>
-													</tr>
-												</c:if>
-												<c:if test="${cartList.cart_d_code != null}">
-													<tr id="${status.count}">
-														<td class="quantity">${status.count}</td>
-														<td class="picture-img">
-															<img src="${cartList.cart_d_img_path}" class="img-block" alt="">
-															<div class="controls">
-																<a class="text-gray-light btn-action action-edit" href="order.do?d_code=${cartList.cart_d_code}&va=변경&num=${status.index}" title="변경">
-																	<i class="fas fa-pen"></i></a>
-																<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
-																	<i class="far fa-trash-alt"></i></a>
-															</div>
-														</td>
-														<td class="product-name">
-															<div>${cartList.cart_d_name}</div>
-														</td>
-														<td class="cost">${cartList.cart_d_price}</td>
-													</tr>
-												</c:if>
+											<c:if test="${cartList.cart_s_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_s_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?s_code=${cartList.cart_s_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
+													<td class="product-name">
+														<div>${cartList.cart_s_name}</div>
+													</td>
+													<td class="cost">₩${cartList.cart_s_price}</td>
+													<td class="many">${cartList.cart_many}</td>
+												</tr>
+											</c:if>
+											<c:if test="${cartList.cart_d_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_d_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?d_code=${cartList.cart_d_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
+													<td class="product-name">
+														<div>${cartList.cart_d_name}</div>
+													</td>
+													<td class="cost">₩${cartList.cart_d_price}</td>
+													<td class="many">${cartList.cart_many}</td>
+												</tr>
+											</c:if>
+											<c:if test="${cartList.cart_w_set_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_w_set_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_w_set_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
+													<td class="product-name">
+														<div>${cartList.cart_w_set_name}</div>
+														<ul style="padding-left:3px; padding-top:10px;">
+															<li>단품 - ${cartList.cart_w_name}</li>
+															<li>${cartList.cart_d_name}</li>
+															<li>${cartList.cart_s_name}</li>
+														</ul>
+													</td>
+													<td class="cost">₩${cartList.cart_w_set_price}</td>
+													<td class="many">${cartList.cart_many}</td>
+												</tr>
+											</c:if>
+											<c:if test="${cartList.cart_w_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_w_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_w_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
+													<td class="product-name">
+														<div>${cartList.cart_w_name}</div>
+													</td>
+													<td class="cost">₩${cartList.cart_w_price}</td>
+													<td class="many">${cartList.cart_many}</td>
+												</tr>
+											</c:if>
+											<c:if test="${cartList.cart_dessert_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_dessert_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?dessert_code=${cartList.cart_dessert_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
+													<td class="product-name">
+														<div>${cartList.cart_dessert_name}</div>
+													</td>
+													<td class="cost">₩${cartList.cart_dessert_price}</td>
+													<td class="many">${cartList.cart_many}</td>
+												</tr>
+											</c:if>
 										</c:forEach>
 									</tbody>
 									</c:if>
@@ -249,10 +329,4 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript">
-	function order() {
-		document.getElementById("orderForm").action = "paymentWin.do";
-		document.getElementById("orderForm").submit();
-	}
-</script>
 <%@ include file="footer.jsp"%>

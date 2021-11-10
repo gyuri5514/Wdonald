@@ -5,9 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.menu.dessert.dao.DessertDAO">
 
 	<select id="selectDessert" resultType="dessertVO">
-		<![CDATA[
 			SELECT * FROM dessert
-		]]>
+	</select>
+	<select id="detailDessert" resultType="dessertVO">
+			SELECT * FROM dessert where dessert_code = #{dessert_code}
 	</select>
 	
 </mapper>
