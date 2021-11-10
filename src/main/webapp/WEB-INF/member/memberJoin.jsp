@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="resources/css/join/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/join/theme-style.min.css">
 <link rel="stylesheet" href="resources/css/join/custom-style_sh.css">
-<c:if test="${sessionScope.kakaoSession ne null || !sessionScope.naverSession ne null || !sessionScope.userInfo ne null}">
+<c:if test="${sessionScope.kakaoSession ne null || sessionScope.naverSession ne null || sessionScope.userInfo ne null}">
 	<script>
 		alert("로그인한 회원은 할 수 없는 작업입니다.");
 		window.location.href="/controller/main.do"

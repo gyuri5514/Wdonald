@@ -17,6 +17,7 @@ public class PaymentVO {
 	private int final_price;
 	private int discount;
 	private String order_comment;
+	private String user_email;
 	//결제 수단
 	private String payment_type;
 	private String store_code;
@@ -128,14 +129,20 @@ public class PaymentVO {
 	public void setPay_status(String pay_status) {
 		this.pay_status = pay_status;
 	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
 	@Override
 	public String toString() {
 		return "PaymentVO [order_seq=" + order_seq + ", user_name=" + user_name + ", user_type=" + user_type
 				+ ", order_date=" + order_date + ", delivery_time=" + delivery_time + ", user_address=" + user_address
 				+ ", user_phone=" + user_phone + ", order_status=" + order_status + ", total_price=" + total_price
 				+ ", final_price=" + final_price + ", discount=" + discount + ", order_comment=" + order_comment
-				+ ", payment_type=" + payment_type + ", store_code=" + store_code + ", coupon_no=" + coupon_no
-				+ ", merchantuid=" + merchantuid + ", pay_status=" + pay_status + "]";
+				+ ", user_email=" + user_email + ", payment_type=" + payment_type + ", store_code=" + store_code
+				+ ", coupon_no=" + coupon_no + ", merchantuid=" + merchantuid + ", pay_status=" + pay_status + "]";
 	}
 	
 }

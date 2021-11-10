@@ -49,7 +49,7 @@ public class MemberController {
 	 * @Autowired private BCryptPasswordEncoder pwdEncoder;
 	 */
 	@Autowired
-	private QnaService qnaServie;
+	private QnaService qnaService;
 
 	@Autowired
 	private FaqService faqService;
@@ -413,7 +413,7 @@ public class MemberController {
 	@ResponseBody
 	public QnaVO qna(QnaVO qnaVO, @RequestParam(name = "qa_email", defaultValue = "1") String qa_email,
 			@RequestParam(name = "qa_password", defaultValue = "1") String qa_password) throws Exception {
-		QnaVO vo = qnaServie.qnaSelect(qnaVO);
+		QnaVO vo = qnaService.qnaSelect(qnaVO);
 
 		try {
 			System.out.println(vo.toString());
@@ -475,7 +475,7 @@ public class MemberController {
 		// System.out.println("1 = " + qnaVO.getQa_agree1());
 		// System.out.println("2 = " + qnaVO.getQa_agree2());
 
-		qnaServie.qnaInsert(qnaVO);
+		qnaService.qnaInsert(qnaVO);
 		System.out.println("insertcontroller => " + qnaVO.toString());
 
 		return "qna";
@@ -491,7 +491,7 @@ public class MemberController {
 	public List<AdminVO> qnaStoreSearchP(@RequestParam(value = "store_address", required = false) String store_address,
 			Model model) {
 		List<AdminVO> adminVO = new ArrayList<AdminVO>();
-		adminVO = qnaServie.storeSelect(store_address);
+		adminVO = qnaService.storeSelect(store_address);
 		System.out.println("qnaStoreSearchP" + store_address);
 
 		model.addAttribute("adminVO", adminVO);
@@ -523,12 +523,12 @@ public class MemberController {
 
 	@GetMapping("/paymentWin.do")
 	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) String delivery_price) {
-		model.addAttribute(price);
-		model.addAttribute(delivery_price);
-		for (CartVO cartVO : cartList) {
-
-		}
-
+		/*
+		 * model.addAttribute(price); model.addAttribute(delivery_price); for (CartVO
+		 * cartVO : cartList) {
+		 * 
+		 * }
+		 */
 		return "paymentWin";
 	}
 

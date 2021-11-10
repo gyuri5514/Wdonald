@@ -32,7 +32,7 @@
 <script type="text/javascript" src="resources/js/join/join.js"></script> 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="resources/js/commons.js"></script>
-<c:if test="${sessionScope.kakaoSession ne null || !sessionScope.naverSession ne null || !sessionScope.userInfo ne null}">
+<c:if test="${sessionScope.kakaoSession ne null || sessionScope.naverSession ne null || sessionScope.userInfo ne null}">
 	<script>
 		alert("로그인한 회원은 할 수 없는 작업입니다.");
 		window.location.href="/controller/main.do"
