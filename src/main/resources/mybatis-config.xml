@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.member.vo.UserAddressVO" alias="addressVO"/>
 		<typeAlias type="com.wdelivery.menu.burger.vo.BurgerVO" alias="burgerVO"/>
 		<typeAlias type="com.wdelivery.menu.burgerSet.vo.BurgerSetVO" alias="burgerSetVO"/>
+		<typeAlias type="com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO" alias="burgerLgSetVO"/>
 		<typeAlias type="com.wdelivery.menu.drink.vo.DrinkVO" alias="drinkVO"/>
 		<typeAlias type="com.wdelivery.menu.side.vo.SideVO" alias="sideVO"/>
 		<typeAlias type="com.wdelivery.menu.winMorning.vo.WinMorningVO" alias="winMorningVO"/>
@@ -22,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="wdonaldmappings/qna-mapping.xml"/>
 		<mapper resource="wdonaldmappings/burger-mapping.xml"/>
 		<mapper resource="wdonaldmappings/burgerSet-mapping.xml"/>
+		<mapper resource="wdonaldmappings/burgerLgSet-mapping.xml"/>
 		<mapper resource="wdonaldmappings/drink-mapping.xml"/>
 		<mapper resource="wdonaldmappings/side-mapping.xml"/>
 		<mapper resource="wdonaldmappings/morning-mapping.xml"/>
