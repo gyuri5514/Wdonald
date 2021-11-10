@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
 
-@Repository
 public interface MemberDAO {
 
 	public UserVO findUser(UserVO userVO);
