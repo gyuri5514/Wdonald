@@ -70,7 +70,6 @@
 			<div class="panel-body">
 				<form method="post" role="form" class="form form_deliveryaddress" id="form_deliveryaddress" data-required-symbol="*"
 					action="addressupdate.do">
-					<input type="hidden" name="user_email" value="${sessionScope.user_email}">
 					<fieldset class="fieldset">
 						<div class="fieldset-heading">
 							<h2 class="fieldset-title">배달 받을 주소를 한글로 입력해 주세요.</h2>

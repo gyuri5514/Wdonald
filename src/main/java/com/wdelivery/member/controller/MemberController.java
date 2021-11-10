@@ -528,6 +528,7 @@ public class MemberController {
 		for (CartVO cartVO : cartList) {
 
 		}
+
 		return "paymentWin";
 	}
 

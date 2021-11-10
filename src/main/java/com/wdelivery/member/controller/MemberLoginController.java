@@ -81,6 +81,7 @@ public class MemberLoginController {
 	}
 	
 	@RequestMapping("kakaoLogin.do")
+	@ResponseBody
 	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session) {
 		System.out.println(kakaoVO.toString());
 		UserVO kakaoUserVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
@@ -90,7 +91,11 @@ public class MemberLoginController {
 		}else {
 			UserVO userVO = new UserVO();
 			userVO.setUser_email("kakao#"+kakaoVO.getEmail());
+			if(kakaoVO.getGender()==null) {
+				userVO.setUser_gender("선택안함");
+			}else {
 			userVO.setUser_gender((kakaoVO.getGender().equals("male")?"man":"woman"));
+			}
 			userVO.setUser_birth(kakaoVO.getBirthday());
 			userVO.setUser_name(kakaoVO.getNickname());
 			System.out.println("start socialMemJoin() => "+userVO.toString());
@@ -101,7 +106,7 @@ public class MemberLoginController {
 			session.setAttribute("kakaoSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
-		return "main";
+		return "true";
 	}                                                                                                                                            
 	
 	@Transactional

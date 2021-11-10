@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,9 +19,9 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 import com.wdelivery.member.payment.service.PaymentService;
+import com.wdelivery.member.payment.vo.PaymentVO;
 
 @Controller
-@RequestMapping("payment/")
 public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
@@ -32,7 +33,7 @@ public class PaymentController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/verifyIamport.do")
+	@PostMapping("payment/verifyIamport.do")
 	public IamportResponse<Payment> paymentByImpUid(
 			Model model,
 			Locale locale,
@@ -43,8 +44,8 @@ public class PaymentController {
 	}
 	
 	@PostMapping("paywinCredit.do")
-	public String paywinDelivery() {
-		System.out.println();
-		return "main.do";
+	public String paywinDelivery(@RequestBody PaymentVO paymentVO,
+								HttpSession session) {
+		return "main";
 	}
 }

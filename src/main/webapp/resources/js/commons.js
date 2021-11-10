@@ -174,6 +174,7 @@ function kakaoLogin() {
 					$.ajax({
 						type: "POST",
 						url: "kakaoLogin.do",
+						async:false,
 						data: JSON.stringify({
 							"email": response.kakao_account.email,
 							"gender": response.kakao_account.gender,
@@ -182,9 +183,10 @@ function kakaoLogin() {
 						}),
 						contentType: "application/json",
 						
-					}).always(function(){
-							window.location.href("http://localhost:8080/controller/main.do");
-					});
+					}).done(function(res){
+						window.location.href = "http://localhost:8080/controller/main.do";
+					})
+					
 				},
 				fail: function(error) {
 					console.log(error)
@@ -203,10 +205,7 @@ function kakaoLogout() {
 		alert('Not logged in');
 		return;
 	}
-	Kakao.Auth.logout(function() {
-		console.log(Kakao.Auth.getAccessToken());
-	})
-	$.post("logout.do")
+	Kakao.Auth.logout();
 	/*window.location.href="http://localhost:8080/controller/main.do";*/
 }
 function naverLogout(accessKey) {
@@ -216,6 +215,5 @@ function naverLogout(accessKey) {
 			+ accessKey + "&service_provider=NAVER";
 	})
 	window.location.href = "http://localhost:8080/controller/main.do";
-	//https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=Xh_il_8tTurOD_pU6D37&client_secret=JHDMkT0G7N&access_token=&service_provider=NAVER		
 }
 

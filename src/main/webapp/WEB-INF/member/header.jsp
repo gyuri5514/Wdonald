@@ -71,7 +71,7 @@
 									<li><a href="javascript:gotoMenu(15);" role="button">해피 스낵</a></li>
 									<li><a href="side.do" class="dth2">사이드 &amp; 디저트</a></li>
 									<li><a href="drink.do" class="dth2">맥카페 &amp; 음료</a></li>
-									<li><a href="javascript:gotoMenu(5);" class="dth2">해피밀</a></li>
+									<li><a href="happymeal.do" class="dth2">해피밀</a></li>
 									<!-- <li><a href="javascript:gotoMenu(11);" class="dth2">365일 즐거운 혜택</a></li> -->
 								</ul>
 							</li>
@@ -115,7 +115,7 @@
 							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 						<c:when test="${not empty sessionScope.kakaoSession}">
-							<a href="#" class="btn_register"  onclick="javascript:kakaoLogout()" title="로그아웃">로그아웃</a>					
+							<a href="logout.do" class="btn_register"  onclick="kakaoLogout()" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>

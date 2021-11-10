@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.wdelivery.member.vo.UserVO" alias="userVO"/>
 		<typeAlias type="com.wdelivery.member.vo.UserAddressVO" alias="addressVO"/>
+		<typeAlias type="com.wdelivery.member.vo.UserCouponVO" alias="UserCouponVO"/>
 		<typeAlias type="com.wdelivery.menu.burger.vo.BurgerVO" alias="burgerVO"/>
 		<typeAlias type="com.wdelivery.menu.burgerSet.vo.BurgerSetVO" alias="burgerSetVO"/>
 		<typeAlias type="com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO" alias="burgerLgSetVO"/>
@@ -13,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.menu.side.vo.SideVO" alias="sideVO"/>
 		<typeAlias type="com.wdelivery.menu.winMorning.vo.WinMorningVO" alias="winMorningVO"/>
 		<typeAlias type="com.wdelivery.menu.dessert.vo.DessertVO" alias="dessertVO"/>
+		<typeAlias type="com.wdelivery.menu.happymeal.vo.HappyMealVO" alias="happyMealVO"/>
 		
 		<typeAlias type="com.wdelivery.order.vo.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.wdelivery.faq.vo.FaqVO" alias="faqVO"/>
@@ -28,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="wdonaldmappings/side-mapping.xml"/>
 		<mapper resource="wdonaldmappings/morning-mapping.xml"/>
 		<mapper resource="wdonaldmappings/dessert-mapping.xml"/>
+		<mapper resource="wdonaldmappings/happyMeal-mapping.xml"/>
 		
 		<mapper resource="wdonaldmappings/order-mapping.xml"/>
 		<mapper resource="wdonaldmappings/faq-mapping.xml"/>

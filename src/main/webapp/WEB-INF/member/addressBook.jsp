@@ -52,6 +52,17 @@ th {
 <h3 class="title-divider mt_0"><span>주소</span> <small>Address</small></h3>
 
 <div class="page-content">
+	<%-- <c:choose>
+		<c:when test="${not empty sessionScope.userInfo}">
+			<input type="hidden" value="${sessionScope.userInfo.user_email }">
+		</c:when>
+		<c:when test="${not empty sessionScope.kakaoSession}">
+			<input type="hidden" value="${sessionScope.kakaoSession.user_email }">
+		</c:when>
+		<c:when test="${not empty sessionScope.naverSession}">
+			<input type="hidden" value="${sessionScope.naverSession.user_email }">
+		</c:when>
+	</c:choose> --%>
 			<table class="table-default table-panel table-addressbook">
 				<thead>
 					<tr>
