@@ -16,23 +16,13 @@ public class WinMorningVO {
 	private int w_status;
 	private int category_code;
 	private String w_e_name;
+	private String w_detail_comment;
+	private String w_detail_img_path;
 	
-	public Integer getCategory_code() {
-		return category_code;
-	}
-	public void setCategory_code(Integer category_code) {
-		this.category_code = category_code;
-	}
-	public String getW_e_name() {
-		return w_e_name;
-	}
-	public void setW_e_name(String w_e_name) {
-		this.w_e_name = w_e_name;
-	}
-	public int getW_code() {
+	public Integer getW_code() {
 		return w_code;
 	}
-	public void setW_code(int w_code) {
+	public void setW_code(Integer w_code) {
 		this.w_code = w_code;
 	}
 	public String getW_name() {
@@ -89,5 +79,30 @@ public class WinMorningVO {
 	public void setW_status(int w_status) {
 		this.w_status = w_status;
 	}
+	public int getCategory_code() {
+		return category_code;
+	}
+	public void setCategory_code(int category_code) {
+		this.category_code = category_code;
+	}
+	public String getW_e_name() {
+		return w_e_name;
+	}
+	public void setW_e_name(String w_e_name) {
+		this.w_e_name = w_e_name;
+	}
+	public String getW_detail_comment() {
+		return w_detail_comment;
+	}
+	public void setW_detail_comment(String w_detail_comment) {
+		this.w_detail_comment = w_detail_comment;
+	}
+	public String getW_detail_img_path() {
+		return w_detail_img_path;
+	}
+	public void setW_detail_img_path(String w_detail_img_path) {
+		this.w_detail_img_path = w_detail_img_path;
+	}
+	
 	
 }

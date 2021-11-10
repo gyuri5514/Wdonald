@@ -34,7 +34,7 @@
 												<strong class="ko">${selectDessert.dessert_name}</strong>
 												<em class="en">${selectDessert.dessert_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">${selectDessert.dessert_price}</span>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectDessert.dessert_price}</span>
 												</div>
 											</div>
 										
