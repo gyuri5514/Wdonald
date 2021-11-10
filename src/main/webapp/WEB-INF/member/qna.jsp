@@ -565,9 +565,7 @@
 									"</tr>" +
 									"<tr>" +
 										"<th scope='row' class='color-mcdRed'>답변</th>" + 
-										"<td colspan='4' class='color-mcdRed'>" + 
-										//안녕하세요, 고객님! 행복을 전하는 맥도날드 고객센터입니다!<br>문의주신 이번달 맥도날드의 해피밀은 말이죠! 맥도날드 공식 사이트에서 직접 확인할 수 있답니다~~~ 지금 바로 공식 사이트로 방문해보세요! 그럼 또 만나요~@@@@ +
-										"</td>" + 
+										"<td colspan='4' class='color-mcdRed'>" + data["qaa_content"] +"</td>" + 
 									"</tr>" +
 								"</tbody>" +
 								"</table>" + 

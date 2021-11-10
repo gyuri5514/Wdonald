@@ -21,6 +21,14 @@ public class QnaVO {
 	private String qa_email;
 	private String qa_agree1;
 	private String qa_agree2;
+	
+	private String qaa_content;
+	public String getQaa_content() {
+		return qaa_content;
+	}
+	public void setQaa_content(String qaa_content) {
+		this.qaa_content = qaa_content;
+	}
 
 	public int getQa_seq() {
 		return qa_seq;
@@ -133,13 +141,13 @@ public class QnaVO {
 	public void setQa_agree2(String qa_agree2) {
 		this.qa_agree2 = qa_agree2;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "QnaVO [qa_seq=" + qa_seq + ", qa_title=" + qa_title + ", qa_content=" + qa_content + ", qa_password="
 				+ qa_password + ", qa_regdate=" + qa_regdate + ", qa_status=" + qa_status + ", qa_store=" + qa_store
 				+ ", qa_name=" + qa_name + ", qa_phone1=" + qa_phone1 + ", qa_phone2=" + qa_phone2 + ", qa_phone3="
-				+ qa_phone3 + ", qa_email=" + qa_email + ", qa_agree1=" + qa_agree1 + ", qa_agree2=" + qa_agree2 + "]";
+				+ qa_phone3 + ", qa_email=" + qa_email + ", qa_agree1=" + qa_agree1 + ", qa_agree2=" + qa_agree2
+				+ ", qaa_content=" + qaa_content + "]";
 	}
-
 }
