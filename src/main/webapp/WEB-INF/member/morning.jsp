@@ -33,13 +33,16 @@
 												<span class="starting-price" style="margin-top:5px;">${selectWinMorning.w_price}</span>
 											</div>
 										</div>
-									
-									<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-												onclick="javascript:location.href='order.do?w_code=${selectWinMorning.w_code}'"><h4>주문하기</h4></button>
-									</a>
-								</li>
-							</c:forEach>
-						</ul>
+									<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
+													onclick="javascript:location.href='order.do?w_code=${selectWinMorning.w_code}'"><h4>주문하기</h4></button>
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
+							<div class="btnMore" id="btnMore">
+								<button type="button" class="more" onclick="more()">더보기</button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

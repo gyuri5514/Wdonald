@@ -20,7 +20,6 @@ import com.siot.IamportRestClient.response.Payment;
 import com.wdelivery.member.payment.service.PaymentService;
 
 @Controller
-@RequestMapping("payment/")
 public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
@@ -32,7 +31,7 @@ public class PaymentController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/verifyIamport.do")
+	@PostMapping("payment/verifyIamport.do")
 	public IamportResponse<Payment> paymentByImpUid(
 			Model model,
 			Locale locale,
@@ -45,6 +44,6 @@ public class PaymentController {
 	@PostMapping("paywinCredit.do")
 	public String paywinDelivery() {
 		System.out.println();
-		return "main.do";
+		return "main";
 	}
 }

@@ -19,10 +19,14 @@ public class FaqServiceImpl implements FaqService {
 		List<FaqVO> vo = faqDAO.faqSelect();
 		return vo;
 	}
-	
+	@Override
 	public List<FaqVO> MenuSelect(String faq_name){
 		List<FaqVO> vo1 = faqDAO.MenuSelect(faq_name);
 		return vo1;
 	}
-
+	@Override
+	public List<FaqVO> KeywordSelect(String menuSelect, String keyword){
+		List<FaqVO> vo2 = faqDAO.KeywordSelect(menuSelect, keyword);
+		return vo2;
+	}
 }

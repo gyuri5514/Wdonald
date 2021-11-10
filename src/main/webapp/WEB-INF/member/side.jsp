@@ -33,9 +33,9 @@
 													<span class="starting-price" style="margin-top:5px;">${selectSide.s_price}</span>
 												</div>
 											</div>
-										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
+										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
 													onclick="javascript:location.href='order.do?s_code=${selectSide.s_code}'"><h4>주문하기</h4></button>
-                   						 </a>
+                    					</a>
 									</li>
 								</c:forEach>
 							</ul>

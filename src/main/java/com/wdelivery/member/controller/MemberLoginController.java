@@ -81,6 +81,7 @@ public class MemberLoginController {
 	}
 	
 	@RequestMapping("kakaoLogin.do")
+	@ResponseBody
 	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session) {
 		System.out.println(kakaoVO.toString());
 		UserVO kakaoUserVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
@@ -101,7 +102,7 @@ public class MemberLoginController {
 			session.setAttribute("kakaoSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
-		return "main";
+		return "true";
 	}                                                                                                                                            
 	
 	@Transactional
