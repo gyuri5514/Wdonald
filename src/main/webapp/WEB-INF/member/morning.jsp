@@ -38,8 +38,8 @@
 												</div>
 											</div>
 										
-										<button style="background-color:#ffbc0d; color:white; margin-left:150px; border-radius:25px; width:90px; height:30px;" 
-													onclick="javascript:location.href='order.do?b_code=${selectWinMorning.w_code}'"><h4>주문하기</h4></button>
+										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
+													onclick="javascript:location.href='order.do?w_code=${selectWinMorning.w_code}'"><h4>주문하기</h4></button>
 										</a>
 									</li>
 								</c:forEach>
