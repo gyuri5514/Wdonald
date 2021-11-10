@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.wdelivery.member.vo.UserVO" alias="userVO"/>
 		<typeAlias type="com.wdelivery.member.vo.UserAddressVO" alias="addressVO"/>
+		<typeAlias type="com.wdelivery.member.vo.UserCouponVO" alias="UserCouponVO"/>
 		<typeAlias type="com.wdelivery.menu.burger.vo.BurgerVO" alias="burgerVO"/>
 		<typeAlias type="com.wdelivery.menu.burgerSet.vo.BurgerSetVO" alias="burgerSetVO"/>
 		<typeAlias type="com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO" alias="burgerLgSetVO"/>
