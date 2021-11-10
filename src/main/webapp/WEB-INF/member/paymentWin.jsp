@@ -131,7 +131,7 @@
 						<tbody>
 							<tr>
 								<th scope="row">배달료:</th>
-								<td><input type="hidden" value="" name="delivery_cost"><span>₩
+								<td><input type="hidden" value="" name="delivery_cost" id="delivery_cost"><span>₩
 										2,000</span></td>
 							</tr>
 							<!-- MDSAP-11635 -->

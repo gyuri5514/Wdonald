@@ -47,7 +47,13 @@ function submitCashless() {
 	var total_price = $('#total_price').val();
 	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"1":$('#user_address').val();
 	var user_email = $('#user_email').val();
+	/*var delivery_cost = $('#de')*/
 	/*var discount = $('#discount').val()==''||*/
+	var discount = 0;
+	var order_comment = "";
+	var store_code = "aaabbbccc";
+	var coupon_no = "112233";
+	var final_price = total_price - discount;
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);
 	}
@@ -114,9 +120,23 @@ function submitCashless() {
 					type:"POST",
 					url : "payment/paywinCredit.do",
 					data: JSON.stringify({
-						
+						"user_name": user_name,
+						"user_address": user_address,
+						"user_phone" : user_phone,
+						"user_email" : $('#user_email').val(),
+						"total_price" : total_price,
+						"final_price" : final_price,
+						"discount" : discount,
+						"order_comment": order_comment,
+						"payment_type" : data.response.payMethod,
+						"store_code" : store_code,
+						"coupon_no" : coupon_no,
+						"merchantuid" : data.response.merchantUid,
+						"pay_status" : data.response.status
 					}),
 					dataType:"application/json"
+				}).done(function(){
+					window.location.href = "http://localhost:8080/controller/main.do";
 				})
 			}else{
 					alert("결제 및 결제검증 실패");
