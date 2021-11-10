@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<script src="/resources/js/menu/menu.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 
 	<div id="container">
 		<div class="content">

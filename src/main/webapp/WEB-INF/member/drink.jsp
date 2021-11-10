@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<script src="/resources/js/menu/menu.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 
 	<div id="container">
 		<div class="content">
@@ -29,7 +31,7 @@
 												<strong class="ko">${selectDrink.d_name}</strong>
 												<em class="en">${selectDrink.d_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">${selectDrink.d_price}</span>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectDrink.d_price}</span>
 												</div>
 											</div>
 										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 

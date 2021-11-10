@@ -14,6 +14,8 @@ import com.wdelivery.menu.dessert.service.DessertService;
 import com.wdelivery.menu.dessert.vo.DessertVO;
 import com.wdelivery.menu.drink.service.DrinkService;
 import com.wdelivery.menu.drink.vo.DrinkVO;
+import com.wdelivery.menu.happymeal.service.HappyMealService;
+import com.wdelivery.menu.happymeal.vo.HappyMealVO;
 import com.wdelivery.menu.side.service.SideService;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.service.WinMorningService;
@@ -36,6 +38,9 @@ public class MenuController {
 	
 	@Autowired
 	public DessertService dessertService;
+	
+	@Autowired
+	public HappyMealService happyMealService;
 	
 	@GetMapping("/burger.do")
 	public String selectBurger(Model model) {
@@ -87,12 +92,23 @@ public class MenuController {
 		return "dessert";
 	}
 	
+	@GetMapping("/happymeal.do")
+	public String selectHappyMeal(Model model) {
+		List<HappyMealVO> selectHappyMeal = happyMealService.selectHappyMeal();
+		model.addAttribute("selectHappyMeal", selectHappyMeal);
+		
+		System.out.println("selectHappyMeal controller");
+		
+		return "happymeal";
+	}
+	
 	@GetMapping("/detail.do")
 	public String detailMenu(Model model, @RequestParam(value = "b_code", required = false) Integer b_code,
 			@RequestParam(value = "w_code", required = false) Integer w_code,
 			@RequestParam(value = "dessert_code", required = false) Integer dessert_code,
 			@RequestParam(value = "s_code", required = false) Integer s_code,
-			@RequestParam(value = "d_code", required = false) Integer d_code) {
+			@RequestParam(value = "d_code", required = false) Integer d_code,
+			@RequestParam(value = "h_code", required = false) Integer h_code) {
 		
 		if (b_code != null) {
 			BurgerVO burgerVO = burgerService.detailBurger(b_code);
@@ -129,7 +145,7 @@ public class MenuController {
 			System.out.println("detailSide : " + sideVO.getS_name());
 			System.out.println("detailSide : " + sideVO.getS_img_path());
 			
-			model.addAttribute("detailSide" + sideVO);
+			model.addAttribute("detailSide", sideVO);
 
 			return "detail";
 			
@@ -140,6 +156,15 @@ public class MenuController {
 			System.out.println("detailDrink : " + drinkVO.getD_img_path());
 			
 			model.addAttribute("detailDrink", drinkVO);
+			
+			return "detail";
+		} else if (h_code != null) {
+			HappyMealVO happyMealVO = happyMealService.detailHappyMeal(h_code);
+			System.out.println("detailHappyMeal : " + happyMealVO.getH_code());
+			System.out.println("detailHappyMeal : " + happyMealVO.getH_name());
+			System.out.println("detailHappyMeal : " + happyMealVO.getH_img_path());
+			
+			model.addAttribute("detailHappyMeal", happyMealVO);
 			
 			return "detail";
 		} else {
