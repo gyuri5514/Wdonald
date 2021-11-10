@@ -20,10 +20,12 @@ public class PaymentServiceImpl implements PaymentService {
 	@Transactional
 	public void insertPaidOrderList(PaymentVO paymentVO) {
 		paymentDAO.insertPaidOrderList(paymentVO);
+		if(paymentVO.getUser_type()!=9) {
 		Map<String,Object> updateCartInfo = new HashMap<String,Object>();
 		updateCartInfo.put("orderSeq", paymentDAO.selectOrderSeq(paymentVO));
 		updateCartInfo.put("user_email",paymentVO.getUser_email());
 		paymentDAO.updateCartList(updateCartInfo);
+		}
 	}
 
 }
