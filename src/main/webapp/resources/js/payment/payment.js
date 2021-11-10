@@ -47,7 +47,7 @@ function submitCashless() {
 	var total_price = $('#total_price').val();
 	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"1":$('#user_address').val();
 	var user_email = $('#user_email').val();
-	
+	/*var discount = $('#discount').val()==''||*/
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);
 	}
