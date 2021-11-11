@@ -15,7 +15,14 @@ public class SideVO {
 	private String s_e_name;
 	private String s_detail_comment;
 	private String s_detail_img_path;
+	private String s_allergy;
 	
+	public String getS_allergy() {
+		return s_allergy;
+	}
+	public void setS_allergy(String s_allergy) {
+		this.s_allergy = s_allergy;
+	}
 	public String getS_detail_comment() {
 		return s_detail_comment;
 	}

@@ -14,7 +14,14 @@ public class HappyMealVO {
 	private String h_detail_img_path;
 	private String h_detail_comment;
 	private String h_e_name;
+	private String h_allergy;
 	
+	public String getH_allergy() {
+		return h_allergy;
+	}
+	public void setH_allergy(String h_allergy) {
+		this.h_allergy = h_allergy;
+	}
 	public Integer getH_code() {
 		return h_code;
 	}
