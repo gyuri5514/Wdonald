@@ -1,4 +1,7 @@
+<!-- 관리자 로그인 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +16,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-black">
+<c:if test="${!empty status }">
+	<c:choose>
+		<c:when test="${status eq 1}">
+		<script>
+			alert('관리자 아이디를 다시 입력해주세요.');
+			</script>
+		</c:when>
+		<c:when test="${status eq 3}">
+		<script>
+			alert("관리자 비밀번호를 다시 확인해주세요.");
+		</script>
+		</c:when>
+		
+	</c:choose>
+</c:if>
 	<div id="layoutAuthentication">
 		<div id="layoutAuthentication_content">
 			<main>
@@ -24,13 +42,13 @@
 									<h3 class="text-center font-weight-light my-4">관리자 로그인</h3>
 								</div>
 								<div class="card-body">
-									<form action="/index.mdo">
+									<form action="login.mdo" method="post">
 										<div class="form-floating mb-3">
-											<input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-											<label for="inputEmail">Email</label>
+											<input class="form-control" name="admin_id" id=""placeholder="name@example.com" />
+											<label for="inputEmail">Id</label>
 										</div>
 										<div class="form-floating mb-3">
-											<input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+											<input class="form-control" name="admin_password" id="inputPassword" type="password" placeholder="Password" />
 											<label for="inputPassword">Password</label>
 										</div>
 										<div class="form-check mb-3">
@@ -40,7 +58,7 @@
 										</div>
 										<div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 											<a class="small"></a>
-											<a class="btn btn-danger" href="index.mdo">로그인</a>
+											<input type="submit" class="btn btn-danger" value="로그인"/>
 										</div>
 									</form>
 								</div>

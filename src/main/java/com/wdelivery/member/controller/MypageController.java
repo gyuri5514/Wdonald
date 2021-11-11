@@ -148,7 +148,7 @@ public class MypageController {
 	
 	//coupon
 	@GetMapping("/coupon.do")
-	public String coupon(Model model, HttpSession session) { //doing
+	public String coupon(Model model, HttpSession session) {
 		UserVO userVO = null;
 		if (session.getAttribute("userInfo") != null) {
 			userVO = (UserVO) session.getAttribute("userInfo");
