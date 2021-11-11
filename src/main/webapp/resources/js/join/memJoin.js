@@ -64,7 +64,7 @@ $("#m_email").blur(function(){
     $login_pwd_str_conf = 0;
     
     //문자 인증
-/*		var code2 = "";
+		var code2 = "";
 		$("#inputPhone").click(function(){
 			var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
 			var phone = $("#m_mobile3").val();
@@ -100,9 +100,9 @@ $("#m_email").blur(function(){
 		        	alert("실패");
 		        }
 		    });
-		});*/
+		});
     //휴대폰 문자 인증번호 대조
-/*	$("#inputCertified").click(function(){
+	$("#inputCertified").click(function(){
 		if($("#send_sms").val() == code2){
 			$(".successPhoneChk").text("인증번호가 일치합니다.");
 			$(".successPhoneChk").css("color","green");
@@ -117,7 +117,7 @@ $("#m_email").blur(function(){
 			$(this).attr("autofocus",true);
 		}
 		return false;
-	});*/
+	});
 
 //필수입력사항	
 /*$("#join_ok").click(function() {

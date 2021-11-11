@@ -34,10 +34,10 @@
 												<strong class="ko">${selectDessert.dessert_name}</strong>
 												<em class="en">${selectDessert.dessert_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectDessert.dessert_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectDessert.dessert_price}"/>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${formatPrice}</span>
 												</div>
 											</div>
-										
 										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
 													onclick="javascript:location.href='order.do?dessert_code=${selectDessert.dessert_code}'"><h4>주문하기</h4></button>
 										</a>

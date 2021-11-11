@@ -1,9 +1,9 @@
 package com.wdelivery.member.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
-
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +37,8 @@ import com.wdelivery.menu.side.service.SideService;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
+import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
+import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
 import com.wdelivery.order.service.OrderService;
 import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
@@ -62,6 +64,8 @@ public class MemberController {
 	private BurgerLgSetService burgerLgSetService;
 	@Autowired
 	private WinMorningService winMorningService;
+	@Autowired
+	private WinMorningSetService winMorningSetService;
 	@Autowired
 	private DessertService dessertService;
 	@Autowired
@@ -218,24 +222,24 @@ public class MemberController {
 				cartVO.setCart_product_drink_name(drink);
 				
 			} else if(w_code != null) {
-				WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
+				WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code));
 				
-				cartVO.setCart_w_set_code(winMorningVO.getW_code());
-				cartVO.setCart_w_set_img_path(winMorningVO.getW_img_path());
-				cartVO.setCart_w_set_name(winMorningVO.getW_name());
-				cartVO.setCart_w_set_price(winMorningVO.getW_price() * Integer.parseInt(quantity));
-				cartVO.setCart_w_name(winMorningVO.getW_name());
-				cartVO.setCart_w_code(winMorningVO.getW_code());
+				cartVO.setCart_w_set_code(winMorningSetVO.getW_set_code());
+				cartVO.setCart_w_set_img_path(winMorningSetVO.getW_set_img_path());
+				cartVO.setCart_w_set_name(winMorningSetVO.getW_set_name());
+				cartVO.setCart_w_set_price(winMorningSetVO.getW_set_price() * Integer.parseInt(quantity));
+				cartVO.setCart_w_name(winMorningSetVO.getW_set_name());
+				cartVO.setCart_w_code(winMorningSetVO.getW_set_code());
 				cartVO.setCart_s_code(Integer.parseInt(s_code));
 				cartVO.setCart_s_name(side);
 				cartVO.setCart_d_code(Integer.parseInt(d_code));
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
 				
-				cartVO.setCart_product_code(winMorningVO.getW_code());
-				cartVO.setCart_product_name(winMorningVO.getW_name());
-				cartVO.setCart_product_img_path(winMorningVO.getW_img_path());
-				cartVO.setCart_product_price(winMorningVO.getW_price());
+				cartVO.setCart_product_code(winMorningSetVO.getW_set_code());
+				cartVO.setCart_product_name(winMorningSetVO.getW_set_name());
+				cartVO.setCart_product_img_path(winMorningSetVO.getW_set_img_path());
+				cartVO.setCart_product_price(winMorningSetVO.getW_set_price());
 				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 				cartVO.setCart_product_side_name(side);
 				cartVO.setCart_product_drink_name(drink);
@@ -421,41 +425,56 @@ public class MemberController {
 	@GetMapping("/faq.do")
 	public String faq(Model model) {
 		List<FaqVO> vo = faqService.faqSelect();
-		for (FaqVO vo1 : vo) {
-			System.out.println(vo1.getFaq_seq());
-			System.out.println(vo1.getFaq_name());
-			System.out.println(vo1.getFaq_title());
-			System.out.println(vo1.getFaq_content());
-		}
 		model.addAttribute("vo", vo);
 		return "faq";
 	}
 
 	@GetMapping("/faqSelect.do")
 	@ResponseBody
-	public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect) {
-		List<FaqVO> faqList = faqService.MenuSelect(MenuSelect);
+	public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect,@RequestParam(value = "KeywordSelect", required = false) String KeywordSelect ) {
+		List<FaqVO> faqList = new ArrayList<FaqVO>();
+		if(MenuSelect != null && KeywordSelect == null) {
+			System.out.println("MenuSelect : " + MenuSelect);
+			System.out.println("KeywordSelect : " + KeywordSelect);
+		faqList = faqService.MenuSelect(MenuSelect);
 		for (FaqVO faqList1 : faqList) {
 			System.out.println(faqList1.getFaq_seq());
 			System.out.println(faqList1.getFaq_name());
 			System.out.println(faqList1.getFaq_title());
 			System.out.println(faqList1.getFaq_content());
+			
+		}
+		}
+		else if(MenuSelect != null && KeywordSelect != null) {
+			Map<String, String> map = new HashMap<String,String>();
+			map.put("MenuSelect", MenuSelect);
+			map.put("KeywordSelect", KeywordSelect);
+			System.out.println("MenuSelect : " + MenuSelect);
+			System.out.println("KeywordSelect : " + KeywordSelect);
+			faqList = faqService.KeywordSelect(map);
+			for(FaqVO faqKeyword1 : faqList) {
+				System.out.println(faqKeyword1.getFaq_seq());
+				System.out.println(faqKeyword1.getFaq_name());
+				System.out.println(faqKeyword1.getFaq_title());
+				System.out.println(faqKeyword1.getFaq_content());
+				
+		}
 		}
 		return faqList;
 	}
 	
-	@PostMapping("/faqKeyword.do")
-	@ResponseBody
-	public List<FaqVO> faqKeyword(@RequestParam(value = "KeywordSelect", required = false)String KeywordSelect, @RequestParam(value = "MenuSelect", required = false) String MenuSelect ){
-		List<FaqVO> faqKeyword = faqService.KeywordSelect(MenuSelect, KeywordSelect);
-		for(FaqVO faqKeyword1 : faqKeyword) {
-			System.out.println(faqKeyword1.getFaq_seq());
-			System.out.println(faqKeyword1.getFaq_name());
-			System.out.println(faqKeyword1.getFaq_title());
-			System.out.println(faqKeyword1.getFaq_content());
-		}
-		return faqService.KeywordSelect(MenuSelect, KeywordSelect);
-	}
+//	@PostMapping("/faqKeyword.do")
+//	@ResponseBody
+//	public List<FaqVO> faqKeyword(@RequestParam(value = "MenuSelect", required = false)String type, @RequestParam(value = "KeywordSelect", required = false) String keyword ){
+//		List<FaqVO> faqKeyword = faqService.KeywordSelect(type, keyword);
+//		for(FaqVO faqKeyword1 : faqKeyword) {
+//			System.out.println(faqKeyword1.getFaq_seq());
+//			System.out.println(faqKeyword1.getFaq_name());
+//			System.out.println(faqKeyword1.getFaq_title());
+//			System.out.println(faqKeyword1.getFaq_content());
+//		}
+//		return faqService.KeywordSelect(type, keyword);
+//	}
 
 	@GetMapping("/join.do")
 	public String join() {

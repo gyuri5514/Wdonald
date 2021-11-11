@@ -1,13 +1,17 @@
 package com.wdelivery.member.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.LabelView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -125,9 +129,13 @@ public class MypageController {
 		memberService.addressDelete(address_seq);
 		return "redirect:addressBook.do";
 	}
-
-	@GetMapping("/orderHistory.do")
-	public String orderHistory(@RequestParam(value = "paymentVO", required = false) List<PaymentVO> paymentVO, Model model, HttpSession session) {
+	
+	//order
+	@GetMapping("/search.do")
+	public String orderHistory(@RequestParam(value = "paymentVO", required = false) List<PaymentVO> paymentVO, 
+			@RequestParam(value = "start_history",required = false) String start_history, @RequestParam(value = "end_history", required = false) String end_history, 
+			Model model, HttpSession session, HttpServletRequest request) {
+		
 		UserVO userVO = null;
 		if (session.getAttribute("userInfo") != null) {
 			userVO = (UserVO) session.getAttribute("userInfo");
@@ -137,18 +145,34 @@ public class MypageController {
 			userVO = (UserVO) session.getAttribute("naverSession");
 		}
 		String user_email = userVO.getUser_email();
+		//paymentVO = memberService.paymentList(null, user_email);
+//		String start_history = request.getParameter("start_history");
+//		String end_history = request.getParameter("end_history");
+		
+		HashMap<String, String> paraMap = new HashMap<String, String>();
+		paraMap.put("start_history", start_history);
+		paraMap.put("end_history", end_history);
+		paraMap.put("user_email", user_email);
 		paymentVO = new ArrayList<PaymentVO>();
-		paymentVO = memberService.paymentList(user_email);
+		paymentVO = memberService.paymentList(paraMap);
 		
 		model.addAttribute("paymentVO", paymentVO);
+		
+		System.out.println("start date check : " + start_history);
+		System.out.println("end date check : " + end_history);
 		
 		return "orderHistory";
 	}
 	
+	@GetMapping("/orderHistory.do")
+	public String orderHistory() {
+		return "orderHistory";
+	}
+
 	
 	//coupon
 	@GetMapping("/coupon.do")
-	public String coupon(Model model, HttpSession session) { //doing
+	public String coupon(Model model, HttpSession session) {
 		UserVO userVO = null;
 		if (session.getAttribute("userInfo") != null) {
 			userVO = (UserVO) session.getAttribute("userInfo");

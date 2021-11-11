@@ -19,6 +19,10 @@
 				</div>
     			<div class="contArea">
 					<div class="inner">
+						<ul class="tabType01">
+							<!-- <li data-title="버거" data-desc="버거메뉴"><a href="burger.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
+							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
+						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count">8 Products</p>
 							<ul class="menuList" id="menuList">
@@ -32,7 +36,8 @@
 												<strong class="ko">${selectSide.s_name}</strong>
 												<em class="en">${selectSide.s_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectSide.s_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectSide.s_price}"/>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${formatPrice}</span>
 												</div>
 											</div>
 										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
