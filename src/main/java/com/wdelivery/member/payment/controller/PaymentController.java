@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -46,7 +47,7 @@ public class PaymentController {
 
 	@PostMapping("paywinCredit.do")
 	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) {
-
+		System.out.println("paywinCredit.do");
 		Object obj = session.getAttribute("cartList");
 		ArrayList<CartVO> cartVO = new ArrayList<CartVO>();
 		if (obj instanceof ArrayList<?>) { // Get the List
@@ -81,6 +82,15 @@ public class PaymentController {
 		paymentVO.setOrder_date(new Date());
 		System.out.println(paymentVO.toString());
 		paymentService.insertPaidOrderList(paymentVO,cartVO);
+		session.setAttribute("cartList", null);
 		return "main";
 	}
+	@RequestMapping("paywinOnsitePay.do")
+	public String paywinOnsitePay(@RequestBody PaymentVO paymentVO,HttpSession session) {
+		System.out.println("paywinOnsitePay.do");
+		System.out.println(paymentVO.toString());
+		session.setAttribute("cartList", null);
+		return "true";
+	}
+	
 }
