@@ -113,4 +113,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			delete from user_address where address_seq = #{address_seq}
 		]]>
 	</delete>
+	
+	<!-- user_coupon -->
+	<select id="userCouponSelect" resultType="UserCouponVO" parameterType="UserCouponVO">
+		select * from user_coupon where user_seq = #{user_seq}
+	</select>
 </mapper>

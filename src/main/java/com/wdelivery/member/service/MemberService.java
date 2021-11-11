@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.wdelivery.member.vo.UserAddressVO;
+import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
 
 public interface MemberService {
@@ -16,7 +17,7 @@ public interface MemberService {
 	public void certifiedPhoneNumber(String user_phone, String numStr);
 	public UserVO userSelect(String user_email);
 	public void mypageUpdate(UserVO userVO);
-	public void mypageDelete(UserVO userVO); //don�븯�뒗 以�
+	public void mypageDelete(UserVO userVO);
 	void insertAuthData(UserVO userVO);
 	void updateAuthKey(Map<String, String> map);
 	void signUpConfirm(String email);
@@ -28,4 +29,6 @@ public interface MemberService {
 	public void addressInsert(UserAddressVO addressVO);
 	public void addressUpdate(UserAddressVO addressVO);
 	public void addressDelete(int address_seq);
+	
+	public List<UserCouponVO> userCouponSelect(int user_seq);
 }
