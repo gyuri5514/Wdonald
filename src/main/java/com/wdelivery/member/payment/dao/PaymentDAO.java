@@ -1,7 +1,9 @@
 package com.wdelivery.member.payment.dao;
 
+import java.util.ArrayList;
 import java.util.Map;
 
+import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 
 public interface PaymentDAO {
@@ -11,4 +13,6 @@ public interface PaymentDAO {
 	int selectOrderSeq(PaymentVO paymentVO);
 
 	void updateCartList(Map<String,Object> updateMap);
+
+	void insertCartList(ArrayList<CartVO> cartVO);
 }

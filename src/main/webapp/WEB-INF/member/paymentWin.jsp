@@ -17,7 +17,6 @@
 		window.location.href = "/controller/main.do"
 	</script>
 </c:if> --%>
-
 <div class="h1-area">
 	<h3>
 		<font>주문 확인</font>

@@ -52,6 +52,15 @@ public class CartVO {
 	private String merchantuid;
 	
 	
+	@Override
+	public String toString() {
+		return "CartVO [cart_product_code=" + cart_product_code + ", cart_product_name=" + cart_product_name
+				+ ", cart_product_side_name=" + cart_product_side_name + ", cart_product_drink_name="
+				+ cart_product_drink_name + ", cart_product_img_path=" + cart_product_img_path + ", cart_product_price="
+				+ cart_product_price + ", cart_product_quantity=" + cart_product_quantity + ", cart_product_seq="
+				+ cart_product_seq + ", order_seq=" + order_seq + ", user_email=" + user_email + ", merchantuid="
+				+ merchantuid + "]";
+	}
 	public String getCart_product_side_name() {
 		return cart_product_side_name;
 	}
