@@ -591,7 +591,7 @@ $(function(){
 							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity2+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					} else if(w_code != null && va != "" && side != "" && drink != "") {
 						if($('#result').val() != 0)
-							location.href="orderConfirm.do?w_code="+w_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity3+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
+							location.href="orderConfirm.do?w_code="+w_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					}
 				} else if(va == "단품"){ 
 					if(b_code != null && va != "") {
@@ -775,14 +775,16 @@ function count(type, index) {
 	  //var number = document.getElementById("result");
 	  
 	  if(type === "plus"){
-		if(index === 1){
-			number = parseInt(number) + 1;
-		}
+			if(index === 1){
+				number = parseInt(number) + 1;
+			}
 		else if(index === 2){
 			number2 = parseInt(number2) + 1;
 		}
 		else if(index === 3){
-			number3 = parseInt(number3) + 1;
+			if(number3 != null){
+				number3 = parseInt(number3) + 1;
+			}
 		}
 	  }else if(type === "minus") { 
 			if(number > 0 || number2 > 0 || number3 > 0){
@@ -793,9 +795,10 @@ function count(type, index) {
 					number2 = parseInt(number2) - 1;
 				}
 				else if(index === 3){
-					number3 = parseInt(number3) - 1;
+					if(number3 != null){
+						number3 = parseInt(number3) - 1;
+					}
 				}
-				
 			}else{
 				number = 0;
 			}
@@ -804,7 +807,8 @@ function count(type, index) {
 	  }
 	  document.getElementById("result").value = number;
 	  document.getElementById("result2").value = number2;
-	  document.getElementById("result3").value = number3;
+	  if(number3 != null)
+	 	 document.getElementById("result3").value = number3;
 	 
 }
 </script>

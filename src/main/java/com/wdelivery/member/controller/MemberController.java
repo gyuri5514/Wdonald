@@ -171,7 +171,7 @@ public class MemberController {
 			cartVO.setCart_b_Lgset_code(burgerLgSetVO.getB_lgset_code());
 			cartVO.setCart_b_Lgset_img_path(burgerLgSetVO.getB_lgset_img_path());
 			cartVO.setCart_b_Lgset_name(burgerLgSetVO.getB_lgset_name());
-			cartVO.setCart_b_Lgset_price(burgerLgSetVO.getB_lgset_price());
+			cartVO.setCart_b_Lgset_price(burgerLgSetVO.getB_lgset_price() * Integer.parseInt(quantity));
 			cartVO.setCart_b_code(burgerVO.getB_code());
 			cartVO.setCart_b_name(burgerVO.getB_name());
 			cartVO.setCart_s_code(Integer.parseInt(s_code));
@@ -179,7 +179,15 @@ public class MemberController {
 			cartVO.setCart_d_code(Integer.parseInt(d_code));
 			cartVO.setCart_d_name(drink);
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
-
+			
+			cartVO.setCart_product_code(burgerLgSetVO.getB_lgset_code());
+			cartVO.setCart_product_name(burgerLgSetVO.getB_lgset_name());
+			cartVO.setCart_product_img_path(burgerLgSetVO.getB_lgset_img_path());
+			cartVO.setCart_product_price(burgerLgSetVO.getB_lgset_price());
+			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+			cartVO.setCart_product_side_name(side);
+			cartVO.setCart_product_drink_name(drink);
+			
 			cartList.add(cartVO);
 			
 		} else if (va.equals("세트")) {
@@ -192,7 +200,7 @@ public class MemberController {
 				cartVO.setCart_b_set_code(burgerSetVO.getB_set_code());
 				cartVO.setCart_b_set_img_path(burgerSetVO.getB_set_img_path());
 				cartVO.setCart_b_set_name(burgerSetVO.getB_set_name());
-				cartVO.setCart_b_set_price(burgerSetVO.getB_set_price());
+				cartVO.setCart_b_set_price(burgerSetVO.getB_set_price() * Integer.parseInt(quantity));
 				cartVO.setCart_b_code(burgerVO.getB_code());
 				cartVO.setCart_b_name(burgerVO.getB_name());
 				cartVO.setCart_s_code(Integer.parseInt(s_code));
@@ -201,6 +209,13 @@ public class MemberController {
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
 				
+				cartVO.setCart_product_code(burgerSetVO.getB_set_code());
+				cartVO.setCart_product_name(burgerSetVO.getB_set_name());
+				cartVO.setCart_product_img_path(burgerSetVO.getB_set_img_path());
+				cartVO.setCart_product_price(burgerSetVO.getB_set_price());
+				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+				cartVO.setCart_product_side_name(side);
+				cartVO.setCart_product_drink_name(drink);
 				
 			} else if(w_code != null) {
 				WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
@@ -208,7 +223,7 @@ public class MemberController {
 				cartVO.setCart_w_set_code(winMorningVO.getW_code());
 				cartVO.setCart_w_set_img_path(winMorningVO.getW_img_path());
 				cartVO.setCart_w_set_name(winMorningVO.getW_name());
-				cartVO.setCart_w_set_price(winMorningVO.getW_price());
+				cartVO.setCart_w_set_price(winMorningVO.getW_price() * Integer.parseInt(quantity));
 				cartVO.setCart_w_name(winMorningVO.getW_name());
 				cartVO.setCart_w_code(winMorningVO.getW_code());
 				cartVO.setCart_s_code(Integer.parseInt(s_code));
@@ -216,6 +231,14 @@ public class MemberController {
 				cartVO.setCart_d_code(Integer.parseInt(d_code));
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
+				
+				cartVO.setCart_product_code(winMorningVO.getW_code());
+				cartVO.setCart_product_name(winMorningVO.getW_name());
+				cartVO.setCart_product_img_path(winMorningVO.getW_img_path());
+				cartVO.setCart_product_price(winMorningVO.getW_price());
+				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+				cartVO.setCart_product_side_name(side);
+				cartVO.setCart_product_drink_name(drink);
 			}
 			
 			cartList.add(cartVO);
@@ -228,8 +251,14 @@ public class MemberController {
 				cartVO.setCart_b_code(burgerVO.getB_code());
 				cartVO.setCart_b_img_path(burgerVO.getB_img_path());
 				cartVO.setCart_b_name(burgerVO.getB_name());
-				cartVO.setCart_b_price(burgerVO.getB_price());
+				cartVO.setCart_b_price(burgerVO.getB_price() * Integer.parseInt(quantity));
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
+				
+				cartVO.setCart_product_code(burgerVO.getB_code());
+				cartVO.setCart_product_name(burgerVO.getB_name());
+				cartVO.setCart_product_img_path(burgerVO.getB_img_path());
+				cartVO.setCart_product_price(burgerVO.getB_price());
+				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 	
 			} else if(w_code != null) {
 				WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
@@ -237,8 +266,14 @@ public class MemberController {
 				cartVO.setCart_w_code(winMorningVO.getW_code());
 				cartVO.setCart_w_img_path(winMorningVO.getW_img_path());
 				cartVO.setCart_w_name(winMorningVO.getW_name());
-				cartVO.setCart_w_price(winMorningVO.getW_price());
+				cartVO.setCart_w_price(winMorningVO.getW_price() * Integer.parseInt(quantity));
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
+				
+				cartVO.setCart_product_code(winMorningVO.getW_code());
+				cartVO.setCart_product_name(winMorningVO.getW_name());
+				cartVO.setCart_product_img_path(winMorningVO.getW_img_path());
+				cartVO.setCart_product_price(winMorningVO.getW_price());
+				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 			}
 			
 			cartList.add(cartVO);
@@ -257,9 +292,15 @@ public class MemberController {
 			cartVO.setCart_s_code(sideVO.getS_code());
 			cartVO.setCart_s_img_path(sideVO.getS_img_path());
 			cartVO.setCart_s_name(s_name);
-			cartVO.setCart_s_price(sideVO.getS_price() + side_price);
+			cartVO.setCart_s_price((sideVO.getS_price() + side_price) * Integer.parseInt(quantity));
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
-
+		
+			cartVO.setCart_product_code(sideVO.getS_code());
+			cartVO.setCart_product_name(s_name);
+			cartVO.setCart_product_img_path(sideVO.getS_img_path());
+			cartVO.setCart_product_price((sideVO.getS_price() + side_price));
+			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+			
 			cartList.add(cartVO);
 			
 		} else if (va.equals("음료")) {
@@ -275,8 +316,15 @@ public class MemberController {
 			cartVO.setCart_d_code(drinkVO.getD_code());
 			cartVO.setCart_d_img_path(drinkVO.getD_img_path());
 			cartVO.setCart_d_name(d_name);
-			cartVO.setCart_d_price(drinkVO.getD_price() + drink_price);
+			cartVO.setCart_d_price((drinkVO.getD_price() + drink_price) * Integer.parseInt(quantity));
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
+			
+			
+			cartVO.setCart_product_code(drinkVO.getD_code());
+			cartVO.setCart_product_name(d_name);
+			cartVO.setCart_product_img_path(drinkVO.getD_img_path());
+			cartVO.setCart_product_price((drinkVO.getD_price() + drink_price));
+			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 			
 			cartList.add(cartVO);
 			
@@ -293,9 +341,15 @@ public class MemberController {
 			cartVO.setCart_dessert_code(dessertVO.getDessert_code());
 			cartVO.setCart_dessert_img_path(dessertVO.getDessert_img_path());
 			cartVO.setCart_dessert_name(s_name);
-			cartVO.setCart_dessert_price(dessertVO.getDessert_price() + side_price);
+			cartVO.setCart_dessert_price((dessertVO.getDessert_price() + side_price) * Integer.parseInt(quantity));
 			cartVO.setCart_quantity(Integer.parseInt(quantity));
 
+			cartVO.setCart_product_code(dessertVO.getDessert_code());
+			cartVO.setCart_product_name(s_name);
+			cartVO.setCart_product_img_path(dessertVO.getDessert_img_path());
+			cartVO.setCart_product_price((dessertVO.getDessert_price() + side_price));
+			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+			
 			cartList.add(cartVO);
 			
 		}
@@ -345,7 +399,7 @@ public class MemberController {
 			System.out.println("product_quantity : " + product_quantity);
 			System.out.println("---------------------------------");
 			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
-					+ dessert_price + w_price + w_set_price) * product_quantity + delivery_price;
+					+ dessert_price + w_price + w_set_price) + delivery_price;
 			System.out.println("price : " + price);
 			System.out.println("---------------------------------");
 		}
@@ -523,12 +577,11 @@ public class MemberController {
 
 	@GetMapping("/paymentWin.do")
 	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) String delivery_price) {
-		/*
-		 * model.addAttribute(price); model.addAttribute(delivery_price); for (CartVO
-		 * cartVO : cartList) {
-		 * 
-		 * }
-		 */
+		for(CartVO vo : cartList) {
+			System.out.println(vo.getCart_product_code());
+		}
+		System.out.println("price : " + price);
+		System.out.println("delivery_price : " + delivery_price);
 		return "paymentWin";
 	}
 
