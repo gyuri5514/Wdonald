@@ -45,16 +45,16 @@ function submitCashless() {
 	
 	var IMP = window.IMP; // 생략가능
 	var total_price = $('#total_price').val();
-	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"1":$('#user_address').val();
+	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"":$('#user_address').val();
 	var user_email = $('#user_email').val();
-	/*var delivery_cost = $('#de')*/
+	var delivery_cost = $('#delivery_cost').val();
 	/*var discount = $('#discount').val()==''||*/
-	var discount = 0;
+	var discount = $('#discount').val();
 	var order_comment = "";
 	var store_code = "aaabbbccc";
 	var coupon_no = "112233";
-	var order_comment="상냥하게 주세요";
-	var final_price = total_price - discount;
+	var order_comment= "상냥하게 주세요";
+	var final_price = total_price +delivery_cost - discount;
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);
 	}
@@ -93,7 +93,7 @@ function submitCashless() {
 		참고하세요.
 		나중에 포스팅 해볼게요.
 		*/
-		name: 'W Donald Delivery '+total_price + ' 결제 요청',
+		name: 'W Donald Delivery '+total_price + '원 결제 요청',
 		//결제창에서 보여질 이름
 		amount: total_price,
 		//가격
@@ -102,8 +102,8 @@ function submitCashless() {
 		buyer_tel: user_phone,
 		buyer_addr: user_address,
 		buyer_postcode: '',
-		m_redirect_url: 'https://localhost:8080/controller/main.do'
-		/*
+/*		m_redirect_url: 'https://localhost:8080/controller/main.do'*/		
+/*
 		모바일 결제시,
 		결제가 끝나고 랜딩되는 URL을 지정
 		(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)

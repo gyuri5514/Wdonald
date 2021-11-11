@@ -15,10 +15,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.menu.winMorning.vo.WinMorningVO" alias="winMorningVO"/>
 		<typeAlias type="com.wdelivery.menu.dessert.vo.DessertVO" alias="dessertVO"/>
 		<typeAlias type="com.wdelivery.menu.happymeal.vo.HappyMealVO" alias="happyMealVO"/>
-		
+		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias ="paymentVO"/>
 		<typeAlias type="com.wdelivery.order.vo.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.wdelivery.faq.vo.FaqVO" alias="faqVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="AdminVO"/>
+		
+		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias="paymentVO"/>
 	</typeAliases>
 	<mappers>	
 		<mapper resource="wdonaldmappings/member-mapping.xml"/>
@@ -31,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="wdonaldmappings/morning-mapping.xml"/>
 		<mapper resource="wdonaldmappings/dessert-mapping.xml"/>
 		<mapper resource="wdonaldmappings/happyMeal-mapping.xml"/>
-		
+		<mapper resource="wdonaldmappings/payment-mapping.xml"/>
 		<mapper resource="wdonaldmappings/order-mapping.xml"/>
 		<mapper resource="wdonaldmappings/faq-mapping.xml"/>
 	</mappers>

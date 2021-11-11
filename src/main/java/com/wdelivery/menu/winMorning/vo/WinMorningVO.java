@@ -18,7 +18,14 @@ public class WinMorningVO {
 	private String w_e_name;
 	private String w_detail_comment;
 	private String w_detail_img_path;
+	private String w_allergy;
 	
+	public String getW_allergy() {
+		return w_allergy;
+	}
+	public void setW_allergy(String w_allergy) {
+		this.w_allergy = w_allergy;
+	}
 	public Integer getW_code() {
 		return w_code;
 	}

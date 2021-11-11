@@ -1,6 +1,8 @@
 package com.wdelivery.member.vo;
 
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 /*
  * 
  * typeAlias = UserCouponVO
