@@ -1,6 +1,7 @@
 package com.wdelivery.faq.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,8 @@ public class FaqServiceImpl implements FaqService {
 		return vo1;
 	}
 	@Override
-	public List<FaqVO> KeywordSelect(String menuSelect, String keyword){
-		List<FaqVO> vo2 = faqDAO.KeywordSelect(menuSelect, keyword);
+	public List<FaqVO> KeywordSelect(Map<String,String> map){
+		List<FaqVO> vo2 = faqDAO.KeywordSelect(map);
 		return vo2;
 	}
 }

@@ -1,9 +1,9 @@
 package com.wdelivery.member.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.SimpleFormatter;
-
+import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -425,41 +425,56 @@ public class MemberController {
 	@GetMapping("/faq.do")
 	public String faq(Model model) {
 		List<FaqVO> vo = faqService.faqSelect();
-		for (FaqVO vo1 : vo) {
-			System.out.println(vo1.getFaq_seq());
-			System.out.println(vo1.getFaq_name());
-			System.out.println(vo1.getFaq_title());
-			System.out.println(vo1.getFaq_content());
-		}
 		model.addAttribute("vo", vo);
 		return "faq";
 	}
 
 	@GetMapping("/faqSelect.do")
 	@ResponseBody
-	public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect) {
-		List<FaqVO> faqList = faqService.MenuSelect(MenuSelect);
+	public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect,@RequestParam(value = "KeywordSelect", required = false) String KeywordSelect ) {
+		List<FaqVO> faqList = new ArrayList<FaqVO>();
+		if(MenuSelect != null && KeywordSelect == null) {
+			System.out.println("MenuSelect : " + MenuSelect);
+			System.out.println("KeywordSelect : " + KeywordSelect);
+		faqList = faqService.MenuSelect(MenuSelect);
 		for (FaqVO faqList1 : faqList) {
 			System.out.println(faqList1.getFaq_seq());
 			System.out.println(faqList1.getFaq_name());
 			System.out.println(faqList1.getFaq_title());
 			System.out.println(faqList1.getFaq_content());
+			
+		}
+		}
+		else if(MenuSelect != null && KeywordSelect != null) {
+			Map<String, String> map = new HashMap<String,String>();
+			map.put("MenuSelect", MenuSelect);
+			map.put("KeywordSelect", KeywordSelect);
+			System.out.println("MenuSelect : " + MenuSelect);
+			System.out.println("KeywordSelect : " + KeywordSelect);
+			faqList = faqService.KeywordSelect(map);
+			for(FaqVO faqKeyword1 : faqList) {
+				System.out.println(faqKeyword1.getFaq_seq());
+				System.out.println(faqKeyword1.getFaq_name());
+				System.out.println(faqKeyword1.getFaq_title());
+				System.out.println(faqKeyword1.getFaq_content());
+				
+		}
 		}
 		return faqList;
 	}
 	
-	@PostMapping("/faqKeyword.do")
-	@ResponseBody
-	public List<FaqVO> faqKeyword(@RequestParam(value = "KeywordSelect", required = false)String KeywordSelect, @RequestParam(value = "MenuSelect", required = false) String MenuSelect ){
-		List<FaqVO> faqKeyword = faqService.KeywordSelect(MenuSelect, KeywordSelect);
-		for(FaqVO faqKeyword1 : faqKeyword) {
-			System.out.println(faqKeyword1.getFaq_seq());
-			System.out.println(faqKeyword1.getFaq_name());
-			System.out.println(faqKeyword1.getFaq_title());
-			System.out.println(faqKeyword1.getFaq_content());
-		}
-		return faqService.KeywordSelect(MenuSelect, KeywordSelect);
-	}
+//	@PostMapping("/faqKeyword.do")
+//	@ResponseBody
+//	public List<FaqVO> faqKeyword(@RequestParam(value = "MenuSelect", required = false)String type, @RequestParam(value = "KeywordSelect", required = false) String keyword ){
+//		List<FaqVO> faqKeyword = faqService.KeywordSelect(type, keyword);
+//		for(FaqVO faqKeyword1 : faqKeyword) {
+//			System.out.println(faqKeyword1.getFaq_seq());
+//			System.out.println(faqKeyword1.getFaq_name());
+//			System.out.println(faqKeyword1.getFaq_title());
+//			System.out.println(faqKeyword1.getFaq_content());
+//		}
+//		return faqService.KeywordSelect(type, keyword);
+//	}
 
 	@GetMapping("/join.do")
 	public String join() {
