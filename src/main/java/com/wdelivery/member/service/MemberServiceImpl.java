@@ -156,8 +156,8 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public List<PaymentVO> paymentList(String user_email) {
-		return memberDAO.paymentList(user_email);
+	public List<PaymentVO> paymentList(HashMap<String, String> paraMap) {
+		return memberDAO.paymentList(paraMap);
 	}
 
 

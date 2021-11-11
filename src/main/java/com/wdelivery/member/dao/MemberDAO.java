@@ -1,5 +1,6 @@
 package com.wdelivery.member.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,6 +45,6 @@ public interface MemberDAO {
 
 	public UserAddressVO addressSelect(String user_email);
 
-	public List<PaymentVO> paymentList(String user_email);
+	public List<PaymentVO> paymentList(HashMap<String, String> paraMap);
 
 }

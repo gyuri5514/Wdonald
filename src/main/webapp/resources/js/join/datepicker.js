@@ -43,7 +43,9 @@ $( function() {
                 ,maxDate: "+1Y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)      
             });
     $( "#m_birth" ).datepicker();
-	$( "#start_history" ).datepicker();
+    $( "#start_history" ).datepicker();
 	$( "#end_history" ).datepicker();
+	$( "#start_history" ).datepicker('setDate', '-1D');
+	$( "#end_history" ).datepicker('setDate', 'today');
 	
   } );
