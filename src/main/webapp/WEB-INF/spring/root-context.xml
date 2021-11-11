@@ -62,7 +62,7 @@
 
      
      
-/* <context:component-scan base-package="com.wdelivery.qna.service"></context:component-scan>
+<!-- <context:component-scan base-package="com.wdelivery.qna.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.member.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.menu.burger.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.menu.burgerSet.service"/>
@@ -77,7 +77,7 @@
 	 <context:component-scan base-package="com.wdelivery.menu.happymeal.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.member.payment.service"></context:component-scan>
 	 
-	 <context:component-scan base-package="com.wdelivery.admin.service"></context:component-scan>*/
+	 <context:component-scan base-package="com.wdelivery.admin.service"></context:component-scan>  -->
 	 
 	 
 
