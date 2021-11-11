@@ -35,7 +35,8 @@
 												<strong class="ko">${selectDrink.d_name}</strong>
 												<em class="en">${selectDrink.d_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectDrink.d_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectDrink.d_price}"/>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${formatPrice}</span>
 												</div>
 											</div>
 										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 

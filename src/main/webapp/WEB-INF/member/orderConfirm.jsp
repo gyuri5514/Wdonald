@@ -122,7 +122,7 @@
 													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null}">
+											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -142,7 +142,7 @@
 													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null}">
+											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -187,7 +187,7 @@
 													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_w_code != null}">
+											<c:if test="${cartList.cart_w_code != null && cartList.cart_w_set_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">

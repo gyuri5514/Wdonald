@@ -12469,7 +12469,8 @@ body.show-configurator .root {
 	.table-select-meal p, .table-select-meal ul {
 	margin-bottom: 0;
 	line-height: 1.2;
-	color: inherit
+	color: inherit;
+	font-size: 17px;
 }
 
 .table-select-meal .calories-column, .table-select-meal .cost-column,
