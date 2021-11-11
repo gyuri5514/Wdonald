@@ -15,7 +15,7 @@
 						<form id="orderForm">
 							<table id="table-select-meal" class="table table-select-meal">
 								<c:if test="${burgerVO != null}">
-									<input type="hidden" id="b_code" value="${burgerVO.b_code}">	
+									<input type="hidden" id="b_code" value="${burgerVO.b_code}">
 									<thead>
 										<tr>
 											<th class="controls-colum">&nbsp;</th>
@@ -490,6 +490,8 @@
 $(function(){
 	var side = "";
 	var drink = "";
+	var set_s_code = "";
+	var set_d_code = "";
 	var va = "";
 	
 	var b_code = $('#b_code').val();
@@ -513,8 +515,10 @@ $(function(){
 		if(b_code != null || w_code != null){
 			$('.form-radio1').each(function(){
 				if($(this).is(":checked")) {
-					side = $(this).val();
+					side = $(this).closest('.radio').find('label').text();
+					set_s_code = $(this).val();
 					console.log(side);
+					console.log(set_s_code);
 				} 
 			});
 			$("#drinkModal").slideDown(200);
@@ -544,7 +548,9 @@ $(function(){
 		$('.form-radio').each(function(){
 			if($(this).is(":checked")) {
 				drink = $(this).val();
+				set_d_code = $(this).attr("id");
 				console.log(drink);
+				console.log(set_d_code);
 			} 
 		});
 		$('.rowCheck').each(function(){
@@ -577,15 +583,15 @@ $(function(){
 					console.log(quantity);
 					if(b_code != null && va != "" && side != "" && drink != "") {
 						if($('#result').val() != 0)
-							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"";
+							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					}
 				} else if(va == "세트"){ 
 					if(b_code != null && va != "" && side != "" && drink != "")  {
 						if($('#result2').val() != 0)
-							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity2+"";
+							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity2+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					} else if(w_code != null && va != "" && side != "" && drink != "") {
 						if($('#result').val() != 0)
-							location.href="orderConfirm.do?w_code="+w_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity3+"";
+							location.href="orderConfirm.do?w_code="+w_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity3+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					}
 				} else if(va == "단품"){ 
 					if(b_code != null && va != "") {
@@ -692,18 +698,18 @@ function sideOpen(index) {
 			val = $(this).find('.form-controla').val();
 			if(val == "라지세트"){ 
 				$('label[for="side1"]').text("후렌치 후라이 - 라지");
-				$('#side-label1').val("후렌치 후라이 - 라지");
+				$('#side-label1').val(704);
 				$('label[for="side2"]').text("골든 모짜렐라 치즈스틱 2조각");
-				$('#side-label2').val("골든 모짜렐라 치즈스틱 2조각");
+				$('#side-label2').val(703);
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
 				console.log($('label[for="side2"]').text());
 				console.log($('#side-label2').val());
 			} else if(val == "세트"){ 
 				$('label[for="side1"]').text("후렌치 후라이 - 미디움");
-				$('#side-label1').val("후렌치 후라이 - 미디움");
+				$('#side-label1').val(704);
 				$('label[for="side2"]').text("골든 모짜렐라 치즈스틱 2조각");
-				$('#side-label2').val("골든 모짜렐라 치즈스틱 2조각");
+				$('#side-label2').val(703);
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
 				console.log($('label[for="side2"]').text());

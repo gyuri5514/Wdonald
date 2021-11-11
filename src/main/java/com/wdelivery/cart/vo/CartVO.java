@@ -35,6 +35,15 @@ public class CartVO {
 	private String cart_d_img_path;
 	private String cart_d_name;
 	private Integer cart_quantity;
+	private Integer cart_price;
+
+	public Integer getCart_price() {
+		return cart_price;
+	}
+
+	public void setCart_price(Integer cart_price) {
+		this.cart_price = cart_price;
+	}
 
 	public Integer getCart_w_code() {
 		return cart_w_code;
