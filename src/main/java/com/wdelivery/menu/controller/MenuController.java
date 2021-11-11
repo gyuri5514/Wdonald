@@ -23,85 +23,97 @@ import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 
 @Controller
 public class MenuController {
-	
+
 	@Autowired
 	public BurgerService burgerService;
-	
+
 	@Autowired
 	public DrinkService drinkService;
-	
+
 	@Autowired
 	public SideService sideService;
-	
+
 	@Autowired
 	public WinMorningService winMorningService;
-	
+
 	@Autowired
 	public DessertService dessertService;
-	
+
 	@Autowired
 	public HappyMealService happyMealService;
-	
+
 	@GetMapping("/burger.do")
 	public String selectBurger(Model model) {
 		List<BurgerVO> selectBurger = burgerService.selectBurger();
 		model.addAttribute("selectBurger", selectBurger);
-		
+
 		System.out.println("selectBurger");
-		
+
 		return "burger";
 	}
-	
+
 	@GetMapping("/drink.do")
 	public String selectDrink(Model model) {
 		List<DrinkVO> selectDrink = drinkService.selectDrink();
 		model.addAttribute("selectDrink", selectDrink);
-		
+
 		System.out.println("selectDrink");
-		
+
 		return "drink";
 	}
-	
+
 	@GetMapping("/side.do")
 	public String selectSide(Model model) {
 		List<SideVO> selectSide = sideService.selectSide();
 		model.addAttribute("selectSide", selectSide);
-		
+
 		System.out.println("selectSide");
-		
+
 		return "side";
 	}
-	
+
 	@GetMapping("/morning.do")
 	public String selectWinMorning(Model model) {
 		List<WinMorningVO> selectWinMorning = winMorningService.selectWinMorning();
 		model.addAttribute("selectWinMorning", selectWinMorning);
-		
+
 		System.out.println("selectWinMorning");
-		
+
 		return "morning";
 	}
-	
+
 	@GetMapping("/dessert.do")
 	public String selectDessert(Model model) {
 		List<DessertVO> selectDessert = dessertService.selectDessert();
 		model.addAttribute("selectDessert", selectDessert);
-		
+
 		System.out.println("selectDessert");
-		
+
 		return "dessert";
 	}
-	
+
 	@GetMapping("/happymeal.do")
 	public String selectHappyMeal(Model model) {
+
+		List<HappyMealVO> selectHappyMeal = happyMealService.selectHappyMeal();
+		model.addAttribute("selectHappyMeal", selectHappyMeal);
+
+		System.out.println("selectHappyMeal controller");
+
+		return "happymeal";
+	}
+
+	@GetMapping("/happymeal_pm.do")
+	public String selectHappyMealPM(Model model) {
+		
 		List<HappyMealVO> selectHappyMeal = happyMealService.selectHappyMeal();
 		model.addAttribute("selectHappyMeal", selectHappyMeal);
 		
 		System.out.println("selectHappyMeal controller");
 		
-		return "happymeal";
+		return "happymeal_pm";
 	}
-	
+
 	@GetMapping("/detail.do")
 	public String detailMenu(Model model, @RequestParam(value = "b_code", required = false) Integer b_code,
 			@RequestParam(value = "w_code", required = false) Integer w_code,
@@ -109,63 +121,63 @@ public class MenuController {
 			@RequestParam(value = "s_code", required = false) Integer s_code,
 			@RequestParam(value = "d_code", required = false) Integer d_code,
 			@RequestParam(value = "h_code", required = false) Integer h_code) {
-		
+
 		if (b_code != null) {
 			BurgerVO burgerVO = burgerService.detailBurger(b_code);
 			System.out.println("detailBurger : " + burgerVO.getB_code());
 			System.out.println("detailBurger : " + burgerVO.getB_name());
 			System.out.println("detailBurger : " + burgerVO.getB_img_path());
-			System.out.println("detailBurger : " + burgerVO.getB_n_img_path());	
-			
+			System.out.println("detailBurger : " + burgerVO.getB_n_img_path());
+
 			model.addAttribute("detailBurger", burgerVO);
-			
+
 			return "detail";
-			
+
 		} else if (w_code != null) {
 			WinMorningVO winMorningVO = winMorningService.detailMorning(w_code);
 			System.out.println("detailMorning : " + winMorningVO.getW_code());
 			System.out.println("detailMorning : " + winMorningVO.getW_name());
 			System.out.println("detailMorning : " + winMorningVO.getW_img_path());
-			System.out.println("detailMorning : " + winMorningVO.getW_n_img_path());	
+			System.out.println("detailMorning : " + winMorningVO.getW_n_img_path());
 			model.addAttribute("detailMorning", winMorningVO);
-			
+
 			return "detail";
 		} else if (dessert_code != null) {
 			DessertVO dessertVO = dessertService.detailDessert(d_code);
 			System.out.println("detailDessert : " + dessertVO.getDessert_code());
 			System.out.println("detailDessert : " + dessertVO.getDessert_name());
 			System.out.println("detailDessert : " + dessertVO.getDessert_img_path());
-			
+
 			model.addAttribute("detailDessert", dessertVO);
-			
+
 			return "detail";
 		} else if (s_code != null) {
 			SideVO sideVO = sideService.detailSide(s_code);
 			System.out.println("detailSide : " + sideVO.getS_code());
 			System.out.println("detailSide : " + sideVO.getS_name());
 			System.out.println("detailSide : " + sideVO.getS_img_path());
-			
+
 			model.addAttribute("detailSide", sideVO);
 
 			return "detail";
-			
+
 		} else if (d_code != null) {
 			DrinkVO drinkVO = drinkService.detailDrink(d_code);
 			System.out.println("detailDrink : " + drinkVO.getD_code());
 			System.out.println("detailDrink : " + drinkVO.getD_name());
 			System.out.println("detailDrink : " + drinkVO.getD_img_path());
-			
+
 			model.addAttribute("detailDrink", drinkVO);
-			
+
 			return "detail";
 		} else if (h_code != null) {
 			HappyMealVO happyMealVO = happyMealService.detailHappyMeal(h_code);
 			System.out.println("detailHappyMeal : " + happyMealVO.getH_code());
 			System.out.println("detailHappyMeal : " + happyMealVO.getH_name());
 			System.out.println("detailHappyMeal : " + happyMealVO.getH_img_path());
-			
+
 			model.addAttribute("detailHappyMeal", happyMealVO);
-			
+
 			return "detail";
 		} else {
 			return "burger.do";

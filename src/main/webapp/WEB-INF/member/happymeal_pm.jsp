@@ -19,13 +19,13 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li data-title="해피밀 " data-desc="해피밀메뉴"><a href="happymeal.do" role="button" aria-selected='true'>AM 04:00~AM 10:30</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
-							<li ><a href="happymeal_pm.do" role="button" >AM 10:30~AM 04:00</a></li>
+							<li data-title="해피밀 " data-desc="해피밀메뉴"><a href="happymeal.do" role="button">AM 04:00~AM 10:30</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
+							<li ><a href="happymeal_pm.do" role="button" aria-selected='true'>AM 10:30~AM 04:00</a></li>
 						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count">4 Products</p>
 							<ul class="menuList" id="menuList">
-								<c:forEach items="${selectHappyMeal}" var="selectHappyMeal" begin="0" end="3" step="1">
+								<c:forEach items="${selectHappyMeal}" var="selectHappyMeal" begin="4" end="7" step="1">
 									<li>
 										<a href="#" data-seq="${selectHappyMeal.h_code}">
 											<div class="thum">
@@ -49,7 +49,7 @@
 				 <form id="searchForm" method="get">
 					<input type="hidden" name="page" id="page" value="1">
 					<input type="hidden" name="seq" id="seq">
-					<input type="hidden" name="time" id="time" value="am">
+					<input type="hidden" name="sub_category_seq" id="sub_category_seq" value="6">
 				</form>
 			</div>
 			<div class="aside">

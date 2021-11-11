@@ -1936,7 +1936,7 @@ ul.notiTxt:before {
 .menuView .viewTop .info .other .arrow.next .tit {
     text-align: right;
 }
-.menuView .viewTop .info .other .arrow:focus .img,
+/* .menuView .viewTop .info .other .arrow:focus .img,
 .menuView .viewTop .info .other .arrow:hover .img {
     display: block;
 }
@@ -1953,7 +1953,7 @@ ul.notiTxt:before {
     width: 106px;
     height: 22px;
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/bg_flow.png") 0 0 no-repeat;
-}
+} */
 .menuView .viewCon {
     margin: 0 54px;
 }
