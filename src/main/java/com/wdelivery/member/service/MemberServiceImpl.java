@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wdelivery.member.dao.MemberDAO;
+import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
 
@@ -154,6 +155,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public UserAddressVO addressSelect(String user_email) {
 		return memberDAO.addressSelect(user_email);
+	}
+
+	@Override
+	public List<PaymentVO> paymentList(String user_email) {
+		return memberDAO.paymentList(user_email);
 	}
 
 }
