@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.wdelivery.promotion.dao.PromotionDAO;
 import com.wdelivery.promotion.vo.PromotionVO;
 
-@Service
+//@Service
 public class PromotionServiceImpl implements PromotionService {
 
 	@Autowired
