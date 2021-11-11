@@ -1679,7 +1679,7 @@ ul.notiTxt:before {
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/morning_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu03 {
-    background: url("/uploadFolder/images/menu/bg_visual_menu03.jpg") 50% 50% no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/happy_meal_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu04 {
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/side_banner.jpg") 50% 50% no-repeat;
@@ -1687,7 +1687,7 @@ ul.notiTxt:before {
 .visualArea.bgMenu05 {
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/mc_cafe_banner.jpg") 50% 50% no-repeat;
 }
-.visualArea.bgMenu06 {
+/* .visualArea.bgMenu06 {
     background: url("/uploadFolder/images/menu/2020/bg_visual_menu06.jpg") 50% 50% no-repeat;
 }
 .visualArea.bgMenu07 {
@@ -1695,7 +1695,7 @@ ul.notiTxt:before {
 }
 .visualArea.bgMenu08 {
     background: url("/uploadFolder/images/menu/2021/pc_1922x220_happy_snack_kr.jpg") 50% 50% no-repeat;
-}
+} */
 
 .visualArea[class*="bgMenu"] .inner {
     height: 200px;
@@ -1888,7 +1888,7 @@ ul.notiTxt:before {
     margin-top: -17px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/menu/bg_arrow.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_arrow.png") 0 0 no-repeat;
 }
 .menuView .viewTop .info .other .arrow .img {
     display: none;
@@ -1936,7 +1936,7 @@ ul.notiTxt:before {
 .menuView .viewTop .info .other .arrow.next .tit {
     text-align: right;
 }
-.menuView .viewTop .info .other .arrow:focus .img,
+/* .menuView .viewTop .info .other .arrow:focus .img,
 .menuView .viewTop .info .other .arrow:hover .img {
     display: block;
 }
@@ -1953,7 +1953,7 @@ ul.notiTxt:before {
     width: 106px;
     height: 22px;
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/bg_flow.png") 0 0 no-repeat;
-}
+} */
 .menuView .viewCon {
     margin: 0 54px;
 }
@@ -2201,7 +2201,7 @@ p.nutrDesc {
 .storeResult .mc_current span {
     display: block;
     padding-left: 25px;
-    background: url("../images/store/bg_ico_map.png") no-repeat 35px 50%;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_ico_map.png") no-repeat 35px 50%;
     color: #292929;
 }
 
@@ -2419,7 +2419,7 @@ p.nutrDesc {
     width: 7px;
     height: 11px;
     margin: -5px 0 0;
-    background: url("../images/common/bg_arrow.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_arrow.png") 0 0 no-repeat;
 }
 .deliverySrch .rBox p {
     position: relative;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +72,7 @@
 									<li><a href="javascript:gotoMenu(15);" role="button">해피 스낵</a></li>
 									<li><a href="side.do" class="dth2">사이드 &amp; 디저트</a></li>
 									<li><a href="drink.do" class="dth2">맥카페 &amp; 음료</a></li>
-									<li><a href="javascript:gotoMenu(5);" class="dth2">해피밀</a></li>
+									<li><a href="happymeal.do" class="dth2">해피밀</a></li>
 									<!-- <li><a href="javascript:gotoMenu(11);" class="dth2">365일 즐거운 혜택</a></li> -->
 								</ul>
 							</li>
@@ -115,7 +116,7 @@
 							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 						<c:when test="${not empty sessionScope.kakaoSession}">
-							<a href="#" class="btn_register"  onclick="javascript:kakaoLogout()" title="로그아웃">로그아웃</a>					
+							<a href="logout.do" class="btn_register"  onclick="kakaoLogout()" title="로그아웃">로그아웃</a>					
 							<a href="mypageupdate.do" class="btn_register" title="마이페이지">마이페이지</a>
 							<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
@@ -168,8 +169,8 @@
 										<input type="submit" id="loginBtn" value="로그인">
 									</div>
 									<div>
-										<a href="javascript:alert('회원가입페이지는 준비중입니다.')">회원가입</a> <a
-											href="javascript:alert('비밀번호찾기 페이지는 준비중입니다.')">비밀번호 찾기</a>
+										<a href="memberJoin.do">회원가입</a> 
+										<a href="javascript:alert('비밀번호찾기 페이지는 준비중입니다.')">비밀번호 찾기</a>
 									</div>
 								</form>
 								<!--아이디비번 버튼-->
@@ -192,7 +193,7 @@
 				</nav>
 			</div>
 			
-			<form id="gotoMenuForm" method="post">
+			<form id="gotoMenuForm" method="get">
 				<input type="hidden" name="sub_category_seq" id="gotoform_sub_category_seq">
 			</form>
 		</header>

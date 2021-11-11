@@ -24,12 +24,13 @@
 						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count">21 Products</p>
-            <div id="menu_order_list">
-                <p>
-                <a href="javascript:recentlist();">최신순</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-                <a href="javascript:pricelist();">낮은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-                <a href="javascript:pricelistdesc();">높은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-              </div>
+							<div id="menu_order_list">
+				                <p>
+					                <a href="javascript:recentlist();">최신순</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+					                <a href="javascript:pricelist();">낮은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+									<a href="javascript:pricelistdesc();">높은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+								</p>
+				            </div>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectBurger}" var="selectBurger">
 									<li>
@@ -41,7 +42,8 @@
 												<strong class="ko">${selectBurger.b_name}</strong>
 												<em class="en">${selectBurger.b_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">&#8361;${selectBurger.b_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectBurger.b_price}"/>
+													<span class="starting-price" style="margin-top:5px;"> &#8361; ${formatPrice}</span>
 												</div>
 											</div>
 											<button style="background-color:#ffbc0d; color:white; margin-top:30px;border-radius:25px; width:90px; height:30px;" 
@@ -50,9 +52,9 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<div class="btnMore" id="btnMore">
+							<!-- <div class="btnMore" id="btnMore">
 								<button type="button" class="more" onclick="more()">더보기</button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				 <form id="searchForm" method="get">

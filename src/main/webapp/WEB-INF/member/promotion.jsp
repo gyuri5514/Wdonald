@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-<script type="text/javascript" src="resources/js/popup.js"></script>
-<script type="text/javascript" src="resources/js/libs.js"></script>
-<script type="text/javascript" src="resources/js/KmcCert.js"></script>
+<script type="text/javascript" src="/resources/js/popup.js"></script>
+<script type="text/javascript" src="/resources/js/libs.js"></script>
+<script type="text/javascript" src="/resources/js/KmcCert.js"></script>
 
-<!-- <link rel="stylesheet" href="resources/css/mypage/trackOrder.css"> -->
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <link rel="stylesheet" href="resources/css/promotion/promotion.css">
 <body>
 	<div class="content">
@@ -14,8 +14,8 @@
 				<h1 class="titDep1" data-title="윈딜리버리 프로모션" data-desc="윈딜리버리 프로모션">윈딜리버리 프로모션</h1>
 				<ul class="navPath">
 					<li><a href="/controller/main.do">Home</a></li>
-					<li><a href="/controller/list.do">What's New</a></li>
-					<li><a href="/controller/list.do">윈딜리버리 프로모션</a></li>
+					<li><a href="/controller/promotion.do">What's New</a></li>
+					<li><a href="/controller/promotion.do">윈딜리버리 프로모션</a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,21 +30,21 @@
 				</ul>
 				<!-- 행사 있을 경우 종료된 행사일 경우 class값 end 추가-->
 				<ul class="cardBanner" id="promotionList">
-					<li>
-						<a href="#" onclick="goDetail(this)" class data="340, 1, N">
-							<div class="tmb">
-								<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/promotion/spicey_mac_and_cheese_burger.png" alt="매콤하고 진한 찐 아메리칸 소울! NEW 스파이시 맥앤치즈 버거">
-							</div>
-							<div class="con">
-								<strong class="tit">
-									매콤하고 진한 찐 아메리칸 소울! 
-									<br>
-									 NEW 스파이시 맥앤치즈 버거
-								</strong>
-								<span id="statusSpan"></span>
-							</div>
-						</a>
-					</li>
+					<c:forEach items="${selectPromotion}" var="selectPromotion">
+						<li>
+							<a href="#" onclick="goDetail(this)" class data="340, 1, N">
+								<div class="tmb">
+									<img src="${selectPromotion.h_img_path}" alt="${selectPromotion.h_title}">
+								</div>
+								<div class="con">
+									<strong class="tit">
+										${selectPromotion.h_comment}
+									</strong>
+									<span id="statusSpan"></span>
+								</div>
+							</a>
+						</li>
+					</c:forEach>
 					<li>
 						<a href="#" onclick="goDetail(this)" class data="338, 2, N">
 							<div class="tmb">

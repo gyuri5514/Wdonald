@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<script src="/resources/js/menu/menu.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 
 	<div id="container">
 		<div class="content">
@@ -17,7 +19,7 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li data-title="음료" data-desc="음료메뉴"><a href="drink.do" role="button" aria-selected="true">메뉴</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
+							<!-- <li data-title="버거" data-desc="버거메뉴"><a href="burger.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
 							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
 						</ul>
 						<div class="mcMenu">
@@ -25,15 +27,16 @@
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectDrink}" var="selectDrink">
 									<li>
-										<a href="#" data-seq="300">
+										<a href="#" data-seq="${selectDrink.d_code}">
 											<div class="thum">
-												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}" onclick="javascript:goDetail(300)">
+												<img src="${selectDrink.d_img_path}" alt="${selectDrink.d_name}" onclick="javascript:location.href='detail.do?d_code=${selectDrink.d_code}'">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectDrink.d_name}</strong>
 												<em class="en">${selectDrink.d_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">${selectDrink.d_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectDrink.d_price}"/>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${formatPrice}</span>
 												</div>
 											</div>
 										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
@@ -42,9 +45,9 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<div class="btnMore" id="btnMore">
+							<!-- <div class="btnMore" id="btnMore">
 								<button type="button" class="more" onclick="more()">더보기</button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

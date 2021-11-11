@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.jsp">관리자 Win Delivery</a>
+		<a class="navbar-brand ps-3" href="index.mdo">관리자 Win Delivery</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 			<i class="fas fa-bars"></i>
@@ -53,7 +53,7 @@
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">Core</div>
-						<a class="nav-link" href="index.jsp">
+						<a class="nav-link" href="index.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> Dashboard
@@ -69,8 +69,8 @@
 						</a>
 							<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="layout-static.jsp">Static Navigation</a> 
-									<a class="nav-link" href="layout-sidenav-light.jsp">Light Sidenav</a>
+									<a class="nav-link" href="layoutStatic.mdo">Static Navigation</a> 
+									<a class="nav-link" href="layout-sidenav-light.mdo">Light Sidenav</a>
 								</nav>
 							</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -91,9 +91,9 @@
 								</a>
 									<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="login.jsp">Login</a>
-											<a class="nav-link" href="register.jsp">Register</a> <a
-												class="nav-link" href="password.jsp">Forgot Password</a>
+											<a class="nav-link" href="login.mdo">Login</a>
+											<a class="nav-link" href="register.mdo">Store Register</a>
+											<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
 										</nav>
 									</div>
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -104,19 +104,19 @@
 								</a>
 									<div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="401.jsp">401 Page</a> 
-											<a class="nav-link" href="404.jsp">404 Page</a>
-											<a class="nav-link" href="500.jsp">500 Page</a>
+											<a class="nav-link" href="401.mdo">401 Page</a> 
+											<a class="nav-link" href="404.mdo">404 Page</a>
+											<a class="nav-link" href="500.mdo">500 Page</a>
 									</div>
 							</nav>
 						</div>
 						<div class="sb-sidenav-menu-heading">adons</div>
-						<a class="nav-link" href="charts.jsp">
+						<a class="nav-link" href="charts.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> Charts
 						</a>
-						<a class="nav-link" href="tables.jsp">
+						<a class="nav-link" href="tables.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> Tables

@@ -13,7 +13,28 @@ public class SideVO {
 	private int s_kcal;
 	private int category_code;
 	private String s_e_name;
+	private String s_detail_comment;
+	private String s_detail_img_path;
+	private String s_allergy;
 	
+	public String getS_allergy() {
+		return s_allergy;
+	}
+	public void setS_allergy(String s_allergy) {
+		this.s_allergy = s_allergy;
+	}
+	public String getS_detail_comment() {
+		return s_detail_comment;
+	}
+	public void setS_detail_comment(String s_detail_comment) {
+		this.s_detail_comment = s_detail_comment;
+	}
+	public String getS_detail_img_path() {
+		return s_detail_img_path;
+	}
+	public void setS_detail_img_path(String s_detail_img_path) {
+		this.s_detail_img_path = s_detail_img_path;
+	}
 	public Integer getS_code() {
 		return s_code;
 	}

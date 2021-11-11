@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<script src="/resources/js/menu/menu.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 
 	<div id="container">
 		<div class="content">
-			<div class="visualArea bgMenu01">
+			<div class="visualArea bgMenu04">
 					<div class="inner">
 						<h1 class="titDep1">사이드 &amp; 디저트</h1>
 						<p class="subCopy">가볍게 즐겨도, 버거와 함께 푸짐하게 즐겨도,<br>
@@ -18,35 +20,32 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<li data-title="사이드" data-desc="사이드메뉴"><a href="side.do" role="button" aria-selected="true">사이드</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
-							<li data-title="디저트" data-desc="디저트메뉴"><a href="dessert.do" role="button">디저트</a></li>
+							<!-- <li data-title="버거" data-desc="버거메뉴"><a href="burger.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
+							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
 						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count">8 Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectSide}" var="selectSide">
 									<li>
-										<a href="#" data-seq="300">
+										<a href="#" data-seq="${selectSide.s_code}">
 											<div class="thum">
-												<img src="${selectSide.s_img_path}" alt="${selectSide.s_name}" onclick="javascript:goDetail(300)">
+												<img src="${selectSide.s_img_path}" alt="${selectSide.s_name}" onclick="javascript:location.href='detail.do?s_code=${selectSide.s_code}'">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectSide.s_name}</strong>
 												<em class="en">${selectSide.s_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">${selectSide.s_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectSide.s_price}"/>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${formatPrice}</span>
 												</div>
 											</div>
-										
 										<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
 													onclick="javascript:location.href='order.do?s_code=${selectSide.s_code}'"><h4>주문하기</h4></button>
                     					</a>
 									</li>
 								</c:forEach>
 							</ul>
-							<div class="btnMore" id="btnMore">
-								<button type="button" class="more" onclick="more()">더보기</buttona>
-							</div>
 						</div>
 					</div>
 				</div>

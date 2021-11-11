@@ -4,8 +4,6 @@ public class DrinkVO {
 	
 	private Integer d_code;
 	private String d_name;
-	private Integer d_price;
-	private String d_hotcold;
 	private String d_img_path;
 	private String d_img;
 	private String d_n_img_path;
@@ -14,17 +12,27 @@ public class DrinkVO {
 	private int category_code;
 	private String d_e_name;
 	private int d_kcal;
+	private int d_price;
+	private String d_detail_img_path;
+	private String d_detail_comment;
+	private String d_allergy;
 	
-	public Integer getD_kcal() {
-		return d_kcal;
+	public String getD_allergy() {
+		return d_allergy;
 	}
-	public void setD_kcal(Integer d_kcal) {
-		this.d_kcal = d_kcal;
+	public void setD_allergy(String d_allergy) {
+		this.d_allergy = d_allergy;
 	}
-	public int getD_code() {
+	public Integer getD_code() {
 		return d_code;
 	}
-	public void setD_code(int d_code) {
+	public int getD_price() {
+		return d_price;
+	}
+	public void setD_price(int d_price) {
+		this.d_price = d_price;
+	}
+	public void setD_code(Integer d_code) {
 		this.d_code = d_code;
 	}
 	public String getD_name() {
@@ -32,18 +40,6 @@ public class DrinkVO {
 	}
 	public void setD_name(String d_name) {
 		this.d_name = d_name;
-	}
-	public Integer getD_price() {
-		return d_price;
-	}
-	public void setD_price(Integer d_price) {
-		this.d_price = d_price;
-	}
-	public String getD_hotcold() {
-		return d_hotcold;
-	}
-	public void setD_hotcold(String d_hotcold) {
-		this.d_hotcold = d_hotcold;
 	}
 	public String getD_img_path() {
 		return d_img_path;
@@ -87,5 +83,23 @@ public class DrinkVO {
 	public void setD_e_name(String d_e_name) {
 		this.d_e_name = d_e_name;
 	}
-
+	public int getD_kcal() {
+		return d_kcal;
+	}
+	public void setD_kcal(int d_kcal) {
+		this.d_kcal = d_kcal;
+	}
+	public String getD_detail_img_path() {
+		return d_detail_img_path;
+	}
+	public void setD_detail_img_path(String d_detail_img_path) {
+		this.d_detail_img_path = d_detail_img_path;
+	}
+	public String getD_detail_comment() {
+		return d_detail_comment;
+	}
+	public void setD_detail_comment(String d_detail_comment) {
+		this.d_detail_comment = d_detail_comment;
+	}
+	
 }

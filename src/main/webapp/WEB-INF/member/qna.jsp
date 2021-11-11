@@ -214,7 +214,7 @@
 											<th scope="row">매장명(매장위치)</th>
 											<td colspan="3">
 												<input type="hidden" name="STORE_SEQ" id="STORE_SEQ" value=""> 
-												<input type="hidden" name="qa_store" id="STORE_ADDRESS" value=""> 
+												<!-- <input type="hidden" name="qa_store" id="STORE_ADDRESS" value="">  -->
 												<input class="int w587" type="text" name="qa_store" id="STORE_NM" readonly> &nbsp;&nbsp;&nbsp;
 												<button class="btnMC btnM" onclick="storeSearchPop();">매장검색</button>
 											</td>
@@ -430,11 +430,15 @@
 				oEditors.getById["ACPT_DESC"].exec("UPDATE_CONTENTS_FIELD", []); //textarea의 id를 적어줍니다. 
 				var selcatd = $("#selcatd > option:selected").val(); 
 				var title = $("#ACPT_TITLE").val(); 
-				var content = document.getElementById("ACPT_DESC").value; 
+				var content = document.getElementById("ACPT_DESC").value;
 				if (selcatd == "") { 
 					alert("카테고리를 선택해주세요."); 
 					return; 
-				} 
+				}
+				if(($("#STORE_NM").val()) == ""){
+					alert("매장명 검색해주세요.");
+					return false;
+				}
 				if(($("#CUST_NM").val()).trim() == ""){
 					alert("이름을 입력해 주세요.");
 					$('#CUST_NM').focus();
@@ -474,7 +478,7 @@
 					alert("내용을 작성해주세요."); 
 					oEditors.getById["ACPT_DESC"].exec("FOCUS"); //포커싱 
 					return; 
-				} //이 부분은 스마트에디터 유효성 검사 부분이니 참고하시길 바랍니다.
+				} //이 부분은 스마트에디터 유효성 검사 부분이니 참고
 				
 				var result = confirm("문의등록 하시겠습니까?"); 
 				alert("뭐냐 " +document.getElementsByName("qa_email").length);
@@ -529,8 +533,14 @@
 						dataType: "json",  
 						type: "post",
 						success:function(data){
-							alert(data);
+							//alert(data);
 							//alert("ajax 성공");
+							var qaaContent = ""; //qaa_content null값 처리
+							if(data["qaa_content"] == null ){
+								qaaContent = "";
+							}else{
+								qaaContent = data["qaa_content"];
+							}
 							
 							$("#req").html(
 								"<div class='reply-view-area' id='LIST_REPLY_DIV'>" + 
@@ -565,9 +575,7 @@
 									"</tr>" +
 									"<tr>" +
 										"<th scope='row' class='color-mcdRed'>답변</th>" + 
-										"<td colspan='4' class='color-mcdRed'>" + 
-										//안녕하세요, 고객님! 행복을 전하는 맥도날드 고객센터입니다!<br>문의주신 이번달 맥도날드의 해피밀은 말이죠! 맥도날드 공식 사이트에서 직접 확인할 수 있답니다~~~ 지금 바로 공식 사이트로 방문해보세요! 그럼 또 만나요~@@@@ +
-										"</td>" + 
+										"<td colspan='4' class='color-mcdRed'>" + qaaContent +"</td>" + 
 									"</tr>" +
 								"</tbody>" +
 								"</table>" + 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdelivery.member.payment.dao.PaymentDAO">
+	
+	
+	<insert id="insertPaidOrderList" parameterType="paymentVO">
+		<![CDATA[
+		insert into order_list (user_type,user_name,order_date,
+						user_address,user_phone,order_status,
+						total_price,discount,final_price,order_comment,
+						payment_type,store_code,coupon_no,merchantuid,
+						pay_status,user_email)
+						values  (#{user_type},#{user_name},#{order_date}
+						,#{user_address},#{user_phone},'주문 접수',#{total_price}
+						,#{discount},#{final_price},#{order_comment}
+						,#{payment_type},#{store_code},#{coupon_no},#{merchantuid},
+						#{pay_status},#{user_email})
+		]]>
+	</insert>
+	<select id="selectOrderSeq" parameterType="paymentVO" resultType="integer">
+		<![CDATA[
+			select order_seq from order_list where merchantuid = #{merchantuid} 
+			and user_email = #{user_email}
+		]]>
+	</select>
+	<update id="updateCartList" parameterType="hashMap">
+		<![CDATA[
+			update cart_list set order_seq = #{orderSeq} where user_email = #{user_email}
+		]]>
+	</update>
+</mapper>

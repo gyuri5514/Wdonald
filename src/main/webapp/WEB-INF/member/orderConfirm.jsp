@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="header.jsp"%>
 <link rel="stylesheet" href="resources/css/order/orderMain.css" />
 <link rel="stylesheet" href="resources/css/order/orderLocal.css" />
 <script type="text/javascript">
 	$(function(){
-		window.onkeydown = function() {	//새로고침시 파라미터값 제거
+		window.onkeydown = function() {	//새로고침시
 			var kcode = event.keyCode;
 			if(kcode == 116) {
-				history.replaceState({}, null, location.pathname);
+				history.replaceState({}, null, 'orderConfirm.do?va=새로고침&price='+${price}+"&delivery_price=" +${delivery_price}+"");
 			}
 		}
 	});
@@ -17,6 +18,15 @@
 		document.getElementById("orderForm").action = "paymentWin.do";
 		document.getElementById("orderForm").submit();
 	}
+	function couponOpen() {
+		if($(".collapse").hasClass("checked")) {
+			$(".collapse").removeClass("checked");
+			$(".collapse").attr("style", "display:none; visibility:hidden;");
+		} else {
+			$(".collapse").addClass("checked");
+			$(".collapse").attr("style", "display:block; visibility:visible;");
+		}
+	};
 </script>
 <div class="main" role="main">
 	<div class="clearfix">
@@ -62,8 +72,9 @@
 															<li>${cartList.cart_s_name}</li>
 														</ul>
 													</td>
-													<td class="cost">₩${cartList.cart_b_Lgset_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_Lgset_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_b_set_code != null}">
@@ -86,11 +97,12 @@
 															<li>${cartList.cart_s_name}</li>
 														</ul>
 													</td>
-													<td class="cost">₩${cartList.cart_b_set_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_set_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_b_code != null && cartList.cart_b_set_code == null}">
+											<c:if test="${cartList.cart_b_code != null && cartList.cart_b_set_code == null && cartList.cart_b_Lgset_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -105,11 +117,12 @@
 													<td class="product-name">
 														<div>${cartList.cart_b_name}</div>
 													</td>
-													<td class="cost">₩${cartList.cart_b_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_s_code != null}">
+											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -124,11 +137,12 @@
 													<td class="product-name">
 														<div>${cartList.cart_s_name}</div>
 													</td>
-													<td class="cost">₩${cartList.cart_s_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_s_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_d_code != null}">
+											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -143,8 +157,9 @@
 													<td class="product-name">
 														<div>${cartList.cart_d_name}</div>
 													</td>
-													<td class="cost">₩${cartList.cart_d_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_d_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_set_code != null}">
@@ -167,11 +182,12 @@
 															<li>${cartList.cart_s_name}</li>
 														</ul>
 													</td>
-													<td class="cost">₩${cartList.cart_w_set_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_set_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_w_code != null}">
+											<c:if test="${cartList.cart_w_code != null && cartList.cart_w_set_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -186,8 +202,9 @@
 													<td class="product-name">
 														<div>${cartList.cart_w_name}</div>
 													</td>
-													<td class="cost">₩${cartList.cart_w_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_dessert_code != null}">
@@ -205,8 +222,9 @@
 													<td class="product-name">
 														<div>${cartList.cart_dessert_name}</div>
 													</td>
-													<td class="cost">₩${cartList.cart_dessert_price}</td>
-													<td class="many">${cartList.cart_many}</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_dessert_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -223,6 +241,7 @@
 -->						</div>
 					</div>
 						<input type="hidden" id="price" name="price" value="${price}">
+						<input type="hidden" id="delivery_price" name="delivery_price" value="${delivery_price}">
 					</form>
 				</div>
 				<div class="col-xs-4" id="col-xs-4">
@@ -235,10 +254,18 @@
 							<section class="panel-section section-delivery-address">
 								<table class="table-default table-delivery-address">
 									<tbody>
-										<tr>
-											<th scope="row"><span>배달 주소:</span></th>
-											<td><div>서울특별시 금천구 시흥동 1026-0 남서울힐스테이트 ㅇㄹ</div></td>
-										</tr>
+										<c:if test="${address != null }">
+											<tr>
+												<th scope="row"><span>배달 주소:</span></th>
+												<td><div>${address}</div></td>
+											</tr>
+										</c:if>
+										<c:if test="${address == null }">
+											<tr>
+												<th scope="row"><span>배달 주소:</span></th>
+												<td><div></div></td>
+											</tr>
+										</c:if>
 									</tbody>
 								</table>
 							</section>
@@ -259,12 +286,12 @@
 							</section>
 							<section class="panel-section section-promocode">
 								<div>
-									<a href="#enter-promocode" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>쿠폰 코드 입력</span> <i class="fa"></i></a>
+									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>쿠폰 코드 입력</span> <i class="fa"></i></a>
 									<div id="enter-promocode" class="collapse">
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="/kr/applyCoupon.html">
 											<div class="form-group">
 												<div class="input-group">
-													<input type="text" name="couponCode" id="couponCode" class="form-control">
+													<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;">
 													<div class="input-group-btn">
 														<button type="submit" class="btn btn-red">
 															적용
@@ -288,7 +315,8 @@
 												</c:when>
 												<c:when test="${cartList != null}">
 													<th scope="row"><span>총 주문합계:</span></th>
-													<td><span>₩${price} </span></td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${price}"/>
+													<td><span>₩${formatPrice} </span></td>
 												</c:when>
 											</c:choose>
 										</tr>
@@ -296,7 +324,7 @@
 									<tbody>
 										<tr>
 											<th scope="row"><span>배달료:</span></th>
-											<td>₩ 7,000</td>
+											<td>₩ ${delivery_price}</td>
 										</tr>
 										<!-- MDSAP-11635-v1 -->
 										
