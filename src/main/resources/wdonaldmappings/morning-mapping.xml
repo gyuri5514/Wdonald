@@ -15,4 +15,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<select id="prevMorning" resultType="winMorningVO">
+		<![CDATA[
+			SELECT * FROM winmorning WHERE w_code = #{w_code} - 1;
+		]]>
+	</select>
+	
+	<select id="nextMorning" resultType="winMorningVO">
+		<![CDATA[
+			SELECT * FROM winmorning WHERE w_code = #{w_code} + 1;
+		]]>
+	</select>
+	
 </mapper>

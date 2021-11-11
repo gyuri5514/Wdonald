@@ -15,7 +15,14 @@ public class DrinkVO {
 	private int d_price;
 	private String d_detail_img_path;
 	private String d_detail_comment;
+	private String d_allergy;
 	
+	public String getD_allergy() {
+		return d_allergy;
+	}
+	public void setD_allergy(String d_allergy) {
+		this.d_allergy = d_allergy;
+	}
 	public Integer getD_code() {
 		return d_code;
 	}
