@@ -23,6 +23,8 @@ function init() {
 //		reqAll();
 	}
 
+	
+
 }
 
 function changeColor(obj) {
@@ -75,6 +77,7 @@ function search(type,type2)
    
    
    var MenuSelect = "";
+   var KeywordSelect = "";
    
    if(type == "04"){
       MenuSelect = "메뉴";
@@ -96,13 +99,32 @@ function search(type,type2)
    	  MenuSelect = "";
    }
    
+   if(type2 == "C")
+   {
+      //console.log("type2 : C");
+      $("#srchKeyword").val('');
+      $("#FAQ_TYPE_CD2").val(type);      
+   }
+   $("#FAQ_TYPE_CD").val($("#FAQ_TYPE_CD2").val());
+   
+   if(type2 == "A")
+   {
+      $("#srchKeyword").val('');
+      $("#FAQ_TYPE_CD").val('');   
+   }
+   
+   if(type2 == "S")
+   {
+   	KeywordSelect = $("#srchKeyword").val();
+   }
    
    $.ajax({
       
       type : "get",
       url : "faqSelect.do",
       data : {
-          MenuSelect : MenuSelect
+          MenuSelect : MenuSelect,
+          KeywordSelect : KeywordSelect
       },
       dataType : "json",
       success : function(data) {
@@ -127,21 +149,9 @@ function search(type,type2)
          }
          $('#ajaxTable').html(content);
       }
-   });
+   })
+  
    
-   if(type2 == "C")
-   {
-      //console.log("type2 : C");
-      $("#srchKeyword").val('');
-      $("#FAQ_TYPE_CD2").val(type);      
-   }
-   $("#FAQ_TYPE_CD").val($("#FAQ_TYPE_CD2").val());
-   
-   if(type2 == "A")
-   {
-      $("#srchKeyword").val('');
-      $("#FAQ_TYPE_CD").val('');   
-   }
    
    //on off 버튼 경로. 2016.05.03
    var btnUrl = "/common/images/button/new/";
