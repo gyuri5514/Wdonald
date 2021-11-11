@@ -19,15 +19,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						#{pay_status},#{user_email})
 		]]>
 	</insert>
+		<!-- this query might be discarded  -->
 	<select id="selectOrderSeq" parameterType="paymentVO" resultType="integer">
 		<![CDATA[
 			select order_seq from order_list where merchantuid = #{merchantuid} 
 			and user_email = #{user_email}
 		]]>
 	</select>
-	<update id="updateCartList" parameterType="hashMap">
+	<insert id="insertCartList" parameterType="java.util.List">
+		<![CDATA[
+		
+		insert into cart_list (cart_product_code,cart_product_name,cart_product_img_path,
+							   cart_product_price,cart_product_quantity,
+							   order_seq,user_email,merchantuid, 
+							   cart_product_side_name,
+							   cart_product_drink_name) values ]]> 
+					   <foreach item="cartVO"  collection="list" separator=",">
+							      <![CDATA[
+							   (#{cartVO.cart_product_code},#{cartVO.cart_product_name},
+							   #{cartVO.cart_product_img_path},#{cartVO.cart_product_price},
+							   #{cartVO.cart_product_quantity},(select order_seq from order_list where 
+							   merchantuid = #{cartVO.merchantuid}),#{cartVO.user_email},#{cartVO.merchantuid},#{cartVO.cart_product_side_name},
+							   #{cartVO.cart_product_drink_name})
+								]]>
+						</foreach>							
+	</insert>
+	<!-- <update id="updateCartList" parameterType="hashMap">
 		<![CDATA[
 			update cart_list set order_seq = #{orderSeq} where user_email = #{user_email}
 		]]>
-	</update>
+	</update> -->
+	
 </mapper>
