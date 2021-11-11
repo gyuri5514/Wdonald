@@ -31,19 +31,11 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailBurger.b_code ne 101}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?b_code=${detailBurger.b_code - 1}';"><span class="arr">이전 메뉴</span>
-										<div class="img">
-											<img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}">
-										</div>
-										<strong class="tit">${prevBurger.b_name}</strong>
-									</a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?b_code=${detailBurger.b_code - 1}';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-									<a href="#" class="arrow next" onclick="location.href='detail.do?b_code=${detailBurger.b_code + 1}';"><span class="arr">다음 메뉴</span>
-										<div class="img">
-											<img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}">
-										</div>
-										<strong class="tit">${nextBurger.b_name}</strong>
-									</a>
+								<c:if test="${detailBurger.b_code ne 121}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?b_code=${detailBurger.b_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								</c:if>
 								</div>
 							</div>
 						</div>
@@ -101,19 +93,11 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailMorning.w_code ne 401}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?w_code=${detailMorning.w_code - 1}';"><span class="arr">이전 메뉴</span>
-										<div class="img">
-											<%-- <img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}"> --%>
-										</div>
-										<strong class="tit">${prevMorning.w_name}</strong>
-									</a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?w_code=${detailMorning.w_code - 1}';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-									<a href="#" class="arrow next" onclick="location.href='detail.do?w_code=${detailMorning.w_code + 1}';"><span class="arr">다음 메뉴</span>
-										<div class="img">
-											<%-- <img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}"> --%>
-										</div>
-										<strong class="tit">${nextMorning.w_name}</strong>
-									</a>
+								<c:if test="${detailMorning.w_code ne 409}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?w_code=${detailMorning.w_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								</c:if>
 								</div>
 							</div>
 						</div>
@@ -163,26 +147,18 @@
 								<h2 class="ko">${detailHappyMeal.h_name}</h2>
 								<em class="en">${detailHappyMeal.h_e_name}</em>
 							</div>
-							<div class="info" data-title="${detailHappyMeal.h_name}" data-desc="음료 메뉴">
+							<div class="info" data-title="${detailHappyMeal.h_name}" data-desc="해피밀 메뉴">
 								<div class="visual"><img src="${detailHappyMeal.h_detail_img_path}" alt="${detailHappyMeal.h_name}"></div>
 								<div class="desc">
 									<p>${detailHappyMeal.h_detail_comment}</p>
 								</div>
 								<div class="other">
 								<c:if test="${detailHappyMeal.h_code ne 901}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code - 1}';"><span class="arr">이전 메뉴</span>
-										<div class="img">
-											<%-- <img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}"> --%>
-										</div>
-										<%-- <strong class="tit">${prevBurger.b_name}</strong> --%>
-									</a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code - 1}';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-									<a href="#" class="arrow next" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code - 1}';"><span class="arr">다음 메뉴</span>
-										<div class="img" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code + 1}';">
-											<%-- <img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}"> --%>
-										</div>
-										<%-- <strong class="tit">${nextBurger.b_name}</strong> --%>
-									</a>
+								<c:if test="${detailHappyMeal.h_code ne 908}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								</c:if>
 								</div>
 							</div>
 						</div>
@@ -240,19 +216,11 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailSide.s_code ne 701}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?s_code=${detailSide.s_code - 1}';"><span class="arr">이전 메뉴</span>
-										<div class="img">
-											<%-- <img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}"> --%>
-										</div>
-										<strong class="tit">${prevBurger.b_name}</strong>
-									</a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?s_code=${detailSide.s_code - 1}';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-									<a href="#" class="arrow next" onclick="location.href='detail.do?s_code=${detailSide.s_code + 1}';"><span class="arr">다음 메뉴</span>
-										<div class="img">
-											<%-- <img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}"> --%>
-										</div>
-										<strong class="tit">${nextBurger.b_name}</strong>
-									</a>
+								<c:if test="${detailSide.s_code ne 708}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?s_code=${detailSide.s_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								</c:if>
 								</div>
 							</div>
 						</div>
@@ -309,19 +277,11 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailDrink.d_code ne 301}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?d_code=${detailDrink.d_code - 1}';"><span class="arr">이전 메뉴</span>
-										<div class="img">
-											<%-- <img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}"> --%>
-										</div>
-										<strong class="tit">${prevBurger.b_name}</strong>
-									</a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?d_code=${detailDrink.d_code - 1}';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-									<a href="#" class="arrow next" onclick="location.href='detail.do?d_code=${detailDrink.d_code + 1}';"><span class="arr">다음 메뉴</span>
-										<div class="img">
-											<%-- <img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}"> --%>
-										</div>
-										<strong class="tit">${nextBurger.b_name}</strong>
-									</a>
+								<c:if test="${detailDrink.d_code ne 328}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?d_code=${detailDrink.d_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								</c:if>
 								</div>
 							</div>
 						</div>
