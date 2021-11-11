@@ -35,7 +35,8 @@
 												<strong class="ko">${selectHappyMeal.h_name}</strong>
 												<em class="en">${selectHappyMeal.h_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectHappyMeal.h_price}</span>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${selectHappyMeal.h_price}"/>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${formatPrice}</span>
 												</div>
 											</div>
 											<button style="background-color:#ffbc0d; color:white; margin-top:30px;border-radius:25px; width:90px; height:30px;" 

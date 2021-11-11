@@ -37,6 +37,8 @@ import com.wdelivery.menu.side.service.SideService;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
+import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
+import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
 import com.wdelivery.order.service.OrderService;
 import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
@@ -62,6 +64,8 @@ public class MemberController {
 	private BurgerLgSetService burgerLgSetService;
 	@Autowired
 	private WinMorningService winMorningService;
+	@Autowired
+	private WinMorningSetService winMorningSetService;
 	@Autowired
 	private DessertService dessertService;
 	@Autowired
@@ -218,24 +222,24 @@ public class MemberController {
 				cartVO.setCart_product_drink_name(drink);
 				
 			} else if(w_code != null) {
-				WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
+				WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code));
 				
-				cartVO.setCart_w_set_code(winMorningVO.getW_code());
-				cartVO.setCart_w_set_img_path(winMorningVO.getW_img_path());
-				cartVO.setCart_w_set_name(winMorningVO.getW_name());
-				cartVO.setCart_w_set_price(winMorningVO.getW_price() * Integer.parseInt(quantity));
-				cartVO.setCart_w_name(winMorningVO.getW_name());
-				cartVO.setCart_w_code(winMorningVO.getW_code());
+				cartVO.setCart_w_set_code(winMorningSetVO.getW_set_code());
+				cartVO.setCart_w_set_img_path(winMorningSetVO.getW_set_img_path());
+				cartVO.setCart_w_set_name(winMorningSetVO.getW_set_name());
+				cartVO.setCart_w_set_price(winMorningSetVO.getW_set_price() * Integer.parseInt(quantity));
+				cartVO.setCart_w_name(winMorningSetVO.getW_set_name());
+				cartVO.setCart_w_code(winMorningSetVO.getW_set_code());
 				cartVO.setCart_s_code(Integer.parseInt(s_code));
 				cartVO.setCart_s_name(side);
 				cartVO.setCart_d_code(Integer.parseInt(d_code));
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
 				
-				cartVO.setCart_product_code(winMorningVO.getW_code());
-				cartVO.setCart_product_name(winMorningVO.getW_name());
-				cartVO.setCart_product_img_path(winMorningVO.getW_img_path());
-				cartVO.setCart_product_price(winMorningVO.getW_price());
+				cartVO.setCart_product_code(winMorningSetVO.getW_set_code());
+				cartVO.setCart_product_name(winMorningSetVO.getW_set_name());
+				cartVO.setCart_product_img_path(winMorningSetVO.getW_set_img_path());
+				cartVO.setCart_product_price(winMorningSetVO.getW_set_price());
 				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 				cartVO.setCart_product_side_name(side);
 				cartVO.setCart_product_drink_name(drink);

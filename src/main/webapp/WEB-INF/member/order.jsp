@@ -21,12 +21,12 @@
 											<th class="controls-colum">&nbsp;</th>
 											<th class="picture-column">&nbsp;</th>
 											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">가격</th>
-											<th class="calories-column">kcal</th>
-											<th colspan="2" class="side-column">사이드</th>
-											<th colspan="2"class="drink-column">음료</th>
-											<th class="change-column">변경</th>
-											<th colspan="2" class="change-column">수량</th>
+											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+											<th class="calories-column">&nbsp;&nbsp;kcal</th>
+											<th colspan="2" class="side-column">&nbsp;사이드</th>
+											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+											<th class="change-column">선택</th>
+											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -43,7 +43,8 @@
 												<h4 class="item1-title">${burgerLgSetVO.b_lgset_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<td class="cost-column">&#8361;${burgerLgSetVO.b_lgset_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerLgSetVO.b_lgset_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${burgerLgSetVO.b_lgset_kcal}kcal</td>
 											<td colspan="2" class="side-column">선택안함</td>
 											<td colspan="2" class="drink-column">선택안함</td>
@@ -74,7 +75,8 @@
 												<h4 class="item2-title">${burgerSetVO.b_set_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<td class="cost-column">&#8361;${burgerSetVO.b_set_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerSetVO.b_set_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${burgerSetVO.b_set_kcal}kcal</td>
 											<td colspan="2" class="side-column">선택안함</td>
 											<td colspan="2" class="drink-column">선택안함</td>
@@ -104,7 +106,8 @@
 												<h4 class="item3-title">${burgerVO.b_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<td class="cost-column">&#8361;${burgerVO.b_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerVO.b_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${burgerVO.b_kcal}kcal</td>
 											<td colspan="2" class="side-column"></td>
 											<td colspan="2" class="drink-column"></td>
@@ -130,12 +133,12 @@
 											<th class="controls-colum">&nbsp;</th>
 											<th class="picture-column">&nbsp;</th>
 											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">가격</th>
-											<th class="calories-column">kcal</th>
-											<th colspan="2" class="side-column">사이드</th>
-											<th colspan="2"class="drink-column">음료</th>
-											<th class="change-column">변경</th>
-											<th colspan="2" class="change-column">수량</th>
+											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+											<th class="calories-column">&nbsp;&nbsp;kcal</th>
+											<th colspan="2" class="side-column">&nbsp;사이드</th>
+											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+											<th class="change-column">선택</th>
+											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -152,7 +155,8 @@
 												<h4 class="item1-title">${winMorningVO.w_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<td class="cost-column">&#8361;${winMorningVO.w_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${winMorningVO.w_kcal}kcal</td>
 											<td colspan="2" class="side-column">선택안함</td>
 											<td colspan="2" class="drink-column">선택안함</td>
@@ -183,7 +187,8 @@
 												<h4 class="item2-title">${winMorningVO.w_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<td class="cost-column">&#8361;${winMorningVO.w_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${winMorningVO.w_kcal}kcal</td>
 											<td colspan="2" class="side-column"></td>
 											<td colspan="2" class="drink-column"></td>
@@ -206,48 +211,91 @@
 									<input type="hidden" id="s_code" value="${sideVO.s_code}">
 									<input type="hidden" id="s_name" value="${sideVO.s_name}">
 									<thead>
+									<c:if test="${sideVO.s_code == 704 || sideVO.s_code == 705 || sideVO.s_code == 706}">
 										<tr>
 											<th class="controls-colum">&nbsp;</th>
 											<th class="picture-column">&nbsp;</th>
 											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">가격</th>
-											<th class="calories-column">kcal</th>
-											<th colspan="2" class="side-column">사이드</th>
-											<th class="change-column">변경</th>
-											<th colspan="2" class="change-column">수량</th>
+											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+											<th class="calories-column">&nbsp;&nbsp;kcal</th>
+											<th colspan="2" class="side-column">&nbsp;사이드</th>
+											<th class="change-column">선택</th>
+											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 										</tr>
+										<tbody>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item1-title">${sideVO.s_name}</h4>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${sideVO.s_kcal}kcal</td>
+												<td colspan="2" class="side-column">선택안함</td>
+												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+												<td colspan="2">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</c:if>
+									<c:if test="${sideVO.s_code != 704 && sideVO.s_code != 705 && sideVO.s_code != 706}">
+											<tr>
+												<th class="controls-colum">&nbsp;</th>
+												<th class="picture-column">&nbsp;</th>
+												<th colspan="2" class="description-column">&nbsp;</th>
+												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+											</tr>
+										<tbody>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item1-title">${sideVO.s_name}</h4>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${sideVO.s_kcal}kcal</td>
+												<td colspan="2">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</c:if>
 									</thead>
-									<tbody>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${sideVO.s_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<td class="cost-column">&#8361;${sideVO.s_price}</td>
-											<td class="calories-column">${sideVO.s_kcal}kcal</td>
-											<td colspan="2" class="side-column">선택안함</td>
-											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-											<td colspan="2">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
 								</c:if>
 								<c:if test="${drinkVO != null}">
 									<input type="hidden" id="d_code" value="${drinkVO.d_code}">
@@ -257,11 +305,11 @@
 											<th class="controls-colum">&nbsp;</th>
 											<th class="picture-column">&nbsp;</th>
 											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">가격</th>
-											<th class="calories-column">kcal</th>
-											<th colspan="2"class="drink-column">음료</th>
-											<th class="change-column">변경</th>
-											<th colspan="2" class="change-column">수량</th>
+											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+											<th class="calories-column">&nbsp;&nbsp;kcal</th>
+											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+											<th class="change-column">선택</th>
+											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -279,7 +327,8 @@
 												<p class="item-description"></p>
 												
 											</td>
-											<td class="cost-column">&#8361;${drinkVO.d_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${drinkVO.d_kcal}kcal</td>
 											<td colspan="2" class="drink-column">선택안함</td>
 											<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
@@ -305,11 +354,9 @@
 											<th class="controls-colum">&nbsp;</th>
 											<th class="picture-column">&nbsp;</th>
 											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">가격</th>
-											<th class="calories-column">kcal</th>
-											<th colspan="2" class="side-column">사이드</th>
-											<th class="change-column">변경</th>
-											<th colspan="2" class="change-column">수량</th>
+											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+											<th class="calories-column">&nbsp;&nbsp;kcal</th>
+											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -326,10 +373,9 @@
 												<h4 class="item1-title">${dessertVO.dessert_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<td class="cost-column">&#8361;${dessertVO.dessert_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${dessertVO.dessert_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
 											<td class="calories-column">${dessertVO.dessert_kcal}kcal</td>
-											<td colspan="2" class="side-column">선택안함</td>
-											<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
 											<td colspan="2">
 												<div class="input-group item-quantity item-quantity-picker">
 													<span class="input-group-btn">
@@ -455,7 +501,10 @@
 														aria-invalid="false" 
 														style="position: absolute; opacity: 0;" checked>
 												</div>
-												<label for="choice-1507" class="radio-label">${drinkList.d_name} </label>
+												<c:if test="${drinkList.d_code == 323}">
+													<label for="choice-1507" class="radio-label">${drinkList.d_name}+1000 </label>
+												</c:if>
+												<label for="choice-1507" class="radio-label">${drinkList.d_name}+1000 </label>
 											</div>
 										</div>
 									</c:if>
@@ -468,7 +517,7 @@
 														aria-invalid="false" 
 														style="position: absolute; opacity: 0;">
 												</div>
-												<label for="choice-1507" class="radio-label">${drinkList.d_name}</label>
+												<label for="choice-1507" class="radio-label">${drinkList.d_name}+1000</label>
 											</div>
 										</div>
 									</c:if>
@@ -495,7 +544,11 @@ $(function(){
 	var va = "";
 	
 	var b_code = $('#b_code').val();
+	
 	var s_code = $('#s_code').val();
+	if(s_code != 704 && s_code != 705 && s_code != 706)
+		side = $('#s_name').val();
+	
 	var d_code = $('#d_code').val();
 	var dessert_code = $('#dessert_code').val();
 	var w_code = $('#w_code').val();
@@ -625,18 +678,31 @@ $(function(){
 			alert("메뉴를 선택하세요");
 			return;
 		} else if(va == "사이드" || va == "디저트") {
-			if(side == "") {
-				alert("사이드를 선택하세요");
+			if(s_code == 704 || s_code == 705 || s_code == 706) {
+				if(side == "") {
+					alert("사이드를 선택하세요");
+					return;
+				}
+			}
+			if($('#result').val() == 0){
+				alert("수량을 선택하세요");
 				return;
-			} 
+			}
 		} else if(va == "음료") {
 			if(drink == "") {
 				alert("음료를 선택해주세요");
 				return;
 			}
-		} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
-			alert("수량을 선택하세요");
-			return;
+		} else if(va == "단품") {
+			if(side == "") {
+				alert("사이드를 선택하세요");
+				return;
+			} 
+			
+			if($('#result').val() == 0){
+				alert("수량을 선택하세요");
+				return;
+			}
 		} else {
 			if(va != "단품") {
 				if(side == "") {
@@ -645,7 +711,10 @@ $(function(){
 				} else if(drink == "") {
 					alert("음료를 선택하세요");
 					return;
-				} 
+				} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+					alert("수량을 선택하세요");
+					return;
+				}
 			}
 		}
 	});
@@ -726,17 +795,8 @@ function sideOpen(index) {
 			} else if(val == "음료"){ 
 				$('label[for="side1"]').text($('#d_name').val() + " - 라지 +1000원");
 				$('#side-label1').val($('#d_name').val()+" - 라지");
-				$('label[for="side2"]').text($('#d_name').val() + " - 미디움 +500원");
+				$('label[for="side2"]').text($('#d_name').val() + " - 미디움 +700원");
 				$('#side-label2').val($('#d_name').val()+" - 미디움");
-				console.log($('label[for="side1"]').text());
-				console.log($('#side-label1').val());
-				console.log($('label[for="side2"]').text());
-				console.log($('#side-label2').val());
-			} else if(val == "디저트"){ 
-				$('label[for="side1"]').text($('#dessert_name').val() + " - 라지 +1000원");
-				$('#side-label1').val($('#dessert_name').val() + " - 라지");
-				$('label[for="side2"]').text($('#dessert_name').val() + " - 미디움 +500원");
-				$('#side-label2').val($('#dessert_name').val() + " - 미디움");
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
 				console.log($('label[for="side2"]').text());
@@ -805,8 +865,10 @@ function count(type, index) {
 			
 			
 	  }
-	  document.getElementById("result").value = number;
-	  document.getElementById("result2").value = number2;
+	  if(number != null)
+	 	 document.getElementById("result").value = number;
+	  if(number2 != null)
+		  document.getElementById("result2").value = number2;
 	  if(number3 != null)
 	 	 document.getElementById("result3").value = number3;
 	 

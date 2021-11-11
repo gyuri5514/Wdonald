@@ -49,6 +49,7 @@
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.drink.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.side.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.winMorning.dao"/>
+	 <mybatis-spring:scan base-package="com.wdelivery.menu.winMorningSet.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.dessert.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.happymeal.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.member.payment.dao"/>
@@ -62,6 +63,7 @@
 	 <context:component-scan base-package="com.wdelivery.menu.drink.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.menu.side.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.menu.winMorning.service"></context:component-scan>
+	 <context:component-scan base-package="com.wdelivery.menu.winMorningSet.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.menu.dessert.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.menu.happymeal.service"></context:component-scan>
 	 <context:component-scan base-package="com.wdelivery.member.payment.service"></context:component-scan>
