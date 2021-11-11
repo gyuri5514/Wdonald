@@ -1888,7 +1888,7 @@ ul.notiTxt:before {
     margin-top: -17px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/menu/bg_arrow.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_arrow.png") 0 0 no-repeat;
 }
 .menuView .viewTop .info .other .arrow .img {
     display: none;
@@ -2201,7 +2201,7 @@ p.nutrDesc {
 .storeResult .mc_current span {
     display: block;
     padding-left: 25px;
-    background: url("../images/store/bg_ico_map.png") no-repeat 35px 50%;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_ico_map.png") no-repeat 35px 50%;
     color: #292929;
 }
 
@@ -2419,7 +2419,7 @@ p.nutrDesc {
     width: 7px;
     height: 11px;
     margin: -5px 0 0;
-    background: url("../images/common/bg_arrow.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_arrow.png") 0 0 no-repeat;
 }
 .deliverySrch .rBox p {
     position: relative;

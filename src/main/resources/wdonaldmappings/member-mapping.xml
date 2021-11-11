@@ -119,8 +119,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</delete>
 	
+
 	<!-- user_coupon -->
 	<select id="userCouponSelect" resultType="UserCouponVO" parameterType="UserCouponVO">
 		select * from user_coupon where user_seq = #{user_seq}
+
+	<select id="paymentList" resultType="paymentVO" parameterType="paymentVO">
+		select * from order_list where user_email=#{user_email} order by order_seq desc
 	</select>
 </mapper>

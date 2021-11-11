@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -168,8 +169,8 @@
 										<input type="submit" id="loginBtn" value="로그인">
 									</div>
 									<div>
-										<a href="javascript:alert('회원가입페이지는 준비중입니다.')">회원가입</a> <a
-											href="javascript:alert('비밀번호찾기 페이지는 준비중입니다.')">비밀번호 찾기</a>
+										<a href="memberJoin.do">회원가입</a> 
+										<a href="javascript:alert('비밀번호찾기 페이지는 준비중입니다.')">비밀번호 찾기</a>
 									</div>
 								</form>
 								<!--아이디비번 버튼-->

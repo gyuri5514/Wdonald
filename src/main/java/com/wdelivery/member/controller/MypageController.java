@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
@@ -126,7 +127,21 @@ public class MypageController {
 	}
 
 	@GetMapping("/orderHistory.do")
-	public String orderHistory() {
+	public String orderHistory(@RequestParam(value = "paymentVO", required = false) List<PaymentVO> paymentVO, Model model, HttpSession session) {
+		UserVO userVO = null;
+		if (session.getAttribute("userInfo") != null) {
+			userVO = (UserVO) session.getAttribute("userInfo");
+		} else if (session.getAttribute("kakaoSession") != null) {
+			userVO = (UserVO) session.getAttribute("kakaoSession");
+		} else if (session.getAttribute("naverSession") != null) {
+			userVO = (UserVO) session.getAttribute("naverSession");
+		}
+		String user_email = userVO.getUser_email();
+		paymentVO = new ArrayList<PaymentVO>();
+		paymentVO = memberService.paymentList(user_email);
+		
+		model.addAttribute("paymentVO", paymentVO);
+		
 		return "orderHistory";
 	}
 	

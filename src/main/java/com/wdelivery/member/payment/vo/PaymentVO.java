@@ -1,9 +1,13 @@
 package com.wdelivery.member.payment.vo;
 
 import java.util.Date;
+/*
+ *typeAliase = paymentVO
+ * 
+ */
 
 public class PaymentVO {
-	//주문정보
+	//二쇰Ц�젙蹂�
 	private int order_seq;
 	private String user_name;
 	private int user_type;
@@ -11,19 +15,19 @@ public class PaymentVO {
 	private String delivery_time;
 	private String user_address;
 	private String user_phone;
-	//주문접수, 배송 완료, 준비중
+	//二쇰Ц�젒�닔, 諛곗넚 �셿猷�, 以�鍮꾩쨷
 	private String order_status;
 	private int total_price;
 	private int final_price;
 	private int discount;
 	private String order_comment;
-	//결제 수단
+	//寃곗젣 �닔�떒
 	private String payment_type;
 	private String store_code;
 	private String coupon_no;
-	//아임포트 결제 id
+	//�븘�엫�룷�듃 寃곗젣 id
 	private String merchantuid;
-	//결제 상태 -> 대기, 현장결제
+	//寃곗젣 �긽�깭 -> ��湲�, �쁽�옣寃곗젣
 	private String pay_status;
 	
 	public int getOrder_seq() {
