@@ -3,6 +3,7 @@ package com.wdelivery.member.service;
 import java.util.List;
 import java.util.Map;
 
+import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
 
@@ -29,4 +30,5 @@ public interface MemberService {
 	public void addressUpdate(UserAddressVO addressVO);
 	public void addressDelete(int address_seq);
 	public UserAddressVO addressSelect(String user_email);
+	public List<PaymentVO> paymentList(String user_email);
 }
