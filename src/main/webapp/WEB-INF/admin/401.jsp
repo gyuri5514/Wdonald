@@ -7,7 +7,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>404 Error - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/adminStyles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -22,8 +22,7 @@
                                     <p class="lead">Unauthorized</p>
                                     <p>Access to this resource is denied.</p>
                                     <a href="index.html">
-                                        <i class="fas fa-arrow-left me-1"></i>
-                                        Return to Dashboard
+                                        <i class="fas fa-arrow-left me-1"></i> Return to Dashboard
                                     </a>
                                 </div>
                             </div>

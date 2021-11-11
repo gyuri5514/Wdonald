@@ -3,9 +3,9 @@
 	<footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">WinDelivery &copy; 대표이사 : 이승재 </div>
+				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
 				<div>
-					<a href="../main.jsp">Privacy Policy</a> &middot; <a href="#">Term
+					<a href="../main.mdo">Privacy Policy</a> &middot; <a href="#">Term
 						&amp; Conditions</a>
 				</div>
 			</div>

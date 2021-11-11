@@ -8,7 +8,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Register - SB Admin</title>
-        <link href="../resources/css/adminStyles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/adminStyles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-black">
@@ -78,7 +78,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.do">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="login.sdo">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>

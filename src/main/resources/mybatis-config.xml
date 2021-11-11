@@ -18,10 +18,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias ="paymentVO"/>
 		<typeAlias type="com.wdelivery.order.vo.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.wdelivery.faq.vo.FaqVO" alias="faqVO"/>
+
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="AdminVO"/>
 		<typeAlias type="com.wdelivery.promotion.vo.PromotionVO" alias="promotionVO"/>
+
 		
 		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias="paymentVO"/>
+		
+		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="adminVO"/>
 	</typeAliases>
 	<mappers>	
 		<mapper resource="wdonaldmappings/member-mapping.xml"/>
@@ -37,7 +41,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="wdonaldmappings/payment-mapping.xml"/>
 		<mapper resource="wdonaldmappings/order-mapping.xml"/>
 		<mapper resource="wdonaldmappings/faq-mapping.xml"/>
+
+		
+		<mapper resource="wdonaldmappings/admin-mapping.xml"/>
+
 		<mapper resource="wdonaldmappings/promotion-mapping.xml"/>
+
 	</mappers>
 
 </configuration>
