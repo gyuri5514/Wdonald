@@ -11,16 +11,16 @@ public interface BurgerDAO {
 	
 	BurgerVO detailBurger(Integer b_code);
 	
-	BurgerVO prevBurger(int b_code);
+	BurgerVO prevBurger(Integer b_code);
 	
-	BurgerVO nextBurger(int b_code);
+	BurgerVO nextBurger(Integer b_code);
 	
 	void updateBurger(BurgerVO burgerVO);
 	
-	void deleteBurger(String b_code);
+	void deleteBurger(Integer b_code);
 	
 	void insertBurger(BurgerVO burgerVO);
 	
-	BurgerSetVO detailBurgerSet(String b_set_code); 
+	BurgerSetVO detailBurgerSet(Integer b_set_code); 
 	
 }

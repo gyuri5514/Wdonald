@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wdelivery.member.dao.MemberDAO;
+import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserAddressVO;
+import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
 
 import net.nurigo.java_sdk.api.Message;
@@ -29,7 +31,6 @@ public class MemberServiceImpl implements MemberService {
 	public void winMemJoin(UserVO userVO) {
 		memberDAO.winMemJoin(userVO);
 	}
-
 	@Override
 	public void winAddressJoin(UserAddressVO addressVO) {
 		memberDAO.winAddressJoin(addressVO);
@@ -39,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 	public void mypageUpdate(UserVO userVO) {
 		memberDAO.mypageUpdate(userVO);
 	}
-
+	
 	@Override
 	public int emailChk(String user_email) throws Exception {
 		int result = memberDAO.emailChk(user_email);
@@ -125,35 +126,39 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDAO.addressShow(user_email);
 	}
-
-
 	@Override
 	public void addressUpdate(UserAddressVO addressVO) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
 	@Override
 	public void addressDelete(int address_seq) {
 		memberDAO.addressDelete(address_seq);
 	}
-
-
 	@Override
-	public void mypageDelete(UserVO userVO) { //don ing
+	public void mypageDelete(UserVO userVO) {
 		memberDAO.mypageDelete(userVO);
 	}
-
 	@Override
 	public void addressInsert(UserAddressVO addressVO) {
-		
 		 memberDAO.addressInsert(addressVO);
-		
 	}
 
 	@Override
+	public List<UserCouponVO> userCouponSelect(int user_seq) {
+		return memberDAO.userCouponSelect(user_seq);
+	}
+	
+
+  @Override
 	public UserAddressVO addressSelect(String user_email) {
 		return memberDAO.addressSelect(user_email);
 	}
+
+
+	@Override
+	public List<PaymentVO> paymentList(String user_email) {
+		return memberDAO.paymentList(user_email);
+	}
+
 
 }

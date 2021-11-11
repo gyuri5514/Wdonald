@@ -19,6 +19,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.order.vo.OrderVO" alias="orderVO"/>
 		<typeAlias type="com.wdelivery.faq.vo.FaqVO" alias="faqVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="AdminVO"/>
+		
+		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias="paymentVO"/>
 	</typeAliases>
 	<mappers>	
 		<mapper resource="wdonaldmappings/member-mapping.xml"/>

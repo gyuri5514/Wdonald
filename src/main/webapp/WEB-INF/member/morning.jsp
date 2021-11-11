@@ -32,7 +32,7 @@
 											<strong class="ko">${selectWinMorning.w_name}</strong>
 											<em class="en">${selectWinMorning.w_e_name}</em>
 											<div class="product-cost">
-												<span class="starting-price" style="margin-top:5px;">${selectWinMorning.w_price}</span>
+												<span class="starting-price" style="margin-top:5px;"> &#8361; ${selectWinMorning.w_price}</span>
 											</div>
 										</div>
 									<button style="background-color:#ffbc0d; color:white; margin-top:30px; border-radius:25px; width:90px; height:30px;" 
@@ -58,7 +58,6 @@
 		<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">CART</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
-</div>
 <script type="text/javascript">
 	function goDetail(seq) {
 		$('#seq').val(seq);

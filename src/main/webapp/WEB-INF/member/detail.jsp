@@ -101,18 +101,18 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailMorning.w_code ne 401}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?b_code=${detailMorning.w_code - 1}';"><span class="arr">이전 메뉴</span>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?w_code=${detailMorning.w_code - 1}';"><span class="arr">이전 메뉴</span>
 										<div class="img">
 											<%-- <img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}"> --%>
 										</div>
-										<strong class="tit">${prevBurger.b_name}</strong>
+										<strong class="tit">${prevMorning.w_name}</strong>
 									</a>
 								</c:if>
-									<a href="#" class="arrow next" onclick="location.href='detail.do?b_code=${detailMorning.w_code + 1}';"><span class="arr">다음 메뉴</span>
+									<a href="#" class="arrow next" onclick="location.href='detail.do?w_code=${detailMorning.w_code + 1}';"><span class="arr">다음 메뉴</span>
 										<div class="img">
 											<%-- <img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}"> --%>
 										</div>
-										<strong class="tit">${nextBurger.b_name}</strong>
+										<strong class="tit">${nextMorning.w_name}</strong>
 									</a>
 								</div>
 							</div>
@@ -130,7 +130,7 @@
 								<button type="button" aria-selected="false" aria-controls="toggle03" aria-expanded="false">알레르기 정보 보기</button><!-- toggle버튼 선택시 aria-selected값 true로 변경 / aria-expanded 값 true로 변경 -->
 								<div id="toggle03" class="toggleCon">
 									<div class="allerDesc">
-										<p><b>알레르기 유발 가능 식재료</b> (난류,우유,대두,밀,토마토,새우,쇠고기,굴) <br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
+										<p><b>알레르기 유발 가능 식재료</b>${detailMorning.w_allergy}<br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
 									</div>
 								</div>
 							</div>
@@ -199,7 +199,7 @@
 								<button type="button" aria-selected="false" aria-controls="toggle03" aria-expanded="false">알레르기 정보 보기</button><!-- toggle버튼 선택시 aria-selected값 true로 변경 / aria-expanded 값 true로 변경 -->
 								<div id="toggle03" class="toggleCon">
 									<div class="allerDesc">
-										<p><b>알레르기 유발 가능 식재료</b> (난류,우유,대두,밀,토마토,새우,쇠고기,굴) <br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
+										<p><b>알레르기 유발 가능 식재료</b>${detailHappyMeal.h_allergy}<br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
 									</div>
 								</div>
 							</div>
@@ -269,7 +269,7 @@
 								<button type="button" aria-selected="false" aria-controls="toggle03" aria-expanded="false">알레르기 정보 보기</button><!-- toggle버튼 선택시 aria-selected값 true로 변경 / aria-expanded 값 true로 변경 -->
 								<div id="toggle03" class="toggleCon">
 									<div class="allerDesc">
-										<p><b>알레르기 유발 가능 식재료</b> (난류,우유,대두,밀,토마토,새우,쇠고기,굴) <br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
+										<p><b>알레르기 유발 가능 식재료</b>${detailSide.s_allergy}<br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
 									</div>
 								</div>
 							</div>
@@ -313,14 +313,14 @@
 										<div class="img">
 											<%-- <img src="${prevBurger.b_btn_img_path}" alt="${prevBurger.b_name}"> --%>
 										</div>
-										<%-- <strong class="tit">${prevBurger.b_name}</strong> --%>
+										<strong class="tit">${prevBurger.b_name}</strong>
 									</a>
 								</c:if>
 									<a href="#" class="arrow next" onclick="location.href='detail.do?d_code=${detailDrink.d_code + 1}';"><span class="arr">다음 메뉴</span>
 										<div class="img">
 											<%-- <img src="${nextBurger.b_btn_img_path}" alt="${nextBurger.b_name}"> --%>
 										</div>
-										<%-- <strong class="tit">${nextBurger.b_name}</strong> --%>
+										<strong class="tit">${nextBurger.b_name}</strong>
 									</a>
 								</div>
 							</div>
@@ -338,7 +338,7 @@
 								<button type="button" aria-selected="false" aria-controls="toggle03" aria-expanded="false">알레르기 정보 보기</button><!-- toggle버튼 선택시 aria-selected값 true로 변경 / aria-expanded 값 true로 변경 -->
 								<div id="toggle03" class="toggleCon">
 									<div class="allerDesc">
-										<p><b>알레르기 유발 가능 식재료</b> (난류,우유,대두,밀,토마토,새우,쇠고기,굴) <br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
+										<p><b>알레르기 유발 가능 식재료</b>${detailDrink.d_allergy}<br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
 									</div>
 								</div>
 							</div>
