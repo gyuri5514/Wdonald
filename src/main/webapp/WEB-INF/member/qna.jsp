@@ -214,7 +214,7 @@
 											<th scope="row">매장명(매장위치)</th>
 											<td colspan="3">
 												<input type="hidden" name="STORE_SEQ" id="STORE_SEQ" value=""> 
-												<input type="hidden" name="qa_store" id="STORE_ADDRESS" value=""> 
+												<!-- <input type="hidden" name="qa_store" id="STORE_ADDRESS" value="">  -->
 												<input class="int w587" type="text" name="qa_store" id="STORE_NM" readonly> &nbsp;&nbsp;&nbsp;
 												<button class="btnMC btnM" onclick="storeSearchPop();">매장검색</button>
 											</td>

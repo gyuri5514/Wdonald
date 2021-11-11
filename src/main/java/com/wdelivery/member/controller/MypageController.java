@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.vo.UserAddressVO;
+import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
 
 @Controller
@@ -24,28 +25,32 @@ public class MypageController {
 	private MemberService memberService;
 
 	@GetMapping("/mypageupdate.do")
-	public String mypageupdate(Model model, HttpSession session) {
+	public String mypageupdate(Model model, HttpSession session, UserVO userVO) {
 		/*
 		 * if(session.getAttribute("userInfo")!=null) { UserVO userVO = (UserVO)
 		 * session.getAttribute("userInfo");
 		 * 
-		 * } userVO = memberService.userSelect(user_email); //�꽭�뀡 �븘�씠�뵒 VO�뿉 �꽔湲�
+		 * } userVO = memberService.userSelect(user_email);
 		 * //System.out.println("mypage !!!!!!!!=>" + userVO.toString());
 		 * 
 		 * model.addAttribute("userVO",
 		 * memberService.userSelect(userVO.getUser_email()));
 		 */
+		session.setAttribute("session", userVO);
+		System.out.println("?" + session);
 		return "mypageupdate";
 	}
 
 	@PostMapping("/mypageUpdate.do")
-	public String mypageUpdate(UserVO userVO) {
+	public String mypageUpdate(UserVO userVO, HttpSession session) {
+		
 		// String user_email = (String) session.getAttribute("user_email");
 
 		// System.out.println("mypageupdate����以� : " + user_email );
 
 		System.out.println("mypageupdateController" + userVO.getUser_seq());
-		// session.setAttribute("userVO", memberService.mypageUpdate(userVO));
+		
+		//session.setAttribute("userVO", memberService.mypageUpdate(userVO));
 		memberService.mypageUpdate(userVO);
 		System.out.println(userVO.toString());
 		return "redirect:mypageupdate.do";
@@ -143,8 +148,22 @@ public class MypageController {
 	
 	//coupon
 	@GetMapping("/coupon.do")
-	public String coupon() { //doing
+	public String coupon(Model model, HttpSession session) { //doing
+		UserVO userVO = null;
+		if (session.getAttribute("userInfo") != null) {
+			userVO = (UserVO) session.getAttribute("userInfo");
+		} else if (session.getAttribute("kakaoSession") != null) {
+			userVO = (UserVO) session.getAttribute("kakaoSession");
+		} else if (session.getAttribute("naverSession") != null) {
+			userVO = (UserVO) session.getAttribute("naverSession");
+		}
 		
+		int user_seq = userVO.getUser_seq();System.out.println("con => " +  user_seq);
+		List<UserCouponVO> UserCouponVO = new ArrayList<UserCouponVO>();
+		UserCouponVO = memberService.userCouponSelect(user_seq);
+
+		System.out.println("userCouponController : " + UserCouponVO.toString());
+		model.addAttribute("UserCouponVO", UserCouponVO);
 		
 		return "coupon";
 	}

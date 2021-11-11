@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="header.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -96,8 +98,6 @@ th {
 .table-addressbook .address-number {
     font-family: "Din Black",sans-serif;
     font-size: 1.5rem;
-
-    
 }
 .table-default td, .table-default th {
     /* vertical-align: top; */
@@ -105,8 +105,6 @@ th {
 }
 .table-addressbook tfoot .actions, .table-mycards .controls, .table-mycards tfoot .actions {
     text-align: right;
-    
-  
 }
 #address-number{
 	font-family:"Din Black",sans-serif;
@@ -115,7 +113,7 @@ th {
 	width:5%
 }
 .address-details,.table-addressbook .special-instructions{
-	width:40%
+	width:30%
 }
 </style>
 </head>
@@ -144,36 +142,43 @@ th {
 			<table class="table-default table-panel table-addressbook">
 				<thead>
 					<tr>
-						<th scope="colgroup" colspan="2"><h3>쿠폰</h3></th>
-						<th scope="col"><h3>만료 날짜</h3></th>
-						<th scope="col"></th>
+						<th scope="colgroup" colspan="2" style="padding-right: 0px;"><h3>쿠폰</h3></th>
+						<th scope="col"><h3>쿠폰코드</h3></th>
+						<th scope="col"><h3>만료날짜</h3></th>
+						<th scope="col"><h3>사용상태</h3></th>
 					</tr>
 				</thead>
 				<tfoot>
-					<td colspan="4" class="actions">
+					<td colspan="5" class="actions">
 						<!-- <a class="btn btn-red btn-lg" href="addressupdate.do">새로운 주소 추가</a>	 -->	
 						<a class="btn btn-red btn-lg" href="main.do">메인화면으로 이동</a>
 					</td>
 				</tfoot>
-				<c:forEach items="${addressVO}" var="addressBook" varStatus="status"> 
+				<c:forEach items="${UserCouponVO}" var="coupon" varStatus="status"> 
 				<tbody>
 					<tr>
-						<td class="address-number">${status.count}</td>
+						<td class="table-addressbook">${status.count}</td>
 						<td class="address-details">
-							<!-- <div>${addressBook.address1}</div> gogogo -->
-							<div>${addressBook.address1}</div>
-							 <div>${addressBook.address2}</div>
+							<div>${coupon.coupon_name}</div>
 						</td>
-						<td class="special-instructions">${addressBook.order_comment}</td>
+						<td >${coupon.coupon_code}</td>
+						<fmt:formatDate var="couponEndDate" value="${coupon.coupon_enddate}" pattern="yyyy.MM.dd"/>
+						<td class="special-instructions">${couponEndDate}</td>
 						<td class="controls">
-						 <a class="text-gray-light" title="주소 삭제하기" onclick="del(${addressBook.address_seq})"><i class="far fa-trash-alt"></i>
+						<c:if test="${coupon.coupon_status == 1}">
+							미사용
+						</c:if>
+						<c:if test="${coupon.coupon_status == 0}">
+							사용완료
+						</c:if>
+							<%-- <a class="text-gray-light" title="" onclick="del(${addressBook.address_seq})"><i class="far fa-trash-alt"></i> --%>
 						<!-- <input id="key" value="0" type="text"/> --> </a>
-						 </td>
+						</td>
 					</tr>
 				</tbody>
 			</c:forEach>
 			</table>
 		</div>
-			
+		
 			
 <%@ include file="footer.jsp"%>
