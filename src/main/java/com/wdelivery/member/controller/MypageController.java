@@ -29,7 +29,7 @@ public class MypageController {
 		 * if(session.getAttribute("userInfo")!=null) { UserVO userVO = (UserVO)
 		 * session.getAttribute("userInfo");
 		 * 
-		 * } userVO = memberService.userSelect(user_email); //�꽭�뀡 �븘�씠�뵒 VO�뿉 �꽔湲�
+		 * } userVO = memberService.userSelect(user_email);
 		 * //System.out.println("mypage !!!!!!!!=>" + userVO.toString());
 		 * 
 		 * model.addAttribute("userVO",

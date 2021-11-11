@@ -34,14 +34,13 @@
 											<label for="inputPassword">Password</label>
 										</div>
 										<div class="form-check mb-3">
-											<input class="form-check-input" id="inputRememberPassword"
+											<!-- <input class="form-check-input" id="inputRememberPassword"
 												type="checkbox" value="" /> <label class="form-check-label"
-												for="inputRememberPassword">Remember Password</label>
+												for="inputRememberPassword">Remember Password</label> -->
 										</div>
-										<div
-											class="d-flex align-items-center justify-content-between mt-4 mb-0">
+										<div class="d-flex align-items-center justify-content-between mt-4 mb-0">
 											<a class="small" href="password.html">Forgot Password?</a> <a
-												class="btn btn-danger" href="index.html">Login</a>
+												class="btn btn-danger" href="index.do">로그인</a>
 										</div>
 									</form>
 								</div>
