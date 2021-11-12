@@ -20,7 +20,7 @@
 	<c:choose>
 		<c:when test="${status eq 1}">
 		<script>
-			alert('관리자 아이디를 다시 입력해주세요.');
+			alert('로그인에 실패하였습니다.');
 			</script>
 		</c:when>
 		<c:when test="${status eq 3}">

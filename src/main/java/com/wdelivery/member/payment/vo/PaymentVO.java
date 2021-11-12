@@ -7,7 +7,7 @@ import java.util.Date;
  */
 
 public class PaymentVO {
-	//二쇰Ц�젙蹂�
+	//help me
 	private int order_seq;
 	private String user_name;
 	private int user_type;
@@ -15,23 +15,24 @@ public class PaymentVO {
 	private String delivery_time;
 	private String user_address;
 	private String user_phone;
-	//二쇰Ц�젒�닔, 諛곗넚 �셿猷�, 以�鍮꾩쨷
+	//hi
 	private String order_status;
 	private int total_price;
 	private int final_price;
 	private int discount;
 	private String order_comment;
 	private String user_email;
-	//결제 수단
+	//i am
 
 	private String payment_type;
 	private String store_code;
 	private String coupon_no;
-	//�븘�엫�룷�듃 寃곗젣 id
+	//elon musk
 	private String merchantuid;
-	//寃곗젣 �긽�깭 -> ��湲�, �쁽�옣寃곗젣
+	//if you see this comment, run
 	private String pay_status;
-	
+	private String exactCash;
+	//not too late to run away
 	public int getOrder_seq() {
 		return order_seq;
 	}
@@ -140,6 +141,12 @@ public class PaymentVO {
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
+	public String getExactCash() {
+		return exactCash;
+	}
+	public void setExactCash(String exactCash) {
+		this.exactCash = exactCash;
+	}
 	@Override
 	public String toString() {
 		return "PaymentVO [order_seq=" + order_seq + ", user_name=" + user_name + ", user_type=" + user_type
@@ -147,7 +154,8 @@ public class PaymentVO {
 				+ ", user_phone=" + user_phone + ", order_status=" + order_status + ", total_price=" + total_price
 				+ ", final_price=" + final_price + ", discount=" + discount + ", order_comment=" + order_comment
 				+ ", user_email=" + user_email + ", payment_type=" + payment_type + ", store_code=" + store_code
-				+ ", coupon_no=" + coupon_no + ", merchantuid=" + merchantuid + ", pay_status=" + pay_status + "]";
+				+ ", coupon_no=" + coupon_no + ", merchantuid=" + merchantuid + ", pay_status=" + pay_status
+				+ ", exactCash=" + exactCash + "]";
 	}
 	
 }

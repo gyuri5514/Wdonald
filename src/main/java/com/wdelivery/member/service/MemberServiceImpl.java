@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.dao.MemberDAO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserAddressVO;
@@ -55,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void certifiedPhoneNumber(String user_phone, String numStr) {
-		String api_key = "NCSLKKH1668CXHYF"; // �ϼ�Key
+		String api_key = "NCSLKKH1668CXHYF"; // smsKey
 		String api_secret = "XTKDJVGBZYYGT1CVBVHOXVXYP05L7DND";
 		Message coolsms = new Message(api_key, api_secret);
 
@@ -63,12 +64,12 @@ public class MemberServiceImpl implements MemberService {
 		params.put("to", user_phone);
 		params.put("from", "01042820579");
 		params.put("type", "SMS");
-		params.put("text", "[Wdonald] ���� ��ȣ�� [" + numStr + "] �Դϴ�.");
+		params.put("text", "[Wdonald] certification code is [" + numStr + "]");
 		params.put("app_version", "test app 1.2");
 
 		try {
 			JSONObject obj = (JSONObject) coolsms.send(params);
-			System.out.println("���� ���� : " + obj.toString());
+			System.out.println("certification : " + obj.toString());
 		} catch (CoolsmsException e) {
 			e.printStackTrace();
 		}
@@ -160,5 +161,15 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.paymentList(paraMap);
 	}
 
+	@Override
+
+	public List<PaymentVO> getUserPaymentInfo(String user_email) {
+		return memberDAO.getUserPaymentInfo(user_email);
+	}
+
+	@Override
+	public List<CartVO> getCartListByMerchantId(String merchantUid) {
+		return memberDAO.getCartListByMerchantId(merchantUid);
+	}
 
 }

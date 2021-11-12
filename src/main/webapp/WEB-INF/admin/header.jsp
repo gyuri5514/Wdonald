@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +33,15 @@
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 		
-		<h1 class="navbar-brand">dfaf 관리자님 안녕하세요.</h1> <!-- 로그인하면 보이게 -->
-		
+		<c:choose>
+			<c:when test="${not empty sessionScope.admin }">
+				<h1 class="navbar-brand">${sessionScope.admin.admin_name}님 안녕하세요.</h1>
+				<a class="navbar-brand ps-3" style="width: 100px" href="logout.mdo">로그아웃</a>
+			</c:when>
+			<c:otherwise>
+				<a class="navbar-brand ps-3" style="width: 100px" href="login.mdo">로그인</a>
+			</c:otherwise>
+		</c:choose>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="fas fa-user fa-fw"></i>
@@ -91,7 +99,14 @@
 								</a>
 									<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="login.mdo">Login</a>
+										<c:choose>
+											<c:when test="${not empty sessionScope.admin }">
+												<a></a>
+											</c:when>
+											<c:otherwise>
+												<a class="nav-link" href="login.mdo">Login</a>
+											</c:otherwise>
+										</c:choose>
 											<a class="nav-link" href="register.mdo">Store Register</a>
 											<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
 										</nav>
