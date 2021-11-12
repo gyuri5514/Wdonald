@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 
+/**
+	class that resolves warnings when casting ArrayList Type Object in session
+*/
 public class TypeSafety {
 	public static ArrayList<CartVO> sessionCartCaster(Object obj){
 		ArrayList<CartVO> cartVO = new ArrayList<CartVO>();
