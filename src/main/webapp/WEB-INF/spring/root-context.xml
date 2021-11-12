@@ -53,7 +53,8 @@
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.dessert.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.happymeal.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.member.payment.dao"/>
-       <mybatis-spring:scan base-package="com.wdelivery.admin.dao"/>
+     <mybatis-spring:scan base-package="com.wdelivery.admin.dao"/>
+     <mybatis-spring:scan base-package="com.wdelivery.promotion.dao"/>
 
 	
 	 <context:component-scan base-package="com.wdelivery"></context:component-scan>

@@ -537,11 +537,6 @@ public class MemberController {
 		return "brandhistory";
 	}
 
-	@GetMapping("/promotion.do")
-	public String promotion() {
-		return "promotion";
-	}
-
 	// qna Insert
 	@RequestMapping("/qnaInsert.do")
 	public String qnaInsert(QnaVO qnaVO) {
