@@ -6,5 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAdmin" resultType="adminVO" parameterType="adminVO">
 		select * from admin where admin_id = #{admin_id}
 	</select>
-	
+	<insert id="register" parameterType="adminVO">
+		INSERT INTO admin (admin_id, admin_name, admin_password, admin_phone, store_name, store_address, store_code, store_phone) VALUES(#{admin_id}, #{admin_name}, #{admin_password}, #{admin_phone}, #{store_name}, #{store_address}, #{store_code}, #{store_phone})
+	</insert>
 </mapper>
