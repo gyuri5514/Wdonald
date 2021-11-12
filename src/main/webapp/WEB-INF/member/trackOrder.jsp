@@ -355,6 +355,16 @@ function order_detail_show() {
 		$("#order_detail_table").hide();
 	}
 }
+
+function orderDetail(merchantUid){
+		$.ajax({
+			type:"POST",
+			url :"getCartListByMerchantId.do?merchantuid="+merchantUid,
+			contentType:"application/json",
+			success : function(res){}
+		})
+	}
+
 </script>
 
 <div class="col-md-9">
@@ -374,16 +384,27 @@ function order_detail_show() {
 				</tr>
 			</thead>
 			<tbody class="table_body_trackorder">
+			<c:forEach var="payment"  step="1" begin="0" items="${paymentList}">
 				<tr>
 					<td class="trackorder_td">
-						<a href="javascript:order_detail_show()" id="order_detail" title="주문 상세 내역 보기">주문번호</a>
+						<input type="hidden" id="merchantuid" value="${payment.merchantuid }"><a href="javascript:void(0);" onclick="orderDetail('${payment.merchantuid }');"   
+						 title="주문 상세 내역 보기">${payment.merchantuid }</a>
 					</td>
-					<td class="trackorder_td">예상 배달 시간</td>
+					<td class="trackorder_td">${payment.delivery_time}</td>
+					<c:if test="${payment.order_status eq '주문 접수' || payment.order_status eq '준비 중' || payment.order_status eq '배달 중' || payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/notes.png"></td>
+					</c:if>
+						<c:if test="${payment.order_status eq '준비 중' || payment.order_status eq '배달 중' || payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/cook.png"></td>
+					</c:if>
+					<c:if test="${payment.order_status eq '배달 중' || payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/delivery-man.png"></td>
+					</c:if>
+					<c:if test="${ payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/burger.png"></td>
+					</c:if>
 				</tr>
+				</c:forEach>
 			</tbody>
 			<tfoot class="table_foot_trackorder">
 				<tr class="table_foot_tr">

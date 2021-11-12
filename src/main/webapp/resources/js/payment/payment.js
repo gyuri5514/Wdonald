@@ -15,9 +15,9 @@ $(document).ready(function() {
 	$('#cash').click(function() {
 		var content = "&nbsp;<label>금액을 선택해주세요." +
 			"</label>&nbsp;&nbsp;&nbsp;<select id='exactCash' name='exactCash'>" +
-			"<option value='won1'>1만원권</option>" +
-			"<option value='won5'>5만원권</option>" +
-			"<option value='exact'>금액에 맞게</option></select>";
+			"<option value='1만원권'>1만원권</option>" +
+			"<option value='5만원권'>5만원권</option>" +
+			"<option value='금액에맞게'>금액에 맞게</option></select>";
 
 		if ($('input:radio[id="cash"]').is(":checked") == true) {
 			$('#selectedCash').html(content);
@@ -151,7 +151,7 @@ function submitCashless() {
 }
 //만나서 결제 , 회원만 가능
 function onsitePayment() {
-	
+	var user_seq = $('#user_seq').val();
 	var total_price = $('#total_price').val();
 	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"":$('#user_address').val();
 	var user_email = $('#user_email').val();
@@ -180,9 +180,11 @@ function onsitePayment() {
 	var user_name = $('#user_name').val();
 	var user_phone = $('#user_phone').val()==null||$('#user_phone').val()==""?"010-0000-0000":$('#user_phone').val();
 	
+	var codeWdonald = new Date();
+	
 				$.ajax({
 					type:"POST",
-					url : "paywinOnsitePay.do",
+					url :  "paywinCredit.do",
 					asnyc: false,
 					data: JSON.stringify({
 						"user_name": user_name,
@@ -197,8 +199,12 @@ function onsitePayment() {
 						"store_code" : store_code,
 						"coupon_no" : coupon_no,
 						"pay_status" : payment_type,
+						"merchantuid" : 'osp'+codeWdonald.getDay()+codeWdonald.getMonth()
+									+codeWdonald.getFullYear()+codeWdonald.getHours()
+									+codeWdonald.getMinutes()+codeWdonald.getSeconds()+user_seq,
 						"order_comment" : order_comment,
-						"exactCash" : exactCash
+						"exactCash" : exactCash,
+						
 					}),
 					contentType:"application/json"
 				})

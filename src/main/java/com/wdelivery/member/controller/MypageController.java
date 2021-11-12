@@ -6,17 +6,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.LabelView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.vo.UserAddressVO;
@@ -190,5 +189,21 @@ public class MypageController {
 		model.addAttribute("UserCouponVO", UserCouponVO);
 		
 		return "coupon";
+	}
+	@GetMapping("/trackOrder.do")
+	public String trackOrder(HttpSession session,Model model) {
+		UserVO userInfo =(UserVO)session.getAttribute("userInfo");
+		List<PaymentVO> paymentList = memberService.getUserPaymentInfo(userInfo.getUser_email());
+		for(PaymentVO pv : paymentList ) {
+			System.out.println(pv.toString());
+		}
+		model.addAttribute("paymentList",paymentList);
+		return "trackOrder";
+	}
+	
+	@PostMapping("getCartListByMerchantId.do")
+	public List<CartVO> getCartListByMerchantId(@RequestParam("merchantuid") String merchantUid){
+		System.out.println(merchantUid);
+		return memberService.getCartListByMerchantId(merchantUid);
 	}
 }

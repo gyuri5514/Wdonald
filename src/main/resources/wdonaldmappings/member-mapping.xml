@@ -137,4 +137,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 		order by order_seq desc
 	</select>
+	
+	<select id="getUserPaymentInfo" resultType="paymentVO" parameterType="String">
+	<![CDATA[
+		select * from order_list where user_email=#{user_email}	order by order_seq desc
+		]]>
+	</select>
+	
+	<select id="getCartListByMerchantId" resultType="cartVO" parameterType="String">
+	<![CDATA[
+		select * from order_list where user_email=#{user_email}	order by order_seq desc
+		]]>
+	</select>
 </mapper>
