@@ -31,9 +31,7 @@ public class MypageController {
 	@GetMapping("/mypageupdate.do")
 	public String mypageupdate(Model model, HttpSession session, UserVO userVO) {
 		
-		if(session.getAttribute("userInfo")==null&&
-				session.getAttribute("kakaoSession")==null&&
-				    session.getAttribute("naverSession")==null)
+		if(SessionClassifier.sessionClassifier(session)==null)
 			 return "redirect:main.do";
 			
 		session.setAttribute("session", userVO);

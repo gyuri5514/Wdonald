@@ -237,9 +237,6 @@ function orderDetail(merchantUid){
 			url :"getCartListByMerchantId.do?merchantuid="+merchantUid,
 			contentType:"application/json",
 			success : function(res){
-				console.log(res);
-				console.log(res[0]);
-				console.log(res.length);
 				for(var i in res){
 					$('#'+merchantUid).append(res[i].cart_product_name+"x"+res[i].cart_product_quantity+
 							(res[i].cart_product_side_name!=null?"      <small>"+res[i].cart_product_side_name+"</small>":" ")+
