@@ -6,15 +6,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.text.LabelView;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -130,7 +127,7 @@ public class MypageController {
 		return "redirect:addressBook.do";
 	}
 	
-	//order
+	//데이터 피커 하고싶은데 안됌 ㅠ
 	@GetMapping("/search.do")
 	public String orderHistory(@RequestParam(value = "paymentVO", required = false) List<PaymentVO> paymentVO, 
 			@RequestParam(value = "start_history",required = false) String start_history, @RequestParam(value = "end_history", required = false) String end_history, 
@@ -165,10 +162,44 @@ public class MypageController {
 	}
 	
 	@GetMapping("/orderHistory.do")
-	public String orderHistory() {
+	public String orderHistory(@RequestParam(value = "paymentVO", required = false) List<PaymentVO> paymentVO, Model model, HttpSession session) {
+		
+		UserVO userVO = null;
+		if (session.getAttribute("userInfo") != null) {
+			userVO = (UserVO) session.getAttribute("userInfo");
+		} else if (session.getAttribute("kakaoSession") != null) {
+			userVO = (UserVO) session.getAttribute("kakaoSession");
+		} else if (session.getAttribute("naverSession") != null) {
+			userVO = (UserVO) session.getAttribute("naverSession");
+		}
+		String user_email = userVO.getUser_email();
+		
+		HashMap<String, String> paraMap = new HashMap<String, String>();
+		paraMap.put("user_email", user_email);
+		paymentVO = new ArrayList<PaymentVO>();
+		paymentVO = memberService.paymentList(paraMap);
+		
+		model.addAttribute("paymentVO", paymentVO);
 		return "orderHistory";
 	}
-
+	
+	@GetMapping("/trackOrder.do")
+	public String trackOrder(Model model, HttpSession session) {
+		//(@RequestParam(value = "paymentVO", required = false) List<PaymentVO> paymentVO
+		UserVO userVO = null;
+		if (session.getAttribute("userInfo") != null) {
+			userVO = (UserVO) session.getAttribute("userInfo");
+		} else if (session.getAttribute("kakaoSession") != null) {
+			userVO = (UserVO) session.getAttribute("kakaoSession");
+		} else if (session.getAttribute("naverSession") != null) {
+			userVO = (UserVO) session.getAttribute("naverSession");
+		}
+		String user_email = userVO.getUser_email();
+		List<PaymentVO> paymentVO = memberService.paymentList_e(user_email);
+		System.out.println("paymentVO : " + paymentVO.toString());
+		model.addAttribute("paymentVO", paymentVO);
+		return "trackOrder";
+	}
 	
 	//coupon
 	@GetMapping("/coupon.do")
