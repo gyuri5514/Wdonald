@@ -1,8 +1,10 @@
 package com.wdelivery.cart.vo;
-
+/*
+ *typeAlias = cartVO 
+ */
 public class CartVO {
 	
-	//화면에 보여줄 필드
+	//�솕硫댁뿉 蹂댁뿬以� �븘�뱶
 	private Integer cart_b_code;
 	private String cart_b_name;
 	private Integer cart_b_price;
@@ -38,7 +40,7 @@ public class CartVO {
 	private Integer cart_quantity;
 	private Integer cart_price;
 
-	//db에 들어갈 필드
+	//db�뿉 �뱾�뼱媛� �븘�뱶
 	private Integer cart_product_code;
 	private String cart_product_name;
 	private String cart_product_side_name;

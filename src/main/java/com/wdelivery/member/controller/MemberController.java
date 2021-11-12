@@ -95,7 +95,7 @@ public class MemberController {
 			@RequestParam(value = "num", required = false) String num) {
 		
 		if(va != null) {
-			if(va.equals("변경")) {
+			if(va.equals("蹂�寃�")) {
 				System.out.println("b_code : " + b_code);
 				System.out.println("s_code : " + s_code);
 				System.out.println("d_code : " + d_code);
@@ -156,18 +156,18 @@ public class MemberController {
 		
 		if (va == null)
 			return "orderConfirm";
-		if (va.equals("새로고침")) {
-			System.out.println("새로고침");
+		if (va.equals("�깉濡쒓퀬移�")) {
+			System.out.println("�깉濡쒓퀬移�");
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", total_price);
 			model.addAttribute("delivery_price", deliveryPrice);
 			return "orderConfirm";
 		}
 		
-		if (va.equals("삭제")) {
+		if (va.equals("�궘�젣")) {
 			cartList.remove(Integer.parseInt(num));
 
-		} else if (va.equals("라지세트")) {
+		} else if (va.equals("�씪吏��꽭�듃")) {
 			BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
 			BurgerLgSetVO burgerLgSetVO = burgerLgSetService.detailBurgerLgSet(Integer.parseInt(b_code) + 400);
 
@@ -194,7 +194,7 @@ public class MemberController {
 			
 			cartList.add(cartVO);
 			
-		} else if (va.equals("세트")) {
+		} else if (va.equals("�꽭�듃")) {
 			CartVO cartVO = new CartVO();
 			
 			if(b_code != null) {
@@ -247,7 +247,7 @@ public class MemberController {
 			
 			cartList.add(cartVO);
 			
-		} else if (va.equals("단품")) {
+		} else if (va.equals("�떒�뭹")) {
 			CartVO cartVO = new CartVO();
 			if(b_code != null) {
 				BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
@@ -282,12 +282,12 @@ public class MemberController {
 			
 			cartList.add(cartVO);
 			
-		} else if (va.equals("사이드")) {
+		} else if (va.equals("�궗�씠�뱶")) {
 			int side_price = 0;
 
-			if (s_name.indexOf("미디움") > 0)
+			if (s_name.indexOf("誘몃뵒��") > 0)
 				side_price = 500;
-			else if (s_name.indexOf("라지") > 0)
+			else if (s_name.indexOf("�씪吏�") > 0)
 				side_price = 1000;
 
 			SideVO sideVO = sideService.detailSide(Integer.parseInt(side));
@@ -307,12 +307,12 @@ public class MemberController {
 			
 			cartList.add(cartVO);
 			
-		} else if (va.equals("음료")) {
+		} else if (va.equals("�쓬猷�")) {
 			int drink_price = 0;
 
-			if (d_name.indexOf("미디움") > 0)
+			if (d_name.indexOf("誘몃뵒��") > 0)
 				drink_price = 500;
-			else if (d_name.indexOf("라지") > 0)
+			else if (d_name.indexOf("�씪吏�") > 0)
 				drink_price = 1000;
 			DrinkVO drinkVO = drinkService.detailDrink(Integer.parseInt(drink));
 
@@ -332,12 +332,12 @@ public class MemberController {
 			
 			cartList.add(cartVO);
 			
-		}  else if (va.equals("디저트")) {
+		}  else if (va.equals("�뵒���듃")) {
 			int side_price = 0;
 
-			if (s_name.indexOf("미디움") > 0)
+			if (s_name.indexOf("誘몃뵒��") > 0)
 				side_price = 500;
-			else if (s_name.indexOf("라지") > 0)
+			else if (s_name.indexOf("�씪吏�") > 0)
 				side_price = 1000;
 			DessertVO dessertVO = dessertService.detailDessert(Integer.parseInt(dessert_code));
 
@@ -500,11 +500,6 @@ public class MemberController {
 	@GetMapping("/qna.do")
 	public String qnapage(Model model, @RequestParam(name = "value", required = false) String value) {
 		return "qna";
-	}
-
-	@GetMapping("/trackOrder.do")
-	public String trackOrder() {
-		return "trackOrder";
 	}
 
 	@GetMapping("/store.do")
