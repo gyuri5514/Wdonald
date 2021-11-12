@@ -19,6 +19,7 @@
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="resources/js/join/datepicker.js"></script>
 <script src="resources/js/commons.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/join/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/join/theme-style.min.css">
@@ -32,6 +33,7 @@
 </head>
 
 <body class="page page-join">
+<div id="map" style="width: 0%; height: 0px;"></div>
 <div class="wrapper ">
 		<header class="header"><!-- 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->
 			<div class="headArea">
@@ -186,11 +188,68 @@
 			
 			oncomplete : function(data) {
 				document.querySelector("#m_zipcode").value = data.address;
+
+				var m_zipcode = $('#m_zipcode').val();
+				alert("da?" + m_zipcode);
+
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				mapOption = {
+				    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				    level: 3 // 지도의 확대 레벨
+				};  
+
+				// 지도를 생성
+				//var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+				
+				// 주소-좌표 변환 객체
+				var geocoder = new kakao.maps.services.Geocoder();
+
+				// 주소로 좌표를 검색
+				geocoder.addressSearch(m_zipcode, function(result, status) {
+
+				// 정상적으로 검색이 완료 시
+				 if (status === kakao.maps.services.Status.OK) {
+
+				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				    
+				   document.getElementById("address_lat").value = result[0].y;
+				   document.getElementById("address_lon").value = result[0].x;
+				    
+					//var message = 'latlng: new kakao.maps.LatLng(' + result[0].y + ', ';
+					//message += result[0].x + ')';
+					
+					var resultDiv = document.getElementById('clickLatlng'); 
+					resultDiv.innerHTML = message;
+					
+				    // 결과값으로 받은 위치를 마커 표시
+				  /*   var marker = new kakao.maps.Marker({
+				        map: map,
+				        position: coords
+				    }); */
+
+				    // 인포윈도우로 장소에 대한 설명 표시
+				   /*  var infowindow = new kakao.maps.InfoWindow({
+				        content: '<div style="width:150px;text-align:center;padding:6px 0;">장소</div>'
+				    });
+				    infowindow.open(map, marker); */
+
+				    // 지도의 중심을 결과값으로 받은 위치로 이동
+				    //map.setCenter(coords);
+				} 
+				});
+				
+				
+				
 			},
-			theme: themeObj 
+			theme: themeObj
 		}).open();
+		
 	}
+	
+	 
 </script>
+
 		<div id="content">
 		<div class="container" id="sub-page-content">
 			<div class="row">
@@ -283,11 +342,13 @@
 						<div class="form-group">
 							<label for="m_zipcode" class="dis_b">주소</label>
 							<div class="input-group">
-								<input name="address1" id="m_zipcode" type="text" class="form-control placeholder" readonly="readonly" /> 
+								<input name="address1" id="m_zipcode" type="text" class="form-control placeholder" readonly="readonly" />
 									<span class="input-group-btn">
 									<a href="javascript:openDaumPostcode()"	class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
 									<i class="fa fa-search"></i></a></span>
 							</div>
+							<input type="hidden" name="address_lat" id="address_lat">
+							<input type="hidden" name="address_lon" id="address_lon">
 							<input name="address2" id="m_address" type="text" class="form-control placeholder mt_10" />
 							<!-- <input type="hidden" name="d_key" value="1"> -->
 						</div>						
@@ -347,4 +408,8 @@
 	<!-- //#content -->
 	
 	</div>
+	
+	
+	<div id="clickLatlng"></div><!-- 위도 확인하려고 -->
+	
 <%@ include file="footer.jsp"%>
