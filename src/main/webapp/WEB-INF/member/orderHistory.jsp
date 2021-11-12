@@ -95,13 +95,6 @@ $(function () {
     });
 });
 
-function goSearch(){
-	var frm  = document.orderHistoryFind;
-	frm.method = "GET";
-	frm.action = "/search.do";
-	frm.submit();
-}
-
 $(function(){
 	if(${start_history != null && start_history != "" && end_history != null && end_history != ""}){
 		$('#start_history').val("${start_history}");
@@ -111,8 +104,13 @@ $(function(){
 	$("#btnSearch").click(function(){
 		goSearch()
 	});
-	
 });
+function goSearch(){
+	var frm  = document.orderHistoryFind;
+	frm.method = "GET";
+	frm.action = "/search.do";
+	frm.submit();
+}
 </script>
   	<div class="container" id="sub-page-content">
       <!--main content-->
@@ -124,7 +122,7 @@ $(function(){
 				<input type="text" name="start_history" id="start_history" maxlength="10" readonly="readonly" /> 
 					&nbsp;	-  &nbsp; 
 				<input type="text" name="end_history" id="end_history" maxlength="10"  readonly="readonly" />
-					&nbsp;&nbsp;&nbsp;<a href="" class="btn btn-md btn-red" id="btnSearch">검색</a>
+					&nbsp;&nbsp;&nbsp;<a href="javascript:goSearch()" class="btn btn-md btn-red" id="btnSearch">검색</a>
 					     <a href="javascript:historySearch()" id="btn_empty" class="btn btn-md btn-red" >초기화</a>
 				<table class="table_historyorder" id="table_historyorder">
 			         <thead class="table_head_historyorder">
