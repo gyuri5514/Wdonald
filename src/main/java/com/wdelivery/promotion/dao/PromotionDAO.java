@@ -8,6 +8,8 @@ public interface PromotionDAO {
 	
 	public List<PromotionVO> selectPromotion();
 	
-	public PromotionVO detailPromotion();
+	public List<PromotionVO> selectPromotionEnd();
+	
+	public PromotionVO detailPromotion(Integer p_code);
 
 }

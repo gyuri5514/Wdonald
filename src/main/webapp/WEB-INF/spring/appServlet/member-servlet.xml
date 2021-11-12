@@ -21,6 +21,7 @@
 	<context:component-scan base-package="com.wdelivery.member" />
 	<context:component-scan base-package="com.wdelivery.menu" />
 	<context:component-scan base-package="com.wdelivery.admin" />
+	<context:component-scan base-package="com.wdelivery.promotion" />
 	
 
 </beans>

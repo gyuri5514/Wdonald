@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.wdelivery.promotion.dao.PromotionDAO;
 import com.wdelivery.promotion.vo.PromotionVO;
 
-//@Service
+@Service
 public class PromotionServiceImpl implements PromotionService {
 
 	@Autowired
@@ -21,9 +21,15 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public PromotionVO detailPromotion() {
+	public PromotionVO detailPromotion(Integer p_code) {
 		System.out.println("detailPromotion Impl");
-		return promotionDAO.detailPromotion();
+		return promotionDAO.detailPromotion(p_code);
+	}
+
+	@Override
+	public List<PromotionVO> selectPromotionEnd() {
+		System.out.println("selectPromotionEnd");
+		return promotionDAO.selectPromotionEnd();
 	}
 
 }
