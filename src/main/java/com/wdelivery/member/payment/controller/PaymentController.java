@@ -49,30 +49,35 @@ public class PaymentController {
 	@PostMapping("paywinCredit.do")
 	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) {
 		System.out.println("paywinCredit.do");
-		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
 		if (userInfo != null) {
 			paymentVO.setUser_type(userInfo.getUser_status());
 		}else {
 			paymentVO.setUser_type(9);
 		}
-		/*
-		 * if (session.getAttribute("userInfo") != null) { UserVO userVO=
-		 * paymentVO.setUser_type(((UserVO)
-		 * session.getAttribute("userInfo")).getUser_status());
-		 * 
-		 * } else if (session.getAttribute("kakaoSession") != null) { UserVO userVO=
-		 * paymentVO.setUser_type(((UserVO)
-		 * session.getAttribute("kakaoSession")).getUser_status()); } else if
-		 * (session.getAttribute("naverSession") != null) { UserVO userVO=
-		 * paymentVO.setUser_type(((UserVO)
-		 * session.getAttribute("naverSession")).getUser_status()); } else { // not
-		 * member paymentVO.setUser_type(9); }
-		 */ paymentVO.setOrder_date(new Date());
+		
+		for(CartVO c : cartVO) {
+			System.out.println(c.toString());
+		}
+		 paymentVO.setOrder_date(new Date());
 		System.out.println(paymentVO.toString());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
 		session.setAttribute("cartList", new ArrayList<CartVO>());
 		return "main";
 	}
 
+	/*
+	 * if (session.getAttribute("userInfo") != null) { UserVO userVO=
+	 * paymentVO.setUser_type(((UserVO)
+	 * session.getAttribute("userInfo")).getUser_status());
+	 * 
+	 * } else if (session.getAttribute("kakaoSession") != null) { UserVO userVO=
+	 * paymentVO.setUser_type(((UserVO)
+	 * session.getAttribute("kakaoSession")).getUser_status()); } else if
+	 * (session.getAttribute("naverSession") != null) { UserVO userVO=
+	 * paymentVO.setUser_type(((UserVO)
+	 * session.getAttribute("naverSession")).getUser_status()); } else { // not
+	 * member paymentVO.setUser_type(9); }
+	 */
 }
