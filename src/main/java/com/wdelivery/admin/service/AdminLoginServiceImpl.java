@@ -17,5 +17,10 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 		
 		return adminLoginDAO.findAdmin(adminVO);
 	}
-
+	
+	@Override
+	public AdminVO register(AdminVO registerAdmin) throws Exception {
+		
+		return adminLoginDAO.register(registerAdmin);
+	}
 }

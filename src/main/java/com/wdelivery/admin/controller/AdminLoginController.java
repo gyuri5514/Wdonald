@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wdelivery.admin.service.AdminLoginService;
 import com.wdelivery.admin.vo.AdminVO;
@@ -50,8 +49,15 @@ public class AdminLoginController {
 
 		return "index";
 	}
-	@GetMapping("register.mdo")
+	@GetMapping("/register.mdo")
 	public String register() {
+		return "register";
+	}
+	
+	@PostMapping("/registerInsert.mdo")
+	public String register(AdminVO registerAdmin) throws Exception {
+		adminLoginService.register(registerAdmin);
+		System.out.println(registerAdmin.toString());
 		return "register";
 	}
 }
