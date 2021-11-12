@@ -157,10 +157,11 @@ public class MemberController {
 			@RequestParam(value = "price", required = false) String total_price, 
 			@RequestParam(value = "delivery_price", required = false) String deliveryPrice, HttpSession session) {
 		
+		List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
+		
 		if(va == null) {
 			int price = (int) session.getAttribute("total_price");
 			int delivery_price = (int) session.getAttribute("delivery_price");
-		  List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
       
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", price);
