@@ -2,28 +2,28 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wdelivery.menu.winMorning.dao.WinMorningDAO">
+<mapper namespace="com.wdelivery.menu.winMorningSet.dao.WinMorningSetDAO">
 	<select id="selectWinMorningSet" resultType="winMorningSetVO">
 		<![CDATA[
-			SELECT * FROM winmorning_set ORDER BY w_code
+			SELECT * FROM winmorning_set ORDER BY w_set_code
 		]]>
 	</select>
 	
 	<select id="detailMorningSet" resultType="winMorningSetVO">
 		<![CDATA[
-			SELECT * FROM winmorning_set WHERE w_code = #{w_code}
+			SELECT * FROM winmorning_set WHERE w_set_code = #{w_code}
 		]]>
 	</select>
 	
 	<select id="prevMorningSet" resultType="winMorningSetVO">
 		<![CDATA[
-			SELECT * FROM winmorning_set WHERE w_code = #{w_code} - 1;
+			SELECT * FROM winmorning_set WHERE w_set_code = #{w_code} - 1;
 		]]>
 	</select>
 	
 	<select id="nextMorningSet" resultType="winMorningSetVO">
 		<![CDATA[
-			SELECT * FROM winmorning_set WHERE w_code = #{w_code} + 1;
+			SELECT * FROM winmorning_set WHERE w_set_code = #{w_code} + 1;
 		]]>
 	</select>
 	

@@ -15,12 +15,9 @@ public class UserAddressVO {
 	private int address_seq;
 	private String d_key;
 	private String order_comment;
-//	public int getUser_seq() {
-//		return user_seq;
-//	}
-//	public void setUser_seq(int user_seq) {
-//		this.user_seq = user_seq;
-//	}
+	private double address_lat;
+	private double address_lon;
+	
 	public String getAddress1() {
 		return address1;
 	}
@@ -53,10 +50,23 @@ public class UserAddressVO {
 		this.order_comment = order_comment;
 	}
 	
+	public double getAddress_lat() {
+		return address_lat;
+	}
+	public void setAddress_lat(double address_lat) {
+		this.address_lat = address_lat;
+	}
+	public double getAddress_lon() {
+		return address_lon;
+	}
+	public void setAddress_lon(double address_lon) {
+		this.address_lon = address_lon;
+	}
 	@Override
 	public String toString() {
 		return "UserAddressVO [user_email=" + user_email + ", address1=" + address1 + ", address2=" + address2
-				+ ", address_seq=" + address_seq + ", d_key=" + d_key + ", order_comment=" + order_comment + "]";
+				+ ", address_seq=" + address_seq + ", d_key=" + d_key + ", order_comment=" + order_comment
+				+ ", address_lat=" + address_lat + ", address_lon=" + address_lon + "]";
 	}
-		
+
 }

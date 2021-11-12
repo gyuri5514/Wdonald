@@ -7,6 +7,8 @@ import com.wdelivery.promotion.vo.PromotionVO;
 public interface PromotionService {
 
 	public List<PromotionVO> selectPromotion();
+	
+	public List<PromotionVO> selectPromotionEnd();
 
-	public PromotionVO detailPromotion();
+	public PromotionVO detailPromotion(Integer p_code);
 }

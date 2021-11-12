@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -217,9 +218,14 @@ public class MypageController {
 		return "trackOrder";
 	}
 	
+	@ResponseBody
 	@PostMapping("getCartListByMerchantId.do")
 	public List<CartVO> getCartListByMerchantId(@RequestParam("merchantuid") String merchantUid){
 		System.out.println(merchantUid);
-		return memberService.getCartListByMerchantId(merchantUid);
+		List<CartVO> cartVO =memberService.getCartListByMerchantId(merchantUid);
+		for(CartVO c : cartVO) {
+			System.out.println(c.toString());
+		}
+		return cartVO;
 	}
 }

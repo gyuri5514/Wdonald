@@ -41,7 +41,7 @@ function promotionShow() {
 				<ul class="navPath">
 					<li><a href="/controller/main.do">Home</a></li>
 					<li><a href="/controller/promotion.do">What's New</a></li>
-					<li><a href="/controller/promotion.do">프로모션</a></li>
+					<li><a href="/controller/promotion.do">윈딜리버리 프로모션</a></li>
 				</ul>
 			</div>
 		</div>
@@ -58,9 +58,9 @@ function promotionShow() {
 				<ul class="cardBanner" id="promotionList">
 					<c:forEach items="${selectPromotion}" var="selectPromotion">
 						<li>
-							<a href="#" data-seq="${selectPromotion.p_code}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}">
+							<a href="#" onclick="goDetail(this)" class data="340, 1, N">
 								<div class="tmb">
-									<img src="${selectPromotion.p_img_path}" alt="${selectPromotion.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}">
+									<img src="${selectPromotion.p_img_path}" alt="${selectPromotion.p_name}">
 								</div>
 								<div class="con">
 									<strong class="tit">
@@ -73,9 +73,9 @@ function promotionShow() {
 					</c:forEach>
 					<c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
 						<li>
-							<a href="#" data-seq="${selectPromotionEnd.p_code}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotionEnd.p_code}" class="end">
+							<a href="#" onclick="goDetail(this)" class="end">
 								<div class="tmb">
-									<img src="${selectPromotionEnd.p_img_path}" alt="${selectPromotionEnd.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotionEnd.p_code}">
+									<img src="${selectPromotionEnd.p_img_path}" alt="${selectPromotionEnd.p_name}">
 								</div>
 								<div class="con">
 									<strong class="tit">
@@ -215,7 +215,7 @@ function promotionShow() {
 			getList(init_page+1,page_status);
 		}
 		
-		/* function goDetail(element){	
+		function goDetail(element){	
 		    var data = $(element).attr("data").split(",");
 		    var form_data = KmcCert.getUrlCode(data[0],"json");
 		
@@ -238,7 +238,7 @@ function promotionShow() {
 		        $("#searchForm").attr("action","/promotionDetail.do");
 		    }
 		    $("#searchForm").submit();	
-		} */
+		}
 		
 		function certificate(){
 			isCertificate = true;

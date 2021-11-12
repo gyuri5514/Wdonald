@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="winAddressJoin">
 		<![CDATA[
-			insert into user_address(user_email, address1, address2,d_key) values (#{user_email},#{address1},#{address2},1)
+			insert into user_address(user_email, address1, address2,d_key, address_lat, address_lon) values (#{user_email},#{address1},#{address2},1, #{address_lat}, #{address_lon})
 		]]>
 	</insert>
 	<insert id="naverMemJoin"  parameterType="userVO">
@@ -105,7 +105,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<insert id="addressInsert">
 		<![CDATA[
-			insert into user_address (address1, address2, d_key, user_email, order_comment) values (#{address1}, #{address2}, 0, #{user_email}, #{order_comment})
+			insert into user_address (address1, address2, d_key, user_email, order_comment, address_lat ,address_lon) values (#{address1}, #{address2}, 0, #{user_email}, #{order_comment}, #{address_lat}, #{address_lon})
 		]]>
 	</insert>
 	<update id="addressUpdate">
@@ -145,7 +145,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getCartListByMerchantId" resultType="cartVO" parameterType="String">
 	<![CDATA[
-		select * from order_list where user_email=#{user_email}	order by order_seq desc
+		select * from cart_list where merchantuid=#{merchantUid}	order by order_seq desc
 		]]>
 	</select>
 </mapper>

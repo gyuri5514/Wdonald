@@ -5,7 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.promotion.dao.PromotionDAO">
 	<select id="selectPromotion" resultType="promotionVO">
 		<![CDATA[
-			SELECT * FROM promotion ORDER BY p_code ASC
+			SELECT * FROM promotion WHERE p_status = 1 ORDER BY p_code ASC
+		]]>
+	</select>
+	
+	<select id="selectPromotionEnd" resultType="promotionVO">
+		<![CDATA[
+			SELECT * FROM promotion WHERE p_status = 2 ORDER BY p_code ASC
 		]]>
 	</select>
 	
