@@ -29,7 +29,7 @@ import com.wdelivery.member.vo.UserVO;
 public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
-
+	
 	private IamportClient api;
 
 	public PaymentController() {

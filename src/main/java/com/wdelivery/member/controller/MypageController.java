@@ -29,16 +29,12 @@ public class MypageController {
 
 	@GetMapping("/mypageupdate.do")
 	public String mypageupdate(Model model, HttpSession session, UserVO userVO) {
-		/*
-		 * if(session.getAttribute("userInfo")!=null) { UserVO userVO = (UserVO)
-		 * session.getAttribute("userInfo");
-		 * 
-		 * } userVO = memberService.userSelect(user_email);
-		 * //System.out.println("mypage !!!!!!!!=>" + userVO.toString());
-		 * 
-		 * model.addAttribute("userVO",
-		 * memberService.userSelect(userVO.getUser_email()));
-		 */
+		
+		if(session.getAttribute("userInfo")==null&&
+				session.getAttribute("kakaoSession")==null&&
+				    session.getAttribute("naverSession")==null)
+			 return "redirect:main.do";
+			
 		session.setAttribute("session", userVO);
 		System.out.println("?" + session);
 		return "mypageupdate";
@@ -208,7 +204,14 @@ public class MypageController {
 	}
 	@GetMapping("/trackOrder.do")
 	public String trackOrder(HttpSession session,Model model) {
-		UserVO userInfo =(UserVO)session.getAttribute("userInfo");
+		UserVO userInfo = null;
+		if(session.getAttribute("userInfo")!=null) {
+			userInfo = (UserVO)session.getAttribute("userInfo");
+		} else if(session.getAttribute("naverSession")!=null) {
+			userInfo = (UserVO)session.getAttribute("naverSession");
+		}  else if(session.getAttribute("kakaoSession")!=null) {
+			userInfo = (UserVO)session.getAttribute("kakaoSession");
+		}
 		List<PaymentVO> paymentList = memberService.getUserPaymentInfo(userInfo.getUser_email());
 		for(PaymentVO pv : paymentList ) {
 			System.out.println(pv.toString());
