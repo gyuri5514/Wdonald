@@ -206,7 +206,6 @@
 	});
 	
 </script>
-
 		<div style="padding: 40px 0px 40px;">
 			<div class="container" id="sub-page-content">
 				<div class="row">
@@ -233,11 +232,15 @@ function order_detail_show() {
 }
 
 function orderDetail(merchantUid){
+	
 		$.ajax({
 			type:"POST",
 			url :"getCartListByMerchantId.do?merchantuid="+merchantUid,
 			contentType:"application/json",
-			success : function(res){}
+			success : function(res){
+				alert(res);
+				console.log(res);
+			}
 		})
 	}
 
@@ -259,17 +262,12 @@ function orderDetail(merchantUid){
 					<td class="table_head_td_img">배달 완료</td>
 				</tr>
 			</thead>
-			<c:forEach items="${paymentVO }" var="paymentVO">
 			<tbody class="table_body_trackorder">
 			<c:forEach var="payment"  step="1" begin="0" items="${paymentList}">
 				<tr>
 					<td class="trackorder_td">
-<<<<<<< HEAD
 						<input type="hidden" id="merchantuid" value="${payment.merchantuid }"><a href="javascript:void(0);" onclick="orderDetail('${payment.merchantuid }');"   
 						 title="주문 상세 내역 보기">${payment.merchantuid }</a>
-=======
-						<a href="javascript:order_detail_show()" id="order_detail" title="주문 상세 내역 보기">${paymentVO.order_seq }</a>
->>>>>>> 9246df4653abc6b7607e7a88053af2ddbba98bc1
 					</td>
 					<td class="trackorder_td">${payment.delivery_time}</td>
 					<c:if test="${payment.order_status eq '주문 접수' || payment.order_status eq '준비 중' || payment.order_status eq '배달 중' || payment.order_status eq '배달 완료' }">
@@ -285,9 +283,9 @@ function orderDetail(merchantUid){
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/burger.png"></td>
 					</c:if>
 				</tr>
+				<div id="${payment.merchantuid}"><span></span></div>
 				</c:forEach>
 			</tbody>
-			</c:forEach>
 			<tfoot class="table_foot_trackorder">
 				<tr class="table_foot_tr">
 					<td colspan="6" class="table_foot_td"><a data-toggle="modal" class="btn btn-red btn-lg" href="burger.do">새로운 주문하기</a>
