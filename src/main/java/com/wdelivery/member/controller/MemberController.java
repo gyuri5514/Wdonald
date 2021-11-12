@@ -438,6 +438,7 @@ public class MemberController {
 			}
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
+			session.setAttribute("cartList", cartList);
 			
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", price);
