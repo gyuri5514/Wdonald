@@ -56,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void certifiedPhoneNumber(String user_phone, String numStr) {
-		String api_key = "NCSLKKH1668CXHYF"; // �ϼ�Key
+		String api_key = "NCSLKKH1668CXHYF"; // smsKey
 		String api_secret = "XTKDJVGBZYYGT1CVBVHOXVXYP05L7DND";
 		Message coolsms = new Message(api_key, api_secret);
 
@@ -64,12 +64,12 @@ public class MemberServiceImpl implements MemberService {
 		params.put("to", user_phone);
 		params.put("from", "01042820579");
 		params.put("type", "SMS");
-		params.put("text", "[Wdonald] ���� ��ȣ�� [" + numStr + "] �Դϴ�.");
+		params.put("text", "[Wdonald] certification code is [" + numStr + "]");
 		params.put("app_version", "test app 1.2");
 
 		try {
 			JSONObject obj = (JSONObject) coolsms.send(params);
-			System.out.println("���� ���� : " + obj.toString());
+			System.out.println("certification : " + obj.toString());
 		} catch (CoolsmsException e) {
 			e.printStackTrace();
 		}
@@ -162,6 +162,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+
 	public List<PaymentVO> getUserPaymentInfo(String user_email) {
 		return memberDAO.getUserPaymentInfo(user_email);
 	}
@@ -170,6 +171,5 @@ public class MemberServiceImpl implements MemberService {
 	public List<CartVO> getCartListByMerchantId(String merchantUid) {
 		return memberDAO.getCartListByMerchantId(merchantUid);
 	}
-
 
 }

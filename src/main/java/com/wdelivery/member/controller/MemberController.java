@@ -503,8 +503,6 @@ public class MemberController {
 		return "qna";
 	}
 
-	
-
 	@GetMapping("/store.do")
 	public String store() {
 		return "store";

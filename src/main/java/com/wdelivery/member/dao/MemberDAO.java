@@ -47,8 +47,10 @@ public interface MemberDAO {
 	public UserAddressVO addressSelect(String user_email);
 
 	public List<PaymentVO> paymentList(HashMap<String, String> paraMap);
+
 	public List<PaymentVO> getUserPaymentInfo(String user_email);
 
 	public List<CartVO> getCartListByMerchantId(String merchantUid);
+
 
 }
