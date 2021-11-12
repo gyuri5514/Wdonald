@@ -124,8 +124,10 @@ public class MemberController {
 
 		} else if (w_code != null) {
 			WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
+			WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code)+200);
 			
 			model.addAttribute("winMorningVO", winMorningVO);
+			model.addAttribute("winMorningSetVO",winMorningSetVO);
 			
 		} else if (dessert_code != null) {
 			DessertVO dessertVO = dessertService.detailDessert(Integer.parseInt(dessert_code));
@@ -154,57 +156,42 @@ public class MemberController {
 			@RequestParam(value = "price", required = false) String total_price, 
 			@RequestParam(value = "delivery_price", required = false) String deliveryPrice, HttpSession session) {
 		
-		if (va == null)
-			return "orderConfirm";
-		if (va.equals("새로고침")) {
-			System.out.println("새로고침");
+		if(va == null) {
+			int price = (int) session.getAttribute("total_price");
+			int delivery_price = (int) session.getAttribute("delivery_price");
+			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
+			
 			model.addAttribute("cartList", cartList);
-			model.addAttribute("price", total_price);
-			model.addAttribute("delivery_price", deliveryPrice);
-			return "orderConfirm";
-		}
-		
-		if (va.equals("삭제")) {
-			cartList.remove(Integer.parseInt(num));
-
-		} else if (va.equals("라지세트")) {
-			BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
-			BurgerLgSetVO burgerLgSetVO = burgerLgSetService.detailBurgerLgSet(Integer.parseInt(b_code) + 400);
-
-			CartVO cartVO = new CartVO();
-			cartVO.setCart_b_Lgset_code(burgerLgSetVO.getB_lgset_code());
-			cartVO.setCart_b_Lgset_img_path(burgerLgSetVO.getB_lgset_img_path());
-			cartVO.setCart_b_Lgset_name(burgerLgSetVO.getB_lgset_name());
-			cartVO.setCart_b_Lgset_price(burgerLgSetVO.getB_lgset_price() * Integer.parseInt(quantity));
-			cartVO.setCart_b_code(burgerVO.getB_code());
-			cartVO.setCart_b_name(burgerVO.getB_name());
-			cartVO.setCart_s_code(Integer.parseInt(s_code));
-			cartVO.setCart_s_name(side);
-			cartVO.setCart_d_code(Integer.parseInt(d_code));
-			cartVO.setCart_d_name(drink);
-			cartVO.setCart_quantity(Integer.parseInt(quantity));
+			model.addAttribute("price", price);
+			model.addAttribute("delivery_price", delivery_price);
 			
-			cartVO.setCart_product_code(burgerLgSetVO.getB_lgset_code());
-			cartVO.setCart_product_name(burgerLgSetVO.getB_lgset_name());
-			cartVO.setCart_product_img_path(burgerLgSetVO.getB_lgset_img_path());
-			cartVO.setCart_product_price(burgerLgSetVO.getB_lgset_price());
-			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
-			cartVO.setCart_product_side_name(side);
-			cartVO.setCart_product_drink_name(drink);
+		} else {
+			if (va.equals("새로고침")) {
+				System.out.println("새로고침");
+				model.addAttribute("cartList", cartList);
+				model.addAttribute("price", total_price);
+				model.addAttribute("delivery_price", deliveryPrice);
+				return "orderConfirm";
+			}
 			
-			cartList.add(cartVO);
-			
-		} else if (va.equals("세트")) {
-			CartVO cartVO = new CartVO();
-			
-			if(b_code != null) {
-				BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
-				BurgerSetVO burgerSetVO = burgerSetService.detailBurgerSet(Integer.parseInt(b_code) + 100);
+			if (va.equals("삭제")) {
+				cartList.remove(Integer.parseInt(num));
 	
-				cartVO.setCart_b_set_code(burgerSetVO.getB_set_code());
-				cartVO.setCart_b_set_img_path(burgerSetVO.getB_set_img_path());
-				cartVO.setCart_b_set_name(burgerSetVO.getB_set_name());
-				cartVO.setCart_b_set_price(burgerSetVO.getB_set_price() * Integer.parseInt(quantity));
+			} else if (va.equals("라지세트")) {
+				BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
+				BurgerLgSetVO burgerLgSetVO = burgerLgSetService.detailBurgerLgSet(Integer.parseInt(b_code) + 400);
+				
+				CartVO cartVO = new CartVO();
+				cartVO.setCart_b_Lgset_code(burgerLgSetVO.getB_lgset_code());
+				cartVO.setCart_b_Lgset_img_path(burgerLgSetVO.getB_lgset_img_path());
+				cartVO.setCart_b_Lgset_name(burgerLgSetVO.getB_lgset_name());
+				
+				if(Integer.parseInt(d_code) != 323 && Integer.parseInt(d_code) != 324 && Integer.parseInt(d_code) != 325 &&
+						Integer.parseInt(d_code) != 326 && Integer.parseInt(d_code) != 327) 
+					cartVO.setCart_b_Lgset_price((burgerLgSetVO.getB_lgset_price() * Integer.parseInt(quantity)) + 1000);
+				else
+					cartVO.setCart_b_Lgset_price(burgerLgSetVO.getB_lgset_price() * Integer.parseInt(quantity));
+				
 				cartVO.setCart_b_code(burgerVO.getB_code());
 				cartVO.setCart_b_name(burgerVO.getB_name());
 				cartVO.setCart_s_code(Integer.parseInt(s_code));
@@ -213,212 +200,254 @@ public class MemberController {
 				cartVO.setCart_d_name(drink);
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
 				
-				cartVO.setCart_product_code(burgerSetVO.getB_set_code());
-				cartVO.setCart_product_name(burgerSetVO.getB_set_name());
-				cartVO.setCart_product_img_path(burgerSetVO.getB_set_img_path());
-				cartVO.setCart_product_price(burgerSetVO.getB_set_price());
+				cartVO.setCart_product_code(burgerLgSetVO.getB_lgset_code());
+				cartVO.setCart_product_name(burgerLgSetVO.getB_lgset_name());
+				cartVO.setCart_product_img_path(burgerLgSetVO.getB_lgset_img_path());
+				cartVO.setCart_product_price(burgerLgSetVO.getB_lgset_price());
 				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 				cartVO.setCart_product_side_name(side);
 				cartVO.setCart_product_drink_name(drink);
 				
-			} else if(w_code != null) {
-				WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code));
+				cartList.add(cartVO);
 				
-				cartVO.setCart_w_set_code(winMorningSetVO.getW_set_code());
-				cartVO.setCart_w_set_img_path(winMorningSetVO.getW_set_img_path());
-				cartVO.setCart_w_set_name(winMorningSetVO.getW_set_name());
-				cartVO.setCart_w_set_price(winMorningSetVO.getW_set_price() * Integer.parseInt(quantity));
-				cartVO.setCart_w_name(winMorningSetVO.getW_set_name());
-				cartVO.setCart_w_code(winMorningSetVO.getW_set_code());
-				cartVO.setCart_s_code(Integer.parseInt(s_code));
-				cartVO.setCart_s_name(side);
-				cartVO.setCart_d_code(Integer.parseInt(d_code));
-				cartVO.setCart_d_name(drink);
-				cartVO.setCart_quantity(Integer.parseInt(quantity));
+			} else if (va.equals("세트")) {
+				CartVO cartVO = new CartVO();
 				
-				cartVO.setCart_product_code(winMorningSetVO.getW_set_code());
-				cartVO.setCart_product_name(winMorningSetVO.getW_set_name());
-				cartVO.setCart_product_img_path(winMorningSetVO.getW_set_img_path());
-				cartVO.setCart_product_price(winMorningSetVO.getW_set_price());
-				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
-				cartVO.setCart_product_side_name(side);
-				cartVO.setCart_product_drink_name(drink);
-			}
-			
-			cartList.add(cartVO);
-			
-		} else if (va.equals("단품")) {
-			CartVO cartVO = new CartVO();
-			if(b_code != null) {
-				BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
+				if(b_code != null) {
+					BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
+					BurgerSetVO burgerSetVO = burgerSetService.detailBurgerSet(Integer.parseInt(b_code) + 100);
+					
+					cartVO.setCart_b_set_code(burgerSetVO.getB_set_code());
+					cartVO.setCart_b_set_img_path(burgerSetVO.getB_set_img_path());
+					cartVO.setCart_b_set_name(burgerSetVO.getB_set_name());
+					if(Integer.parseInt(d_code) != 323 && Integer.parseInt(d_code) != 324 && Integer.parseInt(d_code) != 325 &&
+							Integer.parseInt(d_code) != 326 && Integer.parseInt(d_code) != 327) 
+						cartVO.setCart_b_set_price(burgerSetVO.getB_set_price() * Integer.parseInt(quantity) + + 1000);
+					else
+						cartVO.setCart_b_set_price(burgerSetVO.getB_set_price() * Integer.parseInt(quantity));
+					
+					cartVO.setCart_b_code(burgerVO.getB_code());
+					cartVO.setCart_b_name(burgerVO.getB_name());
+					cartVO.setCart_s_code(Integer.parseInt(s_code));
+					cartVO.setCart_s_name(side);
+					cartVO.setCart_d_code(Integer.parseInt(d_code));
+					cartVO.setCart_d_name(drink);
+					cartVO.setCart_quantity(Integer.parseInt(quantity));
+					
+					cartVO.setCart_product_code(burgerSetVO.getB_set_code());
+					cartVO.setCart_product_name(burgerSetVO.getB_set_name());
+					cartVO.setCart_product_img_path(burgerSetVO.getB_set_img_path());
+					cartVO.setCart_product_price(burgerSetVO.getB_set_price());
+					cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+					cartVO.setCart_product_side_name(side);
+					cartVO.setCart_product_drink_name(drink);
+					
+				} else if(w_code != null) {
+					WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
+					WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code)+ 200);
+					
+					cartVO.setCart_w_set_code(winMorningSetVO.getW_set_code());
+					cartVO.setCart_w_set_img_path(winMorningSetVO.getW_set_img_path());
+					cartVO.setCart_w_set_name(winMorningSetVO.getW_set_name());
+					cartVO.setCart_w_set_price(winMorningSetVO.getW_set_price() * Integer.parseInt(quantity));
+					cartVO.setCart_w_name(winMorningVO.getW_name());
+					cartVO.setCart_w_code(winMorningVO.getW_code());
+					cartVO.setCart_s_code(Integer.parseInt(s_code));
+					cartVO.setCart_s_name(side);
+					cartVO.setCart_d_code(Integer.parseInt(d_code));
+					cartVO.setCart_d_name(drink);
+					cartVO.setCart_quantity(Integer.parseInt(quantity));
+					
+					cartVO.setCart_product_code(winMorningSetVO.getW_set_code());
+					cartVO.setCart_product_name(winMorningSetVO.getW_set_name());
+					cartVO.setCart_product_img_path(winMorningSetVO.getW_set_img_path());
+					cartVO.setCart_product_price(winMorningSetVO.getW_set_price());
+					cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+					cartVO.setCart_product_side_name(side);
+					cartVO.setCart_product_drink_name(drink);
+				}
+				
+				cartList.add(cartVO);
+				
+			} else if (va.equals("단품")) {
+				CartVO cartVO = new CartVO();
+				if(b_code != null) {
+					BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
+		
+					cartVO.setCart_b_code(burgerVO.getB_code());
+					cartVO.setCart_b_img_path(burgerVO.getB_img_path());
+					cartVO.setCart_b_name(burgerVO.getB_name());
+					cartVO.setCart_b_price(burgerVO.getB_price() * Integer.parseInt(quantity));
+					cartVO.setCart_quantity(Integer.parseInt(quantity));
+					
+					cartVO.setCart_product_code(burgerVO.getB_code());
+					cartVO.setCart_product_name(burgerVO.getB_name());
+					cartVO.setCart_product_img_path(burgerVO.getB_img_path());
+					cartVO.setCart_product_price(burgerVO.getB_price());
+					cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+		
+				} else if(w_code != null) {
+					WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
+					
+					cartVO.setCart_w_code(winMorningVO.getW_code());
+					cartVO.setCart_w_img_path(winMorningVO.getW_img_path());
+					cartVO.setCart_w_name(winMorningVO.getW_name());
+					cartVO.setCart_w_price(winMorningVO.getW_price() * Integer.parseInt(quantity));
+					cartVO.setCart_quantity(Integer.parseInt(quantity));
+					
+					cartVO.setCart_product_code(winMorningVO.getW_code());
+					cartVO.setCart_product_name(winMorningVO.getW_name());
+					cartVO.setCart_product_img_path(winMorningVO.getW_img_path());
+					cartVO.setCart_product_price(winMorningVO.getW_price());
+					cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+				}
+				
+				cartList.add(cartVO);
+				
+			} else if (va.equals("사이드")) {
+				int side_price = 0;
+				
+				if(Integer.parseInt(s_code) == 704 || Integer.parseInt(s_code) == 705 || Integer.parseInt(s_code) == 706) {
+					if (s_name.indexOf("미디움") > 0)
+						side_price = 700;
+					else if (s_name.indexOf("라지") > 0)
+						side_price = 1000;
+				}
 	
-				cartVO.setCart_b_code(burgerVO.getB_code());
-				cartVO.setCart_b_img_path(burgerVO.getB_img_path());
-				cartVO.setCart_b_name(burgerVO.getB_name());
-				cartVO.setCart_b_price(burgerVO.getB_price() * Integer.parseInt(quantity));
-				cartVO.setCart_quantity(Integer.parseInt(quantity));
-				
-				cartVO.setCart_product_code(burgerVO.getB_code());
-				cartVO.setCart_product_name(burgerVO.getB_name());
-				cartVO.setCart_product_img_path(burgerVO.getB_img_path());
-				cartVO.setCart_product_price(burgerVO.getB_price());
-				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+				SideVO sideVO = sideService.detailSide(Integer.parseInt(s_code));
 	
-			} else if(w_code != null) {
-				WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
+				CartVO cartVO = new CartVO();
+				cartVO.setCart_s_code(sideVO.getS_code());
+				cartVO.setCart_s_img_path(sideVO.getS_img_path());
+				cartVO.setCart_s_name(sideVO.getS_name());
+				cartVO.setCart_s_price((sideVO.getS_price() + side_price) * Integer.parseInt(quantity));
+				cartVO.setCart_quantity(Integer.parseInt(quantity));
+			
+				cartVO.setCart_product_code(sideVO.getS_code());
+				cartVO.setCart_product_name(sideVO.getS_name());
+				cartVO.setCart_product_img_path(sideVO.getS_img_path());
+				cartVO.setCart_product_price((sideVO.getS_price() + side_price));
+				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 				
-				cartVO.setCart_w_code(winMorningVO.getW_code());
-				cartVO.setCart_w_img_path(winMorningVO.getW_img_path());
-				cartVO.setCart_w_name(winMorningVO.getW_name());
-				cartVO.setCart_w_price(winMorningVO.getW_price() * Integer.parseInt(quantity));
+				cartList.add(cartVO);
+				
+			} else if (va.equals("음료")) {
+				int drink_price = 0;
+				
+				if(Integer.parseInt(d_code) == 323 || Integer.parseInt(d_code) == 324 || Integer.parseInt(d_code) == 325 ||
+						Integer.parseInt(d_code) == 326 || Integer.parseInt(d_code) == 327) {
+					if (d_name.indexOf("미디움") > 0)
+						drink_price = 500;
+					else if (d_name.indexOf("라지") > 0)
+						drink_price = 1000;
+				}
+				DrinkVO drinkVO = drinkService.detailDrink(Integer.parseInt(d_code));
+	
+				CartVO cartVO = new CartVO();
+				cartVO.setCart_d_code(drinkVO.getD_code());
+				cartVO.setCart_d_img_path(drinkVO.getD_img_path());
+				cartVO.setCart_d_name(d_name);
+				cartVO.setCart_d_price((drinkVO.getD_price() + drink_price) * Integer.parseInt(quantity));
 				cartVO.setCart_quantity(Integer.parseInt(quantity));
 				
-				cartVO.setCart_product_code(winMorningVO.getW_code());
-				cartVO.setCart_product_name(winMorningVO.getW_name());
-				cartVO.setCart_product_img_path(winMorningVO.getW_img_path());
-				cartVO.setCart_product_price(winMorningVO.getW_price());
+				
+				cartVO.setCart_product_code(drinkVO.getD_code());
+				cartVO.setCart_product_name(d_name);
+				cartVO.setCart_product_img_path(drinkVO.getD_img_path());
+				cartVO.setCart_product_price((drinkVO.getD_price() + drink_price));
 				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+				
+				cartList.add(cartVO);
+				
+			}  else if (va.equals("디저트")) {
+				int side_price = 0;
+	
+				if (s_name.indexOf("미디움") > 0)
+					side_price = 500;
+				else if (s_name.indexOf("라지") > 0)
+					side_price = 1000;
+				DessertVO dessertVO = dessertService.detailDessert(Integer.parseInt(dessert_code));
+	
+				CartVO cartVO = new CartVO();
+				cartVO.setCart_dessert_code(dessertVO.getDessert_code());
+				cartVO.setCart_dessert_img_path(dessertVO.getDessert_img_path());
+				cartVO.setCart_dessert_name(dessertVO.getDessert_name());
+				cartVO.setCart_dessert_price((dessertVO.getDessert_price() + side_price) * Integer.parseInt(quantity));
+				cartVO.setCart_quantity(Integer.parseInt(quantity));
+	
+				cartVO.setCart_product_code(dessertVO.getDessert_code());
+				cartVO.setCart_product_name(dessertVO.getDessert_name());
+				cartVO.setCart_product_img_path(dessertVO.getDessert_img_path());
+				cartVO.setCart_product_price((dessertVO.getDessert_price() + side_price));
+				cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+				
+				cartList.add(cartVO);
+				
+			} 
+			
+			int price = 0;
+			
+			int b_Lgset_price = 0;
+			int b_price = 0;
+			int b_set_price = 0;
+			int d_price = 0;
+			int s_price = 0;
+			int w_price = 0;
+			int w_set_price = 0;
+			int dessert_price = 0;
+			int product_quantity = 0;
+			int delivery_price = 7000;
+			
+			for (CartVO vo : cartList) {
+				if (vo.getCart_b_Lgset_price() != null)
+					b_Lgset_price = vo.getCart_b_Lgset_price();
+				if (vo.getCart_b_price() != null)
+					b_price = vo.getCart_b_price();
+				if (vo.getCart_b_set_price() != null)
+					b_set_price = vo.getCart_b_set_price();
+				if (vo.getCart_d_price() != null)
+					d_price = vo.getCart_d_price();
+				if (vo.getCart_s_price() != null)
+					s_price = vo.getCart_s_price();
+				if (vo.getCart_w_set_price() != null)
+					w_set_price = vo.getCart_w_set_price();
+				if (vo.getCart_w_price() != null)
+					w_price = vo.getCart_w_price();
+				if (vo.getCart_dessert_price() != null)
+					dessert_price = vo.getCart_dessert_price();
+				if (vo.getCart_quantity() != null)
+					product_quantity = vo.getCart_quantity();
+				
+				System.out.println("---------------------------------");
+				System.out.println("b_Lgset_price : " + b_Lgset_price);
+				System.out.println("b_price : " + b_price);
+				System.out.println("b_set_price : " + b_set_price);
+				System.out.println("d_price : " + d_price);
+				System.out.println("s_price : " + s_price);
+				System.out.println("w_price : " + w_price);
+				System.out.println("w_set_price : " + w_set_price);
+				System.out.println("dessert_price : " + dessert_price);
+				System.out.println("product_quantity : " + product_quantity);
+				System.out.println("---------------------------------");
+				price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
+						+ dessert_price + w_price + w_set_price) + delivery_price;
+				System.out.println("price : " + price);
+				System.out.println("---------------------------------");
 			}
+			session.setAttribute("total_price", price);
+			session.setAttribute("delivery_price", delivery_price);
 			
-			cartList.add(cartVO);
+			model.addAttribute("cartList", cartList);
+			model.addAttribute("price", price);
+			model.addAttribute("delivery_price", delivery_price);
 			
-		} else if (va.equals("사이드")) {
-			int side_price = 0;
-
-			if (s_name.indexOf("미디움") > 0)
-				side_price = 500;
-			else if (s_name.indexOf("라지") > 0)
-				side_price = 1000;
-
-			SideVO sideVO = sideService.detailSide(Integer.parseInt(side));
-
-			CartVO cartVO = new CartVO();
-			cartVO.setCart_s_code(sideVO.getS_code());
-			cartVO.setCart_s_img_path(sideVO.getS_img_path());
-			cartVO.setCart_s_name(s_name);
-			cartVO.setCart_s_price((sideVO.getS_price() + side_price) * Integer.parseInt(quantity));
-			cartVO.setCart_quantity(Integer.parseInt(quantity));
-		
-			cartVO.setCart_product_code(sideVO.getS_code());
-			cartVO.setCart_product_name(s_name);
-			cartVO.setCart_product_img_path(sideVO.getS_img_path());
-			cartVO.setCart_product_price((sideVO.getS_price() + side_price));
-			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
-			
-			cartList.add(cartVO);
-			
-		} else if (va.equals("음료")) {
-			int drink_price = 0;
-
-			if (d_name.indexOf("미디움") > 0)
-				drink_price = 500;
-			else if (d_name.indexOf("라지") > 0)
-				drink_price = 1000;
-			DrinkVO drinkVO = drinkService.detailDrink(Integer.parseInt(drink));
-
-			CartVO cartVO = new CartVO();
-			cartVO.setCart_d_code(drinkVO.getD_code());
-			cartVO.setCart_d_img_path(drinkVO.getD_img_path());
-			cartVO.setCart_d_name(d_name);
-			cartVO.setCart_d_price((drinkVO.getD_price() + drink_price) * Integer.parseInt(quantity));
-			cartVO.setCart_quantity(Integer.parseInt(quantity));
-			
-			
-			cartVO.setCart_product_code(drinkVO.getD_code());
-			cartVO.setCart_product_name(d_name);
-			cartVO.setCart_product_img_path(drinkVO.getD_img_path());
-			cartVO.setCart_product_price((drinkVO.getD_price() + drink_price));
-			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
-			
-			cartList.add(cartVO);
-			
-		}  else if (va.equals("디저트")) {
-			int side_price = 0;
-
-			if (s_name.indexOf("미디움") > 0)
-				side_price = 500;
-			else if (s_name.indexOf("라지") > 0)
-				side_price = 1000;
-			DessertVO dessertVO = dessertService.detailDessert(Integer.parseInt(dessert_code));
-
-			CartVO cartVO = new CartVO();
-			cartVO.setCart_dessert_code(dessertVO.getDessert_code());
-			cartVO.setCart_dessert_img_path(dessertVO.getDessert_img_path());
-			cartVO.setCart_dessert_name(s_name);
-			cartVO.setCart_dessert_price((dessertVO.getDessert_price() + side_price) * Integer.parseInt(quantity));
-			cartVO.setCart_quantity(Integer.parseInt(quantity));
-
-			cartVO.setCart_product_code(dessertVO.getDessert_code());
-			cartVO.setCart_product_name(s_name);
-			cartVO.setCart_product_img_path(dessertVO.getDessert_img_path());
-			cartVO.setCart_product_price((dessertVO.getDessert_price() + side_price));
-			cartVO.setCart_product_quantity(Integer.parseInt(quantity));
-			
-			cartList.add(cartVO);
-			
+			UserVO userVO = (UserVO) session.getAttribute("userinfo");
+			if(userVO != null) {
+				UserAddressVO addressVO = memberService.addressSelect(userVO.getUser_email());
+				String address = addressVO.getAddress1() + addressVO.getAddress2();
+				model.addAttribute("address", address);
+			}
 		}
-		
-		int price = 0;
-		
-		int b_Lgset_price = 0;
-		int b_price = 0;
-		int b_set_price = 0;
-		int d_price = 0;
-		int s_price = 0;
-		int w_price = 0;
-		int w_set_price = 0;
-		int dessert_price = 0;
-		int product_quantity = 0;
-		int delivery_price = 7000;
-		
-		for (CartVO vo : cartList) {
-			if (vo.getCart_b_Lgset_price() != null)
-				b_Lgset_price = vo.getCart_b_Lgset_price();
-			if (vo.getCart_b_price() != null)
-				b_price = vo.getCart_b_price();
-			if (vo.getCart_b_set_price() != null)
-				b_set_price = vo.getCart_b_set_price();
-			if (vo.getCart_d_price() != null)
-				d_price = vo.getCart_d_price();
-			if (vo.getCart_s_price() != null)
-				s_price = vo.getCart_s_price();
-			if (vo.getCart_w_set_price() != null)
-				w_set_price = vo.getCart_w_set_price();
-			if (vo.getCart_w_price() != null)
-				w_price = vo.getCart_w_price();
-			if (vo.getCart_dessert_price() != null)
-				dessert_price = vo.getCart_dessert_price();
-			if (vo.getCart_quantity() != null)
-				product_quantity = vo.getCart_quantity();
-			
-			System.out.println("---------------------------------");
-			System.out.println("b_Lgset_price : " + b_Lgset_price);
-			System.out.println("b_price : " + b_price);
-			System.out.println("b_set_price : " + b_set_price);
-			System.out.println("d_price : " + d_price);
-			System.out.println("s_price : " + s_price);
-			System.out.println("w_price : " + w_price);
-			System.out.println("w_set_price : " + w_set_price);
-			System.out.println("dessert_price : " + dessert_price);
-			System.out.println("product_quantity : " + product_quantity);
-			System.out.println("---------------------------------");
-			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
-					+ dessert_price + w_price + w_set_price) + delivery_price;
-			System.out.println("price : " + price);
-			System.out.println("---------------------------------");
-		}
-		
-		model.addAttribute("cartList", cartList);
-		model.addAttribute("price", price);
-		model.addAttribute("delivery_price", delivery_price);
-		
-		UserVO userVO = (UserVO) session.getAttribute("userinfo");
-		if(userVO != null) {
-			UserAddressVO addressVO = memberService.addressSelect(userVO.getUser_email());
-			String address = addressVO.getAddress1() + addressVO.getAddress2();
-			model.addAttribute("address", address);
-		}
-		
 		return "orderConfirm";
 	}
 

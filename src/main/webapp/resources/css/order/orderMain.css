@@ -1007,14 +1007,15 @@ caption {
 }
 
 .table-order-details>tbody>tr>.many {
-	font-family: "Flama Condensed Medium", sans-serif;
 	text-align: right;
 	white-space: nowrap;
 	width: 20%;
 	font-size: 26px;
-	font-size: 3rem;
+	font-size: 2.5rem;
 	color: black;
 	padding-right: 40px;
+	padding-top: 80px;
+    padding-left: 55px;
 }
 
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th,
@@ -9429,7 +9430,8 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 	font-size: 26px;
 	font-size: 1.625rem;
 	color: #44900c;
-	padding-right: 5px
+	padding-right: 5px;
+	padding-left: 180px;
 }
 
 .table-menu-order-detail {
@@ -14825,8 +14827,6 @@ supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
 	background-color: white;
 	border: .5px solid black;
 }
-=======
-@charset "UTF-8";
 
 body, figure {
 	margin: 0;

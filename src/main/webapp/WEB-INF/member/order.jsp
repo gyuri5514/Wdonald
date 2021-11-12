@@ -149,15 +149,15 @@
 												</div>
 											</td>
 											<td class="picture-column">
-												<img src= "${winMorningVO.w_img_path}" alt="" class="img-block1">
+												<img src= "${winMorningSetVO.w_set_img_path}" alt="" class="img-block1">
 											</td>
 											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${winMorningVO.w_name}</h4>
+												<h4 class="item1-title">${winMorningSetVO.w_set_name}</h4>
 												<p class="item-description"></p>
 											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningSetVO.w_set_price}"/>
 											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${winMorningVO.w_kcal}kcal</td>
+											<td class="calories-column">${winMorningSetVO.w_set_kcal}kcal</td>
 											<td colspan="2" class="side-column">선택안함</td>
 											<td colspan="2" class="drink-column">선택안함</td>
 											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
@@ -210,8 +210,8 @@
 								<c:if test="${sideVO != null}">
 									<input type="hidden" id="s_code" value="${sideVO.s_code}">
 									<input type="hidden" id="s_name" value="${sideVO.s_name}">
-									<thead>
 									<c:if test="${sideVO.s_code == 704 || sideVO.s_code == 705 || sideVO.s_code == 706}">
+									<thead>
 										<tr>
 											<th class="controls-colum">&nbsp;</th>
 											<th class="picture-column">&nbsp;</th>
@@ -222,6 +222,7 @@
 											<th class="change-column">선택</th>
 											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 										</tr>
+										</thead>
 										<tbody>
 											<tr id="row" class="rowCheck">
 												<td class="controls-column">
@@ -256,6 +257,7 @@
 										</tbody>
 									</c:if>
 									<c:if test="${sideVO.s_code != 704 && sideVO.s_code != 705 && sideVO.s_code != 706}">
+										<thead>
 											<tr>
 												<th class="controls-colum">&nbsp;</th>
 												<th class="picture-column">&nbsp;</th>
@@ -264,6 +266,7 @@
 												<th class="calories-column">&nbsp;&nbsp;kcal</th>
 												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
+										</thead>
 										<tbody>
 											<tr id="row" class="rowCheck">
 												<td class="controls-column">
@@ -295,56 +298,100 @@
 											</tr>
 										</tbody>
 									</c:if>
-									</thead>
 								</c:if>
 								<c:if test="${drinkVO != null}">
 									<input type="hidden" id="d_code" value="${drinkVO.d_code}">
 									<input type="hidden" id="d_name" value="${drinkVO.d_name}">
-									<thead>
-										<tr>
-											<th class="controls-colum">&nbsp;</th>
-											<th class="picture-column">&nbsp;</th>
-											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-											<th class="calories-column">&nbsp;&nbsp;kcal</th>
-											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
-											<th class="change-column">선택</th>
-											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src= "${drinkVO.b_img_path}" alt="" class="img-block1">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${drinkVO.d_name}</h4>
-												<p class="item-description"></p>
-												
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${drinkVO.d_kcal}kcal</td>
-											<td colspan="2" class="drink-column">선택안함</td>
-											<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
-											<td colspan="2">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
+									<c:if test="${drinkVO.d_code == 323 || drinkVO.d_code == 324 || drinkVO.d_code == 325 || drinkVO.d_code == 326 || drinkVO.d_code == 327}">
+										<thead>
+											<tr>
+												<th class="controls-colum">&nbsp;</th>
+												<th class="picture-column">&nbsp;</th>
+												<th colspan="2" class="description-column">&nbsp;</th>
+												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+												<th class="change-column">선택</th>
+												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src= "${drinkVO.d_img_path}" alt="" class="img-block1">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item1-title">${drinkVO.d_name}</h4>
+													<p class="item-description"></p>
+													
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+												<td colspan="2" class="drink-column">선택안함</td>
+												<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
+												<td colspan="2">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+										</c:if>
+										<c:if test="${drinkVO.d_code != 323 && drinkVO.d_code != 324 && drinkVO.d_code != 325 && drinkVO.d_code != 326 && drinkVO.d_code != 327}">
+										<thead>
+											<tr>
+												<th class="controls-colum">&nbsp;</th>
+												<th class="picture-column">&nbsp;</th>
+												<th colspan="2" class="description-column">&nbsp;</th>
+												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src= "${drinkVO.d_img_path}" alt="" class="img-block1">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item1-title">${drinkVO.d_name}</h4>
+													<p class="item-description"></p>
+													
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+												<td colspan="2">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</c:if>
 								</c:if>
 								<c:if test="${dessertVO != null}">
 									<input type="hidden" id="dessert_code" value="${dessertVO.dessert_code}">
@@ -501,10 +548,12 @@
 														aria-invalid="false" 
 														style="position: absolute; opacity: 0;" checked>
 												</div>
-												<c:if test="${drinkList.d_code == 323}">
-													<label for="choice-1507" class="radio-label">${drinkList.d_name}+1000 </label>
+												<c:if test="${drinkList.d_code == 323 || drinkList.d_code == 324 || drinkList.d_code == 325 || drinkList.d_code == 326 || drinkList.d_code == 327}">
+													<label for="choice-1507" class="radio-label">${drinkList.d_name} + 0원 </label>
 												</c:if>
-												<label for="choice-1507" class="radio-label">${drinkList.d_name}+1000 </label>
+												<c:if test="${drinkList.d_code != 323 && drinkList.d_code != 324 && drinkList.d_code != 325 && drinkList.d_code != 326 && drinkList.d_code != 327}">
+													<label for="choice-1507" class="radio-label">${drinkList.d_name} + 1000원 </label>
+												</c:if>
 											</div>
 										</div>
 									</c:if>
@@ -517,7 +566,12 @@
 														aria-invalid="false" 
 														style="position: absolute; opacity: 0;">
 												</div>
-												<label for="choice-1507" class="radio-label">${drinkList.d_name}+1000</label>
+												<c:if test="${drinkList.d_code == 323 || drinkList.d_code == 324 || drinkList.d_code == 325 || drinkList.d_code == 326 || drinkList.d_code == 327}">
+													<label for="choice-1507" class="radio-label">${drinkList.d_name} + 0원</label>
+												</c:if>
+												<c:if test="${drinkList.d_code != 323 && drinkList.d_code != 324 && drinkList.d_code != 325 && drinkList.d_code != 326 && drinkList.d_code != 327}">
+													<label for="choice-1507" class="radio-label">${drinkList.d_name} + 1000원</label>
+												</c:if>
 											</div>
 										</div>
 									</c:if>
@@ -550,6 +604,9 @@ $(function(){
 		side = $('#s_name').val();
 	
 	var d_code = $('#d_code').val();
+	if(d_code != 323 && d_code != 324 && d_code != 325 && d_code != 326 && d_code != 327)
+		drink = $('#d_name').val();
+	
 	var dessert_code = $('#dessert_code').val();
 	var w_code = $('#w_code').val();
 	
@@ -657,12 +714,12 @@ $(function(){
 				} else if(va == "사이드"){ 
 					if(va != "" && s_code != null && side != "") {
 						if($('#result').val() != 0)
-							location.href="orderConfirm.do?&va="+va+"&side="+s_code+"&s_name="+side+"&quantity="+quantity+"";
+							location.href="orderConfirm.do?&va="+va+"&s_code="+s_code+"&s_name="+side+"&quantity="+quantity+"";
 					}
 				} else if(va == "음료"){ 
 					if(va != "" && d_code != null && drink != "") {
 						if($('#result').val() != 0)
-							location.href="orderConfirm.do?&va="+va+"&drink="+d_code+"&d_name="+drink+"&quantity="+quantity+"";
+							location.href="orderConfirm.do?&va="+va+"&d_code="+d_code+"&d_name="+drink+"&quantity="+quantity+"";
 					}
 				} else if(va == "디저트"){ 
 					if(va != "" && dessert_code != null && side != "") {
@@ -784,18 +841,18 @@ function sideOpen(index) {
 				console.log($('label[for="side2"]').text());
 				console.log($('#side-label2').val());
 			} else if(val == "사이드"){ 
-				$('label[for="side1"]').text($('#s_name').val() + " - 라지 +1000원");
+				$('label[for="side1"]').text($('#s_name').val() + " - 라지 + 1000원");
 				$('#side-label1').val($('#s_name').val() + " - 라지");
-				$('label[for="side2"]').text($('#s_name').val() + " - 미디움 +500원");
+				$('label[for="side2"]').text($('#s_name').val() + " - 미디움 + 700원");
 				$('#side-label2').val($('#s_name').val() + " - 미디움");
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
 				console.log($('label[for="side2"]').text());
 				console.log($('#side-label2').val());
 			} else if(val == "음료"){ 
-				$('label[for="side1"]').text($('#d_name').val() + " - 라지 +1000원");
+				$('label[for="side1"]').text($('#d_name').val() + " - 라지 + 1000원");
 				$('#side-label1').val($('#d_name').val()+" - 라지");
-				$('label[for="side2"]').text($('#d_name').val() + " - 미디움 +700원");
+				$('label[for="side2"]').text($('#d_name').val() + " - 미디움 + 700원");
 				$('#side-label2').val($('#d_name').val()+" - 미디움");
 				console.log($('label[for="side1"]').text());
 				console.log($('#side-label1').val());
@@ -857,20 +914,16 @@ function count(type, index) {
 				else if(index === 3){
 					if(number3 != null){
 						number3 = parseInt(number3) - 1;
-					}
 				}
-			}else{
+			} else
 				number = 0;
-			}
-			
-			
+	 		}
 	  }
 	  if(number != null)
-	 	 document.getElementById("result").value = number;
+		 	 document.getElementById("result").value = number;
 	  if(number2 != null)
 		  document.getElementById("result2").value = number2;
 	  if(number3 != null)
 	 	 document.getElementById("result3").value = number3;
-	 
 }
 </script>
