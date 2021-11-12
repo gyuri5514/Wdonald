@@ -180,7 +180,7 @@
 							<tr>
 								<th scope="row">총 주문합계:</th>
 								<td><input type="hidden" id="total_price"
-									name="total_price" value="3000">
+									name="total_price" value="2000">
 									<input type="hidden" value="2000" name="delivery_cost" id="delivery_cost">
 									<input type="hidden" value="4000" name="discount" id ="discount"><span>₩ 1,000</span></td>
 							</tr>

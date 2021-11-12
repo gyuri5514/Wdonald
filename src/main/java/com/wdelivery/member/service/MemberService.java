@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
@@ -38,5 +39,9 @@ public interface MemberService {
 	public UserAddressVO addressSelect(String user_email);
 
 	public List<PaymentVO> paymentList(HashMap<String, String> paraMap);
+
+	List<PaymentVO> getUserPaymentInfo(String user_email);
+
+	List<CartVO> getCartListByMerchantId(String merchantUid);
 
 }
