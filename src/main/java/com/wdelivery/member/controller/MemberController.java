@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
+import com.wdelivery.member.payment.controller.PaymentController;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
@@ -44,7 +45,6 @@ import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
 
 @Controller
-@SessionAttributes("cartList")
 public class MemberController {
 
 	/*
@@ -72,7 +72,7 @@ public class MemberController {
 	private SideService sideService;
 	@Autowired
 	private DrinkService drinkService;
-	private List<CartVO> cartList = new ArrayList<CartVO>();
+	
 	
 	@Autowired
 	private OrderService orderService;
@@ -92,8 +92,9 @@ public class MemberController {
 			@RequestParam(value = "w_code", required = false) String w_code,
 			@RequestParam(value = "dessert_code", required = false) String dessert_code,
 			@RequestParam(value = "va", required = false) String va,
-			@RequestParam(value = "num", required = false) String num) {
-		
+			@RequestParam(value = "num", required = false) String num,
+			HttpSession session) {
+		List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
 		if(va != null) {
 			if(va.equals("변경")) {
 				System.out.println("b_code : " + b_code);
@@ -159,8 +160,8 @@ public class MemberController {
 		if(va == null) {
 			int price = (int) session.getAttribute("total_price");
 			int delivery_price = (int) session.getAttribute("delivery_price");
-			List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
-			
+		  List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
+      
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", price);
 			model.addAttribute("delivery_price", delivery_price);
@@ -440,7 +441,7 @@ public class MemberController {
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", price);
 			model.addAttribute("delivery_price", delivery_price);
-			
+		
 			UserVO userVO = (UserVO) session.getAttribute("userinfo");
 			if(userVO != null) {
 				UserAddressVO addressVO = memberService.addressSelect(userVO.getUser_email());
@@ -531,11 +532,6 @@ public class MemberController {
 		return "qna";
 	}
 
-	@GetMapping("/trackOrder.do")
-	public String trackOrder() {
-		return "trackOrder";
-	}
-
 	@GetMapping("/store.do")
 	public String store() {
 		return "store";
@@ -624,7 +620,10 @@ public class MemberController {
 	}
 
 	@GetMapping("/paymentWin.do")
-	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) String delivery_price) {
+	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) 
+				String delivery_price,
+				HttpSession session) {
+		List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
 		for(CartVO vo : cartList) {
 			System.out.println(vo.getCart_product_code());
 		}

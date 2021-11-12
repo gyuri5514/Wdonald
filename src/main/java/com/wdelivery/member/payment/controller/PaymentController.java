@@ -46,10 +46,47 @@ public class PaymentController {
 
 	@PostMapping("paywinCredit.do")
 	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) {
+		System.out.println("paywinCredit.do");
+		ArrayList<CartVO> cartVO = sessionCartCaster(session.getAttribute("cartList"), paymentVO); 
+		
+		if (session.getAttribute("userInfo") != null) {
+			/* UserVO userVO= */
+			paymentVO.setUser_type(((UserVO) session.getAttribute("userInfo")).getUser_status());
 
-		Object obj = session.getAttribute("cartList");
+		} else if (session.getAttribute("kakaoSession") != null) {
+			/* UserVO userVO= */
+			paymentVO.setUser_type(((UserVO) session.getAttribute("kakaoSession")).getUser_status());
+		} else if (session.getAttribute("naverSession") != null) {
+			/* UserVO userVO= */
+			paymentVO.setUser_type(((UserVO) session.getAttribute("naverSession")).getUser_status());
+		} else {
+			// not member
+			paymentVO.setUser_type(9);
+		}
+		paymentVO.setOrder_date(new Date());
+		System.out.println(paymentVO.toString());
+		paymentService.insertPaidOrderList(paymentVO,cartVO);
+		session.setAttribute("cartList", new ArrayList<CartVO>());
+		return "main";
+	}
+	
+	/*
+	 * @RequestMapping("paywinOnsitePay.do") public String
+	 * paywinOnsitePay(@RequestBody PaymentVO paymentVO,HttpSession session) {
+	 * 
+	 * System.out.println("paywinOnsitePay.do");
+	 * System.out.println(paymentVO.toString());
+	 * 
+	 * ArrayList<CartVO> cartVO =
+	 * sessionCartCaster(session.getAttribute("cartList"), paymentVO);
+	 * 
+	 * session.setAttribute("cartList", new ArrayList<CartVO>()); return "true"; }
+	 */
+	
+	public static ArrayList<CartVO> sessionCartCaster(Object obj,PaymentVO paymentVO){
 		ArrayList<CartVO> cartVO = new ArrayList<CartVO>();
-		if (obj instanceof ArrayList<?>) { // Get the List
+		if (obj instanceof ArrayList<?>) { 
+			// Get the List
 			ArrayList<?> al = (ArrayList<?>) obj;
 			if (al.size() > 0) {
 				for (int i = 0; i < al.size(); i++) {
@@ -63,24 +100,26 @@ public class PaymentController {
 				}
 			}
 		}
-
-		if (session.getAttribute("userInfo") != null) {
-			/* UserVO userVO= */
-			paymentVO.setUser_type(((UserVO) session.getAttribute("userInfo")).getUser_status());
-
-		} else if (session.getAttribute("kakaoSession") != null) {
-			/* UserVO userVO= */
-			paymentVO.setUser_type(((UserVO) session.getAttribute("kakaoSession")).getUser_status());
-		} else if (session.getAttribute("naverSession") != null) {
-			/* UserVO userVO= */
-			paymentVO.setUser_type(((UserVO) session.getAttribute("naverSession")).getUser_status());
-		} else {
-			// 비회원
-			paymentVO.setUser_type(9);
-		}
-		paymentVO.setOrder_date(new Date());
-		System.out.println(paymentVO.toString());
-		paymentService.insertPaidOrderList(paymentVO,cartVO);
-		return "main";
+		return cartVO;
 	}
+
+	public static ArrayList<CartVO> sessionCartCaster(Object obj){
+		ArrayList<CartVO> cartVO = new ArrayList<CartVO>();
+		if (obj instanceof ArrayList<?>) { 
+			// Get the List
+			ArrayList<?> al = (ArrayList<?>) obj;
+			if (al.size() > 0) {
+				for (int i = 0; i < al.size(); i++) {
+					Object o = al.get(i);
+					if (o instanceof CartVO) {
+						CartVO v = (CartVO) o;
+						cartVO.add(v);
+						System.out.println(v.toString());
+					}
+				}
+			}
+		}
+		return cartVO;
+	}
+
 }

@@ -14,10 +14,10 @@ $(document).ready(function() {
 
 	$('#cash').click(function() {
 		var content = "&nbsp;<label>금액을 선택해주세요." +
-			"</label>&nbsp;&nbsp;&nbsp;<select name='exactCash'>" +
-			"<option value='won1'>1만원권</option>" +
-			"<option value='won5'>5만원권</option>" +
-			"<option value='exact'>금액에 맞게</option></select>";
+			"</label>&nbsp;&nbsp;&nbsp;<select id='exactCash' name='exactCash'>" +
+			"<option value='1만원권'>1만원권</option>" +
+			"<option value='5만원권'>5만원권</option>" +
+			"<option value='금액에맞게'>금액에 맞게</option></select>";
 
 		if ($('input:radio[id="cash"]').is(":checked") == true) {
 			$('#selectedCash').html(content);
@@ -40,7 +40,7 @@ $(document).ready(function() {
 	})
 
 })
-
+//회원  선결제 , 비회원 카드결제
 function submitCashless() {
 	
 	var IMP = window.IMP; // 생략가능
@@ -93,7 +93,7 @@ function submitCashless() {
 		참고하세요.
 		나중에 포스팅 해볼게요.
 		*/
-		name: 'W Donald Delivery '+total_price + '원 결제 요청',
+		name: 'WDonald Delivery '+total_price + '원 결제 요청',
 		//결제창에서 보여질 이름
 		amount: total_price,
 		//가격
@@ -149,6 +149,64 @@ function submitCashless() {
 		
 	});
 }
+//만나서 결제 , 회원만 가능
 function onsitePayment() {
-
+	var user_seq = $('#user_seq').val();
+	var total_price = $('#total_price').val();
+	var user_address = $('#user_address').val()==null||$('#user_address').val()==""?"":$('#user_address').val();
+	var user_email = $('#user_email').val();
+	var delivery_cost = $('#delivery_cost').val();
+	/*var discount = $('#discount').val()==''||*/
+	var discount = $('#discount').val();
+	var order_comment = "";
+	var store_code = "aaabbbccc";
+	var coupon_no = "";
+	var order_comment=  $('#order_comment').val()==null||$('#order_comment').val()==""?"":$('#order_comment').val();
+	var final_price = total_price +delivery_cost - discount;
+	
+	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
+		user_email = user_email.substring(6);
+	}
+	
+	var payment_value = $(':radio[name="payment_type"]:checked').val();
+	var payment_type;
+	if(payment_value==2){
+		payment_type="현금";
+	}else{
+		payment_type="현장에서 카드 결제";
+	}
+	var exactCash =  $('#exactCash').val();
+	
+	var user_name = $('#user_name').val();
+	var user_phone = $('#user_phone').val()==null||$('#user_phone').val()==""?"010-0000-0000":$('#user_phone').val();
+	
+	var codeWdonald = new Date();
+	
+				$.ajax({
+					type:"POST",
+					url :  "paywinCredit.do",
+					asnyc: false,
+					data: JSON.stringify({
+						"user_name": user_name,
+						"user_address": user_address,
+						"user_phone" : user_phone,
+						"user_email" : $('#user_email').val(),
+						"total_price" : total_price,
+						"final_price" : final_price,
+						"discount" : discount,
+						"order_comment": order_comment,
+						"payment_type" : '현장결제' ,
+						"store_code" : store_code,
+						"coupon_no" : coupon_no,
+						"pay_status" : payment_type,
+						"merchantuid" : 'osp'+codeWdonald.getDay()+codeWdonald.getMonth()
+									+codeWdonald.getFullYear()+codeWdonald.getHours()
+									+codeWdonald.getMinutes()+codeWdonald.getSeconds()+user_seq,
+						"order_comment" : order_comment,
+						"exactCash" : exactCash,
+						
+					}),
+					contentType:"application/json"
+				})
+	window.location.href = "http://localhost:8080/controller/main.do";
 }
