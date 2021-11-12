@@ -74,7 +74,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_Lgset_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_b_set_code != null}">
@@ -99,7 +99,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_set_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_b_code != null && cartList.cart_b_set_code == null && cartList.cart_b_Lgset_code == null}">
@@ -139,7 +139,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_s_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
@@ -159,7 +159,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_d_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_set_code != null}">
@@ -184,7 +184,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_set_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_code != null && cartList.cart_w_set_code == null}">
@@ -204,7 +204,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_dessert_code != null}">
@@ -224,7 +224,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_dessert_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 										</c:forEach>
