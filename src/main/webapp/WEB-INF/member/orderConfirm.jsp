@@ -39,13 +39,11 @@
 		new daum.Postcode({
 			
 			oncomplete : function(data) {
-				//document.querySelector("#m_zipcode").value = data.address;
-				$("#m_zipcode").text(data.address);
+				document.querySelector("#m_zipcode").value = data.address;
 				
 				var m_zipcode = $('#m_zipcode').val();
-				
+				$("#m_zipcode").text(data.address);
 				var geocoder = new kakao.maps.services.Geocoder();
-
 
 				geocoder.addressSearch(m_zipcode, function(result, status) {
 				
