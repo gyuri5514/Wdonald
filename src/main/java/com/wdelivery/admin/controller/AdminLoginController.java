@@ -64,6 +64,6 @@ public class AdminLoginController {
 	public String register(AdminVO registerAdmin) throws Exception {
 		adminLoginService.register(registerAdmin);
 		System.out.println(registerAdmin.toString());
-		return "register";
+		return "index";
 	}
 }

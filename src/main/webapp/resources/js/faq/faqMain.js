@@ -98,7 +98,8 @@ function search(type,type2)
    }else if(type == "80"){
    	  MenuSelect = "";
    }
-   
+   console.log(MenuSelect);
+   console.log(KeywordSelect);
    if(type2 == "C")
    {
       //console.log("type2 : C");
@@ -130,6 +131,10 @@ function search(type,type2)
       success : function(data) {
          $('#ajaxTable').html("");
          var content ="";
+         if(data.length==0){
+         	content += '<tr> <td colspan="3" align="center">'
+         	content += '<font color="gray">조회된 결과가 없습니다.</font> </td> </tr>'
+         }else{
          for(var i = 0; i < data.length; i++){
             	content += "<tr id='LIST_TR_ID"+i+"'"
 				content += 'onmouseover="javascript:SELECTED_ROW_IDX['+data[i].faq_seq+'] = '+i+' ;rOver(this.id,'+i+', LIST_DIV,'+(i+1)+');"'
@@ -146,6 +151,7 @@ function search(type,type2)
 				content += "<img src='https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/A.gif'></td>"
 				content += "<td colspan='3' style='text-align: left; padding-left: 10px; padding-right: 10px;'>"
 				content += "<font color='#920000'>"+data[i].faq_content+"</font></td></tr>"
+         }
          }
          $('#ajaxTable').html(content);
       }
