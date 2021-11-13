@@ -537,10 +537,10 @@ public class MemberController {
 		QnaVO vo = qnaService.qnaSelect(qnaVO);
 
 		try {
-			System.out.println(vo.toString());
+			//System.out.println(vo.toString());
 
 		} catch (NullPointerException e) {
-			System.out.println("NullException");
+			//System.out.println("NullException");
 		}
 		return vo;
 	}
@@ -610,11 +610,11 @@ public class MemberController {
 			Model model) {
 		List<AdminVO> adminVO = new ArrayList<AdminVO>();
 		adminVO = qnaService.storeSelect(store_address);
-		System.out.println("qnaStoreSearchP" + store_address);
+		//System.out.println("qnaStoreSearchP" + store_address);
 
 		model.addAttribute("adminVO", adminVO);
 
-		System.out.println("qnaStoreSerarch : " + adminVO.toString());
+		//System.out.println("qnaStoreSerarch : " + adminVO.toString());
 
 		return adminVO;
 	}
