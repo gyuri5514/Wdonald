@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
@@ -43,6 +44,8 @@ import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
 import com.wdelivery.order.service.OrderService;
 import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class MemberController {
@@ -535,7 +538,14 @@ public class MemberController {
 	}
 
 	@GetMapping("/store.do")
-	public String store() {
+	public String store(AdminVO adminVO, Model model) { //하는 중...........
+
+		List<AdminVO> storeList = memberService.getStoreList(adminVO);
+		
+		
+		
+		model.addAttribute("storeList", JSONArray.fromObject(storeList));
+		
 		return "store";
 	}
 
