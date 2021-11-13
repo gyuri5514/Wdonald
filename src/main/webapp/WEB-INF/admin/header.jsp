@@ -50,7 +50,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="logout.mdo">Logout</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -66,11 +66,11 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> Dashboard
 						</a>
-						<div class="sb-sidenav-menu-heading">Interface</div>
+						<div class="sb-sidenav-menu-heading">관리</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon"> <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Layouts 페이지 필요없을 듯 !!!!!!!!!!!!!!!!!!!! -->
 								<i class="fas fa-columns"></i>
-							</div> Layouts
+							</div> 게시판 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -84,7 +84,7 @@
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
-							</div> Pages
+							</div> 계정 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -92,7 +92,7 @@
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									Authentication
+									관리자 로그인
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
@@ -125,16 +125,16 @@
 									</div>
 							</nav>
 						</div>
-						<div class="sb-sidenav-menu-heading">adons</div>
+						<div class="sb-sidenav-menu-heading">통계</div>
 						<a class="nav-link" href="charts.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts
+							</div> 통계
 						</a>
 						<a class="nav-link" href="tables.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
-							</div> Tables
+							</div> 회원관리
 						</a>
 					</div>
 				</div>
