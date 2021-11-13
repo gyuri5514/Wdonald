@@ -16,7 +16,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.sdo">관리자 Win Delivery</a>
+		<a class="navbar-brand ps-3" href="index.sdo">${sessionScope.admin.store_name }</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 			<i class="fas fa-bars"></i>
@@ -49,7 +49,7 @@
 					<li><a class="dropdown-item" href="#!">Settings</a></li>
 					<li><a class="dropdown-item" href="#!">Activity Log</a></li>
 					<li><hr class="dropdown-divider" /></li>
-					<li><a class="dropdown-item" href="#!">Logout</a></li>
+					<li><a class="dropdown-item" href="logout.mdo">Logout</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -65,11 +65,11 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> Dashboard
 						</a>
-						<div class="sb-sidenav-menu-heading">Interface</div>
+						<div class="sb-sidenav-menu-heading">관리</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon"> <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Layouts 페이지 필요없을 듯 !!!!!!!!!!!!!!!!!!!! -->
 								<i class="fas fa-columns"></i>
-							</div> Layouts
+							</div> 매장 문의 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -83,7 +83,7 @@
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
-							</div> Pages
+							</div> 계정 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
@@ -91,7 +91,7 @@
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									Authentication
+									관리자 정보 수정
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
@@ -117,16 +117,16 @@
 									</div>
 							</nav>
 						</div>
-						<div class="sb-sidenav-menu-heading">adons</div>
+						<div class="sb-sidenav-menu-heading">통계</div>
 						<a class="nav-link" href="charts.sdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
-							</div> Charts
+							</div> 매장 통계
 						</a>
 						<a class="nav-link" href="tables.sdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
-							</div> Tables
+							</div> 주문관리
 						</a>
 					</div>
 				</div>

@@ -30,12 +30,12 @@
     			 return false;
     		 }
     		 if($("#admin_name").val()==""){
-    			 alert("사업자 이름을 입력해주세요.");
+    			 alert("관리자님 이름을 입력해주세요.");
     			 $("#admin_name").focus();
     			 return false;
     		 }
     		 if($("#admin_phone").val()==""){
-    			 alert("사업자 번호를 입력해주세요.");
+    			 alert("관리자님 번호를 입력해주세요.");
     			 $("#admin_phone").focus();
     			 return false;
     		 }
@@ -78,27 +78,27 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="admin_id" name="admin_id" type="text" placeholder="Enter your first name" />
-                                                        <label for="admin_id">사업자 아이디</label>
+                                                        <label for="admin_id">아이디</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="admin_name" name="admin_name" type="text" placeholder="Enter your last name" />
-                                                        <label for="admin_name">사업자 이름</label>
+                                                        <input class="form-control" id="admin_password" name="admin_password" type="password" placeholder="Enter your first name" />
+                                                        <label for="admin_password">비밀번호</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="admin_password" name="admin_password" type="text" placeholder="Enter your first name" />
-                                                        <label for="admin_password">비밀번호</label>
+                                                        <input class="form-control" id="admin_name" name="admin_name" type="text" placeholder="Enter your last name" />
+                                                        <label for="admin_name">관리자 이름</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="admin_phone" name="admin_phone" type="text" placeholder="Enter your last name" />
-                                                        <label for="admin_phone">사업자 번호</label>
+                                                        <label for="admin_phone">관리자 번호</label>
                                                     </div>
                                                 </div>
                                             </div>
