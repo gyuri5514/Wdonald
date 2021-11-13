@@ -77,6 +77,10 @@ public class MemberLoginController {
 				}
 			}
 		model.addAttribute("status",6);
+		
+		if(session.getAttribute("cartList") != null)
+			session.removeAttribute("cartList");
+		
 		return "main";
 	}
 	
