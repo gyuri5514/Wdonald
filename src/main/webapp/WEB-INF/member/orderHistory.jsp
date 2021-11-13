@@ -89,28 +89,58 @@
 				</div>
 
 <script>
-$(function () {
-    $('#btn_empty').click( function() {
-        $( '#table_historyorder > tbody').empty();
-    });
-});
-
-$(function(){
-	if(${start_history != null && start_history != "" && end_history != null && end_history != ""}){
-		$('#start_history').val("${start_history}");
-		$('#end_history').val("${end_history}");
-	}
-	
-	$("#btnSearch").click(function(){
-		goSearch()
-	});
-});
 function goSearch(){
-	var frm  = document.orderHistoryFind;
-	frm.method = "GET";
-	frm.action = "/search.do";
-	frm.submit();
+ 	var start_history = $('#start_history').val();
+ 	var end_history = $('#end_history').val();
+
+ 	if(start_history>end_history){
+ 		var temp = end_history;
+ 		end_history = start_history;
+	 	start_history = temp;
+ 	}
+
+ 	$.ajax({
+		type : "GET",
+		url : "search.do",
+		contentType : "application/json",
+		data : {
+	 		"start_history" : start_history,
+	 		"end_history" : end_history
+	 		},
+	 	success: function(res){
+	 			 $('#tbodyPayment').html("");
+	 			 for(var i in res){
+	 				 console.log(res[i].order_seq);
+	 				 console.log(res[i].order_date)
+	 			 }
+	 		}
+	 	})
+	 }
+	
+function goBack(){
+	 	var start_history = null;
+	 	var end_history = null;
+	 	console.log(start_history);
+	 	console.log(end_history);
+	 	$.ajax({
+	 		type : "get",
+	 		url : "search.do",
+	 		contentType : "application/json",
+	 		data : {
+	 			"start_history" : start_history,
+	 			"end_history" : end_history
+	 		},
+	 		success: function(res){
+	 			 $('#tbodyPayment').html();
+	 			 for(var i in res){
+	 				 console.log(res[i]);
+	 				 console.log(res[i].order_seq);
+	 				 console.log(res[i].order_date);
+	 		 }
+		} 
+	})
 }
+
 </script>
   	<div class="container" id="sub-page-content">
       <!--main content-->
@@ -122,8 +152,8 @@ function goSearch(){
 				<input type="text" name="start_history" id="start_history" maxlength="10" readonly="readonly" /> 
 					&nbsp;	-  &nbsp; 
 				<input type="text" name="end_history" id="end_history" maxlength="10"  readonly="readonly" />
-					&nbsp;&nbsp;&nbsp;<a href="javascript:goSearch()" class="btn btn-md btn-red" id="btnSearch">검색</a>
-					     <a href="javascript:historySearch()" id="btn_empty" class="btn btn-md btn-red" >초기화</a>
+					&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="goSearch();" class="btn btn-md btn-red" id="btnSearch">검색</a>
+					     <a href="javascript:void(0);" onclick="goBack();" class="btn btn-md btn-red" >초기화</a>
 				<table class="table_historyorder" id="table_historyorder">
 			         <thead class="table_head_historyorder">
 			            <tr>
@@ -134,10 +164,10 @@ function goSearch(){
 			            </tr>
 			         </thead>
 			         <c:forEach items="${paymentVO }" var="paymentVO" varStatus="status">
-			         <tbody class="table_body_historyorder">
+			         <tbody class="table_body_historyorder" id="tbodyPayment">
 			            <tr>
 			               <td class="table_head_td">${paymentVO.order_seq }</td>
-			               <td class="table_head_td"><fmt:formatDate pattern="yyyy-MM-dd" value="${paymentVO.order_date }" /></td>
+			               <td class="table_head_td"><fmt:formatDate pattern="yyyy-MM-dd  HH:mm:ss" value="${paymentVO.order_date }" /></td>
 			               <td class="table_head_td">${paymentVO.user_address }</td>               
 			               <td class="table_head_td">${paymentVO.order_comment}</td> 
 			            </tr>
@@ -152,4 +182,3 @@ function goSearch(){
 	  <!-- //content -->
 <!--Hidden elements - excluded from jPanel Menu on mobile-->
 </html>
-</body>

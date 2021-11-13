@@ -126,14 +126,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- payment List -->
-	<select id="paymentList" resultType="HashMap" parameterType="paymentVO">
+	<select id="paymentList" resultType="paymentVO" parameterType="HashMap">
+	<![CDATA[
 		select * from order_list where user_email=#{user_email} 
-		<choose>
-			<when test="start_history != null and end_history != null">
-				where to_char(order_date, 'yyyy-MM-dd') between #{start_history} and #{end_history}
-			</when>
-		</choose>
-		order by order_seq desc
+		]]> 
+		<if test="start_history !=  null and end_history != null">
+			and to_char(order_date, 'yyyy-MM-dd') between #{start_history} and #{end_history}
+		</if>
+		<![CDATA[
+		 order by order_seq desc
+			]]>
 	</select>
 	
 
