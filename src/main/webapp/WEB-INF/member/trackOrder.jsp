@@ -232,20 +232,30 @@ function order_detail_show() {
 }
 
 function orderDetail(merchantUid){
-	
 		$.ajax({
 			type:"POST",
 			url :"getCartListByMerchantId.do?merchantuid="+merchantUid,
 			contentType:"application/json",
 			success : function(res){
-				alert(res);
-				console.log(res);
+				for(var i in res){
+					$('#'+merchantUid).append(res[i].cart_product_name+"x"+res[i].cart_product_quantity+
+							(res[i].cart_product_side_name!=null?"      <small>"+res[i].cart_product_side_name+"</small>":" ")+
+							(res[i].cart_product_drink_name!=null?"<small>         "+res[i].cart_product_drink_name+"</small>":" ")+
+							"<br>");
+				}
+				//var obj = JSON.parse(res);
 			}
+		}).done(function(){
+			$('#alink'+merchantUid).attr("onclick","removeChildm('"+merchantUid+"');");			
 		})
-	}
-
+}
+	
+function removeChildm(merchantUid){
+	$('#'+merchantUid).text("");
+	$('#alink'+merchantUid).attr("onclick","orderDetail('"+merchantUid+"');");
+}
 </script>
-
+<%-- "orderDetail('${payment.merchantuid }');" --%>
 <div class="col-md-9">
 	<h3 class="title-divider mt_0">
 		<span>주문조회</span><small>Track Order</small>
@@ -264,9 +274,9 @@ function orderDetail(merchantUid){
 			</thead>
 			<tbody class="table_body_trackorder">
 			<c:forEach var="payment"  step="1" begin="0" items="${paymentList}">
-				<tr>
+				<tr >
 					<td class="trackorder_td">
-						<input type="hidden" id="merchantuid" value="${payment.merchantuid }"><a href="javascript:void(0);" onclick="orderDetail('${payment.merchantuid }');"   
+						<input type="hidden" id="merchantuid" value="${payment.merchantuid }"><a href="javascript:void(0);" id="alink${payment.merchantuid }" onclick="orderDetail('${payment.merchantuid }');"   
 						 title="주문 상세 내역 보기">${payment.merchantuid }</a>
 					</td>
 					<td class="trackorder_td">${payment.delivery_time}</td>
@@ -282,62 +292,10 @@ function orderDetail(merchantUid){
 					<c:if test="${ payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/burger.png"></td>
 					</c:if>
-				</tr>
-				<div id="${payment.merchantuid}"><span></span></div>
+					<tr ><td id="td${payment.merchantuid }" colspan="5"><span id="${payment.merchantuid }"></span></td></tr>
 				</c:forEach>
 			</tbody>
-			<tfoot class="table_foot_trackorder">
-				<tr class="table_foot_tr">
-					<td colspan="6" class="table_foot_td"><a data-toggle="modal" class="btn btn-red btn-lg" href="burger.do">새로운 주문하기</a>
-						<p>
-							<!-- <a href="#trackOrder" data-toggle="modal" class="action-secondary action-link">
-								<i class="fa fa-caret-right"></i> 주문 조회가 안 되시나요?
-							</a> -->
-						</p>
-					</td>
-				</tr>
-			</tfoot>
 		</table>
-		<div id="order_detail_table">
-			<table>
-			
-				<!-- <thead class="table_head_trackorder">
-					<tr>
-						<td class="table_head_td">주문 상품</td>
-						<td class="table_head_td">총 결제 금액</td>
-					</tr>
-				</thead> -->
-				<c:forEach items="${cartVO }" var="cartVO">
-				<tbody class="table_body_trackorder">
-					<tr>
-						<td class="trackorder_td">
-							${cartVO.cart_product_name }
-							<small>${cartVO.cart_product_side_name }</small>
-							<small>${cartVO.cart_product_drink_name }</small>
-						</td>
-						<td class="trackorder_td_totalprice">${cartVO.cart_product_price }</td>
-					</tr>
-				</tbody>
-				</c:forEach>
-				<tfoot>
-				<%-- 	<tr> 
-						<td>
-							총 주문금액 : ${paymentVO.total_price }
-						</td>
-					</tr>
-					<tr>
-						<td>
-							할인 금액 : ${paymentVO.discount }
-						</td>
-					</tr>
-					<tr>
-						<td>
-							총 결제금액 : ${paymentVO.final_price }
-						</td>
-					</tr> --%>
-				</tfoot>
-			</table>
-		</div>
 	</div>
 </div>
 <%@ include file="footer.jsp"%>

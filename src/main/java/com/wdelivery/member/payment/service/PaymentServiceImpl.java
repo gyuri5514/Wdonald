@@ -17,17 +17,19 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public void insertPaidOrderList(PaymentVO paymentVO, ArrayList<CartVO> cartVO) {
+		for(CartVO c : cartVO) {
+			System.out.println(c.toString());
+		}
 		paymentDAO.insertPaidOrderList(paymentVO);
 		paymentDAO.insertCartList(cartVO);
 		
 	}
-
+	/*
+	 * if(paymentVO.getUser_type()!=9) { Map<String,Object> updateCartInfo = new
+	 * HashMap<String,Object>(); updateCartInfo.put("orderSeq",
+	 * paymentDAO.selectOrderSeq(paymentVO));
+	 * updateCartInfo.put("user_email",paymentVO.getUser_email());
+	 * paymentDAO.updateCartList(updateCartInfo); }
+	 */
 }
 
-/*
- * if(paymentVO.getUser_type()!=9) { Map<String,Object> updateCartInfo = new
- * HashMap<String,Object>(); updateCartInfo.put("orderSeq",
- * paymentDAO.selectOrderSeq(paymentVO));
- * updateCartInfo.put("user_email",paymentVO.getUser_email());
- * paymentDAO.updateCartList(updateCartInfo); }
- */

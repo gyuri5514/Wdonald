@@ -20,8 +20,8 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
-import com.wdelivery.member.payment.controller.PaymentController;
 import com.wdelivery.member.service.MemberService;
+import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.menu.burger.service.BurgerService;
@@ -94,7 +94,7 @@ public class MemberController {
 			@RequestParam(value = "va", required = false) String va,
 			@RequestParam(value = "num", required = false) String num,
 			HttpSession session) {
-		List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
+		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
 		if(va != null) {
 			if(va.equals("변경")) {
 				System.out.println("b_code : " + b_code);
@@ -157,7 +157,7 @@ public class MemberController {
 			@RequestParam(value = "price", required = false) String total_price, 
 			@RequestParam(value = "delivery_price", required = false) String deliveryPrice, HttpSession session) {
 		
-		List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
+		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
 		
 		if(va == null) {
 			int price = (int) session.getAttribute("total_price");
@@ -438,6 +438,7 @@ public class MemberController {
 			}
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
+			session.setAttribute("cartList", cartList);
 			
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", price);
@@ -619,7 +620,7 @@ public class MemberController {
 	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) 
 				String delivery_price,
 				HttpSession session) {
-		List<CartVO> cartList = PaymentController.sessionCartCaster(session.getAttribute("cartList"));
+		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
 		for(CartVO vo : cartList) {
 			System.out.println(vo.getCart_product_code());
 		}
