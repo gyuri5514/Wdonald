@@ -6,11 +6,14 @@ import java.util.Date;
  * 
  */
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class PaymentVO {
 	//help me
 	private int order_seq;
 	private String user_name;
 	private int user_type;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date order_date;
 	private String delivery_time;
 	private String user_address;
