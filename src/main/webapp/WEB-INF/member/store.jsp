@@ -403,20 +403,19 @@ $(document).ready(function () {
         minLevel: 10 // 클러스터 할 최소 지도 레벨 
     });
 	
-	var positions = [
-
+	/* var positions = [
 		{
-	        title: '윈도날드 종로3가점 WcDonald\'s', 
-	        latlng: new kakao.maps.LatLng(37.57056001779529,126.99046810138731)
-	    },
-		{
+	        title: name, 
+	        latlng: new kakao.maps.LatLng(lat,lon)
+	    }
+	 	 {
 	        title: '윈도날드 서울동묘역점 WcDonald\'s', 
 	        latlng: new kakao.maps.LatLng(37.57311655456051,127.01510539116606)
 	    },
 		{
 	        title: '맥도날드 명동점 WcDonald\'s', 
 	        latlng: new kakao.maps.LatLng(37.56416674801353,126.9844438972081)
-	    },
+	    }, 
 		{
 	        title: '맥도날드 병관점 WcDonald\'s', 
 	        latlng: new kakao.maps.LatLng(37.54458425362564,126.83157622677554)
@@ -428,18 +427,26 @@ $(document).ready(function () {
 		{
 	        title: '맥도날드 도은점 WcDonald\'s', 
 	        latlng: new kakao.maps.LatLng(37.59047879273179,126.67553501143038)
-	    }
-	];
+	    }  
+	] */
 	
 	var markers = [];
-	
+	 
 	var zoomControl = new kakao.maps.ZoomControl();
 	map.addControl(zoomControl,	kakao.maps.ControlPosition.RIGHT);
 	var mapTypeControl = new kakao.maps.MapTypeControl();
 	map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 	
-	for (var i = 0; i < positions.length; i++) {
+	var storeList = JSON.parse('${storeList}');
 
+	console.log(storeList);
+	
+	for (var i = 0; i < storeList.length; i++) {
+		var title = storeList[i].store_name;
+		var lon = storeList[i].store_lon;
+		var lat = storeList[i].store_lat;
+		var latlng = new kakao.maps.LatLng(lat,lon);
+		
 		// 마커 이미지의 이미지 크기 입니다
 		var imageSize = new kakao.maps.Size(54, 70);
 
@@ -449,8 +456,8 @@ $(document).ready(function () {
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
 			map : map, // 마커를 표시할 지도
-			position : positions[i].latlng, // 마커를 표시할 위치
-			title : positions[i].title,	//마우스 올리면 제목부분 나옴
+			position : latlng, // 마커를 표시할 위치
+			title : title,	//마우스 올리면 제목부분 나옴
 			image : markerImage
 		// 마커 이미지 
 		});
@@ -564,12 +571,22 @@ $(document).ready(function () {
 	});
 	
 	function search(){
-		for(var i = 0; i < positions.length; i++) {
+		var storeList = JSON.parse('${storeList}');
+
+		console.log(storeList);
+		
+		for (var i = 0; i < storeList.length; i++) {
+			var title = storeList[i].store_name;
+			var lon = storeList[i].store_lon;
+			var lat = storeList[i].store_lat;
+			var latlng = new kakao.maps.LatLng(lat,lon);
+			
 			var searchWord = $("#searchWord").val();
-			if(positions[i].title.indexOf(searchWord) > 0) {
-				map.panTo(positions[i].latlng);
+			if(title.indexOf(searchWord) > 0) {
+				map.panTo(latlng);
 			}
 		}
+			
 	};
 	
 	$("#storeSearch").click(function(){

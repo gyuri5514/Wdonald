@@ -4,6 +4,7 @@
 <%@ include file="mypage.jsp"%>
 <link rel="stylesheet" href="resources/css/address/addressupdate.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
 <script>
 	/*------------ DaumPost ------------*/
 	function openDaumPostcode() {
@@ -14,9 +15,23 @@
 			
 			oncomplete : function(data) {
 				document.querySelector("#address1").value = data.address;
-				console.log(data.address);
 				
+				var address1 = $("#address1").val();
 				
+				var map = document.getElementById("map");
+				
+				//좌표 반환 객체
+				var geocoder = new kakao.maps.services.Geocoder();
+				//좌표 검색
+				geocoder.addressSearch(address1, function(result, status){
+					if(status === kakao.maps.services.Status.OK){
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						
+						document.getElementById("address_lat").value = result[0].y; //위도
+						document.getElementById("address_lon").value = result[0].x; //경도
+						
+					}
+				});
 				
 			},
 			theme: themeObj 
@@ -61,6 +76,7 @@
 	
 </script>
 <!-- 주소 추가하기 테이블 -->
+<div id="map" style="width: 0px; height:0px;"></div>
 <div class="col-md-10">
 	<h3 class="title-divider mt_0">
 		<span>주소 추가하기</span><small>주소 추가하기</small>
@@ -94,6 +110,8 @@
 												<td class="area" width="500">
 												<span class="add_01">
 													<input type="text" id="address1" name="address1" class="input_add" placeholder="지번,도로명,건물명으로 검색해주세요" readonly />
+													<input type="hidden" name="address_lat" id="address_lat">
+													<input type="hidden" name="address_lon" id="address_lon">
 												</span> 
 												<span class="add_02">
 													<button type="button" onclick="openDaumPostcode();" class="btn" focus="address2">검색</button>
