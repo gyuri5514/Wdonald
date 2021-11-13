@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wdelivery.admin.service.AdminLoginService;
 import com.wdelivery.admin.vo.AdminVO;
@@ -24,9 +25,7 @@ public class AdminLoginController {
 	
 	@PostMapping("/login.mdo")
 	public String login(AdminVO adminVO, HttpSession session, Model model) {
-
-		System.out.println(adminVO.toString());
-		
+		//System.out.println(adminVO.toString());
 		if(!adminVO.getAdmin_id().equals("") && adminVO.getAdmin_id() != null 
 				&& !adminVO.getAdmin_password().equals("") && adminVO.getAdmin_password() != null) {
 
@@ -34,9 +33,9 @@ public class AdminLoginController {
 			
 			if(adminVO.getAdmin_password().equals(findAdminVO.getAdmin_password())) { //success
 				session.setAttribute("admin", findAdminVO);
-				System.out.println("1" + findAdminVO.toString());
+				//System.out.println("1" + findAdminVO.toString());
 				if(findAdminVO.getAdmin_seq() != 1) {
-					System.out.println("store admins" + findAdminVO.toString());
+					//System.out.println("store admins" + findAdminVO.toString());
 					return "redirect:index.sdo";
 				}
 				model.addAttribute("status", 2);
@@ -63,7 +62,13 @@ public class AdminLoginController {
 	@PostMapping("/registerInsert.mdo")
 	public String register(AdminVO registerAdmin) throws Exception {
 		adminLoginService.register(registerAdmin);
-		System.out.println(registerAdmin.toString());
+		//System.out.println(registerAdmin.toString());
 		return "index";
+	}
+	
+	@RequestMapping("logout.mdo")
+	public String adminLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login.mdo";
 	}
 }
