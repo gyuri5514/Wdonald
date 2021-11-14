@@ -54,6 +54,7 @@ function submitCashless() {
 	var store_code = "aaabbbccc";
 	var coupon_no = "112233";
 	var order_comment= "상냥하게 주세요";
+	var user_seq = $('#user_seq').val()==null||$('#user_seq').val()=="nm"?"":$('#user_seq').val();
 	var final_price = total_price +delivery_cost - discount;
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);
@@ -85,7 +86,7 @@ function submitCashless() {
 		'vbank':가상계좌,
 		'phone':휴대폰소액결제
 		*/
-		merchant_uid: 'merchant_' + new Date().getTime(),
+		merchant_uid: 'md'+user_seq + new Date().getTime(),
 		/*
 		merchant_uid에 경우
 		https://docs.iamport.kr/implementation/payment

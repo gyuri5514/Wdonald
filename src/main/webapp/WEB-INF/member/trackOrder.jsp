@@ -264,7 +264,7 @@ function removeChildm(merchantUid){
 		<table class="table-trackorder">
 			<thead class="table_head_trackorder">
 				<tr>
-					<td class="table_head_td">주문 번호</td>
+					<td class="table_head_td" id="order_seq_th">주문 번호</td>
 					<td class="table_head_td">예상 배달 시간</td>
 					<td class="table_head_td_img">주문 접수</td>
 					<td class="table_head_td_img">준비 중</td>

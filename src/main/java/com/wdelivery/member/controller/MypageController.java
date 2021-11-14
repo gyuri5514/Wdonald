@@ -99,17 +99,18 @@ public class MypageController {
 		return "redirect:addressBook.do";
 	}
 	
-	//데이터 피커 하고싶은데 안됌 ㅠ ->ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ잘되는뎅ㅋㅋㅋ김귤
+	//데이터 피커 하고싶은데 안됌 ㅠ 
 	@ResponseBody
 	@GetMapping("/search.do")
 	public List<PaymentVO> orderHistory( 
 			@RequestParam(value = "start_history",required = false) String start_history, @RequestParam(value = "end_history", required = false) String end_history, 
-			Model model, HttpSession session, HttpServletRequest request) {
+			 HttpSession session, HttpServletRequest request) {
 		
 		if(start_history=="" && end_history=="") {
 			start_history =null;
 			end_history=null;
 		}
+		
 		System.out.println("start_history = "+start_history+" end_history = "+end_history );
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		HashMap<String, String> paraMap = new HashMap<String, String>();
@@ -117,23 +118,29 @@ public class MypageController {
 		paraMap.put("end_history", end_history);
 		paraMap.put("user_email", userInfo.getUser_email());
 		List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
+		if(paymentVO.size()==0) {
+			System.out.println("paymentVO is null");
+		}
 		for(PaymentVO p : paymentVO) {
 			System.out.println(p.toString());
 		}
-		model.addAttribute("paymentVO", paymentVO);
 		return paymentVO;
 	}
 	
 	@GetMapping("/orderHistory.do")
 	public String orderHistory( Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
-		System.out.println(userInfo.toString());
-		HashMap<String, String> paraMap = new HashMap<String, String>();
-		paraMap.put("user_email", userInfo.getUser_email());
-
-		List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
-		
-		model.addAttribute("paymentVO", paymentVO);
+		if(userInfo==null)
+			return "redirect:main.do";
+		/*
+		 * System.out.println(userInfo.toString()); HashMap<String, String> paraMap =
+		 * new HashMap<String, String>(); paraMap.put("user_email",
+		 * userInfo.getUser_email());
+		 * 
+		 * List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
+		 * 
+		 * model.addAttribute("paymentVO", paymentVO);
+		 */
 		return "orderHistory";
 	}
 	
