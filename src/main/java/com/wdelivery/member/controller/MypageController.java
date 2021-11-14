@@ -99,7 +99,7 @@ public class MypageController {
 		return "redirect:addressBook.do";
 	}
 	
-	//데이터 피커 하고싶은데 안됌 ㅠ
+	//데이터 피커 하고싶은데 안됌 ㅠ ->ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ잘되는뎅ㅋㅋㅋ김귤
 	@ResponseBody
 	@GetMapping("/search.do")
 	public List<PaymentVO> orderHistory( 
@@ -110,13 +110,16 @@ public class MypageController {
 			start_history =null;
 			end_history=null;
 		}
+		System.out.println("start_history = "+start_history+" end_history = "+end_history );
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		paraMap.put("start_history", start_history);
 		paraMap.put("end_history", end_history);
 		paraMap.put("user_email", userInfo.getUser_email());
 		List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
-		
+		for(PaymentVO p : paymentVO) {
+			System.out.println(p.toString());
+		}
 		model.addAttribute("paymentVO", paymentVO);
 		return paymentVO;
 	}

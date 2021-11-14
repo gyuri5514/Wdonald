@@ -92,7 +92,7 @@
 function goSearch(){
  	var start_history = $('#start_history').val();
  	var end_history = $('#end_history').val();
-
+	console.log(start_history+''+end_history);
  	if(start_history>end_history){
  		var temp = end_history;
  		end_history = start_history;
@@ -107,38 +107,43 @@ function goSearch(){
 	 		"start_history" : start_history,
 	 		"end_history" : end_history
 	 		},
-	 	success: function(res){
-	 			 $('#tbodyPayment').html("");
+	 		success: function(res){
+	 			 $('#tbodyPayment').removeChild;
 	 			 for(var i in res){
-	 				 console.log(res[i].order_seq);
-	 				 console.log(res[i].order_date)
-	 			 }
-	 		}
+								$('#tbodyPayment').append(
+							             '<tr><td class="table_head_td">'+res[i].order_seq+'</td><td class="table_head_td">'
+						                   +res[i].order_date+"</td><td class='table_head_td'>"+res[i].user_address
+						                                  +"</td><td class='table_head_td'>"
+						                                  +(res[i].user_order_comment==null||+res[i].user_order_comment==''?'':res[i].user_order_comment)+'</td></tr>');
+								 
+	 		 }
+		} 
 	 	})
 	 }
 	
 function goBack(){
 	 	var start_history = null;
 	 	var end_history = null;
-	 	console.log(start_history);
-	 	console.log(end_history);
 	 	$.ajax({
-	 		type : "get",
-	 		url : "search.do",
-	 		contentType : "application/json",
-	 		data : {
-	 			"start_history" : start_history,
-	 			"end_history" : end_history
-	 		},
-	 		success: function(res){
-	 			 $('#tbodyPayment').html();
-	 			 for(var i in res){
-	 				 console.log(res[i]);
-	 				 console.log(res[i].order_seq);
-	 				 console.log(res[i].order_date);
-	 		 }
-		} 
-	})
+			type : "GET",
+			url : "search.do",
+			contentType : "application/json",
+			data : {
+		 		"start_history" : start_history,
+		 		"end_history" : end_history
+		 		},
+		 		success: function(res){
+		 			 $('#tbodyPayment').removeChild;
+		 			 for(var i in res){
+									$('#tbodyPayment').append(
+								             '<tr><td class="table_head_td">'+res[i].order_seq+'</td><td class="table_head_td">'
+							                   +res[i].order_date+"</td><td class='table_head_td'>"+res[i].user_address
+							                                  +"</td><td class='table_head_td'>"
+							                                  +(res[i].user_order_comment==null||+res[i].user_order_comment==''?'':res[i].user_order_comment)+'</td></tr>');
+									 
+		 		 }
+			} 
+		 	})
 }
 
 </script>
