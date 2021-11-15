@@ -5,7 +5,7 @@
 	<c:if test="${menuAvailable == 'n' }">
 	<script>
 		alert('주문 가능한 시간대가 아닙니다.');
-		window.location.href='http://localhost:8080/controller/burger.do';
+		window.location.href='http://localhost:8080/controller/morning.do';
 	</script>
 	</c:if>
 	<div id="container">
