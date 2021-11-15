@@ -237,11 +237,16 @@ function orderDetail(merchantUid){
 			url :"getCartListByMerchantId.do?merchantuid="+merchantUid,
 			contentType:"application/json",
 			success : function(res){
+				var total = 0;
 				for(var i in res){
 					$('#'+merchantUid).append(res[i].cart_product_name+"x"+res[i].cart_product_quantity+
 							(res[i].cart_product_side_name!=null?"      <small>"+res[i].cart_product_side_name+"</small>":" ")+
-							(res[i].cart_product_drink_name!=null?"<small>         "+res[i].cart_product_drink_name+"</small>":" ")+
-							"<br>");
+							(res[i].cart_product_drink_name!=null?"<small>         "+res[i].cart_product_drink_name+"</small>    ":" ")+
+							(res[i].cart_product_price*res[i].cart_product_quantity)+"원 <br>");
+						total = total + ((res[i].cart_product_price)*(res[i].cart_product_quantity));
+				}
+				if(res.length>0){
+				$('#'+merchantUid).append("&nbsp;&nbsp;&nbsp;<strong><i>합계 : "+(total+2000)+ " 원</i>  (배달료 : 2000 원 )</strong>");
 				}
 				//var obj = JSON.parse(res);
 			}
@@ -254,8 +259,12 @@ function removeChildm(merchantUid){
 	$('#'+merchantUid).text("");
 	$('#alink'+merchantUid).attr("onclick","orderDetail('"+merchantUid+"');");
 }
+function reqCancel(merchantUid){
+	var cancelReq = confirm('주문을 취소시겠습니까 ?');
+	console.log(cancelReq);
+	console.log(merchantUid);
+}
 </script>
-<%-- "orderDetail('${payment.merchantuid }');" --%>
 <div class="col-md-9">
 	<h3 class="title-divider mt_0">
 		<span>주문조회</span><small>Track Order</small>
@@ -264,8 +273,8 @@ function removeChildm(merchantUid){
 		<table class="table-trackorder">
 			<thead class="table_head_trackorder">
 				<tr>
-					<td class="table_head_td">주문 번호</td>
-					<td class="table_head_td">예상 배달 시간</td>
+					<td class="table_head_td" id="order_seq_th">주문 번호</td>
+					<td class="table_head_td"></td>
 					<td class="table_head_td_img">주문 접수</td>
 					<td class="table_head_td_img">준비 중</td>
 					<td class="table_head_td_img">배달 중</td>
@@ -279,7 +288,7 @@ function removeChildm(merchantUid){
 						<input type="hidden" id="merchantuid" value="${payment.merchantuid }"><a href="javascript:void(0);" id="alink${payment.merchantuid }" onclick="orderDetail('${payment.merchantuid }');"   
 						 title="주문 상세 내역 보기">${payment.merchantuid }</a>
 					</td>
-					<td class="trackorder_td">${payment.delivery_time}</td>
+					<td class="trackorder_td"><c:if test="${payment.order_status eq '주문 접수' }"><a href="javascript:void(0);" onclick="reqCancel('${payment.merchantuid }');" class="btn btn-md btn-red" id="btnSearch">주문 취소</a></c:if></td>
 					<c:if test="${payment.order_status eq '주문 접수' || payment.order_status eq '준비 중' || payment.order_status eq '배달 중' || payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/notes.png"></td>
 					</c:if>
