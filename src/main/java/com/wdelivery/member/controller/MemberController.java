@@ -1,6 +1,8 @@
 package com.wdelivery.member.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,7 @@ import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.service.MemberService;
+import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
@@ -101,6 +104,7 @@ public class MemberController {
 			@RequestParam(value = "num", required = false) String num,
 			HttpSession session) {
 		
+		
 		if(va != null) {
 			if(va.equals("변경")) {
 				List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
@@ -120,7 +124,11 @@ public class MemberController {
 			BurgerLgSetVO burgerLgSetVO = burgerLgSetService.detailBurgerLgSet(Integer.parseInt(b_code)+400);
 			BurgerSetVO burgerSetVO = burgerSetService.detailBurgerSet(Integer.parseInt(b_code)+100);
 			BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
-			
+			//return true = winmoring available / return false = winmorning not on sale
+			if(OrderTimer.isMenuOrderTime()) {
+				model.addAttribute("menuAvailable","n");
+				return "burger";
+			}
 			model.addAttribute("burgerLgSetVO", burgerLgSetVO);
 			model.addAttribute("burgerSetVO", burgerSetVO);
 			model.addAttribute("burgerVO", burgerVO);
@@ -136,6 +144,11 @@ public class MemberController {
 			model.addAttribute("drinkVO", drinkVO);
 
 		} else if (w_code != null) {
+			//return true = winmoring available / return false = winmorning not on sale
+			if(!OrderTimer.isMenuOrderTime()) {
+				model.addAttribute("menuAvailable","n");
+				return "morning";
+			}
 			WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
 			WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code)+200);
 			

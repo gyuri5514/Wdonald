@@ -42,7 +42,7 @@
 				<c:if test="${not empty sessionScope.userInfo.user_phone }">
 				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="${sessionScope.userInfo.user_phone}">
 				</c:if>
-				<c:if test="${sessionScope.userInfo.user_phone empty||sessionScope.userInfo.user_phone eq''}">
+				<c:if test="${empty sessionScope.userInfo.user_phone  || sessionScope.userInfo.user_phone eq ''}">
 				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
 				</c:if>
 			</c:when>
@@ -53,7 +53,7 @@
 				<c:if test="${not empty sessionScope.kakaoSession.user_phone }">
 				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="${sessionScope.kakaoSession.user_phone}">
 				</c:if>
-				<c:if test="${sessionScope.kakaoSession.user_phone empty||sessionScope.kakaoSession.user_phone eq''}">
+				<c:if test="${empty sessionScope.kakaoSession.user_phone  || sessionScope.kakaoSession.user_phone eq ''}">
 				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
 				</c:if>
 			</c:when>
@@ -64,7 +64,7 @@
 				<c:if test="${not empty  sessionScope.naverSession.user_phone }">
 				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="${sessionScope.naverSession.user_phone}">
 				</c:if>
-				<c:if test="${sessionScope.naverSession.user_phone empty||sessionScope.naverSession.user_phone ==''}">
+				<c:if test="${empty sessionScope.naverSession.user_phone  || sessionScope.naverSession.user_phone eq ''}">
 				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
 				</c:if>
 			</c:when>
@@ -197,11 +197,11 @@
 					<table class="table-default table-cost">
 						<tfoot class="total">
 							<tr>
-								<th scope="row">총 주문합계: ${total_price} </th>
+								<th scope="row">총 주문합계:  </th>
 								<td><input type="hidden" id="total_price"
 									name="total_price" value="${total_price }">
 									<input type="hidden" value="${delivery_cost }" name="delivery_cost" id="delivery_cost">
-									<input type="hidden" value="${discount }" name="discount" id ="discount"><span>₩ ${discount}</span></td>
+									<input type="hidden" value="${discount }" name="discount" id ="discount"><span>₩ ${total_price}</span></td>
 							</tr>
 						</tfoot>
 						
