@@ -6,5 +6,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="indexView" resultType="paymentVO" >
 		select * from order_list order by order_seq 
 </select>
-
 </mapper>

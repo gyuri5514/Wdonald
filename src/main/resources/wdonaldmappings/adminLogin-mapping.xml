@@ -11,4 +11,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO admin (admin_id, admin_name, admin_password, admin_phone, store_name, store_address, store_code, store_phone, store_lat, store_lon)
 		VALUES(#{admin_id}, #{admin_name}, #{admin_password}, #{admin_phone}, #{store_name}, #{store_address}, #{store_code}, #{store_phone}, #{store_lat}, #{store_lon})
 	</insert>
+
 </mapper>

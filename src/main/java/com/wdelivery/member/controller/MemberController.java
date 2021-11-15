@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.wdelivery.admin.service.AdminStoreService;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
@@ -35,13 +35,14 @@ import com.wdelivery.menu.dessert.service.DessertService;
 import com.wdelivery.menu.dessert.vo.DessertVO;
 import com.wdelivery.menu.drink.service.DrinkService;
 import com.wdelivery.menu.drink.vo.DrinkVO;
+import com.wdelivery.menu.happymeal.service.HappyMealService;
+import com.wdelivery.menu.happymeal.vo.HappyMealVO;
 import com.wdelivery.menu.side.service.SideService;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
 import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
-import com.wdelivery.order.service.OrderService;
 import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
 
@@ -75,14 +76,15 @@ public class MemberController {
 	private SideService sideService;
 	@Autowired
 	private DrinkService drinkService;
-	
-	
 	@Autowired
-	private OrderService orderService;
+	private HappyMealService happyMealService;
 	
 	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	private AdminStoreService adminStoreService;
+	
 	@GetMapping("/main.do")
 	public String main() {
 		return "main";
@@ -93,6 +95,7 @@ public class MemberController {
 			@RequestParam(value = "s_code", required = false) String s_code,
 			@RequestParam(value = "d_code", required = false) String d_code,
 			@RequestParam(value = "w_code", required = false) String w_code,
+			@RequestParam(value = "h_code", required = false) String h_code,
 			@RequestParam(value = "dessert_code", required = false) String dessert_code,
 			@RequestParam(value = "va", required = false) String va,
 			@RequestParam(value = "num", required = false) String num,
@@ -143,10 +146,16 @@ public class MemberController {
 			DessertVO dessertVO = dessertService.detailDessert(Integer.parseInt(dessert_code));
 			
 			model.addAttribute("dessertVO", dessertVO);
+			
+		} else if(h_code != null) {
+			HappyMealVO happyMealVO = happyMealService.detailHappyMeal(Integer.parseInt(h_code));
+			
+			model.addAttribute("happyMealVO", happyMealVO);
+			
 		}
 			
 		List<DrinkVO> drinkList = drinkService.selectDrink();
-		model.addAttribute("drinkList", drinkList);
+		model.addAttribute("drinkList", JSONArray.fromObject(drinkList));
 		return "order";
 	}
 
@@ -561,7 +570,19 @@ public class MemberController {
 		
 		return "store";
 	}
-
+	
+	@PostMapping("/searchStore.do")
+	@ResponseBody
+	public List<AdminVO> searchStore(@RequestParam(name="searchWord")String searchWord) { //매장 검색 부분
+		System.out.println("searchWord : " + searchWord);
+		List<AdminVO> storeList = adminStoreService.searchStore(searchWord);
+		
+		for(AdminVO vo : storeList) {
+			System.out.println(vo.toString());
+		}
+		return storeList;
+	}
+	
 	@GetMapping("/brandintro.do")
 	public String brandintro() {
 		return "brandintro";

@@ -437,6 +437,56 @@
 										</tr>
 									</tbody>
 								</c:if>
+								<c:if test="${happyMealVO != null}">
+									<input type="hidden" id="h_code" value="${happyMealVO.h_code}">
+									<thead>
+										<tr>
+											<th class="controls-colum">&nbsp;</th>
+											<th class="picture-column">&nbsp;</th>
+											<th colspan="2" class="description-column">&nbsp;</th>
+											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+											<th class="calories-column">&nbsp;&nbsp;kcal</th>
+											<th colspan="2" class="side-column">&nbsp;사이드</th>
+											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+											<th class="change-column">선택</th>
+											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr id="row" class="rowCheck">
+											<td class="controls-column">
+												<div class="input-group item-quantity item-quantity-picker">
+													<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
+												</div>
+											</td>
+											<td class="picture-column">
+												<img src= "${happyMealVO.h_img_path}" alt="" class="img-block1">
+											</td>
+											<td colspan="2" class="description-column">
+												<h4 class="item1-title">${happyMealVO.h_name}</h4>
+												<p class="item-description"></p>
+											</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${happyMealVO.h_price}"/>
+											<td class="cost-column">&#8361;${formatPrice}</td>
+											<td class="calories-column">${happyMealVO.h_kcal}kcal</td>
+											<td colspan="2" class="side-column">선택안함</td>
+											<td colspan="2" class="drink-column">선택안함</td>
+											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+											<td colspan="2" class="controls-column">
+												<div class="input-group item-quantity item-quantity-picker">
+													<span class="input-group-btn">
+														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
+													</span>
+													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+													<span class="input-group-btn">
+														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+													</span>
+												</div>
+												
+											</td>
+										</tr>
+									</tbody>
+								</c:if>
 							</table>
 						</form>
 					</div>
@@ -479,7 +529,7 @@
 					<div class="media">
 						<div class="pull-left">
 							<img src="https://www.mcdelivery.co.kr/kr//static/1635300416887/assets/82/products/1403.png"
-								alt="" class="img-block choice-image" />
+								alt="" class="img-block choice-image"  id="image-choice"/>
 						</div>
 						<div class="media-body">
 							<div class="available-choices-list row">
@@ -532,8 +582,8 @@
 				<div class="modal-body">
 					<div class="media">
 						<div class="pull-left">
-							<img src="https://www.mcdelivery.co.kr/kr//static/1635901928321/assets/82/products/1507.png"
-								alt="" class="img-block choice-image">
+							<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/vanilla_latte.png"
+								alt="" class="img-block choice-image" id="image-choice2">
 						</div>
 						<div class="media-body">
 							<div class="available-choices-list row">
@@ -545,8 +595,7 @@
 												<div class="iradio2 checked">
 													<input type="radio" name="select-choice" id="${drinkList.d_code}" class="form-radio"
 														value="${drinkList.d_name}" data-cartname="${drinkList.d_name}"
-														aria-invalid="false" 
-														style="position: absolute; opacity: 0;" checked>
+														aria-invalid="false" style="position: absolute; opacity: 0;" checked>
 												</div>
 												<c:if test="${drinkList.d_code == 323 || drinkList.d_code == 324 || drinkList.d_code == 325 || drinkList.d_code == 326 || drinkList.d_code == 327}">
 													<label for="choice-1507" class="radio-label">${drinkList.d_name} + 0원 </label>
@@ -564,7 +613,7 @@
 													<input type="radio" name="select-choice" id="${drinkList.d_code}" class="form-radio"
 														value="${drinkList.d_name}" data-cartname="${drinkList.d_name}"
 														aria-invalid="false" 
-														style="position: absolute; opacity: 0;">
+														style="position: absolute;  opacity: 0;">
 												</div>
 												<c:if test="${drinkList.d_code == 323 || drinkList.d_code == 324 || drinkList.d_code == 325 || drinkList.d_code == 326 || drinkList.d_code == 327}">
 													<label for="choice-1507" class="radio-label">${drinkList.d_name} + 0원</label>
@@ -616,13 +665,14 @@ $(function(){
 	console.log("dessert_code : " + dessert_code);
 	console.log("w_code : " + w_code);
 	
- 	if(b_code == null && s_code == null && d_code == null && dessert_code == null && w_code == null) {
+ 	if(b_code == null && s_code == null && d_code == null && dessert_code == null && w_code == null
+ 			&& h_code == null) {
 		alert("메뉴를 골라라");
 		location.href="main.do";
 	} 
 	
 	$("#sideOkbtn").click(function() {
-		if(b_code != null || w_code != null){
+		if(b_code != null || w_code != null || h_code != null){
 			$('.form-radio1').each(function(){
 				if($(this).is(":checked")) {
 					side = $(this).closest('.radio').find('label').text();
@@ -795,6 +845,12 @@ $(function(){
 	//사이드변경 라디오버튼 설정
 	$('.iradio1').click(function() {
 		$(this).find('.form-radio1').prop('checked', true);
+		if($(this).find('.form-radio1').attr("id") == "side-label2"){
+			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/golden_mozzarella_cheese_stick_4pieces.png");
+		} else {
+			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
+		}
+			
 		if($(this).find('.form-radio1').prop('checked')) {
 			$('.form-radio1').prop('checked', false);
 			$('.form-radio1').closest('.iradio1').removeClass("checked");
@@ -805,7 +861,7 @@ $(function(){
 		} 
 	});
 	
-	$('.iradio2').click(function() {
+	 $('.iradio2').click(function() {
 		$(this).find('.form-radio').prop('checked', true);
 		if($(this).find('.form-radio').prop('checked')) {
 			$('.form-radio').prop('checked', false);
@@ -815,8 +871,16 @@ $(function(){
 		} else { 
 			$(this).removeClass("checked");
 		} 
-	});
+		
+		var drinkList = JSON.parse('${drinkList}');
+		for(var i = 0; i < drinkList.length; i++) {
+			if(drinkList[i].d_code == $(this).find('.form-radio').attr("id")) {
+				$('#image-choice2').attr("src",""+drinkList[i].d_img_path+"");
+			}
+		}
+	 }); 
 });
+
 function sideOpen(index) {
 	var val = "";
 	$('.rowCheck').each(function(i){
