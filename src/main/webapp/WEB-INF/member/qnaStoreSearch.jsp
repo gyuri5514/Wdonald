@@ -45,9 +45,10 @@ function init(){
 		dataType: "json",  
 		type: "post",
 		success:function(data){
-			
+			//alert(data);
 			//alert("ajax 성공.................." + data);
-			
+			//alert("왜 아나놔" + data[0].store_name);
+			//alert("왜 아나놔" + data[1].store_name);
 			var html = "";
 			html += "<table id='LIST_TB' width='100%' class='table01' cellspacing='1'>"
 			html += "<tbody>";
@@ -73,6 +74,30 @@ function init(){
 				
 				$("#store").html(html);
 			}
+		/* 	$("#store").html(
+				"<table id='LIST_TB' width='100%' class='table01' cellspacing='1'>"+
+					"<tbody>"+
+						"<tr>"+
+							"<th class='colresize' style='display: none;' width=''>"+
+								"<span onclick=''></span>"+
+							"</th>"+
+						"<th class='colresize' style='cursor:pointer' width='undefined'>"+
+							"<span>매장명</span>"+
+						"</th>"+
+							"<th class='colresize' style='cursor: col-resize;' width='undefined'>"+
+								"<span>주소</span>"+
+							"</th>"+
+						"</tr>"+
+						"<c:forEach items='"+data+"' var='a'>"+
+							"<tr id='LIST_TR_ID1' style='cursor:pointer' class=''>"+
+								"<td width='align=&quot;center&quot;' style='display: none;'>1</td>"+
+								"<td align='center'>" + ${a.store_name} + "</td>"+
+								"<td align='center'>서울시 송파구 가락동 193-7</td>"+
+							"</tr>"+
+						"</c:forEach>"+
+						"</tbody>"+
+						"</table>"
+			); */
 		},
 		error:function(){
 			alert("failed");

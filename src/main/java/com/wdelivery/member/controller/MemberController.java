@@ -552,7 +552,11 @@ public class MemberController {
 
 	@GetMapping("/store.do")
 	public String store(AdminVO adminVO, Model model) { //하는 중...........
+
 		List<AdminVO> storeList = memberService.getStoreList(adminVO);
+		
+		
+		
 		model.addAttribute("storeList", JSONArray.fromObject(storeList));
 		
 		return "store";
