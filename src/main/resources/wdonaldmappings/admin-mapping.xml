@@ -5,5 +5,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.admin.dao.AdminDAO">
 <select id="indexView" resultType="paymentVO" >
 		select * from order_list order by order_seq 
-	</select>
+</select>
 </mapper>

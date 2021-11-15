@@ -62,7 +62,7 @@ public class AdminLoginController {
 	@PostMapping("/registerInsert.mdo")
 	public String register(AdminVO registerAdmin) throws Exception {
 		adminLoginService.register(registerAdmin);
-		//System.out.println(registerAdmin.toString());
+		
 		return "index";
 	}
 	

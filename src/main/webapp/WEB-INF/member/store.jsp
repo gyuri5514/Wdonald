@@ -30,8 +30,10 @@
 						<fieldset class="srchBox">
 							<legend>매장검색</legend>
 							<div class="form">
+
 								<input type="text" placeholder="매장명, 도로명을 검색해 주세요." title="검색어 입력" id="searchWord" name="searchWord">
 								<button type="button" class="btnMC btnM" id="storeSearch" >검색하기</button>
+
 							</div>
 						</fieldset>
 					</div>
@@ -267,6 +269,7 @@
 									<th scope="col">이용가능 서비스</th>
 								</tr>
 							</thead>
+
 							<tbody id="store">
 								
 							</tbody>
@@ -548,53 +551,13 @@ $(document).ready(function () {
 		
 		for (var i = 0; i < storeList.length; i++) {
 			var title = storeList[i].store_name;
-			var address = storeList[i].store_address;
 			var lon = storeList[i].store_lon;
 			var lat = storeList[i].store_lat;
 			var latlng = new kakao.maps.LatLng(lat,lon);
 			
 			var searchWord = $("#searchWord").val();
-			if(title.indexOf(searchWord) > 0 || address.indexOf(searchWord) > 0) { //
-	
+			if(title.indexOf(searchWord) > 0) {
 				map.panTo(latlng);
-			
-				var html = "";
-				html += "<table class='tableType01'>"
-				html += "<caption>매장목록 - 매장명/주소, 전화번호, 영업시간, 이용가능 서비스 정보표</caption>"
-				html += "<colgroup>"
-				html += "<col style='width: 16%'>"
-				html += "<col style='width: 16%'>"
-				html += "<col style='width: 34%'>"
-				html += "</colgroup>"
-				html += "<thead>"
-				html += "<tr>"
-				html += "<th scope='col'>매장명 / 주소</th>"
-				html += "<th scope='col'>전화번호</th>"
-				html += "<th scope='col'>영업시간</th>"
-				html += "<th scope='col'>이용가능 서비스</th>"
-				html += "</tr>"
-				html += "</thead>" 
-				html += "<tbody>" 
-				html += "<tr>"
-				html += "<td class='tdName'>"
-				html += "<dl class='name'>"
-				html += "<dt>"
-				html += "<strong class='tit'><a href='javascript:moveMap();'title='지도보기'>" + title + "</a></strong>"
-				html += "</dt>"
-				html += "<dd></dd>"
-				html += "<dd class='road'>" + address + "</dd>"
-				html += "</dl>"
-				html += "</td>"
-				html += "<td>1600-5252</td>"
-				html += "<td></td>"
-				html += "<td class='tdService'>"
-				html += "<div class='service'></div>"
-				html += "</td>"
-				html += "</tr>"
-				html += "</tbody>"
-				html += "</table>" 
-				
-				$("#searchTable").html(html);
 			}
 		} */
 			

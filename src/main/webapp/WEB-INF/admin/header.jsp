@@ -104,10 +104,10 @@
 												<a></a>
 											</c:when>
 											<c:otherwise>
-												<a class="nav-link" href="login.mdo">Login</a>
+												<a class="nav-link" href="login.mdo">로그인</a>
 											</c:otherwise>
 										</c:choose>
-											<a class="nav-link" href="register.mdo">Store Register</a>
+											<a class="nav-link" href="register.mdo">매장 등록</a>
 											<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
 										</nav>
 									</div>

@@ -11,6 +11,8 @@
         <link href="${pageContext.request.contextPath}/resources/css/adminStyles.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
     </head>
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -62,8 +64,41 @@
     		 $('#registerAdmin').submit();
     	 });
     	})
+    	
+    	//매장검색
+    	function openDaumPostcode() {
+		 var themeObj = {
+				 bgColor: "#F8B01B"
+				};
+		new daum.Postcode({
+			
+			oncomplete : function(data) {
+				document.querySelector("#m_zipcode").value = data.address;
+				
+				var m_zipcode = $("#m_zipcode").val();
+				alert("d" + m_zipcode);
+				var map = document.getElementById("map");
+		
+				var geocoder = new kakao.maps.services.Geocoder();
+				
+				geocoder.addressSearch(m_zipcode, function(result, status){
+					if(status === kakao.maps.services.Status.OK){
+						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+						alert("?" + result[0].y + "," + result[0].x);
+						document.getElementById("store_lat").value = result[0].y; //위도
+						document.getElementById("store_lon").value = result[0].x; //경도
+						
+						
+					}
+				});
+				
+			},
+			theme: themeObj 
+		}).open();
+	}
     </script>
     <body class="bg-black">
+    <div id="map" style="width: 0px; height:0px;"></div>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -107,8 +142,12 @@
                                                 <label for="store_name">매장명</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="store_address" name="store_address" type="text" placeholder="name@example.com" />
+                                                <input style="width: 90%; display: inline" class="form-control" id="m_zipcode" name="store_address" type="text" placeholder="name@example.com" />
                                                 <label for="store_address">매장 위치</label>
+                                                <a onclick="openDaumPostcode();" class="btn btn-danger btn-block" style="margin-left: 10px;">검색</a>
+                                                <input type="hidden" name="store_lat" id="store_lat">
+												<input type="hidden" name="store_lon" id="store_lon">
+												
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
@@ -126,7 +165,7 @@
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit">사업자 등록</a></div>
-                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="cancle">취	소</a></div>
+                                                <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle">취	소</a></div>
                                             </div>
                                         </form>
                                     </div>
