@@ -8,12 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.wdelivery.menu.burger.vo.BurgerVO;
-import com.wdelivery.menu.dessert.vo.DessertVO;
-import com.wdelivery.menu.drink.vo.DrinkVO;
-import com.wdelivery.menu.happymeal.vo.HappyMealVO;
-import com.wdelivery.menu.side.vo.SideVO;
-import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.promotion.service.PromotionService;
 import com.wdelivery.promotion.vo.PromotionVO;
 

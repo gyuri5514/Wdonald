@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="detailPromotion" resultType="promotionVO">
 		<![CDATA[
-			SELECT * FROM promotion WHERE p_code = #{p_code}
+			SELECT * FROM promotion WHERE p_code = #{p_code} ORDER BY p_code ASC
 		]]>
 	</select>
 </mapper>

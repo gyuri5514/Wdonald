@@ -2511,7 +2511,7 @@ p.nutrDesc {
 /* whats new */
 .visualArea.bgWhats01 {
     color: #fff;
-    background: url("/uploadFolder/images/whats/bg_visual_whats02.jpg") 50% 50% no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/promotion_banner.jpg") 50% 50% no-repeat;
 }
 .visualArea[class*="bgWhats"] .inner {
     height: 170px;
@@ -2717,7 +2717,7 @@ p.nutrDesc {
     height: 70px;
     text-indent: -9999px;
     font-size: 1px;
-    background: url("../images/common/btn_bbs_prev.png");
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_bbs_prev.png");
 }
 .bbsDetail .btnArea .prev {}
 .bbsDetail .btnArea .btnMC {}

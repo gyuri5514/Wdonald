@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 
 <div class="content">
+<div class="content">
 	<div class="visualArea bgWhats01">
 		<div class="inner">
-			<h1 class="titDep1" data-title="맥도날드 프로모션" data-desc="맥도날드 프로모션">맥도날드
-				프로모션</h1>
+			<h1 class="titDep1" data-title="맥도날드 프로모션" data-desc="맥도날드 프로모션">맥도날드 프로모션</h1>
 			<ul class="navPath">
 				<li><a href="/kor/main.do">Home</a></li>
 				<li><a href="/kor/promotion/list.do">What's New</a></li>
@@ -20,10 +21,11 @@
 			<div class="bbsDetail">
 				<div class="bbsTit">
 					<h2>
-						맥도날드 앱에서 만나는 <br>달콤한 바닐라 라떼 무료 쿠폰!
+						${detailPromotion.p_title}
 					</h2>
-					<span class="date"> <em><b class="hide">등록일 :</b>
-							21.10.28</em> <em><b class="hide">조회수 :</b> 31097</em>
+					<span class="date">
+						<em><b class="hide">등록일 :</b>${detailPromotion.p_regdate}</em>
+						<em><b class="hide">조회수 :</b></em>
 					</span>
 				</div>
 				<article class="bbsCon">
@@ -63,49 +65,34 @@
 }
 </style>
 					<div class="bannerImg">
-						<img src="${detailPromotion.p_detail_img_path}" alt="" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}'">
-							<a href="https://www.mcdonalds.co.kr/kor/store/main.do?utm_medium=Corp_site&utm_source=landing_Button_Shop&utm_campaign=1104_VanillaGMAL"
-							class="link link1">가까운 매장 찾기
-							</a>
-						<div class="blind">
-							<h1>오직 맥도날드 앱에서만! 모든 메뉴 구매 시 사용 가능한 바닐라 라떼 쿠폰 증정!</h1>
-							<ul>
-								<li>커피 판매 시간에 한함</li>
-								<li>본 행사는 운영 사정에 따라 사전 고지 없이 종료될 수 있음</li>
-								<li>쿠폰 단독 사용은 불가하며, 다른 메뉴와 함께 주문 시 사용</li>
-								<li>모바일 쿠폰은 맥도날드 매장 방문 시 사용 가능하며, 키오스크에서도 사용 가능</li>
-								<li>모바일 쿠폰은 바닐라 라떼(M) 단품 쿠폰 1장이며, 다른 메뉴로 교환할 수 없음. 단, 아이스
-									바닐라 라떼(M)으로 교환은 가능</li>
-								<li>1주문 당 1장 사용 가능 / 타 쿠폰 및 할인 프로모션과 중복 사용 불가</li>
-								<li>배달 주문 및 일부 매장에서 사용 불가(쿠폰 사용 가능 매장은 앱 내 '맥도날드앱 사용팁' 에서
-									확인 가능)</li>
-							</ul>
-							<p>맥딜리버리 앱으로 빠르고! 간편하게!</p>
-							<p>지금 QR코드를 스캔하여 맥도날드 앱을 다운 받아 보세요!</p>
-							<p>지금 맥도날드 앱 가입하면 맥스파이시 상하이 버거가 2,000원!</p>
-							<p>지금 QR코드를 스캔하여 맥도날드 앱을 다운 받아 보세요!</p>
-						</div>
+						<img src="${detailPromotion.p_detail_img_path}" alt="" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code}'">
+						<a href="store.do" class="link link1">가까운 매장 찾기</a>
 					</div>
 				</article>
 				<div class="btnArea">
+					<c:if test="${detailPromotion.p_code ne 2001}">
+						<button type="button" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code - 1}'" class="prev">이전 글 보기</button>
+					</c:if>
 					<a href="promotion.do" role="button" class="btnMC btnM"><span>목록보기</span></a>
-					<button type="button" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code + 1}'"
-						class="next">다음 글 보기</button>
+					<c:if test="${detailPromotion.p_code ne 2012}">
+						<button type="button" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code + 1}'" class="next">다음 글 보기</button>
+					</c:if>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- //contArea -->
 </div>
+</div>
 <div class="aside">
 	<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 </div>
 <form id="searchForm" method="post">
-	<input type="hidden" name="page" id="page" value="1"> <input
-		type="hidden" name="seq" id="seq" value="345"> <input
-		type="hidden" name="rnum" id="rnum"> <input type="hidden"
-		name="searchStatus" id="searchStatus" value="I"> <input
-		type="hidden" name="urlCode" id="urlCode">
+	<input type="hidden" name="page" id="page" value="1">
+	<input type="hidden" name="seq" id="seq" value="345">
+	<input type="hidden" name="rnum" id="rnum">
+	<input type="hidden" name="searchStatus" id="searchStatus" value="I">
+	<input type="hidden" name="urlCode" id="urlCode">
 </form>
 <div class="promo_landing_wrap">
 	<div class="promo_landing_mask"></div>
@@ -127,7 +114,7 @@
 </form>
 <script type="text/javascript" src="/cert/js/KmcCert.js"></script>
 
-<script type="text/javascript"> 
+<!-- <script type="text/javascript"> 
 function goDetail(seq,rnum){
 
 	$("#seq").val(seq);
@@ -198,19 +185,10 @@ $(function(){
     	$(".promo_landing_wrap .promo_landing_mask").height($(window).height());
     });
 });
-</script>
+</script> -->
 <div class="aside">
 	<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 </div>
 <button type="button" class="btnTop">맨 위로 가기</button>
 <!-- //container -->
 <!-- //wrapper -->
-
-<script type="text/javascript">
-	$(function()
-		{
-		
-		});
-	</script>
-</body>
-</html>
