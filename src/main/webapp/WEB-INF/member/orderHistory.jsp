@@ -127,7 +127,7 @@ function goSearch(){
  	  )//ajax end
 	 }//goSearch() end
 	
-function goBack(){
+/* function goBack(){
 		$('#tbodyPayment').empty();
 	 	var start_history = null;
 	 	var end_history = null;
@@ -153,7 +153,7 @@ function goBack(){
 				 }//callback end 
 		 	})//ajax end
 		 }//goSearch() end
-
+ */
 </script>
   	<div class="container" id="sub-page-content">
       <!--main content-->
@@ -166,7 +166,6 @@ function goBack(){
 					&nbsp;	-  &nbsp; 
 				<input type="text" name="end_history" id="end_history" maxlength="10"  readonly="readonly" />
 					&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="goSearch();" class="btn btn-md btn-red" id="btnSearch">검색</a>
-					     <a href="javascript:void(0);" onclick="goBack();" class="btn btn-md btn-red" >초기화</a>
 				<table class="table_historyorder" id="table_historyorder">
 			         <thead class="table_head_historyorder">
 			            <tr>
@@ -176,16 +175,8 @@ function goBack(){
 			               <td class="table_head_td">요청 사항</td>
 			            </tr>
 			         </thead>
-			       <%--   <c:forEach items="${paymentVO }" var="paymentVO" varStatus="status"> --%>
 			         <tbody class="table_body_historyorder" id="tbodyPayment">
-			            <%-- <tr>
-			               <td class="table_head_td">${paymentVO.order_seq }</td>
-			               <td class="table_head_td"><fmt:formatDate pattern="yyyy-MM-dd  HH:mm:ss" value="${paymentVO.order_date }" /></td>
-			               <td class="table_head_td">${paymentVO.user_address }</td>               
-			               <td class="table_head_td">${paymentVO.order_comment}</td> 
-			            </tr> --%>
 			         </tbody>
-			      <%--   </c:forEach> --%>
 			      </table>
 			</div>
 			<hr>

@@ -237,11 +237,16 @@ function orderDetail(merchantUid){
 			url :"getCartListByMerchantId.do?merchantuid="+merchantUid,
 			contentType:"application/json",
 			success : function(res){
+				var total = 0;
 				for(var i in res){
 					$('#'+merchantUid).append(res[i].cart_product_name+"x"+res[i].cart_product_quantity+
 							(res[i].cart_product_side_name!=null?"      <small>"+res[i].cart_product_side_name+"</small>":" ")+
-							(res[i].cart_product_drink_name!=null?"<small>         "+res[i].cart_product_drink_name+"</small>":" ")+
-							"<br>");
+							(res[i].cart_product_drink_name!=null?"<small>         "+res[i].cart_product_drink_name+"</small>    ":" ")+
+							(res[i].cart_product_price*res[i].cart_product_quantity)+"원 <br>");
+						total = total + ((res[i].cart_product_price)*(res[i].cart_product_quantity));
+				}
+				if(res.length>0){
+				$('#'+merchantUid).append("&nbsp;&nbsp;&nbsp;<strong><i>합계 : "+(total+2000)+ " 원</i>  (배달료 : 2000 원 )</strong>");
 				}
 				//var obj = JSON.parse(res);
 			}
@@ -255,7 +260,6 @@ function removeChildm(merchantUid){
 	$('#alink'+merchantUid).attr("onclick","orderDetail('"+merchantUid+"');");
 }
 </script>
-<%-- "orderDetail('${payment.merchantuid }');" --%>
 <div class="col-md-9">
 	<h3 class="title-divider mt_0">
 		<span>주문조회</span><small>Track Order</small>
