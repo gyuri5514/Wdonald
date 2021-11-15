@@ -20,84 +20,18 @@
 			<div class="inner">
 				<ul class="tabType01">
 					<li><a href="main.do" role="button" aria-selected="true">지역별</a></li>
-					<li><a href="/kor/store/event.do" role="button">이벤트매장</a></li>
 				</ul>
-				<form id="searchForm" method="post">
+				<form id="searchForm" method="post" onsubmit="return false">	<!-- onsubmit="return false" => 엔터칠때 submit 막기 -->
 					<input type="hidden" name="page" id="page" value="1">
 					<input type="hidden" name="lat" id="lat" value="NO"> 
 					<input	type="hidden" name="lng" id="lng" value="NO"> 
 					<input type="hidden" name="search_options" id="search_options" value="">
 					<div class="storeFind">
-						<span class="storeFind_bg" style=""></span>
-						<div class="srvcFilter">
-							<div class="service">
-								<span class="srvc"> 
-								<input type="checkbox" id="1" value="Y"> 
-									<label for="1"> 24시간 
-										<span class="icon">
-											<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png"	alt="24시간"
-												data-off="https://www.mcdonalds.co.kr/upload/main/store_service/1580887217994.png"
-												data-on="https://www.mcdonalds.co.kr/upload/main/store_service/1580887222493.png">
-										</span>
-									</label>
-								</span> 
-								<span class="srvc"> 
-									<input type="checkbox" id="6" value="Y"> 
-									<label for="6"> 맥드라이브 
-										<span class="icon"> 
-											<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png"	alt="맥드라이브"
-												data-off="https://www.mcdonalds.co.kr/upload/main/store_service/1580887501964.png"
-												data-on="https://www.mcdonalds.co.kr/upload/main/store_service/1580887505434.png">
-										</span>
-									</label>
-								</span> 
-								<span class="srvc"> 
-									<input type="checkbox" id="2" value="Y"> 
-									<label for="2"> 맥딜리버리 
-										<span class="icon"> 
-											<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png"	alt="맥딜리버리"
-												data-off="https://www.mcdonalds.co.kr/upload/main/store_service/1580887371824.png"
-												data-on="https://www.mcdonalds.co.kr/upload/main/store_service/1580887378094.png">
-										</span>
-									</label>
-								</span> 
-								<span class="srvc"> 
-									<input type="checkbox" id="4" value="Y"> 
-									<label for="4"> 맥모닝 
-										<span class="icon"> 
-											<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png" alt="맥모닝"
-												data-off="https://www.mcdonalds.co.kr/upload/main/store_service/1580887410227.png"
-												data-on="https://www.mcdonalds.co.kr/upload/main/store_service/1580887415001.png">
-										</span>
-									</label>
-								</span> 
-								<span class="srvc"> 
-									<input type="checkbox" id="3" value="Y"> 
-									<label for="3"> 주차 
-										<span class="icon"> 
-											<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png" alt="주차"
-												data-off="https://www.mcdonalds.co.kr/upload/main/store_service/1580887307761.png"
-												data-on="https://www.mcdonalds.co.kr/upload/main/store_service/1580887311487.png">
-										</span>
-									</label>
-								</span> 
-								<span class="srvc"> 
-									<input type="checkbox" id="9" value="Y"> 
-									<label for="9"> 디카페인 커피 
-										<span class="icon"> 
-											<img src="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png" alt="디카페인 커피"
-												data-off="https://www.mcdonalds.co.kr/upload/main/store_service/1580887849368.png"
-												data-on="https://www.mcdonalds.co.kr/upload/main/store_service/1580887855311.png">
-										</span>
-									</label>
-								</span>
-							</div>
-						</div>
 						<fieldset class="srchBox">
 							<legend>매장검색</legend>
 							<div class="form">
-								<input type="text" placeholder="매장명, 동명, 도로명을 검색해 주세요." title="검색어 입력" id="searchWord" name="store_address">
-								<button type="button" class="btnMC btnM" id="storeSearch">검색하기</button>
+								<input type="text" placeholder="매장명, 도로명을 검색해 주세요." title="검색어 입력" id="searchWord" name="searchWord">
+								<button type="button" class="btnMC btnM" id="storeSearch" >검색하기</button>
 							</div>
 						</fieldset>
 					</div>
@@ -316,12 +250,30 @@
 					</div>
 					<button type="button" class="mc_current">
 						<span>내 위치 중심으로 지도보기</span>
-					</button>	
-					
-					<div class="mcStore"><span id="searchTable">여기</span>
-						
+					</button>
+					<div class="mcStore">
+						<table class="tableType01">
+							<caption>매장목록 - 매장명/주소, 전화번호, 영업시간, 이용가능 서비스 정보표</caption>
+							<colgroup>
+								<col style="width: 16%">
+								<col style="width: 16%">
+								<col style="width: 34%">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">매장명 / 주소</th>
+									<th scope="col">전화번호</th>
+									<th scope="col">영업시간</th>
+									<th scope="col">이용가능 서비스</th>
+								</tr>
+							</thead>
+							<tbody id="store">
+								
+							</tbody>
+						</table>
+						<p id="noResult" class="noResult nobg" style="display:block;">검색어를 입력해 주세요.</p>
+
 					</div>
-					<p class="noResult nobg">검색어를 입력해 주세요.</p>
 				</div>
 				<!-- //storeResult -->
 			</div>
@@ -539,7 +491,58 @@ $(document).ready(function () {
 	});
 	
 	function search(){
-		var storeList = JSON.parse('${storeList}');
+		var searchWord = $("#searchWord").val();
+		if(searchWord == "") {
+			alert("검색어를 입력해주세요");
+			return;
+		}
+			
+		$.ajax({
+			type : 'post',
+			url : 'searchStore.do',
+			data : {searchWord : searchWord},
+			dataType : 'json',
+			success : function(data) {
+				console.log(data);
+				
+				var content = "";
+				
+				if(data.length > 0) {
+					$('#noResult').attr("style", "display:none");
+				} else {
+					$('#noResult').attr("style", "display:block");
+				}
+				
+				for(var i = 0; i < data.length; i++) {
+					var title = data[i].store_name;
+					var lon = data[i].store_lon;
+					var lat = data[i].store_lat;
+					var latlng = new kakao.maps.LatLng(lat,lon);
+					var address = data[i].store_address;
+					var phone = data[i].store_phone;
+					
+					map.panTo(latlng);
+					
+					content += "<tr>";
+					content += "<td class='tdName'>";
+					content += "<dl class='name'>";
+					content += "<dt><strong class='tit'><a href='javascript:moveMap("+lat+","+lon+")'; title='지도보기'>"+title+"</a></strong></dt>";
+					content += "<dd>"+address+"</dd>";
+					content += "</dl>";
+					content += "</td>";
+					content += "<td>"+phone+"</td>";
+					content += "<td></td>";
+					content += "<td class='tdService'><div class='service'></div></td>";
+					content += "</tr>";
+				}
+				$('#store').append(content);
+				
+			},
+			error : function(data) {
+				alert("상태 : " +data.status+ "\n\n메세지 : " +data.responseText+ "\n\nerror : " +data.error);
+			}
+		});
+	/* 	var storeList = JSON.parse('${storeList}');
 
 		console.log(storeList);
 		
@@ -593,7 +596,7 @@ $(document).ready(function () {
 				
 				$("#searchTable").html(html);
 			}
-		}
+		} */
 			
 	};
 	
