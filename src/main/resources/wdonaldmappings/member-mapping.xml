@@ -150,4 +150,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from cart_list where merchantuid=#{merchantUid}	order by order_seq desc
 		]]>
 	</select>
+	
+	<select id="getStoreList" resultType="adminVO">
+		select * from admin
+	</select>
 </mapper>

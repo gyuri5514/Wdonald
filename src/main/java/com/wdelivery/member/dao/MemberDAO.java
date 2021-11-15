@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserAddressVO;
@@ -52,5 +53,6 @@ public interface MemberDAO {
 
 	public List<CartVO> getCartListByMerchantId(String merchantUid);
 
+	List<AdminVO> getStoreList(AdminVO adminVO);
 
 }

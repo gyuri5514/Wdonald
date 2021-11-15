@@ -19,8 +19,8 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 	}
 	
 	@Override
-	public AdminVO register(AdminVO registerAdmin) throws Exception {
+	public void register(AdminVO registerAdmin) throws Exception {
 		
-		return adminLoginDAO.register(registerAdmin);
+		adminLoginDAO.register(registerAdmin);
 	}
 }

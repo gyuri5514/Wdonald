@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.dao.MemberDAO;
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -170,6 +171,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<CartVO> getCartListByMerchantId(String merchantUid) {
 		return memberDAO.getCartListByMerchantId(merchantUid);
+	}
+
+	@Override
+	public List<AdminVO> getStoreList(AdminVO adminVO) { //dododo
+
+		return memberDAO.getStoreList(adminVO);
 	}
 
 }

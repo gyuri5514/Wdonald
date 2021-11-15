@@ -120,7 +120,7 @@ $("#m_email").blur(function(){
 	});
 
 //필수입력사항	
-/*$("#join_ok").click(function() {
+$("#join_ok").click(function() {
 
         var m_email = $.trim($("#m_email").val());
         if (m_email=="") {
@@ -221,7 +221,7 @@ $("#m_email").blur(function(){
 		
         $("#join_form").submit();
 
-    });*/
+    });
 })
 /*----------------------------------------------------------------------------------*/
 function admPwdStrengthChk(val, arr_pattern) {

@@ -13,8 +13,8 @@ public class AdminVO {
 	private int store_drivethru;
 	private int store_status;
 	private String store_code;
-	private int store_latitude;
-	private int store_longitude;
+	private double store_lat;
+	private double store_lon;
 	public int getAdmin_seq() {
 		return admin_seq;
 	}
@@ -87,17 +87,17 @@ public class AdminVO {
 	public void setStore_code(String store_code) {
 		this.store_code = store_code;
 	}
-	public int getStore_latitude() {
-		return store_latitude;
+	public double getStore_lat() {
+		return store_lat;
 	}
-	public void setStore_latitude(int store_latitude) {
-		this.store_latitude = store_latitude;
+	public void setStore_lat(double store_lat) {
+		this.store_lat = store_lat;
 	}
-	public int getStore_longitude() {
-		return store_longitude;
+	public double getStore_lon() {
+		return store_lon;
 	}
-	public void setStore_longitude(int store_longitude) {
-		this.store_longitude = store_longitude;
+	public void setStore_lon(double store_lon) {
+		this.store_lon = store_lon;
 	}
 	@Override
 	public String toString() {
@@ -105,8 +105,8 @@ public class AdminVO {
 				+ ", admin_name=" + admin_name + ", admin_phone=" + admin_phone + ", store_name=" + store_name
 				+ ", store_address=" + store_address + ", store_phone=" + store_phone + ", store_delivery="
 				+ store_delivery + ", store_drivethru=" + store_drivethru + ", store_status=" + store_status
-				+ ", store_code=" + store_code + ", store_latitude=" + store_latitude + ", store_longitude="
-				+ store_longitude + "]";
+				+ ", store_code=" + store_code + ", store_latitude=" + store_lat + ", store_longitude="
+				+ store_lon + "]";
 	}
 	
 	

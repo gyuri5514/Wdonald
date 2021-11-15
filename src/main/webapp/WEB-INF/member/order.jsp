@@ -741,7 +741,7 @@ $(function(){
 					return;
 				}
 			}
-			if($('#result').val() == 0){
+			if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
 				alert("수량을 선택하세요");
 				return;
 			}

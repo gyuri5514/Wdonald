@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
@@ -43,6 +44,8 @@ import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
 import com.wdelivery.order.service.OrderService;
 import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class MemberController {
@@ -94,14 +97,20 @@ public class MemberController {
 			@RequestParam(value = "va", required = false) String va,
 			@RequestParam(value = "num", required = false) String num,
 			HttpSession session) {
-		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
+		
 		if(va != null) {
 			if(va.equals("변경")) {
+				List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
 				System.out.println("b_code : " + b_code);
 				System.out.println("s_code : " + s_code);
 				System.out.println("d_code : " + d_code);
 				System.out.println("num : " + num);
+				for(int i = 0; i < cartList.size(); i ++) {
+					System.out.println("vo : " + cartList.get(i).getCart_b_name());
+				}
 				cartList.remove(Integer.parseInt(num));
+				session.setAttribute("cartList", cartList);
+				System.out.println("size : " + cartList.size());
 			}
 		}
 		if (b_code != null) {
@@ -160,12 +169,19 @@ public class MemberController {
 		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
 		
 		if(va == null) {
-			int price = (int) session.getAttribute("total_price");
-			int delivery_price = (int) session.getAttribute("delivery_price");
-      
+			int price = 0;
+			int delivery_price = 0;
+			if(cartList != null) {
+				if(session.getAttribute("total_price") != null) 
+					price = (int) session.getAttribute("total_price");
+				if(session.getAttribute("delivery_price") != null) 
+					delivery_price = (int) session.getAttribute("delivery_price");
+			}
 			model.addAttribute("cartList", cartList);
 			model.addAttribute("price", price);
 			model.addAttribute("delivery_price", delivery_price);
+			
+			return "orderConfirm";
 			
 		} else {
 			if (va.equals("새로고침")) {
@@ -535,7 +551,14 @@ public class MemberController {
 	}
 
 	@GetMapping("/store.do")
-	public String store() {
+	public String store(AdminVO adminVO, Model model) { //하는 중...........
+
+		List<AdminVO> storeList = memberService.getStoreList(adminVO);
+		
+		
+		
+		model.addAttribute("storeList", JSONArray.fromObject(storeList));
+		
 		return "store";
 	}
 

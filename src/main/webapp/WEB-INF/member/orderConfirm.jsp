@@ -3,8 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="header.jsp"%>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet" href="resources/css/order/orderMain.css" />
 <link rel="stylesheet" href="resources/css/order/orderLocal.css" />
+
 <script type="text/javascript">
 	$(function(){
 		window.onkeydown = function() {	//새로고침시
@@ -27,6 +29,37 @@
 			$(".collapse").attr("style", "display:block; visibility:visible;");
 		}
 	};
+	
+	
+	//dddd?
+	function openDaumPostcode() {
+		 var themeObj = {
+				 bgColor: "#F8B01B"
+				};
+		new daum.Postcode({
+			
+			oncomplete : function(data) {
+				document.querySelector("#m_zipcode").value = data.address;
+				
+				var m_zipcode = $('#m_zipcode').val();
+				$("#m_zipcode").text(data.address);
+				var geocoder = new kakao.maps.services.Geocoder();
+
+				geocoder.addressSearch(m_zipcode, function(result, status) {
+				
+				//success
+				 if (status === kakao.maps.services.Status.OK) {
+					alert("d=앵?" + result[0].y);
+				    //var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+					
+				}
+				});
+				
+			},
+			theme: themeObj 
+		}).open();
+	}
+	
 </script>
 <div class="main" role="main">
 	<div class="clearfix">
@@ -119,7 +152,7 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_price}"/>
 													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
@@ -262,8 +295,20 @@
 										</c:if>
 										<c:if test="${address == null }">
 											<tr>
-												<th scope="row"><span>배달 주소:</span></th>
-												<td><div></div></td>
+												<th scope="row" ><span>배달 주소:<p id="m_zipcode"></p></span>	
+												</th>
+												
+												<td>
+													<span class="input-group-btn">
+													<a href="javascript:openDaumPostcode()" class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
+													<i class="fa fa-search"></i></a></span>
+												
+												</td>
+											</tr>
+											<!-- <tr id="d" style="display: none"></tr> -->
+											<tr>
+												<th colspan="2"><input placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/>
+												</th>
 											</tr>
 										</c:if>
 									</tbody>
@@ -291,12 +336,22 @@
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="/kr/applyCoupon.html">
 											<div class="form-group">
 												<div class="input-group">
-													<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;">
-													<div class="input-group-btn">
+													<c:if test="${userInfo == null}">
+														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;" readonly>
+														<div class="input-group-btn">
+														<button type="submit" class="btn btn-red" disabled>
+															적용
+														</button>
+													</div>
+													</c:if>
+													<c:if test="${userInfo != null}">
+														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;">
+														<div class="input-group-btn">
 														<button type="submit" class="btn btn-red">
 															적용
 														</button>
 													</div>
+													</c:if>
 												</div>
 												<label for="enter-promocode" class="control-hint"></label>
 											</div>

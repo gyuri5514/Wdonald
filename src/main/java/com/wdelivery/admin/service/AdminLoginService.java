@@ -6,5 +6,5 @@ public interface AdminLoginService {
 	
 	AdminVO findAdmin(AdminVO adminVO);
 	
-	AdminVO register(AdminVO registerAdmin) throws Exception;
+	public void register(AdminVO registerAdmin) throws Exception;
 }
