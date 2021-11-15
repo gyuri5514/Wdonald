@@ -1,5 +1,8 @@
 package com.wdelivery.store.service;
 
-public interface StoreService {
+import com.wdelivery.admin.vo.AdminVO;
 
+public interface StoreService {
+	
+	public void adminUpdate(AdminVO adminVO);
 }
