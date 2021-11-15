@@ -153,5 +153,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getStoreList" resultType="adminVO">
 		select * from admin
+		<if test="store_address != null and store_address !=''">
+			where
+			store_address like concat('%', #{store_address}, '%')
+		</if>
 	</select>
 </mapper>
