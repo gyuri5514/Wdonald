@@ -61,6 +61,8 @@ public class MypageController {
 	public String addressBook(@RequestParam(value = "addressVO", required = false) List<UserAddressVO> addressVO,
 			Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		String user_email = userInfo.getUser_email();
 		addressVO = new ArrayList<UserAddressVO>();
 		addressVO = memberService.addressShow(user_email);
@@ -72,14 +74,18 @@ public class MypageController {
 	}
 
 	@GetMapping("/addressupdate.do")
-	public String addressUpdate() {
-
+	public String addressUpdate(HttpSession session) {
+		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		return "addressupdate";
 	}
 
 	@PostMapping("/addressupdate.do")
 	public String addressInsert(UserAddressVO addressVO, Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		String user_email = userInfo.getUser_email();
 		addressVO.setUser_email(user_email);
 		memberService.addressInsert(addressVO);
@@ -161,6 +167,8 @@ public class MypageController {
 	@GetMapping("/trackOrder.do")
 	public String trackOrder(HttpSession session,Model model) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		List<PaymentVO> paymentList = memberService.getUserPaymentInfo(userInfo.getUser_email());
 		for(PaymentVO pv : paymentList ) {
 			System.out.println(pv.toString());
