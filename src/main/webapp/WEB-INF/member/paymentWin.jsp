@@ -39,18 +39,37 @@
 				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.userInfo.user_email}">
 				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.userInfo.user_name}">
 				<input type="hidden" name="user_seq" id="user_seq" value="${sessionScope.userInfo.user_seq}">
+				<c:if test="${not empty sessionScope.userInfo.user_phone }">
+				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="${sessionScope.userInfo.user_phone}">
+				</c:if>
+				<c:if test="${sessionScope.userInfo.user_phone empty||sessionScope.userInfo.user_phone eq''}">
+				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
+				</c:if>
 			</c:when>
 			<c:when test="${not empty sessionScope.kakaoSession}">
 				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.kakaoSession.user_email}">
 				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.kakaoSession.user_name}">
 				<input type="hidden" name="user_seq" id="user_seq" value="${sessionScope.kakaoSession.user_seq}">
+				<c:if test="${not empty sessionScope.kakaoSession.user_phone }">
+				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="${sessionScope.kakaoSession.user_phone}">
+				</c:if>
+				<c:if test="${sessionScope.kakaoSession.user_phone empty||sessionScope.kakaoSession.user_phone eq''}">
+				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
+				</c:if>
 			</c:when>
 			<c:when test="${not empty sessionScope.naverSession}">
 				<input type="hidden" name="user_email" id="user_email" value="${sessionScope.naverSession.user_email}">
 				<input type="hidden" name="user_name" id="user_name" value="${sessionScope.naverSession.user_name}">
 				<input type="hidden" name="user_seq" id="user_seq" value="${sessionScope.naverSession.user_seq}">
+				<c:if test="${not empty  sessionScope.naverSession.user_phone }">
+				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="${sessionScope.naverSession.user_phone}">
+				</c:if>
+				<c:if test="${sessionScope.naverSession.user_phone empty||sessionScope.naverSession.user_phone ==''}">
+				휴대폰&nbsp;<input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
+				</c:if>
 			</c:when>
 			<c:otherwise>
+            휴대폰 &nbsp; <input type="text" name="user_phone" id="user_phone" placeholder="'-'없이 작성해주세요." value="">
 			이메일 <input type="text" name="user_email" id="user_email" placeholder="example@wdonald.com"><br>
 			 &nbsp;&nbsp; 성함	<input type="text" name="user_name" id="user_name" >
 			</c:otherwise>
@@ -152,7 +171,7 @@
 								<th scope="row">배달 주소:</th>
 								<td><div>
 										<input type="hidden" name="user_address" id="user_address"
-											value="서울 특별시 특별한 밤의도시로 오세요~!">서울 특별시 특별한 밤의도시로 오세요~!
+											value="서울 특별시">서울 특별시 
 									</div></td>
 							</tr>
 						</tbody>
@@ -166,8 +185,8 @@
 								<td>
 									<div class="when-to-deliver"></div>
 									<div class="how-long-to-deliver">
-
-										<span>2021/11/08 16:20</span>
+													
+										<span>수정필요/2021/11/08 16:20</span>
 									</div>
 								</td>
 							</tr>
@@ -178,11 +197,11 @@
 					<table class="table-default table-cost">
 						<tfoot class="total">
 							<tr>
-								<th scope="row">총 주문합계:</th>
+								<th scope="row">총 주문합계: ${total_price} </th>
 								<td><input type="hidden" id="total_price"
-									name="total_price" value="2000">
-									<input type="hidden" value="2000" name="delivery_cost" id="delivery_cost">
-									<input type="hidden" value="4000" name="discount" id ="discount"><span>₩ 1,000</span></td>
+									name="total_price" value="${total_price }">
+									<input type="hidden" value="${delivery_cost }" name="delivery_cost" id="delivery_cost">
+									<input type="hidden" value="${discount }" name="discount" id ="discount"><span>₩ ${discount}</span></td>
 							</tr>
 						</tfoot>
 						
@@ -191,7 +210,7 @@
 							<tr>
 								<th scope="row">배달료:</th>
 								<td><span>₩
-										2,000</span></td>
+										${delivery_cost }</span></td>
 							</tr>
 							<!-- MDSAP-11635 -->
 							<!-- MDSAP-11635 -->

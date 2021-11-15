@@ -50,12 +50,11 @@ function submitCashless() {
 	var delivery_cost = $('#delivery_cost').val();
 	/*var discount = $('#discount').val()==''||*/
 	var discount = $('#discount').val();
-	var order_comment = "";
 	var store_code = "aaabbbccc";
-	var coupon_no = "112233";
+	var coupon_no = "i don't care'";
 	var order_comment= "상냥하게 주세요";
 	var user_seq = $('#user_seq').val()==null||$('#user_seq').val()=="nm"?"":$('#user_seq').val();
-	var final_price = total_price +delivery_cost - discount;
+	var final_price = total_price - discount;
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);
 	}
@@ -127,7 +126,7 @@ function submitCashless() {
 						"user_address": user_address,
 						"user_phone" : user_phone,
 						"user_email" : $('#user_email').val(),
-						"total_price" : total_price,
+						"total_price" : (total_price-delivery_cost),
 						"final_price" : final_price,
 						"discount" : discount,
 						"order_comment": order_comment,
@@ -163,7 +162,7 @@ function onsitePayment() {
 	var store_code = "aaabbbccc";
 	var coupon_no = "";
 	var order_comment=  $('#order_comment').val()==null||$('#order_comment').val()==""?"":$('#order_comment').val();
-	var final_price = total_price +delivery_cost - discount;
+	var final_price = total_price - discount;
 	
 	if(user_email.indexOf('kakao#')!=-1||user_email.indexOf('naver#')!=-1){
 		user_email = user_email.substring(6);

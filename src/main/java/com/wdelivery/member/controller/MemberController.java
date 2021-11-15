@@ -664,10 +664,16 @@ public class MemberController {
 	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) 
 				String delivery_price,
 				HttpSession session) {
-		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
-		for(CartVO vo : cartList) {
-			System.out.println(vo.getCart_product_code());
-		}
+					/*
+					 * List<CartVO> cartList =
+					 * TypeSafety.sessionCartCaster(session.getAttribute("cartList")); for(CartVO vo
+					 * : cartList) { System.out.println(vo.getCart_product_code()); }
+					 */
+		model.addAttribute("price", price);
+		model.addAttribute("delivery_cost",delivery_price);
+		int totalPrice = Integer.parseInt(price) +Integer.parseInt(delivery_price);
+		model.addAttribute("total_price",totalPrice);
+		model.addAttribute("discount",0);
 		System.out.println("price : " + price);
 		System.out.println("delivery_price : " + delivery_price);
 		return "paymentWin";
