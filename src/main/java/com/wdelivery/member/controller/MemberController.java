@@ -1,8 +1,6 @@
 package com.wdelivery.member.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,6 +89,10 @@ public class MemberController {
 	@GetMapping("/main.do")
 	public String main() {
 		return "main";
+	}
+	@GetMapping("passwordSearch.do")
+	public String passwordSearch() {
+		return "passwordSearch"; 
 	}
 
 	@GetMapping("/order.do")
@@ -532,19 +534,6 @@ public class MemberController {
 		}
 		return faqList;
 	}
-	
-//	@PostMapping("/faqKeyword.do")
-//	@ResponseBody
-//	public List<FaqVO> faqKeyword(@RequestParam(value = "MenuSelect", required = false)String type, @RequestParam(value = "KeywordSelect", required = false) String keyword ){
-//		List<FaqVO> faqKeyword = faqService.KeywordSelect(type, keyword);
-//		for(FaqVO faqKeyword1 : faqKeyword) {
-//			System.out.println(faqKeyword1.getFaq_seq());
-//			System.out.println(faqKeyword1.getFaq_name());
-//			System.out.println(faqKeyword1.getFaq_title());
-//			System.out.println(faqKeyword1.getFaq_content());
-//		}
-//		return faqService.KeywordSelect(type, keyword);
-//	}
 
 	@GetMapping("/join.do")
 	public String join() {
@@ -576,9 +565,6 @@ public class MemberController {
 	public String store(AdminVO adminVO, Model model) { //하는 중...........
 
 		List<AdminVO> storeList = memberService.getStoreList(adminVO);
-		
-		
-		
 		model.addAttribute("storeList", JSONArray.fromObject(storeList));
 		
 		return "store";
@@ -624,8 +610,6 @@ public class MemberController {
 	// qna Insert
 	@RequestMapping("/qnaInsert.do")
 	public String qnaInsert(QnaVO qnaVO) {
-		// System.out.println("1 = " + qnaVO.getQa_agree1());
-		// System.out.println("2 = " + qnaVO.getQa_agree2());
 
 		qnaService.qnaInsert(qnaVO);
 		System.out.println("insertcontroller => " + qnaVO.toString());
@@ -640,7 +624,8 @@ public class MemberController {
 
 	@PostMapping("/qnaStoreSearchP.do")
 	@ResponseBody
-	public List<AdminVO> qnaStoreSearchP(@RequestParam(value = "store_address", required = false) String store_address,
+	public List<AdminVO> qnaStoreSearchP(
+			@RequestParam(value = "store_address", required = false) String store_address,
 			Model model) {
 		List<AdminVO> adminVO = new ArrayList<AdminVO>();
 		adminVO = qnaService.storeSelect(store_address);
@@ -674,21 +659,16 @@ public class MemberController {
 	}
 
 	@GetMapping("/paymentWin.do")
-	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) 
+	public String paymentWin(Model model, 
+			@RequestParam(value = "price", required=false) String price, 
+			@RequestParam(value = "delivery_price", required=false) 
 				String delivery_price,
 				HttpSession session) {
-					/*
-					 * List<CartVO> cartList =
-					 * TypeSafety.sessionCartCaster(session.getAttribute("cartList")); for(CartVO vo
-					 * : cartList) { System.out.println(vo.getCart_product_code()); }
-					 */
 		model.addAttribute("price", price);
 		model.addAttribute("delivery_cost",delivery_price);
 		int totalPrice = Integer.parseInt(price) +Integer.parseInt(delivery_price);
 		model.addAttribute("total_price",totalPrice);
 		model.addAttribute("discount",0);
-		System.out.println("price : " + price);
-		System.out.println("delivery_price : " + delivery_price);
 		return "paymentWin";
 	}
 

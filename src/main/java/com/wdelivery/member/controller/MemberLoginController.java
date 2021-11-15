@@ -116,23 +116,16 @@ public class MemberLoginController {
 	@Transactional
 	@PostMapping("winMemJoin.do")
 	public String winMemJoin(UserVO userVO, UserAddressVO addressVO) {
-		
-		System.out.println(userVO.toString());
-		System.out.println(addressVO.toString());
 		memberService.winMemJoin(userVO);
 		memberService.winAddressJoin(addressVO);
 		memberService.insertAuthData(userVO);
-		String authKey = mss.sendAuthMail(userVO.getUser_email());
-		Map<String,String> map = new HashMap<String,String>();	
-		map.put("user_email", userVO.getUser_email());
-		map.put("authKey", authKey);
-		memberService.updateAuthKey(map);
+		updateAuthKey(userVO.getUser_email(),"join");
 		return "emailConfirm";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "emailChk.do", method = RequestMethod.GET)
-	public int emailChk(UserVO userVO, String user_email) throws Exception{
+	public int emailChk(String user_email) {
 		int emailResult = memberService.emailChk(user_email);
 		System.out.println("controller : " + emailResult);
 		return emailResult;
@@ -198,15 +191,36 @@ public class MemberLoginController {
 	
 	@RequestMapping("signUpConfirm.do")
 	public String signUpConfirm(
+					@RequestParam("type") String type,
 				@RequestParam("email") String email,
-			@RequestParam("authKey") String authKey){
+			@RequestParam("authKey") String authKey,Model model){
 		System.out.println(email + " authKey =" +authKey);
 		Map<String,String> emailMap = new HashMap<String,String>();
 		emailMap.put("authKey", authKey);
 		emailMap.put("email", email);
-		if(isAuthKeyAvailable(emailMap))
+		if(isAuthKeyAvailable(emailMap)) {
+			model.addAttribute("emailResult","success");
 			memberService.signUpConfirm(email);
+			return (type.equals("join")?"main":"confirmPassword");
+		}else {
+		model.addAttribute("emailResult","fail");
 		return "main";
+		}
+	}
+	
+	
+	@PostMapping("findPw.do")
+	public String findPw(@RequestParam("user_email") String user_email) {
+		updateAuthKey(user_email, "fndPw");
+		return "1";
+	}
+	
+	public void updateAuthKey(String user_email,String type) {
+		String authKey = mss.sendAuthMail(user_email,type);
+		Map<String,String> map = new HashMap<String,String>();	
+		map.put("user_email", user_email);
+		map.put("authKey", authKey);
+		memberService.updateAuthKey(map);
 	}
 	
 	public boolean isAuthKeyAvailable(Map<String,String> emailMap) {
