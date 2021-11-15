@@ -128,7 +128,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- payment List -->
 	<select id="paymentList" resultType="paymentVO" parameterType="HashMap">
 	<![CDATA[
-		select * from order_list where user_email=#{user_email} 
+		select * from order_list where user_email=#{user_email} and order_status = '배달 완료' 
 		]]> 
 		<if test="start_history !=  null and end_history != null">
 			and to_char(order_date, 'yyyy-MM-dd') between #{start_history} and #{end_history}
@@ -153,5 +153,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getStoreList" resultType="adminVO">
 		select * from admin
+		<if test="store_address != null and store_address !=''">
+			where
+			store_address like concat('%', #{store_address}, '%')
+		</if>
 	</select>
 </mapper>
