@@ -49,7 +49,7 @@ public class MypageController {
 	public String mypageDelete(UserVO userVO, HttpSession session) {
 		String user = (String) session.getAttribute("user_eamil");
 		if (user != null || user != "") { // 하는 중
-			System.out.println("mypageDelete success");
+			//System.out.println("mypageDelete success");
 			memberService.mypageDelete(userVO);
 			session.invalidate();
 		}
@@ -155,11 +155,12 @@ public class MypageController {
 	public String coupon(Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		
-		int user_seq = userInfo.getUser_seq();System.out.println("con => " +  user_seq);
+		int user_seq = userInfo.getUser_seq();
+		//System.out.println("con => " +  user_seq);
 		List<UserCouponVO> UserCouponVO = new ArrayList<UserCouponVO>();
 		UserCouponVO = memberService.userCouponSelect(user_seq);
 
-		System.out.println("userCouponController : " + UserCouponVO.toString());
+		//System.out.println("userCouponController : " + UserCouponVO.toString());
 		model.addAttribute("UserCouponVO", UserCouponVO);
 		
 		return "coupon";
