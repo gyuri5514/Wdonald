@@ -105,7 +105,7 @@
 								<th>Salary</th>
 							</tr>
 						</thead>
-					    <tfoot>
+					    <!-- <tfoot>
 							<tr>
 								<th>Name</th>
 								<th>Position</th>
@@ -114,19 +114,19 @@
 								<th>Start date</th>
 								<th>Salary</th>
 							</tr>
-						</tfoot>
-						<%-- <c:forEach items="${paymentVO}" var="paymentVO"> --%>
+						</tfoot> -->
+						<c:forEach items="${paymentList}" var="paymentList">
 						<tbody>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>${paymentList.order_date }</td>
+								<td>${paymentList.store_code }</td>
+								<td>${paymentList.order_status }</td>
+								<td>${paymentList.payment_type }</td>
+								<td>${paymentList.final_price }</td>
+								<td>${paymentList.final_price }</td>
 							</tr>
 						</tbody>
-						<%-- </c:forEach> --%>
+						</c:forEach> 
 					</table>
 				</div>
 			</div>
