@@ -159,15 +159,11 @@
 										<input id="password" type="password" placeholder="비밀번호를 입력하세요"	name="user_password" data-role="textfield">
 										<button type="button" tabindex="-1" class="btn_view01"></button>
 									</div>
-									<div class="check">
-										<div>
-											<i class="fas fa-check"></i>
-										</div>
-										<p>앞으로도 자동으로 로그인</p>
-									</div>
+									
 									<div>
 										<input type="submit" id="loginBtn" value="로그인">
 									</div>
+									<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 									<div>
 										<a href="memberJoin.do">회원가입</a> 
 										<a href="passwordSearch.do">비밀번호 찾기</a>

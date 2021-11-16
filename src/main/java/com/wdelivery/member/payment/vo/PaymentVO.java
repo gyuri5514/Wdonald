@@ -26,7 +26,6 @@ public class PaymentVO {
 	private String order_comment;
 	private String user_email;
 	//i am
-
 	private String payment_type;
 	private String store_code;
 	private String coupon_no;
@@ -36,6 +35,13 @@ public class PaymentVO {
 	private String pay_status;
 	private String exactCash;
 	//not too late to run away
+	private String store_name;
+	public String getStore_name() {
+		return store_name;
+	}
+	public void setStore_name(String store_name) {
+		this.store_name = store_name;
+	}
 	public int getOrder_seq() {
 		return order_seq;
 	}

@@ -91,7 +91,7 @@
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i>
-					DataTable Example
+					실시간 매출
 				</div>
 				<div class="card-body">
 					<table id="datatablesSimple">
@@ -118,8 +118,8 @@
 						<c:forEach items="${paymentList}" var="paymentList">
 						<tbody>
 							<tr>
-								<td>${paymentList.order_date }</td>
-								<td>${paymentList.store_code }</td>
+								<td><fmt:formatDate value="${paymentList.order_date }" pattern="yyyy-MM-dd"/></td>
+								<td>${paymentList.store_name }</td>
 								<td>${paymentList.order_status }</td>
 								<td>${paymentList.payment_type }</td>
 								<td>${paymentList.final_price }</td>

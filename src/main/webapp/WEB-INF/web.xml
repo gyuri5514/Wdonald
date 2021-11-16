@@ -66,9 +66,7 @@
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.mdo</url-pattern>
 	</servlet-mapping>
-	
-	
-	
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
