@@ -8,4 +8,6 @@ import com.wdelivery.member.payment.vo.PaymentVO;
 public interface StoreSalesService {
 	
 	public List<PaymentVO> orderList(AdminVO adminVO);
+	public void orderStatus(PaymentVO paymentVO);
+	
 }
