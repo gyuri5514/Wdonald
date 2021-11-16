@@ -33,6 +33,7 @@ public class MemberServiceImpl implements MemberService {
 	public void winMemJoin(UserVO userVO) {
 		memberDAO.winMemJoin(userVO);
 	}
+
 	@Override
 	public void winAddressJoin(UserAddressVO addressVO) {
 		memberDAO.winAddressJoin(addressVO);
@@ -42,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 	public void mypageUpdate(UserVO userVO) {
 		memberDAO.mypageUpdate(userVO);
 	}
-	
+
 	@Override
 	public int emailChk(String user_email) throws Exception {
 		int result = memberDAO.emailChk(user_email);
@@ -125,37 +126,44 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<UserAddressVO> addressShow(String user_email) {
-		
+
 		return memberDAO.addressShow(user_email);
 	}
+
 	@Override
 	public void addressUpdate(UserAddressVO addressVO) {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
+
 	@Override
 	public void addressDelete(int address_seq) {
 		memberDAO.addressDelete(address_seq);
 	}
+
 	@Override
 	public void mypageDelete(UserVO userVO) {
 		memberDAO.mypageDelete(userVO);
 	}
+
 	@Override
 	public void addressInsert(UserAddressVO addressVO) {
-		 memberDAO.addressInsert(addressVO);
+		memberDAO.addressInsert(addressVO);
 	}
 
 	@Override
 	public List<UserCouponVO> userCouponSelect(int user_seq) {
 		return memberDAO.userCouponSelect(user_seq);
 	}
-	
 
-  @Override
+	@Override
+	public int couponSelect(String couponCode) {
+		return memberDAO.couponSelect(couponCode);
+	}
+
+	@Override
 	public UserAddressVO addressSelect(String user_email) {
 		return memberDAO.addressSelect(user_email);
 	}
-
 
 	@Override
 	public List<PaymentVO> paymentList(HashMap<String, String> paraMap) {
@@ -174,7 +182,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<AdminVO> getStoreList(AdminVO adminVO) { //dododo
+	public List<AdminVO> getStoreList(AdminVO adminVO) { // dododo
 
 		return memberDAO.getStoreList(adminVO);
 	}
