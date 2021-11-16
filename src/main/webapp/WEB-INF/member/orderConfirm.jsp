@@ -25,8 +25,9 @@
 			alert("입력이 안된 사항이있습니다.");
 			return;
 		}
-		$('#address').val(address);
-		document.getElementById("orderForm").action = "paymentWin.do";
+		
+		document.getElementById("orderForm").action = "paymentWin.do?address="+address+"";
+			
 		document.getElementById("orderForm").submit();
 	}
 	function couponOpen() {
@@ -201,7 +202,7 @@
 													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null}">
+											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -221,7 +222,7 @@
 													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null }">
+											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -286,30 +287,6 @@
 													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_h_code != null}">
-												<tr id="${status.count}">
-													<td class="quantity">${status.count}</td>
-													<td class="picture-img">
-														<img src="${cartList.cart_h_img_path}" class="img-block" alt="">
-														<div class="controls">
-															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_h_code}&va=변경&num=${status.index}" title="변경">
-																<i class="fas fa-pen"></i></a>
-															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
-																<i class="far fa-trash-alt"></i></a>
-														</div>
-													</td>
-													<td class="product-name">
-														<div>${cartList.cart_h_name}</div>
-														<ul style="padding-left:3px; padding-top:10px;">
-															<li>${cartList.cart_d_name}</li>
-															<li>${cartList.cart_s_name}</li>
-														</ul>
-													</td>
-													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_h_price}"/>
-													<td class="cost">₩${formatPrice}</td>
-													<td class="many">${cartList.cart_quantity}개</td>
-												</tr>
-											</c:if>
 											<c:if test="${cartList.cart_dessert_code != null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
@@ -348,7 +325,6 @@
 						<input type="hidden" id="userCouponVO" name="coupon">
 						<input type="hidden" id="userAddress_lat" name="lat">
 						<input type="hidden" id="userAddress_lon" name="lon">
-						<input type="hidden" id="address" name="address">
 					</form>
 				</div>
 				<div class="col-xs-4" id="col-xs-4">

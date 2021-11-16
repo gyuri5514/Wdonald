@@ -1,11 +1,10 @@
 package com.wdelivery.cart.vo;
-
 /*
  *typeAlias = cartVO 
  */
 public class CartVO {
-
-	// field for view
+	
+	//field for view
 	private Integer cart_b_code;
 	private String cart_b_name;
 	private Integer cart_b_price;
@@ -38,14 +37,10 @@ public class CartVO {
 	private Integer cart_d_price;
 	private String cart_d_img_path;
 	private String cart_d_name;
-	private Integer cart_h_code;
-	private Integer cart_h_price;
-	private String cart_h_img_path;
-	private String cart_h_name;
 	private Integer cart_quantity;
 	private Integer cart_price;
 
-	// db field
+	//db field
 	private Integer cart_product_code;
 	private String cart_product_name;
 	private String cart_product_side_name;
@@ -57,7 +52,8 @@ public class CartVO {
 	private Integer order_seq;
 	private String user_email;
 	private String merchantuid;
-
+	
+	
 	@Override
 	public String toString() {
 		return "CartVO [cart_product_code=" + cart_product_code + ", cart_product_name=" + cart_product_name
@@ -67,127 +63,75 @@ public class CartVO {
 				+ cart_product_seq + ", order_seq=" + order_seq + ", user_email=" + user_email + ", merchantuid="
 				+ merchantuid + "]";
 	}
-
-	public Integer getCart_h_code() {
-		return cart_h_code;
-	}
-
-	public void setCart_h_code(Integer cart_h_code) {
-		this.cart_h_code = cart_h_code;
-	}
-
-	public Integer getCart_h_price() {
-		return cart_h_price;
-	}
-
-	public void setCart_h_price(Integer cart_h_price) {
-		this.cart_h_price = cart_h_price;
-	}
-
-	public String getCart_h_img_path() {
-		return cart_h_img_path;
-	}
-
-	public void setCart_h_img_path(String cart_h_img_path) {
-		this.cart_h_img_path = cart_h_img_path;
-	}
-
-	public String getCart_h_name() {
-		return cart_h_name;
-	}
-
-	public void setCart_h_name(String cart_h_name) {
-		this.cart_h_name = cart_h_name;
-	}
-
 	public String getCart_product_side_name() {
 		return cart_product_side_name;
 	}
-
 	public void setCart_product_side_name(String cart_product_side_name) {
 		this.cart_product_side_name = cart_product_side_name;
 	}
-
 	public String getCart_product_drink_name() {
 		return cart_product_drink_name;
 	}
-
 	public void setCart_product_drink_name(String cart_product_drink_name) {
 		this.cart_product_drink_name = cart_product_drink_name;
 	}
-
 	public Integer getCart_product_code() {
 		return cart_product_code;
 	}
-
 	public void setCart_product_code(Integer cart_product_code) {
 		this.cart_product_code = cart_product_code;
 	}
-
 	public String getCart_product_name() {
 		return cart_product_name;
 	}
-
 	public void setCart_product_name(String cart_product_name) {
 		this.cart_product_name = cart_product_name;
 	}
-
 	public String getCart_product_img_path() {
 		return cart_product_img_path;
 	}
-
 	public void setCart_product_img_path(String cart_product_img_path) {
 		this.cart_product_img_path = cart_product_img_path;
 	}
-
 	public Integer getCart_product_price() {
 		return cart_product_price;
 	}
-
 	public void setCart_product_price(Integer cart_product_price) {
 		this.cart_product_price = cart_product_price;
 	}
-
 	public Integer getCart_product_quantity() {
 		return cart_product_quantity;
 	}
-
 	public void setCart_product_quantity(Integer cart_product_quantity) {
 		this.cart_product_quantity = cart_product_quantity;
 	}
-
 	public Integer getCart_product_seq() {
 		return cart_product_seq;
 	}
-
 	public void setCart_product_seq(Integer cart_product_seq) {
 		this.cart_product_seq = cart_product_seq;
 	}
-
 	public Integer getOrder_seq() {
 		return order_seq;
 	}
-
 	public void setOrder_seq(Integer order_seq) {
 		this.order_seq = order_seq;
 	}
-
 	public String getUser_email() {
 		return user_email;
 	}
-
 	public void setUser_email(String user_email) {
 		this.user_email = user_email;
 	}
-
 	public String getMerchantuid() {
 		return merchantuid;
 	}
-
 	public void setMerchantuid(String merchantuid) {
 		this.merchantuid = merchantuid;
 	}
-
+	
+	
+	
 	public Integer getCart_price() {
 		return cart_price;
 	}
