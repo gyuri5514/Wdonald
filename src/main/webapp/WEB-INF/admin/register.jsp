@@ -18,7 +18,7 @@
     	$(document).ready(function(){
     	 $("#cancle").on("click",function(){ 
     		
-    		 location.href = "/controller/index.mdo"
+    		 location.href = "/controller/index.mdo";
     	 })
     	 $("#submit").on("click",function(){
     		 if($("#admin_id").val()==""){
@@ -61,7 +61,65 @@
     			 $("#store_phone").focus();
     			 return false;
     		 }
-    		 $('#registerAdmin').submit();
+    		 
+    		 $.ajax({
+    			type : 'post',
+    			url : '/controller/adminCheck.mdo',
+    			data : {
+    				admin_id : $("#admin_id").val()		
+    			},
+    			dataType : 'json',
+    			success : function(data) {
+    				alert(data);
+    				if(data == 1) {
+    					$('#content').attr("style", "display:block;");
+    					$('#content').text("이미 존재하는 관리자 아이디입니다.");
+    					return;
+    				} else {
+    					$.ajax({
+    						type : 'post',
+    		    			url : '/controller/adminCheck.mdo',
+    		    			data : {
+    		    				store_name : $("#store_name").val()
+    		    			},
+    		    			dataType : 'json',
+    		    			success : function(data) {
+    		    				if(data == 1) {
+    		    					$('#content').attr("style", "display:block;");
+    		    					$('#content').text("이미 존재하는 매장명입니다.");
+    		    					return;    		    					
+    		    				} else {
+	    		    				$.ajax({
+	    	    						type : 'post',
+	    	    		    			url : '/controller/adminCheck.mdo',
+	    	    		    			data : {
+	    	    		    				store_code : $("#store_code").val()
+	    	    		    			},
+	    	    		    			dataType : 'json',
+	    	    		    			success : function(data) {
+	    	    		    				if(data == 1) {
+	    	    		    					$('#content').attr("style", "display:visible;");
+	    	    		    					$('#content').text("이미 존재하는 매장코드입니다.");
+	    	    		    					return;   
+	    	    		    				} 
+	    	    		    			},
+	    	    		    			error : function(message) {
+	    	    		    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+	    	    		    			}
+	    		    				});
+    		    				}
+    		    			},
+    		    			error : function(message) {
+    		    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+    		    			}
+    					});
+    				}
+    			}, 
+    			error : function(message) {
+    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+    			}
+    		 });
+    		 /* $('#registerAdmin').submit(); */
     	 });
     	})
     	
@@ -142,7 +200,7 @@
                                                 <label for="store_name">매장명</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input style="width: 90%; display: inline" class="form-control" id="m_zipcode" name="store_address" type="text" placeholder="name@example.com" />
+                                                <input style="width: 89%; display: inline" class="form-control" id="m_zipcode" name="store_address" type="text" placeholder="name@example.com" />
                                                 <label for="store_address">매장 위치</label>
                                                 <a onclick="openDaumPostcode();" class="btn btn-danger btn-block" style="margin-left: 10px;">검색</a>
                                                 <input type="hidden" name="store_lat" id="store_lat">
@@ -152,7 +210,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="store_code" name="store_code" type="text" placeholder="Create a password" />
+                                                        <input class="form-control" id="store_code" name="store_code" type="text" placeholder="ex) M0001" />
                                                         <label for="store_code">매장 코드</label>
                                                     </div>
                                                 </div>
@@ -163,6 +221,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div id="content" style="display:none; color:red;"></div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit">사업자 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle">취	소</a></div>
@@ -170,7 +229,6 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.mdo">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>

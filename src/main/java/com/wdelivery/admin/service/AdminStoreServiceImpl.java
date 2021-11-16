@@ -1,6 +1,7 @@
 package com.wdelivery.admin.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,11 @@ public class AdminStoreServiceImpl implements AdminStoreService{
 	@Override
 	public List<AdminVO> searchStore(String searchWord) {
 		return adminStoreDAO.searchStore(searchWord);
+	}
+
+	@Override
+	public int selectStore(String str) {
+		return adminStoreDAO.selectStore(str);
 	}
 
 }
