@@ -8,12 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.wdelivery.menu.burger.vo.BurgerVO;
-import com.wdelivery.menu.dessert.vo.DessertVO;
-import com.wdelivery.menu.drink.vo.DrinkVO;
-import com.wdelivery.menu.happymeal.vo.HappyMealVO;
-import com.wdelivery.menu.side.vo.SideVO;
-import com.wdelivery.menu.winMorning.vo.WinMorningVO;
+import com.wdelivery.happypromotion.service.HappyPromotionService;
+import com.wdelivery.happypromotion.vo.HappyPromotionVO;
 import com.wdelivery.promotion.service.PromotionService;
 import com.wdelivery.promotion.vo.PromotionVO;
 
@@ -22,6 +18,9 @@ public class PromotionController {
 
 	@Autowired
 	private PromotionService promotionService;
+	
+	@Autowired
+	private HappyPromotionService happyPromotionService;
 
 	@GetMapping("/promotion.do")
 	public String selectPromotion(Model model) {
@@ -31,9 +30,6 @@ public class PromotionController {
 		List<PromotionVO> selectPromotionEnd = promotionService.selectPromotionEnd();
 		model.addAttribute("selectPromotionEnd", selectPromotionEnd);
 
-		System.out.println("selectPromotion");
-		System.out.println("selectPromotionEnd");
-
 		return "promotion";
 	}
 
@@ -42,11 +38,9 @@ public class PromotionController {
 
 		if (p_code != null) {
 			PromotionVO promotionVO = promotionService.detailPromotion(p_code);
-			System.out.println("detailPromotion : " + promotionVO.getP_code());
-			System.out.println("detailPromotion : " + promotionVO.getP_name());
-			System.out.println("detailPromotion : " + promotionVO.getP_img_path());
-			System.out.println("detailPromotion : " + promotionVO.getP_detail_img_path());
-
+			
+			promotionService.countPromotion(p_code);
+			
 			model.addAttribute("detailPromotion", promotionVO);
 
 			return "promotionDetail";
@@ -55,5 +49,13 @@ public class PromotionController {
 			return "promotion.do";
 		}
 	}
+	
+	@GetMapping("/happymealPromotion.do")
+	public String selectHappyPromotion(Model model) {
+		List<HappyPromotionVO> selectHappyPromotion = happyPromotionService.selectHappyPromotion();
+		model.addAttribute(selectHappyPromotion);
 
+		return "happymealPromotion";
+	}
+	
 }

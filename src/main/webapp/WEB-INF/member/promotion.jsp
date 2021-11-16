@@ -1,34 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script type="text/javascript" src="/resources/js/popup.js"></script>
 <script type="text/javascript" src="/resources/js/libs.js"></script>
 <script type="text/javascript" src="/resources/js/KmcCert.js"></script>
 
 <script>
-function promotionShow() {
-	if ($("#order_detail_table").css("display") == "none") {
-		$("#order_detail_table").show();
-	} else {
-		$("#order_detail_table").hide();
-	}
-	
-	if(status==''){
-		$('#all').attr('aria-selected','true');
-		$('#end').attr('aria-selected','false');
-		$('#ing').attr('aria-selected','false');
+function promotionShow(status) {
+	if (status == '') {
+		$('#all').attr('aria-selected', 'true');
+		$('#end').attr('aria-selected', 'false');
+		$('ing').attr('aria-selected', 'false');
 		
-	}else if(status == 'I'){
+		if ($('#promotion_ing').css("display") == "none" || $('#promotion_end').css("display") == "none") {
+			alert("전체");
+			$('#promotion_ing').show();
+			$('#promotion_end').show();
+		}
+	} else if (status == 'I') {
 		$('#all').attr('aria-selected','false');
 		$('#end').attr('aria-selected','false');
 		$('#ing').attr('aria-selected','true');
-	}else if (status =='E'){
+		
+		if ($('#promotion_ing').css("display") == "none" || $('#promotion_end').css("display") == "none") {
+			alert("진행중");
+			$('#promotion_ing').show();
+			$('#promotion_end').hide();
+		}
+	} else if (status =='E'){
 		$('#all').attr('aria-selected','false');
 		$('#end').attr('aria-selected','true');
 		$('#ing').attr('aria-selected','false');
-	}else{
-		alert("잘못된 접근입니다.");
+		
+		if ($('#promotion_ing').css("display") == "none" || $('#promotion_end').css("display") == "none") {
+			alert("종료");
+			$('#promotion_ing').hide();
+			$('#promotion_end').show();
+		}
 	}
+	
 }
 </script>
 
@@ -49,18 +60,18 @@ function promotionShow() {
 		<div class="contArea bgG">
 			<div class="inner">
 				<ul class="tabType01">
-					<li><a href="javascript:getList(1,'');" id="all" role="button" aria-selected="true">전체보기</a></li>
+					<li><a href="javascript:promotionShow('');" id="all" role="button">전체보기</a></li>
 					<!-- 선택 된 태그에 aria-selected="true" 추가 -->
-					<li><a href="javascript:getList(1,'I');" id="ing" role="button">진행중</a></li>
-					<li><a href="javascript:getList(1,'E')" id="end" role="button">종료</a></li>
+					<li><a href="javascript:promotionShow('I');" id="ing" role="button">진행중</a></li>
+					<li><a href="javascript:promotionShow('E')" id="end" role="button">종료</a></li>
 				</ul>
 				<!-- 행사 있을 경우 종료된 행사일 경우 class값 end 추가-->
 				<ul class="cardBanner" id="promotionList">
 					<c:forEach items="${selectPromotion}" var="selectPromotion">
-						<li>
-							<a href="#" data-seq="${selectPromotion.p_code}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}">
+						<li id="promotion_ing">
+							<a href="#" data-seq="${selectPromotion.p_code}">
 								<div class="tmb">
-									<img src="${selectPromotion.p_img_path}" alt="${selectPromotion.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}">
+									<img src="${selectPromotion.p_img_path}" alt="${selectPromotion.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}'">
 								</div>
 								<div class="con">
 									<strong class="tit">
@@ -72,10 +83,10 @@ function promotionShow() {
 						</li>
 					</c:forEach>
 					<c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
-						<li>
-							<a href="#" data-seq="${selectPromotionEnd.p_code}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotionEnd.p_code}" class="end">
+						<li id="promotion_end">
+							<a href="#" data-seq="${selectPromotionEnd.p_code}" class="end">
 								<div class="tmb">
-									<img src="${selectPromotionEnd.p_img_path}" alt="${selectPromotionEnd.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotionEnd.p_code}">
+									<img src="${selectPromotionEnd.p_img_path}" alt="${selectPromotionEnd.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotionEnd.p_code}'">
 								</div>
 								<div class="con">
 									<strong class="tit">
