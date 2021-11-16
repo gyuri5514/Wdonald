@@ -49,7 +49,7 @@ public class MypageController {
 	public String mypageDelete(UserVO userVO, HttpSession session) {
 		String user = (String) session.getAttribute("user_eamil");
 		if (user != null || user != "") { // 하는 중
-			System.out.println("mypageDelete success");
+			//System.out.println("mypageDelete success");
 			memberService.mypageDelete(userVO);
 			session.invalidate();
 		}
@@ -61,6 +61,8 @@ public class MypageController {
 	public String addressBook(@RequestParam(value = "addressVO", required = false) List<UserAddressVO> addressVO,
 			Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		String user_email = userInfo.getUser_email();
 		addressVO = new ArrayList<UserAddressVO>();
 		addressVO = memberService.addressShow(user_email);
@@ -72,14 +74,18 @@ public class MypageController {
 	}
 
 	@GetMapping("/addressupdate.do")
-	public String addressUpdate() {
-
+	public String addressUpdate(HttpSession session) {
+		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		return "addressupdate";
 	}
 
 	@PostMapping("/addressupdate.do")
 	public String addressInsert(UserAddressVO addressVO, Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		String user_email = userInfo.getUser_email();
 		addressVO.setUser_email(user_email);
 		memberService.addressInsert(addressVO);
@@ -99,38 +105,48 @@ public class MypageController {
 		return "redirect:addressBook.do";
 	}
 	
-	//데이터 피커 하고싶은데 안됌 ㅠ
+	//데이터 피커 하고싶은데 안됌 ㅠ 
 	@ResponseBody
 	@GetMapping("/search.do")
 	public List<PaymentVO> orderHistory( 
 			@RequestParam(value = "start_history",required = false) String start_history, @RequestParam(value = "end_history", required = false) String end_history, 
-			Model model, HttpSession session, HttpServletRequest request) {
+			 HttpSession session, HttpServletRequest request) {
 		
 		if(start_history=="" && end_history=="") {
 			start_history =null;
 			end_history=null;
 		}
+		
+		System.out.println("start_history = "+start_history+" end_history = "+end_history );
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		paraMap.put("start_history", start_history);
 		paraMap.put("end_history", end_history);
 		paraMap.put("user_email", userInfo.getUser_email());
 		List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
-		
-		model.addAttribute("paymentVO", paymentVO);
+		if(paymentVO.size()==0) {
+			System.out.println("paymentVO is null");
+		}
+		for(PaymentVO p : paymentVO) {
+			System.out.println(p.toString());
+		}
 		return paymentVO;
 	}
 	
 	@GetMapping("/orderHistory.do")
 	public String orderHistory( Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
-		System.out.println(userInfo.toString());
-		HashMap<String, String> paraMap = new HashMap<String, String>();
-		paraMap.put("user_email", userInfo.getUser_email());
-
-		List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
-		
-		model.addAttribute("paymentVO", paymentVO);
+		if(userInfo==null)
+			return "redirect:main.do";
+		/*
+		 * System.out.println(userInfo.toString()); HashMap<String, String> paraMap =
+		 * new HashMap<String, String>(); paraMap.put("user_email",
+		 * userInfo.getUser_email());
+		 * 
+		 * List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
+		 * 
+		 * model.addAttribute("paymentVO", paymentVO);
+		 */
 		return "orderHistory";
 	}
 	
@@ -138,12 +154,14 @@ public class MypageController {
 	@GetMapping("/coupon.do")
 	public String coupon(Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
-		
-		int user_seq = userInfo.getUser_seq();System.out.println("con => " +  user_seq);
+		if(userInfo==null) 
+			return "redirect:main.do";
+		int user_seq = userInfo.getUser_seq();
+		//System.out.println("con => " +  user_seq);
 		List<UserCouponVO> UserCouponVO = new ArrayList<UserCouponVO>();
 		UserCouponVO = memberService.userCouponSelect(user_seq);
 
-		System.out.println("userCouponController : " + UserCouponVO.toString());
+		//System.out.println("userCouponController : " + UserCouponVO.toString());
 		model.addAttribute("UserCouponVO", UserCouponVO);
 		
 		return "coupon";
@@ -151,6 +169,8 @@ public class MypageController {
 	@GetMapping("/trackOrder.do")
 	public String trackOrder(HttpSession session,Model model) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
+		if(userInfo==null)
+			return "redirect:main.do";
 		List<PaymentVO> paymentList = memberService.getUserPaymentInfo(userInfo.getUser_email());
 		for(PaymentVO pv : paymentList ) {
 			System.out.println(pv.toString());

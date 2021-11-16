@@ -36,6 +36,8 @@
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
 	 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	 <bean id="orderTimer" class="com.wdelivery.member.util.OrderTimer"></bean>
+	 <bean id="nearestStore" class="com.wdelivery.member.util.NearestStore"></bean>
 	 
 	 <mybatis-spring:scan base-package="com.wdelivery.qna.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.member.dao"/>
@@ -52,6 +54,7 @@
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.happymeal.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.member.payment.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.admin.dao"/>
+     <mybatis-spring:scan base-package="com.wdelivery.store.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.promotion.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.news.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.happypromotion.dao"/>

@@ -17,6 +17,16 @@
 		}
 	});
 	function order() {
+		var address = $('#m_zipcode').val() + $('#m_zipcode2').val();
+		alert($('#m_zipcode2').val());
+		if($('#m_zipcode').val() == "" || $('#m_zipcode2').val() == "") {
+			alert("주소를 입력하세요");
+			return;
+		} else if($('#delivery_price').val() == 0 || $('#price').val() == 0) {
+			alert("입력이 안된 사항이있습니다.");
+			return;
+		}
+		$('#address').val(address);
 		document.getElementById("orderForm").action = "paymentWin.do";
 		document.getElementById("orderForm").submit();
 	}
@@ -30,6 +40,40 @@
 		}
 	};
 	
+	function couponBtn() {
+		var couponCode = $('#couponCode').val();
+		$('.control-hint').text("");
+		$('.control-hint').attr("style", "display:none");
+		
+		if(couponCode == "") {
+			alert('쿠폰코드를 입력해라');
+			return;
+		}
+		
+		$.ajax({
+			type : 'get',
+			data : {couponCode : couponCode},
+			url : 'couponSearch.do',
+			dataType : 'json',
+			success : function(data) {
+				if(data == 0) {
+					$('.control-hint').text("쿠폰코드가 존재하지않습니다.");
+					$('.control-hint').attr("style", "display:block");
+				} else if(data == -1) {
+					$('.control-hint').text("쿠폰함에 쿠폰이 존재하지않습니다.");
+					$('.control-hint').attr("style", "display:block");
+				} else {
+					$('.control-hint').text("사용가능한 쿠폰입니다.");
+					$('.control-hint').attr("style", "display:block");
+					$('#userCouponVO').val(couponCode); 
+					console.log($('#userCouponVO').val());
+				}
+			},
+			error : function(message) {
+				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+			}
+		});
+	}
 	
 	//dddd?
 	function openDaumPostcode() {
@@ -47,12 +91,15 @@
 
 				geocoder.addressSearch(m_zipcode, function(result, status) {
 				
-				//success
-				 if (status === kakao.maps.services.Status.OK) {
-					alert("d=앵?" + result[0].y);
-				    //var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-					
-				}
+					//success
+					if (status === kakao.maps.services.Status.OK) {
+					    var lat = result[0].y;
+					    var lon = result[0].x;
+					    $('#userAddress_lat').val(lat);
+					    $('#userAddress_lon').val(lon);
+					    console.log($('#userAddress_lat').val());
+					    console.log($('#userAddress_lon').val());
+					}
 				});
 				
 			},
@@ -155,7 +202,7 @@
 													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
+											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -175,7 +222,7 @@
 													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
-											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null}">
+											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null }">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
 													<td class="picture-img">
@@ -240,6 +287,30 @@
 													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
+											<c:if test="${cartList.cart_h_code != null}">
+												<tr id="${status.count}">
+													<td class="quantity">${status.count}</td>
+													<td class="picture-img">
+														<img src="${cartList.cart_h_img_path}" class="img-block" alt="">
+														<div class="controls">
+															<a class="text-gray-light btn-action action-edit" href="order.do?b_code=${cartList.cart_h_code}&va=변경&num=${status.index}" title="변경">
+																<i class="fas fa-pen"></i></a>
+															<a class="text-gray-light btn-action action-delete" href="orderConfirm.do?va=삭제&num=${status.index}" title="삭제" onclick="onProductRemoveClick({ 'name':'단품 - 스파이시 맥앤치즈 버거','id':'2085','price':'6900.000','brand':'McDonalds','variant':'','quantity':'1'})">
+																<i class="far fa-trash-alt"></i></a>
+														</div>
+													</td>
+													<td class="product-name">
+														<div>${cartList.cart_h_name}</div>
+														<ul style="padding-left:3px; padding-top:10px;">
+															<li>${cartList.cart_d_name}</li>
+															<li>${cartList.cart_s_name}</li>
+														</ul>
+													</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_h_price}"/>
+													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
+												</tr>
+											</c:if>
 											<c:if test="${cartList.cart_dessert_code != null}">
 												<tr id="${status.count}">
 													<td class="quantity">${status.count}</td>
@@ -275,6 +346,10 @@
 					</div>
 						<input type="hidden" id="price" name="price" value="${price}">
 						<input type="hidden" id="delivery_price" name="delivery_price" value="${delivery_price}">
+						<input type="hidden" id="userCouponVO" name="coupon">
+						<input type="hidden" id="userAddress_lat" name="lat">
+						<input type="hidden" id="userAddress_lon" name="lon">
+						<input type="hidden" id="address" name="address">
 					</form>
 				</div>
 				<div class="col-xs-4" id="col-xs-4">
@@ -290,39 +365,45 @@
 										<c:if test="${address != null }">
 											<tr>
 												<th scope="row"><span>배달 주소:</span></th>
-												<td><div>${address}</div></td>
+												<td><div id="m_zipcode" style="text-align:left; font-size:15px;">${address1}</div></td>
+						 						<td style="width:40px;">
+													<span class="input-group-btn"> 
+													<a href="javascript:openDaumPostcode()" class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
+													<i class="fa fa-search"></i></a></span>
+												</td>
+											</tr>
+											<tr>
+												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/>${address2}</th>
 											</tr>
 										</c:if>
 										<c:if test="${address == null }">
 											<tr>
-												<th scope="row" ><span>배달 주소:<p id="m_zipcode"></p></span>	
-												</th>
-												
-												<td>
-													<span class="input-group-btn">
+												<th scope="row" ><span>배달 주소:</span></th>
+												<td colspan="2" ><div id="m_zipcode" style="text-align:left; font-size:15px;"></div></td>
+												<td style="width:40px;">
+													<span class="input-group-btn"> 
 													<a href="javascript:openDaumPostcode()" class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
 													<i class="fa fa-search"></i></a></span>
-												
 												</td>
 											</tr>
 											<!-- <tr id="d" style="display: none"></tr> -->
 											<tr>
-												<th colspan="2"><input placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/>
-												</th>
+												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/></th>
 											</tr>
 										</c:if>
 									</tbody>
 								</table>
 							</section>
-							<section class="panel-section section-delivery-datetime">
+							<section class="panel-section">
 								<table class="table-default table-delivery-datetime">
 									<tbody>
 										<tr>
-											<th scope="row">예상 배달 시간:</th>
+											<th scope="row"><input type="hidden" id="delivery_time" name="delivery_time" value="40">예상 배달 시간: 40 분</th>
 											<td>
 												<div class="when-to-deliver"></div>
 												<div class="how-long-to-deliver">
-													<span>2021/10/30 02:05</span>
+																
+													<span>수정필요/2021/11/08 16:20</span>
 												</div>
 											</td>
 										</tr>
@@ -333,13 +414,13 @@
 								<div>
 									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>쿠폰 코드 입력</span> <i class="fa"></i></a>
 									<div id="enter-promocode" class="collapse">
-										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="/kr/applyCoupon.html">
+										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="#">
 											<div class="form-group">
 												<div class="input-group">
 													<c:if test="${userInfo == null}">
 														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;" readonly>
 														<div class="input-group-btn">
-														<button type="submit" class="btn btn-red" disabled>
+														<button type="button" class="btn btn-red" onclick="couponBtn()" disabled>
 															적용
 														</button>
 													</div>
@@ -347,13 +428,13 @@
 													<c:if test="${userInfo != null}">
 														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;">
 														<div class="input-group-btn">
-														<button type="submit" class="btn btn-red">
+														<button type="button" onclick="couponBtn()" class="btn btn-red">
 															적용
 														</button>
 													</div>
 													</c:if>
 												</div>
-												<label for="enter-promocode" class="control-hint"></label>
+												<label for="enter-promocode" class="control-hint" style="display:none; font-size:15px; color:red;"></label>
 											</div>
 										</form>
 									</div>

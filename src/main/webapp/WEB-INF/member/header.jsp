@@ -166,7 +166,7 @@
 									</div>
 									<div>
 										<a href="memberJoin.do">회원가입</a> 
-										<a href="javascript:alert('비밀번호찾기 페이지는 준비중입니다.')">비밀번호 찾기</a>
+										<a href="passwordSearch.do">비밀번호 찾기</a>
 									</div>
 								</form>
 								<!--아이디비번 버튼-->

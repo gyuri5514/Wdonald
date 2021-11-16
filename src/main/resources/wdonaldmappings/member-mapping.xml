@@ -124,11 +124,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="userCouponSelect" resultType="UserCouponVO" parameterType="UserCouponVO">
 		select * from user_coupon where user_seq = #{user_seq}
 	</select>
+	<select id="couponSelect" resultType="int">
+		select count(*) from coupon where coupon_code = #{couponCode}
+	</select>
 	
 	<!-- payment List -->
 	<select id="paymentList" resultType="paymentVO" parameterType="HashMap">
 	<![CDATA[
-		select * from order_list where user_email=#{user_email} 
+		select * from order_list where user_email=#{user_email} and order_status = '배달 완료' 
 		]]> 
 		<if test="start_history !=  null and end_history != null">
 			and to_char(order_date, 'yyyy-MM-dd') between #{start_history} and #{end_history}

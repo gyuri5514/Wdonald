@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
 <meta name="author" content="" />
 <title>WDelivery 관리자</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css?ver=1.1"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/storeStyles.css?ver=1.1"> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -98,7 +99,7 @@
 								</a>
 									<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="login.sdo">Login</a>
+											<a class="nav-link" href="adminUpdate.sdo">정보수정</a>
 											<!-- <a class="nav-link" href="register.sdo">Store Register</a> -->
 											<!-- <a class="nav-link" href="password.sdo">Forgot Password</a> --> <!-- 필요없음 -->
 										</nav>

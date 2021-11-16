@@ -78,7 +78,7 @@
 							<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="layoutStatic.mdo">Static Navigation</a> 
-									<a class="nav-link" href="layout-sidenav-light.mdo">Light Sidenav</a>
+									<a class="nav-link" href="layout-sidenav-light.mdo">쿠폰관리</a>
 								</nav>
 							</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -104,10 +104,10 @@
 												<a></a>
 											</c:when>
 											<c:otherwise>
-												<a class="nav-link" href="login.mdo">Login</a>
+												<a class="nav-link" href="login.mdo">로그인</a>
 											</c:otherwise>
 										</c:choose>
-											<a class="nav-link" href="register.mdo">Store Register</a>
+											<a class="nav-link" href="register.mdo">매장 등록</a>
 											<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
 										</nav>
 									</div>

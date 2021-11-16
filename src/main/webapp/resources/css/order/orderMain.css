@@ -6102,8 +6102,8 @@ select {
 }
 
 label.control-hint {
-	margin-top: 5px;
-	color: #999
+	margin-top: 15px;
+	color: red;
 }
 
 .form-group-error label.control-hint {
@@ -9320,7 +9320,8 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 	.table-delivery-store td {
 	font-size: 20px;
 	font-size: 1.25rem;
-	line-height: 1.2
+	line-height: 1.2;
+	width:100%;
 }
 
 .table-delivery-datetime .how-long-to-deliver {
@@ -20918,8 +20919,8 @@ select {
 }
 
 label.control-hint {
-	margin-top: 5px;
-	color: #999
+	margin-top: 15px;
+	color: red;
 }
 
 .form-group-error label.control-hint {
@@ -24080,7 +24081,7 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 	.table-delivery-store th {
 	color: #999;
 	font-weight: 400;
-	width: 50%;
+	width: 100px;
 	vertical-align: top
 }
 
@@ -24137,7 +24138,8 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 	.table-delivery-store td {
 	font-size: 20px;
 	font-size: 1.25rem;
-	line-height: 1.2
+	line-height: 1.2;
+	width:100%;
 }
 
 .table-delivery-datetime .how-long-to-deliver {

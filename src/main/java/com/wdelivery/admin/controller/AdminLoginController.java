@@ -40,12 +40,12 @@ public class AdminLoginController {
 				}
 				model.addAttribute("status", 2);
 			} else {
-				System.out.println("password failed");
+				//System.out.println("password failed");
 				model.addAttribute("status", 3);
 				return "login";
 			}
 		}else {
-			System.out.println("login failed");
+			//System.out.println("login failed");
 			model.addAttribute("status", 1);
 			return "login";
 		}
@@ -62,7 +62,7 @@ public class AdminLoginController {
 	@PostMapping("/registerInsert.mdo")
 	public String register(AdminVO registerAdmin) throws Exception {
 		adminLoginService.register(registerAdmin);
-		//System.out.println(registerAdmin.toString());
+		
 		return "index";
 	}
 	

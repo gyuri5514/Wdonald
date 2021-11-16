@@ -90,9 +90,10 @@
 
 <script>
 function goSearch(){
+	$('#tbodyPayment').empty();
  	var start_history = $('#start_history').val();
  	var end_history = $('#end_history').val();
-
+	console.log(start_history+''+end_history);
  	if(start_history>end_history){
  		var temp = end_history;
  		end_history = start_history;
@@ -107,40 +108,52 @@ function goSearch(){
 	 		"start_history" : start_history,
 	 		"end_history" : end_history
 	 		},
-	 	success: function(res){
-	 			 $('#tbodyPayment').html("");
-	 			 for(var i in res){
-	 				 console.log(res[i].order_seq);
-	 				 console.log(res[i].order_date)
-	 			 }
-	 		}
-	 	})
-	 }
+	 		/* success: //callback end  */
 	
-function goBack(){
+ 	}).always(
+ 			function(res){
+ 				console.log(res);
+ 			 	
+ 			 	for(var i in res){
+							$('#tbodyPayment').append(
+								             '<tr><td class="table_head_td">'
+								              +res[i].order_seq+'</td><td class="table_head_td">'
+							                  +res[i].order_date+"</td><td class='table_head_td'>"
+							                  +res[i].user_address+"</td><td class='table_head_td'>"
+							                  +(res[i].user_order_comment==null||+res[i].user_order_comment==''?'':res[i].user_order_comment)
+							                  +'</td></tr>');
+ 				 				 }//for end
+		 }
+ 	  )//ajax end
+	 }//goSearch() end
+	
+/* function goBack(){
+		$('#tbodyPayment').empty();
 	 	var start_history = null;
 	 	var end_history = null;
-	 	console.log(start_history);
-	 	console.log(end_history);
 	 	$.ajax({
-	 		type : "get",
-	 		url : "search.do",
-	 		contentType : "application/json",
-	 		data : {
-	 			"start_history" : start_history,
-	 			"end_history" : end_history
-	 		},
-	 		success: function(res){
-	 			 $('#tbodyPayment').html();
-	 			 for(var i in res){
-	 				 console.log(res[i]);
-	 				 console.log(res[i].order_seq);
-	 				 console.log(res[i].order_date);
-	 		 }
-		} 
-	})
-}
-
+			type : "GET",
+			url : "search.do",
+			contentType : "application/json",
+			data : {
+		 		"start_history" : start_history,
+		 		"end_history" : end_history
+		 		},
+		 		success: function(res){
+		 			$('#tbodyPayment').html("");
+		 			 for(var i in res){
+									$('#tbodyPayment').append(
+								             '<tr><td class="table_head_td">'
+								              +res[i].order_seq+'</td><td class="table_head_td">'
+							                  +res[i].order_date+"</td><td class='table_head_td'>"
+							                  +res[i].user_address+"</td><td class='table_head_td'>"
+							                  +(res[i].user_order_comment==null||+res[i].user_order_comment==''?'':res[i].user_order_comment)
+							                  +'</td></tr>');
+		 			}//for end
+				 }//callback end 
+		 	})//ajax end
+		 }//goSearch() end
+ */
 </script>
   	<div class="container" id="sub-page-content">
       <!--main content-->
@@ -153,26 +166,17 @@ function goBack(){
 					&nbsp;	-  &nbsp; 
 				<input type="text" name="end_history" id="end_history" maxlength="10"  readonly="readonly" />
 					&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onclick="goSearch();" class="btn btn-md btn-red" id="btnSearch">검색</a>
-					     <a href="javascript:void(0);" onclick="goBack();" class="btn btn-md btn-red" >초기화</a>
 				<table class="table_historyorder" id="table_historyorder">
 			         <thead class="table_head_historyorder">
 			            <tr>
-			               <td class="table_head_td">주문 번호</td>
+			               <td class="table_head_td" id="td_seq">주문 번호</td>
 			               <td class="table_head_td">주문 날짜</td>
 			               <td class="table_head_td">배송지</td>
 			               <td class="table_head_td">요청 사항</td>
 			            </tr>
 			         </thead>
-			         <c:forEach items="${paymentVO }" var="paymentVO" varStatus="status">
 			         <tbody class="table_body_historyorder" id="tbodyPayment">
-			            <tr>
-			               <td class="table_head_td">${paymentVO.order_seq }</td>
-			               <td class="table_head_td"><fmt:formatDate pattern="yyyy-MM-dd  HH:mm:ss" value="${paymentVO.order_date }" /></td>
-			               <td class="table_head_td">${paymentVO.user_address }</td>               
-			               <td class="table_head_td">${paymentVO.order_comment}</td> 
-			            </tr>
 			         </tbody>
-			        </c:forEach>
 			      </table>
 			</div>
 			<hr>
