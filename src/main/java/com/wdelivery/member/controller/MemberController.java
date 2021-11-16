@@ -86,6 +86,9 @@ public class MemberController {
 	@Autowired
 	private AdminStoreService adminStoreService;
 	
+	@Autowired
+	private OrderTimer orderTimer;
+	
 	@GetMapping("/main.do")
 	public String main() {
 		return "main";
@@ -127,7 +130,7 @@ public class MemberController {
 			BurgerSetVO burgerSetVO = burgerSetService.detailBurgerSet(Integer.parseInt(b_code)+100);
 			BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
 			//return true = winmoring available / return false = winmorning not on sale
-			if(OrderTimer.isMenuOrderTime()) {
+			if(orderTimer.isMenuOrderTime()) {
 				model.addAttribute("menuAvailable","n");
 				return "burger";
 			}
@@ -147,7 +150,7 @@ public class MemberController {
 
 		} else if (w_code != null) {
 			//return true = winmoring available / return false = winmorning not on sale
-			if(!OrderTimer.isMenuOrderTime()) {
+			if(!orderTimer.isMenuOrderTime()) {
 				model.addAttribute("menuAvailable","n");
 				return "morning";
 			}
