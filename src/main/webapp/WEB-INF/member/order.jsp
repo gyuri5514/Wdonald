@@ -649,21 +649,21 @@ $(function(){
 	var b_code = $('#b_code').val();
 	
 	var s_code = $('#s_code').val();
-	if(s_code != 704 && s_code != 705 && s_code != 706)
-		side = $('#s_name').val();
+	if(s_code != 704 && s_code != 705 && s_code != 706){}
 	
 	var d_code = $('#d_code').val();
-	if(d_code != 323 && d_code != 324 && d_code != 325 && d_code != 326 && d_code != 327)
-		drink = $('#d_name').val();
+	if(d_code != 323 && d_code != 324 && d_code != 325 && d_code != 326 && d_code != 327){}
 	
 	var dessert_code = $('#dessert_code').val();
 	var w_code = $('#w_code').val();
+	var h_code = $('#h_code').val();
 	
 	console.log("b_code : " + b_code);
 	console.log("s_code : " + s_code);
 	console.log("d_code : " + d_code);
 	console.log("dessert_code : " + dessert_code);
 	console.log("w_code : " + w_code);
+	console.log("h_code : " + h_code);
 	
  	if(b_code == null && s_code == null && d_code == null && dessert_code == null && w_code == null
  			&& h_code == null) {
@@ -752,6 +752,9 @@ $(function(){
 					} else if(w_code != null && va != "" && side != "" && drink != "") {
 						if($('#result').val() != 0)
 							location.href="orderConfirm.do?w_code="+w_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
+					} else if(h_code != null && va != "" && side != "" && drink != "") {
+						if($('#result').val() != 0)
+							location.href="orderConfirm.do?h_code="+h_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					}
 				} else if(va == "단품"){ 
 					if(b_code != null && va != "") {
@@ -791,7 +794,7 @@ $(function(){
 					return;
 				}
 			}
-			if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+			if($('#result').val() == 0){
 				alert("수량을 선택하세요");
 				return;
 			}
@@ -810,15 +813,18 @@ $(function(){
 				alert("수량을 선택하세요");
 				return;
 			}
-		} else {
-			if(va != "단품") {
-				if(side == "") {
-					alert("사이드를 선택하세요");
-					return;
-				} else if(drink == "") {
-					alert("음료를 선택하세요");
-					return;
-				} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+		} else if(va != "단품") {
+			if(side == "") {
+				alert("사이드를 선택하세요");
+				return;
+			} else if(drink == "") {
+				alert("음료를 선택하세요");
+				return;
+			} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+				alert("수량을 선택하세요");
+				return;
+			} else if(h_code != null) {
+				if($('#result').val() == 0){
 					alert("수량을 선택하세요");
 					return;
 				}

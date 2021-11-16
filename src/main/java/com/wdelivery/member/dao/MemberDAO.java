@@ -7,6 +7,7 @@ import java.util.Map;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
@@ -17,7 +18,7 @@ public interface MemberDAO {
 	
 	public void winMemJoin(UserVO userVO);
 	public void winAddressJoin(UserAddressVO addressVO);
-	int emailChk(String user_email) throws Exception;
+	int emailChk(String user_email);
 	String sendSMS(String user_phone);
 
 	public UserVO userSelect(String user_email);
@@ -55,5 +56,6 @@ public interface MemberDAO {
 	public List<CartVO> getCartListByMerchantId(String merchantUid);
 
 	List<AdminVO> getStoreList(AdminVO adminVO);
+
 
 }
