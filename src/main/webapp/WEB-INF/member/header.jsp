@@ -11,8 +11,9 @@
 <meta name="description" id="description" content="메뉴, 레스토랑, 프로모션 등 안내"/>
 <meta name="keywords" content="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
-<link rel="stylesheet" href="resources/css/main/custom.css?t=20211031"> 
+<link rel="stylesheet" href="resources/css/main/custom.css?t=20211031">
 <link rel="alternate" href="https://www.mcdonalds.co.kr">
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <script src="/kor/js/libs.js"></script>
 <script src="/kor/js/popup.js"></script>
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services,clusterer,drawing"></script>
@@ -64,34 +65,29 @@
 					<div class="menu">
 						<ul class="depth1">
 							<li><!-- li 오버시 on 클래스 추가 -->
-								<a href="javascript:gotoMenu(1);" class="dth1">Menu</a><!-- 현재페이지 메뉴에 current 클래스 추가 -->
+								<a href="burger.do" class="dth1">Menu</a><!-- 현재페이지 메뉴에 current 클래스 추가 -->
 								<ul class="depth2">
 									<li><a href="burger.do" class="dth2">버거</a></li>
-									<li><a href="javascript:gotoMenu(14);" role="button">맥런치</a></li>
 									<li><a href="morning.do" class="dth2">맥모닝</a></li>
-									<li><a href="javascript:gotoMenu(15);" role="button">해피 스낵</a></li>
 									<li><a href="side.do" class="dth2">사이드 &amp; 디저트</a></li>
 									<li><a href="drink.do" class="dth2">맥카페 &amp; 음료</a></li>
 									<li><a href="happymeal.do" class="dth2">해피밀</a></li>
-									<!-- <li><a href="javascript:gotoMenu(11);" class="dth2">365일 즐거운 혜택</a></li> -->
 								</ul>
 							</li>
 							<li>
-								<a href="#" class="dth1 ">Store</a>
+								<a href="store.do" class="dth1 ">Store</a>
 								<ul class="depth2">
 									<li><a href="store.do" class="dth2">매장찾기</a></li>
-									<li><a href="mcdelivery.do" class="dth2">맥딜리버리</a></li>
-									<li><a href="mcdrive.do" class="dth2">맥드라이브</a></li>
-									<li><a href="rental.do" class="dth2">임차문의</a></li>
+									<li><a href="delivery.do" class="dth2">맥딜리버리</a></li>
+									<li><a href="drive.do" class="dth2">맥드라이브</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="/kor/promotion/list.do" class="dth1">What’s New</a>
+								<a href="promotion.do" class="dth1">What’s New</a>
 								<ul class="depth2">
 									<li><a href="promotion.do" class="dth2">프로모션</a></li>
-									<li><a href="/kor/news/list.do" class="dth2">새로운 소식</a></li>
-									<!--  li><a href="/kor/kitchen.do" class="dth2">주방공개의 날</a></li -->
-								    <li><a href="/kor/happymeal/list.do" class="dth2">이달의 해피밀</a></li> 
+									<li><a href="news.do" class="dth2">새로운 소식</a></li>
+								    <li><a href="happymealPromotion.do" class="dth2">이달의 해피밀</a></li> 
 								</ul>
 							</li>
 							<li>
@@ -156,7 +152,7 @@
 										<input id="id" type="text" placeholder="아이디를 입력하세요" name="user_email" data-role="textfield">
 									</div>
 									<div class="input">
-										<input id="password" type="password" placeholder="비밀번호를 입력하세요"	name="user_password" data-role="textfield">
+										<input id="password" type="password" placeholder="비밀번호를 입력하세요" name="user_password" data-role="textfield">
 										<button type="button" tabindex="-1" class="btn_view01"></button>
 									</div>
 									<div class="check">

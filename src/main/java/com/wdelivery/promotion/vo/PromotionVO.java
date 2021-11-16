@@ -11,7 +11,21 @@ public class PromotionVO {
 	private Date p_regdate;
 	private int p_status;
 	private String p_title;
+	private String p_link;
+	private int p_count;
 	
+	public String getP_link() {
+		return p_link;
+	}
+	public void setP_link(String p_link) {
+		this.p_link = p_link;
+	}
+	public int getP_count() {
+		return p_count;
+	}
+	public void setP_count(int p_count) {
+		this.p_count = p_count;
+	}
 	public Integer getP_code() {
 		return p_code;
 	}

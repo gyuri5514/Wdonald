@@ -16,20 +16,23 @@ public class PromotionServiceImpl implements PromotionService {
 	
 	@Override
 	public List<PromotionVO> selectPromotion() {
-		System.out.println("selectPromotion Impl");
 		return promotionDAO.selectPromotion();
 	}
 
 	@Override
 	public PromotionVO detailPromotion(Integer p_code) {
-		System.out.println("detailPromotion Impl");
 		return promotionDAO.detailPromotion(p_code);
 	}
 
 	@Override
 	public List<PromotionVO> selectPromotionEnd() {
-		System.out.println("selectPromotionEnd");
 		return promotionDAO.selectPromotionEnd();
+	}
+
+	@Override
+	public void countPromotion(Integer p_code) {
+		promotionDAO.countPromotion(p_code);
+		
 	}
 
 }

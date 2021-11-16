@@ -22,6 +22,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.cart.vo.CartVO" alias="cartVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="AdminVO"/>
 		<typeAlias type="com.wdelivery.promotion.vo.PromotionVO" alias="promotionVO"/>
+		<typeAlias type="com.wdelivery.news.vo.NewsVO" alias="newsVO"/>
+		<typeAlias type="com.wdelivery.happypromotion.vo.HappyPromotionVO" alias="happyPromotionVO"/>
 
 		
 		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias="paymentVO"/>
@@ -48,6 +50,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="wdonaldmappings/admin-mapping.xml"/>
 
 		<mapper resource="wdonaldmappings/promotion-mapping.xml"/>
+		<mapper resource="wdonaldmappings/news-mapping.xml"/>
+		<mapper resource="wdonaldmappings/happyPromotion-mapping.xml"/>
 
 	</mappers>
 

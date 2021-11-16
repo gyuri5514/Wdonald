@@ -24,8 +24,8 @@
 						${detailPromotion.p_title}
 					</h2>
 					<span class="date">
-						<em><b class="hide">등록일 :</b>${detailPromotion.p_regdate}</em>
-						<em><b class="hide">조회수 :</b></em>
+						<em><b class="hide">등록일 :</b><fmt:formatDate pattern="yy.MM.dd" value="${detailPromotion.p_regdate}"/></em>
+						<em><b class="hide">조회수 :</b>${detailPromotion.p_count}</em>
 					</span>
 				</div>
 				<article class="bbsCon">

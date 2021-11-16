@@ -5,43 +5,16 @@
 <script type="text/javascript" src="/resources/js/libs.js"></script>
 <script type="text/javascript" src="/resources/js/KmcCert.js"></script>
 
-<script>
-function promotionShow() {
-	if ($("#order_detail_table").css("display") == "none") {
-		$("#order_detail_table").show();
-	} else {
-		$("#order_detail_table").hide();
-	}
-	
-	if(status==''){
-		$('#all').attr('aria-selected','true');
-		$('#end').attr('aria-selected','false');
-		$('#ing').attr('aria-selected','false');
-		
-	}else if(status == 'I'){
-		$('#all').attr('aria-selected','false');
-		$('#end').attr('aria-selected','false');
-		$('#ing').attr('aria-selected','true');
-	}else if (status =='E'){
-		$('#all').attr('aria-selected','false');
-		$('#end').attr('aria-selected','true');
-		$('#ing').attr('aria-selected','false');
-	}else{
-		alert("잘못된 접근입니다.");
-	}
-}
-</script>
-
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <link rel="stylesheet" href="resources/css/promotion/promotion.css">
 	<div class="content">
 		<div class="visualArea bgWhats01">
 			<div class="inner">
-				<h1 class="titDep1" data-title="윈딜리버리 프로모션" data-desc="윈딜리버리 프로모션">윈딜리버리 프로모션</h1>
+				<h1 class="titDep1" data-title="윈딜리버리 프로모션" data-desc="윈딜리버리 프로모션">이달의 해피밀</h1>
 				<ul class="navPath">
 					<li><a href="/controller/main.do">Home</a></li>
 					<li><a href="/controller/promotion.do">What's New</a></li>
-					<li><a href="/controller/promotion.do">윈딜리버리 프로모션</a></li>
+					<li><a href="/controller/happymealPromotion.do">이달의 해피밀</a></li>
 				</ul>
 			</div>
 		</div>
@@ -56,40 +29,22 @@ function promotionShow() {
 				</ul>
 				<!-- 행사 있을 경우 종료된 행사일 경우 class값 end 추가-->
 				<ul class="cardBanner" id="promotionList">
-					<c:forEach items="${selectPromotion}" var="selectPromotion">
+					<c:forEach items="${selectHappyPromotion}" var="selectHappyPromotion">
 						<li>
 							<a href="#" onclick="goDetail(this)" class data="340, 1, N">
 								<div class="tmb">
-									<img src="${selectPromotion.p_img_path}" alt="${selectPromotion.p_name}">
+									<img src="${selectHappyPromotion.hp_img_path}" alt="${selectHappyPromotion.hp_name}">
 								</div>
 								<div class="con">
 									<strong class="tit">
-										${selectPromotion.p_title}
+										${selectHappyPromotion.hp_title}
 									</strong>
 									<span id="statusSpan"></span>
 								</div>
 							</a>
 						</li>
 					</c:forEach>
-					<c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
-						<li>
-							<a href="#" onclick="goDetail(this)" class="end">
-								<div class="tmb">
-									<img src="${selectPromotionEnd.p_img_path}" alt="${selectPromotionEnd.p_name}">
-								</div>
-								<div class="con">
-									<strong class="tit">
-										${selectPromotionEnd.p_title}
-									</strong>
-									<span id="statusSpan">종료된 행사입니다.</span>
-								</div>
-							</a>
-						</li>
-					</c:forEach>
 				</ul>
-				<div class="btnMore" id="btnMore">
-					<a href="javascript:more();" class="more">더보기</a>
-				</div>
 				<!-- //행사 있을 경우-->
 				<!-- 행사 없을 경우 -->
 
@@ -99,7 +54,7 @@ function promotionShow() {
 		<!-- //contArea -->
 	</div>
 	<div class="aside">
-		<a href="/controller/main.do" class="goDelivery" target="_blank" title="새창 열림">Wdelivery</a>
+		<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">Wdelivery</a>
 	</div>
 	<form id="searchForm" name="searchForm" method="get">
 		<input type="hidden" name="page" id="page" value="1"> 

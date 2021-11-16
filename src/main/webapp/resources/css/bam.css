@@ -469,7 +469,7 @@ textarea {
     overflow: hidden;
     vertical-align: top;
     text-indent: -9999px;
-    background: url("../images/common/btn_more.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_more.png") 0 0 no-repeat;
 }
 
 .btnPaging {
@@ -500,7 +500,7 @@ textarea {
     width: 14px;
     height: 9px;
     margin: -4px 0 0 -7px;
-    background: url("../images/common/bg_arrow_paging.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_arrow_paging.png") 0 0 no-repeat;
 }
 .btnPaging .arrow.first:before {
     background-position: 0 0;
@@ -804,7 +804,7 @@ ul.notiTxt:before {
     height: 90px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/common/btn_close.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_close.png") 0 0 no-repeat;
 }
 
 .popLayer.layerType02 .layCont .scroll {
@@ -1063,7 +1063,7 @@ ul.notiTxt:before {
     width: 36px;
     height: 36px;
     text-indent: -9999px;
-    background: url("../images/common/ico_search.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_search.png") 0 0 no-repeat;
 }
 .header.open {
     z-index: 11;
@@ -1158,7 +1158,7 @@ ul.notiTxt:before {
     margin-top: 100px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/common/btn_close.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_close.png") 0 0 no-repeat;
 }
 .topSearch.open .dimmed,
 .topSearch.open .srchField {
@@ -1194,7 +1194,7 @@ ul.notiTxt:before {
     height: 113px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/common/btn_delivery_01.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_delivery_01.png") 0 0 no-repeat;
     background-size: cover;
 }
 .aside.fixedB {
@@ -1208,7 +1208,7 @@ ul.notiTxt:before {
     width: 43px;
     height: 40px;
     margin: 0 0 0 635px;
-    background: url("../images/common/btn_top.png") 0 14px no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_top.png") 0 14px no-repeat;
     text-indent: -9999px;
     font-size: 1px;
     z-index: 10;
@@ -1258,7 +1258,7 @@ ul.notiTxt:before {
     height: 40px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/common/ico_sns.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_sns.png") 0 0 no-repeat;
 }
 .footer .fSns a.fb {
     background-position: 0 0;
@@ -1449,7 +1449,7 @@ ul.notiTxt:before {
     margin-top: -18px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/main/bg_swiper_new.png") -92px 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_swiper_new.png") -92px 0 no-repeat;
 }
 .mainEvent .indicator .play.pause {
     background-position: -92px -36px;
@@ -1463,7 +1463,7 @@ ul.notiTxt:before {
     margin-top: -45px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/main/bg_swiper_new.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_swiper_new.png") 0 0 no-repeat;
     z-index: 1;
 }
 .mainEvent .ctrl.prev {
@@ -2443,7 +2443,7 @@ p.nutrDesc {
     text-align: center;
 }
 .deliverySrch .rBox .default:before {
-    background: url("../images/store/bg_delivery_result_new.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_delivery_result_new.png") 0 0 no-repeat;
     background-size: cover;
 }
 .deliverySrch .rBox .default strong {
@@ -2468,10 +2468,10 @@ p.nutrDesc {
     margin-top: 20px;
 }
 .deliverySrch .rBox .result.ok:before {
-    background: url("../images/store/bg_delivery_result2.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_delivery_result2.png") 0 0 no-repeat;
 }
 .deliverySrch .rBox .result.fail:before {
-    background: url("../images/store/bg_delivery_result3.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_delivery_result3.png") 0 0 no-repeat;
 }
 
 .mcdelivery > * {
@@ -2600,7 +2600,7 @@ p.nutrDesc {
     margin-left: 8px;
     overflow: hidden;
     text-indent: -9999px;
-    background: url("../images/common/btn_search.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_search.png") 0 0 no-repeat;
 }
 
 .mcBoard .count {
@@ -2653,7 +2653,7 @@ p.nutrDesc {
     overflow: hidden;
     text-indent: -9999px;
     vertical-align: middle;
-    background: url("../images/common/ico_notice.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_notice.png") 0 0 no-repeat;
 }
 .mcBoard .noResult {
     margin-top: 30px;
@@ -2843,7 +2843,7 @@ p.nutrDesc {
     padding-top: 8px;
     text-indent: -9999px;
     font-size: 1px;
-    background: url("../images/whats/ico_marker.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_marker.png") 0 0 no-repeat;
 }
 .storeSch .schCon .result {
     margin-top: 30px;

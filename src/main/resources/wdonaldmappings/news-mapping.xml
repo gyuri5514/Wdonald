@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wdelivery.news.dao.NewsDAO">
+	<select id="selectNews" resultType="newsVO">
+		<![CDATA[
+			SELECT * FROM news ORDER BY news_code DESC
+		]]>
+	</select>
+	
+	<select id="detailNews" resultType="newsVO">
+		<![CDATA[
+			SELECT * FROM news WHERE news_code = #{news_code}
+		]]>
+	</select>
+	
+	<update id="countNews">
+		<![CDATA[
+			UPDATE news SET news_count = news_count + 1 WHERE news_code = #{news_code}
+		]]>
+	</update>
+</mapper>
