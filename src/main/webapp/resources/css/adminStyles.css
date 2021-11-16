@@ -357,7 +357,15 @@ button,
 select {
   text-transform: none;
 }
-
+#addcoupon{
+	background-color: #0d6efd;
+	width: 150px;
+	font-size:15px;
+	padding:0px;
+	color:white;
+	border-radius: 5px;
+	border:solid 1px #0d6efd;
+}
 [role=button] {
   cursor: pointer;
 }

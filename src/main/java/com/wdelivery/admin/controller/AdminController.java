@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.wdelivery.admin.service.AdminService;
+import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 
 @Controller
@@ -57,5 +59,14 @@ public class AdminController {
 		return "layout-static";
 	}
 	
-
+	@GetMapping("/addcoupon.mdo")
+	public String addcoupon() {
+		return "addcoupon";
+	}
+	@PostMapping("/addcouponInsert.mdo")
+	public String addcoupon(AdminCouponVO addcoupon) {
+		adminService.addCoupon(addcoupon);
+		System.out.println(addcoupon.toString());
+		return "layout-sidenav-light";
+	}
 }
