@@ -6,4 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="orderList" resultType="paymentVO">
 		select * from order_list where store_code = #{store_code} order by order_seq
 	</select>
+	<update id="orderStatus">
+		update order_list set order_status = #{order_status} where order_seq = #{order_seq}
+	</update>
 </mapper>

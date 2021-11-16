@@ -20,6 +20,11 @@ public class StoreSalesServiceImpl implements StoreSalesService {
 		
 		return storeSalesDAO.orderList(adminVO);
 	}
+
+	@Override
+	public void orderStatus(PaymentVO paymentVO) {
+		storeSalesDAO.orderStatus(paymentVO);
+	}
 	
 	
 
