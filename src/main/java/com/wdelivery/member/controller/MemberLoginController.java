@@ -69,6 +69,13 @@ public class MemberLoginController {
 					//user_status = 0
 					model.addAttribute("status", findUserVO.getUser_status());
 				}
+				if(session.getAttribute("cartList") != null)
+					session.removeAttribute("cartList");
+				if(session.getAttribute("total_price") != null)
+					session.removeAttribute("total_price");
+				if(session.getAttribute("delivery_price") != null)
+					session.removeAttribute("delivery_price");
+				
 				return "main";
 				}else {
 					//incorrect password
@@ -77,9 +84,6 @@ public class MemberLoginController {
 				}
 			}
 		model.addAttribute("status",6);
-		
-		if(session.getAttribute("cartList") != null)
-			session.removeAttribute("cartList");
 		
 		return "main";
 	}
