@@ -196,4 +196,9 @@ public class MemberServiceImpl implements MemberService {
 		return storeDAO.findProximateStore(mpv);
 	}
 
+	@Override
+	public void updatePassword(UserVO userVO) {
+		memberDAO.updatePassword(userVO);
+	}
+
 }

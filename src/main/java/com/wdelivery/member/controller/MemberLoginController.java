@@ -203,8 +203,15 @@ public class MemberLoginController {
 		emailMap.put("authKey", authKey);
 		emailMap.put("email", email);
 		if(isAuthKeyAvailable(emailMap)) {
+			
 			model.addAttribute("emailResult","success");
-			memberService.signUpConfirm(email);
+			System.out.println(type);
+			
+			if(type.equals("join"))
+				memberService.signUpConfirm(email);
+			else if(type.equals("findPw"))
+				model.addAttribute("email",email);
+			
 			return (type.equals("join")?"main":"confirmPassword");
 		}else {
 		model.addAttribute("emailResult","fail");
@@ -212,10 +219,10 @@ public class MemberLoginController {
 		}
 	}
 	
-	
+	@ResponseBody
 	@PostMapping("findPw.do")
-	public String findPw(@RequestParam("user_email") String user_email) {
-		updateAuthKey(user_email, "fndPw");
+	public String findPw(@RequestParam("email") String user_email) {
+		updateAuthKey(user_email, "findPw");
 		return "1";
 	}
 	
@@ -225,6 +232,13 @@ public class MemberLoginController {
 		map.put("user_email", user_email);
 		map.put("authKey", authKey);
 		memberService.updateAuthKey(map);
+	}
+	
+	@PostMapping("confirmPassword.do")
+	public String confirmPassword(Model model,UserVO userVO) {
+		memberService.updatePassword(userVO);
+		model.addAttribute("passwordChanged","success");
+		return "main";
 	}
 	
 	public boolean isAuthKeyAvailable(Map<String,String> emailMap) {

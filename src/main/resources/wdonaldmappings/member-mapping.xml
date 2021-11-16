@@ -112,7 +112,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 			update user_address set address1=#{address1}, address2 = #{address2}, order_comment = #{order_comment} where user_email = #{user_email}
 		]]>
-	</update>	
+	</update>
+	
+		
 	<delete id="addressDelete" parameterType="int">
 		<![CDATA[
 			delete from user_address where address_seq = #{address_seq}
@@ -157,4 +159,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getStoreList" resultType="adminVO">
 		select * from admin
 	</select>
+	
+	<update id="updatePassword">
+		<![CDATA[
+			update user_info set user_password=#{user_password} where user_email = #{user_email}
+		]]>
+	</update>
 </mapper>
