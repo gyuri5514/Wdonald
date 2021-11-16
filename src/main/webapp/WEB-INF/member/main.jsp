@@ -2,7 +2,18 @@
     pageEncoding="UTF-8"%>
    
 <%@ include file="header.jsp"%>
-
+<c:choose>
+<c:when test="${emailResult =='success'}">
+<script>
+	alert('이메일 인증 성공')
+</script>
+</c:when>
+<c:when test="${emailResult =='fail'}">
+<script>
+	alert('이메일 인증 실패')
+</script>
+</c:when>
+</c:choose>
 <div id="container">
 	<div class="content">
 		<h1 class="hide" data-desc="메인">Main</h1>
