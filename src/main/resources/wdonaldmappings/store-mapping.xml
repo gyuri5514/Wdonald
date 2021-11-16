@@ -3,5 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.store.dao.StoreDAO">
-	
+	<update id="adminUpdate">
+		update admin set admin_id = #{admin_id}, admin_name = #{admin_name}, admin_password = #{admin_password}, admin_phone = #{admin_phone}
+		where admin_seq = #{admin_seq}
+	</update>
 </mapper>

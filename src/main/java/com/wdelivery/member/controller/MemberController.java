@@ -25,6 +25,7 @@ import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
+import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.menu.burger.service.BurgerService;
 import com.wdelivery.menu.burger.vo.BurgerVO;
@@ -490,8 +491,10 @@ public class MemberController {
 			UserVO userVO = (UserVO) session.getAttribute("userinfo");
 			if(userVO != null) {
 				UserAddressVO addressVO = memberService.addressSelect(userVO.getUser_email());
-				String address = addressVO.getAddress1() + addressVO.getAddress2();
-				model.addAttribute("address", address);
+				String address1 = addressVO.getAddress1();
+				String address2 = addressVO.getAddress2();
+				model.addAttribute("address1", address1);
+				model.addAttribute("address2", address2);
 			}
 		}
 		return "orderConfirm";
@@ -537,7 +540,27 @@ public class MemberController {
 		}
 		return faqList;
 	}
-
+	@GetMapping("/couponSearch.do")
+	@ResponseBody
+	public int couponSearch(@RequestParam(name="couponCode")String couponCode, HttpSession session, Model model) {
+		int couponCheck = memberService.couponSelect(couponCode);
+		if(couponCheck == 0) {
+			return 0;
+		}
+		
+		UserVO userVO = (UserVO) session.getAttribute("userInfo");
+		if(userVO != null) {
+			List<UserCouponVO> userCouponVO = memberService.userCouponSelect(userVO.getUser_seq());
+			for(int i = 0; i < userCouponVO.size(); i++) {
+				if(!userCouponVO.get(i).getCoupon_code().equals(couponCode)) {
+					return -1;
+				}
+				model.addAttribute("userCouponVO", JSONArray.fromObject(userCouponVO.get(i)));
+			}
+		}
+		return 1;
+	}
+	
 	@GetMapping("/join.do")
 	public String join() {
 		return "join";
@@ -662,11 +685,14 @@ public class MemberController {
 	}
 
 	@GetMapping("/paymentWin.do")
-	public String paymentWin(Model model, 
-			@RequestParam(value = "price", required=false) String price, 
-			@RequestParam(value = "delivery_price", required=false) 
-				String delivery_price,
-				HttpSession session) {
+	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) 
+				String delivery_price,@RequestParam(value = "address", required=false) String address, @RequestParam(value = "coupon", required=false) String coupon,
+				@RequestParam(value = "lat", required=false) String lat,@RequestParam(value = "lon", required=false) String lon, HttpSession session) {
+		//coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액, delivery_price - 배달료
+			
+		model.addAttribute("address",address);
+		model.addAttribute("lat",lat);
+		model.addAttribute("lon",lon);
 		model.addAttribute("price", price);
 		model.addAttribute("delivery_cost",delivery_price);
 		int totalPrice = Integer.parseInt(price) +Integer.parseInt(delivery_price);
