@@ -78,7 +78,7 @@
 						</a>
 							<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="layoutStatic.mdo">Static Navigation</a> 
+									<a class="nav-link" href="layoutStatic.mdo">회원 관리</a> 
 									<a class="nav-link" href="layout-sidenav-light.mdo">Light Sidenav</a>
 								</nav>
 							</div>

@@ -7,4 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select order_date,order_status,final_price,payment_type,admin.store_name from order_list, admin
 		where admin.store_code = order_list.store_code
 	</select>
+	
+	<select id="userSelect" resultType="userVO">
+		select * from user_info
+	</select>
+	
+	<select id="getUserContent" resultType="userVO">
+		SELECT * FROM user_info WHERE user_seq = #{user_seq}
+	</select>
 </mapper>
