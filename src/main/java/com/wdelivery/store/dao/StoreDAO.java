@@ -1,5 +1,8 @@
 package com.wdelivery.store.dao;
 
-public interface StoreDAO {
+import com.wdelivery.admin.vo.AdminVO;
 
+public interface StoreDAO {
+	
+	public void adminUpdate(AdminVO adminVO);
 }
