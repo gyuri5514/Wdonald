@@ -22,6 +22,8 @@ import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.service.MemberService;
+import com.wdelivery.member.util.MapPointVO;
+import com.wdelivery.member.util.NearestStore;
 import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
@@ -80,7 +82,8 @@ public class MemberController {
 	private DrinkService drinkService;
 	@Autowired
 	private HappyMealService happyMealService;
-	
+	@Autowired
+	private NearestStore nearestStore;
 	@Autowired
 	private MemberService memberService;
 
@@ -709,18 +712,15 @@ public class MemberController {
 	@GetMapping("/paymentWin.do")
 	public String paymentWin(Model model, @RequestParam(value = "price", required=false) String price, @RequestParam(value = "delivery_price", required=false) 
 				String delivery_price,@RequestParam(value = "address", required=false) String address, @RequestParam(value = "coupon", required=false) String coupon,
-				@RequestParam(value = "lat", required=false) String lat,@RequestParam(value = "lon", required=false) String lon, HttpSession session) {
+				@RequestParam(value = "lat", required=false) double lat,@RequestParam(value = "lon", required=false) double lon, HttpSession session) {
 		//coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액, delivery_price - 배달료
-		System.out.println("price : "+price);
-		System.out.println("delivery_price : "+delivery_price);
-		System.out.println("address : "+address);
-		System.out.println("coupon : "+ coupon);
-		System.out.println("lat : "+lat);
-		System.out.println("lon : "+lon);
 		
+		AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat,lon), lat, lon);
+		
+		System.out.println(store.toString());
+		
+		model.addAttribute("store",store);
 		model.addAttribute("address",address);
-		model.addAttribute("lat",lat);
-		model.addAttribute("lon",lon);
 		model.addAttribute("price", price);
 		model.addAttribute("delivery_cost",delivery_price);
 		int totalPrice = Integer.parseInt(price) +Integer.parseInt(delivery_price);
@@ -728,5 +728,8 @@ public class MemberController {
 		model.addAttribute("discount",0);
 		return "paymentWin";
 	}
-
+	
+	public List<AdminVO> findProximateStore(double lat,double lon){
+		return memberService.findProximateStore(new MapPointVO(lat,lon));
+	}
 }

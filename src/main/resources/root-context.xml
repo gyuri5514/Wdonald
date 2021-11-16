@@ -37,6 +37,8 @@
 	
 	 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	 <bean id="orderTimer" class="com.wdelivery.member.util.OrderTimer"></bean>
+	 <bean id="nearestStore" class="com.wdelivery.member.util.NearestStore"></bean>
+	 
 	 <mybatis-spring:scan base-package="com.wdelivery.qna.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.member.dao"/>
 	 <mybatis-spring:scan base-package="com.wdelivery.menu.burger.dao"/>

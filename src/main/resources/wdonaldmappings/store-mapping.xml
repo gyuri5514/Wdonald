@@ -7,4 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update admin set admin_id = #{admin_id}, admin_name = #{admin_name}, admin_password = #{admin_password}, admin_phone = #{admin_phone}
 		where admin_seq = #{admin_seq}
 	</update>
+	<select id="findProximateStore" resultType="AdminVO" parameterType="mapPointVO">
+		<![CDATA[
+			select * from admin where store_status =1 and (store_lat between #{start_lat} and #{end_lat}) 
+					and(store_lon between #{start_lon} and #{end_lon});
+		]]>
+	</select>
 </mapper>

@@ -12,9 +12,11 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.dao.MemberDAO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.store.dao.StoreDAO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -23,7 +25,9 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
-
+	@Autowired
+	private StoreDAO storeDAO;
+	
 	@Override
 	public UserVO findUser(UserVO userVO) {
 		return memberDAO.findUser(userVO);
@@ -185,6 +189,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<AdminVO> getStoreList(AdminVO adminVO) { // dododo
 
 		return memberDAO.getStoreList(adminVO);
+	}
+
+	@Override
+	public List<AdminVO> findProximateStore(MapPointVO mpv) {
+		return storeDAO.findProximateStore(mpv);
 	}
 
 }
