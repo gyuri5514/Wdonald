@@ -10,13 +10,6 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 <script src="resources/js/payment/payment.js"></script>
-<%-- <c:if
-	test="${sessionScope.kakaoSession eq null && sessionScope.naverSession eq null && sessionScope.userInfo eq null}">
-	<script>
-		alert("로그인이 필요한 작업입니다.");
-		window.location.href = "/controller/main.do"
-	</script>
-</c:if> --%>
 <div class="h1-area">
 	<h3>
 		<font>주문 확인</font>
@@ -127,30 +120,7 @@
 					
 			</c:otherwise>
 		</c:choose>
-		<!-- 
-						<div class="radio">
-							&nbsp;&nbsp;<input type="radio" id="credit" name="payment_type"
-								value="1" checked="checked"> <label for="creditpayment">&nbsp;신용카드
-								/ 카카오페이 / 기타 </label> <br>
-							<hr>
-							<br> 현장 결제<br> <br> &nbsp;&nbsp;<input
-								type="radio" id="cash" name="payment_type" value="2"> <label
-								for="cash">&nbsp;현금</label><br>
-							<div id="selectedCash"></div>
-							<br>
-							<hr>
-							<br> &nbsp;&nbsp;<input type="radio" id="card_meeting"
-								name="payment_type" value="3"> <label for="card_meeting">&nbsp;카드
-								(현장에서 카드 단말기로 결제)</label> <br>
-							<hr>
-							<br> &nbsp;&nbsp;<input type="checkbox" value="4"
-								id="cashbill" name="cashbill"><label for="cashbill">&nbsp;&nbsp;현금
-								영수증 요청</label> <br> &nbsp; * 핸드폰 번호 &nbsp;&nbsp;&nbsp; +82
-							&nbsp;&nbsp; <input type="text" disabled="disabled"
-								placeholder=" 숫자만 입력" style="background-color: #e2e2e2"
-								name="cashbillphone" id="cashbillphone"> <br> <br>&nbsp;
-							* 결제를 완료하기 위해 외부 웹 사이트로 안전하게 이동합니다.
-						</div> -->
+		
 						<br>
 					</div>
 				</fieldset>
@@ -171,7 +141,7 @@
 								<th scope="row">배달 주소:</th>
 								<td><div>
 										<input type="hidden" name="user_address" id="user_address"
-											value="서울 특별시">서울 특별시 
+											value="${address }">${address } 
 									</div></td>
 							</tr>
 						</tbody>
@@ -201,15 +171,19 @@
 								<td><input type="hidden" id="total_price"
 									name="total_price" value="${total_price }">
 									<input type="hidden" value="${delivery_cost }" name="delivery_cost" id="delivery_cost">
-									<input type="hidden" value="${discount }" name="discount" id ="discount"><span>₩ ${total_price}</span></td>
+									<input type="hidden" value="${discount }" name="discount" id ="discount"><span> ₩ ${total_price}</span></td>
 							</tr>
 						</tfoot>
 						
 						<tbody>
-						
+							<tr>
+								<th scope="row">주문합계:</th>
+								<td><span>₩
+										${price }</span></td>
+							</tr>
 							<tr>
 								<th scope="row">배달료:</th>
-								<td><span>₩
+								<td><span>+&nbsp; ₩
 										${delivery_cost }</span></td>
 							</tr>
 							<!-- MDSAP-11635 -->
@@ -230,7 +204,6 @@
 				<section class="panel-section">
 					<fieldset class="form-actions text-center">
 						<div class="form-group">
-				<!--<button type="submit" id="confirmBtn" class="btn btn-red btn-block btn-xl" onclick="submitPayment()" style="display: none;">결제 진행하기</button>-->
 							<button type="button" id="confirmBtn" onclick="submitCashless()"
 								class="btn btn-red btn-block btn-xl" style="margin-top: 0px;">
 								<span>결제 진행하기</span>

@@ -689,7 +689,13 @@ public class MemberController {
 				String delivery_price,@RequestParam(value = "address", required=false) String address, @RequestParam(value = "coupon", required=false) String coupon,
 				@RequestParam(value = "lat", required=false) String lat,@RequestParam(value = "lon", required=false) String lon, HttpSession session) {
 		//coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액, delivery_price - 배달료
-			
+		System.out.println("price : "+price);
+		System.out.println("delivery_price : "+delivery_price);
+		System.out.println("address : "+address);
+		System.out.println("coupon : "+ coupon);
+		System.out.println("lat : "+lat);
+		System.out.println("lon : "+lon);
+		
 		model.addAttribute("address",address);
 		model.addAttribute("lat",lat);
 		model.addAttribute("lon",lon);
