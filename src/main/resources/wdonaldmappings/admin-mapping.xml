@@ -16,10 +16,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getUserContent" resultType="userVO">
 		SELECT * FROM user_info WHERE user_seq = #{user_seq}
 	</select>
-
-<select id="indexView" resultType="paymentVO" >
-		select * from order_list order by order_seq 
-</select>
+		
+	<!-- 	<select id="indexView" resultType="paymentVO" >
+				select * from order_list order by order_seq 
+		</select> -->
 
 <insert id="addCoupon">
 	INSERT INTO coupon (coupon_code, coupon_title, coupon_type, coupon_regdate, coupon_enddate, coupon_canuse)

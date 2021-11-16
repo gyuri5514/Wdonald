@@ -30,7 +30,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int getUserContent() {
 		return adminDAO.getUserContent();
-
+	}
 	
 	@Override
 	public void addCoupon(AdminCouponVO addcoupon) {
