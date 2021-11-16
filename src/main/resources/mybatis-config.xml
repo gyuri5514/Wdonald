@@ -46,6 +46,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 
 		<mapper resource="wdonaldmappings/store-mapping.xml"/>
+		<mapper resource="wdonaldmappings/storeSales-mapping.xml"/>
+		
 		<mapper resource="wdonaldmappings/adminLogin-mapping.xml"/>
 		<mapper resource="wdonaldmappings/admin-mapping.xml"/>
 		<mapper resource="wdonaldmappings/adminStore-mapping.xml"/>

@@ -44,7 +44,8 @@ public interface MemberDAO {
 
 	
 	public List<UserCouponVO> userCouponSelect(int user_seq);
-
+	public int couponSelect(String couponCode); 
+	
 	public UserAddressVO addressSelect(String user_email);
 
 	public List<PaymentVO> paymentList(HashMap<String, String> paraMap);

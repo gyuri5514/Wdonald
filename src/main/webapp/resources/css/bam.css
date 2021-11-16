@@ -174,7 +174,7 @@ input {
 /* dimmed */
 .dimmed {
     display: none;
-    z-index: 8999;
+    z-index: 11;
     position: fixed;
     top: 0;
     left: 0;

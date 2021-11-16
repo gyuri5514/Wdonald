@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,7 +101,7 @@
 								</a>
 									<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="login.sdo">Login</a>
+											<a class="nav-link" href="adminUpdate.sdo">정보수정</a>
 											<!-- <a class="nav-link" href="register.sdo">Store Register</a> -->
 											<!-- <a class="nav-link" href="password.sdo">Forgot Password</a> --> <!-- 필요없음 -->
 										</nav>

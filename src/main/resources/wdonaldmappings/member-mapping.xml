@@ -124,6 +124,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="userCouponSelect" resultType="UserCouponVO" parameterType="UserCouponVO">
 		select * from user_coupon where user_seq = #{user_seq}
 	</select>
+	<select id="couponSelect" resultType="int">
+		select count(*) from coupon where coupon_code = #{couponCode}
+	</select>
 	
 	<!-- payment List -->
 	<select id="paymentList" resultType="paymentVO" parameterType="HashMap">

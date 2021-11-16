@@ -545,22 +545,6 @@ $(document).ready(function () {
 				alert("상태 : " +data.status+ "\n\n메세지 : " +data.responseText+ "\n\nerror : " +data.error);
 			}
 		});
-	/* 	var storeList = JSON.parse('${storeList}');
-
-		console.log(storeList);
-		
-		for (var i = 0; i < storeList.length; i++) {
-			var title = storeList[i].store_name;
-			var lon = storeList[i].store_lon;
-			var lat = storeList[i].store_lat;
-			var latlng = new kakao.maps.LatLng(lat,lon);
-			
-			var searchWord = $("#searchWord").val();
-			if(title.indexOf(searchWord) > 0) {
-				map.panTo(latlng);
-			}
-		} */
-			
 	};
 	
 	$("#storeSearch").click(function(){
