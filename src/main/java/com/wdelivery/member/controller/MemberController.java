@@ -186,6 +186,7 @@ public class MemberController {
 			@RequestParam(value = "s_code", required = false) String s_code,
 			@RequestParam(value = "d_code", required = false) String d_code,
 			@RequestParam(value = "w_code", required = false) String w_code,
+			@RequestParam(value = "h_code", required = false) String h_code,
 			@RequestParam(value = "dessert_code", required = false) String dessert_code,
 			@RequestParam(value = "s_name", required = false) String s_name,
 			@RequestParam(value = "d_name", required = false) String d_name,
@@ -308,6 +309,27 @@ public class MemberController {
 					cartVO.setCart_product_name(winMorningSetVO.getW_set_name());
 					cartVO.setCart_product_img_path(winMorningSetVO.getW_set_img_path());
 					cartVO.setCart_product_price(winMorningSetVO.getW_set_price());
+					cartVO.setCart_product_quantity(Integer.parseInt(quantity));
+					cartVO.setCart_product_side_name(side);
+					cartVO.setCart_product_drink_name(drink);
+					
+				} else if(h_code != null) {
+					HappyMealVO happyMealVO = happyMealService.detailHappyMeal(Integer.parseInt(h_code));
+					
+					cartVO.setCart_h_code(happyMealVO.getH_code());
+					cartVO.setCart_h_img_path(happyMealVO.getH_img_path());
+					cartVO.setCart_h_name(happyMealVO.getH_name());
+					cartVO.setCart_h_price(happyMealVO.getH_price() * Integer.parseInt(quantity));
+					cartVO.setCart_s_code(Integer.parseInt(s_code));
+					cartVO.setCart_s_name(side);
+					cartVO.setCart_d_code(Integer.parseInt(d_code));
+					cartVO.setCart_d_name(drink);
+					cartVO.setCart_quantity(Integer.parseInt(quantity));
+					
+					cartVO.setCart_product_code(happyMealVO.getH_code());
+					cartVO.setCart_product_name(happyMealVO.getH_name());
+					cartVO.setCart_product_img_path(happyMealVO.getH_img_path());
+					cartVO.setCart_product_price(happyMealVO.getH_price());
 					cartVO.setCart_product_quantity(Integer.parseInt(quantity));
 					cartVO.setCart_product_side_name(side);
 					cartVO.setCart_product_drink_name(drink);
