@@ -18,7 +18,8 @@
 	});
 	function order() {
 		var address = $('#m_zipcode').val() + $('#m_zipcode2').val();
-		if(address == "") {
+		alert($('#m_zipcode2').val());
+		if($('#m_zipcode').val() == "" || $('#m_zipcode2').val() == "") {
 			alert("주소를 입력하세요");
 			return;
 		} else if($('#delivery_price').val() == 0 || $('#price').val() == 0) {
@@ -390,6 +391,22 @@
 												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/></th>
 											</tr>
 										</c:if>
+									</tbody>
+								</table>
+							</section>
+							<section class="panel-section">
+								<table class="table-default table-delivery-datetime">
+									<tbody>
+										<tr>
+											<th scope="row"><input type="hidden" id="delivery_time" name="delivery_time" value="40">예상 배달 시간: 40 분</th>
+											<td>
+												<div class="when-to-deliver"></div>
+												<div class="how-long-to-deliver">
+																
+													<span>수정필요/2021/11/08 16:20</span>
+												</div>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 							</section>

@@ -468,23 +468,23 @@ public class MemberController {
 			
 			for (CartVO vo : cartList) {
 				if (vo.getCart_b_Lgset_price() != null)
-					b_Lgset_price = vo.getCart_b_Lgset_price();
+					b_Lgset_price += vo.getCart_b_Lgset_price();
 				if (vo.getCart_b_price() != null)
-					b_price = vo.getCart_b_price();
+					b_price += vo.getCart_b_price();
 				if (vo.getCart_b_set_price() != null)
-					b_set_price = vo.getCart_b_set_price();
+					b_set_price += vo.getCart_b_set_price();
 				if (vo.getCart_d_price() != null)
-					d_price = vo.getCart_d_price();
+					d_price += vo.getCart_d_price();
 				if (vo.getCart_s_price() != null)
-					s_price = vo.getCart_s_price();
+					s_price += vo.getCart_s_price();
 				if (vo.getCart_w_set_price() != null)
-					w_set_price = vo.getCart_w_set_price();
+					w_set_price += vo.getCart_w_set_price();
 				if (vo.getCart_w_price() != null)
-					w_price = vo.getCart_w_price();
+					w_price += vo.getCart_w_price();
 				if (vo.getCart_dessert_price() != null)
-					dessert_price = vo.getCart_dessert_price();
+					dessert_price += vo.getCart_dessert_price();
 				if (vo.getCart_quantity() != null)
-					product_quantity = vo.getCart_quantity();
+					product_quantity += vo.getCart_quantity();
 				
 				System.out.println("---------------------------------");
 				System.out.println("b_Lgset_price : " + b_Lgset_price);
@@ -497,11 +497,13 @@ public class MemberController {
 				System.out.println("dessert_price : " + dessert_price);
 				System.out.println("product_quantity : " + product_quantity);
 				System.out.println("---------------------------------");
-				price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
-						+ dessert_price + w_price + w_set_price) + delivery_price;
-				System.out.println("price : " + price);
-				System.out.println("---------------------------------");
+				
 			}
+			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
+					+ dessert_price + w_price + w_set_price) + delivery_price;
+			System.out.println("price : " + price);
+			System.out.println("---------------------------------");
+			
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
 			session.setAttribute("cartList", cartList);
