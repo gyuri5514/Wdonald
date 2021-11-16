@@ -528,7 +528,7 @@
 				<div class="modal-body">
 					<div class="media">
 						<div class="pull-left">
-							<img src="https://www.mcdelivery.co.kr/kr//static/1635300416887/assets/82/products/1403.png"
+							<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png" 
 								alt="" class="img-block choice-image"  id="image-choice"/>
 						</div>
 						<div class="media-body">
@@ -649,21 +649,25 @@ $(function(){
 	var b_code = $('#b_code').val();
 	
 	var s_code = $('#s_code').val();
-	if(s_code != 704 && s_code != 705 && s_code != 706)
+	if(s_code != 704 && s_code != 705 && s_code != 706){
 		side = $('#s_name').val();
+	}
 	
 	var d_code = $('#d_code').val();
-	if(d_code != 323 && d_code != 324 && d_code != 325 && d_code != 326 && d_code != 327)
+	if(d_code != 323 && d_code != 324 && d_code != 325 && d_code != 326 && d_code != 327){
 		drink = $('#d_name').val();
+	}
 	
 	var dessert_code = $('#dessert_code').val();
 	var w_code = $('#w_code').val();
+	var h_code = $('#h_code').val();
 	
 	console.log("b_code : " + b_code);
 	console.log("s_code : " + s_code);
 	console.log("d_code : " + d_code);
 	console.log("dessert_code : " + dessert_code);
 	console.log("w_code : " + w_code);
+	console.log("h_code : " + h_code);
 	
  	if(b_code == null && s_code == null && d_code == null && dessert_code == null && w_code == null
  			&& h_code == null) {
@@ -741,17 +745,20 @@ $(function(){
 					console.log(side);
 					console.log(drink);
 					console.log(quantity);
-					if(b_code != null && va != "" && side != "" && drink != "") {
+					if(b_code != null && va != "" && side != "" && drink != "" && set_s_code != "" && set_d_code != "") {
 						if($('#result').val() != 0)
 							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					}
 				} else if(va == "세트"){ 
-					if(b_code != null && va != "" && side != "" && drink != "")  {
+					if(b_code != null && va != "" && side != "" && drink != "" && set_s_code != "" && set_d_code != "")  {
 						if($('#result2').val() != 0)
 							location.href="orderConfirm.do?burger="+b_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity2+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
-					} else if(w_code != null && va != "" && side != "" && drink != "") {
+					} else if(w_code != null && va != "" && side != "" && drink != "" && set_s_code != "" && set_d_code != "") {
 						if($('#result').val() != 0)
 							location.href="orderConfirm.do?w_code="+w_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
+					} else if(h_code != null && va != "" && side != "" && drink != "" && set_s_code != "" && set_d_code != "") {
+						if($('#result').val() != 0)
+							location.href="orderConfirm.do?h_code="+h_code+"&va="+va+"&side="+side+"&drink="+drink+"&quantity="+quantity+"&s_code="+set_s_code +"&d_code="+set_d_code+"";
 					}
 				} else if(va == "단품"){ 
 					if(b_code != null && va != "") {
@@ -791,7 +798,7 @@ $(function(){
 					return;
 				}
 			}
-			if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+			if($('#result').val() == 0){
 				alert("수량을 선택하세요");
 				return;
 			}
@@ -810,15 +817,18 @@ $(function(){
 				alert("수량을 선택하세요");
 				return;
 			}
-		} else {
-			if(va != "단품") {
-				if(side == "") {
-					alert("사이드를 선택하세요");
-					return;
-				} else if(drink == "") {
-					alert("음료를 선택하세요");
-					return;
-				} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+		} else if(va != "단품") {
+			if(side == "" || set_s_code == "") {
+				alert("사이드를 선택하세요");
+				return;
+			} else if(drink == "" || set_d_code == "") {
+				alert("음료를 선택하세요");
+				return;
+			} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
+				alert("수량을 선택하세요");
+				return;
+			} else if(h_code != null) {
+				if($('#result').val() == 0){
 					alert("수량을 선택하세요");
 					return;
 				}
@@ -845,10 +855,18 @@ $(function(){
 	//사이드변경 라디오버튼 설정
 	$('.iradio1').click(function() {
 		$(this).find('.form-radio1').prop('checked', true);
-		if($(this).find('.form-radio1').attr("id") == "side-label2"){
-			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/golden_mozzarella_cheese_stick_4pieces.png");
-		} else {
+		if(s_code == 704) 
 			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
+		else if(s_code == 705)
+			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_nugget_4pieces.png");
+		else if(s_code == 706)
+			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_sipcey_chicken_tender_4pieces.png");
+		else {
+			if($(this).find('.form-radio1').attr("id") == "side-label2"){
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/golden_mozzarella_cheese_stick_4pieces.png");
+			} else {
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
+			}
 		}
 			
 		if($(this).find('.form-radio1').prop('checked')) {
@@ -909,10 +927,6 @@ function sideOpen(index) {
 				$('#side-label1').val($('#s_name').val() + " - 라지");
 				$('label[for="side2"]').text($('#s_name').val() + " - 미디움 + 700원");
 				$('#side-label2').val($('#s_name').val() + " - 미디움");
-				console.log($('label[for="side1"]').text());
-				console.log($('#side-label1').val());
-				console.log($('label[for="side2"]').text());
-				console.log($('#side-label2').val());
 			} else if(val == "음료"){ 
 				$('label[for="side1"]').text($('#d_name').val() + " - 라지 + 1000원");
 				$('#side-label1').val($('#d_name').val()+" - 라지");

@@ -499,7 +499,9 @@ $(document).ready(function () {
 			alert("검색어를 입력해주세요");
 			return;
 		}
-			
+		
+		$('#store').html("");
+		
 		$.ajax({
 			type : 'post',
 			url : 'searchStore.do',

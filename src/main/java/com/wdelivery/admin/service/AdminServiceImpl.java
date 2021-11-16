@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wdelivery.admin.dao.AdminDAO;
+import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.paging.Criteria;
@@ -14,12 +15,12 @@ import com.wdelivery.paging.Criteria;
 public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminDAO adminDAO;
-
-
+ 
 	@Override
 	public List<PaymentVO> indexView() {
 		return adminDAO.indexView();
 	}
+
 
 	@Override
 	public List<UserVO> userSelect(Criteria cri) {
@@ -29,5 +30,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int getUserContent() {
 		return adminDAO.getUserContent();
+
+	
+	@Override
+	public void addCoupon(AdminCouponVO addcoupon) {
+		adminDAO.addCoupon(addcoupon);
+
 	}
 }

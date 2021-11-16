@@ -12,9 +12,11 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.dao.MemberDAO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.store.dao.StoreDAO;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -23,7 +25,9 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
-
+	@Autowired
+	private StoreDAO storeDAO;
+	
 	@Override
 	public UserVO findUser(UserVO userVO) {
 		return memberDAO.findUser(userVO);
@@ -45,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int emailChk(String user_email) throws Exception {
+	public int emailChk(String user_email)  {
 		int result = memberDAO.emailChk(user_email);
 		System.out.println("serviceImpl : " + result);
 		return result;
@@ -64,7 +68,7 @@ public class MemberServiceImpl implements MemberService {
 
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", user_phone);
-		params.put("from", "01042820579");
+		params.put("from", "01042820579");//input phone number = il sung na 01042**-***9
 		params.put("type", "SMS");
 		params.put("text", "[Wdonald] certification code is [" + numStr + "]");
 		params.put("app_version", "test app 1.2");
@@ -185,6 +189,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<AdminVO> getStoreList(AdminVO adminVO) { // dododo
 
 		return memberDAO.getStoreList(adminVO);
+	}
+
+	@Override
+	public List<AdminVO> findProximateStore(MapPointVO mpv) {
+		return storeDAO.findProximateStore(mpv);
 	}
 
 }

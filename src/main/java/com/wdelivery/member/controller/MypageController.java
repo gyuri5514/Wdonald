@@ -154,7 +154,8 @@ public class MypageController {
 	@GetMapping("/coupon.do")
 	public String coupon(Model model, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
-		
+		if(userInfo==null) 
+			return "redirect:main.do";
 		int user_seq = userInfo.getUser_seq();
 		//System.out.println("con => " +  user_seq);
 		List<UserCouponVO> UserCouponVO = new ArrayList<UserCouponVO>();

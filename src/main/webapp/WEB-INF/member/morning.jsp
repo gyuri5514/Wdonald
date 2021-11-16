@@ -2,7 +2,12 @@
 <%@ include file="header.jsp" %>
 <script src="/resources/js/menu/menu.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
-
+<c:if test="${menuAvailable == 'n' }">
+	<script>
+		alert('주문 가능한 시간대가 아닙니다.');
+		window.location.href='http://localhost:8080/controller/burger.do';
+	</script>
+	</c:if>
 	<div id="container">
 		<div class="content">
 			<div class="visualArea bgMenu02">
