@@ -45,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int emailChk(String user_email) throws Exception {
+	public int emailChk(String user_email)  {
 		int result = memberDAO.emailChk(user_email);
 		System.out.println("serviceImpl : " + result);
 		return result;
@@ -64,7 +64,7 @@ public class MemberServiceImpl implements MemberService {
 
 		HashMap<String, String> params = new HashMap<String, String>();
 		params.put("to", user_phone);
-		params.put("from", "01042820579");
+		params.put("from", "01042820579");//input phone number = il sung na 01042**-***9
 		params.put("type", "SMS");
 		params.put("text", "[Wdonald] certification code is [" + numStr + "]");
 		params.put("app_version", "test app 1.2");

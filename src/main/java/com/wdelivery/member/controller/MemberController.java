@@ -22,6 +22,7 @@ import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.service.MemberService;
+import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
@@ -86,9 +87,16 @@ public class MemberController {
 	@Autowired
 	private AdminStoreService adminStoreService;
 	
+	@Autowired
+	private OrderTimer orderTimer;
+	
 	@GetMapping("/main.do")
 	public String main() {
 		return "main";
+	}
+	@GetMapping("passwordSearch.do")
+	public String passwordSearch() {
+		return "passwordSearch"; 
 	}
 
 	@GetMapping("/order.do")
@@ -101,6 +109,7 @@ public class MemberController {
 			@RequestParam(value = "va", required = false) String va,
 			@RequestParam(value = "num", required = false) String num,
 			HttpSession session) {
+		
 		
 		if(va != null) {
 			if(va.equals("변경")) {
@@ -121,7 +130,11 @@ public class MemberController {
 			BurgerLgSetVO burgerLgSetVO = burgerLgSetService.detailBurgerLgSet(Integer.parseInt(b_code)+400);
 			BurgerSetVO burgerSetVO = burgerSetService.detailBurgerSet(Integer.parseInt(b_code)+100);
 			BurgerVO burgerVO = burgerService.detailBurger(Integer.parseInt(b_code));
-			
+			//return true = winmoring available / return false = winmorning not on sale
+			if(orderTimer.isMenuOrderTime()) {
+				model.addAttribute("menuAvailable","n");
+				return "burger";
+			}
 			model.addAttribute("burgerLgSetVO", burgerLgSetVO);
 			model.addAttribute("burgerSetVO", burgerSetVO);
 			model.addAttribute("burgerVO", burgerVO);
@@ -137,6 +150,11 @@ public class MemberController {
 			model.addAttribute("drinkVO", drinkVO);
 
 		} else if (w_code != null) {
+			//return true = winmoring available / return false = winmorning not on sale
+			if(!orderTimer.isMenuOrderTime()) {
+				model.addAttribute("menuAvailable","n");
+				return "morning";
+			}
 			WinMorningVO winMorningVO = winMorningService.detailMorning(Integer.parseInt(w_code));
 			WinMorningSetVO winMorningSetVO = winMorningSetService.detailMorningSet(Integer.parseInt(w_code)+200);
 			
@@ -544,20 +562,6 @@ public class MemberController {
 		}
 		return faqList;
 	}
-	
-//	@PostMapping("/faqKeyword.do")
-//	@ResponseBody
-//	public List<FaqVO> faqKeyword(@RequestParam(value = "MenuSelect", required = false)String type, @RequestParam(value = "KeywordSelect", required = false) String keyword ){
-//		List<FaqVO> faqKeyword = faqService.KeywordSelect(type, keyword);
-//		for(FaqVO faqKeyword1 : faqKeyword) {
-//			System.out.println(faqKeyword1.getFaq_seq());
-//			System.out.println(faqKeyword1.getFaq_name());
-//			System.out.println(faqKeyword1.getFaq_title());
-//			System.out.println(faqKeyword1.getFaq_content());
-//		}
-//		return faqService.KeywordSelect(type, keyword);
-//	}
-	
 	@GetMapping("/couponSearch.do")
 	@ResponseBody
 	public int couponSearch(@RequestParam(name="couponCode")String couponCode, HttpSession session, Model model) {
@@ -609,9 +613,6 @@ public class MemberController {
 	public String store(AdminVO adminVO, Model model) { //하는 중...........
 
 		List<AdminVO> storeList = memberService.getStoreList(adminVO);
-		
-		
-		
 		model.addAttribute("storeList", JSONArray.fromObject(storeList));
 		
 		return "store";
@@ -657,8 +658,6 @@ public class MemberController {
 	// qna Insert
 	@RequestMapping("/qnaInsert.do")
 	public String qnaInsert(QnaVO qnaVO) {
-		// System.out.println("1 = " + qnaVO.getQa_agree1());
-		// System.out.println("2 = " + qnaVO.getQa_agree2());
 
 		qnaService.qnaInsert(qnaVO);
 		System.out.println("insertcontroller => " + qnaVO.toString());
@@ -673,7 +672,8 @@ public class MemberController {
 
 	@PostMapping("/qnaStoreSearchP.do")
 	@ResponseBody
-	public List<AdminVO> qnaStoreSearchP(@RequestParam(value = "store_address", required = false) String store_address,
+	public List<AdminVO> qnaStoreSearchP(
+			@RequestParam(value = "store_address", required = false) String store_address,
 			Model model) {
 		List<AdminVO> adminVO = new ArrayList<AdminVO>();
 		adminVO = qnaService.storeSelect(store_address);
@@ -711,13 +711,15 @@ public class MemberController {
 				String delivery_price,@RequestParam(value = "address", required=false) String address, @RequestParam(value = "coupon", required=false) String coupon,
 				@RequestParam(value = "lat", required=false) String lat,@RequestParam(value = "lon", required=false) String lon, HttpSession session) {
 		//coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액, delivery_price - 배달료
-		
-		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
-		for(CartVO vo : cartList) {
-			System.out.println(vo.getCart_product_code());
-		}
-		System.out.println("price : " + price);
-		System.out.println("delivery_price : " + delivery_price);
+			
+		model.addAttribute("address",address);
+		model.addAttribute("lat",lat);
+		model.addAttribute("lon",lon);
+		model.addAttribute("price", price);
+		model.addAttribute("delivery_cost",delivery_price);
+		int totalPrice = Integer.parseInt(price) +Integer.parseInt(delivery_price);
+		model.addAttribute("total_price",totalPrice);
+		model.addAttribute("discount",0);
 		return "paymentWin";
 	}
 

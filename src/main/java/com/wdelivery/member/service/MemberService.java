@@ -17,7 +17,7 @@ public interface MemberService {
 	
 	public void winMemJoin(UserVO userVO);
 	public void winAddressJoin(UserAddressVO addressVO);
-	int emailChk(String user_email) throws Exception;
+	int emailChk(String user_email);
 	public void certifiedPhoneNumber(String user_phone, String numStr);
 	public UserVO userSelect(String user_email);
 	public void mypageUpdate(UserVO userVO);
