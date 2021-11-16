@@ -110,8 +110,10 @@
 
 	function orderCheck(order_seq){
 		var order_seq = order_seq;
-		var order_status = $("#order_status").val();
-		
+		var order_status = $("select[name=order_status]").val();
+
+		console.log(order_status);
+
 		$.ajax({
 			url:"tables.sdo",
 			data:{ order_seq : order_seq,

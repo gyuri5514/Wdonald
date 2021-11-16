@@ -34,7 +34,7 @@ public class StoreSalesController {
 			model.addAttribute("orderList", orderList);
 		}
 		if(order_seq > 0) {
-			System.out.println("?");
+			System.out.println("?" + order_status);
 			storeSalesService.orderStatus(paymentVO);
 			System.out.println("check");
 		}
