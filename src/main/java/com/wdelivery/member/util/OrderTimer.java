@@ -3,8 +3,6 @@ package com.wdelivery.member.util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.naming.ldap.StartTlsRequest;
-
 /**
  * return true = winmoring available / return false = winmorning not on sale
  */

@@ -154,9 +154,7 @@
 								<th scope="row"><input type="hidden" id="delivery_time" name="delivery_time" value="40">예상 배달 시간: 40 분</th>
 								<td>
 									<div class="when-to-deliver"></div>
-									<div class="how-long-to-deliver">
-													
-										<span>수정필요/2021/11/08 16:20</span>
+									<div class="how-long-to-deliver"><small>${store.store_name}</small><br>&nbsp;<span>2021/11/08 16:20</span>
 									</div>
 								</td>
 							</tr>

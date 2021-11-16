@@ -7,6 +7,7 @@ import java.util.Map;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
@@ -47,5 +48,7 @@ public interface MemberService {
 	List<CartVO> getCartListByMerchantId(String merchantUid);
 	
 	List<AdminVO> getStoreList(AdminVO adminVO);
+
+	List<AdminVO> findProximateStore(MapPointVO mpv);
 
 }
