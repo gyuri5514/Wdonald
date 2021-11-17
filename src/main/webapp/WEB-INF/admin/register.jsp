@@ -70,7 +70,7 @@
     			},
     			dataType : 'json',
     			success : function(data) {
-    				alert(data);
+    				alert(data + "여기다!");
     				if(data == 1) {
     					$('#content').attr("style", "display:block;");
     					$('#content').text("이미 존재하는 관리자 아이디입니다.");
