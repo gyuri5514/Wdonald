@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.news.dao.NewsDAO">
 	<select id="selectNews" resultType="newsVO">
 		<![CDATA[
-			SELECT * FROM news ORDER BY news_code DESC
+			SELECT * FROM news ORDER BY news_code DESC LIMIT #{startList} OFFSET #{listSize}
 		]]>
 	</select>
 	
@@ -20,4 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			UPDATE news SET news_count = news_count + 1 WHERE news_code = #{news_code}
 		]]>
 	</update>
+	
+	<!-- 총 게시글 개수 출력 -->
+	<select id="totalNews" resultType="int">
+		SELECT COUNT(*) as listCnt FROM news
+	</select>
+	
 </mapper>
