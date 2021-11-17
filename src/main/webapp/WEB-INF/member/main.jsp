@@ -4,16 +4,21 @@
 <%@ include file="header.jsp"%>
 <c:choose>
 <c:when test="${emailResult =='success'}">
-<script>
-	alert('이메일 인증 성공')
-</script>
+	<script>
+		alert('이메일 인증 성공')
+	</script>
 </c:when>
-<c:when test="${emailResult =='fail'}">
-<script>
-	alert('이메일 인증 실패')
-</script>
-</c:when>
+	<c:when test="${emailResult =='fail'}">
+		<script>
+		alert('이메일 인증 실패')
+		</script>
+	</c:when>
 </c:choose>
+<c:if test="${passwordChanged eq 'success' }">
+	<script>
+			alert('비밀번호 변경이 완료되었습니다.')
+	</script>
+</c:if>
 <div id="container">
 	<div class="content">
 		<h1 class="hide" data-desc="메인">Main</h1>

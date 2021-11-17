@@ -180,7 +180,12 @@ public class MemberController {
 		model.addAttribute("drinkList", JSONArray.fromObject(drinkList));
 		return "order";
 	}
-
+	
+	@RequestMapping("confirmPassword.do")
+	public String confirmPassword() {
+		return "confirmPassword";
+	}
+	
 	@GetMapping("/orderConfirm.do")
 	public String cart(Model model, @RequestParam(value = "burger", required = false) String b_code,
 			@RequestParam(value = "va", required = false) String va,
@@ -719,7 +724,10 @@ public class MemberController {
 		
 		AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat,lon), lat, lon);
 		
-		System.out.println(store.toString());
+		if(store==null) {
+			model.addAttribute("notAvailable","noStoreNear");
+			return "orderConfirm";
+		}
 		
 		model.addAttribute("store",store);
 		model.addAttribute("address",address);

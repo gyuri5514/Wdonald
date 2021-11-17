@@ -100,7 +100,9 @@
     			},
     			dataType : 'json',
     			success : function(data) {
+
     				console.log(data);
+
     				if(data == 1) {
     					$('#content').attr("style", "display:block; color:red;");
     					$('#content').text("이미 존재하는 관리자 아이디입니다.");
