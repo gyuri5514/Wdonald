@@ -180,7 +180,12 @@ public class MemberController {
 		model.addAttribute("drinkList", JSONArray.fromObject(drinkList));
 		return "order";
 	}
-
+	
+	@RequestMapping("confirmPassword.do")
+	public String confirmPassword() {
+		return "confirmPassword";
+	}
+	
 	@GetMapping("/orderConfirm.do")
 	public String cart(Model model, @RequestParam(value = "burger", required = false) String b_code,
 			@RequestParam(value = "va", required = false) String va,

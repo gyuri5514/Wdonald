@@ -57,5 +57,6 @@ public interface MemberDAO {
 
 	List<AdminVO> getStoreList(AdminVO adminVO);
 
+	public void updatePassword(UserVO userVO);
 
 }
