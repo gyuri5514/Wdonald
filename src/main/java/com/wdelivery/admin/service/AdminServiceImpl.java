@@ -26,6 +26,15 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.userSelect();
 	}
 	
+
+	@Override
+	public List<AdminCouponVO> selectCoupon(){
+		List<AdminCouponVO> vo = adminDAO.selectCoupon();
+		return vo;
+	}
+	
+	@Override
+
 	public void addCoupon(AdminCouponVO addcoupon) {
 		adminDAO.addCoupon(addcoupon);
 

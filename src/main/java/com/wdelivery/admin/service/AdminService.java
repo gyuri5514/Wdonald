@@ -12,6 +12,8 @@ public interface AdminService {
 	
 	public List<UserVO> userSelect();
 
+	public List<AdminCouponVO> selectCoupon();
+	
 	public void addCoupon(AdminCouponVO addcoupon);
 
 }

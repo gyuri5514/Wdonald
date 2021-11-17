@@ -9,10 +9,10 @@ import com.wdelivery.member.vo.UserVO;
 public interface AdminDAO {
 	
 	public List<PaymentVO> indexView();
-	
 
 	public List<UserVO> userSelect();
-
+	
+	public List<AdminCouponVO> selectCoupon();
 	public void addCoupon(AdminCouponVO addcoupon);
 
 }

@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -77,13 +79,24 @@ public class AdminController {
 	
 	//?
 	@GetMapping("/layout-sidenav-light.mdo")
-	public String layout() {
+	public String layout(Model model) {
+		List<AdminCouponVO> vo = adminService.selectCoupon();
+		model.addAttribute("vo", vo);
 		return "layout-sidenav-light";
 	}
 	
-	// 회원 정보 게시판 
-	@RequestMapping("/layoutStatic.mdo")
-	public String layoutStatic(Model model) {
+
+	@GetMapping("/layoutStatic.mdo")
+	public String layoutStatic(Model model, @RequestParam(value = "pageNum", required = false) Integer pageNum) {
+		
+		Criteria cri = new Criteria();
+		cri.setPage(pageNum);
+		cri.setPageStart();
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(adminService.getUserContent());
+
 		
 		List<UserVO> userInfo = adminService.userSelect();
 	
@@ -96,6 +109,23 @@ public class AdminController {
 	public String addcoupon() {
 		return "addcoupon";
 	}
+	
+	@PostMapping("/couponCheck.mdo")
+	@ResponseBody
+	public int couponCheck(@RequestParam(name="coupon_code", required=false) String coupon_code, 
+			@RequestParam(name="coupon_title", required=false) String coupon_title) {
+		if(coupon_code != null) {
+			int id_check = adminStoreService.selectStore(coupon_code);
+			if(id_check == 1) 
+				return 1;
+		} else if(coupon_title != null) {
+			int id_check = adminStoreService.selectStore(coupon_title);
+			if(id_check == 1) 
+				return 1;
+		} 
+		return 0;
+	}
+	
 	@PostMapping("/addcouponInsert.mdo")
 	public String addcoupon(AdminCouponVO addcoupon) {
 		adminService.addCoupon(addcoupon);
