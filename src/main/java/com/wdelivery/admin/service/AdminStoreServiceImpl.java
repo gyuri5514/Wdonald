@@ -21,8 +21,8 @@ public class AdminStoreServiceImpl implements AdminStoreService{
 	}
 
 	@Override
-	public int selectStore(String str) {
-		return adminStoreDAO.selectStore(str);
+	public int selectStore(Map<String,String>map) {
+		return adminStoreDAO.selectStore(map);
 	}
 
 }

@@ -1612,11 +1612,11 @@ ul.notiTxt:before {
 	color: #666;
 }
 
-#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(4) {
+#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(3) {
 	margin-top: 24px;
 }
 
-#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(4)>input {
+#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(3)>input {
 	display: block;
 	width: 300px;
 	margin-left: 110px;
@@ -1629,12 +1629,12 @@ ul.notiTxt:before {
 	cursor: pointer;
 }
 
-#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(5) {
+#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(4) {
 	margin-top: 24px;
 	text-align: center;
 }
 
-#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(5)>a {
+#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(4)>a {
 	display: inline-block;
 	width: 143px;
 	padding: 6px 0;

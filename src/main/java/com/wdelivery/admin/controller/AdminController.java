@@ -51,7 +51,6 @@ public class AdminController {
 		List<PaymentVO> paymentList =  adminService.indexView();
 		//List<PaymentVO> paymentVO = new ArrayList<PaymentVO>();
 		model.addAttribute("paymentList",paymentList);
-		System.out.println("인덱스");
 		//System.out.println("index: " + ((PaymentVO) paymentVO).getOrder_seq());
 		return "index";
 	}
@@ -61,19 +60,14 @@ public class AdminController {
 	public int adminCheck(@RequestParam(name="admin_id", required=false) String admin_id, 
 			@RequestParam(name="store_name", required=false) String store_name,
 			@RequestParam(name="store_code", required=false) String store_code) {
-		if(admin_id != null) {
-			int id_check = adminStoreService.selectStore(admin_id);
-			if(id_check == 1) 
-				return 1;
-		} else if(store_name != null) {
-			int id_check = adminStoreService.selectStore(store_name);
-			if(id_check == 1) 
-				return 1;
-		} else if(store_code != null) {
-			int id_check = adminStoreService.selectStore(store_code);
-			if(id_check == 1) 
-				return 1;
-		}
+		Map<String, String> map = new HashMap<String,String>();
+		map.put("admin_id", admin_id);
+		map.put("store_name", store_name);
+		map.put("store_code", store_code);
+		
+		int id_check = adminStoreService.selectStore(map);
+		if(id_check == 1)
+			return 1;
 		
 		return 0;
 	}

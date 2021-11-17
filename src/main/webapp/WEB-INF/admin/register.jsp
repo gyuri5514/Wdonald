@@ -21,9 +21,15 @@
     		 location.href = "/controller/index.mdo";
     	 })
     	 $("#submit").on("click",function(){
+    		 var regExp = /\s/g;
     		 if($("#admin_id").val()==""){
     			 alert("아이디를 입력해주세요.");
     			 $("#admin_id").focus();
+    			 return false;
+    		 } 
+    		 if(regExp.test($("#admin_id").val())) {
+				 alert("공백을 사용할 수 없습니다.");
+				 $("#admin_id").focus();
     			 return false;
     		 }
     		 if($("#admin_password").val()==""){
@@ -32,17 +38,32 @@
     			 return false;
     		 }
     		 if($("#admin_name").val()==""){
-    			 alert("관리자님 이름을 입력해주세요.");
+    			 alert("관리자 이름을 입력해주세요.");
+    			 $("#admin_name").focus();
+    			 return false;
+    		 }
+    		 if(regExp.test($("#admin_name").val())){
+    			 alert("공백을 사용할 수 없습니다.");
     			 $("#admin_name").focus();
     			 return false;
     		 }
     		 if($("#admin_phone").val()==""){
-    			 alert("관리자님 번호를 입력해주세요.");
+    			 alert("관리자 번호를 입력해주세요.");
     			 $("#admin_phone").focus();
+    			 return false;
+    		 }
+    		 if(regExp.test($("#admin_phone").val())){
+    			 alert("공백을 사용할 수 없습니다.");
+    			 $("#admin_name").focus();
     			 return false;
     		 }
     		 if($("#store_name").val()==""){
     			 alert("매장명을 입력해주세요.");
+    			 $("#store_name").focus();
+    			 return false;
+    		 }
+    		 if(regExp.test($("#store_name").val())){
+    			 alert("공백을 사용할 수 없습니다.");
     			 $("#store_name").focus();
     			 return false;
     		 }
@@ -56,12 +77,21 @@
     			 $("#store_code").focus();
     			 return false;
     		 }
+    		 if( regExp.test($("#store_code").val())){
+    			 alert("공백을 사용할 수 없습니다.");
+    			 $("#store_code").focus();
+    			 return false;
+    		 }
     		 if($("#store_phone").val()==""){
     			 alert("매장 번호를 입력해주세요.");
     			 $("#store_phone").focus();
     			 return false;
     		 }
-    		 
+    		 if(regExp.test($("#store_phone").val())){
+    			 alert("공백을 사용할 수 없습니다.");
+    			 $("#store_phone").focus();
+    			 return false;
+    		 }
     		 $.ajax({
     			type : 'post',
     			url : '/controller/adminCheck.mdo',
@@ -70,12 +100,14 @@
     			},
     			dataType : 'json',
     			success : function(data) {
-    				alert(data);
+    				console.log(data);
     				if(data == 1) {
-    					$('#content').attr("style", "display:block;");
+    					$('#content').attr("style", "display:block; color:red;");
     					$('#content').text("이미 존재하는 관리자 아이디입니다.");
+    					$('#content').fadeOut(2000);
     					return;
     				} else {
+    					console.log(data);
     					$.ajax({
     						type : 'post',
     		    			url : '/controller/adminCheck.mdo',
@@ -85,10 +117,12 @@
     		    			dataType : 'json',
     		    			success : function(data) {
     		    				if(data == 1) {
-    		    					$('#content').attr("style", "display:block;");
+    		    					$('#content').attr("style", "display:block; color:red;");
     		    					$('#content').text("이미 존재하는 매장명입니다.");
+    		    					$('#content').fadeOut(2000);
     		    					return;    		    					
     		    				} else {
+    		    					console.log(data);
 	    		    				$.ajax({
 	    	    						type : 'post',
 	    	    		    			url : '/controller/adminCheck.mdo',
@@ -98,19 +132,15 @@
 	    	    		    			dataType : 'json',
 	    	    		    			success : function(data) {
 	    	    		    				if(data == 1) {
-	    	    		    					$('#content').attr("style", "display:visible;");
+	    	    		    					$('#content').attr("style", "display:block; color:red;");
 	    	    		    					$('#content').text("이미 존재하는 매장코드입니다.");
+	    	    		    					$('#content').fadeOut(2000);
 	    	    		    					return;   
 	    	    		    				} 
-	    	    		    			},
-	    	    		    			error : function(message) {
-	    	    		    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+	    	    		    			 $('#registerAdmin').submit(); 
 	    	    		    			}
 	    		    				});
     		    				}
-    		    			},
-    		    			error : function(message) {
-    		    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
     		    			}
     					});
     				}
@@ -119,7 +149,6 @@
     				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
     			}
     		 });
-    		 /* $('#registerAdmin').submit(); */
     	 });
     	})
     	
@@ -128,13 +157,12 @@
 		 var themeObj = {
 				 bgColor: "#F8B01B"
 				};
-		new daum.Postcode({
+			new daum.Postcode({
 			
 			oncomplete : function(data) {
-				document.querySelector("#m_zipcode").value = data.address;
+				document.querySelector("#store_address").value = data.address;
 				
-				var m_zipcode = $("#m_zipcode").val();
-				alert("d" + m_zipcode);
+				var m_zipcode = $("#store_address").val();
 				var map = document.getElementById("map");
 		
 				var geocoder = new kakao.maps.services.Geocoder();
@@ -142,10 +170,8 @@
 				geocoder.addressSearch(m_zipcode, function(result, status){
 					if(status === kakao.maps.services.Status.OK){
 						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-						alert("?" + result[0].y + "," + result[0].x);
 						document.getElementById("store_lat").value = result[0].y; //위도
 						document.getElementById("store_lon").value = result[0].x; //경도
-						
 						
 					}
 				});
@@ -200,7 +226,7 @@
                                                 <label for="store_name">매장명</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input style="width: 89%; display: inline" class="form-control" id="m_zipcode" name="store_address" type="text" placeholder="name@example.com" />
+                                                <input style="width: 89%; display: inline" class="form-control" id=store_address name="store_address" type="text" placeholder="name@example.com" readonly/>
                                                 <label for="store_address">매장 위치</label>
                                                 <a onclick="openDaumPostcode();" class="btn btn-danger btn-block" style="margin-left: 10px;">검색</a>
                                                 <input type="hidden" name="store_lat" id="store_lat">
@@ -210,8 +236,8 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="store_code" name="store_code" type="text" placeholder="ex) M0001" />
-                                                        <label for="store_code">매장 코드</label>
+                                                        <input class="form-control" id="store_code" name="store_code" type="text" placeholder="placeholder" />
+                                                        <label for="store_code">매장 코드 ex) M0001</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
