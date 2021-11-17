@@ -13,6 +13,7 @@ public class NearestStore {
 				if(returnDistance(c_lat, c_lon, storeList.get(j).getStore_lat(),storeList.get(j).getStore_lon())
 						>returnDistance(c_lat, c_lon, storeList.get(j+1).getStore_lat(),storeList.get(j+1).getStore_lon())){
 						av = storeList.get(j+1);
+						break;
 					}else {
 						av = storeList.get(j);
 					}

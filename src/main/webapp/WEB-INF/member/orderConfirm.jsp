@@ -6,7 +6,11 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet" href="resources/css/order/orderMain.css" />
 <link rel="stylesheet" href="resources/css/order/orderLocal.css" />
-
+<c:if test="${notAvailable eq 'noStoreNear' }">
+<script>
+	alert('배달 가능한 매장이 없습니다.');
+</script>
+</c:if>
 <script type="text/javascript">
 	$(function(){
 		window.onkeydown = function() {	//새로고침시
