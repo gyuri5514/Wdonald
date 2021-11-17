@@ -12,9 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,11 +32,6 @@ public class AdminController {
 
 	@Autowired
 	private AdminStoreService adminStoreService;
-//	@GetMapping("/index.mdo")
-//	public String index() {
-//		return "index";
-//	}
-
 	
 	@GetMapping("/index.mdo")
 	public String indexView(Model model,HttpSession session) {
@@ -82,7 +74,7 @@ public class AdminController {
 		return "500";
 	}
 	
-	//?
+	//쿠폰함
 	@GetMapping("/layout-sidenav-light.mdo")
 	public String layout(Model model) {
 		List<AdminCouponVO> vo = adminService.selectCoupon();
@@ -90,23 +82,11 @@ public class AdminController {
 		return "layout-sidenav-light";
 	}
 	
-
+	//회원정보 게시판
 	@GetMapping("/layoutStatic.mdo")
-	public String layoutStatic(Model model, @RequestParam(value = "pageNum", required = false) Integer pageNum) {
-		
-		Criteria cri = new Criteria();
-		cri.setPage(pageNum);
-		cri.setPageStart();
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(adminService.getUserContent());
-
-		
+	public String layoutStatic(Model model) {
 		List<UserVO> userInfo = adminService.userSelect();
-	
 		model.addAttribute("userInfo" , userInfo);
-		
 		return "layout-static";
 	}
 	
