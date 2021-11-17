@@ -58,7 +58,8 @@
      <mybatis-spring:scan base-package="com.wdelivery.promotion.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.news.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.happypromotion.dao"/>
-
+     <mybatis-spring:scan base-package="com.wdelivery.store.chart.dao"/>
+	
 	
 	 <context:component-scan base-package="com.wdelivery"></context:component-scan>
 

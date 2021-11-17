@@ -21,8 +21,6 @@ import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserVO;
-import com.wdelivery.news.utils.Criteria;
-import com.wdelivery.news.utils.PageMaker;
 
 @Controller
 public class AdminController {
