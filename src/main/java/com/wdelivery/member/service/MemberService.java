@@ -51,4 +51,6 @@ public interface MemberService {
 
 	List<AdminVO> findProximateStore(MapPointVO mpv);
 
+	void updatePassword(UserVO userVO);
+
 }

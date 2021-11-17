@@ -307,7 +307,6 @@
 							  	<span class="pwd_str_msg" level="3" style="display: none;">
 									<small>패스워드	안전도 : <strong class="level3 text-success">높음</strong></small>
 								</span>
-								
 							</span>
 						</div>
 						<div class="form-group">
