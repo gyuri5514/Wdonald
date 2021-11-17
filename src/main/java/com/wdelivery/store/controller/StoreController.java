@@ -56,8 +56,12 @@ public class StoreController {
 	public String layout() {
 		return "layout-sidenav-light";
 	}
+	
+	//store 1:1 °í°´¹®ÀÇ
 	@GetMapping("/layoutStatic.sdo")
 	public String layoutStatic() {
+		
+		
 		return "layout-static";
 	}
 }

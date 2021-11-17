@@ -27,7 +27,7 @@ public class StoreSalesController {
 	@GetMapping("tables.sdo")
 	public String tables(@RequestParam(name="order_seq", defaultValue = "0") int order_seq, @RequestParam(name="order_status", defaultValue = "0") String order_status,
 			Model model, HttpSession session, PaymentVO paymentVO) {
-		System.out.println("¤Ð¤Ì¤Ð" + order_seq);
+		//System.out.println("order_seq" + order_seq);
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
 		if(adminVO != null) {
 			List<PaymentVO> orderList = storeSalesService.orderList(adminVO);
