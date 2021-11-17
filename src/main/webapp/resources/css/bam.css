@@ -919,17 +919,6 @@ ul.notiTxt:before {
     width: 100%;
 }
 
-.header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    min-width: 1280px;
-    height: 141px;
-    text-align: center;
-    border-bottom: 1px solid #ffbc0d;
-    background: #fff;
-}
 .header .headArea {
     height: 100%;
 }

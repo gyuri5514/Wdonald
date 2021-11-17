@@ -9,6 +9,6 @@ public interface AdminStoreService {
 	
 	List<AdminVO> searchStore(String searchWord);
 	
-	int selectStore(String str);
+	int selectStore(Map<String,String>map);
 	
 }
