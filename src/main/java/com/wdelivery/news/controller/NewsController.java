@@ -1,64 +1,51 @@
 package com.wdelivery.news.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.wdelivery.news.service.NewsService;
-import com.wdelivery.news.utils.Paging;
+import com.wdelivery.news.utils.Criteria;
+import com.wdelivery.news.utils.PageMaker;
+import com.wdelivery.news.vo.NewsVO;
 
 @Controller
 public class NewsController {
 
 	@Autowired
 	NewsService newsService;
-
-//	@GetMapping("/news.do")
-//	public String selectNews(Model model) {
-//		List<NewsVO> selectNews = newsService.selectNews();
-//		model.addAttribute("selectNews", selectNews);
-//		
-//		return "news";
-//	}
-
-//	@GetMapping("/news.do")
-//	public String selectNews(NewsPagingVO newsPagingVO, Model model,
-//			@RequestParam(value = "nowPage", required = false) String nowPage,
-//			@RequestParam(value = "cntPerPage", required = false) String cntPerPage) {
-//		int total = newsService.totalNews();
-//		
-//		if (nowPage == null && cntPerPage == null) {
-//			nowPage = "1";
-//			cntPerPage = "5";
-//		} else if (nowPage == null) {
-//			nowPage = "1";
-//		} else if (cntPerPage == null) {
-//			cntPerPage = "5";
-//		}
-//		
-//		newsPagingVO = new NewsPagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-//		model.addAttribute("paging", newsPagingVO);
-//		model.addAttribute("viewAAll", newsService.selectNewsPaging(newsPagingVO));
-//		
-//		return "news";
-//	}
-
+	
 	@GetMapping("/news.do")
-	public String getBoardList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range) {
-		// 전체 게시글 개수
-		int listCnt = newsService.totalNews();
+	public ModelAndView selectNews(Criteria cri) {
 		
-		// Paging 객체 생성
-		Paging paging = new Paging();
-		paging.pageInfo(page,  range, listCnt);
+		ModelAndView mav = new ModelAndView("news");
 		
-		model.addAttribute("paging", paging);
-		model.addAttribute("news", newsService.selectNews(paging));
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(newsService.totalNews());
 		
-		return "news";
+		List<NewsVO> list = newsService.selectNews(cri);
+		List<NewsVO> notice = newsService.selectNewsNotice();
+		mav.addObject("list", list);
+		mav.addObject("pageMaker", pageMaker);
+		mav.addObject("notice", notice);
+		
+		return mav;
 	}
-
+	
+	@GetMapping("/newsDetail.do")
+	public String detailNews(Model model, @RequestParam(value = "news_code", required = false) Integer news_code) {
+		NewsVO newsVO = newsService.detailNews(news_code);
+		
+		newsService.countNews(news_code);
+		
+		model.addAttribute("detailNews", newsVO);
+		
+		return "newsDetail";
+	}
 }

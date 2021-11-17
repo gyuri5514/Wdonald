@@ -1,12 +1,16 @@
 package com.wdelivery.store.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.qna.vo.QnaVO;
 import com.wdelivery.store.service.StoreService;
 
 @Controller
@@ -59,9 +63,24 @@ public class StoreController {
 	
 	//store 1:1 °í°´¹®ÀÇ
 	@GetMapping("/layoutStatic.sdo")
-	public String layoutStatic() {
-		
+	public String layoutStatic(QnaVO qnaVO, Model model, HttpSession session) {
+		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		//System.out.println("z" + adminVO);
+		if(adminVO != null) {
+			List<QnaVO> qnaList = storeService.storeQnaSelect(adminVO);
+			model.addAttribute("qnaList", qnaList);
+			
+			//System.out.println("?" + qnaList.toString());
+		}
 		
 		return "layout-static";
+	}
+	@GetMapping("/qnaDetail.sdo")
+	public String qnaDetail(Model model, QnaVO qnaVO) {
+		qnaVO = storeService.qnaDetail(qnaVO);
+		model.addAttribute("qnaDetail", qnaVO);
+		//System.out.println(qnaVO.toString());
+		
+		return "qnaDetail";
 	}
 }

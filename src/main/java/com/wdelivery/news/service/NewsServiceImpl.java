@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wdelivery.news.dao.NewsDAO;
-import com.wdelivery.news.utils.Paging;
+import com.wdelivery.news.utils.Criteria;
 import com.wdelivery.news.vo.NewsVO;
 
 @Service
@@ -21,13 +21,23 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<NewsVO> selectNews(Paging paging) {
-		return newsDAO.selectNews(paging);
+	public List<NewsVO> selectNews(Criteria cri) {
+		return newsDAO.selectNews(cri);
 	}
 
 	@Override
-	public NewsVO detailNews(int news_code) {
-		return null;
+	public NewsVO detailNews(Integer news_code) {
+		return newsDAO.detailNews(news_code);
+	}
+
+	@Override
+	public void countNews(Integer news_code) {
+		newsDAO.countNews(news_code);
+	}
+
+	@Override
+	public List<NewsVO> selectNewsNotice() {
+		return newsDAO.selectNewsNotice();
 	}
 
 }

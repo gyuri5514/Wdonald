@@ -15,6 +15,8 @@ public interface AdminService {
 
 	public List<AdminCouponVO> selectCoupon();
 	
+	int couponCheck(String coupon_code);
+	
 	public void addCoupon(AdminCouponVO addcoupon);
 	
 	public List<AdminBannerVO> selectBannerList();

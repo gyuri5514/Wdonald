@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	
-	<select id="qnaSelect" resultType="com.wdelivery.qna.vo.QnaVO">
+	<select id="qnaSelect" resultType="qnaVO">
 		select * from qa left outer join qaa on qa.qa_seq = qaa.qa_seq where qa_email = #{qa_email} and qa_password = #{qa_password}
 	</select>
 	

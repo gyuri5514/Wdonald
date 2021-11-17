@@ -475,7 +475,7 @@ textarea {
     margin-top: 60px;
     text-align: center;
 }
-.btnPaging a {
+.btnPaging ul li {
     display: inline-block;
     width: 40px;
     height: 40px;

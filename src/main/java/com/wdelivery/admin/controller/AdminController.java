@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -114,26 +117,23 @@ public class AdminController {
 	
 	@PostMapping("/couponCheck.mdo")
 	@ResponseBody
-	public int couponCheck(@RequestParam(name="coupon_code", required=false) String coupon_code, 
-			@RequestParam(name="coupon_title", required=false) String coupon_title) {
+	public int couponCheck(@RequestParam(name="coupon_code", required=false) String coupon_code,AdminCouponVO addcoupon){
 		if(coupon_code != null) {
-			int id_check = adminStoreService.selectStore(coupon_code);
-			if(id_check == 1) 
-				return 1;
-		} else if(coupon_title != null) {
-			int id_check = adminStoreService.selectStore(coupon_title);
-			if(id_check == 1) 
+			int code_check = adminService.couponCheck(coupon_code);
+			if(code_check == 1) 
 				return 1;
 		} 
 		return 0;
 	}
 	
+	
 	@PostMapping("/addcouponInsert.mdo")
 	public String addcoupon(AdminCouponVO addcoupon) {
 		adminService.addCoupon(addcoupon);
 		System.out.println(addcoupon.toString());
-		return "layout-sidenav-light";
+		return "redirect:layout-sidenav-light.mdo";
 	}
+
 	
 	@GetMapping("/banner.mdo")
 	public List<AdminBannerVO> bannerList(Model model) {
@@ -145,4 +145,5 @@ public class AdminController {
 	public String bannerRegister(Model model) {
 		return "bannerRegister";
 	}
+
 }
