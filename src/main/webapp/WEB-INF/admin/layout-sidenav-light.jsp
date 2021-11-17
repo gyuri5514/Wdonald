@@ -30,16 +30,6 @@
 								<th>사용가능여부</th>
 							</tr>
 						</thead>
-						<tfoot>
-							<tr>
-								<th>쿠폰코드</th>
-								<th>쿠폰명</th>
-								<th>분류</th>
-								<th>쿠폰등록일</th>
-								<th>유효일자</th>
-								<th>사용가능여부</th>
-							</tr>
-						</tfoot>
 						<tbody id="ajaxCoupon">
 						<c:forEach var="vo" items="${vo}">
 							<tr>

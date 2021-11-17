@@ -48,37 +48,21 @@
 		 }
 		 $.ajax({
 			type : 'post',
-			url : 'controller/couponCheck.mdo',
+			url : '/controller/couponCheck.mdo',
 			data : {
-				coupon_code : ${"#coupon_code"}.val()
+				coupon_code : $("#coupon_code").val()
 			},
 			dataType : 'json',
 			success : function(data) {
-				alert(data);
 				if(data == 1){
-					$('#content').attr("style","display:block;");
+					$('#content').attr("style","display:block; color:red;");
 					$('#content').text("이미 존재하는 쿠폰코드 입니다.");
+					$('#content').fadeOut(10000);
 					return;
-				}else{
-					$.ajax({
-						type : 'post',
-						url : '/controller/couponCheck.mdo',
-						data : {
-							coupon_title : $("#coupon_title").val()
-						},
-						dataType : 'json',
-						success : function(data){
-							if(data == 1){
-								$('#content').attr("style","display:block;");
-								$('#content').text("이미 존재하는 쿠폰명 입니다.");
-								return;
-							}
-						}
-					});
 				}
+				 $('#addCoupon').submit(); 
 			}
 		 });
-		 /* $('#addCoupon').submit(); */
 	 });
 	})
    	 </script>
@@ -126,6 +110,7 @@
                                                 <input class="form-control" id="coupon_enddate" name="coupon_enddate" type="date"/>
                                                 <label for="coupon_enddate">유효일자</label>
                                             </div>
+                                            <div id="content" style="display:none"></div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">쿠폰 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle" style="background-color: #0d6efd; border:solid 1px #0d6efd;">취	소</a></div>

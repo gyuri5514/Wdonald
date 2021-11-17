@@ -34,7 +34,11 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-
+	public int couponCheck(String coupon_code) {
+		return adminDAO.couponCheck(coupon_code);
+	}
+	
+	@Override
 	public void addCoupon(AdminCouponVO addcoupon) {
 		adminDAO.addCoupon(addcoupon);
 
