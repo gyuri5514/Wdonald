@@ -14,7 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getUserContent" resultType="userVO">
-		SELECT * FROM user_info WHERE user_seq = #{user_seq}
+		<![CDATA[
+			select * from
+			(select row_number() over(order by user_seq) as row,
+			* from user_info where row_number()<=20)
+			user_info
+		]]>
 	</select>
 		
 	<!-- 	<select id="indexView" resultType="paymentVO" >
