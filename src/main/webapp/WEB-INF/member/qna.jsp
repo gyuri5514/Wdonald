@@ -481,7 +481,7 @@
 				} //이 부분은 스마트에디터 유효성 검사 부분이니 참고
 				
 				var result = confirm("문의등록 하시겠습니까?"); 
-				alert("뭐냐 " +document.getElementsByName("qa_email").length);
+				//alert("뭐냐 " +document.getElementsByName("qa_email").length);
 
 				if(result){ 
 					var a = $("input[name='qa_agree1']:checked").val();

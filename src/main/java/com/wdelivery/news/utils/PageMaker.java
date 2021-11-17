@@ -1,6 +1,7 @@
-package com.wdelivery.paging;
+package com.wdelivery.news.utils;
 
 public class PageMaker {
+
 	private Criteria cri;
 	private int totalCount;
 	private int startPage;
@@ -21,6 +22,7 @@ public class PageMaker {
 	}
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
+		calcData();
 	}
 	public int getStartPage() {
 		return startPage;
@@ -59,19 +61,21 @@ public class PageMaker {
 		this.tempEndPage = tempEndPage;
 	}
 	
-	public void calcData() {
-		endPage = (int)(Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum);
+	private void calcData() {
+		endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);
 		
 		startPage = (endPage - displayPageNum) + 1;
-		if (startPage <= 0) {
-			startPage = 1;
-		}
 		
-		tempEndPage = (int)(Math.ceil(totalCount/(double)cri.getPerPageNum()));
+		if (startPage <= 0) startPage = 1;
+		
+		int tempEndPage = (int) (Math.ceil(totalCount / (double) cri.getPerPageNum()));
+		
 		if (endPage > tempEndPage) {
 			endPage = tempEndPage;
 		}
-		prev = startPage == 1? false : true;
-		next = endPage*cri.getPerPageNum()<totalCount? true : false;
+		
+		prev = startPage == 1 ? false : true;
+		next = endPage * cri.getPerPageNum() < totalCount ? true : false;
 	}
+	
 }

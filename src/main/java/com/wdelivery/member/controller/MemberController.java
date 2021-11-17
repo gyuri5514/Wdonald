@@ -724,7 +724,10 @@ public class MemberController {
 		
 		AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat,lon), lat, lon);
 		
-		System.out.println(store.toString());
+		if(store==null) {
+			model.addAttribute("notAvailable","noStoreNear");
+			return "orderConfirm";
+		}
 		
 		model.addAttribute("store",store);
 		model.addAttribute("address",address);

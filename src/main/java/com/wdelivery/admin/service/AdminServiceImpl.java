@@ -9,7 +9,6 @@ import com.wdelivery.admin.dao.AdminDAO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserVO;
-import com.wdelivery.paging.Criteria;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -23,15 +22,11 @@ public class AdminServiceImpl implements AdminService{
 
 
 	@Override
-	public List<UserVO> userSelect(Criteria cri) {
-		return adminDAO.userSelect(cri);
-	}
-
-	@Override
-	public int getUserContent() {
-		return adminDAO.getUserContent();
+	public List<UserVO> userSelect() {
+		return adminDAO.userSelect();
 	}
 	
+
 	@Override
 	public List<AdminCouponVO> selectCoupon(){
 		List<AdminCouponVO> vo = adminDAO.selectCoupon();
@@ -39,6 +34,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
+
 	public void addCoupon(AdminCouponVO addcoupon) {
 		adminDAO.addCoupon(addcoupon);
 

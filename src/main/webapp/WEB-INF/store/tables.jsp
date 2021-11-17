@@ -65,7 +65,7 @@
 								<!-- Split button -->
 								<td>
 									<div class="btn-group" style="width: 80%; margin: 0 auto">
-										<select id="order_status" name="order_status" class="btn btn-Default dropdown-toggle">
+										<select id="order_status${orderList.order_seq}" name="order_status" class="btn btn-Default dropdown-toggle">
 											<option value="">${orderList.order_status}</option>
 											<option value="주문접수">주문 접수</option>
 											<option value="준비 중">준비 중</option>
@@ -73,7 +73,7 @@
 											<option value="배달 완료">배달 완료</option>
 										</select>
 									</div>
-									<input type="button" class="btn btn-warning" class="checkBtn" onclick="orderCheck('${orderList.order_seq}')" value="확인"/><!--  -->
+									<input type="button" class="btn btn-warning" class="checkBtn" onclick="orderCheck('${orderList.order_seq}')" value="확인"/>
 								</td>
 							</tr>
 						</tbody>
@@ -106,13 +106,14 @@
 
 <script type="text/javascript">
 	
-
-
 	function orderCheck(order_seq){
 		var order_seq = order_seq;
-		var order_status = $("select[name=order_status]").val();
+		
+		
+			var order_status = $("select[id=order_status"+order_seq+"]").val();
+		
 
-		console.log(order_status);
+		console.log("엥" + order_status);
 
 		$.ajax({
 			url:"tables.sdo",
@@ -131,8 +132,6 @@
 		
 		//var tdArr = new Array();
 		console.log("zz?" + order_seq);
-		
-		
 	}
 	
 </script>

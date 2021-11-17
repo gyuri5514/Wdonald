@@ -20,7 +20,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 	
 	@Override
 	public void register(AdminVO registerAdmin) throws Exception {
-		
 		adminLoginDAO.register(registerAdmin);
 	}
 }
