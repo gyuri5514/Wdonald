@@ -8,8 +8,7 @@ public class PageMaker {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
-	private int displayPageNum = 5;
-	public int tempEndPage;
+	private int displayPageNum = 10;
 	
 	public Criteria getCri() {
 		return cri;
@@ -53,12 +52,6 @@ public class PageMaker {
 	}
 	public void setDisplayPageNum(int displayPageNum) {
 		this.displayPageNum = displayPageNum;
-	}
-	public int getTempEndPage() {
-		return tempEndPage;
-	}
-	public void setTempEndPage(int tempEndPage) {
-		this.tempEndPage = tempEndPage;
 	}
 	
 	private void calcData() {

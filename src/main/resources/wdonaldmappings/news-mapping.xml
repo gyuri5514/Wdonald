@@ -3,9 +3,15 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.news.dao.NewsDAO">
-	<select id="selectNews" resultType="newsVO">
+	<select id="selectNews" resultType="hashmap" parameterType="hashmap">
 		<![CDATA[
-			SELECT * FROM news ORDER BY news_code DESC LIMIT #{startList} OFFSET #{listSize}
+			SELECT * FROM news WHERE news_status = 2 ORDER BY news_code DESC LIMIT #{perPageNum} OFFSET #{pageStart}
+		]]>
+	</select>
+	
+	<select id="selectNewsNotice" resultType="newsVO">
+		<![CDATA[
+			SELECT * FROM news WHERE news_status = 1 ORDER BY news_code DESC
 		]]>
 	</select>
 	
@@ -22,8 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 총 게시글 개수 출력 -->
-	<select id="totalNews" resultType="int">
-		SELECT COUNT(*) as listCnt FROM news
+	<select id="totalNews" resultType="Integer">
+		<![CDATA[
+			SELECT COUNT(*) FROM news
+		]]>
 	</select>
 	
 </mapper>
