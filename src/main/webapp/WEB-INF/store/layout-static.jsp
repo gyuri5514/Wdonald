@@ -23,12 +23,12 @@
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
+								<th>번호</th>
+								<th>이메일</th>
+								<th>제목</th>
+								<th>날짜</th>
+								<th>답변 상태</th>
+								
 							</tr>
 						</thead>
 						<tfoot>
@@ -38,19 +38,25 @@
 								<th>Office</th>
 								<th>Age</th>
 								<th>Start date</th>
-								<th>Salary</th>
+								
 							</tr>
 						</tfoot>
+						<c:forEach items="${qnaList}" var="qnaList">
 						<tbody>
 							<tr>
-								<td>Tiger Nixon</td>
-								<td>System Architect</td>
-								<td>Edinburgh</td>
-								<td>61</td>
-								<td>2011/04/25</td>
-								<td>$320,800</td>
+								<td>${qnaList.qa_seq}</td>
+								<td>${qnaList.qa_email}</td>
+								<td><a href="qnaDetail.sdo?qa_seq=${qnaList.qa_seq}">${qnaList.qa_title}</a></td>
+								<td><fmt:formatDate value="${qnaList.qa_regdate}" pattern="yyyy.MM.dd"/></td>
+								<c:if test="${qnaList.qa_status eq 0}">
+									<td>미완료</td>
+								</c:if>
+								<c:if test="${qnaList.qa_status eq 1}">
+									<td>완료</td>
+								</c:if>
 							</tr>
 						</tbody>
+						</c:forEach>
 					</table>
 				</div>
 			</div>

@@ -13,4 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					and(store_lon between #{start_lon} and #{end_lon});
 		]]>
 	</select>
+	<select id="storeQnaSelect" resultType="qnaVO" parameterType="AdminVO">
+		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name}
+	</select>
+	<select id="qnaDetail" resultType="qnaVO" parameterType="qnaVO">
+		select * from qa where qa_seq = #{qa_seq}
+	</select>
 </mapper>
