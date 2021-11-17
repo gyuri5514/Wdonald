@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wdelivery.admin.dao.AdminDAO;
+import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserVO;
@@ -42,5 +43,11 @@ public class AdminServiceImpl implements AdminService{
 	public void addCoupon(AdminCouponVO addcoupon) {
 		adminDAO.addCoupon(addcoupon);
 
+	}
+
+
+	@Override
+	public List<AdminBannerVO> selectBannerList() {
+		return adminDAO.selectBannerList();
 	}
 }

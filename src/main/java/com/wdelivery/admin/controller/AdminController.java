@@ -12,12 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
+import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserVO;
@@ -130,5 +133,17 @@ public class AdminController {
 		System.out.println(addcoupon.toString());
 		return "redirect:layout-sidenav-light.mdo";
 	}
-	 
+
+	
+	@GetMapping("/banner.mdo")
+	public List<AdminBannerVO> bannerList(Model model) {
+		List<AdminBannerVO> bannerList = adminService.selectBannerList();
+		model.addAttribute("bannerList",bannerList);
+		return bannerList;
+	}
+	@GetMapping("/bannerRegister.mdo")
+	public String bannerRegister(Model model) {
+		return "bannerRegister";
+	}
+
 }

@@ -1629,12 +1629,12 @@ ul.notiTxt:before {
 	cursor: pointer;
 }
 
-#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(4) {
+#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(5) {
 	margin-top: 24px;
 	text-align: center;
 }
 
-#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(4)>a {
+#login_pop>.wrapper>div:nth-child(1)>form>div:nth-child(5)>a {
 	display: inline-block;
 	width: 143px;
 	padding: 6px 0;
