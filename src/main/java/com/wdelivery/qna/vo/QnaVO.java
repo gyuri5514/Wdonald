@@ -3,9 +3,12 @@ package com.wdelivery.qna.vo;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.wdelivery.admin.vo.AdminVO;
 
 
 public class QnaVO {
+	public AdminVO adminVO;
+	
 	private int qa_seq;
 	private String qa_title;
 	private String qa_content;
