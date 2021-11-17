@@ -13,6 +13,9 @@ public interface AdminDAO {
 	public List<UserVO> userSelect();
 	
 	public List<AdminCouponVO> selectCoupon();
+	
+	int couponCheck(String coupon_code);
+	
 	public void addCoupon(AdminCouponVO addcoupon);
 
 }
