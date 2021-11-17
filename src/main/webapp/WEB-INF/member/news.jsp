@@ -2,41 +2,6 @@
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<script>
-	// 이전 버튼 이벤트
-	function fn_prev(page, range, rangeSize) {
-		var page = ((range - 2) * rangeSize) + 1;
-		var range = range - 1;
-		
-		var url = "${pageContext.request.contextPath}/news";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		
-		location.href = url;
-	}
-	
-	// 페이지 번호 클릭
-	function fn_pagination(page, range, rangeSize, searchType, keyword) {
-		var url = "${pageContext.request.contextPath}/news";
-		url = url = "?page=" + page;
-		url = url + "&range=" + range;
-		
-		location.href = url;
-	}
-	
-	// 다음 버튼 이벤트
-	function fn_next(page, range, rangeSize) {
-		var page = parseInt((range * rangeSize)) + 1;
-		var range = parseInt(range) + 1;
-		
-		var url = "${pageContext.request.contextPath}/news";
-		url = url + "?page=" + page;
-		url = url + "&range=" + range;
-		
-		location.href = url;
-	}
-</script>
-
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <div class="content">
 	<div class="visualArea bgWhats01" data-title="새로운 소식" data-desc="새로운 소식">
@@ -68,15 +33,28 @@
 
 			<div class="mcBoard">
 				<p class="count">
-					총 <b class="color01">79건</b>의 게시글이 있습니다.
+					총 <b class="color01">${pageMaker.totalCount}</b>의 게시글이 있습니다.
 				</p>
 				<!-- 검색 결과 있음 -->
 				<ul class="bbsList">
-					<c:forEach items="${viewAll}" var="selectNews">
+					<c:forEach items="${notice}" var="notice">
 						<li class="notice">
-							<a href="#">
+							<a href="#" onClick="javascript:location.href='newsDetail.do?news_code=${notice.news_code}'">
 								<span class="bNum">
 									<b class="ico">공지</b>
+								</span>
+								<span class="bSubject">
+									<strong class="tit">${notice.news_title}</strong>
+								</span>
+								<span class="bDate"><fmt:formatDate pattern="yyyy.MM.dd" value="${notice.news_regdate}"/></span>
+							</a>
+						</li>
+					</c:forEach>
+					<c:forEach items="${list}" var="selectNews">
+						<li class="notice">
+							<a href="#" onClick="javascript:location.href='newsDetail.do?news_code=${selectNews.news_code}'">
+								<span class="bNum">
+									${selectNews.news_code}
 								</span>
 								<span class="bSubject">
 									<strong class="tit">${selectNews.news_title}</strong>
@@ -87,40 +65,23 @@
 					</c:forEach>
 				</ul>
 				<div class='btnPaging'>
-					<ul class="paging">
-						<c:if test="${paging.prev}">
-							<li class="page-item">
-								<a class="page-link" href="#" onClick="fn_prev('${paging.page}', '${paging.range}', '${paging.rangeSize}'})">이전</a>
-							</li>
+					<ul class="btn_group pagination">
+						<c:if test="${pageMaker.prev}">
+						<li class="paging_prev_btn">
+							<a href='<c:url value="/news.do?page${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
+						</li>
 						</c:if>
-						
-						<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="idx">
-							<li class="page-item" <c:out value="${paging.page} == idx ? 'active' : "}"/>">
-								<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${paging.range}', '${paging.rangeSize}')">${idx}</a>
-							</li>
+						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+						<li class="paging_number_btn">
+							<a href='<c:url value="/news.do?page=${pageNum}"/>'><i class="fa">${pageNum}</i></a>
+						</li>
 						</c:forEach>
-						
-						<c:if test="${paging.next}">
-							<li class="page-item">
-								<a class="page-link" href="#" onClick
+						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+						<li class="paging_next_btn">
+							<a href='<c:url value="/news.do?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
+						</li>
+						</c:if>
 					</ul>
-				
-					<!-- <a href='javascript:page(1);' role='button' class='arrow first'>맨앞으로</a>
-					<a href='javascript:page(1);' role='button' class='arrow prev'>이전</a>
-						<span class='num'>
-							<a href='javascript:blank();' role='button' aria-selected='true'>1</a>
-							<a href='javascript:page(2);' role='button'>2</a>
-							<a href='javascript:page(3);' role='button'>3</a>
-							<a href='javascript:page(4);' role='button'>4</a>
-							<a href='javascript:page(5);' role='button'>5</a>
-							<a href='javascript:page(6);' role='button'>6</a>
-							<a href='javascript:page(7);' role='button'>7</a>
-							<a href='javascript:page(8);' role='button'>8</a>
-							<a href='javascript:page(9);' role='button'>9</a>
-							<a href='javascript:page(10);' role='button'>10</a>
-						</span>
-						<a href='javascript:page(11);' role='button' class='arrow next'>다음</a>
-						<a href='javascript:page(16);' role='button' class='arrow last'>맨끝으로</a> -->
 				</div>
 				<!-- //검색 결과 있음 -->
 			</div>
