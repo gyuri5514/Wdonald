@@ -101,7 +101,7 @@
 			</div> -->
 			<div>
 				<c:if test="${pageMaker.startPage != 1 }">
-					<a href="/layout-sidenav-light.mdo?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
+					<a href="/layoutStatic.mdo?pageNum=${pageMaker.startPage - 1 }">&lt;</a>
 				</c:if>
 				<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="p">
 					<c:choose>
@@ -109,12 +109,12 @@
 							<b>${p }</b>
 						</c:when>
 						<c:when test="${p != cri.page }">
-							<a href="/layout-sidenav-light.mdo?pageNum=${p}">${p }</a>
+							<a href="/layoutStatic.mdo?pageNum=${p}">${p }</a>
 						</c:when>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${pageMaker.endPage != pageMaker.tempEndPage }">
-					<a href="/layout-sidenav-light.mdo?pageNum=${pageMaker.endPage + 1 }">&gt;</a>
+					<a href="/layoutStatic.mdo?pageNum=${pageMaker.endPage + 1 }">&gt;</a>
 				</c:if>
 			</div>
 		</div>
