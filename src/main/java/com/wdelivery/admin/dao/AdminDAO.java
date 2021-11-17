@@ -16,7 +16,8 @@ public interface AdminDAO {
 	
 	int getUserContent();
 	
-
+	public List<AdminCouponVO> selectCoupon();
+	
 	public void addCoupon(AdminCouponVO addcoupon);
 
 }

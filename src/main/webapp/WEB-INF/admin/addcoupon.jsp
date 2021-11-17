@@ -46,7 +46,39 @@
 			 $("#coupon_enddate").focus();
 			 return false;
 		 }
-		 $('#addCoupon').submit();
+		 $.ajax({
+			type : 'post',
+			url : 'controller/couponCheck.mdo',
+			data : {
+				coupon_code : ${"#coupon_code"}.val()
+			},
+			dataType : 'json',
+			success : function(data) {
+				alert(data);
+				if(data == 1){
+					$('#content').attr("style","display:block;");
+					$('#content').text("이미 존재하는 쿠폰코드 입니다.");
+					return;
+				}else{
+					$.ajax({
+						type : 'post',
+						url : '/controller/couponCheck.mdo',
+						data : {
+							coupon_title : $("#coupon_title").val()
+						},
+						dataType : 'json',
+						success : function(data){
+							if(data == 1){
+								$('#content').attr("style","display:block;");
+								$('#content').text("이미 존재하는 쿠폰명 입니다.");
+								return;
+							}
+						}
+					});
+				}
+			}
+		 });
+		 /* $('#addCoupon').submit(); */
 	 });
 	})
    	 </script>

@@ -40,8 +40,17 @@
 								<th>사용가능여부</th>
 							</tr>
 						</tfoot>
-						<tbody>
-							
+						<tbody id="ajaxCoupon">
+						<c:forEach var="vo" items="${vo}">
+							<tr>
+								<td>${vo.coupon_code}</td>
+								<td>${vo.coupon_title}</td>
+								<td>${vo.coupon_type}</td>
+								<td><fmt:formatDate value="${vo.coupon_regdate}" pattern="yyyy-MM-dd"/></td>
+								<td><fmt:formatDate value="${vo.coupon_enddate}" pattern="yyyy-MM-dd"/></td>
+								<td>${vo.coupon_canuse}</td>
+							</tr>					
+						</c:forEach>							
 						</tbody>
 					</table>
 				</div>
