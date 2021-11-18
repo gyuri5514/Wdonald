@@ -21,4 +21,5 @@ public interface AdminDAO {
 	
 	public List<AdminBannerVO> selectBannerList();
 	
+	public void deleteCoupon(String deleteCoupon);
 }

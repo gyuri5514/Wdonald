@@ -87,7 +87,7 @@
 										<c:when test="${email eq '1'}">동의</c:when>
 									</c:choose>	
 								</td>
-								<th><button id="infoDelete">삭제</button></th>
+								<th><button id="infoDelete" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></th>
 							</tr>
 						</tbody>
 						</c:forEach> 

@@ -78,6 +78,13 @@ public class AdminController {
 	@GetMapping("/layout-sidenav-light.mdo")
 	public String layout(Model model) {
 		List<AdminCouponVO> vo = adminService.selectCoupon();
+		for(int i=0; i>vo.size(); i++) {
+			if(vo.get(i).getCoupon_canuse()==0) {
+				vo.get(i).setCoupon_check("Y");
+			} else
+				vo.get(i).setCoupon_check("N");
+		}
+		
 		model.addAttribute("vo", vo);
 		return "layout-sidenav-light";
 	}

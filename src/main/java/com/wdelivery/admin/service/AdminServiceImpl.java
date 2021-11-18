@@ -50,4 +50,9 @@ public class AdminServiceImpl implements AdminService{
 	public List<AdminBannerVO> selectBannerList() {
 		return adminDAO.selectBannerList();
 	}
+	
+	@Override
+	public void deleteCoupon(String deleteCoupon) {
+		adminDAO.deleteCoupon(deleteCoupon);
+	}
 }

@@ -26,18 +26,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				select * from order_list order by order_seq 
 		</select> -->
 	<select id="selectCoupon" resultType="adminCouponVO">
-		SELECT * FROM coupon 
+		SELECT * FROM coupon
 	</select>
 
-<insert id="addCoupon">
-	INSERT INTO coupon (coupon_code, coupon_title, coupon_type, coupon_regdate, coupon_enddate, coupon_canuse)
-	VALUES(#{coupon_code}, #{coupon_title}, #{coupon_type}, #{coupon_regdate}, #{coupon_enddate}, #{coupon_canuse})
-</insert>
-	
 	<select id="couponCheck" resultType="int">
-		SELECT count(*) FROM coupon WHERE coupon_code = #{cosupon_code}
+		SELECT count(*) FROM coupon
+		WHERE coupon_code = #{cosupon_code}
 	</select>
-  
+	
+	<delete id="deleteCoupon" >
+	
+	</delete>	
+	
+	<insert id="addCoupon">
+		INSERT INTO coupon (coupon_code, coupon_title,
+		coupon_type, coupon_regdate,
+		coupon_enddate, coupon_canuse)
+		VALUES(#{coupon_code}, #{coupon_title}, #{coupon_type},
+		#{coupon_regdate},
+		#{coupon_enddate}, #{coupon_canuse})
+	</insert>
+	
 	<select id="selectBannerList" resultType="adminBannerVO">
 		SELECT * FROM banner 
 	</select>
