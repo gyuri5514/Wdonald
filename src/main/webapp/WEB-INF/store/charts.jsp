@@ -1,8 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+	crossorigin="anonymous"></script>
+<!--  -->
+<script src="https://kit.fontawesome.com/d0b304acae.js"
+	crossorigin="anonymous"></script>
+<!-- fontawesomeCDN -->
+
+<!-- Bootstrap CSS -->
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<!--  -->
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<link
+	href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css"
+	href="/js/jquery/ui/themes/base/jquery-ui.css" />
+
+<script src="resources/js/join/datepicker.js"></script>
 
 <!--  -->
+<script type="text/javascript">
+function getNewChart(){
+	var start_date = $('input[name="start_date"]').val();
+	var end_date = $('input[name="end_date"]').val();
+	var date_term = $('input[name="date_term"]:checked').val();
+	var type = $('input[name="type"]:checked').val();
+	var order_status = $('input[name="order_status"]:checked').val();
+	console.log(start_date);
+	console.log(end_date);
+	console.log(date_term);
+	console.log(type);
+	console.log(order_status);
+	$.ajax({
+		type:"post",
+		url: "getNewChart.sdo",
+		async :false,
+		data : JSON.stringify({
+			"start_date" : start_date,
+			"end_date" : end_date,
+			"date_term" : date_term,
+			"type" : type,
+			"order_status" : order_status
+		}),
+		contentType :"application/json"
+	}).done(function(res){
+		console.log(res);
+	})
+}
+</script>
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -11,22 +62,73 @@
 				<li class="breadcrumb-item"><a href="index.jsp">WinDelivery</a></li>
 				<li class="breadcrumb-item active">Charts</li>
 			</ol>
-			<div class="card mb-4">
+			<div class="card mb-4"  style="width:50%;">
 				<div class="card-body">
-					Chart.js is a third party plugin that is used to generate the
-					charts in this template. The charts below have been customized -
-					for further customization options, please visit the official
-					<a target="_blank" href="https://www.chartjs.org/docs/latest/">
-						Chart.js documentation
-					</a> .
+					<div class="form-check">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="date_term"
+								id="flexRadioDefault2" checked value="daily"> <label
+								class="form-check-label" for="flexRadioDefault2"> 일 별</label>
+						</div>
+
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="date_term"
+								id="flexRadioDefault1" value="month"> <label
+								class="form-check-label" for="flexRadioDefault1"> 월 별</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="date_term"
+								id="flexRadioDefault1" value="year"> <label
+								class="form-check-label" for="flexRadioDefault1"> 년 별</label>
+						</div>
+						<div class="form-check">
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="type"
+								id="flexRadioDefault2" checked value="none"> <label
+								class="form-check-label" for="flexRadioDefault2"> 없 음</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="type"
+								id="flexRadioDefault1" value="gender"> <label
+								class="form-check-label" for="flexRadioDefault1"> 성 별</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="type"
+								id="flexRadioDefault1" value="pay_status"> <label
+								class="form-check-label" for="flexRadioDefault1"> 결제 유형</label>
+						</div>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="order_status"
+								id="flexRadioDefault1" checked value="배달 완료"> <label
+								class="form-check-label" for="flexRadioDefault1"> 배달 완료</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="order_status"
+								id="flexRadioDefault1" value="주문 취소"> <label
+								class="form-check-label" for="flexRadioDefault1"> 주문 취소</label>
+						</div>
+						<br>
+							<input type="text" name="start_date" id="start_history"
+						maxlength="10" readonly="readonly" /> &nbsp; ~ &nbsp; <input
+						type="text" name="end_date" id="end_history" maxlength="10"
+						readonly="readonly" />
+					<button type="button" class="btn btn-warning"
+						onclick='getNewChart()'>검색</button>
+
 				</div>
+				<div class="card-body"></div>
 			</div>
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-chart-area me-1"></i><span id="sales_term">${start_date } ~ ${end_date }</span>  
+					<i class="fas fa-chart-area me-1"></i><span id="sales_term">20${start_date }
+						~ 20${end_date } 별 매출</span>
 				</div>
 				<div class="card-body">
 					<canvas id="myChart" width="100%" height="30"></canvas>
+
+				
 					<script type="text/javascript">
 					//Set new default font family and font color to mimic Bootstrap's default styling
 
@@ -87,7 +189,7 @@
 						      yAxes: [{
 						        ticks: {
 						          min: 0,
-						          max: 400000,
+						          max: (${max}+10000),
 						          maxTicksLimit: 5
 						        },
 						        gridLines: {
@@ -102,10 +204,11 @@
 						});
 					</script>
 				</div>
-				<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+				<div class="card-footer small text-muted">Updated yesterday at
+					11:59 PM</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-6"> 
+				<div class="col-lg-6">
 					<div class="card mb-4">
 						<div class="card-header">
 							<i class="fas fa-chart-bar me-1"></i> 월별 총 매출액
@@ -125,11 +228,12 @@
 						<div class="card-body">
 							<canvas id="myPieChart" width="100%" height="50"></canvas>
 						</div>
-						<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+						<div class="card-footer small text-muted">Updated yesterday
+							at 11:59 PM</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
 
-<%@ include file="footer.jsp" %>
+	<%@ include file="footer.jsp"%>
