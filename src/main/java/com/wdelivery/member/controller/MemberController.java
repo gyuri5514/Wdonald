@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
+import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
@@ -91,20 +93,26 @@ public class MemberController {
 
 	@Autowired
 	private AdminStoreService adminStoreService;
+	@Autowired
+	private AdminService adminService;
 	
 	@Autowired
 	private OrderTimer orderTimer;
-	
+  
 	@Autowired
 	private PromotionService promotionService;
-	
-	@GetMapping("/main.do")
+
+	@RequestMapping("/main.do")
 	public String main(Model model) {
+		List<AdminBannerVO> bannerList = adminService.selectBannerList();
+		model.addAttribute("bannerList",bannerList);
+
 		List<PromotionVO> selectPromotion = promotionService.selectPromotion();
 		model.addAttribute("selectPromotion", selectPromotion);
-		
+
 		return "main";
 	}
+  
 	@GetMapping("passwordSearch.do")
 	public String passwordSearch() {
 		return "passwordSearch"; 
