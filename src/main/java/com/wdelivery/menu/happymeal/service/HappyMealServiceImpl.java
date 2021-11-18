@@ -16,13 +16,11 @@ public class HappyMealServiceImpl implements HappyMealService {
 	
 	@Override
 	public List<HappyMealVO> selectHappyMeal() {
-		System.out.println("selectHappyMeal Impl");
 		return happyMealDAO.selectHappyMeal();
 	}
 
 	@Override
 	public HappyMealVO detailHappyMeal(Integer h_code) {
-		System.out.println("detailHappyMeal Impl");
 		return happyMealDAO.detailHappyMeal(h_code);
 	}
 

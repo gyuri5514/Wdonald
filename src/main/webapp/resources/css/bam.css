@@ -4478,7 +4478,7 @@ p.nutrDesc {
     width: 360px;
     height: 360px;
     margin: 0 auto 45px;
-    background: url("../images/common/bg_noresult.png") 0 0 no-repeat;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_noresult.png") 0 0 no-repeat;
 }
 .error strong {
     display: block;
@@ -4532,4 +4532,12 @@ p.nutrDesc {
 
 #menu_order_list {
 	padding: 10px 0px;
+}
+
+.search {
+	margin-left: 26px;
+    width: 36px;
+    height: 36px;
+    text-indent: -230px;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_search.png") 0 0 no-repeat;
 }

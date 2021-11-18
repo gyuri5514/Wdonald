@@ -2,11 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-<!--   
-
-	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
---> 
 		<div id="container">
 			<div class="content">
 				<div class="visualArea bgStore01" data-title="맥딜리버리" data-desc="맥딜리버리">
@@ -15,7 +10,7 @@
 						<ul class="navPath">
 							<li><a href="main.do">Home</a></li>
 							<li><a href="store">Store</a></li>
-							<li><a href="mcdelivery.do">맥딜리버리</a></li>
+							<li><a href="delivery.do">맥딜리버리</a></li>
 						</ul>
 					</div>
 				</div>
@@ -128,7 +123,7 @@ function Submit() {
 	$.ajax({
 
 		crossDomain:true,
-		url : "/kor/store/mcdeliveryCheck.do",
+		url : "/delivery.do",
         method : "GET",
         data : { "address": encodeURI($("#addr1").val()),
 		     	 "lat"    : $("#lat").val(),
