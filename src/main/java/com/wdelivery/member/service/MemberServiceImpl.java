@@ -52,7 +52,6 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int emailChk(String user_email)  {
 		int result = memberDAO.emailChk(user_email);
-		System.out.println("serviceImpl : " + result);
 		return result;
 	}
 

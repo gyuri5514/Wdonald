@@ -37,16 +37,13 @@ public class StoreSalesController {
 	@GetMapping("tables.sdo")
 	public String tables(@RequestParam(name="order_seq", defaultValue = "0") int order_seq, @RequestParam(name="order_status", defaultValue = "0") String order_status,
 			Model model, HttpSession session, PaymentVO paymentVO) {
-		//System.out.println("order_seq" + order_seq);
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
 		if(adminVO != null) {
 			List<PaymentVO> orderList = storeSalesService.orderList(adminVO);
 			model.addAttribute("orderList", orderList);
 		}
 		if(order_seq > 0) {
-			System.out.println("?" + order_status);
 			storeSalesService.orderStatus(paymentVO);
-			System.out.println("check");
 		}
 		
 		
@@ -70,9 +67,6 @@ public class StoreSalesController {
 	    c.setStart_date(startDate);
 	    c.setStore_code(av.getStore_code());
 
-	    System.out.println(c.getStart_date());
-	    System.out.println(c.getEnd_date());
-	    
 	    getChart(c,model);
 		
 		return "charts";
@@ -81,14 +75,9 @@ public class StoreSalesController {
 	@ResponseBody
 	@PostMapping("getNewChart.sdo")
 	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
-		System.out.println(chart);
 		AdminVO av = (AdminVO) session.getAttribute("admin");
-		System.out.println(av.getStore_code());
 		chart.setStore_code(av.getStore_code());
-		List<ChartVO> chartList =chartService.getResponsiveChart(chart);
-		for(ChartVO ch : chartList) 
-			System.out.println(ch.toString());
-		return JSONArray.fromObject(chartList);
+		return JSONArray.fromObject(chartService.getResponsiveChart(chart));
 	}
 	
 	public  ArrayList<ChartVO> getChart(ChartVO chart,Model model){
@@ -102,10 +91,7 @@ public class StoreSalesController {
 	    for(ChartVO ca : chartList) 
 	    	maxList.add(ca.getSales_amount());
 	    
-	    int max =(Integer)Collections.max(maxList);
-	    System.out.println(max);
-	    model.addAttribute("max",max);
-	   
+	    model.addAttribute("max",(Integer)Collections.max(maxList));
 	    
 		return chartList;
 	}

@@ -34,7 +34,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM order_list as o ]]>
 		<if test="type ==  'gender'">RIGHT join user_info u on o.user_email = u.user_email</if>
   			<![CDATA[ 
-			WHERE 1=1 and order_status=#{order_status} and TO_CHAR(order_date, 'yyyy-MM-dd')
+			WHERE 1=1 and order_status=#{order_status} 
+			and TO_CHAR(order_date, 'yyyy-MM-dd')
 			between #{start_date} and #{end_date}
 			and store_code = #{store_code}
   			GROUP BY TO_CHAR(order_date,]]>

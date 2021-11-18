@@ -139,16 +139,12 @@ public class MemberController {
 		if(va != null) {
 			if(va.equals("변경")) {
 				List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
-				System.out.println("b_code : " + b_code);
-				System.out.println("s_code : " + s_code);
-				System.out.println("d_code : " + d_code);
-				System.out.println("num : " + num);
-				for(int i = 0; i < cartList.size(); i ++) {
-					System.out.println("vo : " + cartList.get(i).getCart_b_name());
-				}
+				/*
+				 * for(int i = 0; i < cartList.size(); i ++) { System.out.println("vo : " +
+				 * cartList.get(i).getCart_b_name()); }
+				 */
 				cartList.remove(Integer.parseInt(num));
 				session.setAttribute("cartList", cartList);
-				System.out.println("size : " + cartList.size());
 			}
 		}
 		if (b_code != null) {
@@ -244,7 +240,6 @@ public class MemberController {
 			
 		} else {
 			if (va.equals("새로고침")) {
-				System.out.println("새로고침");
 				model.addAttribute("cartList", cartList);
 				model.addAttribute("price", total_price);
 				model.addAttribute("delivery_price", deliveryPrice);
@@ -516,24 +511,26 @@ public class MemberController {
 				if (vo.getCart_quantity() != null)
 					product_quantity += vo.getCart_quantity();
 				
-				System.out.println("---------------------------------");
-				System.out.println("b_Lgset_price : " + b_Lgset_price);
-				System.out.println("b_price : " + b_price);
-				System.out.println("b_set_price : " + b_set_price);
-				System.out.println("d_price : " + d_price);
-				System.out.println("s_price : " + s_price);
-				System.out.println("w_price : " + w_price);
-				System.out.println("w_set_price : " + w_set_price);
-				System.out.println("dessert_price : " + dessert_price);
-				System.out.println("product_quantity : " + product_quantity);
-				System.out.println("---------------------------------");
+				/*
+				 * System.out.println("---------------------------------");
+				 * System.out.println("b_Lgset_price : " + b_Lgset_price);
+				 * System.out.println("b_price : " + b_price);
+				 * System.out.println("b_set_price : " + b_set_price);
+				 * System.out.println("d_price : " + d_price); System.out.println("s_price : " +
+				 * s_price); System.out.println("w_price : " + w_price);
+				 * System.out.println("w_set_price : " + w_set_price);
+				 * System.out.println("dessert_price : " + dessert_price);
+				 * System.out.println("product_quantity : " + product_quantity);
+				 * System.out.println("---------------------------------");
+				 */
 				
 			}
 			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price 
 					+ dessert_price + w_price + w_set_price) + delivery_price;
-			System.out.println("price : " + price);
-			System.out.println("---------------------------------");
-			
+			/*
+			 * System.out.println("price : " + price);
+			 * System.out.println("---------------------------------");
+			 */
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
 			session.setAttribute("cartList", cartList);
@@ -566,31 +563,38 @@ public class MemberController {
 	public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect,@RequestParam(value = "KeywordSelect", required = false) String KeywordSelect ) {
 		List<FaqVO> faqList = new ArrayList<FaqVO>();
 		if(MenuSelect != null && KeywordSelect == null) {
-			System.out.println("MenuSelect : " + MenuSelect);
-			System.out.println("KeywordSelect : " + KeywordSelect);
+			/*
+			 * System.out.println("MenuSelect : " + MenuSelect);
+			 * System.out.println("KeywordSelect : " + KeywordSelect);
+			 */
 		faqList = faqService.MenuSelect(MenuSelect);
-		for (FaqVO faqList1 : faqList) {
-			System.out.println(faqList1.getFaq_seq());
-			System.out.println(faqList1.getFaq_name());
-			System.out.println(faqList1.getFaq_title());
-			System.out.println(faqList1.getFaq_content());
-			
-		}
+		/*
+		 * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
+		 * System.out.println(faqList1.getFaq_name());
+		 * System.out.println(faqList1.getFaq_title());
+		 * System.out.println(faqList1.getFaq_content());
+		 * 
+		 * }
+		 */
 		}
 		else if(MenuSelect != null && KeywordSelect != null) {
 			Map<String, String> map = new HashMap<String,String>();
 			map.put("MenuSelect", MenuSelect);
 			map.put("KeywordSelect", KeywordSelect);
-			System.out.println("MenuSelect : " + MenuSelect);
-			System.out.println("KeywordSelect : " + KeywordSelect);
+			/*
+			 * System.out.println("MenuSelect : " + MenuSelect);
+			 * System.out.println("KeywordSelect : " + KeywordSelect);
+			 */
 			faqList = faqService.KeywordSelect(map);
-			for(FaqVO faqKeyword1 : faqList) {
-				System.out.println(faqKeyword1.getFaq_seq());
-				System.out.println(faqKeyword1.getFaq_name());
-				System.out.println(faqKeyword1.getFaq_title());
-				System.out.println(faqKeyword1.getFaq_content());
-				
-		}
+			/*
+			 * for(FaqVO faqKeyword1 : faqList) {
+			 * System.out.println(faqKeyword1.getFaq_seq());
+			 * System.out.println(faqKeyword1.getFaq_name());
+			 * System.out.println(faqKeyword1.getFaq_title());
+			 * System.out.println(faqKeyword1.getFaq_content());
+			 * 
+			 * }
+			 */
 		}
 		return faqList;
 	}
@@ -653,12 +657,7 @@ public class MemberController {
 	@PostMapping("/searchStore.do")
 	@ResponseBody
 	public List<AdminVO> searchStore(@RequestParam(name="searchWord")String searchWord) { //매장 검색 부분
-		System.out.println("searchWord : " + searchWord);
 		List<AdminVO> storeList = adminStoreService.searchStore(searchWord);
-		
-		for(AdminVO vo : storeList) {
-			System.out.println(vo.toString());
-		}
 		return storeList;
 	}
 	
@@ -690,10 +689,7 @@ public class MemberController {
 	// qna Insert
 	@RequestMapping("/qnaInsert.do")
 	public String qnaInsert(QnaVO qnaVO) {
-
 		qnaService.qnaInsert(qnaVO);
-		System.out.println("insertcontroller => " + qnaVO.toString());
-
 		return "qna";
 	}
 
@@ -709,11 +705,8 @@ public class MemberController {
 			Model model) {
 		List<AdminVO> adminVO = new ArrayList<AdminVO>();
 		adminVO = qnaService.storeSelect(searchWord);
-		//System.out.println("qnaStoreSearchP" + store_address);
 
 		model.addAttribute("adminVO", adminVO);
-
-		//System.out.println("qnaStoreSerarch : " + adminVO.toString());
 
 		return adminVO;
 	}

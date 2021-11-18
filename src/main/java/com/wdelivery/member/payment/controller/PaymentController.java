@@ -48,7 +48,6 @@ public class PaymentController {
 
 	@PostMapping("paywinCredit.do")
 	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) {
-		System.out.println("paywinCredit.do");
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
 		if (userInfo != null) {
@@ -57,7 +56,6 @@ public class PaymentController {
 			paymentVO.setUser_type(9);
 		}
 	    paymentVO.setOrder_date(new Date());
-		System.out.println(paymentVO.toString());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
 		session.setAttribute("cartList", new ArrayList<CartVO>());
 		return "main";
