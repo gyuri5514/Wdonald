@@ -23,5 +23,8 @@ public interface AdminService {
 	
 	public List<AdminBannerVO> selectBannerList();
 	
+	public void deleteCoupon(String deleteCoupon);
+
 	public List<BurgerVO> viewBurger();
+
 }

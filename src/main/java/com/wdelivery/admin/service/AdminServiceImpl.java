@@ -51,7 +51,11 @@ public class AdminServiceImpl implements AdminService{
 	public List<AdminBannerVO> selectBannerList() {
 		return adminDAO.selectBannerList();
 	}
-
+	
+	@Override
+	public void deleteCoupon(String deleteCoupon) {
+		adminDAO.deleteCoupon(deleteCoupon);
+  }
 
 	@Override
 	public List<BurgerVO> viewBurger() {
