@@ -536,12 +536,18 @@
 							//alert(data);
 							//alert("ajax 성공");
 							var qaaContent = ""; //qaa_content null값 처리
+							var str = "";
 							if(data["qaa_content"] == null ){
 								qaaContent = "";
 							}else{
 								qaaContent = data["qaa_content"];
 							}
-							
+							if(data["qa_status"] == 1){
+								console.log(data["qa_status"]);
+								str = "완료";
+							}else{
+								str = "미완료";
+							}
 							$("#req").html(
 								"<div class='reply-view-area' id='LIST_REPLY_DIV'>" + 
 									"<table class='reply-view' >" +
@@ -567,7 +573,7 @@
 										"<th>" + data["qa_title"] + "</th>" + 
 										"<th>" + data["qa_store"] + "</th>" + 
 										"<th>" + data["qa_regdate"] + "</th>" + 
-										"<th>" + data["qa_status"] + "</th>" + 
+										"<th>" + str + "</th>" + 
 									"</tr>" +
 									"<tr>" +
 										"<th scope='row'>내용</th>" +

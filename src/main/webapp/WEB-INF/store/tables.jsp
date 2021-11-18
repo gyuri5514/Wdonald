@@ -123,7 +123,7 @@
 			//dataType : "json",
 			type : "get",
 			success:function(data){				
-				alert("success ???");
+				//alert("success ???");
 
 			},error:function(){
 				alert("failed");

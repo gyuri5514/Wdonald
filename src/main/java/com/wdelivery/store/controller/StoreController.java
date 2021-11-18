@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
 import com.wdelivery.store.service.StoreService;
 
@@ -82,5 +83,15 @@ public class StoreController {
 		//System.out.println(qnaVO.toString());
 		
 		return "qnaDetail";
+	}
+	@GetMapping("/qnaQaInsert.sdo")
+	public String qnaQaInsert(QaaVO qaaVO, QnaVO qnaVO) {
+		storeService.qnaQaInsert(qaaVO);
+		
+		if(qaaVO.getQaa_content() != null && qaaVO.getQaa_content() != "") {
+			//System.out.println("qaaVO : " + qaaVO.toString());
+			storeService.qaaCompletion(qnaVO);
+		}
+		return "redirect:layoutStatic.sdo";
 	}
 }
