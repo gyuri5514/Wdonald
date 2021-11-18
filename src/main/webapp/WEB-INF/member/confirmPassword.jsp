@@ -7,9 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <title>Wdonald - find password</title>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="">
 <meta name="author" content="Themelize.me">
 
@@ -23,18 +21,11 @@
 
 <!-- Your custom override -->
 <link href="resources/css/join/custom-style_sh.css" rel="stylesheet">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="/m/appstrap/img/icons/114x114.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="/m/appstrap/img/icons/72x72.png">
-<link rel="apple-touch-icon-precomposed"
-	href="/m/appstrap/img/icons/default.png">
-<link
-	href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti'
-	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet" type="text/css"
-	href="/js/jquery/ui/themes/base/jquery-ui.css" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/m/appstrap/img/icons/114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/m/appstrap/img/icons/72x72.png">
+<link rel="apple-touch-icon-precomposed" href="/m/appstrap/img/icons/default.png">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/js/jquery/ui/themes/base/jquery-ui.css" />
 <!-- Scripts -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
@@ -53,7 +44,7 @@
 
 #find_password:not(.form-control) {
 	width: 30%;
-	margin-left: 20%;
+	margin-left: 25%;
 }
 
 #find_password label:not(.form-control) {
@@ -79,11 +70,11 @@ legend {
 }
 
 </style>
-<c:if test="${eamilResult eq 'success' }">
+<c:if test="${eamilResult ne 'success' }">
 <script>
-			alert('정상적인 경로로 접근해주세요.');
-		window.location.href='http://localhost:8080/controller/main.do';
-		</script>
+	alert('정상적인 경로로 접근해주세요.');
+	window.location.href='http://localhost:8080/controller/main.do';
+</script>
 </c:if>
 <script>
 function pwdRegex(){
@@ -129,12 +120,18 @@ function pwdRegex2(){
 	<div id="content">
 		<div class="container">
 			<div class="find-pw-container">
+				<div class="col-md-3 sidebar">
+					<div class="section-menu">
+						<ul class="nav nav-list">
+							<li class="nav-header lnb-header">비밀번호 변경<span>Confirm Password</span></li>
+						</ul>
+					</div>
+				</div>
 				<h3 class="title-divider mt_0">
 					<span>비밀번호 변경</span> <small>Confirm Password</small>
 				</h3>
 				<div id="find_password">
-					<br>
-					<br> <label>이메일</label> <br>
+					<label>이메일</label> <br>
 					<div>
 					<br>
 					<form method="post" action="confirmPassword.do">
@@ -142,7 +139,6 @@ function pwdRegex2(){
 						<input type="hidden" name="user_email" value="${email}" class="form-control" readonly="readonly" >
 							<label for="m_password">패스워드</label>
 							 <input type="hidden" id="login_pwd_chk" name="login_pwd_chk" value="0" />
-							 
 							 <input type="password" id="m_password1" name="user_password" onkeyup="pwdRegex()" maxlength="16" class="form-control placeholder" />
 							 <span id="pwd1_span"></span>
 						</div>

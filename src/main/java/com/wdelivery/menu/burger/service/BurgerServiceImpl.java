@@ -16,26 +16,22 @@ public class BurgerServiceImpl implements BurgerService {
 
 	@Override
 	public List<BurgerVO> selectBurger(){
-		System.out.println("selectBurger");
 		return burgerDAO.selectBurger();
 	}
 
 	@Override
 	public BurgerVO detailBurger(Integer b_code) {
-		System.out.println("detailBurger");
 		return burgerDAO.detailBurger(b_code);
 	}
 
 
 	@Override
 	public BurgerVO prevBurger(int b_code) {
-		System.out.println("prevBurger");
 		return burgerDAO.prevBurger(b_code);
 	}
 
 	@Override
 	public BurgerVO nextBurger(int b_code) {
-		System.out.println("nextBurger");
 		return burgerDAO.nextBurger(b_code);
 	}
 

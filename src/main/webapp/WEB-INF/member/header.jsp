@@ -14,8 +14,6 @@
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <link rel="stylesheet" href="resources/css/main/custom.css?t=20211031">
 <link rel="alternate" href="https://www.mcdonalds.co.kr">
-<script src="/kor/js/libs.js"></script>
-<script src="/kor/js/popup.js"></script>
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services,clusterer,drawing"></script>
 <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-15032749-2"></script>
 <script src="https://kit.fontawesome.com/d0b304acae.js" crossorigin="anonymous"></script> <!-- fontawesomeCDN -->
@@ -127,7 +125,7 @@
 						<a href="orderConfirm.do" class="btn_cart" title="카트로 이동">카트</a>
 						</c:when>
 					</c:choose>
-						<div class="topSearch"><!-- 검색 활성화인 경우 open 클래스 추가 -->
+						<!-- <div class="topSearch">검색 활성화인 경우 open 클래스 추가
 							<button type="button" class="srch">검색 열기</button>
 							<fieldset class="srchField">
 								<legend>통합검색</legend>
@@ -137,7 +135,7 @@
 								</div>
 								<button type="button" class="close">검색 닫기</button>
 							</fieldset>
-						</div>
+						</div> -->
 					</div>
 					</form>
 					<!-- //util -->
