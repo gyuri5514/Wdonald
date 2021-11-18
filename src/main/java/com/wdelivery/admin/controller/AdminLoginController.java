@@ -63,7 +63,7 @@ public class AdminLoginController {
 	public String register(AdminVO registerAdmin) throws Exception {
 		adminLoginService.register(registerAdmin);
 		
-		return "index";
+		return "redirect:index.mdo";
 	}
 	
 	@RequestMapping("logout.mdo")
