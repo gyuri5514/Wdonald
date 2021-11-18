@@ -50,10 +50,11 @@
 								<th>Salary</th>
 							</tr>
 						</tfoot>  -->
+						
+						<tbody>
 						<c:forEach items="${orderList}" var="orderList">
 						
 						<fmt:formatDate var="orderDate" value="${orderList.order_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
-						<tbody>
 							<tr>
 								<td style="display:none;">${orderList.order_seq}</td>
 								<td>${orderDate}</td>
@@ -76,8 +77,9 @@
 									<input type="button" class="btn btn-warning" class="checkBtn" onclick="orderCheck('${orderList.order_seq}')" value="확인"/>
 								</td>
 							</tr>
+							</c:forEach>
 						</tbody>
-					</c:forEach>
+					
 					</table>
 				</div>
 				</form>

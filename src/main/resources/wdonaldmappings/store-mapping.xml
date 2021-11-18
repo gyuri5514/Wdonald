@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	<select id="storeQnaSelect" resultType="qnaVO" parameterType="AdminVO">
-		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name}
+		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name} order by qa_seq
 	</select>
 	<select id="qnaDetail" resultType="qnaVO" parameterType="qnaVO">
 		select * from qa where qa_seq = #{qa_seq}

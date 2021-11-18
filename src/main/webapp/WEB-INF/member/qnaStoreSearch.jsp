@@ -114,14 +114,14 @@ function init(){
  			}
  		}) 
 	
-	 alert('테이블 클릭 : ' + value);
+	 //alert('테이블 클릭 : ' + value);
  		
  	 if(value != "") {
  		 opener.document.getElementById("STORE_NM").value = value;
  		 window.close();
  	 }
  	 else {
- 		 alert("value 값이없음");
+ 		// alert("value 값이없음");
  	 	 return;
  	 }
  	 
@@ -146,7 +146,7 @@ function init(){
 	 $("#ex1").text(str); */
 	}
  function storeC() {
-	alert("zzzzzzzzzz" + $('#storeName').val());
+	//alert("zzzzzzzzzz" + $('#storeName').val());
 	//var STORE_NM = document.getElementById('STORE_NM');
 	//STORE_NM.innerText = document.getElementById('storeName');
 }
