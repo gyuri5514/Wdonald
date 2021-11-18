@@ -41,4 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBannerList" resultType="adminBannerVO">
 		SELECT * FROM banner 
 	</select>
+	<insert id="bannerInsert" parameterType="adminBannerVO">
+		INSERT INTO banner VALUES(#{banner_title}, #{banner_img}, #{banner_content})
+	</insert>
 </mapper>

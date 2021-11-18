@@ -50,4 +50,10 @@ public class AdminServiceImpl implements AdminService{
 	public List<AdminBannerVO> selectBannerList() {
 		return adminDAO.selectBannerList();
 	}
+
+
+	@Override
+	public void bannerInsert(AdminBannerVO bannerVO) {
+		adminDAO.bannerInsert(bannerVO);
+	}
 }

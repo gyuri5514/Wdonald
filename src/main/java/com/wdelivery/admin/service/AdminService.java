@@ -20,4 +20,5 @@ public interface AdminService {
 	public void addCoupon(AdminCouponVO addcoupon);
 	
 	public List<AdminBannerVO> selectBannerList();
+	public void bannerInsert(AdminBannerVO bannerVO);
 }

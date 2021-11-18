@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
 <%@ include file="header.jsp"%>
 <c:choose>
 <c:when test="${emailResult =='success'}">
@@ -29,34 +28,12 @@
 		 -->
 		<!-- 배너 이미지 -->
 		<div class="slideshow-container">
-			<div class="mySliders fade">
-				<div class="numbertext">1 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1633519760853.png" alt="1955 스모키 더블 베이컨 버거 출시">
-			</div>
-			<div class="mySliders fade">
-				<div class="numbertext">2 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1633519887333.png">
-			</div>
-			<div class="mySliders fade">
-				<div class="numbertext">3 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1633532684256.png"	alt="맥런치 리힛">
-			</div>
-			<div class="mySliders fade">
-				<div class="numbertext">4 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1631842026946.png" alt="해피스낵 Q3">
-			</div>
-			<div class="mySliders fade">
-				<div class="numbertext">5 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1630301940217.png" alt="자두 칠러">
-			</div>
-			<div class="mySliders fade">
-				<div class="numbertext">6 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1621833457701.png" alt="트리플치즈버거">
-			</div>
-			<div class="mySliders fade">
-				<div class="numbertext">7 / 7</div>
-				<img style="width:100%" src="https://www.mcdonalds.co.kr/upload/main/banner/1617176534703.png" alt="">
-			</div>
+			<c:forEach var="bannerList" items="${bannerList}" varStatus="status" end="${bannerList.size()}">
+				<div class="mySliders fade">
+					<div class="numbertext">${status.count}/ ${status.end}</div>
+					<img style="width:100%" src="${bannerList.banner_img}" alt="1955 스모키 더블 베이컨 버거 출시">
+				</div>
+			</c:forEach>
 		</div>
 		<div style="text-align:center">
 		  <span class="dot" onclick="currentSlide(1)"></span> 
@@ -146,8 +123,7 @@
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>
 <!-- //container -->
-<script src="resources/js/banner.js"></script>
-<%@ include file="footer.jsp"%>
+<script src="resources/js/main_banner.js"></script>
 <script>
 var slider = {
 		setup : function( target )
@@ -254,3 +230,5 @@ var slider = {
 		}
 	}
 </script>
+
+<%@ include file="footer.jsp"%>

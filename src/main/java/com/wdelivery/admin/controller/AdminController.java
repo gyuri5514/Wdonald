@@ -1,6 +1,9 @@
 package com.wdelivery.admin.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,15 +17,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
+import com.wdelivery.admin.util.AwsS3;
 import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.vo.UserVO;
-import com.wdelivery.news.utils.Criteria;
-import com.wdelivery.news.utils.PageMaker;
 
 @Controller
 public class AdminController {
@@ -116,14 +119,31 @@ public class AdminController {
 
 	
 	@GetMapping("/banner.mdo")
-	public List<AdminBannerVO> bannerList(Model model) {
+	public String bannerList(Model model) {
 		List<AdminBannerVO> bannerList = adminService.selectBannerList();
 		model.addAttribute("bannerList",bannerList);
-		return bannerList;
+		return "banner";
 	}
 	@GetMapping("/bannerRegister.mdo")
 	public String bannerRegister(Model model) {
+		List<AdminBannerVO> bannerList = adminService.selectBannerList();
+		model.addAttribute("bannerList",bannerList);
 		return "bannerRegister";
 	}
-
+	@PostMapping("/bannerRegister.mdo")
+	public String bannerInsert(@RequestParam(name="file")MultipartFile file, AdminBannerVO bannerVO) throws IOException{
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key = "banner/" + file.getOriginalFilename();
+		InputStream is = file.getInputStream();
+        String contentType = file.getContentType();
+        long contentLength = file.getSize();
+        awsS3.upload(is, key, contentType, contentLength);
+        
+        bannerVO.setBanner_img(uploadFolder + key);
+        
+		adminService.bannerInsert(bannerVO);
+		
+		return "redirect:banner.mdo";
+	}
 }
