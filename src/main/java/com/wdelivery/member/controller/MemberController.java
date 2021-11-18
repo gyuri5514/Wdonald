@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,15 +102,20 @@ public class MemberController {
   
 	@Autowired
 	private PromotionService promotionService;
-
+	
+	@ModelAttribute("bannerList")
+	public List<AdminBannerVO> getBannerList(){
+		return  adminService.selectBannerList();
+	}
+	
+	@ModelAttribute("selectPromotion")
+	public List<PromotionVO> selectPromotion(){
+		return promotionService.selectPromotion();
+	}
+	
 	@RequestMapping("/main.do")
 	public String main(Model model) {
-		List<AdminBannerVO> bannerList = adminService.selectBannerList();
-		model.addAttribute("bannerList",bannerList);
-
-		List<PromotionVO> selectPromotion = promotionService.selectPromotion();
-		model.addAttribute("selectPromotion", selectPromotion);
-
+		
 		return "main";
 	}
   
