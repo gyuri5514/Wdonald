@@ -1696,7 +1696,7 @@ ul.notiTxt:before {
 	overflow: hidden;
 	text-indent: -9999px;
 	background:
-		url(https://www.mcdonalds.co.kr/kor/images/common/btn_delivery_01.png)
+		url(https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_delivery_01.png)
 		0 0 no-repeat;
 	background-size: cover;
 }

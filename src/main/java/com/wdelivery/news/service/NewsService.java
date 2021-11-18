@@ -10,7 +10,7 @@ public interface NewsService {
 	public List<NewsVO> selectNews(Criteria cri);
 	
 	// 게시물 총 개수
-	public int totalNews();
+	public int totalNews(Criteria cri);
 	
 	public NewsVO detailNews(Integer news_code);
 	

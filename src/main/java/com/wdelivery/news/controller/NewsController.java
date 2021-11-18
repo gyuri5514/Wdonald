@@ -27,7 +27,7 @@ public class NewsController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(newsService.totalNews());
+		pageMaker.setTotalCount(newsService.totalNews(cri));
 		
 		List<NewsVO> list = newsService.selectNews(cri);
 		List<NewsVO> notice = newsService.selectNewsNotice();

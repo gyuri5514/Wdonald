@@ -16,13 +16,11 @@ public class SideServiceImpl implements SideService {
 	
 	@Override
 	public List<SideVO> selectSide() {
-		System.out.println("selectSide");
 		return sideDAO.selectSide();
 	}
 
 	@Override
 	public SideVO detailSide(Integer s_code) {
-		System.out.println("detailSide");
 		return sideDAO.detailSide(s_code);
 	}
 

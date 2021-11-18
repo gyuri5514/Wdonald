@@ -17,7 +17,7 @@
 					<i class="fas fa-table me-1"></i>배너관리
 				</div>
 				<div class="card-body">
-					<button class="addcoupon" id="addBanner" onclick="location='bannerRegister.mdo'">배너 등록</button>
+					<button class="addcoupon" id="addBanner" onclick="location='bannerRegister.mdo'" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">배너 등록</button>
 					<hr>
 					<table id="datatablesSimple">
 						<thead>
