@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
+import com.wdelivery.admin.util.AwsS3;
 import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.member.payment.vo.PaymentVO;

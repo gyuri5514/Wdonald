@@ -53,7 +53,10 @@ public class StoreSalesController {
 	@GetMapping("/charts.sdo")
 	public String charts(Model model,HttpSession session) {
 		AdminVO av = (AdminVO) session.getAttribute("admin");
-		
+		if(av==null) {
+			model.addAttribute("error",1);
+			return "index";
+		}
 		
 	    SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
 	    Calendar week = Calendar.getInstance();
@@ -67,7 +70,9 @@ public class StoreSalesController {
 	    System.out.println(c.getEnd_date());
 	    ArrayList<ChartVO> chartList = chartService.getinitialChart(c);
 	    model.addAttribute("chartList",JSONArray.fromObject(chartList));
-		System.out.println((JSON)model.getAttribute("chartList"));
+//		System.out.println((JSON)model.getAttribute("chartList"));
+	    model.addAttribute("start_date",c.getStart_date());
+	    model.addAttribute("end_date",c.getEnd_date());
 	    
 	    for(ChartVO ca : chartList) 
 			System.out.println(ca.toString());
