@@ -4,14 +4,16 @@ import java.util.List;
 
 import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
-import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.menu.burger.vo.BurgerVO;
+import com.wdelivery.news.utils.Criteria;
 
 public interface AdminDAO {
 	
-	public List<PaymentVO> indexView();
+	public List<AdminVO> indexView(Criteria cri);
 
-	public List<UserVO> userSelect();
+	public List<UserVO> userSelect(Criteria cri);
 	
 	public List<AdminCouponVO> selectCoupon();
 	
@@ -22,4 +24,7 @@ public interface AdminDAO {
 	public List<AdminBannerVO> selectBannerList();
 	
 	public void deleteCoupon(String deleteCoupon);
+
+	public List<BurgerVO> viewBurger();
+
 }

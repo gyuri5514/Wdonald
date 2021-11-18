@@ -39,11 +39,11 @@
 					</p>
 				</article>
 				<div class="btnArea">
-					<c:if test="${detailNews.news_code ne 1}">
+					<c:if test="${detailNews.news_code ne 105}">
 						<button type="button" onclick="javascript:location.href='newsDetail.do?news_code=${detailNews.news_code - 1}'" class="prev">이전 글</button>
 					</c:if>
 					<a href="news.do" role="button" class="btnMC btnM"><span>목록보기</span></a>
-					<c:if test="${detailNews.news_code ne 105}">
+					<c:if test="${detailNews.news_code ne 1}">
 						<button type="button" onclick="javascript:location.href='newsDetail.do?news_code=${detailNews.news_code + 1}'" class="next">다음 글 보기</button>
 					</c:if>
 				</div>

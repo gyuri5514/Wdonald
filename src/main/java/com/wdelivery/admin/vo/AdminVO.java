@@ -15,6 +15,7 @@ public class AdminVO {
 	private String store_code;
 	private double store_lat;
 	private double store_lon;
+	
 	public int getAdmin_seq() {
 		return admin_seq;
 	}

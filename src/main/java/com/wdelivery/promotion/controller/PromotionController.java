@@ -58,4 +58,9 @@ public class PromotionController {
 		return "happymealPromotion";
 	}
 	
+	@GetMapping("/noResult.do")
+	public String noResult(Model model) {
+		return "noResult";
+	}
+	
 }

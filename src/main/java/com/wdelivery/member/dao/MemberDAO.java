@@ -7,10 +7,10 @@ import java.util.Map;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
-import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.promotion.vo.PromotionVO;
 
 public interface MemberDAO {
 
@@ -58,5 +58,9 @@ public interface MemberDAO {
 	List<AdminVO> getStoreList(AdminVO adminVO);
 
 	public void updatePassword(UserVO userVO);
+	
+	public List<PromotionVO> selectPromotion();
+	
+	public PromotionVO detailPromotion(Integer p_code);
 
 }

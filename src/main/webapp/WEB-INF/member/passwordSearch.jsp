@@ -52,7 +52,7 @@
 
 #find_password:not(.form-control) {
 	width: 30%;
-	margin-left: 20%;
+	margin-left: 25%;
 }
 
 #find_password label:not(.form-control) {
@@ -81,22 +81,23 @@ legend {
 	<div id="content">
 		<div class="container">
 			<div class="find-pw-container">
+				<div class="col-md-3 sidebar">
+					<div class="section-menu">
+						<ul class="nav nav-list">
+							<li class="nav-header lnb-header">비밀번호 찾기<span>Find Password</span></li>
+						</ul>
+					</div>
+				</div>
 				<h3 class="title-divider mt_0">
 					<span>비밀번호 찾기</span> <small>Find Password</small>
 				</h3>
 				<div id="find_password">
-					<br>
-					<br> <label>이메일</label> <br>
+					<label>이메일</label>
 					<div id="align-email-btn">
-					<br>
-					<input name="user_email" id="m_email" type="email"
-						class="form-control placeholder" placeholder="example@wdonald.com" />
+					<input name="user_email" id="m_email" type="email" class="form-control placeholder" placeholder="example@wdonald.com" />
 						<span id="emailChecktxt"></span>
-						<br>
-					<a href="javascript:void(0);" onclick="searchMyEmail();"
-						class="btn btn-md btn-red" id="btnSearch">검색</a></div>
+					<a href="javascript:void(0);" onclick="searchMyEmail();" class="btn btn-md btn-red" id="btnSearch">검색</a></div>
 				</div>
-				
 			</div>
 		</div>
 	</div>

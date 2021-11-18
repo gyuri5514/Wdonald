@@ -16,6 +16,7 @@ import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.promotion.vo.PromotionVO;
 import com.wdelivery.store.dao.StoreDAO;
 
 import net.nurigo.java_sdk.api.Message;
@@ -199,6 +200,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updatePassword(UserVO userVO) {
 		memberDAO.updatePassword(userVO);
+	}
+
+	@Override
+	public List<PromotionVO> selectPromotion() {
+		return memberDAO.selectPromotion();
+	}
+
+	@Override
+	public PromotionVO detailPromotion(Integer p_code) {
+		return memberDAO.detailPromotion(p_code);
 	}
 
 }
