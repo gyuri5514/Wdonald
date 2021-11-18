@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.qna.vo.QaaVO;
@@ -20,8 +21,28 @@ public class StoreController {
 	@Autowired
 	private StoreService storeService;
 	
+	
+	/*
+	 * @GetMapping("/index.sdo") public String index() {
+	 * 
+	 * return "index"; }
+	 */
+	 
 	@GetMapping("/index.sdo")
-	public String index() {
+	public String index(AdminVO adminVO, Model model, HttpSession session) {
+		adminVO = (AdminVO) session.getAttribute("admin");
+		//System.out.println("bn" + adminVO.toString());
+		
+		model.addAttribute("status", adminVO.getStore_status());
+		
+		return "index";
+	}
+	@GetMapping("/storeStatus.sdo")
+	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session) {
+		adminVO = (AdminVO) session.getAttribute("admin");
+		System.out.println("ป๓ลย : " + adminVO.toString() + "?" + store_status);
+		adminVO.setStore_status(store_status);
+		storeService.storeStatus(adminVO);
 		return "index";
 	}
 	

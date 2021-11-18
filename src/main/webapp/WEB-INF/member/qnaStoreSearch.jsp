@@ -35,12 +35,12 @@ function init(){
 	reqStoreList();
 	//document.getElementById("clickStore").style.display = "";
 	
-	var store_address = document.getElementById('searchWord').value;
+	var searchWord = document.getElementById('searchWord').value;
 	
 	$.ajax({
 		url:"qnaStoreSearchP.do",
 		data:{
-			store_address : store_address
+			searchWord : searchWord
 		},
 		dataType: "json",  
 		type: "post",

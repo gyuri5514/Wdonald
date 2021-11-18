@@ -25,13 +25,13 @@
                                         <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="admin_id" class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                        <input name="admin_id" class="form-control" value="${sessionScope.admin.admin_id}" id="inputFirstName" type="text" placeholder="Enter your first name" />
                                                         <label for="inputFirstName">사업자 아이디</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input name="admin_name" class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                        <input name="admin_name" class="form-control" value="${sessionScope.admin.admin_name}" id="inputLastName" type="text" placeholder="Enter your last name" />
                                                         <label for="inputLastName">사업자 이름</label>
                                                     </div>
                                                 </div>
@@ -39,14 +39,42 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="admin_password" class="form-control" id="inputFirstName" type="password" placeholder="Enter your first name" />
+                                                        <input name="admin_password" class="form-control" value="${sessionScope.admin.admin_password}" id="inputFirstName" type="password" placeholder="Enter your first name" />
                                                         <label for="inputFirstName">비밀번호</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input name="admin_phone" class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                        <input name="admin_phone" class="form-control" value="${sessionScope.admin.admin_phone}" id="inputLastName" type="text" placeholder="Enter your last name" />
                                                         <label for="inputLastName">사업자 번호(-제외)</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input name="" class="form-control" value="${sessionScope.admin.store_address}" id="inputFirstName" type="text" placeholder="Enter your first name" readonly="s"/>
+                                                        <label for="inputFirstName">매장주소</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input name="" class="form-control" value="${sessionScope.admin.store_name}" id="inputLastName" type="text" placeholder="Enter your last name" readonly="readonly" />
+                                                        <label for="inputLastName">매장이름</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input name="" class="form-control" value="${sessionScope.admin.store_code}" id="inputFirstName" type="text" placeholder="Enter your first name" readonly="readonly" />
+                                                        <label for="inputFirstName">매장코드</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input name="" class="form-control" value="${sessionScope.admin.store_phone}" id="inputLastName" type="text" placeholder="Enter your last name" readonly="readonly" />
+                                                        <label for="inputLastName">매장번호</label>
                                                     </div>
                                                 </div>
                                             </div>

@@ -17,6 +17,12 @@ public class StoreServiceImpl implements StoreService{
 	private StoreDAO storeDAO;
 	
 	@Override
+	public void storeStatus(AdminVO adminVO) {
+		storeDAO.storeStatus(adminVO);
+	}
+	
+	
+	@Override
 	public void adminUpdate(AdminVO adminVO) {
 		storeDAO.adminUpdate(adminVO);
 	}
@@ -40,4 +46,5 @@ public class StoreServiceImpl implements StoreService{
 		storeDAO.qaaCompletion(qnaVO);
 	}
 
+	
 }

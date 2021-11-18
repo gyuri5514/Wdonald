@@ -9,6 +9,7 @@ import com.wdelivery.qna.vo.QnaVO;
 
 public interface StoreDAO {
 	
+	public void storeStatus(AdminVO adminVO);
 	public void adminUpdate(AdminVO adminVO);
 	public List<AdminVO> findProximateStore(MapPointVO mpv);
 	

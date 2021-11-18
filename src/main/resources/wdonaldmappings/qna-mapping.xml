@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.qna.dao.QnaDAO">
 	<select id="storeSelect" resultType="adminVO">
 		<![CDATA[
-		select * from admin where store_address like (concat('%',#{store_address},'%'))
+		select * from admin where store_address like (concat('%',#{searchWord},'%')) or store_name like (concat('%',#{searchWord},'%'))
 		]]>
 	</select>
 	<insert id="qnaInsert">

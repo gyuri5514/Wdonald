@@ -35,7 +35,7 @@
 								<th>주문 날짜</th>
 								<th>주소</th>
 								<th>주문자</th>
-								<th>뭐할까</th>
+								<th>주문자번호</th>
 								<th>결제금액</th>
 								<th>주문 상태</th>
 							</tr>
@@ -59,7 +59,7 @@
 								<td>${orderDate}</td>
 								<td>${orderList.user_address}</td>
 								<td>${orderList.user_name}</td>
-								<td></td>
+								<td>${orderList.user_phone}</td>
 								<td>${orderList.final_price}</td>
 								<%-- <td>${orderList.order_status}</td> --%>
 								<!-- Split button -->
@@ -110,7 +110,7 @@
 		var order_seq = order_seq;
 		
 		
-			var order_status = $("select[id=order_status"+order_seq+"]").val();
+		var order_status = $("select[id=order_status"+order_seq+"]").val();
 		
 
 		console.log("엥" + order_status);

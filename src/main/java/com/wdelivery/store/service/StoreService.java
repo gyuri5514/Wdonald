@@ -8,6 +8,7 @@ import com.wdelivery.qna.vo.QnaVO;
 
 public interface StoreService {
 	
+	public void storeStatus(AdminVO adminVO);
 	public void adminUpdate(AdminVO adminVO);
 	
 	public List<QnaVO> storeQnaSelect(AdminVO adminVO);

@@ -15,6 +15,17 @@ public class AdminVO {
 	private String store_code;
 	private double store_lat;
 	private double store_lon;
+	
+	private String searchWord;
+	
+	public String getSearchWord() {
+		return searchWord;
+	}
+	public void setSearchWord(String searchWord) {
+		this.searchWord = searchWord;
+	}
+	
+	
 	public int getAdmin_seq() {
 		return admin_seq;
 	}
