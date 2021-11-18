@@ -2,6 +2,21 @@
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<script>
+	function setSearchTypeSelect() {
+		var $keyword = $('#keyword');
+		
+		$('#searchBtn').on('click',function() {
+			var keywordVal = $keyword.val();
+			
+			var url = "news.do?page=1"
+				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
+				+ "&keyword=" + encodeURIComponent(keywordVal);
+			window.location.href = url;
+		})
+	}
+</script>
+
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <div class="content">
 	<div class="visualArea bgWhats01" data-title="새로운 소식" data-desc="새로운 소식">
@@ -17,20 +32,13 @@
 	<!-- //visualArea -->
 	<div class="contArea">
 		<div class="inner">
-			<form id="searchForm" method="get">
-				<input type="hidden" name="page" id="page">
-				<input type="hidden" name="seq" id="seq">
-				<input type="hidden" name="rnum" id="rnum">
-				<input type="hidden" name="temp_seq" id="temp_seq">
-				<fieldset class="bbsSearch">
-					<legend>게시물 검색</legend>
-					<div class="srch">
-						<input type="text" title="검색어 입력" id="searchWord" name="searchWord" placeholder="검색어를 입력하세요.">
-						<button type="button" class="btn" onclick="search()">검색</button>
-					</div>
-				</fieldset>
-			</form>
-
+			<fieldset class="bbsSearch">
+				<legend>게시물 검색</legend>
+				<div class="srch">
+					<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요">
+					<button type="button" class="btn btn-primary" id="searchBtn" onclick="setSearchTypeSelect();">검색</button>
+				</div>
+			</fieldset>
 			<div class="mcBoard">
 				<p class="count">
 					총 <b class="color01">${pageMaker.totalCount}</b>의 게시글이 있습니다.
@@ -68,7 +76,7 @@
 					<ul class="btn_group pagination">
 						<c:if test="${pageMaker.prev}">
 						<li class="paging_prev_btn">
-							<a href='<c:url value="/news.do?page${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
+							<a href='<c:url value="/news.do?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
 						</li>
 						</c:if>
 						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">

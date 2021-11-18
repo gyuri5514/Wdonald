@@ -13,6 +13,7 @@ public class AdminCouponVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_enddate;
 	private int coupon_canuse;
+	private String coupon_check;
 	public String getCoupon_code() {
 		return coupon_code;
 	}
@@ -48,6 +49,13 @@ public class AdminCouponVO {
 	}
 	public void setCoupon_canuse(int coupon_canuse) {
 		this.coupon_canuse = coupon_canuse;
+	}
+	
+	public String getCoupon_check() {
+		return coupon_check;
+	}
+	public void setCoupon_check(String coupon_check) {
+		this.coupon_check = coupon_check;
 	}
 	@Override
 	public String toString() {

@@ -28,6 +28,7 @@
 								<th>쿠폰등록일</th>
 								<th>유효일자</th>
 								<th>사용가능여부</th>
+								<th>쿠폰삭제</th>
 							</tr>
 						</thead>
 						<tbody id="ajaxCoupon">
@@ -38,7 +39,15 @@
 								<td>${vo.coupon_type}</td>
 								<td><fmt:formatDate value="${vo.coupon_regdate}" pattern="yyyy-MM-dd"/></td>
 								<td><fmt:formatDate value="${vo.coupon_enddate}" pattern="yyyy-MM-dd"/></td>
-								<td>${vo.coupon_canuse}</td>
+								<td style="text-align: center;">
+									<div class="coupon_canuse" style="width: 80%; margin: 0 auto">
+										<select id="coupon_canuse${vo.coupon_code}" name="coupon_canuse" class="btn btn-Default dropdown-toggle">
+											<option value="Y" ${vo.coupon_check == "Y" ? 'selected="selected"' : ''}>Y</option>
+											<option value="N" ${vo.coupon_check == "N" ? 'selected="selected"' : ''}>N</option>
+										</select>
+									</div>
+								</td>
+								<td><button class="couponDelete" id="couponDelete" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
 							</tr>					
 						</c:forEach>							
 						</tbody>

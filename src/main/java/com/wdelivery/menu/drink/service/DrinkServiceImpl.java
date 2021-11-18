@@ -16,13 +16,11 @@ public class DrinkServiceImpl implements DrinkService {
 	
 	@Override
 	public List<DrinkVO> selectDrink() {
-		System.out.println("selectDrink");
 		return drinkDAO.selectDrink();
 	}
 
 	@Override
 	public DrinkVO detailDrink(Integer d_code) {
-		System.out.println("detailDrink");
 		return drinkDAO.detailDrink(d_code); 
 	}
 

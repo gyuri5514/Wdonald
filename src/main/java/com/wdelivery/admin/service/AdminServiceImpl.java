@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import com.wdelivery.admin.dao.AdminDAO;
 import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
-import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.menu.burger.vo.BurgerVO;
+import com.wdelivery.news.utils.Criteria;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -17,14 +19,14 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDAO adminDAO;
  
 	@Override
-	public List<PaymentVO> indexView() {
-		return adminDAO.indexView();
+	public List<AdminVO> indexView(Criteria cri) {
+		return adminDAO.indexView(cri);
 	}
 
 
 	@Override
-	public List<UserVO> userSelect() {
-		return adminDAO.userSelect();
+	public List<UserVO> userSelect(Criteria cri) {
+		return adminDAO.userSelect(cri);
 	}
 	
 
@@ -45,9 +47,18 @@ public class AdminServiceImpl implements AdminService{
 
 	}
 
-
 	@Override
 	public List<AdminBannerVO> selectBannerList() {
 		return adminDAO.selectBannerList();
+	}
+	
+	@Override
+	public void deleteCoupon(String deleteCoupon) {
+		adminDAO.deleteCoupon(deleteCoupon);
+  }
+
+	@Override
+	public List<BurgerVO> viewBurger() {
+		return adminDAO.viewBurger();
 	}
 }

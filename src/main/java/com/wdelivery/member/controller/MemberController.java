@@ -47,6 +47,8 @@ import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
 import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
+import com.wdelivery.promotion.service.PromotionService;
+import com.wdelivery.promotion.vo.PromotionVO;
 import com.wdelivery.qna.service.QnaService;
 import com.wdelivery.qna.vo.QnaVO;
 
@@ -93,8 +95,14 @@ public class MemberController {
 	@Autowired
 	private OrderTimer orderTimer;
 	
+	@Autowired
+	private PromotionService promotionService;
+	
 	@GetMapping("/main.do")
-	public String main() {
+	public String main(Model model) {
+		List<PromotionVO> selectPromotion = promotionService.selectPromotion();
+		model.addAttribute("selectPromotion", selectPromotion);
+		
 		return "main";
 	}
 	@GetMapping("passwordSearch.do")

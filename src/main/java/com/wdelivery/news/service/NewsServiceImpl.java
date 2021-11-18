@@ -16,8 +16,8 @@ public class NewsServiceImpl implements NewsService {
 	private NewsDAO newsDAO;
 	
 	@Override
-	public int totalNews() {
-		return newsDAO.totalNews();
+	public int totalNews(Criteria cri) {
+		return newsDAO.totalNews(cri);
 	}
 
 	@Override

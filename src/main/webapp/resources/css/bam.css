@@ -4533,3 +4533,11 @@ p.nutrDesc {
 #menu_order_list {
 	padding: 10px 0px;
 }
+
+.search {
+	margin-left: 26px;
+    width: 36px;
+    height: 36px;
+    text-indent: -230px;
+    background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_search.png") 0 0 no-repeat;
+}
