@@ -91,18 +91,18 @@
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i>
-					실시간 매출
+					매장 리스트
 				</div>
 				<div class="card-body">
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
-								<th>주문 날짜</th>
+								<th>매장 이름</th>
 								<th>매장 코드</th>
-								<th>주문 상태</th>
-								<th>결제 정보</th>
-								<th>결제 금액</th>
-								<th>Salary</th>
+								<th>관리자</th>
+								<th>매장 주소</th>
+								<th>매장 번호</th>
+								<th>매장 상태</th>
 							</tr>
 						</thead>
 					    <!-- <tfoot>
@@ -115,19 +115,47 @@
 								<th>Salary</th>
 							</tr>
 						</tfoot> -->
-						<c:forEach items="${paymentList}" var="paymentList">
+						
 						<tbody>
+						<c:forEach items="${adminList}" var="adminList">
 							<tr>
-								<td><fmt:formatDate value="${paymentList.order_date }" pattern="yyyy-MM-dd"/></td>
-								<td>${paymentList.store_name }</td>
-								<td>${paymentList.order_status }</td>
-								<td>${paymentList.payment_type }</td>
-								<td>${paymentList.final_price }</td>
-								<td>${paymentList.final_price }</td>
+								<td>${adminList.store_name }</td>
+								<td>${adminList.store_code }</td>
+								<td>${adminList.admin_name }</td>
+								<td>${adminList.store_address }</td>
+								<td>${adminList.store_phone }</td>
+								<td>
+								<c:set var="status" value="${adminList.store_status }" />
+									<c:choose>
+										<c:when test="${status eq '1' }">정상영업</c:when>
+										<c:when test="${status eq '0' }"><span style="color:red;">영업마감</span></c:when>	
+										<c:when test="${status eq '2' }"><span style="color:blue;">준비중</span></c:when>										
+									</c:choose>
+								</td>
 							</tr>
+							</c:forEach> 
 						</tbody>
-						</c:forEach> 
+						
 					</table>
+					<%-- <div class='btnPaging'>
+							<ul class="pagination pagination-sm" >
+								<c:if test="${pageMaker.prev}">
+								<li class="page-item">
+									<a class="page-link" href='<c:url value="/index.mdo?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
+								</li>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
+								<li class="page-item">
+									<a class="page-link" href='<c:url value="/index.mdo?page=${pageNum}"/>'><i class="">${pageNum}</i></a>
+								</li>
+								</c:forEach>
+								<c:if test="${pageMaker.next}">
+								<li class="page-item">
+									<a class="page-link" href='<c:url value="index.mdo?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
+								</li>
+								</c:if>
+							</ul>
+						</div> --%><!-- 페이징 끝 -->
 				</div>
 			</div>
 		</div>

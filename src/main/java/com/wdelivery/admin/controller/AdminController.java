@@ -19,8 +19,9 @@ import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
 import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
-import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.menu.burger.vo.BurgerVO;
 import com.wdelivery.news.utils.Criteria;
 import com.wdelivery.news.utils.PageMaker;
 
@@ -34,10 +35,15 @@ public class AdminController {
 	private AdminStoreService adminStoreService;
 	
 	@GetMapping("/index.mdo")
-	public String indexView(Model model,HttpSession session) {
-		List<PaymentVO> paymentList =  adminService.indexView();
+	public String indexView(Model model,HttpSession session, Criteria cri) {
+		List<AdminVO> adminList =  adminService.indexView(cri);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(100);
 		//List<PaymentVO> paymentVO = new ArrayList<PaymentVO>();
-		model.addAttribute("paymentList",paymentList);
+		model.addAttribute("adminList",adminList);
+		model.addAttribute("pageMaker", pageMaker);
 		//System.out.println("index: " + ((PaymentVO) paymentVO).getOrder_seq());
 
 		return "index";
@@ -84,9 +90,14 @@ public class AdminController {
 	
 	//회원정보 게시판
 	@GetMapping("/layoutStatic.mdo")
-	public String layoutStatic(Model model) {
-		List<UserVO> userInfo = adminService.userSelect();
+	public String layoutStatic(Model model, Criteria cri) {
+		List<UserVO> userInfo = adminService.userSelect(cri);
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(100);
+		
 		model.addAttribute("userInfo" , userInfo);
+		model.addAttribute("pageMaker", pageMaker);
 		return "layout-static";
 	}
 	
@@ -124,6 +135,13 @@ public class AdminController {
 	@GetMapping("/bannerRegister.mdo")
 	public String bannerRegister(Model model) {
 		return "bannerRegister";
+	}
+	
+	@GetMapping("/burger.mdo")
+	public String viewBurger(Model model){
+		List<BurgerVO> burgerList = adminService.viewBurger();
+		model.addAttribute("burgerVO", burgerList);
+		return "burger";
 	}
 
 }
