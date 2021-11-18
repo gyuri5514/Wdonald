@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
@@ -16,6 +15,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/storeStyles.css?ver=1.1"> 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<!-- smartEditor -->
+<script type="text/javascript" src="Editor/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
 </head>
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -27,11 +28,25 @@
 		</button>
 		<!-- Navbar Search-->
 		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-			<div class="input-group">
-				<input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-				<button class="btn btn-primary" id="btnNavbarSearch" type="button">
-					<i class="fas fa-search"></i>
-				</button>
+			<div style="display: inline-block;">
+				<!-- <div class="input-group" > -->
+				<!-- <div class="btn-group" style="width: 80%; margin: 0 auto"> -->
+					<select id="store_status" name="store_status" class="dropdown-toggle">
+							<c:if test="${status eq 1}">
+							<option value="">정상영업</option>
+							</c:if>
+							<c:if test="${status eq 2}">
+							<option value="">준비 중</option>
+							</c:if>
+							<c:if test="${status eq 0}">
+							<option value="">영업마감</option>
+							</c:if>
+							<option value="1">정상영업</opstion>
+							<option value="2">준비 중</option>
+							<option value="0">영업마감</option>
+					</select>
+					<input type="submit" class="input-group btn btn-warning" onclick="statusSubmit()" value="확인">
+				<!-- </div> -->
 			</div>
 		</form>
 		<!-- Navbar-->
@@ -73,15 +88,15 @@
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
 							<div class="sb-nav-link-icon"> <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Layouts 페이지 필요없을 듯 !!!!!!!!!!!!!!!!!!!! -->
 								<i class="fas fa-columns"></i>
-							</div> 매장 문의 관리
+							</div> 문의 관리
 							<div class="sb-sidenav-collapse-arrow">
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
 							<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="layoutStatic.sdo">Static Navigation</a> 
-									<a class="nav-link" href="layout-sidenav-light.sdo">Light Sidenav</a>
+									<a class="nav-link" href="layoutStatic.sdo">1:1 고객문의</a>
+									<a class="nav-link" href="layout-sidenav-light.sdo">관리자 공지</a>
 								</nav>
 							</div>
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -95,16 +110,15 @@
 						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-									관리자 정보 수정
+									관리자 정보
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
 									</div>
 								</a>
 									<div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
 										<nav class="sb-sidenav-menu-nested nav">
-											<a class="nav-link" href="adminUpdate.sdo">정보수정</a>
-											<!-- <a class="nav-link" href="register.sdo">Store Register</a> -->
-											<!-- <a class="nav-link" href="password.sdo">Forgot Password</a> --> <!-- 필요없음 -->
+											<!-- <a class="nav-link" href="">관리자 정보 보기</a> -->
+											<a class="nav-link" href="adminUpdate.sdo">정보수정</a>	
 										</nav>
 									</div>
 								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -130,7 +144,7 @@
 						<a class="nav-link" href="tables.sdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
-							</div> 주문관리
+							</div> 주문 관리
 						</a>
 					</div>
 				</div>
@@ -140,3 +154,28 @@
 				</div>
 			</nav>
 		</div>
+		
+<script type="text/javascript">
+	function statusSubmit() {
+		
+		var store_status = $("#store_status option:selected").val();
+		alert("click" + store_status);
+		
+		$.ajax({
+			url:"storeStatus.sdo",
+			data:{ 
+				store_status : store_status
+				},
+			//dataType : "json",
+			type : "get",
+			success:function(data){				
+				alert("success ???");
+
+			},error:function(){
+				alert("failed");
+			}
+		})
+		
+	}
+
+</script>

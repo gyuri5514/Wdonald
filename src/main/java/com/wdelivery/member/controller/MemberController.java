@@ -699,10 +699,10 @@ public class MemberController {
 	@PostMapping("/qnaStoreSearchP.do")
 	@ResponseBody
 	public List<AdminVO> qnaStoreSearchP(
-			@RequestParam(value = "store_address", required = false) String store_address,
+			@RequestParam(value = "searchWord", required = false) String searchWord,
 			Model model) {
 		List<AdminVO> adminVO = new ArrayList<AdminVO>();
-		adminVO = qnaService.storeSelect(store_address);
+		adminVO = qnaService.storeSelect(searchWord);
 		//System.out.println("qnaStoreSearchP" + store_address);
 
 		model.addAttribute("adminVO", adminVO);

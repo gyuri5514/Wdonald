@@ -7,6 +7,7 @@ public class QaaVO {
 	private String qaa_content;
 	private int admin_seq;
 	private Date qaa_regdate;
+	
 	public int getQa_seq() {
 		return qa_seq;
 	}

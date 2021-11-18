@@ -35,12 +35,12 @@ function init(){
 	reqStoreList();
 	//document.getElementById("clickStore").style.display = "";
 	
-	var store_address = document.getElementById('searchWord').value;
+	var searchWord = document.getElementById('searchWord').value;
 	
 	$.ajax({
 		url:"qnaStoreSearchP.do",
 		data:{
-			store_address : store_address
+			searchWord : searchWord
 		},
 		dataType: "json",  
 		type: "post",
@@ -114,14 +114,14 @@ function init(){
  			}
  		}) 
 	
-	 alert('테이블 클릭 : ' + value);
+	 //alert('테이블 클릭 : ' + value);
  		
  	 if(value != "") {
  		 opener.document.getElementById("STORE_NM").value = value;
  		 window.close();
  	 }
  	 else {
- 		 alert("value 값이없음");
+ 		// alert("value 값이없음");
  	 	 return;
  	 }
  	 
@@ -146,7 +146,7 @@ function init(){
 	 $("#ex1").text(str); */
 	}
  function storeC() {
-	alert("zzzzzzzzzz" + $('#storeName').val());
+	//alert("zzzzzzzzzz" + $('#storeName').val());
 	//var STORE_NM = document.getElementById('STORE_NM');
 	//STORE_NM.innerText = document.getElementById('storeName');
 }

@@ -118,22 +118,21 @@
 											<c:when test="${not empty sessionScope.userInfo}">
 												<input type="hidden" name="user_seq"
 													value="${sessionScope.userInfo.user_seq }">
-												<!-- 여기 수정 중 -->
-												<input type="hidden" name="" id="m_email"
+												<input type="hidden" name="" id=""
 													value="${sessionScope.userInfo.user_email}">
 											</c:when>
 											<c:when test="${not empty sessionScope.kakaoSession}">
 												<input type="hidden" name="user_seq"
 													value="${sessionScope.kakaoSession.user_seq }">
 												<!-- 여기 수정 중 -->
-												<input type="hidden" name="" id="m_email"
+												<input type="hidden" name="" id=""
 													value="${sessionScope.kakaoSession.user_email}">
 											</c:when>
 											<c:when test="${not empty sessionScope.naverSession}">
 												<input type="hidden" name="user_seq"
 													value="${sessionScope.naverSession.user_seq }">
 												<!-- 여기 수정 중 -->
-												<input type="hidden" name="" id="m_email"
+												<input type="hidden" name="" id=""
 													value="${sessionScope.naverSession.user_email}">
 											</c:when>
 

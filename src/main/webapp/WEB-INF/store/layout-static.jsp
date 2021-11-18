@@ -41,8 +41,8 @@
 								
 							</tr>
 						</tfoot>
-						<c:forEach items="${qnaList}" var="qnaList">
 						<tbody>
+						<c:forEach items="${qnaList}" var="qnaList">
 							<tr>
 								<td>${qnaList.qa_seq}</td>
 								<td>${qnaList.qa_email}</td>
@@ -55,8 +55,9 @@
 									<td>완료</td>
 								</c:if>
 							</tr>
-						</tbody>
 						</c:forEach>
+						</tbody>
+						
 					</table>
 				</div>
 			</div>

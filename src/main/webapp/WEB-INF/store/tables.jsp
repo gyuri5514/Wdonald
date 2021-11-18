@@ -35,7 +35,7 @@
 								<th>주문 날짜</th>
 								<th>주소</th>
 								<th>주문자</th>
-								<th>뭐할까</th>
+								<th>주문자번호</th>
 								<th>결제금액</th>
 								<th>주문 상태</th>
 							</tr>
@@ -50,16 +50,17 @@
 								<th>Salary</th>
 							</tr>
 						</tfoot>  -->
+						
+						<tbody>
 						<c:forEach items="${orderList}" var="orderList">
 						
 						<fmt:formatDate var="orderDate" value="${orderList.order_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
-						<tbody>
 							<tr>
 								<td style="display:none;">${orderList.order_seq}</td>
 								<td>${orderDate}</td>
 								<td>${orderList.user_address}</td>
 								<td>${orderList.user_name}</td>
-								<td></td>
+								<td>${orderList.user_phone}</td>
 								<td>${orderList.final_price}</td>
 								<%-- <td>${orderList.order_status}</td> --%>
 								<!-- Split button -->
@@ -76,8 +77,9 @@
 									<input type="button" class="btn btn-warning" class="checkBtn" onclick="orderCheck('${orderList.order_seq}')" value="확인"/>
 								</td>
 							</tr>
+							</c:forEach>
 						</tbody>
-					</c:forEach>
+					
 					</table>
 				</div>
 				</form>
@@ -110,7 +112,7 @@
 		var order_seq = order_seq;
 		
 		
-			var order_status = $("select[id=order_status"+order_seq+"]").val();
+		var order_status = $("select[id=order_status"+order_seq+"]").val();
 		
 
 		console.log("엥" + order_status);
@@ -123,7 +125,7 @@
 			//dataType : "json",
 			type : "get",
 			success:function(data){				
-				alert("success ???");
+				//alert("success ???");
 
 			},error:function(){
 				alert("failed");

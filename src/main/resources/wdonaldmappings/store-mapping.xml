@@ -3,6 +3,10 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.store.dao.StoreDAO">
+	<update id="storeStatus">
+		update admin set store_status = #{store_status} where admin_seq = #{admin_seq}
+	</update>
+
 	<update id="adminUpdate">
 		update admin set admin_id = #{admin_id}, admin_name = #{admin_name}, admin_password = #{admin_password}, admin_phone = #{admin_phone}
 		where admin_seq = #{admin_seq}
@@ -14,9 +18,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	<select id="storeQnaSelect" resultType="qnaVO" parameterType="AdminVO">
-		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name}
+		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name} order by qa_seq
 	</select>
 	<select id="qnaDetail" resultType="qnaVO" parameterType="qnaVO">
 		select * from qa where qa_seq = #{qa_seq}
 	</select>
+	<insert id="qnaQaInsert">
+		insert into qaa values(#{qa_seq}, #{qaa_content}, #{admin_seq}, now())
+	</insert>
+	<update id="qaaCompletion">
+		update qa set qa_status = 1 where qa_seq = #{qa_seq}
+	</update>
 </mapper>
