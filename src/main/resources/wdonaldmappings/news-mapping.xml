@@ -6,7 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectNews" resultType="newsVO" parameterType="newsVO">
 		<![CDATA[
 			SELECT * FROM news WHERE news_status = 2
+		]]>
+		
+		<if test="keyword != null">
 			AND news_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		
+		<![CDATA[
 			ORDER BY news_code DESC
 			LIMIT #{perPageNum} OFFSET #{pageStart}
 		]]>
@@ -37,14 +43,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<include refid="searchCondition"></include>
 			order by news_code desc
 			LIMIT #{perPageNum} OFFSET #{pageStart}
-		]]>
+		]]>	
 	</select>
 	
 	<!-- 검색 조건에 해당하는 전체 게시물 수 조회 -->
 	<select id="totalNews" resultType="int">
-		<![CDATA[
-			select count(news_code) from news where news_code > 0
-		]]>
+		SELECT COUNT(*) FROM news
+		<if test="keyword != null">
+			WHERE news_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
 	</select>
 	
 </mapper>

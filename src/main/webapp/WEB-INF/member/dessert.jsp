@@ -22,7 +22,7 @@
 							<li data-title="디저트" data-desc="디저트메뉴"><a href="dessert.do" role="button" aria-selected="true">디저트</a></li>
 						</ul>
 						<div class="mcMenu">
-							<p class="count" id="count">6 Products</p>
+							<p class="count" id="count"><b>${selectDessert.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectDessert}" var="selectDessert">
 									<li>

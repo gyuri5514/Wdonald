@@ -4541,3 +4541,7 @@ p.nutrDesc {
     text-indent: -230px;
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_search.png") 0 0 no-repeat;
 }
+
+.active {
+	background-color: #ffbc0d;
+}

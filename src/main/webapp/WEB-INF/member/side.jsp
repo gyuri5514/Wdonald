@@ -20,11 +20,11 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<!-- <li data-title="버거" data-desc="버거메뉴"><a href="burger.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
-							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
+							<li data-title="버거" data-desc="버거메뉴"><a href="side.do" role="button" aria-selected="true">사이드</a></li><!-- 선택 된 태그에 aria-selected="true" 추가 -->
+							<li><a href="dessert.do" role="button">디저트</a></li>
 						</ul>
 						<div class="mcMenu">
-							<p class="count" id="count">8 Products</p>
+							<p class="count" id="count"><b>${selectSide.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectSide}" var="selectSide">
 									<li>
