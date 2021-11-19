@@ -77,7 +77,11 @@ public class StoreSalesController {
 	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
 		AdminVO av = (AdminVO) session.getAttribute("admin");
 		chart.setStore_code(av.getStore_code());
-		return JSONArray.fromObject(chartService.getResponsiveChart(chart));
+		List<ChartVO> cl = chartService.getResponsiveChart(chart);
+		for(ChartVO c : cl) {
+			System.out.println(c.toString());
+		}
+		return JSONArray.fromObject(cl);
 	}
 	
 	public  ArrayList<ChartVO> getChart(ChartVO chart,Model model){
