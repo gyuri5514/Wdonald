@@ -46,6 +46,21 @@ public class AdminServiceImpl implements AdminService{
 		adminDAO.addCoupon(addcoupon);
 
 	}
+	
+	@Override
+	public void addUserCoupon(AdminCouponVO addUserCoupon) {
+		adminDAO.addUserCoupon(addUserCoupon);
+	}
+	
+	@Override
+	public void deleteUserCoupon(AdminCouponVO deleteCoupon) {
+		adminDAO.deleteUserCoupon(deleteCoupon);
+  }
+	
+	@Override
+	public void deleteCoupon(AdminCouponVO deleteCoupon) {
+		adminDAO.deleteCoupon(deleteCoupon);
+  }
 
 	@Override
 	public List<AdminBannerVO> selectBannerList() {
@@ -57,11 +72,6 @@ public class AdminServiceImpl implements AdminService{
 		adminDAO.bannerInsert(bannerVO);
 }
 	
-	@Override
-	public void deleteCoupon(String deleteCoupon) {
-		adminDAO.deleteCoupon(deleteCoupon);
-  }
-
 	@Override
 	public List<BurgerVO> viewBurger() {
 		return adminDAO.viewBurger();

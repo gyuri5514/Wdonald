@@ -21,11 +21,15 @@ public interface AdminService {
 	
 	public void addCoupon(AdminCouponVO addcoupon);
 	
+	public void addUserCoupon(AdminCouponVO addUserCoupon);
+	
+	public void deleteUserCoupon(AdminCouponVO deleteCoupon);
+	
+	public void deleteCoupon(AdminCouponVO deleteCoupon);
+	
 	public List<AdminBannerVO> selectBannerList();
 
 	public void bannerInsert(AdminBannerVO bannerVO);
-	
-	public void deleteCoupon(String deleteCoupon);
 
 	public List<BurgerVO> viewBurger();
 

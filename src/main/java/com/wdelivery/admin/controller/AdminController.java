@@ -106,7 +106,7 @@ public class AdminController {
 	public String layout(Model model) {
 		List<AdminCouponVO> vo = adminService.selectCoupon();
 		for(int i=0; i>vo.size(); i++) {
-			if(vo.get(i).getCoupon_canuse()==0) {
+			if(vo.get(i).getCoupon_status()==0) {
 				vo.get(i).setCoupon_check("Y");
 			} else
 				vo.get(i).setCoupon_check("N");
@@ -149,10 +149,18 @@ public class AdminController {
 	@PostMapping("/addcouponInsert.mdo")
 	public String addcoupon(AdminCouponVO addcoupon) {
 		adminService.addCoupon(addcoupon);
+		addcoupon.setCoupon_status(1);
 		System.out.println(addcoupon.toString());
 		return "redirect:layout-sidenav-light.mdo";
 	}
 
+	@PostMapping("/deleteCoupon.mdo")
+	@ResponseBody
+	public int deleteCoupon(AdminCouponVO deleteCoupon) {
+		adminService.deleteUserCoupon(deleteCoupon);
+		adminService.deleteCoupon(deleteCoupon);
+		return 1;
+	}
 	
 	@GetMapping("/banner.mdo")
 	public String bannerList(Model model) {
