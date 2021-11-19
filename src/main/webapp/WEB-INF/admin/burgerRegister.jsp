@@ -16,112 +16,116 @@
     	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
     </head>
 <script type="text/javascript">
- 	$(document).ready(function(){
-	 	$("#cancle").on("click",function(){ 
-	   		
-	   		 location.href = "burger.mdo";
-	   	 })
-	   	$("#submit").on("click",function(){
-	   		var regExp = /\s/g;
-			 if($("#burger_code").val()==""){
-				 alert("버거코드를 입력하세요.");
-				 $("#burger_code").focus();
-				 return false;
-			 }
-			 if(regExp.test($("#burger_code").val())) {
-				 alert("공백을 사용할 수 없습니다.");
-				 $("#burger_code").focus();
-    			 return false;
-    		 }
-			 if($("#burger_name").val()==""){
-				 alert("버거 이름을 입력하세요.");
-				 $("#burger_name").focus();
-				 return false;
-			 }
-			 if(regExp.test($("#burger_name").val())) {
-				 alert("공백을 사용할 수 없습니다.");
-				 $("#burger_name").focus();
-    			 return false;
-    		 }
-			 if($("#burger_kcal").val()==""){
-				 alert("버거 칼로리를 입력하세요.");
-				 $("#burger_kcal").focus();
-				 return false;
-			 }
-			 if(regExp.test($("#burger_kcal").val())) {
-				 alert("공백을 사용할 수 없습니다.");
-				 $("#burger_kcal").focus();
-    			 return false;
-    		 }
-			 if($("#burger_price").val()==""){
-				 alert("버거 가격을 입력하세요.");
-				 $("#burger_price").focus();
-				 return false;
-			 }
-			 if(regExp.test($("#burger_price").val())) {
-				 alert("공백을 사용할 수 없습니다.");
-				 $("#burger_price").focus();
-    			 return false;
-    		 }
-			 if($("#burger_type").val()==""){
-				 alert("분류를 입력하세요.");
-				 $("#burger_type").focus();
-				 return false;
-			 }
-			 if(regExp.test($("#burger_type").val())) {
-				 alert("공백을 사용할 수 없습니다.");
-				 $("#burger_type").focus();
-    			 return false;
-    		 }
-			 if($("#burger_regdate").val()==""){
-				 alert("버거 등록일을 입력하세요.");
-				 $("#burger_regdate").focus();
-				 return false;
-			 }
-			 if($("#burger_detail").val()==""){
-				 alert("버거 상세설명을 입력하세요.");
-				 $("#burger_detail").focus();
-				 return false;
-			 }
-			 if($("#burger_img").val()==""){
-				 alert("버거 이미지를 업로드하세요.");
-				 $("#burger_img").focus();
-				 return false;
-			 }
-			 $('#addBurger').submit();  
-		 });
-	 	
- 	 $(':file').on('fileselect', function(event, numFiles, label) {
+	$(document).ready(function() {
+		$("#cancle").on("click", function() {
+			location.href = "burger.mdo";
+		})
+		$("#submit").on("click", function() {
+			var regExp = /\s/g;
+			if ($("#burger_code").val() == "") {
+				alert("버거코드를 입력하세요.");
+				$("#burger_code").focus();
+				return false;
+			}
+			if (regExp.test($("#burger_code").val())) {
+				alert("공백을 사용할 수 없습니다.");
+				$("#burger_code").focus();
+				return false;
+			}
+			if ($("#burger_name").val() == "") {
+				alert("버거 이름을 입력하세요.");
+				$("#burger_name").focus();
+				return false;
+			}
+			if (regExp.test($("#burger_name").val())) {
+				alert("공백을 사용할 수 없습니다.");
+				$("#burger_name").focus();
+				return false;
+			}
+			if ($("#burger_kcal").val() == "") {
+				alert("버거 칼로리를 입력하세요.");
+				$("#burger_kcal").focus();
+				return false;
+			}
+			if (regExp.test($("#burger_kcal").val())) {
+				alert("공백을 사용할 수 없습니다.");
+				$("#burger_kcal").focus();
+				return false;
+			}
+			if ($("#burger_price").val() == "") {
+				alert("버거 가격을 입력하세요.");
+				$("#burger_price").focus();
+				return false;
+			}
+			if (regExp.test($("#burger_price").val())) {
+				alert("공백을 사용할 수 없습니다.");
+				$("#burger_price").focus();
+				return false;
+			}
+			if ($("#burger_type").val() == "") {
+				alert("분류를 입력하세요.");
+				$("#burger_type").focus();
+				return false;
+			}
+			if (regExp.test($("#burger_type").val())) {
+				alert("공백을 사용할 수 없습니다.");
+				$("#burger_type").focus();
+				return false;
+			}
+			if ($("#burger_regdate").val() == "") {
+				alert("버거 등록일을 입력하세요.");
+				$("#burger_regdate").focus();
+				return false;
+			}
+			if ($("#burger_detail").val() == "") {
+				alert("버거 상세설명을 입력하세요.");
+				$("#burger_detail").focus();
+				return false;
+			}
+			if ($("#burger_img").val() == "") {
+				alert("버거 이미지를 업로드하세요.");
+				$("#burger_img").focus();
+				return false;
+			}
+			$('#addBurger').submit();
+		});
 
-          var input = $(this).parents('.input-group').find(':text'),
-              log = numFiles > 1 ? numFiles + ' files selected' : label;
+		$(':file').on('fileselect', function(event, numFiles, label) {
+			var input = $(this).parents(
+					'.input-group').find(
+					':text'), log = numFiles > 1 ? numFiles
+					+ ' files selected'
+					: label;
 
-          if( input.length ) {
-              input.val(log);
-          } else {
-              if( log ) alert(log);
-          }
-          var tmppath = URL.createObjectURL(event.target.files[0]);
-          $('#image').attr("src",tmppath);
-      });
- 	  $(document).on('change', ':file', function() {
- 	     var input = $(this),
- 	         numFiles = input.get(0).files ? input.get(0).files.length : 1,
- 	         label = input.val();
- 	     input.trigger('fileselect', [numFiles, label]);
- 	   });
+			if (input.length) {
+				input.val(log);
+			} else {
+				if (log)
+					alert(log);
+			}
+			var tmppath = URL
+					.createObjectURL(event.target.files[0]);
+			$('#image').attr("src", tmppath);
+		});
+		$(document).on('change',":file",function() {
+			var input = $(this), numFiles = input
+					.get(0).files ? input
+					.get(0).files.length : 1, label = input
+					.val();
+			input.trigger('fileselect', [
+					numFiles, label ]);
+		});
 	})
-	function slideButton(){
- 		var img = $('#burger-container');
- 		if(img.attr("style") == "display:none;"){
- 			img.attr("style","display:block;");
- 			$('#slideBtn').text("버거 미리보기 취소");	
- 		}
- 		else {
- 			img.attr("style","display:none;");
- 			$('#slideBtn').text("버거 미리보기");	
- 		}
- 	  };
+	function slideButton() {
+		var img = $('#burger-container');
+		if (img.attr("style") == "display:none;") {
+			img.attr("style", "display:block;");
+			$('#slideBtn').text("버거 미리보기 취소");
+		} else {
+			img.attr("style", "display:none;");
+			$('#slideBtn').text("버거 미리보기");
+		}
+	};
 </script>
     <body class="bg-black">
     <div id="map" style="width: 0px; height:0px;"></div>
@@ -170,8 +174,12 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="burger_type" name="burger_type" type="text" placeholder="Enter your last name" />
-                                                        <label for="burger_type">분류 ex)단품, 세트.....</label>
+                                                    	<select class="form-select" id="burger_type" name="burger_type" aria-label="Default select example"
+                                                    		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
+                                                    		<option selected>전체</option>
+															<option value="단품">단품
+															<option value="세트">세트                                                     
+                                                        </select>
                                                     </div>
                                                 </div>
                                                  <div class="col-md-6">
@@ -185,7 +193,7 @@
                                                 <input class="form-control" id="burger_detail" name="burger_detail" type="text"/>
                                                 <label for="burger_detail">상세설명 / 판매시간</label>
                                             </div>
-                                            <div style="display: inline-flex; flex-wrap: wrap; margin-top: 10px;">
+                                            <div style="margin-top: 10px;">
 	                                            <button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">버거 미리보기</button>	
 	                                            <div class="burger-container" id="burger-container" style="display:none;">
 	                                            	<img style="width:100%;" id="image">

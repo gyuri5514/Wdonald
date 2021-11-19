@@ -21,6 +21,6 @@ public interface BurgerDAO {
 	
 	void insertBurger(BurgerVO burgerVO);
 	
-	BurgerSetVO detailBurgerSet(Integer b_set_code); 
+	BurgerSetVO detailBurgerSet(Integer b_set_code); //18111818181818
 	
 }
