@@ -45,6 +45,7 @@ public interface MemberService {
 	public List<PaymentVO> paymentList(HashMap<String, String> paraMap);
 
 	List<PaymentVO> getUserPaymentInfo(String user_email);
+	public void orderCancel(int order_seq);
 
 	List<CartVO> getCartListByMerchantId(String merchantUid);
 	
