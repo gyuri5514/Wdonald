@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 		<typeAlias type="com.wdelivery.admin.vo.AdminCouponVO" alias="adminCouponVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminBannerVO" alias="adminBannerVO"/>
+		<typeAlias type="com.wdelivery.admin.vo.AdminNoticeVO" alias="adminNoticeVO"/>
 
 		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias="paymentVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="adminVO"/>

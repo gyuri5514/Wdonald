@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
@@ -26,7 +27,18 @@ public class StoreServiceImpl implements StoreService{
 	public void adminUpdate(AdminVO adminVO) {
 		storeDAO.adminUpdate(adminVO);
 	}
+	
+	
+	@Override
+	public List<AdminNoticeVO> noticeSelect() {
+		return storeDAO.noticeSelect();
+	}
+	@Override
+	public AdminNoticeVO noticeDetail(AdminNoticeVO adminNoticeVO) {
+		return storeDAO.noticeDetail(adminNoticeVO);
+	}
 
+	
 	@Override
 	public List<QnaVO> storeQnaSelect(AdminVO adminVO) {
 		return storeDAO.storeQnaSelect(adminVO);
@@ -46,5 +58,5 @@ public class StoreServiceImpl implements StoreService{
 		storeDAO.qaaCompletion(qnaVO);
 	}
 
-	
+
 }

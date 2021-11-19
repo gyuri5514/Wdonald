@@ -94,13 +94,13 @@
                                             </div> -->
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                	<input type="submit" class="btn btn-danger btn-block" >
+                                                	<input type="submit" class="btn btn-warning btn-block" >
                                                	</div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.sdo">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="index.sdo">메인 페이지</a></div>
                                     </div>
                                 </div>
                             </div>

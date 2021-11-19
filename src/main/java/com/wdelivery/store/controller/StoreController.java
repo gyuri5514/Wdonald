@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
@@ -49,10 +50,14 @@ public class StoreController {
 	
 	//adminUpdate
 	@GetMapping("/adminUpdate.sdo")
-	public String adminUpdate() {
+	public String adminUpdate(HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("admin");
+		if(admin == null) {
+			return "404";
+		}
+		
 		return "register";
 	}
-	
 	@GetMapping("/adminUpdatedo.sdo")
 	public String adminUpdate(HttpSession session, AdminVO adminVO) {
 		AdminVO admin = (AdminVO) session.getAttribute("admin");
@@ -78,13 +83,28 @@ public class StoreController {
 		return "500";
 	}
 
-	//?
+	//adminNotice
 	@GetMapping("/layout-sidenav-light.sdo")
-	public String layout() {
+	public String layout(AdminNoticeVO adminNoticeVO, Model model, HttpSession session) {
+		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		
+		if(adminVO != null){
+			List<AdminNoticeVO> noticeList = storeService.noticeSelect();
+			model.addAttribute("noticeList", noticeList);
+		}
 		return "layout-sidenav-light";
 	}
+	@GetMapping("/noticeDetail.sdo")
+	public String noticeDetail(Model model, AdminNoticeVO adminNoticeVO) {
+		adminNoticeVO = storeService.noticeDetail(adminNoticeVO);
+		model.addAttribute("noticeDetail", adminNoticeVO);
+		
+		return "noticeDetail";
+	}
 	
-	//store 1:1 ������
+	
+
+	//store 1:1
 	@GetMapping("/layoutStatic.sdo")
 	public String layoutStatic(QnaVO qnaVO, Model model, HttpSession session) {
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
