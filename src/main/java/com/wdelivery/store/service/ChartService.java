@@ -9,4 +9,6 @@ public interface ChartService {
 
 	ArrayList<ChartVO> getinitialChart(ChartVO c);
 
+	ArrayList<ChartVO> getResponsiveChart(ChartVO chart);
+
 }

@@ -3,8 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.store.chart.dao.ChartDAO">
-	
-	<select id="getInitialChart" parameterType="hashMap" resultType="chartVO">
+
+	<select id="getInitialChart" parameterType="hashMap"
+		resultType="chartVO">
 	<![CDATA[
 			SELECT 	sum(total_price) as sales_amount,  
   			COUNT(*) as sales_count, 
@@ -17,5 +18,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ORDER BY daily_chart
 		]]>
 	</select>
-  
+	<select id="getResponsiveChart" parameterType="chartVO"
+		resultType="chartVO">
+	<![CDATA[
+			SELECT 	sum(o.total_price) as sales_amount,  
+  			]]>
+		<if test="type ==  'gender'">u.user_gender as user_gender,</if>
+  			<![CDATA[ 
+  			COUNT(*) as sales_count,
+  			TO_CHAR(order_date,]]>
+		<if test="date_term ==  'daily'">'MM-dd') as daily_chart</if>
+		<if test="date_term ==  'month'">'yy-MM') as month_chart</if>
+		<if test="date_term ==  'year'">'YYYY') as year_chart</if>
+  			<![CDATA[
+			FROM order_list as o ]]>
+		<if test="type ==  'gender'">RIGHT join user_info u on o.user_email = u.user_email</if>
+  			<![CDATA[ 
+			WHERE 1=1 and order_status='배달 완료' 
+			and TO_CHAR(order_date, 'yyyy-MM-dd')
+			between #{start_date} and #{end_date}
+			and store_code = #{store_code}
+  			GROUP BY TO_CHAR(order_date,]]>
+		<if test="date_term ==  'daily'">'MM-dd'</if>
+		<if test="date_term ==  'month'">'yy-MM'</if>
+		<if test="date_term ==  'year'">'YYYY'</if>
+  			<![CDATA[)
+  			]]>
+		<if test="type ==  'gender'">, user_gender</if>
+  			<![CDATA[ 
+			ORDER BY ]]>
+		<if test="date_term ==  'daily'"> daily_chart</if>
+		<if test="date_term ==  'month'">month_chart</if>
+		<if test="date_term ==  'year'">year_chart</if>
+  			<![CDATA[
+		]]>
+	</select>
 </mapper>

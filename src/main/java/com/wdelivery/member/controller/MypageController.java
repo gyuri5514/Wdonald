@@ -49,7 +49,6 @@ public class MypageController {
 	public String mypageDelete(UserVO userVO, HttpSession session) {
 		String user = (String) session.getAttribute("user_eamil");
 		if (user != null || user != "") { // 하는 중
-			//System.out.println("mypageDelete success");
 			memberService.mypageDelete(userVO);
 			session.invalidate();
 		}
@@ -67,7 +66,6 @@ public class MypageController {
 		addressVO = new ArrayList<UserAddressVO>();
 		addressVO = memberService.addressShow(user_email);
 
-		// System.out.println("ddd " + addressVO.toString());
 		model.addAttribute("addressVO", addressVO);
 
 		return "addressBook";
@@ -89,10 +87,6 @@ public class MypageController {
 		String user_email = userInfo.getUser_email();
 		addressVO.setUser_email(user_email);
 		memberService.addressInsert(addressVO);
-		// System.out.println("addressInsert : "+ addressVO.getAddress1());
-
-		// model.addAttribute("user_email", user_email);
-		// System.out.println("addressupdate : " + user_email);
 		model.addAttribute("addressVO", addressVO);
 
 		return "redirect:addressBook.do";
@@ -117,19 +111,12 @@ public class MypageController {
 			end_history=null;
 		}
 		
-		System.out.println("start_history = "+start_history+" end_history = "+end_history );
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		paraMap.put("start_history", start_history);
 		paraMap.put("end_history", end_history);
 		paraMap.put("user_email", userInfo.getUser_email());
 		List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
-		if(paymentVO.size()==0) {
-			System.out.println("paymentVO is null");
-		}
-		for(PaymentVO p : paymentVO) {
-			System.out.println(p.toString());
-		}
 		return paymentVO;
 	}
 	
@@ -138,15 +125,6 @@ public class MypageController {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		if(userInfo==null)
 			return "redirect:main.do";
-		/*
-		 * System.out.println(userInfo.toString()); HashMap<String, String> paraMap =
-		 * new HashMap<String, String>(); paraMap.put("user_email",
-		 * userInfo.getUser_email());
-		 * 
-		 * List<PaymentVO> paymentVO = memberService.paymentList(paraMap);
-		 * 
-		 * model.addAttribute("paymentVO", paymentVO);
-		 */
 		return "orderHistory";
 	}
 	
@@ -157,11 +135,9 @@ public class MypageController {
 		if(userInfo==null) 
 			return "redirect:main.do";
 		int user_seq = userInfo.getUser_seq();
-		//System.out.println("con => " +  user_seq);
 		List<UserCouponVO> UserCouponVO = new ArrayList<UserCouponVO>();
 		UserCouponVO = memberService.userCouponSelect(user_seq);
 
-		//System.out.println("userCouponController : " + UserCouponVO.toString());
 		model.addAttribute("UserCouponVO", UserCouponVO);
 		
 		return "coupon";
@@ -171,22 +147,13 @@ public class MypageController {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		if(userInfo==null)
 			return "redirect:main.do";
-		List<PaymentVO> paymentList = memberService.getUserPaymentInfo(userInfo.getUser_email());
-		for(PaymentVO pv : paymentList ) {
-			System.out.println(pv.toString());
-		}
-		model.addAttribute("paymentList",paymentList);
+		model.addAttribute("paymentList",memberService.getUserPaymentInfo(userInfo.getUser_email()));
 		return "trackOrder";
 	}
 	
 	@ResponseBody
 	@PostMapping("getCartListByMerchantId.do")
 	public List<CartVO> getCartListByMerchantId(@RequestParam("merchantuid") String merchantUid){
-		System.out.println(merchantUid);
-		List<CartVO> cartVO =memberService.getCartListByMerchantId(merchantUid);
-		for(CartVO c : cartVO) {
-			System.out.println(c.toString());
-		}
-		return cartVO;
+		return memberService.getCartListByMerchantId(merchantUid);
 	}
 }
