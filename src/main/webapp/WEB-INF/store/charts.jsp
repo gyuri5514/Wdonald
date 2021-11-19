@@ -252,11 +252,11 @@ function getNewChart(){
 			if(type=='gender'){
 				for(var i in res){
 					if(res[i].user_gender=='man'){
-						 man_array.push(res[i]);
+						 man_array.push(res[i].sales_amount);
 					 }else if(res[i].user_gender=='woman'){
-						 woman_array.push(res[i]);
+						 woman_array.push(res[i].sales_amount);
 					 }else{
-					 nogend_array.push(res[i]);
+					 nogend_array.push(res[i].sales_amount);
 					 }
 				}
 	
@@ -305,19 +305,86 @@ function getNewChart(){
 				      data: nogend_array,
 				      borderWidth: 1
 				    }];
-				
-		chartData={
-		    labels: labels,
-		    datasets: dataSets
-				  };
-				
-				console.log(chartData);
 			
 		}else if(type=='pay_status'){
-			
+			for(var i in res){
+				if(res[i].payment_type=='card'){
+					 card_array.push(res[i].sales_amount);
+				 }else if(res[i].payment_type=='cash'){
+					 cash_array.push(res[i].sales_amount);
+				 }else{
+				 elsepay_array.push(res[i].sales_amount);
+				 }
+			}
+
+			dataSets = [{
+			      label: "pay type cash",
+			      backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)'
+		            ],
+			      data: cash_array,
+			      borderWidth: 1
+			    },
+			    {
+			    	label: "pay type card",
+				      backgroundColor: [
+				    	  'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			            	 'rgba(75, 192, 192, 1)',
+			                 'rgba(153, 102, 255, 1)',
+			                 'rgba(255, 159, 64, 1)'
+			            ],
+				      data: card_array,
+				      borderWidth: 1
+				    },
+				    {
+				    	label: "pay type else",
+					      backgroundColor: [
+					    	  'rgba(75, 192, 192, 0.2)',
+				                'rgba(153, 102, 255, 0.2)',
+				                'rgba(255, 159, 64, 0.2)'
+				            ],
+				            borderColor: [
+				            	 'rgba(75, 192, 192, 1)',
+				                 'rgba(153, 102, 255, 1)',
+				                 'rgba(255, 159, 64, 1)'
+				            ],
+					      data: elsepay_array,
+					      borderWidth: 1
+					    }];			
 		}else{
-			 data
+			data = res.map(function(e){
+				return e.sales_amount;
+			})
+			dataSets =  [{
+			    label: "sales amount",
+			    lineTension: 0.3,
+			    backgroundColor: "rgba(2,117,216,0.2)",
+			    borderColor: "rgba(2,117,216,1)",
+			    pointRadius: 5,
+			    pointBackgroundColor: "rgba(2,117,216,1)",
+			    pointBorderColor: "rgba(255,255,255,0.8)",
+			    pointHoverRadius: 5,
+			    pointHoverBackgroundColor: "rgba(2,117,216,1)",
+			    pointHitRadius: 50,
+			    pointBorderWidth: 2,
+			    data: data
+			  }];
 		}
+			chartData={
+				    labels: labels,
+				    datasets: dataSets
+						  };
 			 ctx = document.getElementById("myChart").getContext('2d');
 			 options = {
 					    scales: {
