@@ -38,6 +38,8 @@ import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
 import com.wdelivery.news.utils.Criteria;
 import com.wdelivery.news.utils.PageMaker;
 
+import net.sf.json.JSONArray;
+
 
 @Controller
 public class AdminController {
@@ -196,7 +198,8 @@ public class AdminController {
 	@GetMapping("/burger.mdo")
 	public String viewBurger(Model model){
 		List<BurgerVO> burgerList = adminService.viewBurger();
-		model.addAttribute("burgerVO", burgerList);
+		model.addAttribute("burgerList",burgerList);
+		model.addAttribute("burgerVO", JSONArray.fromObject(burgerList));
 		return "burger";
 	}
 

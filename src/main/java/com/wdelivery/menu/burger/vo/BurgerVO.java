@@ -2,12 +2,17 @@ package com.wdelivery.menu.burger.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BurgerVO {
 
 	private Integer b_code;
 	private String b_name;
 	private int b_price;
-	private int b_kcal;
+  private int b_kcal;
+	
 	private Date b_regdate;
 	private String b_img_path;
 	private String b_img;
