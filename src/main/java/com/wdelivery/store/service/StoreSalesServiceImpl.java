@@ -25,7 +25,4 @@ public class StoreSalesServiceImpl implements StoreSalesService {
 	public void orderStatus(PaymentVO paymentVO) {
 		storeSalesDAO.orderStatus(paymentVO);
 	}
-	
-	
-
 }

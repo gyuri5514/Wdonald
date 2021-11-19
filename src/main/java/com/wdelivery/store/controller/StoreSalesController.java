@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -20,7 +23,7 @@ import com.wdelivery.store.chart.vo.ChartVO;
 import com.wdelivery.store.service.ChartService;
 import com.wdelivery.store.service.StoreSalesService;
 
-import net.sf.json.JSON;
+import edu.emory.mathcs.backport.java.util.Collections;
 import net.sf.json.JSONArray;
 
 @Controller
@@ -34,16 +37,13 @@ public class StoreSalesController {
 	@GetMapping("tables.sdo")
 	public String tables(@RequestParam(name="order_seq", defaultValue = "0") int order_seq, @RequestParam(name="order_status", defaultValue = "0") String order_status,
 			Model model, HttpSession session, PaymentVO paymentVO) {
-		//System.out.println("order_seq" + order_seq);
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
 		if(adminVO != null) {
 			List<PaymentVO> orderList = storeSalesService.orderList(adminVO);
 			model.addAttribute("orderList", orderList);
 		}
 		if(order_seq > 0) {
-			System.out.println("?" + order_status);
 			storeSalesService.orderStatus(paymentVO);
-			System.out.println("check");
 		}
 		
 		
@@ -66,19 +66,37 @@ public class StoreSalesController {
 	    c.setEnd_date(date.format(new Date()));
 	    c.setStart_date(startDate);
 	    c.setStore_code(av.getStore_code());
-	    System.out.println(c.getStart_date());
-	    System.out.println(c.getEnd_date());
-	    ArrayList<ChartVO> chartList = chartService.getinitialChart(c);
-	    model.addAttribute("chartList",JSONArray.fromObject(chartList));
-//		System.out.println((JSON)model.getAttribute("chartList"));
-	    model.addAttribute("start_date",c.getStart_date());
-	    model.addAttribute("end_date",c.getEnd_date());
-	    
-	    for(ChartVO ca : chartList) 
-			System.out.println(ca.toString());
 
-		System.out.println(av.toString());
+	    getChart(c,model);
 		
 		return "charts";
+	}
+	
+	@ResponseBody
+	@PostMapping("getNewChart.sdo")
+	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
+		AdminVO av = (AdminVO) session.getAttribute("admin");
+		chart.setStore_code(av.getStore_code());
+		List<ChartVO> cl = chartService.getResponsiveChart(chart);
+		for(ChartVO c : cl) {
+			System.out.println(c.toString());
+		}
+		return JSONArray.fromObject(cl);
+	}
+	
+	public  ArrayList<ChartVO> getChart(ChartVO chart,Model model){
+		ArrayList<ChartVO> chartList = chartService.getinitialChart(chart);
+		model.addAttribute("chartList",JSONArray.fromObject(chartList));
+	    model.addAttribute("start_date",chart.getStart_date());
+	    model.addAttribute("end_date",chart.getEnd_date());
+	    
+	    List<Integer> maxList = new ArrayList<Integer>();
+	    
+	    for(ChartVO ca : chartList) 
+	    	maxList.add(ca.getSales_amount());
+	    
+	    model.addAttribute("max",(Integer)Collections.max(maxList));
+	    
+		return chartList;
 	}
 }

@@ -33,7 +33,8 @@ public class StoreController {
 	public String index(AdminVO adminVO, Model model, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
 		//System.out.println("bn" + adminVO.toString());
-		
+		if(adminVO==null)
+			return "redirect:login.mdo";
 		model.addAttribute("status", adminVO.getStore_status());
 		
 		return "index";
@@ -41,7 +42,7 @@ public class StoreController {
 	@GetMapping("/storeStatus.sdo")
 	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
-		System.out.println("╩Себ : " + adminVO.toString() + "?" + store_status);
+		System.out.println("О©╫О©╫О©╫О©╫ : " + adminVO.toString() + "?" + store_status);
 		adminVO.setStore_status(store_status);
 		storeService.storeStatus(adminVO);
 		return "index";
@@ -102,6 +103,7 @@ public class StoreController {
 	}
 	
 	
+
 	//store 1:1
 	@GetMapping("/layoutStatic.sdo")
 	public String layoutStatic(QnaVO qnaVO, Model model, HttpSession session) {

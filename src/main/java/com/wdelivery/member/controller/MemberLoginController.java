@@ -112,7 +112,6 @@ public class MemberLoginController {
 	@RequestMapping("kakaoLogin.do")
 	@ResponseBody
 	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session) {
-		System.out.println(kakaoVO.toString());
 		UserVO kakaoUserVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
 		if(kakaoUserVO!=null) {
 		session.setAttribute("kakaoSession", kakaoUserVO);
@@ -127,11 +126,9 @@ public class MemberLoginController {
 			}
 			userVO.setUser_birth(kakaoVO.getBirthday());
 			userVO.setUser_name(kakaoVO.getNickname());
-			System.out.println("start socialMemJoin() => "+userVO.toString());
 			
 			memberService.socialMemJoin("kakao",userVO);
 			userVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
-			System.out.println(userVO.toString());
 			session.setAttribute("kakaoSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
@@ -152,7 +149,6 @@ public class MemberLoginController {
 	@RequestMapping(value = "emailChk.do", method = RequestMethod.GET)
 	public int emailChk(String user_email) {
 		int emailResult = memberService.emailChk(user_email);
-		System.out.println("controller : " + emailResult);
 		return emailResult;
 		
 	}
@@ -168,7 +164,6 @@ public class MemberLoginController {
 			numStr += ran;
 		}
 		memberService.certifiedPhoneNumber(user_phone, numStr);
-		System.out.println("수신자 번호 : " + user_phone);
 		System.out.println("인증 번호 : " + numStr);
 		
 		return numStr;
@@ -184,7 +179,6 @@ public class MemberLoginController {
 	
 	@RequestMapping("naverLogin.do")
 	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session) {
-		System.out.println(naverVO.toString());
 		UserVO naverUserVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
 		if(naverUserVO!=null) {
 		session.setAttribute("naverSession", naverUserVO);
@@ -196,11 +190,9 @@ public class MemberLoginController {
 			userVO.setUser_birth(naverVO.getBirthday());
 			userVO.setUser_phone(naverVO.getMobile());
 			userVO.setUser_name(naverVO.getName());
-			System.out.println("start socialMemJoin() => "+userVO.toString());
 			
 			memberService.socialMemJoin("naver",userVO);
 			userVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
-			System.out.println(userVO.toString());
 			session.setAttribute("naverSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
@@ -219,14 +211,12 @@ public class MemberLoginController {
 					@RequestParam("type") String type,
 				@RequestParam("email") String email,
 			@RequestParam("authKey") String authKey,Model model){
-		System.out.println(email + " authKey =" +authKey);
 		Map<String,String> emailMap = new HashMap<String,String>();
 		emailMap.put("authKey", authKey);
 		emailMap.put("email", email);
 		if(isAuthKeyAvailable(emailMap)) {
 			
 			model.addAttribute("emailResult","success");
-			System.out.println(type);
 			
 			if(type.equals("join"))
 				memberService.signUpConfirm(email);
