@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.vo.AdminBannerVO;
@@ -96,7 +97,6 @@ public class MemberLoginController {
 					session.removeAttribute("total_price");
 				if(session.getAttribute("delivery_price") != null)
 					session.removeAttribute("delivery_price");
-				
 				return "main";
 				}else {
 					//incorrect password

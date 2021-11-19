@@ -23,5 +23,10 @@ public class BurgerSetServiceImpl implements BurgerSetService {
 	public BurgerSetVO detailBurgerSet(int b_code) {
 		return burgerSetDAO.detailBurgerSet(b_code);
 	}
+
+	@Override
+	public void insertBurgerSet(BurgerSetVO burgerSetVO) {
+		burgerSetDAO.insertBurgerSet(burgerSetVO);
+	}
 	
 }

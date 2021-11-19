@@ -21,7 +21,7 @@
 						<i class="fas fa-table me-1"></i> 윈딜리버리 버거 내역
 					</div>
 					<div class="card-body">
-					<button class="addcoupon" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
+					<button class="addcoupon" id="addBurger" onclick="location='burgerRegister.mdo'">등록</button>
 					<hr>
 						<table id="datatablesSimple">
 							<thead>
