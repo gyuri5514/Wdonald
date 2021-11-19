@@ -6,4 +6,6 @@ public interface BurgerLgSetService {
 
 	BurgerLgSetVO detailBurgerLgSet(int b_code);
 	
+	public void insertBurgerLgSet(BurgerLgSetVO burgerLgSetVO);
+	
 }

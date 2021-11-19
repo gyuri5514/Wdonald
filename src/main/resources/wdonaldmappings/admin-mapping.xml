@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectBannerList" resultType="adminBannerVO">
-		SELECT * FROM banner 
+		SELECT * FROM banner ORDER BY banner_seq DESC
 	</select>
 
 	<insert id="bannerInsert" parameterType="adminBannerVO">

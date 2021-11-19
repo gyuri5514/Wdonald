@@ -49,7 +49,6 @@ public class BurgerServiceImpl implements BurgerService {
 	
 	@Override
 	public void insertBurger(BurgerVO burgerVO) {
-		// TODO Auto-generated method stub
-		
+		burgerDAO.insertBurger(burgerVO);
 	}
 }

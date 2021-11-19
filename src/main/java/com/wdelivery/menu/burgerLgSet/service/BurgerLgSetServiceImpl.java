@@ -17,4 +17,9 @@ public class BurgerLgSetServiceImpl implements BurgerLgSetService {
 		return burgerLgSetDAO.detailBurgerLgSet(b_code);
 	}
 
+	@Override
+	public void insertBurgerLgSet(BurgerLgSetVO burgerLgSetVO) {
+		burgerLgSetDAO.insertBurgerLgSet(burgerLgSetVO);
+	}
+
 }
