@@ -150,6 +150,13 @@ public class MypageController {
 		model.addAttribute("paymentList",memberService.getUserPaymentInfo(userInfo.getUser_email()));
 		return "trackOrder";
 	}
+	@GetMapping("/orderCancel.do")
+	public String orderCancel(PaymentVO paymentVO) {
+		System.out.println("orderCancel " + paymentVO.toString());
+		memberService.orderCancel(paymentVO.getOrder_seq());
+		
+		return "trackOrder";
+	}
 	
 	@ResponseBody
 	@PostMapping("getCartListByMerchantId.do")

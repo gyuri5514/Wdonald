@@ -42,7 +42,7 @@ public class StoreController {
 	@GetMapping("/storeStatus.sdo")
 	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
-		System.out.println("���� : " + adminVO.toString() + "?" + store_status);
+		System.out.println("storeStatus : " + adminVO.toString() + "?" + store_status);
 		adminVO.setStore_status(store_status);
 		storeService.storeStatus(adminVO);
 		return "index";
