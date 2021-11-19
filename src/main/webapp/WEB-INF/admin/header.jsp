@@ -12,7 +12,9 @@
 <title>WDelivery 관리자</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css?ver=1.1"> 
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 </head>
 <body class="sb-nav-fixed">
    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">

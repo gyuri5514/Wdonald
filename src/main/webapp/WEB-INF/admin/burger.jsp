@@ -1,10 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ include file="header.jsp"%>
-<script>
-	$('#dataTable-selector').click(function(){
-		alert('perPageNum' + $('#dataTable-selector').val());
-	})
+<script type="text/javascript">
+	$(function(){
+		$("#update").hide();
+		
+		var val = JSON.parse('${burgerVO}');
+		$("tr").each(function(){
+			$(this).click(function(){
+				
+				for(var i = 0; i < val.length; i++) {
+					if($(this).find('#ccode').text() == val[i].b_code){
+						$("#select_image").attr("src",val[i].b_img_path);
+						$("#select_code").val(val[i].b_code);
+						$("#select_name").val(val[i].b_name);
+						//$("#select_price").val(val[i].b_price);
+						$("#select_price").val(val[i].b_price);
+						$("#select_kcal").val(val[i].b_kcal);
+						$("#select_regdate").val($(this).find("#ddate").text());
+						
+						alert($(this).find("#ddate").text()+"+"+val[i].b_name);
+						
+						for(var j = 0; j < $("#select_status").length; j++) {
+							if(val[i].b_status == $("#select_status option:eq(j)")) {
+								//$("#select_status option:eq(j)").attr("selected","selected"); 
+								$("#select_status").val("eq(j)").prop("selected", true);
+							}
+						}
+						
+					}
+				}
+				
+				$("#update").show();
+			});
+		})
+	});
 </script>
 <div id="layoutSidenav_content">
 	<main>
@@ -21,7 +52,25 @@
 						<i class="fas fa-table me-1"></i> 윈딜리버리 버거 내역
 					</div>
 					<div class="card-body">
-					<button class="addcoupon" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
+					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
+					<hr>
+					<div class="update" id="update">
+						<img alt="b_image" id="select_image" src=""><br/>
+						코드 : <input id="select_code" class="form-control" type="text" style="margin-bottom: 10px">
+						이름 : <input id="select_name" class="form-control" type="text" style="margin-bottom: 10px">
+						가격 : <input id="select_price" class="form-control" type="text" style="margin-bottom: 10px">
+						칼로리 : <input id="select_kcal" class="form-control" type="text" style="margin-bottom: 10px">
+						등록일 : <input id="select_regdate" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px">
+						상태 : 
+						<select id="select_status" class="form-control form-control-sm" style="margin-bottom: 10px">
+							<option value="1">활성화</option>
+							<option value="0">비활성화</option>
+							<option value="2">재고소진</option>
+							<option value="3">출시대기</option>
+						</select>
+						<button class="btn btn-primary" type="submit" id="menuInsert" onclick="insert()">수정하기</button>
+					</div>
+					<!-- 큰일났다 이거 똥됐다!! -->
 					<hr>
 						<table id="datatablesSimple">
 							<thead>
@@ -45,16 +94,17 @@
 							</tr>
 						</tfoot> -->
 								<tbody>
-								<c:forEach items="${burgerVO}" var="b_list" varStatus="status">
-									<tr id="show${status.count}">
-										<td>${b_list.b_name}</td>
-										<td><fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${b_list.b_price}"/>
-													<span class="starting-price" style="margin-top:5px;"> &#8361; ${formatPrice}</span>
+								<c:forEach items="${burgerList}" var="b_list" varStatus="status">
+									<tr class="test" id="${status.count }">
+										<td id="naame">${b_list.b_name}</td>
+										<td id="pprice">
+										<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${b_list.b_price}"/>
+										<span class="starting-price" style="margin-top:5px;"> &#8361; ${formatPrice}</span>
 										</td>
-										<td>${b_list.b_code}</td>
-										<td>${b_list.b_kcal} Kcal</td>
-										<td><fmt:formatDate value="${b_list.b_regdate}" pattern="yyyy-MM-dd" /></td>
-										<td><c:set var="status" value="${b_list.b_status }" />
+										<td id="ccode">${b_list.b_code}</td>
+										<td id="kkcal">${b_list.b_kcal} Kcal</td>
+										<td id="ddate"><fmt:formatDate value="${b_list.b_regdate}" pattern="yyyy-MM-dd"/></td>
+										<td id="sstatus"><c:set var="status" value="${b_list.b_status }" />
 											<c:choose>
 												<c:when test="${status eq '0'}"><span style="color: red">비활성화</span></c:when>
 												<c:when test="${status eq '1'}"><span style="color: blue">활성화</span></c:when>
@@ -66,26 +116,6 @@
 									</c:forEach>
 								</tbody>
 						</table>
-						<%-- <div class='btnPaging'>
-							<ul class="pagination pagination-sm" >
-								<c:if test="${pageMaker.prev}">
-								<li class="page-item">
-									<a class="page-link" href='<c:url value="/layoutStatic.mdo?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
-								</li>
-								</c:if>
-								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-								<li class="page-item">
-									<a class="page-link" href='<c:url value="/layoutStatic.mdo?page=${pageNum}"/>'><i class="">${pageNum}</i></a>
-								</li>
-								</c:forEach>
-								<c:if test="${pageMaker.next}">
-								<li class="page-item">
-									<a class="page-link" href='<c:url value="/layoutStatic.mdo?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
-								</li>
-								</c:if>
-							</ul>
-						</div> --%><!-- 페이징 끝 -->
-					</div>
 				</div>
 			</div>
 		</div>
