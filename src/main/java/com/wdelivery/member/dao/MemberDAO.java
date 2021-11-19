@@ -52,6 +52,7 @@ public interface MemberDAO {
 	public List<PaymentVO> paymentList(HashMap<String, String> paraMap);
 
 	public List<PaymentVO> getUserPaymentInfo(String user_email);
+	public void orderCancel(int order_seq);
 
 	public List<CartVO> getCartListByMerchantId(String merchantUid);
 

@@ -23,7 +23,7 @@
 							<li ><a href="happymeal_pm.do" role="button" >AM 10:30~AM 04:00</a></li>
 						</ul>
 						<div class="mcMenu">
-							<p class="count" id="count">4 Products</p>
+							<p class="count" id="count"><b>${selectHappyMeal.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectHappyMeal}" var="selectHappyMeal" begin="0" end="3" step="1">
 									<li>

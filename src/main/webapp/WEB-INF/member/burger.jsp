@@ -28,14 +28,7 @@
 							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
 						</ul>
 						<div class="mcMenu">
-							<p class="count" id="count">21 Products</p>
-							<div id="menu_order_list">
-				                <p>
-					                <a href="javascript:recentlist();">최신순</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-					                <a href="javascript:pricelist();">낮은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-									<a href="javascript:pricelistdesc();">높은 가격</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-								</p>
-				            </div>
+							<p class="count" id="count"><b>${selectBurger.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectBurger}" var="selectBurger">
 									<li>

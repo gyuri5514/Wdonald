@@ -20,6 +20,8 @@ import com.wdelivery.menu.side.service.SideService;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
+import com.wdelivery.news.utils.Criteria;
+import com.wdelivery.news.utils.PageMaker;
 
 @Controller
 public class MenuController {
@@ -43,8 +45,9 @@ public class MenuController {
 	public HappyMealService happyMealService;
 
 	@GetMapping("/burger.do")
-	public String selectBurger(Model model) {
+	public String selectBurger(Model model, Criteria cri) {
 		List<BurgerVO> selectBurger = burgerService.selectBurger();
+		
 		model.addAttribute("selectBurger", selectBurger);
 
 		return "burger";

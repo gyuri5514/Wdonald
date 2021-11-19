@@ -100,104 +100,21 @@
 
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
-
+var chartType= $('#chartType').val();
 // Area Chart Example
 
 var jsonChart =  ${chartList};
-
+	console.log(jsonChart);
 var labels = jsonChart.map(function(e){
 	return e.daily_chart;
 })
- 				 
+ 				 console.log(labels);
 var data = jsonChart.map(function(e){
 	return e.sales_amount;
 })
- 
-var ctx = document.getElementById("myChart");
-var myLineChart = new Chart(ctx,{
-	  type: $('#chartType').val(),
-	  data: {
-	    labels: labels,
-	    datasets: [{
-	      label: "sales amount",
-	      lineTension: 0.3,
-	      backgroundColor: "rgba(2,117,216,0.2)",
-	      borderColor: "rgba(2,117,216,1)",
-	      pointRadius: 5,
-	      pointBackgroundColor: "rgba(2,117,216,1)",
-	      pointBorderColor: "rgba(255,255,255,0.8)",
-	      pointHoverRadius: 5,
-	      pointHoverBackgroundColor: "rgba(2,117,216,1)",
-	      pointHitRadius: 50,
-	      pointBorderWidth: 2,
-	      data: data
-	    }]
-	  },
-	  options: {
-	    scales: {
-	      xAxes: [{
-	        time: {
-	          unit: 'date'
-	        },
-	        gridLines: {
-	          display: false
-	        },
-	        ticks: {
-	          maxTicksLimit: 7
-	        }
-	      }],
-	      yAxes: [{
-	        ticks: {
-	          min: 0,
-	          max: (${max}+10000),
-	          maxTicksLimit: 5
-	        },
-	        gridLines: {
-	          color: "rgba(0, 0, 0, .125)",
-	        }
-	      }],
-	    },
-	    legend: {
-	      display: false
-	    }
-	  }
-	});
 
-function newLineChart(){
-	var chartType ;
-	if($('#chartType').val()=='line'){
-		$('#chartType').val('bar');
-		chartType = $('#chartType').val();
-		$('#barOrLine').text('line');
-	}
-	else{
-		$('#chartType').val('line');
-		chartType = $('#chartType').val();
-		$('#barOrLine').text('bar');
-	}
-	
-	var ctx = document.getElementById("myChart");
-	var myLineChart = new Chart(ctx,{
-		  type: chartType,
-		  data: {
-		    labels: labels,
-		    datasets: [{
-		      label: "sales amount",
-		      lineTension: 0.3,
-		      backgroundColor: "rgba(2,117,216,0.2)",
-		      borderColor: "rgba(2,117,216,1)",
-		      pointRadius: 5,
-		      pointBackgroundColor: "rgba(2,117,216,1)",
-		      pointBorderColor: "rgba(255,255,255,0.8)",
-		      pointHoverRadius: 5,
-		      pointHoverBackgroundColor: "rgba(2,117,216,1)",
-		      pointHitRadius: 50,
-		      pointBorderWidth: 2,
-		      data: data
-		    }]
-		  },
-		  options: {
-		    scales: {
+var options = {
+	    scales: {
 		      xAxes: [{
 		        time: {
 		          unit: 'date'
@@ -223,13 +140,58 @@ function newLineChart(){
 		    legend: {
 		      display: false
 		    }
-		  }
+ }
+
+var dataSets =  [{
+    label: "sales amount",
+    lineTension: 0.3,
+    backgroundColor: "rgba(2,117,216,0.2)",
+    borderColor: "rgba(2,117,216,1)",
+    pointRadius: 5,
+    pointBackgroundColor: "rgba(2,117,216,1)",
+    pointBorderColor: "rgba(255,255,255,0.8)",
+    pointHoverRadius: 5,
+    pointHoverBackgroundColor: "rgba(2,117,216,1)",
+    pointHitRadius: 50,
+    pointBorderWidth: 2,
+    data: data
+  }];
+
+var chartData = {
+    labels: labels,
+    datasets: dataSets
+  }
+
+var ctx = document.getElementById("myChart").getContext('2d');
+var myLineChart = new Chart(ctx,{
+	  type: $('#chartType').val(),
+	  data:chartData,
+	  options: options
+	});
+
+function newLineChart(){
+	if($('#chartType').val()=='line'){
+		$('#chartType').val('bar');
+		chartType = $('#chartType').val();
+		$('#barOrLine').text('line');
+	}
+	else{
+		$('#chartType').val('line');
+		chartType = $('#chartType').val();
+		$('#barOrLine').text('bar');
+	}
+	
+	ctx = document.getElementById("myChart");
+    myLineChart = new Chart(ctx,{
+		  type: $('#chartType').val(),
+		  data: chartData,
+		  options: options
 		});
 }
 					
 function getNewChart(){
 	var max_amount = 0;
-	var total_amount;
+	var total_amount = 0;
 	
 	var start_date = $('input[name="start_date"]').val();
 	var end_date = $('input[name="end_date"]').val();
@@ -237,8 +199,6 @@ function getNewChart(){
 	var date_term = $('input[name="date_term"]:checked').val();
 	var type = $('input[name="type"]:checked').val();
 	var order_status = $('input[name="order_status"]:checked').val();
-	
-	var labels_term=[];
 	
 	var man_array = [];
 	var woman_array = [];
@@ -248,7 +208,9 @@ function getNewChart(){
 	var card_array = [];
 	var elsepay_array = [];
 	
-	
+	console.log(data);
+	console.log(labels);
+
 	$('#start_date_span').html('<i><font>'+start_date+'</font></i>');
 	$('#end_date_span').html('<i><font>'+end_date+'</font></i>');
 	
@@ -266,13 +228,17 @@ function getNewChart(){
 		contentType :"application/json"
 			}).done(function(res){
 			console.log(res);
-			
+			max_amount = 0;
+			total_amount = 0;
 			for(var i in res){
 				if(res[i].sales_amount>max_amount)
 					max_amount = res[i].sales_amount;
+				total_amount += res[i].sales_amount;res[i].sales_amount;
 			}
+			console.log(total_amount);
 			console.log(max_amount);
-			labels_term = res.map(function(e){
+			
+			labels = res.map(function(e){
 				
 				if(date_term=='daily'){
 				return e.daily_chart;
@@ -293,89 +259,100 @@ function getNewChart(){
 					 nogend_array.push(res[i]);
 					 }
 				}
+	
+		dataSets = [{
+		      label: "sales amount man",
+		      backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255, 99, 132, 1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)'
+	            ],
+		      data: man_array,
+		      borderWidth: 1
+		    },
+		    {
+		    	label: "sales amount woman",
+			      backgroundColor: [
+			    	  'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		            	 'rgba(75, 192, 192, 1)',
+		                 'rgba(153, 102, 255, 1)',
+		                 'rgba(255, 159, 64, 1)'
+		            ],
+			      data: woman_array,
+			      borderWidth: 1
+			    },
+			    {
+			    	label: "sales amount woman",
+				      backgroundColor: [
+				    	  'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			            	 'rgba(75, 192, 192, 1)',
+			                 'rgba(153, 102, 255, 1)',
+			                 'rgba(255, 159, 64, 1)'
+			            ],
+				      data: nogend_array,
+				      borderWidth: 1
+				    }];
 				
-				var stx = document.getElementById("myChart");
-				 myLineChart = new Chart(stx,{
-					  type: chartType,
-					  data: {
-					    labels: labels_term,
-					    datasets: [{
-					      label: "sales amount man",
-					      lineTension: 0.3,
-					      backgroundColor: "rgba(1,117,216,0.2)",
-					      borderColor: "blue",
-					      pointRadius: 5,
-					      pointBackgroundColor: "rgba(1,117,216,1)",
-					      pointBorderColor: "rgba(255,255,255,0.8)",
-					      pointHoverRadius: 5,
-					      pointHoverBackgroundColor: "rgba(1,117,216,1)",
-					      pointHitRadius: 50,
-					      pointBorderWidth: 2,
-					      data: man_array
-					    },
-					    {
-						      label: "sales amount woman",
-						      lineTension: 0.3,
-						      backgroundColor: "rgba(2,117,216,0.2)",
-						      borderColor: "red",
-						      pointRadius: 5,
-						      pointBackgroundColor: "rgba(2,117,216,1)",
-						      pointBorderColor: "rgba(255,255,255,0.8)",
-						      pointHoverRadius: 5,
-						      pointHoverBackgroundColor: "rgba(2,117,216,1)",
-						      pointHitRadius: 50,
-						      pointBorderWidth: 2,
-						      data: woman_array
-						    },
-						    {
-							      label: "none amount",
-							      lineTension: 0.3,
-							      backgroundColor: "rgba(3,117,216,0.2)",
-							      borderColor: "gray",
-							      pointRadius: 5,
-							      pointBackgroundColor: "rgba(3,117,216,1)",
-							      pointBorderColor: "rgba(255,255,255,0.8)",
-							      pointHoverRadius: 5,
-							      pointHoverBackgroundColor: "rgba(3,117,216,1)",
-							      pointHitRadius: 50,
-							      pointBorderWidth: 2,
-							      data: nogend_array
-							    }]
-					  },
-					  options: {
-					    scales: {
-					      xAxes: [{
-					        time: {
-					          unit: 'date'
-					        },
-					        gridLines: {
-					          display: false
-					        },
-					        ticks: {
-					          maxTicksLimit: 7
-					        }
-					      }],
-					      yAxes: [{
-					        ticks: {
-					          min: 0,
-					          max: (max_amount+10000),
-					          maxTicksLimit: 5
-					        },
-					        gridLines: {
-					          color: "rgba(0, 0, 0, .125)",
-					        }
-					      }],
-					    },
-					    legend: {
-					      display: false
-					    }
-					  }
-					});
-				 console.log('hi')
+		chartData={
+		    labels: labels,
+		    datasets: dataSets
+				  };
+				
+				console.log(chartData);
+			
 		}else if(type=='pay_status'){
 			
+		}else{
+			 data
 		}
-		console.log(labels_term);
+			 ctx = document.getElementById("myChart").getContext('2d');
+			 options = {
+					    scales: {
+						      xAxes: [{
+						        time: {
+						          unit: 'date'
+						        },
+						        gridLines: {
+						          display: false
+						        },
+						        ticks: {
+						          maxTicksLimit: 7
+						        }
+						      }],
+						      yAxes: [{
+						        ticks: {
+						          min: 0,
+						          max: (max_amount+10000),
+						          maxTicksLimit: 5
+						        },
+						        gridLines: {
+						          color: "rgba(0, 0, 0, .125)",
+						        }
+						      }],
+						    },
+						    legend: {
+						      display: false
+						    }
+						  };
+			 
+			 myLineChart = new Chart(ctx,{
+				  type: $('#chartType').val(),
+				  data: chartData,
+				  options:options 
+				});
 	})
 }
 </script>

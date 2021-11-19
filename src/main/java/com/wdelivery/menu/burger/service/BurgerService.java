@@ -3,6 +3,7 @@ package com.wdelivery.menu.burger.service;
 import java.util.List;
 
 import com.wdelivery.menu.burger.vo.BurgerVO;
+import com.wdelivery.news.utils.Criteria;
 
 public interface BurgerService {
 
@@ -19,5 +20,6 @@ public interface BurgerService {
 	void deleteBurger(String b_code);
 
 	void insertBurger(BurgerVO burgerVO);
+	
 
 }

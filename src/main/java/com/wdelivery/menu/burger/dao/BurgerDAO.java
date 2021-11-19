@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.wdelivery.menu.burger.vo.BurgerVO;
 import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
+import com.wdelivery.news.utils.Criteria;
 
 public interface BurgerDAO {
 

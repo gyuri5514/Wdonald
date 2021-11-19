@@ -204,7 +204,6 @@ function onsitePayment() {
 									+codeWdonald.getMinutes()+codeWdonald.getSeconds()+user_seq,
 						"order_comment" : order_comment,
 						"exactCash" : exactCash,
-						
 					}),
 					contentType:"application/json"
 				})

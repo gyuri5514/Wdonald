@@ -92,8 +92,6 @@
 								<a href="main.do" class="dth1">Story</a>
 								<ul class="depth2">
 									<li><a href="brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="competition.do" class="dth2">맥도날드 경쟁력</a></li>
 									<li><a href="crew.do" class="dth2">맥도날드 사람들</a></li>
 								</ul>
 							</li>

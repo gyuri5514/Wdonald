@@ -175,10 +175,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-
 	public List<PaymentVO> getUserPaymentInfo(String user_email) {
 		return memberDAO.getUserPaymentInfo(user_email);
 	}
+	@Override
+	public void orderCancel(int order_seq) { //!!!!!!!!!!!!!!!!!!
+		memberDAO.orderCancel(order_seq);
+	}
+	
 
 	@Override
 	public List<CartVO> getCartListByMerchantId(String merchantUid) {

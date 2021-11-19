@@ -1,4 +1,4 @@
-package com.wdelivery.news.utils;
+package com.wdelivery.faq.utils;
 
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -11,7 +11,7 @@ public class PageMaker {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
-	private int displayPageNum = 10;
+	private int displayPageNum = 5;
 
 	public Criteria getCri() {
 		return cri;

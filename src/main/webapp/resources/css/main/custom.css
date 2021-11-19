@@ -1,19 +1,25 @@
 @charset "utf-8";
  
-@font-face{
-	font-family: 'SpeedeeK';
-	font-size: 500;
-	font-style: normal;
-	src: url('/resources/font/Speedee_K_R.woff') format('woff'),
-		 url('/resources/font/Speedee_K_R.tff') format('truetype')
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
 }
 
-@font-face{
-	font-family: 'SpeedeeK';
-	font-size: 600;
-	font-style: normal;
-	src: url('/resources/font/Speedee_K_B.woff') format('woff'),
-		 url('/resources/font/Speedee_K_B.tff') format('truetype')
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 500;
+    font-style: normal;
+    src: url("../font/Speedee_K_R.woff") format('woff'), 
+         url("../font/Speedee_K_R.ttf") format('truetype'); 
+}
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../font/Speedee_K_B.woff") format('woff'), 
+         url("../font/Speedee_K_B.ttf") format('truetype'); 
 }
 
 * {
@@ -576,7 +582,7 @@ textarea {
 	text-align: center
 }
 
-.btnPaging a {
+/* .btnPaging a {
 	display: inline-block;
 	width: 40px;
 	height: 40px;
@@ -585,7 +591,7 @@ textarea {
 	border: 1px solid #d1d1d1;
 	border-radius: 5px;
 	background: #fff
-}
+} */
 
 .btnPaging .arrow {
 	position: relative;
