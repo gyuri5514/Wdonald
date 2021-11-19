@@ -36,13 +36,9 @@
 			</c:forEach>
 		</div>
 		<div style="text-align:center">
-		  <span class="dot" onclick="currentSlide(1)"></span> 
-		  <span class="dot" onclick="currentSlide(2)"></span> 
-		  <span class="dot" onclick="currentSlide(3)"></span> 
-		  <span class="dot" onclick="currentSlide(4)"></span> 
-		  <span class="dot" onclick="currentSlide(5)"></span> 
-		  <span class="dot" onclick="currentSlide(6)"></span> 
-		  <span class="dot" onclick="currentSlide(7)"></span> 
+		  <c:forEach var="bannerList" items="${bannerList}" varStatus="status">
+		  	<span class="dot" onclick="currentSlide(${status.count})"></span> 
+		  </c:forEach>
 		</div>
 
 		<!-- //mainEvent -->

@@ -45,7 +45,7 @@ $( function() {
     $( "#m_birth" ).datepicker();
     $( "#start_history" ).datepicker();
 	$( "#end_history" ).datepicker();
-	$( "#start_history" ).datepicker('setDate', '-1D');
+	$( "#start_history" ).datepicker('setDate', '-7D');
 	$( "#end_history" ).datepicker('setDate', 'today');
 	
   } );

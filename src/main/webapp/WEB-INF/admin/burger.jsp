@@ -52,6 +52,7 @@
 						<i class="fas fa-table me-1"></i> 윈딜리버리 버거 내역
 					</div>
 					<div class="card-body">
+
 					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
 					<hr>
 					<div class="update" id="update">
@@ -71,6 +72,7 @@
 						<button class="btn btn-primary" type="submit" id="menuInsert" onclick="insert()">수정하기</button>
 					</div>
 					<!-- 큰일났다 이거 똥됐다!! -->
+
 					<hr>
 						<table id="datatablesSimple">
 							<thead>

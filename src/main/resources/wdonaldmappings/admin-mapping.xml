@@ -30,21 +30,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE coupon_code = #{cosupon_code}
 	</select>
 	
+	<delete id="deleteUserCoupon" >
+		DELETE FROM user_coupon WHERE coupon_code = #{coupon_code}
+	</delete>	
 	<delete id="deleteCoupon" >
-	
+		DELETE FROM coupon WHERE coupon_code = #{coupon_code}
 	</delete>	
 	
 	<insert id="addCoupon">
 		INSERT INTO coupon (coupon_code, coupon_title,
 		coupon_type, coupon_regdate,
-		coupon_enddate, coupon_canuse)
+		coupon_enddate, coupon_status)
 		VALUES(#{coupon_code}, #{coupon_title}, #{coupon_type},
 		#{coupon_regdate},
-		#{coupon_enddate}, #{coupon_canuse})
+		#{coupon_enddate}, #{coupon_status})
+	</insert>
+	<insert id="addUserCoupon">
+		INSERT INTO user_coupon(coupon_code, coupon_startdate, coupon_name, coupon_enddate coupon_status)
+		VALUES(#{coupon_code}, #{coupon_regdate}, #{coupon_title}, #{coupon_enddate}, #{coupon_status})
 	</insert>
 	
 	<select id="selectBannerList" resultType="adminBannerVO">
-		SELECT * FROM banner 
+		SELECT * FROM banner ORDER BY banner_seq DESC
 	</select>
 
 	<insert id="bannerInsert" parameterType="adminBannerVO">

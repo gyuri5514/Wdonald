@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
@@ -32,7 +33,8 @@ public class StoreController {
 	public String index(AdminVO adminVO, Model model, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
 		//System.out.println("bn" + adminVO.toString());
-		
+		if(adminVO==null)
+			return "redirect:login.mdo";
 		model.addAttribute("status", adminVO.getStore_status());
 		
 		return "index";
@@ -40,7 +42,7 @@ public class StoreController {
 	@GetMapping("/storeStatus.sdo")
 	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
-		System.out.println("상태 : " + adminVO.toString() + "?" + store_status);
+		System.out.println("storeStatus : " + adminVO.toString() + "?" + store_status);
 		adminVO.setStore_status(store_status);
 		storeService.storeStatus(adminVO);
 		return "index";
@@ -48,10 +50,14 @@ public class StoreController {
 	
 	//adminUpdate
 	@GetMapping("/adminUpdate.sdo")
-	public String adminUpdate() {
+	public String adminUpdate(HttpSession session) {
+		AdminVO admin = (AdminVO) session.getAttribute("admin");
+		if(admin == null) {
+			return "404";
+		}
+		
 		return "register";
 	}
-	
 	@GetMapping("/adminUpdatedo.sdo")
 	public String adminUpdate(HttpSession session, AdminVO adminVO) {
 		AdminVO admin = (AdminVO) session.getAttribute("admin");
@@ -77,13 +83,28 @@ public class StoreController {
 		return "500";
 	}
 
-	//?
+	//adminNotice
 	@GetMapping("/layout-sidenav-light.sdo")
-	public String layout() {
+	public String layout(AdminNoticeVO adminNoticeVO, Model model, HttpSession session) {
+		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		
+		if(adminVO != null){
+			List<AdminNoticeVO> noticeList = storeService.noticeSelect();
+			model.addAttribute("noticeList", noticeList);
+		}
 		return "layout-sidenav-light";
 	}
+	@GetMapping("/noticeDetail.sdo")
+	public String noticeDetail(Model model, AdminNoticeVO adminNoticeVO) {
+		adminNoticeVO = storeService.noticeDetail(adminNoticeVO);
+		model.addAttribute("noticeDetail", adminNoticeVO);
+		
+		return "noticeDetail";
+	}
 	
-	//store 1:1 고객문의
+	
+
+	//store 1:1
 	@GetMapping("/layoutStatic.sdo")
 	public String layoutStatic(QnaVO qnaVO, Model model, HttpSession session) {
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");

@@ -28,8 +28,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertBurger">
-		INSERT INTO burger (b_code, b_name, b_price, b_regdate, b_img_path, b_img, b_status, b_n_img_path, b_n_img, category_code, b_e_name) VALUES
-		(#{b_code}, #{b_name}, #{b_price}, #{b_regdate}, #{b_img_path}, #{b_img}, #{b_status}, #{b_n_img_path}, #{b_n_img}, #{category_code}, #{b_e_name})
+		INSERT INTO burger (b_code, b_name, b_kcal, b_price, b_regdate, b_img_path, b_img, b_status, b_n_img_path, b_n_img, category_code, b_e_name) VALUES
+		(#{b_code}, #{b_name}, #{b_kcal}, #{b_price}, #{b_regdate}, #{b_img_path}, #{b_img}, #{b_status}, #{b_n_img_path}, #{b_n_img}, #{category_code}, #{b_e_name})
 	</insert>
 	
 	<update id="updateburger">

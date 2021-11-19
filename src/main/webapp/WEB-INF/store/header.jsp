@@ -30,7 +30,7 @@
 		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
 			<div style="display: inline-block;">
 				<!-- <div class="input-group" > -->
-				<!-- <div class="btn-group" style="width: 80%; margin: 0 auto"> -->
+				<div class="btn-group" style="width: 80%; margin: 0 auto">
 					<select id="store_status" name="store_status" class="dropdown-toggle">
 							<c:if test="${status eq 1}">
 							<option value="">정상영업</option>
@@ -45,8 +45,8 @@
 							<option value="2">준비 중</option>
 							<option value="0">영업마감</option>
 					</select>
-					<input type="submit" class="input-group btn btn-warning" onclick="statusSubmit()" value="확인">
-				<!-- </div> -->
+					<input type="submit" class="btn btn-warning" style="margin-left : 10px" onclick="statusSubmit()" value="확인">
+				</div>
 			</div>
 		</form>
 		<!-- Navbar-->

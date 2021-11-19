@@ -17,8 +17,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					and(store_lon between #{start_lon} and #{end_lon});
 		]]>
 	</select>
+	
+	<select id="noticeSelect" resultType="adminNoticeVO">
+		select * from admin_notice order by notice_seq desc
+	</select>
+	<select id="noticeDetail" resultType="adminNoticeVO" parameterType="adminNoticeVO">
+		select * from admin_notice where notice_seq = #{notice_seq}
+	</select>
+	
 	<select id="storeQnaSelect" resultType="qnaVO" parameterType="AdminVO">
-		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name} order by qa_seq
+		select * from admin join qa on (admin.store_name = qa.qa_store)  where store_name = #{store_name} order by qa_seq desc
 	</select>
 	<select id="qnaDetail" resultType="qnaVO" parameterType="qnaVO">
 		select * from qa where qa_seq = #{qa_seq}

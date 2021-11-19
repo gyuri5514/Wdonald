@@ -19,4 +19,9 @@ public class ChartServiceImpl implements ChartService {
 		return chartDAO.getInitialChart(chartVO);
 	}
 
+	@Override
+	public ArrayList<ChartVO> getResponsiveChart(ChartVO chart) {
+		return chartDAO.getResponsiveChart(chart);
+	}
+
 }

@@ -171,9 +171,9 @@ function onsitePayment() {
 	var payment_value = $(':radio[name="payment_type"]:checked').val();
 	var payment_type;
 	if(payment_value==2){
-		payment_type="현금";
+		payment_type="cash";//현금
 	}else{
-		payment_type="현장에서 카드 결제";
+		payment_type="card";
 	}
 	var exactCash =  $('#exactCash').val();
 	
@@ -195,16 +195,15 @@ function onsitePayment() {
 						"final_price" : final_price,
 						"discount" : discount,
 						"order_comment": order_comment,
-						"payment_type" : '현장결제' ,
+						"payment_type" : payment_type ,
 						"store_code" : store_code,
 						"coupon_no" : coupon_no,
-						"pay_status" : payment_type,
+						"pay_status" : "현장에서 결제",
 						"merchantuid" : 'osp'+codeWdonald.getDay()+codeWdonald.getMonth()
 									+codeWdonald.getFullYear()+codeWdonald.getHours()
 									+codeWdonald.getMinutes()+codeWdonald.getSeconds()+user_seq,
 						"order_comment" : order_comment,
 						"exactCash" : exactCash,
-						
 					}),
 					contentType:"application/json"
 				})

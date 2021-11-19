@@ -15,6 +15,42 @@
 			window.location.href = url;
 		})
 	}
+	
+	let moveForm = $("#moveForm");
+	
+	$(".move").on("click", function(e){
+		e.preventDefault();
+		
+		moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
+		moveForm.attr("action", "/board/get");
+		moveForm.submit();
+	});
+	
+	$(".pageInfo a").on("click", function(e){
+		e.preventDefault();
+		moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+		moveForm.attr("action", "/board/list");
+		moveForm.submit();
+		
+	});	
+	
+	
+	$(".search_area button").on("click", function(e){
+		e.preventDefault();
+		
+		let type = $(".search_area select").val();
+		let keyword = $(".search_area input[name='keyword']").val();
+		
+		if(!keyword){
+			alert("키워드를 입력하세요.");
+			return false;
+		}		
+		
+		moveForm.find("input[name='type']").val(type);
+		moveForm.find("input[name='keyword']").val(keyword);
+		moveForm.find("input[name='pageNum']").val(1);
+		moveForm.submit();
+	});
 </script>
 
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
@@ -73,24 +109,28 @@
 					</c:forEach>
 				</ul>
 				<div class='btnPaging'>
-					<ul class="btn_group pagination">
+					<ul class="btn_group_pagination">
 						<c:if test="${pageMaker.prev}">
 						<li class="paging_prev_btn">
 							<a href='<c:url value="/news.do?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
 						</li>
 						</c:if>
 						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
-						<li class="paging_number_btn">
-							<a href='<c:url value="/news.do?page=${pageNum}"/>'><i class="fa">${pageNum}</i></a>
+						<li class="paging_number_btn ${pageMaker.cri.page == pageNum ? "active" : ""}">
+							<a href="${pageNum}"><i class="fa">${pageNum}</i></a>
 						</li>
 						</c:forEach>
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li class="paging_next_btn">
-							<a href='<c:url value="/news.do?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
+							<a href="${pageMaker.endPage + 1}"><i class="fa fa-chevron-right"></i></a>
 						</li>
 						</c:if>
 					</ul>
 				</div>
+				<form id="moveForm" method="get">
+					<input type="hidden" name="page" value="${pageMaker.cri.page}">
+					<input type="hidden" name="totalCount" value="${pageMaker.totalCount}">
+				</form>
 				<!-- //검색 결과 있음 -->
 			</div>
 			<!-- //mcBaord -->
@@ -99,7 +139,7 @@
 	<!-- //contArea -->
 </div>
 <div class="aside">
-	<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
+	<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 </div>
 
 <button type="button" class="btnTop">맨 위로 가기</button>

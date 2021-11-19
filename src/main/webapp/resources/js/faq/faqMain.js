@@ -178,6 +178,7 @@ function search(type,type2)
    /*reqAll();*/
 
 }
+
 //버튼 클릭시 page 늘어감
 function morePage(type, type2) {
 	//console.log("type :" + type + " / type2 : " + type2);

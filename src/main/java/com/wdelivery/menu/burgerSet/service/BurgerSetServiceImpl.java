@@ -16,14 +16,17 @@ public class BurgerSetServiceImpl implements BurgerSetService {
 	
 	@Override
 	public List<BurgerSetVO> selectBurgerSet() {
-		System.out.println("selectBurgerSet");
 		return burgerSetDAO.selectBurgerSet();
 	}
 	
 	@Override
 	public BurgerSetVO detailBurgerSet(int b_code) {
-		System.out.println("detailBurgerSet");
 		return burgerSetDAO.detailBurgerSet(b_code);
+	}
+
+	@Override
+	public void insertBurgerSet(BurgerSetVO burgerSetVO) {
+		burgerSetDAO.insertBurgerSet(burgerSetVO);
 	}
 	
 }

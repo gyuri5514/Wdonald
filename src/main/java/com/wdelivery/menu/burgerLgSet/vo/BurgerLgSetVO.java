@@ -7,7 +7,7 @@ public class BurgerLgSetVO {
 	private Integer b_lgset_code;
 	private String b_lgset_name;
 	private int b_lgset_price;
-	private String b_lgset_kcal;
+	private int b_lgset_kcal;
 	private Date b_lgset_regdate;
 	private String b_lgset_img_path;
 	private String b_lgset_img;
@@ -44,11 +44,11 @@ public class BurgerLgSetVO {
 		this.b_lgset_price = b_lgset_price;
 	}
 
-	public String getB_lgset_kcal() {
+	public int getB_lgset_kcal() {
 		return b_lgset_kcal;
 	}
 
-	public void setB_lgset_kcal(String b_lgset_kcal) {
+	public void setB_lgset_kcal(int b_lgset_kcal) {
 		this.b_lgset_kcal = b_lgset_kcal;
 	}
 

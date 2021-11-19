@@ -1,9 +1,10 @@
 package com.wdelivery.member.controller;
 
 
-import java.util.Random;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,19 +13,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.wdelivery.admin.service.AdminService;
+import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.member.service.MailSendService;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.vo.KakaoUserVO;
 import com.wdelivery.member.vo.NaverUserVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.promotion.service.PromotionService;
+import com.wdelivery.promotion.vo.PromotionVO;
 
 @Controller
 public class MemberLoginController {
@@ -36,6 +43,21 @@ public class MemberLoginController {
 	private MemberService memberService; 
 	@Autowired
 	private MailSendService mss;
+	@Autowired
+	private AdminService adminService;
+  
+	@Autowired
+	private PromotionService promotionService;
+
+	@ModelAttribute("bannerList")
+	public List<AdminBannerVO> getBannerList(){
+		return  adminService.selectBannerList();
+	}
+	
+	@ModelAttribute("selectPromotion")
+	public List<PromotionVO> selectPromotion(){
+		return promotionService.selectPromotion();
+	}
 	
 	/**
 	 회원상태 
@@ -75,7 +97,6 @@ public class MemberLoginController {
 					session.removeAttribute("total_price");
 				if(session.getAttribute("delivery_price") != null)
 					session.removeAttribute("delivery_price");
-				
 				return "main";
 				}else {
 					//incorrect password
@@ -91,7 +112,6 @@ public class MemberLoginController {
 	@RequestMapping("kakaoLogin.do")
 	@ResponseBody
 	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session) {
-		System.out.println(kakaoVO.toString());
 		UserVO kakaoUserVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
 		if(kakaoUserVO!=null) {
 		session.setAttribute("kakaoSession", kakaoUserVO);
@@ -106,11 +126,9 @@ public class MemberLoginController {
 			}
 			userVO.setUser_birth(kakaoVO.getBirthday());
 			userVO.setUser_name(kakaoVO.getNickname());
-			System.out.println("start socialMemJoin() => "+userVO.toString());
 			
 			memberService.socialMemJoin("kakao",userVO);
 			userVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
-			System.out.println(userVO.toString());
 			session.setAttribute("kakaoSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
@@ -131,7 +149,6 @@ public class MemberLoginController {
 	@RequestMapping(value = "emailChk.do", method = RequestMethod.GET)
 	public int emailChk(String user_email) {
 		int emailResult = memberService.emailChk(user_email);
-		System.out.println("controller : " + emailResult);
 		return emailResult;
 		
 	}
@@ -147,7 +164,6 @@ public class MemberLoginController {
 			numStr += ran;
 		}
 		memberService.certifiedPhoneNumber(user_phone, numStr);
-		System.out.println("수신자 번호 : " + user_phone);
 		System.out.println("인증 번호 : " + numStr);
 		
 		return numStr;
@@ -163,7 +179,6 @@ public class MemberLoginController {
 	
 	@RequestMapping("naverLogin.do")
 	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session) {
-		System.out.println(naverVO.toString());
 		UserVO naverUserVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
 		if(naverUserVO!=null) {
 		session.setAttribute("naverSession", naverUserVO);
@@ -175,11 +190,9 @@ public class MemberLoginController {
 			userVO.setUser_birth(naverVO.getBirthday());
 			userVO.setUser_phone(naverVO.getMobile());
 			userVO.setUser_name(naverVO.getName());
-			System.out.println("start socialMemJoin() => "+userVO.toString());
 			
 			memberService.socialMemJoin("naver",userVO);
 			userVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
-			System.out.println(userVO.toString());
 			session.setAttribute("naverSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
@@ -198,14 +211,12 @@ public class MemberLoginController {
 					@RequestParam("type") String type,
 				@RequestParam("email") String email,
 			@RequestParam("authKey") String authKey,Model model){
-		System.out.println(email + " authKey =" +authKey);
 		Map<String,String> emailMap = new HashMap<String,String>();
 		emailMap.put("authKey", authKey);
 		emailMap.put("email", email);
 		if(isAuthKeyAvailable(emailMap)) {
 			
 			model.addAttribute("emailResult","success");
-			System.out.println(type);
 			
 			if(type.equals("join"))
 				memberService.signUpConfirm(email);

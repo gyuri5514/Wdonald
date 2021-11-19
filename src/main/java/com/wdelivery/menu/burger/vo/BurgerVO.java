@@ -11,10 +11,8 @@ public class BurgerVO {
 	private Integer b_code;
 	private String b_name;
 	private int b_price;
-	private String b_kcal;
+  private int b_kcal;
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date b_regdate;
 	private String b_img_path;
 	private String b_img;
@@ -84,11 +82,11 @@ public class BurgerVO {
 		this.b_price = b_price;
 	}
 
-	public String getB_kcal() {
+	public int getB_kcal() {
 		return b_kcal;
 	}
 
-	public void setB_kcal(String b_kcal) {
+	public void setB_kcal(int b_kcal) {
 		this.b_kcal = b_kcal;
 	}
 

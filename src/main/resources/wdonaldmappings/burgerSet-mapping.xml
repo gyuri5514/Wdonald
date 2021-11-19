@@ -12,5 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="detailBurgerSet" resultType="burgerSetVO">
 		SELECT * FROM burger_set WHERE b_set_code = #{b_code}
 	</select>
-  
+    <insert id="insertBurgerSet">
+    	INSERT INTO burger_set(b_set_code, b_set_img, b_set_img_path, b_set_name, b_set_price, b_set_kcal, b_set_regdate, b_set_detail_comment)
+    	VALUES
+    	(#{b_set_code}, #{b_set_img}, #{b_set_img_path}, #{b_set_name}, #{b_set_price}, #{b_set_kcal},
+    	 #{b_set_regdate}, #{b_set_detail_comment})
+    </insert>
 </mapper>

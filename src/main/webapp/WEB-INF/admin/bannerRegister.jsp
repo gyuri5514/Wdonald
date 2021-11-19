@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +19,7 @@
  	$(document).ready(function(){
 	 	$("#cancle").on("click",function(){ 
 	   		
-	   		 location.href = "/controller/layout-sidenav-light.mdo"
+	   		 location.href = "banner.mdo";
 	   	 })
 	   	$("#submit").on("click",function(){
 			 if($("#banner_title").val()==""){
@@ -38,7 +37,6 @@
 				 $("#banner_img").focus();
 				 return false;
 			 }
-			 alert($('#file').val());
 			  $('#addBanner').submit(); 
 		 });
 	 	
@@ -97,18 +95,14 @@
                                             	<c:forEach var="bannerList" items="${bannerList}" varStatus="status" end="${bannerList.size()}">
 													<div class="mySliders fade">
 														<div class="numbertext">${status.count}/ ${status.end}</div>
-														<img style="width:100%" src="${bannerList.banner_img}" alt="1955 스모키 더블 베이컨 버거 출시">
+														<img style="width:100%" src="${bannerList.banner_img}">
 													</div>
 												</c:forEach>
 											</div>
 											<div style="text-align:center; margin:10px;">
-											  <span class="dot" onclick="currentSlide(1)"></span> 
-											  <span class="dot" onclick="currentSlide(2)"></span> 
-											  <span class="dot" onclick="currentSlide(3)"></span> 
-											  <span class="dot" onclick="currentSlide(4)"></span> 
-											  <span class="dot" onclick="currentSlide(5)"></span> 
-											  <span class="dot" onclick="currentSlide(6)"></span> 
-											  <span class="dot" onclick="currentSlide(7)"></span> 
+											  <c:forEach var="bannerList" items="${bannerList}" varStatus="status">
+											  	<span class="dot" onclick="currentSlide(${status.count})"></span> 
+											  </c:forEach>
 											</div>
                                             <div class="row mb-3">
                                                 <div class="input-group">
