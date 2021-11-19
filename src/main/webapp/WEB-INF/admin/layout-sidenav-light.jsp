@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -32,9 +32,9 @@
 							</tr>
 						</thead>
 						<tbody id="ajaxCoupon">
-						<c:forEach var="vo" items="${vo}">
+						<c:forEach var="vo" items="${vo}" varStatus="status">
 							<tr>
-								<td>${vo.coupon_code}</td>
+								<td id="coupon_code">${vo.coupon_code}</td>
 								<td>${vo.coupon_title}</td>
 								<td>${vo.coupon_type}</td>
 								<td><fmt:formatDate value="${vo.coupon_regdate}" pattern="yyyy-MM-dd"/></td>
@@ -47,14 +47,14 @@
 										</select>
 									</div>
 								</td>
-								<td><button class="couponDelete" id="couponDelete" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
+								<td><button class="couponDelete" id="couponDelete" onClick="couponDelete()" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
 							</tr>					
 						</c:forEach>							
 						</tbody>
 					</table>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</main>
 
 
@@ -71,6 +71,24 @@
 	</footer>
 </div>
 
+<script type="text/javascript">
+	function couponDelete(){
+		var index = $("#coupon_code").text();
+		alert(index);
+			$.ajax({
+				type : 'post',
+				url : '/controller/deleteCoupon.mdo',
+				data : {
+					coupon_code : index
+				},
+				dataType : 'json',
+				success : function(data){
+					if(data == 1)
+						location.href = "layout-sidenav-light.mdo";
+				}
+			})
+		}
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>

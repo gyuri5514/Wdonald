@@ -12,7 +12,7 @@ public class AdminCouponVO {
 	private Date coupon_regdate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_enddate;
-	private int coupon_canuse;
+	private int coupon_status;
 	private String coupon_check;
 	public String getCoupon_code() {
 		return coupon_code;
@@ -44,13 +44,12 @@ public class AdminCouponVO {
 	public void setCoupon_enddate(Date coupon_enddate) {
 		this.coupon_enddate = coupon_enddate;
 	}
-	public int getCoupon_canuse() {
-		return coupon_canuse;
+	public int getCoupon_status() {
+		return coupon_status;
 	}
-	public void setCoupon_canuse(int coupon_canuse) {
-		this.coupon_canuse = coupon_canuse;
+	public void setCoupon_status(int coupon_status) {
+		this.coupon_status = coupon_status;
 	}
-	
 	public String getCoupon_check() {
 		return coupon_check;
 	}
@@ -61,7 +60,7 @@ public class AdminCouponVO {
 	public String toString() {
 		return "AdminCouponVO [coupon_code=" + coupon_code + ", coupon_title=" + coupon_title + ", coupon_type="
 				+ coupon_type + ", coupon_regdate=" + coupon_regdate + ", coupon_enddate=" + coupon_enddate
-				+ ", coupon_canuse=" + coupon_canuse + "]";
+				+ ", coupon_status=" + coupon_status + ", coupon_check=" + coupon_check + "]";
 	}
 	
 }
