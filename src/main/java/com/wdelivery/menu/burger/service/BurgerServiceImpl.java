@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wdelivery.menu.burger.dao.BurgerDAO;
 import com.wdelivery.menu.burger.vo.BurgerVO;
+import com.wdelivery.news.utils.Criteria;
 
 @Service
 public class BurgerServiceImpl implements BurgerService {
@@ -51,4 +52,5 @@ public class BurgerServiceImpl implements BurgerService {
 	public void insertBurger(BurgerVO burgerVO) {
 		burgerDAO.insertBurger(burgerVO);
 	}
+
 }

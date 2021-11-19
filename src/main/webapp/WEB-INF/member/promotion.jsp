@@ -60,10 +60,10 @@ function promotionShow(status) {
 		<div class="contArea bgG">
 			<div class="inner">
 				<ul class="tabType01">
-					<li><a href="javascript:promotionShow('');" id="all" role="button">전체보기</a></li>
-					<!-- 선택 된 태그에 aria-selected="true" 추가 -->
+					<!-- <li><a href="javascript:promotionShow('');" id="all" role="button">전체보기</a></li>
+					선택 된 태그에 aria-selected="true" 추가
 					<li><a href="javascript:promotionShow('I');" id="ing" role="button">진행중</a></li>
-					<li><a href="javascript:promotionShow('E')" id="end" role="button">종료</a></li>
+					<li><a href="javascript:promotionShow('E')" id="end" role="button">종료</a></li> -->
 				</ul>
 				<!-- 행사 있을 경우 종료된 행사일 경우 class값 end 추가-->
 				<ul class="cardBanner" id="promotionList">
@@ -82,7 +82,7 @@ function promotionShow(status) {
 							</a>
 						</li>
 					</c:forEach>
-					<c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
+					<%-- <c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
 						<li id="promotion_end">
 							<a href="#" data-seq="${selectPromotionEnd.p_code}" class="end">
 								<div class="tmb">
@@ -96,7 +96,7 @@ function promotionShow(status) {
 								</div>
 							</a>
 						</li>
-					</c:forEach>
+					</c:forEach> --%>
 				</ul>
 				<div class="btnMore" id="btnMore">
 					<a href="javascript:more();" class="more">더보기</a>

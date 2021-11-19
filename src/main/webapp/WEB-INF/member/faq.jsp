@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -14,6 +13,9 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/faq/faqCommon.css">
 <link rel="stylesheet" href="resources/css/faq/faq.css">
+<!-- <link rel="stylesheet" type="text/css" href="resources/css/bam.css"> -->
+<link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- <script type="text/javascript" src="resources/js/faq/ajax.js"></script> -->
@@ -55,7 +57,7 @@
 	          <nav class="hMenu">
 	            <ul>
 	              <li class="hMenu_li_select">
-	                <a href="#" class="depth">FAQ</a>
+	                <a href="faq.do" class="depth">FAQ</a>
 	              </li>
 	              <li>
 	                <a href="qna.do" class="depth">1:1고객문의</a>
@@ -232,8 +234,27 @@
 										</div> <!--button type="button" class="btnMC btnM" onclick="morePage('','S');">
 							             	 +
 							            </button-->
+							            <div class='btnPaging'>
+							            	<ul class="btn_group pagination">
+							            		<c:if test="${pageMaker.prev}">
+							            		<li class="paging_prev_btn">
+							            			<a href='<c:url value="/faq.do?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
+							            		</li>
+							            		</c:if>
+							            		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+							            		<li class="paging_number_btn">
+							            			<a href='<c:url value="/faq.do?page=${pageNum}"/>'><i class="fa">${pageNum}</i></a>
+							            		</li>
+							            		</c:forEach>
+							            		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+												<li class="paging_next_btn">
+													<a href='<c:url value="/faq.do?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
+												</li>
+												</c:if>
+							            	</ul>
+							            </div>
 										<div class="btnMore" id="btnMore" style="display: none;">
-											<button type="button" class="more" onclick="morePage('','S');">더보기</button>
+											<button type="button" id="addBtn" class="more" onclick="morePage();">더보기</button>
 										</div>
 										<div id="LIST_PAGE_DIV" style="dispaly: none"></div>
 									</td>
@@ -254,6 +275,41 @@
 		</div>
 	</div>
 <script type="text/javascript">
+	morePage(); 
+	
+	function morePage() {
+		var startNum = $("#ajaxTable tr").length;
+		var addListHtml = "";
+		console.log("startNum", startNum);
+		
+		$.ajax({
+			url: "faq",
+			type: "post",
+			dataType: "json",
+			data: {"startNum":startNum},
+			
+			success : function(data) {
+				if (data.length < 10) {
+					$("#addBtn").remove();
+				} else {
+					var addListHtml = "";
+					if (data.length > 0) {
+						for (var i = 0; i < data.length; i++) {
+							var idx = Number(startNum) + Number(i) + 1;
+							
+							addListHtml += "<tr>";
+							addListHtml += "<td>" + idx + "</td>";
+							addListHtml += "<td>" + data[i].title + "</td>";
+							addListHtml += "<td>" + data[i].description + "</td>";
+							addListHtml += "</tr>";
+						}
+						$("#listBody").append(addListHtml);
+					}
+				}
+			}
+		});
+	}
+
 	$(function() { //$(document).ready(function){} 하고 같은 뜻
 	
 		selectMenu.init();
@@ -428,5 +484,4 @@
 			};
 		
 </script>
-
-	<%@ include file="footer.jsp"%>
+<%@ include file="footer.jsp"%>

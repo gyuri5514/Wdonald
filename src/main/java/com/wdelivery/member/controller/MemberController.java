@@ -50,6 +50,8 @@ import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
 import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
+import com.wdelivery.faq.utils.Criteria;
+import com.wdelivery.faq.utils.PageMaker;
 import com.wdelivery.promotion.service.PromotionService;
 import com.wdelivery.promotion.vo.PromotionVO;
 import com.wdelivery.qna.service.QnaService;
@@ -554,9 +556,16 @@ public class MemberController {
 	}
 
 	@GetMapping("/faq.do")
-	public String faq(Model model) {
-		List<FaqVO> vo = faqService.faqSelect();
+	public String faq(Model model, Criteria cri) {
+		List<FaqVO> vo = faqService.selectFaq(cri);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(faqService.totalFaq(cri));
+		
 		model.addAttribute("vo", vo);
+		model.addAttribute("pageMaker", pageMaker);
+		
 		return "faq";
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wdelivery.faq.dao.FaqDAO;
 import com.wdelivery.faq.vo.FaqVO;
+import com.wdelivery.faq.utils.Criteria;
 
 @Service
 public class FaqServiceImpl implements FaqService {
@@ -29,5 +30,13 @@ public class FaqServiceImpl implements FaqService {
 	public List<FaqVO> KeywordSelect(Map<String,String> map){
 		List<FaqVO> vo2 = faqDAO.KeywordSelect(map);
 		return vo2;
+	}
+	@Override
+	public List<FaqVO> selectFaq(Criteria cri) {
+		return faqDAO.selectFaq(cri);
+	}
+	@Override
+	public int totalFaq(Criteria cri) {
+		return faqDAO.totalFaq(cri);
 	}
 }
