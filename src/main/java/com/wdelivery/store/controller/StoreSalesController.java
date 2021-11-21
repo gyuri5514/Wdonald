@@ -77,6 +77,7 @@ public class StoreSalesController {
 	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
 		AdminVO av = (AdminVO) session.getAttribute("admin");
 		chart.setStore_code(av.getStore_code());
+		System.out.println(chart.toString());
 		List<ChartVO> cl = chartService.getResponsiveChart(chart);
 		for(ChartVO c : cl) {
 			System.out.println(c.toString());
