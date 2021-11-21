@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,12 @@ import com.wdelivery.menu.burgerLgSet.service.BurgerLgSetService;
 import com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO;
 import com.wdelivery.menu.burgerSet.service.BurgerSetService;
 import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
+import com.wdelivery.menu.dessert.vo.DessertVO;
+import com.wdelivery.menu.drink.vo.DrinkVO;
+import com.wdelivery.menu.happymeal.vo.HappyMealVO;
+import com.wdelivery.menu.side.vo.SideVO;
+import com.wdelivery.menu.winMorning.vo.WinMorningVO;
+import net.sf.json.JSONArray;
 import com.wdelivery.menu.dessert.service.DessertService;
 import com.wdelivery.menu.drink.service.DrinkService;
 import com.wdelivery.menu.happymeal.service.HappyMealService;
@@ -30,6 +38,7 @@ import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
 import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
+
 
 @Controller
 public class AdminMenuController {
@@ -57,12 +66,90 @@ public class AdminMenuController {
 	private HappyMealService happyMealService;
 	
 	@GetMapping("/burger.mdo")
-	public String viewBurger(Model model){
+	public String viewBurger(Model model, HttpSession session){
 		List<BurgerVO> burgerList = adminService.viewBurger();
-		model.addAttribute("burgerVO", burgerList);
+		model.addAttribute("burgerVO", JSONArray.fromObject(burgerList));
+		model.addAttribute("burgerList", burgerList);
+		session.setAttribute("burger", burgerList);
 		return "burger";
 	}
-
+	
+	@PostMapping("/burgerUpdate.mdo")
+	public String burgerUpdate(BurgerVO burgerVO) {
+		adminService.burgerUpdate(burgerVO);
+		return "redirect:burger.mdo";
+	}
+	
+	@GetMapping("/winMorning.mdo")
+	public String viewMorning(Model model){
+		List<WinMorningVO> morningList = adminService.viewMorning();
+		model.addAttribute("morningVO", JSONArray.fromObject(morningList));
+		model.addAttribute("morningList", morningList);
+		return "winMorning";
+	}
+	
+	@PostMapping("/morningUpdate.mdo")
+	public String morningUpdate(WinMorningVO winMorningVO) {
+		adminService.morningUpdate(winMorningVO);
+		return "redirect:winMorning.mdo";
+	}
+	
+	@GetMapping("/side.mdo")
+	public String viewSide(Model model){
+		List<SideVO> sideList = adminService.viewSide();
+		model.addAttribute("sideVO", JSONArray.fromObject(sideList));
+		model.addAttribute("sideList", sideList);
+		return "side";
+	}
+	
+	@PostMapping("/sideUpdate.mdo")
+	public String sideUpdate(SideVO sideVO) {
+		adminService.sideUpdate(sideVO);
+		return "redirect:side.mdo";
+	}
+	
+	@GetMapping("/dessert.mdo")
+	public String viewDessert(Model model){
+		List<DessertVO> dessertList = adminService.viewDessert();
+		model.addAttribute("dessertVO", JSONArray.fromObject(dessertList));
+		model.addAttribute("dessertList", dessertList);
+		return "dessert";
+	}
+	
+	@PostMapping("/dessertUpdate.mdo")
+	public String dessertUpdate(DessertVO dessertVO) {
+		adminService.dessertUpdate(dessertVO);
+		return "redirect:dessert.mdo";
+	}
+	
+	@GetMapping("/drink.mdo")
+	public String viewDrink(Model model){
+		List<DrinkVO> drinkList = adminService.viewDrink();
+		model.addAttribute("drinkVO", JSONArray.fromObject(drinkList));
+		model.addAttribute("drinkList", drinkList);
+		return "drink";
+	}
+	
+	@PostMapping("/drinkUpdate.mdo")
+	public String drinkUpdate(DrinkVO drinkVO) {
+		adminService.drinkUpdate(drinkVO);
+		return "redirect:drink.mdo";
+	}
+	
+	@GetMapping("/happyMeal.mdo")
+	public String viewHappyMeal(Model model){
+		List<HappyMealVO> happyMealList = adminService.viewHappy();
+		model.addAttribute("happyMealVO", JSONArray.fromObject(happyMealList));
+		model.addAttribute("happyMealList", happyMealList);
+		return "happyMeal";
+	}
+	
+	@PostMapping("/happyMealUpdate.mdo")
+	public String happyMealUpdate(HappyMealVO happyMealVO) {
+		adminService.happyUpdate(happyMealVO);
+		return "redirect:happyMeal.mdo";
+	}
+	
 	@GetMapping("/burgerRegister.mdo")
 	public String burgerRegister() {
 		return "burgerRegister";
@@ -190,4 +277,5 @@ public class AdminMenuController {
         
 		return "redirect:winMorning.mdo";
 	}
+
 }

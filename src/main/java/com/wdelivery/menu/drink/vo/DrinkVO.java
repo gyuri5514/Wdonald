@@ -1,5 +1,11 @@
 package com.wdelivery.menu.drink.vo;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class DrinkVO {
 	
 	private Integer d_code;
@@ -16,7 +22,16 @@ public class DrinkVO {
 	private String d_detail_img_path;
 	private String d_detail_comment;
 	private String d_allergy;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date d_regdate;
 	
+	public Date getD_regdate() {
+		return d_regdate;
+	}
+	public void setD_regdate(Date d_regdate) {
+		this.d_regdate = d_regdate;
+	}
 	public String getD_allergy() {
 		return d_allergy;
 	}

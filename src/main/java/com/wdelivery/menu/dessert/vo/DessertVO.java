@@ -1,5 +1,11 @@
 package com.wdelivery.menu.dessert.vo;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class DessertVO {
 
 	private Integer dessert_code;
@@ -13,7 +19,16 @@ public class DessertVO {
 	private int dessert_kcal;
 	private int category_code;
 	private String dessert_e_name;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dessert_regdate;
 	
+	public Date getDessert_regdate() {
+		return dessert_regdate;
+	}
+	public void setDessert_regdate(Date dessert_regdate) {
+		this.dessert_regdate = dessert_regdate;
+	}
 	public Integer getDessert_code() {
 		return dessert_code;
 	}

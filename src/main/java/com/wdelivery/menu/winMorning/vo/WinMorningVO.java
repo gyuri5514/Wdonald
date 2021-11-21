@@ -2,12 +2,18 @@ package com.wdelivery.menu.winMorning.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class WinMorningVO {
 
 	private Integer w_code;
 	private String w_name;
 	private Integer w_price;
 	private int w_kcal;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date w_regdate;
 	private String w_img_path;
 	private String w_img;
