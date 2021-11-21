@@ -146,7 +146,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getUserPaymentInfo" resultType="paymentVO" parameterType="String">
 	<![CDATA[
-		select * from order_list where user_email=#{user_email} and order_status != '주문취소'	order by order_seq desc
+		select * from order_list where user_email=#{user_email} and order_status != '주문취소' and
+		order_date between  (now() - INTERVAL '3 day') and now()
+		order by order_seq desc
 		]]>
 	</select>
 	<update id="orderCancel">

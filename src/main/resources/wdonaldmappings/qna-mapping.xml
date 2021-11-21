@@ -16,7 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<select id="qnaSelect" resultType="qnaVO">
-		select * from qa left outer join qaa on qa.qa_seq = qaa.qa_seq where qa_email = #{qa_email} and qa_password = #{qa_password}
+		select * from qa left outer join qaa on qa.qa_seq = qaa.qa_seq
+		where qa_email = #{qa_email} and qa_password = #{qa_password}
+		and qa_regdate = (select max(qa_regdate) from qa where qa_email = #{qa_email})
 	</select>
 	
 </mapper>

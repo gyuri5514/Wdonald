@@ -5,8 +5,7 @@
 			<div class="d-flex align-items-center justify-content-between small">
 				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
 				<div>
-					<a href="../main.sdo">Privacy Policy</a> &middot; <a href="#">Term
-						&amp; Conditions</a>
+					<a href="main.do">WinDelivery</a> &middot; <a href="#">Team &amp; 2</a>
 				</div>
 			</div>
 		</div>

@@ -38,16 +38,31 @@ public class StoreSalesController {
 	public String tables(@RequestParam(name="order_seq", defaultValue = "0") int order_seq, @RequestParam(name="order_status", defaultValue = "0") String order_status,
 			Model model, HttpSession session, PaymentVO paymentVO) {
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
-		if(adminVO != null) {
-			List<PaymentVO> orderList = storeSalesService.orderList(adminVO);
-			model.addAttribute("orderList", orderList);
+		if(adminVO == null) {
+			model.addAttribute("error",1);
+			return "index";
 		}
+		List<PaymentVO> orderList = storeSalesService.orderList(adminVO);
+		model.addAttribute("orderList", orderList);
 		if(order_seq > 0) {
 			storeSalesService.orderStatus(paymentVO);
 		}
 		
 		
 		return "tables";
+	}
+	@GetMapping("orderCancel.sdo")
+	public String orderCancel(PaymentVO paymentVO, Model model, HttpSession session) {
+		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		if(adminVO != null) {
+			System.out.println(adminVO.getStore_code());
+			List<PaymentVO> orderCancel = storeSalesService.orderCancel(adminVO.getStore_code());
+			System.out.println("cancelView : " + orderCancel.toString());
+			model.addAttribute("orderCancel", orderCancel);
+		}else {
+			return "redirect:login.mdo";
+		}
+		return "orderCancel";
 	}
 	
 	@GetMapping("/charts.sdo")

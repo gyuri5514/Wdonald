@@ -9,4 +9,5 @@ public interface StoreSalesDAO {
 
 	public List<PaymentVO> orderList(AdminVO adminVO);
 	public void orderStatus(PaymentVO paymentVO);
+	public List<PaymentVO> orderCancel(String store_code);
 }

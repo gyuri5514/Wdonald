@@ -40,20 +40,25 @@ public class StoreController {
 		return "index";
 	}
 	@GetMapping("/storeStatus.sdo")
-	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session) {
+	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session, Model model) {		
 		adminVO = (AdminVO) session.getAttribute("admin");
+		if(adminVO == null) {
+			model.addAttribute("error",1);
+			return "index";
+		}
 		System.out.println("storeStatus : " + adminVO.toString() + "?" + store_status);
 		adminVO.setStore_status(store_status);
 		storeService.storeStatus(adminVO);
-		return "index";
+		return "header";
 	}
 	
 	//adminUpdate
 	@GetMapping("/adminUpdate.sdo")
-	public String adminUpdate(HttpSession session) {
+	public String adminUpdate(HttpSession session,Model model) {
 		AdminVO admin = (AdminVO) session.getAttribute("admin");
 		if(admin == null) {
-			return "404";
+			model.addAttribute("error",1);
+			return "index";
 		}
 		
 		return "register";
@@ -61,11 +66,11 @@ public class StoreController {
 	@GetMapping("/adminUpdatedo.sdo")
 	public String adminUpdate(HttpSession session, AdminVO adminVO) {
 		AdminVO admin = (AdminVO) session.getAttribute("admin");
-		if(admin != null) {
+		//if(admin != null) {
 			int admin_seq = admin.getAdmin_seq();
 			adminVO.setAdmin_seq(admin_seq);
 			storeService.adminUpdate(adminVO);
-		}
+		//}
 		return "redirect:index.sdo";
 	}
 	
@@ -87,15 +92,19 @@ public class StoreController {
 	@GetMapping("/layout-sidenav-light.sdo")
 	public String layout(AdminNoticeVO adminNoticeVO, Model model, HttpSession session) {
 		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
-		
-		if(adminVO != null){
+		if(adminVO == null) {
+			model.addAttribute("error",1);
+			return "index";
+		}
+		//if(adminVO != null){
 			List<AdminNoticeVO> noticeList = storeService.noticeSelect();
 			model.addAttribute("noticeList", noticeList);
-		}
+		//}
 		return "layout-sidenav-light";
 	}
 	@GetMapping("/noticeDetail.sdo")
 	public String noticeDetail(Model model, AdminNoticeVO adminNoticeVO) {
+		
 		adminNoticeVO = storeService.noticeDetail(adminNoticeVO);
 		model.addAttribute("noticeDetail", adminNoticeVO);
 		
