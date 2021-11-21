@@ -233,7 +233,7 @@ function getNewChart(){
 			for(var i in res){
 				if(res[i].sales_amount>max_amount)
 					max_amount = res[i].sales_amount;
-				total_amount += res[i].sales_amount;res[i].sales_amount;
+				total_amount += res[i].sales_amount;
 			}
 			console.log(total_amount);
 			console.log(max_amount);
@@ -367,6 +367,26 @@ function getNewChart(){
 					<div class="card-body">
 						<canvas id="myPieChart" width="100%" height="50"></canvas>
 					</div>
+					<script type="text/javascript">
+					// Set new default font family and font color to mimic Bootstrap's default styling
+					Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+					Chart.defaults.global.defaultFontColor = '#292b2c';
+
+					// Pie Chart Example
+					var ctx = document.getElementById("myPieChart");
+					var myPieChart = new Chart(ctx, {
+					  type: 'pie',
+					  data: {
+					    labels: ["도은점", "규리점", "병관점"],
+					    datasets: [{
+					      //data: [45, 12, 11.25, 8.32],
+					      data: [45, 12, 11.25],
+					      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+					    }],
+					  },
+					});
+
+					</script>
 					<div class="card-footer small text-muted"></div>
 				</div>
 			</div>
