@@ -140,7 +140,8 @@
                               <nav class="sb-sidenav-menu-nested nav">
                                  <a class="nav-link" href="burger.mdo">Burger</a> 
                                  <a class="nav-link" href="winMorning.mdo">WinMorning</a>
-                                 <a class="nav-link" href="side.mdo">Side & Dessert</a>
+                                 <a class="nav-link" href="side.mdo">Side</a>
+                                 <a class="nav-link" href="dessert.mdo">Dessert</a>
                                  <a class="nav-link" href="drink.mdo">Drink</a>
                                  <a class="nav-link" href="happyMeal.mdo">Happymeal & Toy</a>
                                 <!--  <a class="nav-link" href="500.mdo">500 Page</a> -->

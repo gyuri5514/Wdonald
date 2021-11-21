@@ -1,5 +1,11 @@
 package com.wdelivery.menu.side.vo;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class SideVO {
 
 	private Integer s_code;
@@ -16,7 +22,16 @@ public class SideVO {
 	private String s_detail_comment;
 	private String s_detail_img_path;
 	private String s_allergy;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date s_regdate;
 	
+	public Date getS_regdate() {
+		return s_regdate;
+	}
+	public void setS_regdate(Date s_regdate) {
+		this.s_regdate = s_regdate;
+	}
 	public String getS_allergy() {
 		return s_allergy;
 	}

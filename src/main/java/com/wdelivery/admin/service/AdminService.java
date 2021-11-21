@@ -7,6 +7,11 @@ import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.menu.burger.vo.BurgerVO;
+import com.wdelivery.menu.dessert.vo.DessertVO;
+import com.wdelivery.menu.drink.vo.DrinkVO;
+import com.wdelivery.menu.happymeal.vo.HappyMealVO;
+import com.wdelivery.menu.side.vo.SideVO;
+import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.news.utils.Criteria;
 
 public interface AdminService {
@@ -32,6 +37,15 @@ public interface AdminService {
 	public void bannerInsert(AdminBannerVO bannerVO);
 
 	public List<BurgerVO> viewBurger();
-
-
+	public void burgerUpdate (BurgerVO burgerVO);
+	public List<WinMorningVO> viewMorning();
+	public void morningUpdate (WinMorningVO winMorningVO);
+	public List<SideVO> viewSide ();
+	public void sideUpdate (SideVO sideVO);
+	public List<DessertVO> viewDessert();
+	public void dessertUpdate (DessertVO dessertVO);
+	public List<DrinkVO> viewDrink();
+	public void drinkUpdate(DrinkVO drinkVO);
+	public List<HappyMealVO> viewHappy();
+	public void happyUpdate(HappyMealVO happyMealVO);
 }
