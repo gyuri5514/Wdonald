@@ -54,8 +54,26 @@ public class PromotionController {
 	public String selectHappyPromotion(Model model) {
 		List<HappyPromotionVO> selectHappyPromotion = happyPromotionService.selectHappyPromotion();
 		model.addAttribute(selectHappyPromotion);
+		
+		List<HappyPromotionVO> selectHappyPromotionEnd = happyPromotionService.selectHappyPromotionEnd();
+		model.addAttribute(selectHappyPromotionEnd);
 
 		return "happymealPromotion";
+	}
+	
+	@GetMapping("/happyPromotionDetail.do")
+	public String selectHappyPromotionDetail(Model model, @RequestParam(value = "hp_code", required = false) Integer hp_code) {
+		
+		if (hp_code != null) {
+			HappyPromotionVO happyPromotionVO = happyPromotionService.detailPromotion(hp_code);
+			happyPromotionService.countHappyPromotion(hp_code);
+			
+			model.addAttribute("detailPromotion", happyPromotionVO);
+			
+			return "happyPromotionDetail";
+		} else {
+			return "happymealPromotion.do";
+		}
 	}
 	
 	@GetMapping("/noResult.do")
