@@ -48,11 +48,6 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
-	public void addUserCoupon(AdminCouponVO addUserCoupon) {
-		adminDAO.addUserCoupon(addUserCoupon);
-	}
-	
-	@Override
 	public void deleteUserCoupon(AdminCouponVO deleteCoupon) {
 		adminDAO.deleteUserCoupon(deleteCoupon);
   }
@@ -62,6 +57,11 @@ public class AdminServiceImpl implements AdminService{
 		adminDAO.deleteCoupon(deleteCoupon);
   }
 
+	@Override
+	public void statusCoupon(AdminCouponVO vo) {
+		adminDAO.statusCoupon(vo);
+	}
+	
 	@Override
 	public List<AdminBannerVO> selectBannerList() {
 		return adminDAO.selectBannerList();

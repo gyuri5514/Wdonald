@@ -21,11 +21,11 @@ public interface AdminDAO {
 	
 	public void addCoupon(AdminCouponVO addcoupon);
 	
-	public void addUserCoupon(AdminCouponVO addUserCoupon);
-	
 	public void deleteUserCoupon(AdminCouponVO deleteCoupon);
 	
 	public void deleteCoupon(AdminCouponVO deleteCoupon);
+	
+	public void statusCoupon(AdminCouponVO vo);
 	
 	public List<AdminBannerVO> selectBannerList();
 
