@@ -24,4 +24,8 @@ public class HappyMealServiceImpl implements HappyMealService {
 		return happyMealDAO.detailHappyMeal(h_code);
 	}
 
+	@Override
+	public List<HappyMealVO> selectHappyMealPM() {
+		return happyMealDAO.selectHappyMealPM();
+	}
 }

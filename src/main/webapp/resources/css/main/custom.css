@@ -5699,7 +5699,10 @@ p.nutrDesc {
 
 * {box-sizing: border-box}
 body {font-family: SpeedeeK, Verdana, sans-serif; margin:0}
-.mySliders {display: none}
+.mySliders {
+	display: none;
+	cursor: pointer;
+}
 img {vertical-align: middle;}
 
 /* Slideshow container */

@@ -9,4 +9,6 @@ public interface WinMorningDAO {
 	public List<WinMorningVO> selectWinMorning();
 	
 	public WinMorningVO detailMorning(Integer w_code);
+	
+	public void insertWinMorning(WinMorningVO winMorningVO);
 }

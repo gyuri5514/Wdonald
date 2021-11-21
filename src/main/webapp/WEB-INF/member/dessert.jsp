@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 
 	<div id="container">
 		<div class="content">
-			<div class="visualArea bgMenu01">
+			<div class="visualArea bgMenu04">
 					<div class="inner">
 						<h1 class="titDep1">사이드 &amp; 디저트</h1>
 						<p class="subCopy">가볍게 즐겨도, 버거와 함께 푸짐하게 즐겨도,<br>
@@ -28,7 +29,7 @@
 									<li>
 										<a href="#" data-seq="300">
 											<div class="thum">
-												<img src="${selectDessert.dessert_img_path}" alt="${selectDessert.dessert_name}" onclick="javascript:goDetail(300)">
+												<img src="${selectDessert.dessert_img_path}" alt="${selectDessert.dessert_name}" onclick="javascript:location.href='detail.do?dessert_code=${selectDrink.dessert_code}'">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectDessert.dessert_name}</strong>
@@ -44,9 +45,6 @@
 									</li>
 								</c:forEach>
 							</ul>
-							<div class="btnMore" id="btnMore">
-								<button type="button" class="more" onclick="more()">더보기</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -57,7 +55,7 @@
 			</form>
 		</div>
 		<div class="aside">
-			<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">CART</a>
+			<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">CART</a>
 		</div>
 		<button type="button" class="btnTop">맨 위로 가기</button>
 	</div>
