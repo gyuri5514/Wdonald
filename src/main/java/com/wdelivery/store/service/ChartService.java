@@ -11,4 +11,6 @@ public interface ChartService {
 
 	ArrayList<ChartVO> getResponsiveChart(ChartVO chart);
 
+	ArrayList<ChartVO> getPieChart(ChartVO c);
+
 }

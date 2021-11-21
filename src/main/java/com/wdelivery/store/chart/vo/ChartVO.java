@@ -18,7 +18,7 @@ public class ChartVO {
 	private String date_term;
 	private String type;
 	private String order_status;
-
+	private String product_name;
 	public int getSales_amount() {
 		return sales_amount;
 	}
@@ -131,13 +131,20 @@ public class ChartVO {
 		this.order_status = order_status;
 	}
 
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
 	@Override
 	public String toString() {
 		return "ChartVO [sales_amount=" + sales_amount + ", sales_count=" + sales_count + ", daily_chart=" + daily_chart
 				+ ", month_chart=" + month_chart + ", year_chart=" + year_chart + ", user_gender=" + user_gender
 				+ ", user_status=" + user_status + ", store_code=" + store_code + ", payment_type=" + payment_type
 				+ ", start_date=" + start_date + ", end_date=" + end_date + ", date_term=" + date_term + ", type="
-				+ type + ", order_status=" + order_status + "]";
+				+ type + ", order_status=" + order_status + ", product_name=" + product_name + "]";
 	}
-
 }

@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminSalesController {
 	
 	//chart
-	@GetMapping("/charts.mdo")
-	public String charts() {
-		return "charts";
-	}
-	
+
 	@GetMapping("tables.mdo")
 	public String tables() {
 		return "tables";
