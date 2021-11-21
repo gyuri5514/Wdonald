@@ -7,6 +7,8 @@ import com.wdelivery.menu.happymeal.vo.HappyMealVO;
 public interface HappyMealService {
 
 	public List<HappyMealVO> selectHappyMeal();
+	
+	public List<HappyMealVO> selectHappyMealPM();
 
 	HappyMealVO detailHappyMeal(Integer h_code);
 }

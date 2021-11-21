@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.menu.dessert.dao.DessertDAO">
 
 	<select id="selectDessert" resultType="dessertVO">
-			SELECT * FROM dessert
+			SELECT * FROM dessert WHERE dessert_status = 1
 	</select>
 	<select id="detailDessert" resultType="dessertVO">
 			SELECT * FROM dessert where dessert_code = #{dessert_code}
