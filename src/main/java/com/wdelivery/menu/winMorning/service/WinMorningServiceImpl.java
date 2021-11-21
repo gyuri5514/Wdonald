@@ -23,4 +23,9 @@ public class WinMorningServiceImpl implements WinMorningService {
 	public WinMorningVO detailMorning(Integer w_code) {
 		return winMorningDAO.detailMorning(w_code);
 	}
+
+	@Override
+	public void insertWinMorning(WinMorningVO winMorningVO) {
+		winMorningDAO.insertWinMorning(winMorningVO);
+	}
 }

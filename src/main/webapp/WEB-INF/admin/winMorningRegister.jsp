@@ -22,72 +22,72 @@
 		})
 		$("#submit").on("click", function() {
 			var regExp = /\s/g;
-			if ($("#burger_code").val() == "") {
+			if ($("#winMorning_code").val() == "") {
 				alert("버거코드를 입력하세요.");
-				$("#burger_code").focus();
+				$("#winMorning_code").focus();
 				return false;
 			}
-			if (regExp.test($("#burger_code").val())) {
+			if (regExp.test($("#winMorning_code").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#burger_code").focus();
+				$("#winMorning_code").focus();
 				return false;
 			}
-			if ($("#burger_name").val() == "") {
+			if ($("#winMorning_name").val() == "") {
 				alert("버거 이름을 입력하세요.");
-				$("#burger_name").focus();
+				$("#winMorning_name").focus();
 				return false;
 			}
-			if (regExp.test($("#burger_name").val())) {
+			if (regExp.test($("#winMorning_name").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#burger_name").focus();
+				$("#winMorning_name").focus();
 				return false;
 			}
-			if ($("#burger_kcal").val() == "") {
+			if ($("#winMorning_kcal").val() == "") {
 				alert("버거 칼로리를 입력하세요.");
-				$("#burger_kcal").focus();
+				$("#winMorning_kcal").focus();
 				return false;
 			}
-			if (regExp.test($("#burger_kcal").val())) {
+			if (regExp.test($("#winMorning_kcal").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#burger_kcal").focus();
+				$("#winMorning_kcal").focus();
 				return false;
 			}
-			if ($("#burger_price").val() == "") {
+			if ($("#winMorning_price").val() == "") {
 				alert("버거 가격을 입력하세요.");
-				$("#burger_price").focus();
+				$("#winMorning_price").focus();
 				return false;
 			}
-			if (regExp.test($("#burger_price").val())) {
+			if (regExp.test($("#winMorning_price").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#burger_price").focus();
+				$("#winMorning_price").focus();
 				return false;
 			}
-			if ($("#burger_type").val() == "") {
+			if ($("#winMorning_type").val() == "") {
 				alert("분류를 입력하세요.");
-				$("#burger_type").focus();
+				$("#winMorning_type").focus();
 				return false;
 			}
-			if (regExp.test($("#burger_type").val())) {
+			if (regExp.test($("#winMorning_type").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#burger_type").focus();
+				$("#winMorning_type").focus();
 				return false;
 			}
-			if ($("#burger_regdate").val() == "") {
+			if ($("#winMorning_regdate").val() == "") {
 				alert("버거 등록일을 입력하세요.");
-				$("#burger_regdate").focus();
+				$("#winMorning_regdate").focus();
 				return false;
 			}
-			if ($("#burger_detail").val() == "") {
+			if ($("#winMorning_detail").val() == "") {
 				alert("버거 상세설명을 입력하세요.");
-				$("#burger_detail").focus();
+				$("#winMorning_detail").focus();
 				return false;
 			}
-			if ($("#burger_img").val() == "") {
+			if ($("#winMorning_img").val() == "") {
 				alert("버거 이미지를 업로드하세요.");
-				$("#burger_img").focus();
+				$("#winMorning_img").focus();
 				return false;
 			}
-			$('#addBurger').submit();
+			$('#addWinMorning').submit();
 		});
 
 		$(':file').on('fileselect', function(event, numFiles, label) {
@@ -117,7 +117,7 @@
 		});
 	})
 	function slideButton() {
-		var img = $('#burger-container');
+		var img = $('#winMorning-container');
 		if (img.attr("style") == "display:none;") {
 			img.attr("style", "display:block;");
 			$('#slideBtn').text("버거 미리보기 취소");
@@ -136,45 +136,45 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">버거 등록</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">원모닝 등록</h3></div>
                                     <div class="card-body">
-                                        <form action="burgerRegister.mdo" method="post" id="addBurger" enctype="multipart/form-data">
+                                        <form action="winMorningRegister.mdo" method="post" id="addWinMorning" enctype="multipart/form-data">
                                         	<div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="burger_code" name="burger_code" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="winMorning_code" name="winMorning_code" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 50px);"/>
-                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299)</label>
+                                                        <label for="winMorning_code">원모닝 코드 - 단품(400~499),세트(600~699)</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="burger_name" name="burger_name" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="winMorning_name" name="winMorning_name" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);"/>
-                                                        <label for="burger_name">버거 이름</label>
+                                                        <label for="winMorning_name">원모닝 이름</label>
                                                     </div>
                                                 </div>
                                              </div>
                                              <div class="row mb-3">
                                                  <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="burger_kcal" name="burger_kcal" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="winMorning_kcal" name="winMorning_kcal" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);"/>
-                                                        <label for="burger_kcal">버거 칼로리</label>
+                                                        <label for="winMorning_kcal">원모닝 칼로리</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="burger_price" name="burger_price" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="winMorning_price" name="winMorning_price" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);"/>
-                                                        <label for="burger_price">버거 가격</label>
+                                                        <label for="winMorning_price">원모닝 가격</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                    	<select class="form-select" id="burger_type" name="burger_type" aria-label="Default select example"
+                                                    	<select class="form-select" id="winMorning_type" name="winMorning_type" aria-label="Default select example"
                                                     		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
                                                     		<option selected>전체</option>
 															<option value="단품">단품
@@ -184,18 +184,18 @@
                                                 </div>
                                                  <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="burger_regdate" name="burger_regdate" type="date"/>
-                                                        <label for="burger_regdate">버거등록일</label>
+                                                        <input class="form-control" id="winMorning_regdate" name="winMorning_regdate" type="date"/>
+                                                        <label for="winMorning_regdate">원모닝 등록일</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="burger_detail" name="burger_detail" type="text"/>
-                                                <label for="burger_detail">상세설명 / 판매시간</label>
+                                                <input class="form-control" id="winMorning_detail" name="winMorning_detail" type="text"/>
+                                                <label for="winMorning_detail">상세설명 / 판매시간</label>
                                             </div>
                                             <div style="margin-top: 10px;">
 	                                            <button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>	
-	                                            <div class="burger-container" id="burger-container" style="display:none;">
+	                                            <div class="winMorning-container" id="winMorning-container" style="display:none;">
 	                                            	<img style="width:100%;" id="image">
                                             	</div>
                                             </div>
@@ -206,11 +206,11 @@
 									                        Upload <input type="file" name="file" id="file" style="display: none;" multiple>
 									                    </span>
 									                </label>
-									                <input type="text" id="burger_img" class="form-control" readonly>
+									                <input type="text" id="winMorning_img" class="form-control" readonly>
 								           		</div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">버거 등록</a></div>
+                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">원모닝 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle" style="background-color: #0d6efd; border:solid 1px #0d6efd;">취	소</a></div>
                                             </div>
                                         </form>

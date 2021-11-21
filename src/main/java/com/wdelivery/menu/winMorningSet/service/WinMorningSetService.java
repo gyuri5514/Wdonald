@@ -10,4 +10,5 @@ public interface WinMorningSetService {
 
 	public WinMorningSetVO detailMorningSet(Integer w_code);
 
+	public void insertWinMorningSet(WinMorningSetVO winMorningSetVO);
 }

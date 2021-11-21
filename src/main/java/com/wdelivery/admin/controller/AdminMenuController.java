@@ -22,6 +22,14 @@ import com.wdelivery.menu.burgerLgSet.service.BurgerLgSetService;
 import com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO;
 import com.wdelivery.menu.burgerSet.service.BurgerSetService;
 import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
+import com.wdelivery.menu.dessert.service.DessertService;
+import com.wdelivery.menu.drink.service.DrinkService;
+import com.wdelivery.menu.happymeal.service.HappyMealService;
+import com.wdelivery.menu.side.service.SideService;
+import com.wdelivery.menu.winMorning.service.WinMorningService;
+import com.wdelivery.menu.winMorning.vo.WinMorningVO;
+import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
+import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
 
 @Controller
 public class AdminMenuController {
@@ -35,7 +43,18 @@ public class AdminMenuController {
 	private BurgerSetService burgerSetService;
 	@Autowired
 	private BurgerLgSetService burgerLgSetService;
-	
+	@Autowired
+	private WinMorningService winMorningService;
+	@Autowired
+	private WinMorningSetService winMorningSetService;
+	@Autowired
+	private DessertService dessertService;
+	@Autowired
+	private SideService sideService;
+	@Autowired
+	private DrinkService drinkService;
+	@Autowired
+	private HappyMealService happyMealService;
 	
 	@GetMapping("/burger.mdo")
 	public String viewBurger(Model model){
@@ -45,7 +64,7 @@ public class AdminMenuController {
 	}
 
 	@GetMapping("/burgerRegister.mdo")
-	public String burgerRegister(Model model) {
+	public String burgerRegister() {
 		return "burgerRegister";
 	}
 	
@@ -112,5 +131,63 @@ public class AdminMenuController {
         awsS3.upload(is, key, contentType, contentLength);
         
 		return "redirect:burger.mdo";
+	}
+	
+	@GetMapping("/winMorningRegister.mdo")
+	public String winMorningRegister() {
+		return "winMorningRegister";
+	}
+	
+	@PostMapping("/winMorningRegister.mdo")
+	public String winMorningInsert(@RequestParam(name="file")MultipartFile file,
+			@RequestParam(name="winMorning_code") String winMorning_code,
+			@RequestParam(name="winMorning_name") String winMorning_name,
+			@RequestParam(name="winMorning_kcal") String winMorning_kcal,
+			@RequestParam(name="winMorning_price") String winMorning_price,
+			@RequestParam(name="winMorning_type") String winMorning_type,
+			@RequestParam(name="winMorning_regdate") String winMorning_regdate,
+			@RequestParam(name="winMorning_detail") String winMorning_detail) throws IOException, ParseException{
+		
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key = "";
+		if(winMorning_type.equals("단품")) {
+			key = "img/mcmorning/mcmorning" + file.getOriginalFilename();
+			WinMorningVO winMorningVO = new WinMorningVO();
+			winMorningVO.setW_code(Integer.parseInt(winMorning_code));
+			winMorningVO.setW_img_path(uploadFolder + key);
+			winMorningVO.setW_name(winMorning_name);
+			winMorningVO.setW_price(Integer.parseInt(winMorning_price));
+			winMorningVO.setW_kcal(Integer.parseInt(winMorning_kcal));
+			winMorningVO.setW_regdate(fm.parse(winMorning_regdate));
+			winMorningVO.setW_detail_comment(winMorning_detail);
+			winMorningVO.setW_img(file.getOriginalFilename());
+			winMorningVO.setW_status(1);
+			System.out.println(winMorningVO.toString());
+			winMorningService.insertWinMorning(winMorningVO);
+		}
+		else if(winMorning_type.equals("세트")) {
+			key = "img/mcmorning/mcmorning_set" + file.getOriginalFilename();
+			WinMorningSetVO winMorningSetVO = new WinMorningSetVO();
+			winMorningSetVO.setW_set_code(Integer.parseInt(winMorning_code));
+			winMorningSetVO.setW_set_img_path(uploadFolder + key);
+			winMorningSetVO.setW_set_name(winMorning_name);
+			winMorningSetVO.setW_set_price(Integer.parseInt(winMorning_price));
+			winMorningSetVO.setW_set_kcal(Integer.parseInt(winMorning_kcal));
+			winMorningSetVO.setW_set_regdate(fm.parse(winMorning_regdate));
+			winMorningSetVO.setW_set_img(file.getOriginalFilename());
+			winMorningSetVO.setW_set_status(1);
+			winMorningSetService.insertWinMorningSet(winMorningSetVO);
+			
+		} 
+		
+		InputStream is = file.getInputStream();
+        String contentType = file.getContentType();
+        long contentLength = file.getSize();
+        awsS3.upload(is, key, contentType, contentLength);
+        
+		return "redirect:winMorning.mdo";
 	}
 }

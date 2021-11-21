@@ -24,4 +24,9 @@ public class WinMorningSetServiceImpl implements WinMorningSetService{
 		return winMorningSetDAO.detailMorningSet(w_code);
 	}
 
+	@Override
+	public void insertWinMorningSet(WinMorningSetVO winMorningSetVO) {
+		winMorningSetDAO.insertWinMorningSet(winMorningSetVO);
+	}
+
 }

@@ -31,7 +31,7 @@
 		
 	</c:choose>
 </c:if>
-	<div id="layoutAuthentication">
+	<div id="layoutAuthentication" style="flex-direction: column; min-height: 100%;">
 		<div id="layoutAuthentication_content">
 			<main>
 				<div class="container">
