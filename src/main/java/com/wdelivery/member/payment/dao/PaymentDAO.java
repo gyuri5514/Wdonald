@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 
 public interface PaymentDAO {
 
@@ -15,4 +16,6 @@ public interface PaymentDAO {
 	void updateCartList(Map<String,Object> updateMap);
 
 	void insertCartList(ArrayList<CartVO> cartVO);
+	
+	public void toyCount(ToyCountVO toyCountVO);
 }

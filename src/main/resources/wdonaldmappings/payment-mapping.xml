@@ -60,4 +60,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</update> -->
 	
+	<update id="toyCount" parameterType="toyCountVO">
+		<![CDATA[
+		update toy_count set ht_count = (ht_count - a.cart_product_quantity)
+		from (select cart_product_quantity
+		from toy_count, cart_list , order_list, admin
+		where cart_list.order_seq = order_list.order_seq
+		and order_list.store_code = admin.store_code) as a
+		where ht_name = (SELECT ht_name FROM toy_count, admin where toy_count.admin_seq = admin.admin_seq
+				 order by RANDOM() LIMIT 1) and toy_count.admin_seq = (select admin_seq from admin where store_code =#{store_code})
+		]]>
+	</update>
+	
 </mapper>

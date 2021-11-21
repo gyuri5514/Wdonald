@@ -19,6 +19,17 @@
 <script type="text/javascript" src="Editor/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
 </head>
 <body class="sb-nav-fixed">
+<script type="text/javascript">
+	var status = '${status}';
+	console.log("h: " + status + "?>" + $("#store_status").length);
+	
+	/* for(var j = 0; j < $("#store_status").length; j++) {
+		if(${status} == $("#store_status option:eq(j)")) {
+			$("#store_status").val("eq(j)").prop("selected", true);
+			console.log("?");
+		}
+	} */
+</script>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.sdo">${sessionScope.admin.store_name }</a>
@@ -31,16 +42,16 @@
 			<div style="display: inline-block;">
 				<!-- <div class="input-group" > -->
 				<div class="btn-group" style="width: 80%; margin: 0 auto">
-					<select id="store_status" name="store_status" class="dropdown-toggle">
-							<c:if test="${status eq 1}">
+					<select id="store_status" name="store_status" class="btn btn-Default dropdown-toggle"style="background: white;">
+							<c:if test="${sessionScope.admin.store_status eq 1}">
 							<option value="">정상영업</option>
 							</c:if>
-							<c:if test="${status eq 2}">
+							<c:if test="${sessionScope.admin.store_status eq 2}">
 							<option value="">준비 중</option>
 							</c:if>
-							<c:if test="${status eq 0}">
+							<c:if test="${sessionScope.admin.store_status eq 0}">
 							<option value="">영업마감</option>
-							</c:if>
+							</c:if> 
 							<option value="1">정상영업</opstion>
 							<option value="2">준비 중</option>
 							<option value="0">영업마감</option>

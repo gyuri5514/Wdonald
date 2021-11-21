@@ -22,6 +22,7 @@ import com.siot.IamportRestClient.response.Payment;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.service.PaymentService;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.member.util.SessionClassifier;
 import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserVO;
@@ -34,7 +35,7 @@ public class PaymentController {
 	private IamportClient api;
 
 	public PaymentController() {
-		// RestApi 키와 Rest API Secret 를 아래처럼 ㅁ순서대로 입력한다
+		// RestApi �ㅼ�� Rest API Secret 瑜� ����泥��� ��������濡� ���ν����
 		this.api = new IamportClient("0192372667414823",
 				"be8d598a6fb115e08b5880a61a8152049826e2c3661d4948f2d2a2a1f60a39ad51dba535e93e1ecb");
 	}
@@ -57,7 +58,21 @@ public class PaymentController {
 		}
 	    paymentVO.setOrder_date(new Date());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
+		
+		
+		
+		for(int i=0; i<cartVO.size(); i++) { //!!!!
+			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
+				System.out.println("toy" + cartVO.get(i).getCart_h_code());
+				ToyCountVO tcv = new ToyCountVO();
+				tcv.setStore_code(paymentVO.getStore_code());
+				paymentService.toyCount(tcv);
+			}
+		}
+		//System.out.println("?" + cartVO.get(2).getCart_h_code());
+		
 		session.setAttribute("cartList", new ArrayList<CartVO>());
+		
 		return "main";
 	}
 }

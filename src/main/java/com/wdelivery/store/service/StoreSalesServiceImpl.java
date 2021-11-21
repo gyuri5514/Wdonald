@@ -25,4 +25,9 @@ public class StoreSalesServiceImpl implements StoreSalesService {
 	public void orderStatus(PaymentVO paymentVO) {
 		storeSalesDAO.orderStatus(paymentVO);
 	}
+
+	@Override
+	public List<PaymentVO> orderCancel(String store_code) {
+		return storeSalesDAO.orderCancel(store_code);
+	}
 }

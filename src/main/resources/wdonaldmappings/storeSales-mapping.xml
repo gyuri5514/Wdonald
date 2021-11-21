@@ -4,9 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.store.dao.StoreSalesDAO">
 	<select id="orderList" resultType="paymentVO">
-		select * from order_list where store_code = #{store_code} order by order_seq desc
+		select * from order_list where store_code = #{store_code} and order_status != '주문취소' order by order_seq desc
 	</select>
 	<update id="orderStatus">
 		update order_list set order_status = #{order_status} where order_seq = #{order_seq}
 	</update>
+	<select id="orderCancel" resultType="paymentVO">
+		select * from order_list where store_code = #{store_code} and order_status = '주문취소' order by order_seq desc
+	</select>
 </mapper>
