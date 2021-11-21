@@ -13,7 +13,6 @@ public class AdminCouponVO {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date coupon_enddate;
 	private int coupon_status;
-	private String coupon_check;
 	public String getCoupon_code() {
 		return coupon_code;
 	}
@@ -50,17 +49,11 @@ public class AdminCouponVO {
 	public void setCoupon_status(int coupon_status) {
 		this.coupon_status = coupon_status;
 	}
-	public String getCoupon_check() {
-		return coupon_check;
-	}
-	public void setCoupon_check(String coupon_check) {
-		this.coupon_check = coupon_check;
-	}
 	@Override
 	public String toString() {
 		return "AdminCouponVO [coupon_code=" + coupon_code + ", coupon_title=" + coupon_title + ", coupon_type="
 				+ coupon_type + ", coupon_regdate=" + coupon_regdate + ", coupon_enddate=" + coupon_enddate
-				+ ", coupon_status=" + coupon_status + ", coupon_check=" + coupon_check + "]";
+				+ ", coupon_status=" + coupon_status + "]";
 	}
 	
 }

@@ -3,9 +3,6 @@ package com.wdelivery.admin.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,16 +25,8 @@ import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
-import com.wdelivery.menu.burger.service.BurgerService;
-import com.wdelivery.menu.burger.vo.BurgerVO;
-import com.wdelivery.menu.burgerLgSet.service.BurgerLgSetService;
-import com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO;
-import com.wdelivery.menu.burgerSet.service.BurgerSetService;
-import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
 import com.wdelivery.news.utils.Criteria;
 import com.wdelivery.news.utils.PageMaker;
-
-import net.sf.json.JSONArray;
 
 
 @Controller
@@ -100,13 +88,6 @@ public class AdminController {
 	@GetMapping("/layout-sidenav-light.mdo")
 	public String layout(Model model) {
 		List<AdminCouponVO> vo = adminService.selectCoupon();
-		for(int i=0; i>vo.size(); i++) {
-			if(vo.get(i).getCoupon_status()==0) {
-				vo.get(i).setCoupon_check("Y");
-			} else
-				vo.get(i).setCoupon_check("N");
-		}
-		
 		model.addAttribute("vo", vo);
 		return "layout-sidenav-light";
 	}
@@ -155,6 +136,18 @@ public class AdminController {
 		adminService.deleteUserCoupon(deleteCoupon);
 		adminService.deleteCoupon(deleteCoupon);
 		return 1;
+	}
+	
+	@PostMapping("/statusCoupon.mdo")
+	public String statusCoupon(@RequestParam(name="coupon_code") String coupon_code, @RequestParam(name="status") int status) {
+//		Map<String,String> map = new HashMap<String,String>();
+//		map.put("coupon_code", coupon_code);
+//		map.put("status", status);
+		AdminCouponVO vo = new AdminCouponVO();
+		vo.setCoupon_code(coupon_code);
+		vo.setCoupon_status(status);
+		adminService.statusCoupon(vo);
+		return "redirect:layout-sidenav-light.mdo";
 	}
 	
 	@GetMapping("/banner.mdo")
