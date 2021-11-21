@@ -13,7 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM order_list 
 			WHERE 1=1 and order_status='배달 완료' and TO_CHAR(order_date, 'yy-MM-dd')
 			between #{start_date} and #{end_date}
-			and store_code = #{store_code}
+			]]>
+				<if test="store_code != null and store_code != '' ">and store_code = #{store_code}</if>
+  			<![CDATA[ 
   			GROUP BY TO_CHAR(order_date, 'MM-dd')
 			ORDER BY daily_chart
 		]]>
@@ -38,7 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE 1=1 and order_status='배달 완료' 
 			and TO_CHAR(order_date, 'yyyy-MM-dd')
 			between #{start_date} and #{end_date}
-			and store_code = #{store_code}
+			]]>
+		<if test="store_code != null and store_code != ''">and store_code = #{store_code}</if>
+  			<![CDATA[ 
+			
   			GROUP BY TO_CHAR(order_date,]]>
 		<if test="date_term ==  'daily'">'MM-dd')</if>
 		<if test="date_term ==  'month'">'yy-MM')</if>
@@ -51,6 +56,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="date_term ==  'month'">month_chart</if>
 		<if test="date_term ==  'year'">year_chart</if>
   			<![CDATA[
+		]]>
+	</select>
+	
+	<select id="getPieChart" parameterType="chartVO"
+		resultType="chartVO">
+	<![CDATA[
+						SELECT 	sum(o.total_price) as sales_amount,
+						COUNT(*) as sales_count,
+						c.cart_product_name as product_name
+						FROM order_list as o
+						RIGHT join cart_list c on c.merchantuid = o.merchantuid
+						WHERE 1=1 and order_status='배달 완료' 
+						and TO_CHAR(o.order_date, 'yy-MM-dd')
+						between #{start_date} and #{end_date}
+						]]>
+		<if test="store_code != null and  store_code != ''">and store_code = #{store_code}</if>
+  			<![CDATA[ 
+  						GROUP BY product_name;
 		]]>
 	</select>
 </mapper>
