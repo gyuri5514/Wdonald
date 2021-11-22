@@ -28,6 +28,7 @@
 								<th>제목</th>
 								<th>내용</th>
 								<th>등록일</th>
+								<th>작성자</th>
 								<th>공지사항 삭제</th>
 							</tr>
 						</thead>
@@ -37,7 +38,9 @@
 								<td>${Board.notice_title}</td>
 								<td>${Board.notice_content}</td>
 								<td><fmt:formatDate value="${Board.notice_regdate}" pattern="yyyy-MM-dd"/></td>
+								<td>${Board.admin_seq}</td>
 								<td><button class="boardDelete" id="boardDelete" onClick="noticeDelete()" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
+								<td><button class="boardUpdate" id="boardUpdate" onClick="noticeUpdate()" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">수정</button></td>
 							</tr>					
 						</c:forEach>							
 						</tbody>

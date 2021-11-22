@@ -21,50 +21,35 @@
    		 location.href = "/controller/board.mdo"
    	 })
    	$("#submit").on("click",function(){
-		 if($("#coupon_code").val()==""){
-			 alert("쿠폰코드를 입력하세요.");
-			 $("#coupon_code").focus();
+		 if($("#notice_title").val()==""){
+			 alert("공지사항 제목을 입력하세요.");
+			 $("#notice_title").focus();
 			 return false;
 		 }
-		 if($("#coupon_title").val()==""){
-			 alert("쿠폰명을 입력하세요.");
-			 $("#coupon_title").focus();
+		 if($("#notice_regdate").val()==""){
+			 alert("등록일을 입력하세요.");
+			 $("#notice_regdate").focus();
 			 return false;
 		 }
-		 if($("#coupon_type").val()==""){
-			 alert("분류를 입력하세요.");
-			 $("#coupon_type").focus();
-			 return false;
-		 }
-		 if($("#coupon_regdate").val()==""){
-			 alert("쿠폰등록일을 입력하세요.");
-			 $("#coupon_regdate").focus();
-			 return false;
-		 }
-		 if($("#coupon_enddate").val()==""){
-			 alert("유효일자를 입력하세요.");
-			 $("#coupon_enddate").focus();
+		 if($("#notice_content").val()==""){
+			 alert("공지사항 내용을 입력하세요.");
+			 $("#notice_content").focus();
 			 return false;
 		 }
 		 $.ajax({
 			type : 'post',
-			url : '/controller/couponCheck.mdo',
+			url : '/controller/addboardInsert.mdo',
 			data : {
-				coupon_code : $("#coupon_code").val()
+				notice_title : $("#notice_title").val()
 			},
 			dataType : 'json',
 			success : function(data) {
-				if(data == 1){
-					$('#content').attr("style","display:block; color:red;");
-					$('#content').text("이미 존재하는 쿠폰코드 입니다.");
-					$('#content').fadeOut(10000);
-					return;
+					console.log("성공")
 				}
-				 $('#addCoupon').submit(); 
+				 $('#addBoard').submit(); 
 			}
 		 });
 	 });
-	})
    	 </script>
     <body class="bg-black">
     <div id="map" style="width: 0px; height:0px;"></div>
@@ -92,14 +77,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="notice_content" name="notice_content" type="text" placeholder="Enter your last name"/>
-                                                        <label for="notice_content">공지사항 내용</label>
-                                                    </div>
-                                                </div>
-                                               </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="notice_content" name="notice_content" type="text" placeholder="Enter your first name" />
+                                                <label for="notice_content">공지사항 내용</label>
+                                            </div>
                                             <div id="content" style="display:none"></div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">공지사항 등록</a></div>
