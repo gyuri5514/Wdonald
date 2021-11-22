@@ -14,21 +14,7 @@
 				<li class="breadcrumb-item"><a href="index.mdo">HOME</a></li>
 				<li class="breadcrumb-item active">윈딜리버리 회원</li>
 			</ol>
-			<!-- <div class="card mb-4">
-				<div class="card-body">
-					<p class="mb-0">
-						This page is an example of using static navigation. By removing
-						the
-						<code>.sb-nav-fixed</code>
-						class from the
-						<code>body</code>
-						, the top navigation and side navigation will become static on
-						scroll. Scroll down this page to see an example.
-					</p>
-				</div>
-			</div> -->
 			<div style="height: 100vh">
-				<!-- 표 -->
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 윈딜리버리 회원 내역
@@ -47,17 +33,6 @@
 									<th>회원 삭제</th>
 								</tr>
 							</thead>
-							<!-- <tfoot>
-							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
-							</tr>
-						</tfoot> -->
-							
 								<tbody>
 								<c:forEach items="${userInfo}" var="userInfo">
 									<tr id="${userInfo.user_seq }">
@@ -85,24 +60,61 @@
 												<c:when test="${email eq '0'}">미동의</c:when>
 												<c:when test="${email eq '1'}">동의</c:when>
 											</c:choose></td>
-										<th><button id="infoDelete" onclick="deleteUser('${userInfo.user_seq}');">삭제</button><c:if test="${status ne '2'}">
-										<button id="infoSuspend" onclick="suspendUser('${userInfo.user_seq}');">정지</button></c:if>
+										<th><button id="infoDelete" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
+										<button id="infoSuspend${userInfo.user_seq }" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
 										<c:if test="${status eq '2'}">
-										<button id="infoActive" onclick="activeUser('${userInfo.user_seq},${userInfo.user_name }');">활성화</button></c:if></th>
+										<button id="infoActive${userInfo.user_seq }" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name }',1);">활성화</button></c:if></th>
 									</tr>
 									</c:forEach>
 								</tbody>
 							
 						</table>
 						<script type="text/javascript">
+								function suspendUser(user_seq,user_name,user_status){
+									if(confirm(user_name+'님 (회원번호 : '+user_seq+')을 '+(user_status==2?'정지':'활성화')+'하시겠습니까?')){
+										
+										$.ajax({
+											type:"POST",
+											url: "suspendUser.mdo",
+											asnyc:false,
+											data: JSON.stringify({
+												"user_seq" : user_seq,
+												"user_status" : user_status
+											}),
+											contentType:"application/json"
+										}).done(function(res){
+											if(res=='1'){
+											$('#infoSuspend'+user_seq).text((user_status==2?'활성화':'정지'));
+											$('#infoSuspend'+user_seq).attr('onclick',"suspendUser('"+user_seq+"','"+user_name+"',"+(user_status==2?1:2)+");")
+											alert('successfully '+(user_status==2?'supsend ':'activate ')+user_name+' member');
+											}else{
+												alert('failed : 뭔가 문제가 생겼어요.');
+											}
+										})
+									}
+								}
 								function deleteUser(user_seq,user_name){
 									if(confirm('회원 삭제 기능은 데이터베이스에서 삭제되는 기능입니다. 정말로 '+user_name+'님을 삭제하시겠습니까?')){
-										alert(user_seq);
-										$.ajax({
-											
-										}).done(function(){
-											$('#'+user_seq).remove();
-										})
+										if(confirm(' 진짜로 '+user_name+'님을 삭제하시겠습니까?')){
+											if(confirm(' 진짜 ?')){
+												$.ajax({
+													type:"POST",
+													url: "deleteUser.mdo",
+													asnyc:false,
+													data: JSON.stringify({
+														"user_seq" : user_seq
+													}),
+													contentType:"application/json"
+												}).done(function(res){
+													if(res=='1'){
+													alert('successfully delete '+user_name+' member');
+													$('#'+user_seq).remove();
+													}else{
+														alert('failed : 뭔가 문제가 생겼어요.');
+													}
+												})
+											}
+										}
 									}
 								}
 						</script>

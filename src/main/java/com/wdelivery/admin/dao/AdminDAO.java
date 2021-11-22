@@ -52,5 +52,8 @@ public interface AdminDAO {
 	public void drinkUpdate(DrinkVO drinkVO);
 	public List<HappyMealVO> viewHappy();
 	public void happyUpdate(HappyMealVO happyMealVO);
+	public int deleteUser(UserVO userVO);
+
+	public int suspendUser(UserVO userVO);
 
 }
