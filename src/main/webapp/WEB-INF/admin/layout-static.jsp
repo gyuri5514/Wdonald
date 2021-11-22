@@ -85,31 +85,23 @@
 												<c:when test="${email eq '0'}">미동의</c:when>
 												<c:when test="${email eq '1'}">동의</c:when>
 											</c:choose></td>
-										<th><button id="infoDelete">삭제</button></th>
+										<th><button id="infoDelete" onclick="deleteUser('${userInfo.user_seq}');">삭제</button><c:if test="${status ne '2'}">
+										<button id="infoSuspend" onclick="suspendUser('${userInfo.user_seq}');">정지</button></c:if>
+										<c:if test="${status eq '2'}">
+										<button id="infoActive" onclick="activeUser('${userInfo.user_seq},${userInfo.user_name }');">활성화</button></c:if></th>
 									</tr>
 									</c:forEach>
 								</tbody>
 							
 						</table>
-						<%-- <div class='btnPaging'>
-							<ul class="pagination pagination-sm" >
-								<c:if test="${pageMaker.prev}">
-								<li class="page-item">
-									<a class="page-link" href='<c:url value="/layoutStatic.mdo?page=${pageMaker.startPage - 1}"/>'><i class="fa fa-chevron-left"></i></a>
-								</li>
-								</c:if>
-								<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
-								<li class="page-item">
-									<a class="page-link" href='<c:url value="/layoutStatic.mdo?page=${pageNum}"/>'><i class="">${pageNum}</i></a>
-								</li>
-								</c:forEach>
-								<c:if test="${pageMaker.next}">
-								<li class="page-item">
-									<a class="page-link" href='<c:url value="/layoutStatic.mdo?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
-								</li>
-								</c:if>
-							</ul>
-						</div> --%><!-- 페이징 끝 -->
+						<script type="text/javascript">
+								function deleteUser(user_seq,user_name){
+									if(confirm('회원 삭제 기능은 데이터베이스에서 삭제되는 기능입니다. 정말로 '+user_name+'님을 삭제하시겠습니까?')){
+										alert(user_seq);
+									}
+								}
+						</script>
+						<!-- 페이징 끝 -->
 					</div>
 				</div>
 			</div>

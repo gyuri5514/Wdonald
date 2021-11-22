@@ -76,4 +76,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   						GROUP BY product_name;
 		]]>
 	</select>
+	
+	<select id="getSalesRank" parameterType="chartVO"
+		resultType="chartVO">
+	<![CDATA[
+		SELECT 	sum(o.total_price) as sales_amount,
+						COUNT(*) as sales_count,
+						o.store_code as store_code,
+						c.store_name
+						FROM order_list as o
+						RIGHT join admin c on c.store_code = o.store_code
+						WHERE 1=1 and order_status='배달 완료' 
+						and TO_CHAR(o.order_date, 'yy-MM-dd')
+						between #{start_date} and #{end_date}
+						group by o.store_code,c.store_name order 
+						by sales_amount desc limit 5
+		]]>
+	</select>
 </mapper>

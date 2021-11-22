@@ -1,6 +1,7 @@
 package com.wdelivery.store.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,11 @@ public class ChartServiceImpl implements ChartService {
 	@Override
 	public ArrayList<ChartVO> getPieChart(ChartVO c) {
 		return chartDAO.getPieChart(c);
+	}
+
+	@Override
+	public List<ChartVO> getSalesRank(ChartVO c) {
+		return chartDAO.getSalesRank(c);
 	}
 
 }
