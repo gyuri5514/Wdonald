@@ -12,13 +12,12 @@ import com.wdelivery.menu.drink.vo.DrinkVO;
 import com.wdelivery.menu.happymeal.vo.HappyMealVO;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
-import com.wdelivery.news.utils.Criteria;
 
 public interface AdminService {
 
-	public List<AdminVO> indexView(Criteria cri);
+	public List<AdminVO> indexView();
 	
-	public List<UserVO> userSelect(Criteria cri);
+	public List<UserVO> userSelect();
 
 	public List<AdminCouponVO> selectCoupon();
 	
