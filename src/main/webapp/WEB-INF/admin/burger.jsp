@@ -142,7 +142,7 @@
 					</div>
 					<div class="card-body">
 
-					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
+					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='burgerRegister.mdo'">등록</button>
 					<hr>
 					<form id="burgerUpdate" action="burgerUpdate.mdo" method="post" > 
 					<div class="update" id="update">

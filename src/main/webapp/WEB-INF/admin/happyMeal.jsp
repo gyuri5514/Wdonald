@@ -74,7 +74,7 @@
 					</div>
 					<div class="card-body">
 
-					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
+					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='happyMealRegister.mdo'">등록</button>
 					<hr>
 					<form id="happyMealUpdate" action="happyMealUpdate.mdo" method="post" > 
 					<div class="update" id="update">
