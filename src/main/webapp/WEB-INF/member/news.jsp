@@ -9,7 +9,7 @@
 		$('#searchBtn').on('click',function() {
 			var keywordVal = $keyword.val();
 			
-			var url = "news.do?page=" + "${pageNum}"
+			var url = "news.do?page=" + "${pageMaker.cri.page}"
 				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
 				+ "&keyword=" + encodeURIComponent(keywordVal);
 			window.location.href = url;
@@ -86,7 +86,7 @@
 						</c:forEach>
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 						<li class="paging_next_btn">
-							<a href="${pageMaker.endPage + 1}"><i class="fa fa-chevron-right"></i></a>
+							<a href='<c:url value="/news.do?page=${pageMaker.endPage + 1}"/>'><i class="fa fa-chevron-right"></i></a>
 						</li>
 						</c:if>
 					</ul>

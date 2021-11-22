@@ -206,8 +206,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<PromotionVO> selectPromotion() {
-		return memberDAO.selectPromotion();
+	public List<PromotionVO> selectPromotionIng() {
+		return memberDAO.selectPromotionIng();
 	}
 
 	@Override

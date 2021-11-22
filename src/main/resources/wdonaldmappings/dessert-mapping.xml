@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT * FROM dessert WHERE dessert_status = 1 ORDER BY dessert_code
 	</select>
 	<select id="detailDessert" resultType="dessertVO">
-			SELECT * FROM dessert where dessert_code = #{dessert_code} order by dessert_code
+			SELECT * FROM dessert where dessert_code = #{dessert_code} AND dessert_status = 1 order by dessert_code
 	</select>
 	
 	<insert id="insertDessert">

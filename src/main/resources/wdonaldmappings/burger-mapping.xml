@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="detailBurger" resultType="burgerVO">
 		<![CDATA[
-			SELECT * FROM burger WHERE b_code = #{b_code}
+			SELECT * FROM burger WHERE b_code = #{b_code} AND b_status = 1 ORDER BY b_code ASC
 		]]>
 	</select>
 	

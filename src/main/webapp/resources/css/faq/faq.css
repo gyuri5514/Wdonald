@@ -1086,15 +1086,19 @@ font-family:SpeedeeK, Malgun Gothic,'맑은 고딕', Dotum,'돋움', Arial, sans
   color: #2d2d2d;
 }
 
-.pagination a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 1px solid #d1d1d1;
-  background: #fff;
-  border-radius: 5px;
-  margin: 0 3px;
-  line-height: 40px;
+.btnPaging {
+    margin-top: 60px;
+    text-align: center;
+}
+.btnPaging ul li {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 0 3px;
+    vertical-align: top;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    background: #fff;
 }
 
 /*# sourceMappingURL=App.css.map */

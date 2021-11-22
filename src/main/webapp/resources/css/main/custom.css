@@ -3184,7 +3184,7 @@ p.nutrDesc {
 }
 
 .deliverySrch .rBox .default:before {
-	background: url(https://www.mcdonalds.co.kr/kor/images/store/bg_delivery_result_new.png) 0 0
+	background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_delivery_result_new.png") 0 0
 		no-repeat;
 	background-size: cover;
 }

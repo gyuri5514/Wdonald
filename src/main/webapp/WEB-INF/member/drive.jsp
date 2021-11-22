@@ -11,20 +11,20 @@
 			<ul class="navPath">
 				<li><a href="/main.do">Home</a></li>
 				<li><a href="/store.do">Store</a></li>
-				<li><a href="/drive.do">맥드라이브</a></li>
+				<li><a href="/drive.do">윈드라이브</a></li>
 			</ul>
 		</div>
 	</div>
 	<!-- //visualArea -->
 	<div class="contArea">
 		<div class="inner">
-			<h2 class="titDep2">맥드라이브는 어떻게 이용하나요?</h2>
+			<h2 class="titDep2">윈드라이브는 어떻게 이용하나요?</h2>
 			<p role="text" class="txtInfo">
-				운전 중에도 24시간 간편하고 빠르게!<br> 차 안에서 주문하고, 차 안에서 바로 받아 맛있는 맥도날드를 즐겨보세요.
+				운전 중에도 24시간 간편하고 빠르게!<br> 차 안에서 주문하고, 차 안에서 바로 받아 맛있는 윈도날드를 즐겨보세요.
 			</p>
 			<div class="driveVideo">
 
-				<iframe title="주차보다 쉬운 맥드라이브!" width="100%" height="650px"
+				<iframe title="주차보다 쉬운 윈드라이브!" width="100%" height="650px"
 					src="https://www.youtube.com/embed/BiMkqfVNmnk?controls=1&amp;cc_lang_pref=ko&cc_load_policy=1"
 					frameborder="0"
 					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -32,7 +32,7 @@
 				</iframe>
 			</div>
 			<!-- 
-				<h3 class="titDep3">차에서 내리지 않고 즐길 수 있는 맥드라이브!</h3>
+				<h3 class="titDep3">차에서 내리지 않고 즐길 수 있는 윈드라이브!</h3>
 				<div class="stepFlow driveStep">
 					<img src="/kor/images/store/drive_step.gif" alt="주차보다 쉽게! 주차 고민하지 않아도,차에서 창문만 내리면 주문할 수 있어요. 주유보다 빠르게! 자리 잡을 고민 없이 차 안에서 주문하고 바로 받아 시간을 아낄 수 있어요. 차 안에서 맛있게! 주문과 동시에  갓 조리한 음식으로 따뜻하고 맛있게 즐기실 수 있어요.">
 				</div>
@@ -44,7 +44,7 @@
 				</ul>-->
 			<!-- //수정 -->
 			<div class="btnArea">
-				<a href="javascript:go();" class="btnMC btnL">맥드라이브 매장 검색하기</a>
+				<a href="javascript:go();" class="btnMC btnL">윈드라이브 매장 검색하기</a>
 			</div>
 		</div>
 	</div>

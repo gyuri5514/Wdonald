@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	<select id="detailSide" resultType="sideVO">
-			SELECT * FROM side WHERE s_code = #{s_code}
+			SELECT * FROM side WHERE s_code = #{s_code} AND s_status = 1 ORDER BY s_code
 	</select>
 	
 	<insert id="insertSide">

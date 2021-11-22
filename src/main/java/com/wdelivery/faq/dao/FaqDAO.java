@@ -14,7 +14,5 @@ public interface FaqDAO {
 	
 	public List<FaqVO> KeywordSelect(Map<String, String> map);
 	
-	public List<FaqVO> selectFaq(Criteria cri);
-	
 	public int totalFaq(Criteria cri);
 }

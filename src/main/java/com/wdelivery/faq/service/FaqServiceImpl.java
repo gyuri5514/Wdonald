@@ -32,10 +32,6 @@ public class FaqServiceImpl implements FaqService {
 		return vo2;
 	}
 	@Override
-	public List<FaqVO> selectFaq(Criteria cri) {
-		return faqDAO.selectFaq(cri);
-	}
-	@Override
 	public int totalFaq(Criteria cri) {
 		return faqDAO.totalFaq(cri);
 	}

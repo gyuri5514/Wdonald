@@ -60,7 +60,7 @@ public interface MemberDAO {
 
 	public void updatePassword(UserVO userVO);
 	
-	public List<PromotionVO> selectPromotion();
+	public List<PromotionVO> selectPromotionIng();
 	
 	public PromotionVO detailPromotion(Integer p_code);
 

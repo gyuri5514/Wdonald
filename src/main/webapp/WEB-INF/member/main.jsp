@@ -46,7 +46,7 @@
 			<div class="inner">
 				<h2 class="titMain">WcDonald's LIVE</h2>
 				<ul class="whatsNew" id="menuList">
-					<c:forEach items="${selectPromotion}" var="main">
+					<c:forEach items="${selectPromotionIng}" var="main">
 					<li id="promotion_ing">
 						<a href="#" data-seq="${main.p_code}">
 							<div class="tmb">

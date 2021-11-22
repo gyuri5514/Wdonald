@@ -4542,8 +4542,12 @@ p.nutrDesc {
     background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ico_search.png") 0 0 no-repeat;
 }
 
-.active {
+.paging_number_btn.active {
 	background-color: #ffbc0d;
+}
+
+.paging_number_btn {
+	font-style: nomal;
 }
 
 ul.tabType01 li.current {
@@ -4557,4 +4561,22 @@ ul.tabType01 li.current {
 
 .tab-content.current {
 	display: inherit;
+}
+
+.fa, .fas {
+	font-weight: 900;
+}
+
+.fa, .far, .fas {
+	font-family: "Font Awesome 5 Free";
+}
+
+.fa-chevron-right:before {
+	content: "\f054";
+	font-style: nomal;
+}
+
+.fa-chevron-left:before {
+	content: "\f053";
+	font-style: nomal;
 }

@@ -13,12 +13,13 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/faq/faqCommon.css">
 <link rel="stylesheet" href="resources/css/faq/faq.css">
-<!-- <link rel="stylesheet" type="text/css" href="resources/css/bam.css"> -->
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
+
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- <script type="text/javascript" src="resources/js/faq/ajax.js"></script> -->
+<script type="text/javascript" src="resources/js/faq/ajax.js"></script>
 <script type="text/javascript" src="resources/js/faq/extendedComboBox.js"></script>
 <script type="text/javascript" src="resources/js/faq/newUtil.js"></script>
 <script type="text/javascript" src="resources/js/faq/customer_common.js"></script>
@@ -175,10 +176,11 @@
 										<input type="hidden" name="BBS_ID" id="BBS_ID" value="">
 										<input type="hidden" name="FAQ_TYPE_CD2" id="FAQ_TYPE_CD2" value=""> 
 										<input type="hidden" name="SELECTED_DATA" id="SELECTED_DATA" value=""> 
-										<input type="text" placeholder="검색어를 입력해주세요." title="검색어 입력" style="width: 720px"
-											name="srchKeyword" id="srchKeyword"	onkeydown="javascript:if (event.keyCode == 13) {search('','S');}"/>
+										<!-- <input type="text" placeholder="검색어를 입력해주세요." title="검색어 입력" style="width: 720px"
+											name="srchKeyword" id="srchKeyword"	onkeydown="javascript:if (event.keyCode == 13) {search('','S');}"/> -->
+										<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요">
 									</form>
-									<button type="button" class="btnMC btnM" onclick="search('','S');">검색하기</button>
+									<button type="button" class="btnMC btnM" id="searchBtn" onclick="setSearchTypeSelect();">검색</button>
 								</div>
 							</fieldset>
 						</div>
@@ -242,8 +244,8 @@
 							            		</li>
 							            		</c:if>
 							            		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
-							            		<li class="paging_number_btn">
-							            			<a href='<c:url value="/faq.do?page=${pageNum}"/>'><i class="fa">${pageNum}</i></a>
+							            		<li class="paging_number_btn ${pageMaker.cri.page == pageNum ? 'active' : ''}">
+							            			<a href="faq.do?page=${pageNum}&keyword=${pageMaker.cri.keyword}"><i class="fa">${pageNum}</i></a>
 							            		</li>
 							            		</c:forEach>
 							            		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -259,6 +261,10 @@
 							</tbody>
 						</table>
 						<!-- //faqResult -->
+						<form id="moveForm" method="get">
+							<input type="hidden" name="page" value="${pageMaker.cri.page}">
+							<input type="hidden" name="totalCount" value="${pageMaker.totalCount}">
+						</form>
 					</div>
 				</div>
 				<!--/div-->
@@ -271,7 +277,7 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	morePage(); 
 	
 	function morePage() {
@@ -479,6 +485,19 @@
 					}
 				}
 			};
+</script> -->
+<script>
+	function setSearchTypeSelect() {
+		var $keyword = $('#keyword');
 		
+		$('#searchBtn').on('click',function() {
+			var keywordVal = $keyword.val();
+			
+			var url = "faq.do?page=" + "${pageMaker.cri.page}"
+				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
+				+ "&keyword=" + encodeURIComponent(keywordVal);
+			window.location.href = url;
+		})
+	}
 </script>
 <%@ include file="footer.jsp"%>

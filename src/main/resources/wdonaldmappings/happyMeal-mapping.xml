@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="detailHappyMeal" resultType="happyMealVO">
 		<![CDATA[
-			SELECT * FROM happymeal WHERE h_code = #{h_code}
+			SELECT * FROM happymeal WHERE h_code = #{h_code} AND h_status BETWEEN 1 AND 2 ORDER BY h_code
 		]]>
 	</select>
 	
