@@ -3,6 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.store.dao.StoreDAO">
+	<select id="toyCountSelect" resultType="toyCountVO" parameterType="AdminVO">
+		select * from toy_count where admin_seq = #{admin_seq}
+	</select>
 	<update id="storeStatus">
 		update admin set store_status = #{store_status} where admin_seq = #{admin_seq}
 	</update>
