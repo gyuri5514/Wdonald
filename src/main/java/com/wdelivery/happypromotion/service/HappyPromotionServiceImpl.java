@@ -26,8 +26,8 @@ public class HappyPromotionServiceImpl implements HappyPromotionService {
 	}
 
 	@Override
-	public HappyPromotionVO detailPromotion(Integer hp_code) {
-		return happyPromotionDAO.detailPromotion(hp_code);
+	public HappyPromotionVO detailHappyPromotion(Integer hp_code) {
+		return happyPromotionDAO.detailHappyPromotion(hp_code);
 	}
 
 	@Override

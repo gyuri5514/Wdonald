@@ -11,7 +11,14 @@ public class HappyPromotionVO {
 	private String hp_title;
 	private Date hp_regdate;
 	private int hp_status;
+	private int hp_count;
 	
+	public int getHp_count() {
+		return hp_count;
+	}
+	public void setHp_count(int hp_count) {
+		this.hp_count = hp_count;
+	}
 	public Integer getHp_code() {
 		return hp_code;
 	}

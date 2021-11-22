@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.vo.AdminBannerVO;
@@ -56,7 +55,7 @@ public class MemberLoginController {
 	
 	@ModelAttribute("selectPromotion")
 	public List<PromotionVO> selectPromotion(){
-		return promotionService.selectPromotion();
+		return promotionService.selectPromotionAll();
 	}
 	
 	/**

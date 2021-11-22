@@ -58,10 +58,8 @@ public class PaymentController {
 		}
 	    paymentVO.setOrder_date(new Date());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
-		
-		
-		
-		for(int i=0; i<cartVO.size(); i++) { //!!!!
+
+		for(int i=0; i<cartVO.size(); i++) { //toy
 			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
 				System.out.println("toy" + cartVO.get(i).getCart_h_code());
 				ToyCountVO tcv = new ToyCountVO();
@@ -69,7 +67,6 @@ public class PaymentController {
 				paymentService.toyCount(tcv);
 			}
 		}
-		//System.out.println("?" + cartVO.get(2).getCart_h_code());
 		
 		session.setAttribute("cartList", new ArrayList<CartVO>());
 		

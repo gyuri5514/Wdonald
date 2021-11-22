@@ -4545,3 +4545,16 @@ p.nutrDesc {
 .active {
 	background-color: #ffbc0d;
 }
+
+ul.tabType01 li.current {
+	color: #db0007;
+    font-weight: 600;
+    border-bottom: 1px solid #db0007;
+}
+.tab-content {
+	display: none;
+}
+
+.tab-content.current {
+	display: inherit;
+}

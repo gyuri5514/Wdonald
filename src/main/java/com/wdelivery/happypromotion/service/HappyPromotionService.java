@@ -10,7 +10,7 @@ public interface HappyPromotionService {
 
 	public List<HappyPromotionVO> selectHappyPromotionEnd();
 
-	public HappyPromotionVO detailPromotion(Integer hp_code);
+	public HappyPromotionVO detailHappyPromotion(Integer hp_code);
 
 	public void countHappyPromotion(Integer hp_code);
 }

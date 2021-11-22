@@ -49,6 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE coupon SET coupon_status = #{coupon_status} WHERE coupon_code = #{coupon_code} 
 	</update>
 	
+	<select id="selectBoard" resultType="adminBoardVO">
+		SELECT * FROM admin_notice
+	</select>
+	
 	<select id="selectBannerList" resultType="adminBannerVO">
 		SELECT * FROM banner ORDER BY banner_seq DESC
 	</select>

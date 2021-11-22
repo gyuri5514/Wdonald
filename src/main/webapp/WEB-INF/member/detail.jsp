@@ -309,6 +309,67 @@
 		</div>
 	</div>
 </c:if>
+<c:if test="${detailDessert.dessert_code ne null}">
+	<div id="container">
+		<div class="content">
+			<div class="visualArea bgMenu05">
+				<div class="inner">
+					<h1 class="titDep1">맥카페 &amp; 음료</h1>
+					<p class="subCopy">언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!</p>
+					<ul class="navPath">
+						<li><a href="/">Home</a></li>
+						<li><a href="burger.do">Menu</a></li>
+						<li><a href="dessert.co">사이드 &amp; 디저트</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="contArea">
+				<div class="inner">
+					<div class="menuView">
+						<div class="viewTop">
+							<div class="name">
+								<h2 class="ko">${detailDessert.dessert_name}</h2>
+								<em class="en">${detailDessert.dessert_e_name}</em>
+							</div>
+							<div class="info" data-title="${detailDessert.dessert_name}" data-desc="음료 메뉴">
+								<div class="visual"><img src="${detailDessert.dessert_detail_img_path}" alt="${detailDessert.dessert_name}"></div>
+								<div class="desc">
+									<%-- <p>${detailDessert.dessert_detail_comment}</p> --%>
+								</div>
+								<div class="other">
+								<c:if test="${detailDessert.dessert_code ne 801}">
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code - 1}';"><span class="arr">이전 메뉴</span></a>
+								</c:if>
+								<c:if test="${detailDessert.dessert_code ne 806}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								</c:if>
+								</div>
+							</div>
+						</div>
+						<div class="viewCon">
+							<div class="toggle">
+								<h4 class="tit">영양정보</h4>
+								<button type="button" aria-selected="false" aria-controls="toggle02" aria-expanded="false">영양정보 보기</button><!-- toggle버튼 선택시 aria-selected값 true로 변경 / aria-expanded 값 true로 변경 -->
+								<div id="toggle02" class="toggleCon">
+									<img src="${detailDessert.dessert_n_img_path}" id="nutrition_img">
+								</div>
+							</div>
+							<div class="toggle">
+								<h4 class="tit">알레르기 정보</h4>
+								<button type="button" aria-selected="false" aria-controls="toggle03" aria-expanded="false">알레르기 정보 보기</button><!-- toggle버튼 선택시 aria-selected값 true로 변경 / aria-expanded 값 true로 변경 -->
+								<div id="toggle03" class="toggleCon">
+									<div class="allerDesc">
+										<p><b>알레르기 유발 가능 식재료</b>${detailDessert.dessert_allergy}<br><b>* 일부 튀김류 제품은 새우 패티와 같은 조리기구를 사용하고 있습니다.</b></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</c:if>
 <!-- //contArea -->
 <form id="searchForm" method="get">
 	<input type="hidden" name="page" id="page" value="1">

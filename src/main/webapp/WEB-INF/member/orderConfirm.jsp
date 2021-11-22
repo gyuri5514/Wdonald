@@ -9,6 +9,7 @@
 <c:if test="${notAvailable eq 'noStoreNear' }">
 <script>
 	alert('배달 가능한 매장이 없습니다.');
+	history.go(-2);
 </script>
 </c:if>
 <script type="text/javascript">
@@ -79,7 +80,7 @@
 		});
 	}
 	
-	//dddd?
+	//주소 검색
 	function openDaumPostcode() {
 		 var themeObj = {
 				 bgColor: "#F8B01B"

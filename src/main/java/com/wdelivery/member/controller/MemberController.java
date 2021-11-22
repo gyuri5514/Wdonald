@@ -112,7 +112,7 @@ public class MemberController {
 
 	@ModelAttribute("selectPromotion")
 	public List<PromotionVO> selectPromotion() {
-		return promotionService.selectPromotion();
+		return promotionService.selectPromotionAll();
 	}
 
 	@RequestMapping("/main.do")

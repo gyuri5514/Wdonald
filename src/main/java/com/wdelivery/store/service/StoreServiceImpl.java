@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
 import com.wdelivery.store.dao.StoreDAO;
@@ -56,6 +57,11 @@ public class StoreServiceImpl implements StoreService{
 	@Override
 	public void qaaCompletion(QnaVO qnaVO) {
 		storeDAO.qaaCompletion(qnaVO);
+	}
+
+	@Override
+	public List<ToyCountVO> toyCountSelect(int admin_seq) {
+		return storeDAO.toyCountSelect(admin_seq);
 	}
 
 
