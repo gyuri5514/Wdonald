@@ -69,7 +69,7 @@
 					</div>
 					<div class="card-body">
 
-					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='bannerRegister.mdo'">등록</button>
+					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='dessertRegister.mdo'">등록</button>
 					<hr>
 					<form id="dessertUpdate" action="dessertUpdate.mdo" method="post" > 
 					<div class="update" id="update">

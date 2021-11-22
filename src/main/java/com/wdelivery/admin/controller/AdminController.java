@@ -26,8 +26,6 @@ import com.wdelivery.admin.vo.AdminBoardVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
-import com.wdelivery.news.utils.Criteria;
-import com.wdelivery.news.utils.PageMaker;
 
 
 @Controller
@@ -40,15 +38,16 @@ public class AdminController {
 	private AdminStoreService adminStoreService;
 	
 	@GetMapping("/index.mdo")
-	public String indexView(Model model,HttpSession session, Criteria cri) {
-		List<AdminVO> adminList =  adminService.indexView(cri);
+	public String indexView(Model model,HttpSession session) {
+		List<AdminVO> adminList =  adminService.indexView();
 		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(100);
+		/*
+		 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(cri);
+		 * pageMaker.setTotalCount(100);
+		 */
 		//List<PaymentVO> paymentVO = new ArrayList<PaymentVO>();
 		model.addAttribute("adminList",adminList);
-		model.addAttribute("pageMaker", pageMaker);
+		//model.addAttribute("pageMaker", pageMaker);
 		//System.out.println("index: " + ((PaymentVO) paymentVO).getOrder_seq());
 
 		return "index";
@@ -95,14 +94,15 @@ public class AdminController {
 	
 	//회원정보 게시판
 	@GetMapping("/layoutStatic.mdo")
-	public String layoutStatic(Model model, Criteria cri) {
-		List<UserVO> userInfo = adminService.userSelect(cri);
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(100);
+	public String layoutStatic(Model model) {
+		List<UserVO> userInfo = adminService.userSelect();
+		/*
+		 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(cri);
+		 * pageMaker.setTotalCount(100);
+		 */
 		
 		model.addAttribute("userInfo" , userInfo);
-		model.addAttribute("pageMaker", pageMaker);
+		//model.addAttribute("pageMaker", pageMaker);
 		return "layout-static";
 	}
 	

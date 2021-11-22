@@ -17,7 +17,6 @@ import com.wdelivery.menu.drink.vo.DrinkVO;
 import com.wdelivery.menu.happymeal.vo.HappyMealVO;
 import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
-import com.wdelivery.news.utils.Criteria;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -25,14 +24,14 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDAO adminDAO;
  
 	@Override
-	public List<AdminVO> indexView(Criteria cri) {
-		return adminDAO.indexView(cri);
+	public List<AdminVO> indexView() {
+		return adminDAO.indexView();
 	}
 
 
 	@Override
-	public List<UserVO> userSelect(Criteria cri) {
-		return adminDAO.userSelect(cri);
+	public List<UserVO> userSelect() {
+		return adminDAO.userSelect();
 	}
 	
 
