@@ -9,5 +9,7 @@ public interface SideService {
 	public List<SideVO> selectSide();
 	
 	SideVO detailSide(Integer s_code);
+	
+	public void insertSide(SideVO sideVO);
 
 }
