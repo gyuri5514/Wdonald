@@ -10,19 +10,59 @@ public class DessertVO {
 
 	private Integer dessert_code;
 	private String dessert_name;
-	private int dessert_price;
 	private String dessert_img_path;
 	private String dessert_img;
-	private String dessert_n_img_path;
-	private String dessert_n_img;
+	private String dessert_detail_img_path;
+	private String dessert_detail_img;
 	private int dessert_status;
 	private int dessert_kcal;
 	private int category_code;
 	private String dessert_e_name;
+
+	private int dessert_price;
+	private String dessert_n_img_path;
+	private String dessert_n_img;
+	private String dessert_allergy;
+	private String dessert_detail_comment;
+	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dessert_regdate;
 	
+
+	public String getDessert_detail_img_path() {
+		return dessert_detail_img_path;
+	}
+	public void setDessert_detail_img_path(String dessert_detail_img_path) {
+		this.dessert_detail_img_path = dessert_detail_img_path;
+	}
+	public String getDessert_detail_img() {
+		return dessert_detail_img;
+	}
+	public void setDessert_detail_img(String dessert_detail_img) {
+		this.dessert_detail_img = dessert_detail_img;
+	}
+	
+	public int getDessert_price() {
+		return dessert_price;
+	}
+	public void setDessert_price(int dessert_price) {
+		this.dessert_price = dessert_price;
+	}
+	public String getDessert_allergy() {
+		return dessert_allergy;
+	}
+	public void setDessert_allergy(String dessert_allergy) {
+		this.dessert_allergy = dessert_allergy;
+	}
+
+	public String getDessert_detail_comment() {
+		return dessert_detail_comment;
+	}
+	public void setDessert_detail_comment(String dessert_detail_comment) {
+		this.dessert_detail_comment = dessert_detail_comment;
+	}
 	public Date getDessert_regdate() {
 		return dessert_regdate;
 	}
@@ -40,12 +80,6 @@ public class DessertVO {
 	}
 	public void setDessert_name(String dessert_name) {
 		this.dessert_name = dessert_name;
-	}
-	public int getDessert_price() {
-		return dessert_price;
-	}
-	public void setDessert_price(int dessert_price) {
-		this.dessert_price = dessert_price;
 	}
 	public String getDessert_img_path() {
 		return dessert_img_path;

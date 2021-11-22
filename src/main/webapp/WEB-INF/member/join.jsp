@@ -1,24 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<title>McDonald's Crew</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
-<meta name="description" content="">
-<meta name="author" content="Themelize.me">
- 
-<link rel="stylesheet" href="resources/css/main/custom.css?t=2021090901"> 
-
 <!-- Bootstrap CSS -->	
 <link href="resources/css/join/bootstrap.min.css" rel="stylesheet">
-
 <!-- Theme style -->
 <link href="resources/css/join/theme-style.min.css" rel="stylesheet">
-
 <!-- Your custom override -->
 <link href="resources/css/join/custom-style_sh.css" rel="stylesheet">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/m/appstrap/img/icons/114x114.png">
@@ -39,7 +24,7 @@
 	</script>
 </c:if>
 </head>
-	<div class="wrapper ">
+	<div class="wrapper " style="padding:0px">
 	<div id="content">
   	<div class="container" id="sub-page-content">
     <div class="row"> 

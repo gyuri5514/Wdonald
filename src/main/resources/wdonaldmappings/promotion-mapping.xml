@@ -3,7 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wdelivery.promotion.dao.PromotionDAO">
-	<select id="selectPromotion" resultType="promotionVO">
+	<select id="selectPromotionAll" resultType="promotionVO">
+		<![CDATA[
+			SELECT * FROM promotion ORDER BY p_code ASC
+		]]>
+	</select>
+
+	<select id="selectPromotionIng" resultType="promotionVO">
 		<![CDATA[
 			SELECT * FROM promotion WHERE p_status = 1 ORDER BY p_code ASC
 		]]>

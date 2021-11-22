@@ -3,6 +3,7 @@ package com.wdelivery.admin.service;
 import java.util.List;
 
 import com.wdelivery.admin.vo.AdminBannerVO;
+import com.wdelivery.admin.vo.AdminBoardVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
@@ -30,6 +31,10 @@ public interface AdminService {
 	public void deleteCoupon(AdminCouponVO deleteCoupon);
 	
 	public void statusCoupon(AdminCouponVO vo);
+	
+	public List<AdminBoardVO> selectBoard();
+	
+	public void addBoard(AdminBoardVO addboard);
 	
 	public List<AdminBannerVO> selectBannerList();
 

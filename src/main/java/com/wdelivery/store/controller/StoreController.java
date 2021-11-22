@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
 import com.wdelivery.store.chart.vo.ChartVO;
@@ -48,17 +49,23 @@ public class StoreController {
 	}
 	 
 	@GetMapping("/index.sdo")
-	public String index(AdminVO adminVO, Model model, HttpSession session) {
+	public String index(AdminVO adminVO, ToyCountVO toyCountVO, Model model, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
 		//System.out.println("bn" + adminVO.toString());
 		
 		if(adminVO==null)
 			return "redirect:login.mdo";
+
 		
 		ChartVO c = new ChartVO();
-	    c.setStore_code(adminVO.getStore_code());
-	    getChart(c,model);
+	   c.setStore_code(adminVO.getStore_code());
+	   getChart(c,model);
+
 		model.addAttribute("status", adminVO.getStore_status());
+		List<ToyCountVO> toyCountList = storeService.toyCountSelect(adminVO.getAdmin_seq());
+		System.out.println("index : " +	toyCountList.toString());
+		model.addAttribute("toy", toyCountList);
+
 		return "index";
 	}
 	@GetMapping("/storeStatus.sdo")

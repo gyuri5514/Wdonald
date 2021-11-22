@@ -29,7 +29,7 @@
 									<li>
 										<a href="#" data-seq="300">
 											<div class="thum">
-												<img src="${selectDessert.dessert_img_path}" alt="${selectDessert.dessert_name}" onclick="javascript:location.href='detail.do?dessert_code=${selectDrink.dessert_code}'">
+												<img src="${selectDessert.dessert_img_path}" alt="${selectDessert.dessert_name}" onclick="javascript:location.href='detail.do?dessert_code=${selectDessert.dessert_code}'">
 											</div>
 											<div class="name">
 												<strong class="ko">${selectDessert.dessert_name}</strong>
