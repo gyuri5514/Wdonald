@@ -137,10 +137,6 @@ public class MemberController {
 		if (va != null) {
 			if (va.equals("변경")) {
 				List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
-				/*
-				 * for(int i = 0; i < cartList.size(); i ++) { System.out.println("vo : " +
-				 * cartList.get(i).getCart_b_name()); }
-				 */
 				cartList.remove(Integer.parseInt(num));
 				session.setAttribute("cartList", cartList);
 			}
@@ -186,6 +182,15 @@ public class MemberController {
 			model.addAttribute("dessertVO", dessertVO);
 
 		} else if (h_code != null) {
+			// return true = winmoring available / return false = winmorning not on sale
+			if (!orderTimer.isMenuOrderTime()&&
+					Integer.parseInt(h_code)>=901&&Integer.parseInt(h_code)<=904) {
+				model.addAttribute("menuAvailable", "n");
+							return "happymeal";
+			}else if(orderTimer.isMenuOrderTime()&&Integer.parseInt(h_code)>904) {
+				model.addAttribute("menuAvailable", "n");
+				return "happymeal";
+			}
 			HappyMealVO happyMealVO = happyMealService.detailHappyMeal(Integer.parseInt(h_code));
 
 			model.addAttribute("happyMealVO", happyMealVO);
@@ -514,25 +519,9 @@ public class MemberController {
 				if (vo.getCart_quantity() != null)
 					product_quantity += vo.getCart_quantity();
 
-				System.out.println("---------------------------------");
-				System.out.println("b_Lgset_price : " + b_Lgset_price);
-				System.out.println("b_price : " + b_price);
-				System.out.println("b_set_price : " + b_set_price);
-				System.out.println("d_price : " + d_price);
-				System.out.println("s_price : " + s_price);
-				System.out.println("w_price : " + w_price);
-				System.out.println("w_set_price : " + w_set_price);
-				System.out.println("dessert_price : " + dessert_price);
-				System.out.println("product_quantity : " + product_quantity);
-				System.out.println("---------------------------------");
-
 			}
 			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price + dessert_price + w_price + w_set_price)
 					+ delivery_price;
-			/*
-			 * System.out.println("price : " + price);
-			 * System.out.println("---------------------------------");
-			 */
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
 			session.setAttribute("cartList", cartList);
@@ -567,47 +556,6 @@ public class MemberController {
 		return "faq";
 	}
 
-	/*
-	 * @GetMapping("/faqSelect.do")
-	 * 
-	 * @ResponseBody public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect",
-	 * required = false) String MenuSelect,
-	 * 
-	 * @RequestParam(value = "KeywordSelect", required = false) String
-	 * KeywordSelect) { List<FaqVO> faqList = new ArrayList<FaqVO>(); if (MenuSelect
-	 * != null && KeywordSelect == null) {
-	 * 
-	 * System.out.println("MenuSelect : " + MenuSelect);
-	 * System.out.println("KeywordSelect : " + KeywordSelect);
-	 * 
-	 * faqList = faqService.MenuSelect(MenuSelect);
-	 * 
-	 * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
-	 * System.out.println(faqList1.getFaq_name());
-	 * System.out.println(faqList1.getFaq_title());
-	 * System.out.println(faqList1.getFaq_content());
-	 * 
-	 * }
-	 * 
-	 * } else if (MenuSelect != null && KeywordSelect != null) { Map<String, String>
-	 * map = new HashMap<String, String>(); map.put("MenuSelect", MenuSelect);
-	 * map.put("KeywordSelect", KeywordSelect);
-	 * 
-	 * System.out.println("MenuSelect : " + MenuSelect);
-	 * System.out.println("KeywordSelect : " + KeywordSelect);
-	 * 
-	 * faqList = faqService.KeywordSelect(map);
-	 * 
-	 * for(FaqVO faqKeyword1 : faqList) {
-	 * System.out.println(faqKeyword1.getFaq_seq());
-	 * System.out.println(faqKeyword1.getFaq_name());
-	 * System.out.println(faqKeyword1.getFaq_title());
-	 * System.out.println(faqKeyword1.getFaq_content());
-	 * 
-	 * }
-	 * 
-	 * } return faqList; }
-	 */
 
 	@GetMapping("/couponSearch.do")
 	@ResponseBody
@@ -640,15 +588,7 @@ public class MemberController {
 	@ResponseBody
 	public QnaVO qna(QnaVO qnaVO, @RequestParam(name = "qa_email", defaultValue = "1") String qa_email,
 			@RequestParam(name = "qa_password", defaultValue = "1") String qa_password) throws Exception {
-		QnaVO vo = qnaService.qnaSelect(qnaVO);
-
-		try {
-			// System.out.println(vo.toString());
-
-		} catch (NullPointerException e) {
-			// System.out.println("NullException");
-		}
-		return vo;
+		return qnaService.qnaSelect(qnaVO);
 	}
 
 	@GetMapping("/qna.do")
@@ -668,8 +608,7 @@ public class MemberController {
 	@PostMapping("/searchStore.do")
 	@ResponseBody
 	public List<AdminVO> searchStore(@RequestParam(name = "searchWord") String searchWord) { // 매장 검색 부분
-		List<AdminVO> storeList = adminStoreService.searchStore(searchWord);
-		return storeList;
+		return adminStoreService.searchStore(searchWord);
 	}
 
 	@GetMapping("/brandintro.do")
@@ -750,25 +689,36 @@ public class MemberController {
 			@RequestParam(value = "lon", required = false) double lon, HttpSession session) {
 		// coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액,
 		// delivery_price - 배달료
+			
+		 
+		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
+		
+		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
 
-		AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);
-
-		if (store == null) {
+		 
+		if (newStore == null) {
 			model.addAttribute("notAvailable", "noStoreNear");
 			return "orderConfirm";
 		}
 
-		model.addAttribute("store", store);
+		model.addAttribute("store", newStore);
 		model.addAttribute("address", address);
 		model.addAttribute("price", price);
 		model.addAttribute("delivery_cost", delivery_price);
-		int totalPrice = Integer.parseInt(price) + Integer.parseInt(delivery_price);
-		model.addAttribute("total_price", totalPrice);
+		model.addAttribute("total_price", Integer.parseInt(price) + Integer.parseInt(delivery_price));
 		model.addAttribute("discount", 0);
 		return "paymentWin";
 	}
 
+	/* This method is deprecated */
 	public List<AdminVO> findProximateStore(double lat, double lon) {
-		return memberService.findProximateStore(new MapPointVO(lat, lon));
+		return memberService.findProximateStore(new MapPointVO(lat, lon,3));
+	}
+	
+	@ResponseBody
+	@PostMapping("/isDeliveryAvailable.do")
+	public AdminVO isDeliveryAvailable(@RequestParam("lat") double lat,
+			@RequestParam("lon") double lon) {
+		return memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4));
 	}
 }

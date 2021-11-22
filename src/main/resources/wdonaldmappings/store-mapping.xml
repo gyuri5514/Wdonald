@@ -16,8 +16,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<select id="findProximateStore" resultType="AdminVO" parameterType="mapPointVO">
 		<![CDATA[
-			select * from admin where store_status =1 and (store_lat between #{start_lat} and #{end_lat}) 
+				select * from admin where store_status =1 and (store_lat between #{start_lat} and #{end_lat}) 
 					and(store_lon between #{start_lon} and #{end_lon});
+		]]>
+	</select>
+	
+	<select id="newWhichOneIsNearest" resultType="AdminVO" parameterType="mapPointVO">
+		<![CDATA[
+			select (power(store_lat-#{client_lat},2)+power(store_lon-#{client_lon},2)) 
+			as direct,* from admin where store_status =1 and 
+			Power(store_lat-#{client_lat},2)+power(store_lon-#{client_lon},2)<=power(#{fixed_rad},2) 
+			order by direct ASC limit 1;
 		]]>
 	</select>
 	

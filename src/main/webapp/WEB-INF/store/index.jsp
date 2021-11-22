@@ -13,6 +13,7 @@
 <script type="text/javascript">
 	alert('권한이 필요한 작업입니다. 로그인해주세요.');
 </script>
+
 </c:if>
 <!-- !! Admin Main !! -->
 <style>
@@ -23,7 +24,7 @@
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
-			<h1 class="mt-4">Dashboard    <span id="today_total">일일합계 : ${today_total }&#8361;</span></h1> 
+			<h1 class="mt-4">Dashboard    <span id="today_total"><fmt:formatNumber value="${today_total }" type="currency" var="currencyType"/>${currencyType}</span></h1> 
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item active">WinDelivery</li>
 			</ol>
@@ -94,10 +95,10 @@
 							<canvas id="myAreaChart" width="100%" height="40"></canvas>
 							<script type="text/javascript">
 //Set new default font family and font color to mimic Bootstrap's default styling
-
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 // Area Chart Example
+
 var total =0;
 var max =0;
 var today_sales= 0;
@@ -115,6 +116,7 @@ var data = jsonChart.map(function(e){
    
    return e.sales_amount;
 })
+
 $('#totalspan').html(total);
 var options = {
        scales: {
@@ -132,7 +134,7 @@ var options = {
             yAxes: [{
               ticks: {
                 min: 0,
-                max: (max+10000),
+                max: max+10000,
                 maxTicksLimit: 5
               },
               gridLines: {
@@ -263,6 +265,8 @@ var myBarChart = new Chart(xtx,{
     data:chartData,
     options: options
   });
+
+
 							</script>
 						</div>
 					</div>

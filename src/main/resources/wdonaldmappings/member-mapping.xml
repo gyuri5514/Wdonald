@@ -188,4 +188,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			UPDATE promotion SET p_count = p_count + 1 WHERE p_code = #{p_code}
 		]]>
 	</update>
+	
 </mapper>

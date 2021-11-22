@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -130,14 +131,7 @@ public class AdminController {
 	//회원정보 게시판
 	@GetMapping("/layoutStatic.mdo")
 	public String layoutStatic(Model model) {
-		List<UserVO> userInfo = adminService.userSelect();
-		/*
-		 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(cri);
-		 * pageMaker.setTotalCount(100);
-		 */
-		
-		model.addAttribute("userInfo" , userInfo);
-		//model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("userInfo" , adminService.userSelect());
 		return "layout-static";
 	}
 	
@@ -232,5 +226,17 @@ public class AdminController {
 		
 		return "redirect:banner.mdo";
 	}
-
+	
+	@ResponseBody
+	@PostMapping("deleteUser.mdo")
+	public int deleteUser(@RequestBody UserVO userVO) {
+		return adminService.deleteUser(userVO);
+	} 
+	
+	@ResponseBody
+	@PostMapping("suspendUser.mdo")
+	public int suspendUser(@RequestBody UserVO userVO) {
+		return adminService.supsendUser(userVO);
+	} 
+	
 }
