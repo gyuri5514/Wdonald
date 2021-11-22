@@ -25,7 +25,7 @@
 						<div class="mcMenu">
 							<p class="count" id="count"><b>${selectHappyMeal.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
-								<c:forEach items="${selectHappyMeal}" var="selectHappyMeal" begin="0" end="3" step="1">
+								<c:forEach items="${selectHappyMeal}" var="selectHappyMeal">
 									<li>
 										<a href="#" data-seq="${selectHappyMeal.h_code}">
 											<div class="thum">

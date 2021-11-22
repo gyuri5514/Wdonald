@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.dao.PaymentDAO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -20,5 +21,11 @@ public class PaymentServiceImpl implements PaymentService {
 		paymentDAO.insertPaidOrderList(paymentVO);
 		paymentDAO.insertCartList(cartVO);
 	}
+
+	@Override
+	public void toyCount(ToyCountVO toyCountVO) {
+		paymentDAO.toyCount(toyCountVO);
+	}
+	
 }
 

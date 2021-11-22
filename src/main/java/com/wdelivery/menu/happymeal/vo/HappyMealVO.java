@@ -1,5 +1,11 @@
 package com.wdelivery.menu.happymeal.vo;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class HappyMealVO {
 	
 	private Integer h_code;
@@ -15,7 +21,16 @@ public class HappyMealVO {
 	private String h_detail_comment;
 	private String h_e_name;
 	private String h_allergy;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date h_regdate;
 	
+	public Date getH_regdate() {
+		return h_regdate;
+	}
+	public void setH_regdate(Date h_regdate) {
+		this.h_regdate = h_regdate;
+	}
 	public String getH_allergy() {
 		return h_allergy;
 	}

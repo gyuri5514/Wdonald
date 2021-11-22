@@ -7,13 +7,17 @@ import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.menu.burger.vo.BurgerVO;
-import com.wdelivery.news.utils.Criteria;
+import com.wdelivery.menu.dessert.vo.DessertVO;
+import com.wdelivery.menu.drink.vo.DrinkVO;
+import com.wdelivery.menu.happymeal.vo.HappyMealVO;
+import com.wdelivery.menu.side.vo.SideVO;
+import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 
 public interface AdminDAO {
 	
-	public List<AdminVO> indexView(Criteria cri);
+	public List<AdminVO> indexView();
 
-	public List<UserVO> userSelect(Criteria cri);
+	public List<UserVO> userSelect();
 	
 	public List<AdminCouponVO> selectCoupon();
 	
@@ -21,17 +25,27 @@ public interface AdminDAO {
 	
 	public void addCoupon(AdminCouponVO addcoupon);
 	
-	public void addUserCoupon(AdminCouponVO addUserCoupon);
-	
 	public void deleteUserCoupon(AdminCouponVO deleteCoupon);
 	
 	public void deleteCoupon(AdminCouponVO deleteCoupon);
+	
+	public void statusCoupon(AdminCouponVO vo);
 	
 	public List<AdminBannerVO> selectBannerList();
 
 	public void bannerInsert(AdminBannerVO bannerVO);
 
 	public List<BurgerVO> viewBurger();
-
+	public void burgerUpdate (BurgerVO burgerVO);
+	public List<WinMorningVO> viewMorning();
+	public void morningUpdate (WinMorningVO winMorningVO);
+	public List<SideVO> viewSide ();
+	public void sideUpdate (SideVO sideVO);
+	public List<DessertVO> viewDessert();
+	public void dessertUpdate (DessertVO dessertVO);
+	public List<DrinkVO> viewDrink();
+	public void drinkUpdate(DrinkVO drinkVO);
+	public List<HappyMealVO> viewHappy();
+	public void happyUpdate(HappyMealVO happyMealVO);
 
 }

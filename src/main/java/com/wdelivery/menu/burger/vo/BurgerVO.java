@@ -11,13 +11,14 @@ public class BurgerVO {
 	private Integer b_code;
 	private String b_name;
 	private int b_price;
-  private int b_kcal;
-	
+    private int b_kcal;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date b_regdate;
 	private String b_img_path;
 	private String b_img;
 	private int b_status;
-	private String b_n_img_path;
+	private String b_n_img_path;	
 	private String b_n_img;
 	private int category_code;
 	private String b_e_name;

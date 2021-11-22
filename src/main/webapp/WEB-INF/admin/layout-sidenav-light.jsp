@@ -40,10 +40,16 @@
 								<td><fmt:formatDate value="${vo.coupon_regdate}" pattern="yyyy-MM-dd"/></td>
 								<td><fmt:formatDate value="${vo.coupon_enddate}" pattern="yyyy-MM-dd"/></td>
 								<td style="text-align: center;">
-									<div class="coupon_canuse" style="width: 80%; margin: 0 auto">
-										<select id="coupon_canuse${vo.coupon_code}" name="coupon_canuse" class="btn btn-Default dropdown-toggle">
-											<option value="Y" ${vo.coupon_check == "Y" ? 'selected="selected"' : ''}>Y</option>
-											<option value="N" ${vo.coupon_check == "N" ? 'selected="selected"' : ''}>N</option>
+									<div class="coupon_status" style="width: 80%; margin: 0 auto">
+										<select id="coupon_status${vo.coupon_code}" name="coupon_status" onchange="stateChanged('${vo.coupon_code }')" class="btn btn-Default dropdown-toggle">
+											<c:if test="${vo.coupon_status == 0}">
+												<option value="0" selected>Y</option>
+												<option value="1">N</option>
+											</c:if>
+											<c:if test="${vo.coupon_status == 1}">
+												<option value="0">Y</option>
+												<option value="1" selected>N</option>
+											</c:if>
 										</select>
 									</div>
 								</td>
@@ -88,6 +94,23 @@
 				}
 			})
 		}
+	function stateChanged(code){
+		var status = $('#coupon_status'+code).val();
+		
+		$.ajax({
+			type : 'post',
+			url : '/controller/statusCoupon.mdo',
+			data : {
+				coupon_code : code,
+				status : status
+			},
+			dataType : 'json',
+			success : function(data){
+				
+			}
+		})
+	
+	}
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

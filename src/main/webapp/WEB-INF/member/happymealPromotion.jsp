@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-<script type="text/javascript" src="/resources/js/popup.js"></script>
-<script type="text/javascript" src="/resources/js/libs.js"></script>
-<script type="text/javascript" src="/resources/js/KmcCert.js"></script>
-
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
 <link rel="stylesheet" href="resources/css/promotion/promotion.css">
 	<div class="content">
@@ -22,24 +18,39 @@
 		<div class="contArea bgG">
 			<div class="inner">
 				<ul class="tabType01">
-					<li><a href="javascript:getList(1,'');" id="all" role="button" aria-selected="true">전체보기</a></li>
-					<!-- 선택 된 태그에 aria-selected="true" 추가 -->
+					<!-- <li><a href="javascript:getList(1,'');" id="all" role="button" aria-selected="true">전체보기</a></li>
+					선택 된 태그에 aria-selected="true" 추가
 					<li><a href="javascript:getList(1,'I');" id="ing" role="button">진행중</a></li>
-					<li><a href="javascript:getList(1,'E')" id="end" role="button">종료</a></li>
+					<li><a href="javascript:getList(1,'E')" id="end" role="button">종료</a></li> -->
 				</ul>
 				<!-- 행사 있을 경우 종료된 행사일 경우 class값 end 추가-->
 				<ul class="cardBanner" id="promotionList">
 					<c:forEach items="${selectHappyPromotion}" var="selectHappyPromotion">
-						<li>
-							<a href="#" onclick="goDetail(this)" class data="340, 1, N">
+						<li id="happy_ing">
+							<a href="#" data-seq="${selectHappyPromotion.hp_code}">
 								<div class="tmb">
-									<img src="${selectHappyPromotion.hp_img_path}" alt="${selectHappyPromotion.hp_name}">
+									<img src="${selectHappyPromotion.hp_img_path}" alt="${selectHappyPromotion.hp_name}" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${selectHappyPromotion.hp_code}'">
 								</div>
 								<div class="con">
 									<strong class="tit">
 										${selectHappyPromotion.hp_title}
 									</strong>
 									<span id="statusSpan"></span>
+								</div>
+							</a>
+						</li>
+					</c:forEach>
+					<c:forEach items="${selectHappyPromotionEnd}" var="end">
+						<li id="happy_end">
+							<a href="#" data-seq="${selectHappyPromotionEnd.hp_code}">
+								<div class="tmb">
+									<img src="${selectHappyPromotionEnd.hp_img_path}" alt="${selectHappyPromotionEnd.hp_name}" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${selectHappyPromotionEnd.hp_code}'">
+								</div>
+								<div class="con">
+									<strong class="tit">
+										${selectHappyPromotionEnd.hp_title}
+									</strong>
+									<span id="statusSpan">종료된 행사입니다.</span>
 								</div>
 							</a>
 						</li>
@@ -54,157 +65,8 @@
 		<!-- //contArea -->
 	</div>
 	<div class="aside">
-		<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">Wdelivery</a>
+		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Wdelivery</a>
 	</div>
-	<form id="searchForm" name="searchForm" method="get">
-		<input type="hidden" name="page" id="page" value="1"> 
-		<input type="hidden" name="seq" id="seq"> 
-		<input type="hidden" name="searchStatus" id="searchStatus"> 
-		<input type="hidden" name="urlCode" id="urlCode">
-	</form>
-
-	<script type="text/javascript">
-		var init_page =0;
-		var totalPage =0;	
-		var page_status = "";
-		
-		var isCertificate = false;
-		
-		$(document).ready(function (){
-			getList(1,'');
-		});
-		
-		function getList(page_val,status){
-			$.get("/controller/promotion.do",
-					{	
-						page:page_val,
-						searchStatus: status
-						
-					},	function(data){
-						if(data.is_ok=="ok"){
-							if(page_status!=status){
-							$("#promotionList").empty();
-							}
-							totalPage=data.totalPage;
-							init_page=data.page;
-							page_status = data.status;
-							
-							
-							if(data != null && data != ''){
-							for(var i=0;i<data.list.length;i++){
-								
-								if(data.list[i].status_text=="E"){
-									data.list[i].end="end";
-									data.list[i].end_text = "종료된 행사입니다.";
-								}else{
-									data.list[i].end="";
-									data.list[i].end_text = "";
-								}
-								$("#promotionList").append(addList(data.list[i]));
-							}
-							}else{
-								$("#promotionList").append(addList());
-							}
-							altEscapeTag();
-							if(totalPage==page_val){
-								$("#btnMore").hide();
-							}else{
-								$("#btnMore").show();
-							}
-							if(status==''){
-								$('#all').attr('aria-selected','true');
-								$('#end').attr('aria-selected','false');
-								$('#ing').attr('aria-selected','false');
-								
-							}else if(status == 'I'){
-								$('#all').attr('aria-selected','false');
-								$('#end').attr('aria-selected','false');
-								$('#ing').attr('aria-selected','true');
-							}else if (status =='E'){
-								$('#all').attr('aria-selected','false');
-								$('#end').attr('aria-selected','true');
-								$('#ing').attr('aria-selected','false');
-							}else{
-								alert("잘못된 접근입니다.");
-							}
-							if(page_val>1){
-								$("[data-seq='"+data.list[0].seq+"']").focus();
-							}
-						}else{
-							alert("목록가져오기에 실패하였습니다\관리자에게 문의하세요");
-							if(status==''){
-								$('#all').attr('aria-selected','true');
-								$('#end').attr('aria-selected','false');
-								$('#ing').attr('aria-selected','false');
-								
-							}else if(status == 'I'){
-								$('#all').attr('aria-selected','false');
-								$('#end').attr('aria-selected','false');
-								$('#ing').attr('aria-selected','true');
-							}else if (status =='E'){
-								$('#all').attr('aria-selected','false');
-								$('#end').attr('aria-selected','true');
-								$('#ing').attr('aria-selected','false');
-							}else{
-								alert("잘못된 접근입니다.");
-							}
-						}
-					}
-			);
-		}
-		function addList(data){
-			/*if(data.status == "E"){
-				
-				document.getElementById("listPromotion").add("end")
-				;
-				
-				document.getElementById("statusSpan").innerHTML = "종료된 행사입니다.";
-				
-			}*/
-			return makeHtml("promotion",data);
-		}
-		function addList2(data){ 
-			return makeHtml("promotionNull",data);
-		}
-		function more(){
-			getList(init_page+1,page_status);
-		}
-		
-		function goDetail(element){	
-		    var data = $(element).attr("data").split(",");
-		    var form_data = KmcCert.getUrlCode(data[0],"json");
-		
-		    $("#seq").val(data[0]);
-		    $("#urlCode").val(form_data["urlCode"]);
-		    $("#searchStatus").val(page_status);
-		
-		    var certification = data[2];
-		    if(certification !== "N" && isCertificate ){
-		        certification = "N";
-		    }
-		
-			if(certification !== "N"){
-			    var certPopup = window.open('about:blank','certviewer','width=846,height=700,scrollbars=no,resize=no');
-				certPopup.resizeTo(846,700);
-		        $("#searchForm").attr("action", "/cert/popup.do");
-		        $("#searchForm").attr("target", "certviewer");
-		    } else {
-		    	$("#searchForm").attr("target", "");
-		        $("#searchForm").attr("action","/promotionDetail.do");
-		    }
-		    $("#searchForm").submit();	
-		}
-		
-		function certificate(){
-			isCertificate = true;
-			$("#searchForm").attr("target", "");
-		    $("#searchForm").attr("action","/promotionDetail.do");
-		    $("#searchForm").submit();	
-		}
-		
-	
-	</script>
-
 	<button type="button" class="btnTop">맨 위로 가기</button>
 	<!-- //container -->
 </body>

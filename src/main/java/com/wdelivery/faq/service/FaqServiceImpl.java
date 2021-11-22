@@ -17,8 +17,8 @@ public class FaqServiceImpl implements FaqService {
 	private FaqDAO faqDAO;
 
 	@Override
-	public List<FaqVO> faqSelect() {
-		List<FaqVO> vo = faqDAO.faqSelect();
+	public List<FaqVO> faqSelect(Criteria cri) {
+		List<FaqVO> vo = faqDAO.faqSelect(cri);
 		return vo;
 	}
 	@Override

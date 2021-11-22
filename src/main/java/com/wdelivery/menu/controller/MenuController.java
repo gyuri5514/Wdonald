@@ -97,8 +97,9 @@ public class MenuController {
 	@GetMapping("/happymeal_pm.do")
 	public String selectHappyMealPM(Model model) {
 		
-		List<HappyMealVO> selectHappyMeal = happyMealService.selectHappyMeal();
-		model.addAttribute("selectHappyMeal", selectHappyMeal);
+		List<HappyMealVO> selectHappyMealPM = happyMealService.selectHappyMealPM();
+		
+		model.addAttribute("selectHappyMealPM", selectHappyMealPM);
 		
 		return "happymeal_pm";
 	}

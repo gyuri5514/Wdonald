@@ -51,7 +51,7 @@
 	        <div class="headArea">
 	          <strong class="hLogo">
 	            <a href="main.do" target="_blank" class="logo" title="메인으로 이동">
-	              <img src="resources/wcdonald.png" alt="맥도날드" />
+	              <img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/logo.png" alt="맥도날드" />
 	            </a>
 	          </strong>
 	          <nav class="hMenu">
@@ -89,7 +89,7 @@
 									<input type="checkbox" id="1" value="04" disabled /> 
 									<label for="1"> 메뉴 
 										<span class="icon">
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_burger.png" alt="메뉴" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_burger.png" alt="메뉴" />
 										</span>
 									</label>
 								</span> 
@@ -97,7 +97,7 @@
 									<input type="checkbox" id="2" value="01" disabled />
 									<label for="2"> 구매 
 										<span class="icon"> 
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_cart.png" alt="카트" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_cart.png" alt="카트" />
 										</span>
 									</label>
 								</span> 
@@ -105,15 +105,15 @@
 									<input type="checkbox" id="3" value="Y" disabled /> 
 									<label for="3"> 매장이용 
 										<span class="icon"> 
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_home.png"	alt="매장이용" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_home.png"	alt="매장이용" />
 										</span>
 									</label>
 								</span> 
 								<span id="03" class="srvc" onclick="javascript:search('03','C');changeColor('03');">
 									<input type="checkbox" id="4" value="Y" disabled /> 
-									<label for="4"> 맥딜리버리 
+									<label for="4"> 윈딜리버리 
 										<span class="icon"> 
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_drive.png" alt="맥딜리버리" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_drive.png" alt="맥딜리버리" />
 										</span>
 									</label>
 								</span> 
@@ -121,7 +121,7 @@
 									<input type="checkbox" id="5" value="Y" disabled /> 
 									<label for="5"> 채용 
 										<span class="icon">
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_search.png" alt="채용" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_search.png" alt="채용" />
 										</span>
 									</label>
 								</span> 
@@ -129,15 +129,15 @@
 									<input type="checkbox" id="6" value="Y" disabled /> 
 									<label for="6"> 프랜차이즈 
 										<span class="icon"> 
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_handshake.png" alt="프랜차이즈" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_handshake.png" alt="프랜차이즈" />
 										</span>
 									</label>
 								</span> 
 								<span id="09" class="srvc" onclick="javascript:search('09','C');changeColor('09');">
 									<input type="checkbox" id="7" value="Y" disabled /> 
-									<label for="7"> 맥도날드앱 
+									<label for="7"> 윈도날드앱 
 										<span class="icon"> 
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_mcd.png" alt="맥도날드앱" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_mcd.png" alt="맥도날드앱" />
 										</span>
 									</label>
 								</span> 
@@ -145,7 +145,7 @@
 									<input type="checkbox" id="8" value="Y" disabled /> 
 									<label	for="8"> 기타 
 										<span class="icon"> 
-											<img src="https://voc.mcd.co.kr/common/images/icon/ic_etc.png" alt="기타" />
+											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_etc.png" alt="기타" />
 										</span>
 									</label>
 								</span>
@@ -161,12 +161,12 @@
 											<option value="" title="전체">전체</option>
 											<option value="01" title="구매">구매</option>
 											<option value="02" title="매장이용">매장이용</option>
-											<option value="03" title="맥딜리버리">맥딜리버리</option>
+											<option value="03" title="맥딜리버리">윈딜리버리</option>
 											<option value="04" title="메뉴">메뉴</option>
 											<option value="05" title="채용">채용</option>
 											<option value="07" title="프랜차이즈">프랜차이즈</option>
 											<option value="08" title="기타">기타</option>
-											<option value="09" title="맥도날드앱">맥도날드앱</option>
+											<option value="09" title="맥도날드앱">윈도날드앱</option>
 										</select>
 									</div>
 									<form NAME="FNAME" class="realForm" method="post" onsubmit="return false;">
@@ -253,9 +253,6 @@
 												</c:if>
 							            	</ul>
 							            </div>
-										<div class="btnMore" id="btnMore" style="display: none;">
-											<button type="button" id="addBtn" class="more" onclick="morePage();">더보기</button>
-										</div>
 										<div id="LIST_PAGE_DIV" style="dispaly: none"></div>
 									</td>
 								</tr>

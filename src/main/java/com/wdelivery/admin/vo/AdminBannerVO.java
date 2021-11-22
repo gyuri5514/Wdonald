@@ -6,6 +6,15 @@ public class AdminBannerVO {
 	private String banner_title;
 	private String banner_img;
 	private String banner_content;
+	private int p_code;
+
+	public int getP_code() {
+		return p_code;
+	}
+
+	public void setP_code(int p_code) {
+		this.p_code = p_code;
+	}
 
 	public int getBanner_seq() {
 		return banner_seq;

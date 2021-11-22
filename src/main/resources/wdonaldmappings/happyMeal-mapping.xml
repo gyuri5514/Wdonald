@@ -5,7 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.menu.happymeal.dao.HappyMealDAO">
 	<select id="selectHappyMeal" resultType="happyMealVO">
 		<![CDATA[
-			SELECT * FROM happymeal ORDER BY h_code
+			SELECT * FROM happymeal WHERE h_status = 1 ORDER BY h_code
+		]]>
+	</select>
+	
+	<select id="selectHappyMealPM" resultType="happyMealVO">
+		<![CDATA[
+			SELECT * FROM happymeal WHERE h_status = 2 ORDER BY h_code
 		]]>
 	</select>
 	

@@ -2,10 +2,6 @@
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<script type="text/javascript" src="/resources/js/popup.js"></script>
-<script type="text/javascript" src="/resources/js/libs.js"></script>
-<script type="text/javascript" src="/resources/js/KmcCert.js"></script>
-
 <script>
 function promotionShow(status) {
 	if (status == '') {
@@ -82,7 +78,7 @@ function promotionShow(status) {
 							</a>
 						</li>
 					</c:forEach>
-					<%-- <c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
+					<c:forEach items="${selectPromotionEnd}" var="selectPromotionEnd">
 						<li id="promotion_end">
 							<a href="#" data-seq="${selectPromotionEnd.p_code}" class="end">
 								<div class="tmb">
@@ -96,11 +92,8 @@ function promotionShow(status) {
 								</div>
 							</a>
 						</li>
-					</c:forEach> --%>
+					</c:forEach>
 				</ul>
-				<div class="btnMore" id="btnMore">
-					<a href="javascript:more();" class="more">더보기</a>
-				</div>
 				<!-- //행사 있을 경우-->
 				<!-- 행사 없을 경우 -->
 

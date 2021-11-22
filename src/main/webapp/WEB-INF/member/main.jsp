@@ -31,7 +31,7 @@
 			<c:forEach var="bannerList" items="${bannerList}" varStatus="status" end="${bannerList.size()}">
 				<div class="mySliders fade">
 					<div class="numbertext">${status.count}/ ${status.end}</div>
-					<img style="width:100%" src="${bannerList.banner_img}" alt="1955 스모키 더블 베이컨 버거 출시">
+					<img style="width:100%" src="${bannerList.banner_img}" onclick="javascript:location.href='promotionDetail.do?p_code=${bannerList.p_code}'">
 				</div>
 			</c:forEach>
 		</div>
@@ -71,7 +71,7 @@
 		</form>
 	</div>
 	<div class="aside">
-		<a href="order.do" class="goDelivery" title="새창 열림">Wcdelivery</a>
+		<a href="burger.do" class="goDelivery" title="새창 열림">Wcdelivery</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>

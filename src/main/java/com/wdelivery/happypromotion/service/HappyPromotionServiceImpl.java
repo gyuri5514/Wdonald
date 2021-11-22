@@ -19,4 +19,20 @@ public class HappyPromotionServiceImpl implements HappyPromotionService {
 		return happyPromotionDAO.selectHappyPromotion();
 	}
 
+	@Override
+	public List<HappyPromotionVO> selectHappyPromotionEnd() {
+		return happyPromotionDAO.selectHappyPromotionEnd();
+		
+	}
+
+	@Override
+	public HappyPromotionVO detailPromotion(Integer hp_code) {
+		return happyPromotionDAO.detailPromotion(hp_code);
+	}
+
+	@Override
+	public void countHappyPromotion(Integer hp_code) {
+		happyPromotionDAO.countHappyPromotion(hp_code);
+	}
+
 }
