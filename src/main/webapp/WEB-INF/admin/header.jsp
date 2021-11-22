@@ -100,18 +100,36 @@
                                  <a class="nav-link" href="happyMeal.mdo">Happymeal & Toy</a>
                                 <!--  <a class="nav-link" href="500.mdo">500 Page</a> -->
                            </div>
-                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                        <div class="sb-nav-link-icon"> <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Layouts 페이지 필요없을 듯 !!!!!!!!!!!!!!!!!!!! -->
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+							data-bs-target="#collapseBoard" aria-expanded="false"
+							aria-controls="collapseBoard">
+							<div class="sb-nav-link-icon">
+								<i class="fas fa-columns"></i>
+							</div> 게시판 관리
+							<div class="sb-sidenav-collapse-arrow">
+								<i class="fas fa-angle-down"></i>
+							</div>
+						</a>
+						<div class="collapse" id="collapseBoard"
+							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav accordion"
+								id="sidenavAccordionPages">
+
+								<a class="nav-link" href="board.mdo">공지사항 관리</a>
+
+							</nav>
+						</div>
+
+						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"> 
                            <i class="fas fa-columns"></i>
-                        </div> 게시판 관리
+                        </div> 쿠폰 관리
                         <div class="sb-sidenav-collapse-arrow">
                            <i class="fas fa-angle-down"></i>
                         </div>
                      </a>
                      <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-
-                           <a class="nav-link" href="layoutStatic.mdo">회원관리</a> 
+                        <nav class="sb-sidenav-menu-nested nav"> 
                            
                            <a class="nav-link" href="layout-sidenav-light.mdo">쿠폰관리</a>
 
@@ -119,7 +137,7 @@
                      </div>
                   <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                      <div class="sb-nav-link-icon">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-columns"></i>
                      </div> 계정 관리
                      <div class="sb-sidenav-collapse-arrow">
                         <i class="fas fa-angle-down"></i>
@@ -127,12 +145,8 @@
                   </a>
                   <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                           관리자 로그인
-                           <div class="sb-sidenav-collapse-arrow">
-                              <i class="fas fa-angle-down"></i>
-                           </div>
-                        </a>
+                     	
+                     	 <a class="nav-link" href="layoutStatic.mdo">회원관리</a>
 
                      </nav>
                   </div>
@@ -142,11 +156,7 @@
                         <i class="fas fa-chart-area"></i>
                      </div> 통계
                   </a>
-                  <a class="nav-link" href="tables.mdo">
-                     <div class="sb-nav-link-icon">
-                        <i class="fas fa-table"></i>
-                     </div> 회원관리
-                  </a>
+
                </div>
             </div>
             <div class="sb-sidenav-footer">

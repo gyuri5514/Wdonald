@@ -22,6 +22,7 @@ import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
 import com.wdelivery.admin.util.AwsS3;
 import com.wdelivery.admin.vo.AdminBannerVO;
+import com.wdelivery.admin.vo.AdminBoardVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
@@ -148,6 +149,23 @@ public class AdminController {
 		vo.setCoupon_status(status);
 		adminService.statusCoupon(vo);
 		return "redirect:layout-sidenav-light.mdo";
+	}
+	
+	@GetMapping("/board.mdo")
+	public String Board(Model model) {
+		List<AdminBoardVO> Board = adminService.selectBoard();
+		model.addAttribute("Board", Board);
+		return "board";
+	}
+	@GetMapping("/addboard.mdo")
+	public String addboard() {
+		return "addboard";
+	}
+	@PostMapping("/addboardInsert.mdo")
+	public String addboard(AdminBoardVO addboard) {
+		adminService.addBoard(addboard);
+		System.out.println(addboard.toString());
+		return "redirect:board.mdo";
 	}
 	
 	@GetMapping("/banner.mdo")
