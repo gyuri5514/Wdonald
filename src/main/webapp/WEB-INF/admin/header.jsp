@@ -145,10 +145,12 @@
                   </a>
                   <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+
                      	
                      	 <a class="nav-link" href="layoutStatic.mdo">회원관리</a>
 
                      </nav>
+
                   </div>
                   <div class="sb-sidenav-menu-heading">통계</div>
                   <a class="nav-link" href="charts.mdo">
