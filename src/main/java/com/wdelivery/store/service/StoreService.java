@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
 
 public interface StoreService {
 	
+	public List<ToyCountVO> toyCountSelect(int admin_seq);
 	public void storeStatus(AdminVO adminVO);
 	public void adminUpdate(AdminVO adminVO);
 	

@@ -21,14 +21,14 @@
 <body class="sb-nav-fixed">
 <script type="text/javascript">
 	var status = '${status}';
-	console.log("h: " + status + "?>" + $("#store_status").length);
+	console.log("h: " + status + "?>" + $("#store_status option").length);
 	
-	/* for(var j = 0; j < $("#store_status").length; j++) {
-		if(${status} == $("#store_status option:eq(j)")) {
-			$("#store_status").val("eq(j)").prop("selected", true);
+	for(var j = 0; j < $("#store_status option").length; j++) {
+		if(${status} == $("#store_status option:eq("+j+")").val()) {
+			$("#store_status").val("eq("+j+")").prop("selected", true);
 			console.log("?");
 		}
-	} */
+	}
 </script>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
