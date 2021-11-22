@@ -5,10 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.menu.dessert.dao.DessertDAO">
 
 	<select id="selectDessert" resultType="dessertVO">
-			SELECT * FROM dessert WHERE dessert_status = 1
+			SELECT * FROM dessert WHERE dessert_status = 1 ORDER BY dessert_code
 	</select>
 	<select id="detailDessert" resultType="dessertVO">
-			SELECT * FROM dessert where dessert_code = #{dessert_code}
+			SELECT * FROM dessert where dessert_code = #{dessert_code} order by dessert_code
 	</select>
 	
 </mapper>

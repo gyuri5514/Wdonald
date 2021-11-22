@@ -18,44 +18,47 @@
 		<div class="contArea bgG">
 			<div class="inner">
 				<ul class="tabType01">
-					<!-- <li><a href="javascript:getList(1,'');" id="all" role="button" aria-selected="true">전체보기</a></li>
-					선택 된 태그에 aria-selected="true" 추가
-					<li><a href="javascript:getList(1,'I');" id="ing" role="button">진행중</a></li>
-					<li><a href="javascript:getList(1,'E')" id="end" role="button">종료</a></li> -->
+					<li data-tab="tab-1" class='tab-link current'><a href="#" id="ing" role="button">진행중</a></li>
+					<li data-tab="tab-2" class='tab-link'><a href="#" id="end" role="button">종료</a></li>
 				</ul>
-				<!-- 행사 있을 경우 종료된 행사일 경우 class값 end 추가-->
-				<ul class="cardBanner" id="promotionList">
-					<c:forEach items="${selectHappyPromotion}" var="selectHappyPromotion">
-						<li id="happy_ing">
-							<a href="#" data-seq="${selectHappyPromotion.hp_code}">
-								<div class="tmb">
-									<img src="${selectHappyPromotion.hp_img_path}" alt="${selectHappyPromotion.hp_name}" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${selectHappyPromotion.hp_code}'">
-								</div>
-								<div class="con">
-									<strong class="tit">
-										${selectHappyPromotion.hp_title}
-									</strong>
-									<span id="statusSpan"></span>
-								</div>
-							</a>
-						</li>
-					</c:forEach>
-					<c:forEach items="${selectHappyPromotionEnd}" var="end">
-						<li id="happy_end">
-							<a href="#" data-seq="${selectHappyPromotionEnd.hp_code}">
-								<div class="tmb">
-									<img src="${selectHappyPromotionEnd.hp_img_path}" alt="${selectHappyPromotionEnd.hp_name}" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${selectHappyPromotionEnd.hp_code}'">
-								</div>
-								<div class="con">
-									<strong class="tit">
-										${selectHappyPromotionEnd.hp_title}
-									</strong>
-									<span id="statusSpan">종료된 행사입니다.</span>
-								</div>
-							</a>
-						</li>
-					</c:forEach>
-				</ul>
+				<div id="tab-1" class="tab-content current">
+					<ul class="cardBanner" id="promotionList">
+						<c:forEach items="${selectHappyPromotion}" var="selectHappyPromotion">
+							<li id="happy_ing">
+								<a href="#" data-seq="${selectHappyPromotion.hp_code}">
+									<div class="tmb">
+										<img src="${selectHappyPromotion.hp_img_path}" alt="${selectHappyPromotion.hp_name}" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${selectHappyPromotion.hp_code}'">
+									</div>
+									<div class="con">
+										<strong class="tit">
+											${selectHappyPromotion.hp_title}
+										</strong>
+										<span id="statusSpan"></span>
+									</div>
+								</a>
+							</li>
+						</c:forEach>
+					</ul>	
+				</div>
+				<div id="tab-2" class="tab-content">
+					<ul class="cardBanner" id="tabcontent">
+						<c:forEach items="${selectHappyPromotionEnd}" var="selectHappyPromotionEnd">
+							<li id="happy_end">
+								<a href="#" data-seq="${selectHappyPromotionEnd.hp_code}" class="end">
+									<div class="tmb">
+										<img src="${selectHappyPromotionEnd.hp_img_path}" alt="${selectHappyPromotionEnd.hp_name}" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${selectHappyPromotionEnd.hp_code}'">
+									</div>
+									<div class="con">
+										<strong class="tit">
+											${end.hp_title}
+										</strong>
+										<span id="statusSpan">종료된 행사입니다.</span>
+									</div>
+								</a>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
 				<!-- //행사 있을 경우-->
 				<!-- 행사 없을 경우 -->
 
@@ -64,6 +67,20 @@
 		</div>
 		<!-- //contArea -->
 	</div>
+	<script>
+		$(document).ready(function() {
+			$('ul.tabType01 li').click(function() {
+				
+				var tab_id = $(this).attr('data-tab');
+				
+				$('ul.tabType01 li').removeClass('current');
+				$('.tab-content').removeClass('current');
+				
+				$(this).addClass('current');
+				$("#" + tab_id).addClass('current');
+			});
+		});
+	</script>
 	<div class="aside">
 		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Wdelivery</a>
 	</div>

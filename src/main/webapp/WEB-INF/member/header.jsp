@@ -77,7 +77,6 @@
 								<ul class="depth2">
 									<li><a href="store.do" class="dth2">매장찾기</a></li>
 									<li><a href="delivery.do" class="dth2">맥딜리버리</a></li>
-									<li><a href="drive.do" class="dth2">맥드라이브</a></li>
 								</ul>
 							</li>
 							<li>

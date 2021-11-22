@@ -4,22 +4,22 @@
     font-family: SpeedeeK;
     font-weight: 400;
     font-style: normal;
-    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
+    src: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_L.woff") format('woff'); 
 }
 
 @font-face {
     font-family: SpeedeeK;
     font-weight: 500;
     font-style: normal;
-    src: url("../font/Speedee_K_R.woff") format('woff'), 
-         url("../font/Speedee_K_R.ttf") format('truetype'); 
+    src: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_R.woff") format('woff'), 
+         url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_R.ttf") format('truetype'); 
 }
 @font-face {
     font-family: SpeedeeK;
     font-weight: 600;
     font-style: normal;
-    src: url("../font/Speedee_K_B.woff") format('woff'), 
-         url("../font/Speedee_K_B.ttf") format('truetype'); 
+    src: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_B.woff") format('woff'), 
+         url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_B.ttf") format('truetype'); 
 }
 
 * {
@@ -5698,7 +5698,7 @@ p.nutrDesc {
 }
 
 * {box-sizing: border-box}
-body {font-family: SpeedeeK, Verdana, sans-serif; margin:0}
+/* body {font-family: SpeedeeK, Verdana, sans-serif; margin:0} */
 .mySliders {
 	display: none;
 	cursor: pointer;

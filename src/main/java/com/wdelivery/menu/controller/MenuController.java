@@ -21,7 +21,6 @@ import com.wdelivery.menu.side.vo.SideVO;
 import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.news.utils.Criteria;
-import com.wdelivery.news.utils.PageMaker;
 
 @Controller
 public class MenuController {
@@ -124,7 +123,7 @@ public class MenuController {
 
 			return "detail";
 		} else if (dessert_code != null) {
-			DessertVO dessertVO = dessertService.detailDessert(d_code);
+			DessertVO dessertVO = dessertService.detailDessert(dessert_code);
 			model.addAttribute("detailDessert", dessertVO);
 
 			return "detail";
