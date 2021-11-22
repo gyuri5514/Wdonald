@@ -134,7 +134,7 @@ public class MemberLoginController {
 		return "true";
 	}                                                                                                                                            
 	
-	@Transactional
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("winMemJoin.do")
 	public String winMemJoin(UserVO userVO, UserAddressVO addressVO) {
 		memberService.winMemJoin(userVO);

@@ -449,7 +449,7 @@ function getNewChart(){
                // Pie Chart Example
                var ptx = document.getElementById("myPieChart");
                var myPieChart = new Chart(ptx, {
-                 type: 'pie',
+                 type: 'doughnut',
                  data: {
                    labels: plabels,
                    datasets: [{

@@ -1,5 +1,8 @@
 package com.wdelivery.store.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,31 +18,54 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.qna.vo.QaaVO;
 import com.wdelivery.qna.vo.QnaVO;
+import com.wdelivery.store.chart.vo.ChartVO;
+import com.wdelivery.store.service.ChartService;
 import com.wdelivery.store.service.StoreService;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class StoreController {
 
 	@Autowired
 	private StoreService storeService;
+	@Autowired
+	private ChartService chartService;
 	
-	
-	/*
-	 * @GetMapping("/index.sdo") public String index() {
-	 * 
-	 * return "index"; }
-	 */
+	public  void getChart(ChartVO chart,Model model){
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+	    Calendar week = Calendar.getInstance();
+	    week.add(Calendar.DATE , -7);
+	    String startDate= date.format(week.getTime());
+	    chart.setEnd_date(date.format(new Date()));
+	    chart.setStart_date(startDate);
+	    
+		List<ChartVO> chartList = chartService.getinitialChart(chart);
+		model.addAttribute("chartList",JSONArray.fromObject(chartList));
+	    model.addAttribute("start_date",chart.getStart_date());
+	    model.addAttribute("end_date",chart.getEnd_date());
+	    model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
+	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
+	}
 	 
 	@GetMapping("/index.sdo")
 	public String index(AdminVO adminVO, ToyCountVO toyCountVO, Model model, HttpSession session) {
 		adminVO = (AdminVO) session.getAttribute("admin");
 		//System.out.println("bn" + adminVO.toString());
+		
 		if(adminVO==null)
 			return "redirect:login.mdo";
+
+		
+		ChartVO c = new ChartVO();
+	   c.setStore_code(adminVO.getStore_code());
+	   getChart(c,model);
+
 		model.addAttribute("status", adminVO.getStore_status());
 		List<ToyCountVO> toyCountList = storeService.toyCountSelect(adminVO.getAdmin_seq());
 		System.out.println("index : " +	toyCountList.toString());
 		model.addAttribute("toy", toyCountList);
+
 		return "index";
 	}
 	@GetMapping("/storeStatus.sdo")

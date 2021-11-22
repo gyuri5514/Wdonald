@@ -3,6 +3,9 @@ package com.wdelivery.admin.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +29,10 @@ import com.wdelivery.admin.vo.AdminBoardVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.store.chart.vo.ChartVO;
+import com.wdelivery.store.service.ChartService;
+
+import net.sf.json.JSONArray;
 
 
 @Controller
@@ -36,20 +43,30 @@ public class AdminController {
 
 	@Autowired
 	private AdminStoreService adminStoreService;
+	@Autowired
+	private ChartService chartService;
 	
+	public  void getChart(ChartVO chart,Model model){
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+	    Calendar week = Calendar.getInstance();
+	    week.add(Calendar.DATE , -7);
+	    String startDate= date.format(week.getTime());
+	    chart.setEnd_date(date.format(new Date()));
+	    chart.setStart_date(startDate);
+	    
+		List<ChartVO> chartList = chartService.getinitialChart(chart);
+		model.addAttribute("chartList",JSONArray.fromObject(chartList));
+	    model.addAttribute("start_date",chart.getStart_date());
+	    model.addAttribute("end_date",chart.getEnd_date());
+	    model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
+	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
+	}
 	@GetMapping("/index.mdo")
 	public String indexView(Model model,HttpSession session) {
 		List<AdminVO> adminList =  adminService.indexView();
-		
-		/*
-		 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(cri);
-		 * pageMaker.setTotalCount(100);
-		 */
-		//List<PaymentVO> paymentVO = new ArrayList<PaymentVO>();
+		ChartVO c = new ChartVO();
+	    getChart(c,model);
 		model.addAttribute("adminList",adminList);
-		//model.addAttribute("pageMaker", pageMaker);
-		//System.out.println("index: " + ((PaymentVO) paymentVO).getOrder_seq());
-
 		return "index";
 	}
 	
