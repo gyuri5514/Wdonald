@@ -133,22 +133,21 @@
                               <i class="fas fa-angle-down"></i>
                            </div>
                         </a>
-                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-										<nav class="sb-sidenav-menu-nested nav">
-										<c:choose>
-											<c:when test="${not empty sessionScope.admin }">
-												<a></a>
-											</c:when>
-											<c:otherwise>
-												<a class="nav-link" href="login.mdo">로그인</a>
-											</c:otherwise>
-										</c:choose>
-											<a class="nav-link" href="register.mdo">매장 등록</a>
-											<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
-										</nav>
-									</div>
-
-                     </nav>
+                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+					<nav class="sb-sidenav-menu-nested nav">
+					<c:choose>
+						<c:when test="${not empty sessionScope.admin }">
+							<a></a>
+						</c:when>
+						<c:otherwise>
+							<a class="nav-link" href="login.mdo">로그인</a>
+						</c:otherwise>
+					</c:choose>
+						<a class="nav-link" href="register.mdo">매장 등록</a>
+						<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
+					</nav>
+					</div>
+                    </nav>
                   </div>
                   <div class="sb-sidenav-menu-heading">통계</div>
                   <a class="nav-link" href="charts.mdo">
