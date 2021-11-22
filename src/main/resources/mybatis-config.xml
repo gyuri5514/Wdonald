@@ -26,16 +26,16 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.promotion.vo.PromotionVO" alias="promotionVO"/>
 		<typeAlias type="com.wdelivery.news.vo.NewsVO" alias="newsVO"/>
 		<typeAlias type="com.wdelivery.happypromotion.vo.HappyPromotionVO" alias="happyPromotionVO"/>
-
 		<typeAlias type="com.wdelivery.admin.vo.AdminCouponVO" alias="adminCouponVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminBannerVO" alias="adminBannerVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminNoticeVO" alias="adminNoticeVO"/>
-
+		<typeAlias type="com.wdelivery.admin.vo.AdminBoardVO" alias="adminBoardVO"/>
 		<typeAlias type="com.wdelivery.member.payment.vo.PaymentVO" alias="paymentVO"/>
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="adminVO"/>
 		<typeAlias type="com.wdelivery.member.util.MapPointVO" alias="mapPointVO"/>
 		<typeAlias type="com.wdelivery.store.chart.vo.ChartVO" alias="chartVO"/>
-		<typeAlias type="com.wdelivery.member.payment.vo.ToyCountVO" alias="toyCountVO"/>	
+		<typeAlias type="com.wdelivery.member.payment.vo.ToyCountVO" alias="toyCountVO"/>
+			
 		
 	</typeAliases>
 	<mappers>	
