@@ -536,8 +536,8 @@ $(document).ready(function () {
 					content += "</dl>";
 					content += "</td>";
 					content += "<td>"+phone+"</td>";
-					content += "<td></td>";
-					content += "<td class='tdService'><div class='service'></div></td>";
+					content += "<td>24시간</td>";
+					content += "<td class='tdService'><div class='service'  style='text-align:right'>배달</div></td>";
 					content += "</tr>";
 				}
 				$('#store').append(content);
