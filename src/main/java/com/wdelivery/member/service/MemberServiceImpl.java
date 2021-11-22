@@ -215,4 +215,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.detailPromotion(p_code);
 	}
 
+	@Override
+	public AdminVO newWhichOneIsNearest(MapPointVO mapPointVO) {
+		return storeDAO.newWhichOneIsNearest(mapPointVO);
+	}
+
 }

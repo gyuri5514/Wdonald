@@ -123,23 +123,22 @@ function Submit() {
 	$.ajax({
 
 		crossDomain:true,
-		url : "/delivery.do",
-        method : "GET",
-        data : { "address": encodeURI($("#addr1").val()),
+		url : "isDeliveryAvailable.do",
+        method : "POST",
+        data : { 
 		     	 "lat"    : $("#lat").val(),
-			     "lng"    : $("#lng").val()
+			     "lon"    : $("#lng").val()
 		},
 		dataType:"json",
         jsonpCallback:"callback",
         success : function(obj) {
-
+			console.log(obj);
             //var obj = eval("("+response+")");
             var deliveryOk = "N";
             var comment = "";
             var sayu = "";
             //alert(obj.Delivery_yn + "," + obj.ResultCode);
 
-            if (obj.ResultCode == "1") deliveryOk = "Y";
 
             var addr_str = $("#addr1").val()+" "+$("#addr2").val();
             if ($("#dong").val() != "") {
@@ -147,62 +146,25 @@ function Submit() {
             }
 
 
-            if (deliveryOk == "N") {
-                //alert(obj.ResultCode);
-                if (obj.ResultCode == "-5000") {
-                    alert("아파트의 경우 동, 호수를 입력하셔야 정확한 검색이 가능합니다");
-                } else {
-                	/*
-                    if (obj.ResultCode == "-4002") {
-                        sayu = "<br/>배달불가 (사유: 주소이상)"; // 주소이상
-                    } else if (obj.ResultCode == "-4005") {
-                        sayu = "<br/>배달불가 (사유: 배달시간 외 주문)"; // 배달시간 외 주문
-                    } else if (obj.ResultCode == "-4006") {
-                        sayu = "<br/>배달불가 (사유: 배달 불배 지역)"; // 배달 불배 지역
-                    } else if (obj.ResultCode == "-4008") {
-                        sayu = "<br/>배달불가 (사유: 기상상태 악화로 인한 배달불가)"; // 기상상태 악화로 인한 배달불가
-                    } else {
-                        sayu = ""; // 기타
-                    }
-                    sayu = "";
-                    comment = "<div class='inner'><p><strong>"+addr_str+"</strong> 는(은) 배달가능지역이 아니므로<br /> 직접 매장에 방문하셔야 합니다."+sayu+"</p>"
-                                 + "<!--<a href='/www/kor/findus/district.do?sSearch_yn=Y&skey=2&skeyword="+$("#addr1").val()+"'>근처 매장찾기</a>--></div>";
-                    $("#resultDefault").hide();
-                    $("#resultOk").hide();
-                    $("#resultFail").html(comment);
-                    $("#resultFail").show();
-                    */
-                	$("#default").hide();
-                    $('#ok').parent('.rBox').removeClass('ok');
-                    $('#ok').parent('.rBox').addClass('fail');
-                	$("#fail").show();
-                	$("#ok").hide();
-                	$("#fail > a").focus();
-                    
-                }
-            } else if (deliveryOk == "Y") {
-            	/*
-                //alert($("#addr1").val() + "지역은 배달 가능지역 입니다.");
-                comment = "<div class='inner'><p><strong>"+addr_str+"</strong> 는(은) 배달가능지역입니다.<br/>전화 또는 온라인으로 주문할 수 있습니다.</p>"
-                             + "<!--<a href='https://www.mcdelivery.co.kr/kr/' target='_blank'>온라인 주문하기</a>--></div>";
-                $("#resultDefault").hide();
-                $("#resultFail").hide();
-                $("#resultOk").html(comment);
-                $("#resultOk").show();
-            	*/
+            if (obj!=null) {
+            	
             	$("#default").hide();
             	$('#ok').parent('.rBox').addClass('ok');
             	$('#ok').parent('.rBox').removeClass('fail');
             	$("#fail").hide();
             	$("#ok").show();
             	$("#ok > a").focus();
-            } else {
-                alert("오류가 발생했습니다.");
-            }
+            } 
             return;
         },
         error : function(request, status, error) {
-				alert('request='+request+'status='+ status+'error='+ error);
+            	$("#default").hide();
+                $('#ok').parent('.rBox').removeClass('ok');
+                $('#ok').parent('.rBox').addClass('fail');
+            	$("#fail").show();
+            	$("#ok").hide();
+            	$("#fail > a").focus();
+            	
             if (request.status != '0') {
                 alert("오류가 발생했습니다.");
                 return false;

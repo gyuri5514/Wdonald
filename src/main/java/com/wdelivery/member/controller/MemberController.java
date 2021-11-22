@@ -186,6 +186,15 @@ public class MemberController {
 			model.addAttribute("dessertVO", dessertVO);
 
 		} else if (h_code != null) {
+			// return true = winmoring available / return false = winmorning not on sale
+			if (!orderTimer.isMenuOrderTime()&&
+					Integer.parseInt(h_code)>=901&&Integer.parseInt(h_code)<=904) {
+				model.addAttribute("menuAvailable", "n");
+							return "happymeal";
+			}else if(orderTimer.isMenuOrderTime()&&Integer.parseInt(h_code)>904) {
+				model.addAttribute("menuAvailable", "n");
+				return "happymeal";
+			}
 			HappyMealVO happyMealVO = happyMealService.detailHappyMeal(Integer.parseInt(h_code));
 
 			model.addAttribute("happyMealVO", happyMealVO);
@@ -750,15 +759,19 @@ public class MemberController {
 			@RequestParam(value = "lon", required = false) double lon, HttpSession session) {
 		// coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액,
 		// delivery_price - 배달료
+			
+		 
+		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
+		
+		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
 
-		AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);
-
-		if (store == null) {
+		 
+		if (newStore == null) {
 			model.addAttribute("notAvailable", "noStoreNear");
 			return "orderConfirm";
 		}
 
-		model.addAttribute("store", store);
+		model.addAttribute("store", newStore);
 		model.addAttribute("address", address);
 		model.addAttribute("price", price);
 		model.addAttribute("delivery_cost", delivery_price);
@@ -768,7 +781,15 @@ public class MemberController {
 		return "paymentWin";
 	}
 
+	/* This method is deprecated */
 	public List<AdminVO> findProximateStore(double lat, double lon) {
-		return memberService.findProximateStore(new MapPointVO(lat, lon));
+		return memberService.findProximateStore(new MapPointVO(lat, lon,3));
+	}
+	
+	@ResponseBody
+	@PostMapping("/isDeliveryAvailable.do")
+	public AdminVO isDeliveryAvailable(@RequestParam("lat") double lat,
+			@RequestParam("lon") double lon) {
+		return memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4));
 	}
 }

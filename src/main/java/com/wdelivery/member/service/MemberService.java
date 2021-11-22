@@ -59,4 +59,6 @@ public interface MemberService {
 	
 	public PromotionVO detailPromotion(Integer p_code);
 
+	AdminVO newWhichOneIsNearest(MapPointVO mapPointVO);
+
 }
