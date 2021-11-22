@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +36,6 @@ public class PaymentController {
 	private IamportClient api;
 
 	public PaymentController() {
-		// RestApi �ㅼ�� Rest API Secret 瑜� ����泥��� ��������濡� ���ν����
 		this.api = new IamportClient("0192372667414823",
 				"be8d598a6fb115e08b5880a61a8152049826e2c3661d4948f2d2a2a1f60a39ad51dba535e93e1ecb");
 	}
@@ -47,8 +47,9 @@ public class PaymentController {
 		return api.paymentByImpUid(imp_uid);
 	}
 
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("paywinCredit.do")
-	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) {
+	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session){
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
 		if (userInfo != null) {
