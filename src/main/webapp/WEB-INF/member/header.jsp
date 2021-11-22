@@ -58,7 +58,7 @@
 	<div class="wrapper ">
 		<header class="header"><!-- 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->
 			<div class="headArea">
-				<strong class="hLogo"><a href="main.do" class="logo" title="메인으로 이동"><img src="resources/wcdonald.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="main.do" class="logo" title="메인으로 이동"><img src="resources/wcdonald.png" alt="윈도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
@@ -66,9 +66,9 @@
 								<a href="burger.do" class="dth1">Menu</a><!-- 현재페이지 메뉴에 current 클래스 추가 -->
 								<ul class="depth2">
 									<li><a href="burger.do" class="dth2">버거</a></li>
-									<li><a href="morning.do" class="dth2">맥모닝</a></li>
+									<li><a href="morning.do" class="dth2">윈모닝</a></li>
 									<li><a href="side.do" class="dth2">사이드 &amp; 디저트</a></li>
-									<li><a href="drink.do" class="dth2">맥카페 &amp; 음료</a></li>
+									<li><a href="drink.do" class="dth2">윈카페 &amp; 음료</a></li>
 									<li><a href="happymeal.do" class="dth2">해피밀</a></li>
 								</ul>
 							</li>
@@ -76,7 +76,7 @@
 								<a href="store.do" class="dth1 ">Store</a>
 								<ul class="depth2">
 									<li><a href="store.do" class="dth2">매장찾기</a></li>
-									<li><a href="delivery.do" class="dth2">맥딜리버리</a></li>
+									<li><a href="delivery.do" class="dth2">윈딜리버리</a></li>
 								</ul>
 							</li>
 							<li>
@@ -91,7 +91,7 @@
 								<a href="main.do" class="dth1">Story</a>
 								<ul class="depth2">
 									<li><a href="brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="crew.do" class="dth2">윈도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>

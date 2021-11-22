@@ -571,17 +571,6 @@ textarea {
 	text-align: center
 }
 
-.btnPaging a {
-	display: inline-block;
-	width: 40px;
-	height: 40px;
-	margin: 0 3px;
-	vertical-align: top;
-	border: 1px solid #d1d1d1;
-	border-radius: 5px;
-	background: #fff
-}
-
 .btnPaging .arrow {
 	position: relative;
 	overflow: hidden;
@@ -5263,4 +5252,16 @@ p.nutrDesc {
 	top: 0.5%;
 	margin-left: -3.5%;
 	z-index: 1
+}
+
+.fa, .fas {
+	font-weight: 900;
+}
+
+.fa, .far, .fas {
+	font-family: "Font Awesome 5 Free";
+}
+
+.fa-times:before {
+	content: "\f00d";
 }

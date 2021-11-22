@@ -23,7 +23,7 @@ public class Criteria {
 
 	public Criteria() {
 		this.page = 1;
-		this.perPageNum = 5;
+		this.perPageNum = 6;
 		this.keyword = "";
 	}
 

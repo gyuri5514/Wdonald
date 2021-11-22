@@ -2,7 +2,6 @@ package com.wdelivery.menu.winMorningSet.dao;
 
 import java.util.List;
 
-import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
 
 public interface WinMorningSetDAO {

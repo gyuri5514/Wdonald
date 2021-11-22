@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="detailMorning" resultType="winMorningVO">
 		<![CDATA[
-			SELECT * FROM winmorning WHERE w_code = #{w_code}
+			SELECT * FROM winmorning WHERE w_code = #{w_code} AND w_status = 1 ORDER BY w_code
 		]]>
 	</select>
 	

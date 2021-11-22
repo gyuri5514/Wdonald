@@ -1,9 +1,7 @@
 package com.wdelivery.member.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +21,8 @@ import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
+import com.wdelivery.faq.utils.Criteria;
+import com.wdelivery.faq.utils.PageMaker;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.util.MapPointVO;
@@ -50,8 +50,6 @@ import com.wdelivery.menu.winMorning.service.WinMorningService;
 import com.wdelivery.menu.winMorning.vo.WinMorningVO;
 import com.wdelivery.menu.winMorningSet.service.WinMorningSetService;
 import com.wdelivery.menu.winMorningSet.vo.WinMorningSetVO;
-import com.wdelivery.faq.utils.Criteria;
-import com.wdelivery.faq.utils.PageMaker;
 import com.wdelivery.promotion.service.PromotionService;
 import com.wdelivery.promotion.vo.PromotionVO;
 import com.wdelivery.qna.service.QnaService;
@@ -110,9 +108,9 @@ public class MemberController {
 		return adminService.selectBannerList();
 	}
 
-	@ModelAttribute("selectPromotion")
-	public List<PromotionVO> selectPromotion() {
-		return promotionService.selectPromotionAll();
+	@ModelAttribute("selectPromotionIng")
+	public List<PromotionVO> selectPromotionIng() {
+		return promotionService.selectPromotionIng();
 	}
 
 	@RequestMapping("/main.do")
@@ -557,58 +555,59 @@ public class MemberController {
 
 	@GetMapping("/faq.do")
 	public String faq(Model model, Criteria cri) {
-		List<FaqVO> vo = faqService.selectFaq(cri);
-		
+		List<FaqVO> vo = faqService.faqSelect(cri);
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(faqService.totalFaq(cri));
-		
+
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageMaker", pageMaker);
-		
+
 		return "faq";
 	}
 
-	@GetMapping("/faqSelect.do")
-	@ResponseBody
-	public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect,
-			@RequestParam(value = "KeywordSelect", required = false) String KeywordSelect) {
-		List<FaqVO> faqList = new ArrayList<FaqVO>();
-		if (MenuSelect != null && KeywordSelect == null) {
-			/*
-			 * System.out.println("MenuSelect : " + MenuSelect);
-			 * System.out.println("KeywordSelect : " + KeywordSelect);
-			 */
-			faqList = faqService.MenuSelect(MenuSelect);
-			/*
-			 * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
-			 * System.out.println(faqList1.getFaq_name());
-			 * System.out.println(faqList1.getFaq_title());
-			 * System.out.println(faqList1.getFaq_content());
-			 * 
-			 * }
-			 */
-		} else if (MenuSelect != null && KeywordSelect != null) {
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("MenuSelect", MenuSelect);
-			map.put("KeywordSelect", KeywordSelect);
-			/*
-			 * System.out.println("MenuSelect : " + MenuSelect);
-			 * System.out.println("KeywordSelect : " + KeywordSelect);
-			 */
-			faqList = faqService.KeywordSelect(map);
-			/*
-			 * for(FaqVO faqKeyword1 : faqList) {
-			 * System.out.println(faqKeyword1.getFaq_seq());
-			 * System.out.println(faqKeyword1.getFaq_name());
-			 * System.out.println(faqKeyword1.getFaq_title());
-			 * System.out.println(faqKeyword1.getFaq_content());
-			 * 
-			 * }
-			 */
-		}
-		return faqList;
-	}
+	/*
+	 * @GetMapping("/faqSelect.do")
+	 * 
+	 * @ResponseBody public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect",
+	 * required = false) String MenuSelect,
+	 * 
+	 * @RequestParam(value = "KeywordSelect", required = false) String
+	 * KeywordSelect) { List<FaqVO> faqList = new ArrayList<FaqVO>(); if (MenuSelect
+	 * != null && KeywordSelect == null) {
+	 * 
+	 * System.out.println("MenuSelect : " + MenuSelect);
+	 * System.out.println("KeywordSelect : " + KeywordSelect);
+	 * 
+	 * faqList = faqService.MenuSelect(MenuSelect);
+	 * 
+	 * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
+	 * System.out.println(faqList1.getFaq_name());
+	 * System.out.println(faqList1.getFaq_title());
+	 * System.out.println(faqList1.getFaq_content());
+	 * 
+	 * }
+	 * 
+	 * } else if (MenuSelect != null && KeywordSelect != null) { Map<String, String>
+	 * map = new HashMap<String, String>(); map.put("MenuSelect", MenuSelect);
+	 * map.put("KeywordSelect", KeywordSelect);
+	 * 
+	 * System.out.println("MenuSelect : " + MenuSelect);
+	 * System.out.println("KeywordSelect : " + KeywordSelect);
+	 * 
+	 * faqList = faqService.KeywordSelect(map);
+	 * 
+	 * for(FaqVO faqKeyword1 : faqList) {
+	 * System.out.println(faqKeyword1.getFaq_seq());
+	 * System.out.println(faqKeyword1.getFaq_name());
+	 * System.out.println(faqKeyword1.getFaq_title());
+	 * System.out.println(faqKeyword1.getFaq_content());
+	 * 
+	 * }
+	 * 
+	 * } return faqList; }
+	 */
 
 	@GetMapping("/couponSearch.do")
 	@ResponseBody
