@@ -3,35 +3,6 @@
 <%@ include file="header.jsp"%>
 <script type="text/javascript">
 	$(function(){
-		$("#update").hide();
-		var val = JSON.parse('${sideVO}');
-		$("tr").each(function(){
-			$(this).click(function(){
-				for(var i = 0; i < val.length; i++) {
-					if($(this).find('#ccode').text() == val[i].s_code){
-						$("#select_image").attr("src",val[i].s_img_path);
-						$("#select_code").val(val[i].s_code);
-						$("#select_name").val(val[i].s_name);
-						$("#select_price").val(val[i].s_price);
-						$("#select_kcal").val(val[i].s_kcal);
-						$("#select_regdate").val($(this).find("#ddate").text());
-						
-						//alert($(this).find("#ddate").text()+"+"+val[i].b_name);
-						
-						for(var j = 0; j < $("#select_status option").length; j++) {
-							//console.log("22 "+$("#select_status option:eq("+j+")").val());
-							if(val[i].s_status == $("#select_status option:eq("+j+")").val()){
-								$("#select_status option:eq("+j+")").attr("selected","selected"); 
-								//alert("이거 왜 안되냐???" + val[i].b_status);
-								//$("#select_status").val("eq(j)").prop("selected", true);
-							}
-						}
-					}
-				}
-				$("#update").show();
-			});
-		})
-		
 		$("#menuInsert").click(function(){
 			var name = $.trim($("#select_name").val());
 			if (name == "") {
@@ -55,16 +26,35 @@
 			$("#sideUpdate").submit();
 		});
 	});
-	
-	
-	
+	function detail(index) {
+		var val = JSON.parse('${sideVO}');
+		
+		for(var i = 0; i < val.length; i++) {
+			if(val[i].s_code == $("#"+index+"").find("#ccode").text()){
+				$("#select_image").attr("src",val[i].s_img_path);
+				$("#select_code").val(val[i].s_code);
+				$("#select_name").val(val[i].s_name);
+				$("#select_price").val(val[i].s_price);
+				$("#select_kcal").val(val[i].s_kcal);
+				$("#select_regdate").val($("#"+index+"").find("#ddate").text());
+				
+				for(var j = 0; j < $("#select_status option").length; j++) {
+					if(val[i].s_status == $("#select_status option:eq("+j+")").val()){
+						$("#select_status option:eq("+j+")").attr("selected","selected"); 
+					}
+				}
+				$("#update").attr("style","block");
+				return;
+			}
+		}
+	}
 </script>
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">Side</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.mdo">HOME</a></li>
+				<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
 				<li class="breadcrumb-item active">윈딜리버리 사이드</li>
 			</ol>
 			<div style="height: 100vh">
@@ -78,7 +68,7 @@
 					<button class="addcoupon btn btn-primary" id="addBanner" onclick="location='sideRegister.mdo'">등록</button>
 					<hr>
 					<form id="sideUpdate" action="sideUpdate.mdo" method="post" > 
-					<div class="update" id="update">
+					<div class="update" id="update" style="display:none;">
 						<img alt="s_image" id="select_image" src=""><br/>
 						코드 : <input name="s_code" id="select_code" class="form-control" type="text" style="margin-bottom: 10px" readonly="readonly">
 						이름 : <input name="s_name" id="select_name" class="form-control" type="text" style="margin-bottom: 10px">
@@ -121,7 +111,7 @@
 						</tfoot> -->
 								<tbody>
 								<c:forEach items="${sideList}" var="s_list" varStatus="status">
-									<tr class="test" id="${status.count}">
+									<tr class="test" id="${status.index}" onclick="detail(${status.index})">
 										<td id="naame">${s_list.s_name}</td>
 										<td id="pprice">
 										<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${s_list.s_price}"/>

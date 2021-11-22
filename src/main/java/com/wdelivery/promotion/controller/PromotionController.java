@@ -24,8 +24,11 @@ public class PromotionController {
 
 	@GetMapping("/promotion.do")
 	public String selectPromotion(Model model) {
-		List<PromotionVO> selectPromotion = promotionService.selectPromotion();
-		model.addAttribute("selectPromotion", selectPromotion);
+		List<PromotionVO> selectPromotionAll = promotionService.selectPromotionAll();
+		model.addAttribute("selectPromotionAll", selectPromotionAll);
+		
+		List<PromotionVO> selectPromotionIng = promotionService.selectPromotionIng();
+		model.addAttribute("selectPromotionIng", selectPromotionIng);
 
 		List<PromotionVO> selectPromotionEnd = promotionService.selectPromotionEnd();
 		model.addAttribute("selectPromotionEnd", selectPromotionEnd);
@@ -53,10 +56,10 @@ public class PromotionController {
 	@GetMapping("/happymealPromotion.do")
 	public String selectHappyPromotion(Model model) {
 		List<HappyPromotionVO> selectHappyPromotion = happyPromotionService.selectHappyPromotion();
-		model.addAttribute(selectHappyPromotion);
+		model.addAttribute("selectHappyPromotion", selectHappyPromotion);
 		
 		List<HappyPromotionVO> selectHappyPromotionEnd = happyPromotionService.selectHappyPromotionEnd();
-		model.addAttribute(selectHappyPromotionEnd);
+		model.addAttribute("selectHappyPromotionEnd", selectHappyPromotionEnd);
 
 		return "happymealPromotion";
 	}
@@ -65,10 +68,10 @@ public class PromotionController {
 	public String selectHappyPromotionDetail(Model model, @RequestParam(value = "hp_code", required = false) Integer hp_code) {
 		
 		if (hp_code != null) {
-			HappyPromotionVO happyPromotionVO = happyPromotionService.detailPromotion(hp_code);
+			HappyPromotionVO happyPromotionVO = happyPromotionService.detailHappyPromotion(hp_code);
 			happyPromotionService.countHappyPromotion(hp_code);
 			
-			model.addAttribute("detailPromotion", happyPromotionVO);
+			model.addAttribute("happyPromotionDetail", happyPromotionVO);
 			
 			return "happyPromotionDetail";
 		} else {

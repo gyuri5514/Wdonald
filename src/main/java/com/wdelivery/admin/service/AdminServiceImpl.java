@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wdelivery.admin.dao.AdminDAO;
 import com.wdelivery.admin.vo.AdminBannerVO;
+import com.wdelivery.admin.vo.AdminBoardVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
@@ -64,6 +65,17 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void statusCoupon(AdminCouponVO vo) {
 		adminDAO.statusCoupon(vo);
+	}
+	
+	@Override
+	public List<AdminBoardVO> selectBoard(){
+		List<AdminBoardVO> Board = adminDAO.selectBoard();
+		return Board;
+	}
+	
+	@Override
+	public void addBoard(AdminBoardVO addboard) {
+		adminDAO.addBoard(addboard);
 	}
 	
 	@Override
