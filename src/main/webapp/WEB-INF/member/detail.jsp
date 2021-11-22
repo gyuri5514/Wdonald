@@ -30,12 +30,14 @@
 									<p>${detailBurger.b_detail_comment}</p>
 								</div>
 								<div class="other">
+								<c:forEach var="selectBurger" items="selectBurger" varStatus="status">
 								<c:if test="${detailBurger.b_code ne 101}">
 									<a href="#" class="arrow prev" onclick="location.href='detail.do?b_code=${detailBurger.b_code - 1}';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
 								<c:if test="${detailBurger.b_code ne 121}">
 									<a href="#" class="arrow next" onclick="location.href='detail.do?b_code=${detailBurger.b_code + 1}';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
+								</c:forEach>
 								</div>
 							</div>
 						</div>
