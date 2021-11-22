@@ -24,4 +24,9 @@ public class SideServiceImpl implements SideService {
 		return sideDAO.detailSide(s_code);
 	}
 
+	@Override
+	public void insertSide(SideVO sideVO) {
+		sideDAO.insertSide(sideVO);
+	}
+
 }

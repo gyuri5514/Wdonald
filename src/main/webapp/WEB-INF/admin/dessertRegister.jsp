@@ -87,10 +87,15 @@
 				$("#dessert_img").focus();
 				return false;
 			}
+			if ($("#dessert_detail_img").val() == "") {
+				alert("디테일 이미지를 업로드하세요.");
+				$("#dessert_detail_img").focus();
+				return false;
+			}
 			$('#addDessert').submit();
 		});
 
-		$(':file').on('fileselect', function(event, numFiles, label) {
+		$('#file1').on('fileselect', function(event, numFiles, label) {
 			var input = $(this).parents(
 					'.input-group').find(
 					':text'), log = numFiles > 1 ? numFiles
@@ -115,6 +120,32 @@
 			input.trigger('fileselect', [
 					numFiles, label ]);
 		});
+
+		$('#file2').on('fileselect', function(event, numFiles, label) {
+			var input = $(this).parents(
+					'.input-group').find(
+					':text'), log = numFiles > 1 ? numFiles
+					+ ' files selected'
+					: label;
+
+			if (input.length) {
+				input.val(log);
+			} else {
+				if (log)
+					alert(log);
+			}
+			var tmppath = URL
+					.createObjectURL(event.target.files[0]);
+			$('#Dimage').attr("src", tmppath);
+		});
+		$(document).on('change',":file",function() {
+			var input = $(this), numFiles = input
+					.get(0).files ? input
+					.get(0).files.length : 1, label = input
+					.val();
+			input.trigger('fileselect', [
+					numFiles, label ]);
+		});
 	})
 	function slideButton() {
 		var img = $('#dessert-container');
@@ -124,6 +155,16 @@
 		} else {
 			img.attr("style", "display:none;");
 			$('#slideBtn').text("디저트 미리보기");
+		}
+	};
+	function slideDButton() {
+		var img = $('#dessert-detail-container');
+		if (img.attr("style") == "display:none;") {
+			img.attr("style", "display:block;");
+			$('#slideDBtn').text("디저트 미리보기 취소");
+		} else {
+			img.attr("style", "display:none;");
+			$('#slideDBtn').text("디저트 미리보기");
 		}
 	};
 </script>
@@ -201,11 +242,30 @@
                                                 <div class="input-group">
 									                <label class="input-group-btn">
 									                    <span class="btn btn-primary">
-									                        Upload <input type="file" name="file" id="file" style="display: none;" multiple>
+									                        Upload <input type="file" name="file1" id="file1" style="display: none;" multiple>
 									                    </span>
 									                </label>
 									                <input type="text" id="dessert_img" class="form-control" readonly>
 								           		</div>
+								           		<small>기본 이미지 : 사진크기 240*180</small>
+                                            </div>
+                                            
+                                            <div style="margin-top: 10px;">
+	                                            <button type="button" id="slideDBtn" onclick="slideDButton();" class="btn btn-primary">이미지 미리보기</button>	
+	                                            <div class="dessert-detail-container" id="dessert-detail-container" style="display:none;">
+	                                            	<img style="width:100%;" id="Dimage">
+                                            	</div>
+                                            </div>
+                                            <div class="row mb-3" style="margin-top: 20px;">
+                                                <div class="input-group">
+									                <label class="input-group-btn">
+									                    <span class="btn btn-primary">
+									                        Upload <input type="file" name="file2" id="file2" style="display: none;" multiple>
+									                    </span>
+									                </label>
+									                <input type="text" id="dessert_detail_img" class="form-control" readonly>
+								           		</div>
+								           		<small>디테일 이미지 : 사진크기 772*530</small>
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">디저트 등록</a></div>
