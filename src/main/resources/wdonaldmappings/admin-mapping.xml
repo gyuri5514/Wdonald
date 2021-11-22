@@ -5,11 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.admin.dao.AdminDAO">
 
 	<select id="indexView" resultType="adminVO">
-		select * from admin where admin_id NOT IN('admin') order by admin_seq LIMIT #{perPageNum} OFFSET #{pageStart}
+		select * from admin where admin_id NOT IN('admin') order by admin_seq 
 	</select>
 	
 	<select id="userSelect" resultType="userVO">
-		select * from user_info LIMIT #{perPageNum} OFFSET #{pageStart}
+		select * from user_info 
 	</select>
 	
 	<select id="getUserContent" resultType="userVO">
