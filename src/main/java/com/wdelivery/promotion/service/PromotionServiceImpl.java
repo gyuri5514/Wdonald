@@ -15,8 +15,13 @@ public class PromotionServiceImpl implements PromotionService {
 	private PromotionDAO promotionDAO;
 	
 	@Override
-	public List<PromotionVO> selectPromotion() {
-		return promotionDAO.selectPromotion();
+	public List<PromotionVO> selectPromotionAll() {
+		return promotionDAO.selectPromotionAll();
+	}
+	
+	@Override
+	public List<PromotionVO> selectPromotionIng() {
+		return promotionDAO.selectPromotionIng();
 	}
 
 	@Override

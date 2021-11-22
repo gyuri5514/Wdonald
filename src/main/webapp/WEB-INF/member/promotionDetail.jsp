@@ -7,11 +7,11 @@
 <div class="content">
 	<div class="visualArea bgWhats01">
 		<div class="inner">
-			<h1 class="titDep1" data-title="맥도날드 프로모션" data-desc="맥도날드 프로모션">맥도날드 프로모션</h1>
+			<h1 class="titDep1" data-title="맥도날드 프로모션" data-desc="맥도날드 프로모션">윈딜리버리 프로모션</h1>
 			<ul class="navPath">
 				<li><a href="/kor/main.do">Home</a></li>
 				<li><a href="/kor/promotion/list.do">What's New</a></li>
-				<li><a href="/kor/promotion/list.do">맥도날드 프로모션</a></li>
+				<li><a href="/kor/promotion/list.do">윈딜리버리 프로모션</a></li>
 			</ul>
 		</div>
 	</div>
