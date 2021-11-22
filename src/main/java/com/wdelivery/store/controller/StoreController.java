@@ -44,7 +44,16 @@ public class StoreController {
 		model.addAttribute("chartList",JSONArray.fromObject(chartList));
 	    model.addAttribute("start_date",chart.getStart_date());
 	    model.addAttribute("end_date",chart.getEnd_date());
-	    model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
+	    if(chartList.size()!=0) {
+	    	date = new SimpleDateFormat("MM-dd");
+	    	if(chartList.get(chartList.size()-1).getDaily_chart().equals(date.format(new Date()))) {
+	    		model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
+    		}else{
+    			model.addAttribute("today_total",0);
+    		}
+    	}else{
+    		model.addAttribute("today_total",0);
+    	}
 	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
 	}
 	 

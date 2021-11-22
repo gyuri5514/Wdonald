@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,8 +46,24 @@ public class AdminController {
 	private AdminStoreService adminStoreService;
 	@Autowired
 	private ChartService chartService;
+	@ModelAttribute("adminList")
+	public List<AdminVO> getAdminList(){
+		return adminService.indexView();
+	}
+	@ModelAttribute("storeSalesRank")
+	public JSONArray getSalesRank(){
+		ChartVO c = new ChartVO();
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+	    Calendar week = Calendar.getInstance();
+	    week.add(Calendar.DATE , -30);
+	    String startDate= date.format(week.getTime());
+	    c.setEnd_date(date.format(new Date()));
+	    c.setStart_date(startDate);
+		return JSONArray.fromObject(chartService.getSalesRank(c));
+	}
 	
-	public  void getChart(ChartVO chart,Model model){
+	@ModelAttribute("chartList")
+	public  List<ChartVO> getChart(ChartVO chart,Model model){
 		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
 	    Calendar week = Calendar.getInstance();
 	    week.add(Calendar.DATE , -7);
@@ -60,7 +77,9 @@ public class AdminController {
 	    model.addAttribute("end_date",chart.getEnd_date());
 	    model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
 	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
+	    return chartList;
 	}
+	
 	@GetMapping("/index.mdo")
 	public String indexView(Model model,HttpSession session) {
 		List<AdminVO> adminList =  adminService.indexView();
@@ -83,7 +102,6 @@ public class AdminController {
 		int id_check = adminStoreService.selectStore(map);
 		if(id_check == 1)
 			return 1;
-		
 		return 0;
 	}
 	

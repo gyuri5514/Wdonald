@@ -1,22 +1,80 @@
 package com.wdelivery.admin.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wdelivery.admin.service.AdminLoginService;
+import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.store.chart.vo.ChartVO;
+import com.wdelivery.store.service.ChartService;
+
+import net.sf.json.JSONArray;
 
 @Controller
 public class AdminLoginController {
 	
 	@Autowired
 	private AdminLoginService adminLoginService;
+	@Autowired
+	private ChartService chartService;
+	@Autowired
+	private AdminService adminService;
+
+	@ModelAttribute("adminList")
+	public List<AdminVO> getAdminList(){
+		return adminService.indexView();
+	}
+	@ModelAttribute("storeSalesRank")
+	public JSONArray getSalesRank(){
+		ChartVO c = new ChartVO();
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+	    Calendar week = Calendar.getInstance();
+	    week.add(Calendar.DATE , -30);
+	    String startDate= date.format(week.getTime());
+	    c.setEnd_date(date.format(new Date()));
+	    c.setStart_date(startDate);
+		return JSONArray.fromObject(chartService.getSalesRank(c));
+	}
+	@ModelAttribute("chartList")
+	public  List<ChartVO> getChart(ChartVO chart,Model model){
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+	    Calendar week = Calendar.getInstance();
+	    week.add(Calendar.DATE , -7);
+	    String startDate= date.format(week.getTime());
+	    chart.setEnd_date(date.format(new Date()));
+	    chart.setStart_date(startDate);
+	    
+		List<ChartVO> chartList = chartService.getinitialChart(chart);
+		model.addAttribute("chartList",JSONArray.fromObject(chartList));
+	    model.addAttribute("start_date",chart.getStart_date());
+	    model.addAttribute("end_date",chart.getEnd_date());
+	   
+	    if(chartList.size()!=0) {
+	    	date = new SimpleDateFormat("MM-dd");
+	    	if(chartList.get(chartList.size()-1).getDaily_chart().equals(date.format(new Date()))) {
+	    		model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
+    		}else{
+    			model.addAttribute("today_total",0);
+    		}
+    	}else{
+    		model.addAttribute("today_total",0);
+    	}
+	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
+	    return chartList;
+	}
 	
 	@GetMapping("/login.mdo")
 	public String login() {
