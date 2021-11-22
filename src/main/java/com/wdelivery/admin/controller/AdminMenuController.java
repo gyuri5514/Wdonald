@@ -277,5 +277,46 @@ public class AdminMenuController {
         
 		return "redirect:winMorning.mdo";
 	}
+	
+	@GetMapping("/dessertRegister.mdo")
+	public String dessertRegister() {
+		return "dessertRegister";
+	}
+	
+	@PostMapping("/dessertRegister.mdo")
+	public String dessertInsert(@RequestParam(name="file")MultipartFile file,
+			@RequestParam(name="dessert_code") String dessert_code,
+			@RequestParam(name="dessert_name") String dessert_name,
+			@RequestParam(name="dessert_kcal") String dessert_kcal,
+			@RequestParam(name="dessert_price") String dessert_price,
+			@RequestParam(name="dessert_type", required = false) String dessert_type,
+			@RequestParam(name="dessert_regdate") String dessert_regdate,
+			@RequestParam(name="dessert_detail") String dessert_detail) throws IOException, ParseException {
+				
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key = "img/dessert" + file.getOriginalFilename();
+		DessertVO dessertVO = new DessertVO();
+		dessertVO.setDessert_code(Integer.parseInt(dessert_code));
+		dessertVO.setDessert_img_path(uploadFolder + key);
+		dessertVO.setDessert_name(dessert_name);
+		dessertVO.setDessert_price(Integer.parseInt(dessert_price));
+		dessertVO.setDessert_kcal(Integer.parseInt(dessert_kcal));
+		dessertVO.setDessert_regdate(fm.parse(dessert_regdate));
+		dessertVO.setDessert_detail_comment(dessert_detail);
+		dessertVO.setDessert_img(file.getOriginalFilename());
+		dessertVO.setDessert_status(1);
+		System.out.println(dessertVO.toString());
+		dessertService.insertDessert(dessertVO);
+		
+		InputStream is = file.getInputStream();
+        String contentType = file.getContentType();
+        long contentLength = file.getSize();
+        awsS3.upload(is, key, contentType, contentLength);
+		
+		return "redirect:dessert.mdo";
+	}
 
 }

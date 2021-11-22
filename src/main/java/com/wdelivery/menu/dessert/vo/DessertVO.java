@@ -19,10 +19,17 @@ public class DessertVO {
 	private int dessert_kcal;
 	private int category_code;
 	private String dessert_e_name;
+	private String dessert_detail_comment;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dessert_regdate;
 	
+	public String getDessert_detail_comment() {
+		return dessert_detail_comment;
+	}
+	public void setDessert_detail_comment(String dessert_detail_comment) {
+		this.dessert_detail_comment = dessert_detail_comment;
+	}
 	public Date getDessert_regdate() {
 		return dessert_regdate;
 	}
