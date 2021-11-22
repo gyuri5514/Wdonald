@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +38,8 @@ import com.wdelivery.menu.burgerSet.service.BurgerSetService;
 import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
 import com.wdelivery.news.utils.Criteria;
 import com.wdelivery.news.utils.PageMaker;
+import com.wdelivery.store.chart.vo.ChartVO;
+import com.wdelivery.store.service.ChartService;
 
 import net.sf.json.JSONArray;
 
@@ -49,11 +52,29 @@ public class AdminController {
 
 	@Autowired
 	private AdminStoreService adminStoreService;
+	@Autowired
+	private ChartService chartService;
 	
+	public  void getChart(ChartVO chart,Model model){
+		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
+	    Calendar week = Calendar.getInstance();
+	    week.add(Calendar.DATE , -7);
+	    String startDate= date.format(week.getTime());
+	    chart.setEnd_date(date.format(new Date()));
+	    chart.setStart_date(startDate);
+	    
+		List<ChartVO> chartList = chartService.getinitialChart(chart);
+		model.addAttribute("chartList",JSONArray.fromObject(chartList));
+	    model.addAttribute("start_date",chart.getStart_date());
+	    model.addAttribute("end_date",chart.getEnd_date());
+	    model.addAttribute("today_total",chartList.get(chartList.size()-1).getSales_amount());
+	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
+	}
 	@GetMapping("/index.mdo")
 	public String indexView(Model model,HttpSession session, Criteria cri) {
 		List<AdminVO> adminList =  adminService.indexView(cri);
-		
+		ChartVO c = new ChartVO();
+	    getChart(c,model);
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(100);
