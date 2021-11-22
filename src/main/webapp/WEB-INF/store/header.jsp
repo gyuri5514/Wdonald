@@ -11,25 +11,14 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>WDelivery 관리자</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/storeStyles.css?ver=1.1"> 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <!-- smartEditor -->
 <script type="text/javascript" src="Editor/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
 </head>
 <body class="sb-nav-fixed">
-<script type="text/javascript">
-	var status = '${status}';
-	console.log("h: " + status + "?>" + $("#store_status option").length);
-	
-	for(var j = 0; j < $("#store_status option").length; j++) {
-		if(${status} == $("#store_status option:eq("+j+")").val()) {
-			$("#store_status").val("eq("+j+")").prop("selected", true);
-			console.log("?");
-		}
-	}
-</script>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
 		<a class="navbar-brand ps-3" href="index.sdo">${sessionScope.admin.store_name }</a>

@@ -49,49 +49,50 @@
             </div>
             <div class="card-body">
                <canvas id="myChart" width="50%" height="30"></canvas>
-               <div class="card mb-4" style="width: 50%;">
-                  <div class="form-check">
-                     <div class="form-check">
+               <div class="card mb-4" style="width: 100%; border: 1px solid black; margin-top: 20px; height: 170px; padding-left: 20px; padding-top: 10px;">
+                  <div class="form-check" >
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="date_term"
                            id="flexRadioDefault2" checked value="daily"> <label
                            class="form-check-label" for="flexRadioDefault2"> 일 별</label>
                      </div>
-
-                     <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="date_term"
                            id="flexRadioDefault1" value="month"> <label
                            class="form-check-label" for="flexRadioDefault1"> 월 별</label>
                      </div>
-                     <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="date_term"
                            id="flexRadioDefault1" value="year"> <label
                            class="form-check-label" for="flexRadioDefault1"> 년 별</label>
                      </div>
-                     <div class="form-check">
+                   </div>
+                   <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="type"
                            id="flexRadioDefault2" checked value="none"> <label
                            class="form-check-label" for="flexRadioDefault2"> 없 음</label>
                      </div>
-                     <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="type"
                            id="flexRadioDefault1" value="gender"> <label
                            class="form-check-label" for="flexRadioDefault1"> 성 별</label>
                      </div>
-                     <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="type"
                            id="flexRadioDefault1" value="pay_status"> <label
                            class="form-check-label" for="flexRadioDefault1"> 결제 유형</label>
                      </div>
+                     </div>
                      <br>
                      <div class="form-check">
                         <input type="text" name="start_date" id="start_history"
-                           maxlength="10" readonly="readonly" /> &nbsp; ~ &nbsp; <input
-                           type="text" name="end_date" id="end_history" maxlength="10"
+                           maxlength="10" style="width: 90px;" readonly="readonly" /> &nbsp; ~ &nbsp; <input
+                           type="text" name="end_date" id="end_history" maxlength="10" style="width: 90px;"
                            readonly="readonly" />
                         <button type="button" class="btn btn-warning"
-                           onclick='getNewChart()'>검색</button>
+                           onclick='getNewChart()' style="margin-left: 25px; width:100px;">검색</button>
                      </div>
-
                   </div>
                </div>
 

@@ -114,36 +114,61 @@ public class MenuController {
 		if (b_code != null) {
 			BurgerVO burgerVO = burgerService.detailBurger(b_code);
 			model.addAttribute("detailBurger", burgerVO);
-
+			
+			List<BurgerVO> selectBurger = burgerService.selectBurger();
+			
+			model.addAttribute("selectBurger", selectBurger);
+			
 			return "detail";
 
 		} else if (w_code != null) {
 			WinMorningVO winMorningVO = winMorningService.detailMorning(w_code);
 			model.addAttribute("detailMorning", winMorningVO);
-
+			
+			List<BurgerVO> selectBurger = burgerService.selectBurger();
+			
+			model.addAttribute("selectBurger", selectBurger);
+			
 			return "detail";
 		} else if (dessert_code != null) {
 			DessertVO dessertVO = dessertService.detailDessert(dessert_code);
 			model.addAttribute("detailDessert", dessertVO);
-
+			
+			List<BurgerVO> selectBurger = burgerService.selectBurger();
+			
+			model.addAttribute("selectBurger", selectBurger);
+		
 			return "detail";
 		} else if (s_code != null) {
 			SideVO sideVO = sideService.detailSide(s_code);
 			model.addAttribute("detailSide", sideVO);
-
+			
+			List<BurgerVO> selectBurger = burgerService.selectBurger();
+			
+			model.addAttribute("selectBurger", selectBurger);
+			
 			return "detail";
 
 		} else if (d_code != null) {
 			DrinkVO drinkVO = drinkService.detailDrink(d_code);
 			model.addAttribute("detailDrink", drinkVO);
-
+			
+			List<BurgerVO> selectBurger = burgerService.selectBurger();
+			
+			model.addAttribute("selectBurger", selectBurger);
+			
 			return "detail";
 		} else if (h_code != null) {
 			HappyMealVO happyMealVO = happyMealService.detailHappyMeal(h_code);
 			model.addAttribute("detailHappyMeal", happyMealVO);
-
+			
+			List<BurgerVO> selectBurger = burgerService.selectBurger();
+			
+			model.addAttribute("selectBurger", selectBurger);
+			
 			return "detail";
 		} else {
+			
 			return "burger.do";
 		}
 	}
