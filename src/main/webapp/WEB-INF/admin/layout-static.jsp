@@ -60,7 +60,7 @@
 							
 								<tbody>
 								<c:forEach items="${userInfo}" var="userInfo">
-									<tr>
+									<tr id="${userInfo.user_seq }">
 										<td>${userInfo.user_name}</td>
 										<td>${userInfo.user_email}</td>
 										<td>${userInfo.user_phone}</td>
@@ -98,6 +98,11 @@
 								function deleteUser(user_seq,user_name){
 									if(confirm('회원 삭제 기능은 데이터베이스에서 삭제되는 기능입니다. 정말로 '+user_name+'님을 삭제하시겠습니까?')){
 										alert(user_seq);
+										$.ajax({
+											
+										}).done(function(){
+											$('#'+user_seq).remove();
+										})
 									}
 								}
 						</script>
