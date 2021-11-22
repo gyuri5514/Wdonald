@@ -18,16 +18,19 @@ public class DessertVO {
 	private int dessert_kcal;
 	private int category_code;
 	private String dessert_e_name;
+
 	private int dessert_price;
 	private String dessert_n_img_path;
 	private String dessert_n_img;
 	private String dessert_allergy;
 	private String dessert_detail_comment;
 	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dessert_regdate;
 	
+
 	public String getDessert_detail_img_path() {
 		return dessert_detail_img_path;
 	}
@@ -53,6 +56,7 @@ public class DessertVO {
 	public void setDessert_allergy(String dessert_allergy) {
 		this.dessert_allergy = dessert_allergy;
 	}
+
 	public String getDessert_detail_comment() {
 		return dessert_detail_comment;
 	}
