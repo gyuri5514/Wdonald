@@ -83,6 +83,23 @@
                            <a class="nav-link" href="banner.mdo">배너 관리</a> 
                         </nav>
                      </div>
+                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMenu" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"> 
+                           <i class="fas fa-columns"></i>
+                        </div> 메뉴 관리
+                        <div class="sb-sidenav-collapse-arrow">
+                           <i class="fas fa-angle-down"></i>
+                        </div>
+                     </a>
+                     <div class="collapse" id="collapseMenu" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                              <nav class="sb-sidenav-menu-nested nav">
+                                 <a class="nav-link" href="burger.mdo">Burger</a> 
+                                 <a class="nav-link" href="winMorning.mdo">WinMorning</a>
+                                 <a class="nav-link" href="side.mdo">Side & Dessert</a>
+                                 <a class="nav-link" href="drink.mdo">Drink</a>
+                                 <a class="nav-link" href="happyMeal.mdo">Happymeal & Toy</a>
+                                <!--  <a class="nav-link" href="500.mdo">500 Page</a> -->
+                           </div>
                      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"> <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! Layouts 페이지 필요없을 듯 !!!!!!!!!!!!!!!!!!!! -->
                            <i class="fas fa-columns"></i>
@@ -116,35 +133,21 @@
                               <i class="fas fa-angle-down"></i>
                            </div>
                         </a>
-                           <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                              <nav class="sb-sidenav-menu-nested nav">
-                              <c:choose>
-                                 <c:when test="${not empty sessionScope.admin }">
-                                    <a></a>
-                                 </c:when>
-                                 <c:otherwise>
-                                    <a class="nav-link" href="login.mdo">로그인</a>
-                                 </c:otherwise>
-                              </c:choose>
-                                 <a class="nav-link" href="register.mdo">매장 등록</a>
-                                 <!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
-                              </nav>
-                           </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                           메뉴 관리
-                           <div class="sb-sidenav-collapse-arrow">
-                              <i class="fas fa-angle-down"></i>
-                           </div>
-                        </a>
-                           <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                              <nav class="sb-sidenav-menu-nested nav">
-                                 <a class="nav-link" href="burger.mdo">Burger</a> 
-                                 <a class="nav-link" href="winMorning.mdo">WinMorning</a>
-                                 <a class="nav-link" href="side.mdo">Side & Dessert</a>
-                                 <a class="nav-link" href="drink.mdo">Drink</a>
-                                 <a class="nav-link" href="happyMeal.mdo">Happymeal & Toy</a>
-                                <!--  <a class="nav-link" href="500.mdo">500 Page</a> -->
-                           </div>
+                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+										<nav class="sb-sidenav-menu-nested nav">
+										<c:choose>
+											<c:when test="${not empty sessionScope.admin }">
+												<a></a>
+											</c:when>
+											<c:otherwise>
+												<a class="nav-link" href="login.mdo">로그인</a>
+											</c:otherwise>
+										</c:choose>
+											<a class="nav-link" href="register.mdo">매장 등록</a>
+											<!-- <a class="nav-link" href="password.mdo">Forgot Password</a> --> <!-- 필요없음 -->
+										</nav>
+									</div>
+
                      </nav>
                   </div>
                   <div class="sb-sidenav-menu-heading">통계</div>

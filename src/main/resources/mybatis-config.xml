@@ -35,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.wdelivery.admin.vo.AdminVO" alias="adminVO"/>
 		<typeAlias type="com.wdelivery.member.util.MapPointVO" alias="mapPointVO"/>
 		<typeAlias type="com.wdelivery.store.chart.vo.ChartVO" alias="chartVO"/>
+		<typeAlias type="com.wdelivery.member.payment.vo.ToyCountVO" alias="toyCountVO"/>	
 		
 	</typeAliases>
 	<mappers>	

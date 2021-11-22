@@ -5,7 +5,7 @@
 
 	<div id="container">
 		<div class="content">
-			<div class="visualArea bgMenu01">
+			<div class="visualArea bgMenu05">
 					<div class="inner">
 						<h1 class="titDep1">맥카페 &amp; 음료</h1>
 						<p class="subCopy">언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!</p>
@@ -18,8 +18,10 @@
 				</div>
     			<div class="contArea">
 					<div class="inner">
+						<ul class="tabType01">
+						</ul>
 						<div class="mcMenu">
-							<p class="count" id="count"><b>${selectDrink.d_code}</b> Products</p>
+							<p class="count" id="count"><b>${selectDrink.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
 								<c:forEach items="${selectDrink}" var="selectDrink">
 									<li>

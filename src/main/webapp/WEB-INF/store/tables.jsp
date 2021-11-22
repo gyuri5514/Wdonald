@@ -16,15 +16,12 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					DataTables is a third party plugin that is used to generate the
-					demo table below. For more information about DataTables, please
-					visit the <a target="_blank" href="https://datatables.net/">official
-						DataTables documentation</a> .
+					매장 취소 관리 <a target="_blank" href="orderCancel.sdo">WinDelivery 취소관리</a>
 				</div>
 			</div>
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table me-1"></i> DataTable Example
+					<i class="fas fa-table me-1"></i>주문현황
 				</div>
 				<form action="">
 				<div class="card-body">
@@ -40,17 +37,6 @@
 								<th>주문 상태</th>
 							</tr>
 						</thead>
-						<!--  <tfoot>
-							<tr>
-								<th>Name</th>
-								<th>Position</th>
-								<th>Office</th>
-								<th>Age</th>
-								<th>Start date</th>
-								<th>Salary</th>
-							</tr>
-						</tfoot>  -->
-						
 						<tbody>
 						<c:forEach items="${orderList}" var="orderList">
 						
@@ -84,16 +70,17 @@
 				</div>
 				</form>
 			</div>
+			
 		</div>
 	</main>
+
 
 	<footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
 				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
 				<div>
-					<a href="../main.sdo">Privacy Policy</a> &middot; <a href="#">Term
-						&amp; Conditions</a>
+					<a href="main.do">WinDelivery</a> &middot; <a href="#">Team &amp; 2</a>
 				</div>
 			</div>
 		</div>

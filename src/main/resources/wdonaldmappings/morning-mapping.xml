@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.menu.winMorning.dao.WinMorningDAO">
 	<select id="selectWinMorning" resultType="winMorningVO">
 		<![CDATA[
-			SELECT * FROM winmorning ORDER BY w_code
+			SELECT * FROM winmorning WHERE w_status = 1 ORDER BY w_code
 		]]>
 	</select>
 	
@@ -33,4 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<insert id="insertWinMorning">
+		INSERT INTO winmorning (w_code, w_name, w_price, w_kcal, w_regdate,
+		w_img_path, w_img, w_status, w_detail_comment)
+		 values
+		 (#{w_code}, #{w_name}, #{w_price}, #{w_kcal}, #{w_regdate},
+			#{w_img_path}, #{w_img}, #{w_status}, #{w_detail_comment})
+	</insert>
 </mapper>

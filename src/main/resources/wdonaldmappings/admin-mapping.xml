@@ -5,11 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.admin.dao.AdminDAO">
 
 	<select id="indexView" resultType="adminVO">
-		select * from admin where admin_id NOT IN('admin') order by admin_seq LIMIT #{perPageNum} OFFSET #{pageStart}
+		select * from admin where admin_id NOT IN('admin') order by admin_seq 
 	</select>
 	
 	<select id="userSelect" resultType="userVO">
-		select * from user_info LIMIT #{perPageNum} OFFSET #{pageStart}
+		select * from user_info 
 	</select>
 	
 	<select id="getUserContent" resultType="userVO">
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="selectCoupon" resultType="adminCouponVO">
-		SELECT * FROM coupon
+		SELECT * FROM coupon ORDER BY coupon_seq ASC
 	</select>
 
 	<select id="couponCheck" resultType="int">
@@ -45,10 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{coupon_regdate},
 		#{coupon_enddate}, #{coupon_status})
 	</insert>
-	<insert id="addUserCoupon">
-		INSERT INTO user_coupon(coupon_code, coupon_startdate, coupon_name, coupon_enddate coupon_status)
-		VALUES(#{coupon_code}, #{coupon_regdate}, #{coupon_title}, #{coupon_enddate}, #{coupon_status})
-	</insert>
+	<update id="statusCoupon">
+		UPDATE coupon SET coupon_status = #{coupon_status} WHERE coupon_code = #{coupon_code} 
+	</update>
 	
 	<select id="selectBannerList" resultType="adminBannerVO">
 		SELECT * FROM banner ORDER BY banner_seq DESC
@@ -60,7 +59,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 메뉴관리 -->
 	<select id="viewBurger" resultType="burgerVO">
-		select * from burger order by b_regdate desc LIMIT #{perPageNum} OFFSET #{pageStart}
+		select * from burger order by b_regdate desc
 	</select>
-
+	
+	<update id="burgerUpdate">
+		update burger set b_name = #{b_name}, b_price = #{b_price}, b_kcal = #{b_kcal}, b_status = #{b_status}
+		where b_code = #{b_code}
+	</update>
+	
+	<select id="viewMorning" resultType="winMorningVO">
+		select * from winmorning order by w_regdate desc
+	</select>
+	
+	<update id="morningUpdate">
+		update winmorning set w_name = #{w_name}, w_price = #{w_price}, w_kcal = #{w_kcal}, w_status = #{w_status}
+		where w_code = #{w_code}
+	</update>
+	
+	<select id="viewSide" resultType="sideVO">
+		select * from side order by s_regdate desc
+	</select>
+	
+	<update id="sideUpdate">
+		update side set s_name = #{s_name}, s_price = #{s_price}, s_kcal = #{s_kcal}, s_status = #{s_status}
+		where s_code = #{s_code}
+	</update>
+	
+	<select id="viewDessert" resultType="dessertVO">
+		select * from dessert order by dessert_regdate desc
+	</select>
+	
+	<update id="dessertUpdate">
+		update dessert set dessert_name = #{dessert_name}, dessert_price = #{dessert_price}, dessert_kcal = #{dessert_kcal}, dessert_status = #{dessert_status}
+		where dessert_code = #{dessert_code}
+	</update>
+	
+	<select id="viewDrink" resultType="drinkVO">
+		select * from drink order by d_regdate desc
+	</select>
+	
+	<update id="drinkUpdate">
+		update drink set d_name = #{d_name}, d_price = #{d_price}, d_kcal = #{d_kcal}, d_status = #{d_status}
+		where d_code = #{d_code}
+	</update>
+	
+	<select id="viewHappy" resultType="happyMealVO">
+		select * from HappyMeal order by h_regdate desc
+	</select>
+	
+	<update id="happyUpdate">
+		update happymeal set h_name = #{h_name}, h_price = #{h_price}, h_kcal = #{h_kcal}, h_status = #{h_status}
+		where h_code = #{h_code}
+	</update>
 </mapper>

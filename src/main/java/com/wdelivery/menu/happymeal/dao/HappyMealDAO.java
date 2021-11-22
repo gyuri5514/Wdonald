@@ -8,6 +8,8 @@ public interface HappyMealDAO {
 	
 	public List<HappyMealVO> selectHappyMeal();
 	
+	public List<HappyMealVO> selectHappyMealPM();
+	
 	HappyMealVO detailHappyMeal(Integer h_code);
 
 }

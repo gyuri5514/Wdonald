@@ -23,23 +23,23 @@
 							<li ><a href="happymeal_pm.do" role="button" aria-selected='true'>AM 10:30~AM 04:00</a></li>
 						</ul>
 						<div class="mcMenu">
-							<p class="count" id="count"><b>${selectHappyMeal.size()}</b> Products</p>
+							<p class="count" id="count"><b>${selectHappyMealPM.size()}</b> Products</p>
 							<ul class="menuList" id="menuList">
-								<c:forEach items="${selectHappyMeal}" var="selectHappyMeal" begin="4" end="7" step="1">
+								<c:forEach items="${selectHappyMealPM}" var="selectHappyMealPM">
 									<li>
-										<a href="#" data-seq="${selectHappyMeal.h_code}">
+										<a href="#" data-seq="${selectHappyMealPM.h_code}">
 											<div class="thum">
-												<img src="${selectHappyMeal.h_img_path}" alt="${selectHappyMeal.h_name}" onclick="javascript:location.href='detail.do?h_code=${selectHappyMeal.h_code}'">
+												<img src="${selectHappyMealPM.h_img_path}" alt="${selectHappyMealPM.h_name}" onclick="javascript:location.href='detail.do?h_code=${selectHappyMealPM.h_code}'">
 											</div>
 											<div class="name">
-												<strong class="ko">${selectHappyMeal.h_name}</strong>
-												<em class="en">${selectHappyMeal.h_e_name}</em>
+												<strong class="ko">${selectHappyMealPM.h_name}</strong>
+												<em class="en">${selectHappyMealPM.h_e_name}</em>
 												<div class="product-cost">
-													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectHappyMeal.h_price}</span>
+													<span class="starting-price" style="margin-top:5px;">&#8361; ${selectHappyMealPM.h_price}</span>
 												</div>
 											</div>
 											<button style="background-color:#ffbc0d; color:white; margin-top:30px;border-radius:25px; width:90px; height:30px;" 
-													onclick="javascript:location.href='order.do?h_code=${selectHappyMeal.h_code}'"><h4>주문하기</h4></button>
+													onclick="javascript:location.href='order.do?h_code=${selectHappyMealPM.h_code}'"><h4>주문하기</h4></button>
 										</a>
 									</li>
 								</c:forEach>
@@ -53,7 +53,7 @@
 				</form>
 			</div>
 			<div class="aside">
-				<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">CART</a>
+				<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">CART</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
 		</div>

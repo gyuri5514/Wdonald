@@ -3,7 +3,6 @@ package com.wdelivery.admin.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,14 +28,6 @@ import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.vo.UserVO;
-import com.wdelivery.menu.burger.service.BurgerService;
-import com.wdelivery.menu.burger.vo.BurgerVO;
-import com.wdelivery.menu.burgerLgSet.service.BurgerLgSetService;
-import com.wdelivery.menu.burgerLgSet.vo.BurgerLgSetVO;
-import com.wdelivery.menu.burgerSet.service.BurgerSetService;
-import com.wdelivery.menu.burgerSet.vo.BurgerSetVO;
-import com.wdelivery.news.utils.Criteria;
-import com.wdelivery.news.utils.PageMaker;
 import com.wdelivery.store.chart.vo.ChartVO;
 import com.wdelivery.store.service.ChartService;
 
@@ -71,18 +61,11 @@ public class AdminController {
 	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
 	}
 	@GetMapping("/index.mdo")
-	public String indexView(Model model,HttpSession session, Criteria cri) {
-		List<AdminVO> adminList =  adminService.indexView(cri);
+	public String indexView(Model model,HttpSession session) {
+		List<AdminVO> adminList =  adminService.indexView();
 		ChartVO c = new ChartVO();
 	    getChart(c,model);
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(100);
-		//List<PaymentVO> paymentVO = new ArrayList<PaymentVO>();
 		model.addAttribute("adminList",adminList);
-		model.addAttribute("pageMaker", pageMaker);
-		//System.out.println("index: " + ((PaymentVO) paymentVO).getOrder_seq());
-
 		return "index";
 	}
 	
@@ -121,27 +104,21 @@ public class AdminController {
 	@GetMapping("/layout-sidenav-light.mdo")
 	public String layout(Model model) {
 		List<AdminCouponVO> vo = adminService.selectCoupon();
-		for(int i=0; i>vo.size(); i++) {
-			if(vo.get(i).getCoupon_status()==0) {
-				vo.get(i).setCoupon_check("Y");
-			} else
-				vo.get(i).setCoupon_check("N");
-		}
-		
 		model.addAttribute("vo", vo);
 		return "layout-sidenav-light";
 	}
 	
 	//회원정보 게시판
 	@GetMapping("/layoutStatic.mdo")
-	public String layoutStatic(Model model, Criteria cri) {
-		List<UserVO> userInfo = adminService.userSelect(cri);
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(100);
+	public String layoutStatic(Model model) {
+		List<UserVO> userInfo = adminService.userSelect();
+		/*
+		 * PageMaker pageMaker = new PageMaker(); pageMaker.setCri(cri);
+		 * pageMaker.setTotalCount(100);
+		 */
 		
 		model.addAttribute("userInfo" , userInfo);
-		model.addAttribute("pageMaker", pageMaker);
+		//model.addAttribute("pageMaker", pageMaker);
 		return "layout-static";
 	}
 	
@@ -176,6 +153,18 @@ public class AdminController {
 		adminService.deleteUserCoupon(deleteCoupon);
 		adminService.deleteCoupon(deleteCoupon);
 		return 1;
+	}
+	
+	@PostMapping("/statusCoupon.mdo")
+	public String statusCoupon(@RequestParam(name="coupon_code") String coupon_code, @RequestParam(name="status") int status) {
+//		Map<String,String> map = new HashMap<String,String>();
+//		map.put("coupon_code", coupon_code);
+//		map.put("status", status);
+		AdminCouponVO vo = new AdminCouponVO();
+		vo.setCoupon_code(coupon_code);
+		vo.setCoupon_status(status);
+		adminService.statusCoupon(vo);
+		return "redirect:layout-sidenav-light.mdo";
 	}
 	
 	@GetMapping("/banner.mdo")

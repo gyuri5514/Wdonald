@@ -26,5 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT * FROM winmorning_set WHERE w_set_code = #{w_code} + 1;
 		]]>
 	</select>
-	
+	<insert id="insertWinMorningSet">
+		INSERT INTO winmorning (w_set_name,w_set_price,w_set_kcal,w_set_regdate,w_set_img_path,
+		w_set_img,w_set_status,w_set_code)
+		 values
+		 (#{w_set_name}, #{w_set_price}, #{w_set_kcal}, #{w_set_regdate}, #{w_set_img_path},
+			#{w_set_img}, #{w_set_status}, #{w_set_code})
+	</insert>
 </mapper>

@@ -8,7 +8,7 @@ import com.wdelivery.faq.utils.Criteria;
 
 public interface FaqDAO {
 
-	public List<FaqVO> faqSelect();
+	public List<FaqVO> faqSelect(Criteria cri);
 	
 	public List<FaqVO> MenuSelect(String faq_name);
 	
