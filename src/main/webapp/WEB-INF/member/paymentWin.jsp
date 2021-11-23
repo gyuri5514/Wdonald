@@ -144,6 +144,13 @@
 											value="${address }">${address } 
 									</div></td>
 							</tr>
+							<tr>
+								<th scope="row">요청 사항:</th>
+								<td><div>
+										<input type="hidden" name="order_comment" id="order_comment"
+											value="${order_comment }">${order_comment } 
+									</div></td>
+							</tr>
 						</tbody>
 					</table>
 				</section>
