@@ -24,7 +24,7 @@
 				return false;
 			}
 			
-			$("#sideUpdate").submit();
+			$("#burgerUpdate").submit();
 		});
 	});
 	function detail(index) {

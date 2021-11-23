@@ -15,4 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<insert id="insertDrink">
+		insert into drink(d_code, d_name, d_kcal, d_price, d_regdate, d_img_path, d_img, d_detail_img_path, d_status, d_detail_comment, category_code)
+		values (#{d_code}, #{d_name}, #{d_kcal}, #{d_price}, #{d_regdate}, #{d_img_path}, #{d_img}, #{d_detail_img_path}, #{d_status}, #{d_detail_comment}, 5)
+	</insert>
+	
 </mapper>

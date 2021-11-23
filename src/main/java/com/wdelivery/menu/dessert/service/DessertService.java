@@ -11,4 +11,6 @@ public interface DessertService {
 	public DessertVO detailDessert(Integer dessert_code);
 	
 	public void insertDessert(DessertVO dessertVO);
+	
+	int dessertCodeCheck(int dessert_code);
 }

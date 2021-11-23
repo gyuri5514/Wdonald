@@ -12,4 +12,7 @@ public interface HappyMealDAO {
 	
 	HappyMealVO detailHappyMeal(Integer h_code);
 
+	public void insertHappyMeal(HappyMealVO happyMealVO);
+	
+	int hcodeCheck (int h_code);
 }

@@ -52,4 +52,11 @@ public class BurgerServiceImpl implements BurgerService {
 		burgerDAO.insertBurger(burgerVO);
 	}
 
+	@Override
+	public int bcodeCheck(int b_code) {
+		int result = burgerDAO.bcodeCheck(b_code);
+		return result;
+	}
+
+	
 }

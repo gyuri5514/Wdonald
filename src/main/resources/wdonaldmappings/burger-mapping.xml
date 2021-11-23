@@ -40,4 +40,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteburger">
 		DELETE FROM burger WHERE b_code = #{b_code}
 	</delete>
+	
+	<select id="bcodeCheck" resultType="int" parameterType="burgerVO">
+		select count(*) from burger where b_code = #{b_code}
+	</select>
+	
 </mapper>

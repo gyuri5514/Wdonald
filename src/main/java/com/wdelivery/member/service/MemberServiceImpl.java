@@ -165,7 +165,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public UserAddressVO addressSelect(String user_email) {
+	public List<UserAddressVO> addressSelect(String user_email) {
 		return memberDAO.addressSelect(user_email);
 	}
 

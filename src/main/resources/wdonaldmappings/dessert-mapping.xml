@@ -15,4 +15,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO dessert (dessert_code, dessert_name, dessert_kcal, dessert_price, dessert_regdate, dessert_status, dessert_img_path, dessert_img, category_code, dessert_e_name, dessert_detail_img_path, dessert_detail_img)
 		VALUES (#{dessert_code}, #{dessert_name}, #{dessert_kcal}, #{dessert_price}, #{dessert_regdate}, #{dessert_status}, #{dessert_img_path}, #{dessert_img}, 7, #{dessert_e_name}, #{dessert_detail_img_path}, #{dessert_detail_img})
 	</insert>
+	
+	<select id="dessertCodeCheck" resultType="int" parameterType="dessertVO">
+		select count(*) from dessert where dessert_code = #{dessert_code}
+	</select>
 </mapper>

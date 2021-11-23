@@ -11,4 +11,6 @@ public interface WinMorningService {
 	public WinMorningVO detailMorning(Integer w_code);
 	
 	public void insertWinMorning(WinMorningVO winMorningVO);
+	
+	int wcodeCheck (int w_code);
 }

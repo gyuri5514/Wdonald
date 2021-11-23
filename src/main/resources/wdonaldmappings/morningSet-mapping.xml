@@ -27,10 +27,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	<insert id="insertWinMorningSet">
-		INSERT INTO winmorning (w_set_name,w_set_price,w_set_kcal,w_set_regdate,w_set_img_path,
+		INSERT INTO winmorning_set (w_set_name,w_set_price,w_set_kcal,w_set_regdate,w_set_img_path,
 		w_set_img,w_set_status,w_set_code)
 		 values
 		 (#{w_set_name}, #{w_set_price}, #{w_set_kcal}, #{w_set_regdate}, #{w_set_img_path},
 			#{w_set_img}, #{w_set_status}, #{w_set_code})
 	</insert>
+	
+	<select id="wcodeCheck" resultType="int" parameterType="winMorningSetVO">
+		select count(*) from winmorning_set where w_set_code = #{w_code}
+	</select>
 </mapper>

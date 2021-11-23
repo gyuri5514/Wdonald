@@ -77,25 +77,33 @@ public class AdminLoginController {
 	}
 	
 	@GetMapping("/login.mdo")
-	public String login() {
+	public String login( HttpSession session) {
+		if(session.getAttribute("store_admin") != null | session.getAttribute("admin") != null) {
+//			session.removeAttribute("store_admin");
+//			session.removeAttribute("admin");
+			session.invalidate();
+		}
 		return "login";
 	}
 	
 	@PostMapping("/login.mdo")
 	public String login(AdminVO adminVO, HttpSession session, Model model) {
 		//System.out.println(adminVO.toString());
+
 		if(!adminVO.getAdmin_id().equals("") && adminVO.getAdmin_id() != null 
 				&& !adminVO.getAdmin_password().equals("") && adminVO.getAdmin_password() != null) {
 
 			AdminVO findAdminVO = adminLoginService.findAdmin(adminVO);
 			
 			if(adminVO.getAdmin_password().equals(findAdminVO.getAdmin_password())) { //success
-				session.setAttribute("admin", findAdminVO);
+				
 				//System.out.println("1" + findAdminVO.toString());
 				if(findAdminVO.getAdmin_seq() != 1) {
 					//System.out.println("store admins" + findAdminVO.toString());
+					session.setAttribute("store_admin", findAdminVO);
 					return "redirect:index.sdo";
 				}
+				session.setAttribute("admin", findAdminVO);
 				model.addAttribute("status", 2);
 			} else {
 				//System.out.println("password failed");

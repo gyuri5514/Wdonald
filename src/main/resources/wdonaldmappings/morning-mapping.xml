@@ -40,4 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 (#{w_code}, #{w_name}, #{w_price}, #{w_kcal}, #{w_regdate},
 			#{w_img_path}, #{w_img}, #{w_status}, #{w_detail_comment})
 	</insert>
+	
+	<select id="wcodeCheck" resultType="int" parameterType="winMorningVO">
+		select count(*) from winmorning where w_code = #{w_code}
+	</select>
 </mapper>
