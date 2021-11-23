@@ -380,6 +380,13 @@
 						<div class="panel-heading">
 							<h3 class="text-center">주문 요약</h3>
 						</div>
+						<script type="text/javascript">
+							function openAddressPopup(){
+								var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+								var popupY= (window.screen.height / 2) - (300 / 2)-150;
+								window.open('popupAddress.do','_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
+							}
+						</script>
 						<div class="panel-section-group">
 							<section class="panel-section section-delivery-address">
 								<table class="table-default table-delivery-address">
@@ -387,7 +394,9 @@
 										<c:if test="${addressList ne null  }">
 											<tr>
 												<th scope="row"><span>배달 주소:</span></th>
-												<td><div id="dm_zipcode" style="text-align:left; font-size:15px;">${addressList[0].address1}</div></td>
+												<td><div id="dm_zipcode" style="text-align:left; font-size:15px;">
+													<a id="addressLink" href="javascript:void(0);" onclick="openAddressPopup();">${addressList[0].address1}</a> 
+												</div></td>
 						 						<td style="width:40px;">
 													<span class="input-group-btn"> 
 													<a href="javascript:openDaumPostcode()" class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
@@ -401,7 +410,7 @@
 											<th colspan="4" style="height : 30px; color: #999">주문시 요청사항</th>
 											</tr>
 											<tr>
-												<th colspan="4"><input id="order_comment_out" placeholder="요청사항을 적어주세요" type="text" class="form-control" name="order_comment"value="${addressList[0].order_comment}" style="height : 30px; color: #999"/></th>
+												<th colspan="4"><input id="order_comment_out" placeholder="요청사항을 적어주세요" type="text" class="form-control" name="order_comment" value="${addressList[0].order_comment}" style="height : 30px; color: #999"/></th>
 											</tr>
 										</c:if>
 										<c:if test="${addressList eq null}">

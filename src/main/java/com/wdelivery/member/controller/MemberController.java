@@ -88,8 +88,9 @@ public class MemberController {
 	private DrinkService drinkService;
 	@Autowired
 	private HappyMealService happyMealService;
-	@Autowired
-	private NearestStore nearestStore;
+	/*
+	 * @Autowired private NearestStore nearestStore;
+	 */
 	@Autowired
 	private MemberService memberService;
 
@@ -119,6 +120,16 @@ public class MemberController {
 
 		return "main";
 	}
+	@GetMapping("/popupAddress.do")
+	public String popupAddress(HttpSession session,Model model) {
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
+		if (userVO != null) {
+			  model.addAttribute("addressList", memberService.addressSelect(userVO.getUser_email())); 
+		}else {
+			model.addAttribute("addressList","emptyAddress");
+		}
+		return "popupAddress";
+	}
 
 	@GetMapping("passwordSearch.do")
 	public String passwordSearch() {
@@ -133,7 +144,8 @@ public class MemberController {
 			@RequestParam(value = "h_code", required = false) String h_code,
 			@RequestParam(value = "dessert_code", required = false) String dessert_code,
 			@RequestParam(value = "va", required = false) String va,
-			@RequestParam(value = "num", required = false) String num, HttpSession session) {
+			@RequestParam(value = "num", required = false) String num, HttpSession session
+			) {
 
 		if (va != null) {
 			if (va.equals("변경")) {
@@ -536,8 +548,6 @@ public class MemberController {
 			UserVO userVO = SessionClassifier.sessionClassifier(session);
 			if (userVO != null) {
 				List<UserAddressVO> addressList = memberService.addressSelect(userVO.getUser_email());
-				for(UserAddressVO uv : addressList)
-					System.out.println(uv.toString());
 				  model.addAttribute("addressList", addressList); 
 			}
 		}
@@ -692,12 +702,10 @@ public class MemberController {
 			@RequestParam(value = "lon", required = false) double lon, HttpSession session) {
 		// coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액,
 		// delivery_price - 배달료
-			
 		 
 		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
 		
 		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
-		 System.out.println(order_comment);
 		 
 		if (newStore == null) {
 			model.addAttribute("notAvailable", "noStoreNear");
