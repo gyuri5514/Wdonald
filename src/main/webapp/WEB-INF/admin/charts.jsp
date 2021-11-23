@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
+
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
    crossorigin="anonymous"></script>
@@ -37,7 +38,7 @@
             <li class="breadcrumb-item active">Charts</li>
          </ol>
 
-         <div class="card mb-4" style="width: 100%; height: 20%; float: left;">
+         <div class="card mb-4" style="width: 55%; height: 20%; float: left;">
             <input type="hidden" id="chartType" value="line">
             <div class="card-header">
                <i class="fas fa-chart-area me-1"></i><span id="sales_term">&nbsp;<span
@@ -49,54 +50,60 @@
             </div>
             <div class="card-body">
                <canvas id="myChart" width="50%" height="30"></canvas>
-               <div class="card mb-4" style="width: 100%;">
-               <div>
-                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="date_term"
-                           id="flexRadioDefault2" checked value="daily"> <label
-                           class="form-check-label" for="flexRadioDefault2"> 일 별</label>
-                     </div>
-
-                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="date_term"
-                           id="flexRadioDefault1" value="month"> <label
-                           class="form-check-label" for="flexRadioDefault1"> 월 별</label>
-                     </div>
-                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="date_term"
-                           id="flexRadioDefault1" value="year"> <label
-                           class="form-check-label" for="flexRadioDefault1"> 년 별</label>
-                     </div>
-                     </div>
-                     <div>
-                     <div class="form-check">
+               <div class="card mb-4" style="width: 100%; border: 1px solid black; margin-top: 20px; height: 200px; padding-left: 20px; padding-top: 10px;">
+               <div class="form-check" >
+	               <div class="form-check form-check-inline">
+	                  <input class="form-check-input" type="radio" name="date_term"
+	                     id="flexRadioDefault2" checked value="daily"> <label
+	                     class="form-check-label" for="flexRadioDefault2"> 일 별</label>
+	               </div>
+	                <div class="form-check form-check-inline">
+	                  <input class="form-check-input" type="radio" name="date_term"
+	                     id="flexRadioDefault1" value="month"> <label
+	                     class="form-check-label" for="flexRadioDefault1"> 월 별</label>
+	               </div>
+	                <div class="form-check form-check-inline">
+	                  <input class="form-check-input" type="radio" name="date_term"
+	                     id="flexRadioDefault1" value="year"> <label
+	                     class="form-check-label" for="flexRadioDefault1"> 년 별</label>
+	               </div>
+           	 	</div>
+                <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="type"
                            id="flexRadioDefault2" checked value="none"> <label
                            class="form-check-label" for="flexRadioDefault2"> 없 음</label>
                      </div>
-                     <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="type"
                            id="flexRadioDefault1" value="gender"> <label
                            class="form-check-label" for="flexRadioDefault1"> 성 별</label>
                      </div>
-                     <div class="form-check">
+                 </div>
+                 <div class="form-check">
+                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="type"
                            id="flexRadioDefault1" value="pay_status"> <label
                            class="form-check-label" for="flexRadioDefault1"> 결제 유형</label>
                      </div>
-                     <div>
-                     <br>
-                     <input type="text" name="store_code" id="store_code"
+                 </div>
+                 <br>
+                 <!-- <div class="form-check">
+               	 <div class="form-check form-check-inline">
+                     <input type="text" name="store_code" id="store_code" class="form-control"
                            maxlength="10"  />
-                     <div class="form-check">
-                        <input type="text" name="start_date" id="start_history"
-                           maxlength="10" readonly="readonly" /> &nbsp; ~ &nbsp; <input
-                           type="text" name="end_date" id="end_history" maxlength="10"
-                           readonly="readonly" />
-                        <button type="button" class="btn btn-warning"
-                           onclick='getNewChart()'>검색</button>
-                     </div>
-               </div>
+                  </div>
+                  </div> -->
+                  <div class="form-check" style="padding-left:5px;">
+                     <input type="text" name="start_date" id="start_history" class="form-control"
+                        maxlength="10" style="width: 150px;" readonly="readonly" /> &nbsp; ~ &nbsp; 
+                        <input type="text" name="end_date" id="end_history" class="form-control" maxlength="10" style="width: 150px;"
+                        readonly="readonly" />
+                     <button type="button" class="btn btn-primary"
+                        onclick='getNewChart()' style="margin-bottom:3px; margin-left:25px; width:100px;">검색</button>
+                  </div>
+       		 	</div>
+             </div>
 
 <script type="text/javascript">
 //Set new default font family and font color to mimic Bootstrap's default styling
@@ -180,6 +187,7 @@ var myLineChart = new Chart(ctx,{
    });
 
 function newLineChart(){
+	myLineChart.destroy();
    if($('#chartType').val()=='line'){
       $('#chartType').val('bar');
       chartType = $('#chartType').val();
@@ -200,6 +208,7 @@ function newLineChart(){
 }
                
 function getNewChart(){
+	myLineChart.destroy();
    var store_code =$('#store_code').val();
    console.log(store_code);
    var start_date = $('input[name="start_date"]').val();
@@ -432,11 +441,11 @@ function getNewChart(){
          </div>
          <div class="row">
             <div class="card mb-4">
-               <div class="card-header">
+               <div class="card-header" style="height:53px;">
                   <i class="fas fa-chart-pie me-1"></i> 상품 인기순
                </div>
                <div class="card-body">
-                  <canvas id="myPieChart" width="100%" height="50"></canvas>
+                  <canvas id="myPieChart" width="100%" height="116"></canvas>
                </div>
                <script type="text/javascript">
             // Set new default font family and font color to mimic Bootstrap's default styling
@@ -453,6 +462,12 @@ function getNewChart(){
                })
                // Pie Chart Example
                var ptx = document.getElementById("myPieChart");
+               var color = [
+            		"#007bff","#dc3545","#ffc107","#28a745","skyblue","#ffc555",
+            		"black","#FF5E00","#ABF200","#00D8FF","#5F00FF","#FF00DD","#8C8C8C","#993800",
+            		"#FFD8D8","#FAE0D4","#FAECC5","#E4F7BA","#D9E5FF","#DAD9FF","#E8D9FF","#FFD9FA",
+            		"#CCA63D","#980000"
+               ]
                var myPieChart = new Chart(ptx, {
                  type: 'pie',
                  data: {
@@ -460,7 +475,7 @@ function getNewChart(){
                    datasets: [{
                      //data: [45, 12, 11.25, 8.32],
                      data: pdata,
-                     backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745','skyblue','#ffc555','black'],
+                     backgroundColor: color,
                    }],
                  },
                });
@@ -469,7 +484,7 @@ function getNewChart(){
                <div class="card-footer small text-muted"></div>
             </div>
          </div>
-      </div>
-   </main>
+   	</main>
+ </div>
 
    <%@ include file="footer.jsp"%>

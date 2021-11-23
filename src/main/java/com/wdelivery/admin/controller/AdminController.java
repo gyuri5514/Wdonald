@@ -81,7 +81,11 @@ public class AdminController {
 	}
 	
 	@GetMapping("/index.mdo")
-	public String indexView(Model model,HttpSession session) {
+	public String indexView(AdminVO adminVO, Model model,HttpSession session) {
+		adminVO = (AdminVO) session.getAttribute("admin");
+		if(adminVO == null) {
+			return "redirect:login.mdo";
+		}
 		List<AdminVO> adminList =  adminService.indexView();
 		ChartVO c = new ChartVO();
 	    getChart(c,model);
