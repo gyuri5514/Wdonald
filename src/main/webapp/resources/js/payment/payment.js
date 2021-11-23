@@ -114,7 +114,6 @@ function submitCashless() {
 			type:"POST",
 			url: "payment/verifyIamport.do?imp_uid="+rsp.imp_uid
 		}).done(function(data){
-			console.log(data);
 			if(rsp.paid_amount==data.response.amount){
 				alert("결제 및 결제검증완료");
 				$.ajax({

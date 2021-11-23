@@ -30,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE coupon_code = #{cosupon_code}
 	</select>
 	
+	
 	<delete id="deleteUserCoupon" >
 		DELETE FROM user_coupon WHERE coupon_code = #{coupon_code}
 	</delete>	
@@ -114,5 +115,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="happyUpdate">
 		update happymeal set h_name = #{h_name}, h_price = #{h_price}, h_kcal = #{h_kcal}, h_status = #{h_status}
 		where h_code = #{h_code}
+	</update>
+	<delete id="deleteUser" parameterType="userVO">
+		<![CDATA[
+		DELETE FROM user_info WHERE user_seq= #{user_seq}
+		]]>
+	</delete>
+	<update id="suspendUser" parameterType="userVO">
+	<![CDATA[
+		update user_info set user_status = #{user_status} where user_seq = ${user_seq}
+		]]>
 	</update>
 </mapper>

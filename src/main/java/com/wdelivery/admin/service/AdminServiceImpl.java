@@ -37,8 +37,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<AdminCouponVO> selectCoupon(){
-		List<AdminCouponVO> vo = adminDAO.selectCoupon();
-		return vo;
+		return adminDAO.selectCoupon();
 	}
 	
 	@Override
@@ -69,8 +68,7 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public List<AdminBoardVO> selectBoard(){
-		List<AdminBoardVO> Board = adminDAO.selectBoard();
-		return Board;
+		return adminDAO.selectBoard();
 	}
 	
 	@Override
@@ -155,6 +153,18 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void happyUpdate(HappyMealVO happyMealVO) {
 		adminDAO.happyUpdate(happyMealVO);
+	}
+
+
+	@Override
+	public int deleteUser(UserVO userVO) {
+		return adminDAO.deleteUser(userVO);
+	}
+
+
+	@Override
+	public int supsendUser(UserVO userVO) {
+		return adminDAO.suspendUser(userVO);
 	}
 	
 }

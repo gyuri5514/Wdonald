@@ -52,4 +52,8 @@ public interface AdminService {
 	public void drinkUpdate(DrinkVO drinkVO);
 	public List<HappyMealVO> viewHappy();
 	public void happyUpdate(HappyMealVO happyMealVO);
+
+	public int deleteUser(UserVO userVO);
+
+	public int supsendUser(UserVO userVO);
 }

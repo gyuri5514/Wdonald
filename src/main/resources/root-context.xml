@@ -29,10 +29,6 @@
 		<property name="dataSource" ref="dataSource" />
 		 <property name="configLocation" value="classpath:mybatis-config.xml" />
 	</bean>
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSource"/>
-	</bean>
-	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 	
 	 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 	 <bean id="orderTimer" class="com.wdelivery.member.util.OrderTimer"></bean>
@@ -66,11 +62,5 @@
 	
 	
 	 <context:component-scan base-package="com.wdelivery"></context:component-scan>
-
-     
-
-     
-
-	
 
 </beans>

@@ -23,4 +23,5 @@ public interface StoreDAO {
 	public QnaVO qnaDetail(QnaVO qnaVO);
 	public void qnaQaInsert(QaaVO qaaVO);
 	public void qaaCompletion(QnaVO qnaVO);
+	public AdminVO newWhichOneIsNearest(MapPointVO mapPointVO);
 }
