@@ -26,7 +26,8 @@ audio:not([controls]) {
 }
 
 html {
-	font-family: sans-serif;
+	font-family: SpeedeeK, sans-serif;
+	font-weight: 500;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%
 }
@@ -258,7 +259,8 @@ table {
 }
 
 input, button, select, textarea {
-	font-family: inherit;
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: inherit;
 	line-height: inherit
 }
@@ -1611,9 +1613,10 @@ legend {
 }
 
 label {
+	font-family: SpeedeeK;
 	display: inline-block;
 	margin-bottom: 5px;
-	font-weight: bold
+	font-weight: 500;
 }
 
 input[type='text'], input[type='password'], input[type='tel'], input[type='number'],
@@ -1981,6 +1984,7 @@ textarea.input-lg {
 }
 
 .btn {
+	font-family: SpeedeeK;
 	display: inline-block;
 	padding: 6px 12px;
 	margin-bottom: 0;
@@ -2327,6 +2331,28 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 		url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
 		url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular')
 		format('svg')
+}
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
+}
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 500;
+    font-style: normal;
+    src: url("../font/Speedee_K_R.woff") format('woff'), 
+         url("../font/Speedee_K_R.ttf") format('truetype'); 
+}
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../font/Speedee_K_B.woff") format('woff'), 
+         url("../font/Speedee_K_B.ttf") format('truetype'); 
 }
 
 .glyphicon {
