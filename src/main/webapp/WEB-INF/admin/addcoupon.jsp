@@ -61,7 +61,7 @@
 					return;
 				}
 				 $('#addCoupon').submit(); 
-			}
+			} 	
 		 });
 	 });
 	})

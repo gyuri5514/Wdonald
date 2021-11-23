@@ -160,7 +160,6 @@ public class AdminController {
 	public String addcoupon(AdminCouponVO addcoupon) {
 		adminService.addCoupon(addcoupon);
 		addcoupon.setCoupon_status(1);
-		System.out.println(addcoupon.toString());
 		return "redirect:layout-sidenav-light.mdo";
 	}
 
@@ -174,9 +173,6 @@ public class AdminController {
 	
 	@PostMapping("/statusCoupon.mdo")
 	public String statusCoupon(@RequestParam(name="coupon_code") String coupon_code, @RequestParam(name="status") int status) {
-//		Map<String,String> map = new HashMap<String,String>();
-//		map.put("coupon_code", coupon_code);
-//		map.put("status", status);
 		AdminCouponVO vo = new AdminCouponVO();
 		vo.setCoupon_code(coupon_code);
 		vo.setCoupon_status(status);
@@ -187,7 +183,8 @@ public class AdminController {
 	@GetMapping("/board.mdo")
 	public String Board(Model model) {
 		List<AdminBoardVO> Board = adminService.selectBoard();
-		model.addAttribute("Board", Board);
+		model.addAttribute("Board", JSONArray.fromObject(Board));
+		model.addAttribute("BoardList", Board);
 		return "board";
 	}
 	@GetMapping("/addboard.mdo")
@@ -196,8 +193,20 @@ public class AdminController {
 	}
 	@PostMapping("/addboardInsert.mdo")
 	public String addboard(AdminBoardVO addboard) {
-		adminService.addBoard(addboard);
 		System.out.println(addboard.toString());
+		adminService.addBoard(addboard);
+		return "redirect:board.mdo";
+	}
+	
+	@GetMapping("/deleteBoard.mdo")
+	public String deleteBoard(@RequestParam("notice_seq")int notice_seq) {
+		adminService.deleteBoard(notice_seq);
+		return "redirect:board.mdo";
+	}
+	
+	@PostMapping("/boardUpdate.mdo")
+	public String boardUpdate(AdminBoardVO boardUpdate) {
+		adminService.boardUpdate(boardUpdate);
 		return "redirect:board.mdo";
 	}
 	
