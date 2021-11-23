@@ -8,4 +8,5 @@ public interface BurgerLgSetService {
 	
 	public void insertBurgerLgSet(BurgerLgSetVO burgerLgSetVO);
 	
+	int bcodeCheck(int b_code);
 }

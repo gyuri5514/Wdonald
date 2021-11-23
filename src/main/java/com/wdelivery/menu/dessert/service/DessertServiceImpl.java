@@ -29,5 +29,11 @@ public class DessertServiceImpl implements DessertService {
 		dessertDAO.insertDessert(dessertVO);
 	}
 
+	@Override
+	public int dessertCodeCheck(int dessert_code) {
+		int result = dessertDAO.dessertCodeCheck(dessert_code);
+		return result;
+	}
+
 }
 

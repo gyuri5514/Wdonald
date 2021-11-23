@@ -10,4 +10,5 @@ public interface DrinkDAO {
 
 	DrinkVO detailDrink(Integer d_code);
 
+	public void insertDrink(DrinkVO drinkVO);
 }

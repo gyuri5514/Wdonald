@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="emailChk" resultType="int" parameterType="userVO">
 		<![CDATA[
-			select count(*) from user_info where user_email = #{user_email};
+			select count(*) from user_info where user_email = #{user_email}
 		]]>
 	</select>
 	

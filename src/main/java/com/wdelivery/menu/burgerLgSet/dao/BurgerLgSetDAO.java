@@ -8,4 +8,6 @@ public interface BurgerLgSetDAO {
 	
 	public void insertBurgerLgSet(BurgerLgSetVO burgerLgSetVO);
 	
+	int bcodeCheck(int b_code);
+	
 }

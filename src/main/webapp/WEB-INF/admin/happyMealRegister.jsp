@@ -18,17 +18,17 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		$("#s_code").blur(function(){
-			var code = $('#s_code').val();
+		$("#h_code").blur(function(){
+			var code = $('#h_code').val();
 			$.ajax({
 				type : "get",
-				url : "scodeChk.mdo",
-				data : {"s_code" : code},
+				url : "hcodeChk.mdo",
+				data : {"h_code" : code},
 				success : function(data){
-					console.log("중복 확인 : " + data);
+					//console.log("중복 확인 : " + data);
 					if (data == 1) {
 						$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
-						$("#s_code").focus();
+						$("#h_code").focus();
 						return false;
 					}else{
 						$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
@@ -45,77 +45,77 @@
 		})
 		$("#submit").on("click", function() {
 			var regExp = /\s/g;
-			if ($("#s_code").val() == "") {
-				alert("사이드코드를 입력하세요.");
-				$("#s_code").focus();
+			if ($("#h_code").val() == "") {
+				alert("해피밀코드를 입력하세요.");
+				$("#h_code").focus();
 				return false;
 			}
-			if (regExp.test($("#s_code").val())) {
+			if (regExp.test($("#h_code").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#s_code").focus();
+				$("#h_code").focus();
 				return false;
 			}
-			if ($("#s_name").val() == "") {
-				alert("사이드 이름을 입력하세요.");
-				$("#s_name").focus();
+			if ($("#h_name").val() == "") {
+				alert("해피밀 이름을 입력하세요.");
+				$("#h_name").focus();
 				return false;
 			}
-			if (regExp.test($("#s_name").val())) {
+			if (regExp.test($("#h_name").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#s_name").focus();
+				$("#h_name").focus();
 				return false;
 			}
-			if ($("#s_kcal").val() == "") {
-				alert("사이드 칼로리를 입력하세요.");
-				$("#s_kcal").focus();
+			if ($("#h_kcal").val() == "") {
+				alert("해피밀 칼로리를 입력하세요.");
+				$("#h_kcal").focus();
 				return false;
 			}
-			if (regExp.test($("#s_kcal").val())) {
+			if (regExp.test($("#h_kcal").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#s_kcal").focus();
+				$("#h_kcal").focus();
 				return false;
 			}
-			if ($("#s_price").val() == "") {
-				alert("사이드 가격을 입력하세요.");
-				$("#s_price").focus();
+			if ($("#h_price").val() == "") {
+				alert("해피밀 가격을 입력하세요.");
+				$("#h_price").focus();
 				return false;
 			}
-			if (regExp.test($("#s_price").val())) {
+			if (regExp.test($("#h_price").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#s_price").focus();
+				$("#h_price").focus();
 				return false;
 			}
-			if ($("#s_type").val() == "") {
+			if ($("#h_type").val() == "") {
 				alert("분류를 입력하세요.");
-				$("#s_type").focus();
+				$("#h_type").focus();
 				return false;
 			}
-			if (regExp.test($("#s_type").val())) {
+			if (regExp.test($("#h_type").val())) {
 				alert("공백을 사용할 수 없습니다.");
-				$("#s_type").focus();
+				$("#h_type").focus();
 				return false;
 			}
-			if ($("#s_regdate").val() == "") {
-				alert("사이드 등록일을 입력하세요.");
-				$("#s_regdate").focus();
+			if ($("#h_regdate").val() == "") {
+				alert("해피밀 등록일을 입력하세요.");
+				$("#h_regdate").focus();
 				return false;
 			}
-			if ($("#s_detail").val() == "") {
-				alert("사이드 상세설명을 입력하세요.");
-				$("#s_detail").focus();
+			if ($("#h_detail").val() == "") {
+				alert("해피밀 상세설명을 입력하세요.");
+				$("#h_detail").focus();
 				return false;
 			}
-			if ($("#s_img").val() == "") {
-				alert("사이드 이미지를 업로드하세요.");
-				$("#s_img").focus();
+			if ($("#h_img").val() == "") {
+				alert("해피밀 이미지를 업로드하세요.");
+				$("#h_img").focus();
 				return false;
 			}
-			if ($("#s_detail_img").val() == "") {
+			if ($("#h_detail_img").val() == "") {
 				alert("디테일 이미지를 업로드하세요.");
-				$("#s_detail_img").focus();
+				$("#h_detail_img").focus();
 				return false;
 			}
-			$('#addside').submit();
+			$('#addHappyMeal').submit();
 		});
 
 		$('#file1').on('fileselect', function(event, numFiles, label) {
@@ -174,20 +174,20 @@
 		var img = $('#s-container');
 		if (img.attr("style") == "display:none;") {
 			img.attr("style", "display:block;");
-			$('#slideBtn').text("사이드 미리보기 취소");
+			$('#slideBtn').text("해피밀 미리보기 취소");
 		} else {
 			img.attr("style", "display:none;");
-			$('#slideBtn').text("사이드 미리보기");
+			$('#slideBtn').text("해피밀 미리보기");
 		}
 	};
 	function slideDButton() {
 		var img = $('#s-detail-container');
 		if (img.attr("style") == "display:none;") {
 			img.attr("style", "display:block;");
-			$('#slideDBtn').text("사이드 미리보기 취소");
+			$('#slideDBtn').text("해피밀 미리보기 취소");
 		} else {
 			img.attr("style", "display:none;");
-			$('#slideDBtn').text("사이드 미리보기");
+			$('#slideDBtn').text("해피밀 미리보기");
 		}
 	};
 </script>
@@ -200,45 +200,45 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">사이드 등록</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">해피밀 등록</h3></div>
                                     <div class="card-body">
-                                        <form action="sideRegister.mdo" method="post" id="addside" enctype="multipart/form-data">
+                                        <form action="happyMealRegister.mdo" method="post" id="addHappyMeal" enctype="multipart/form-data">
                                         	<div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="s_code" name="s_code" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="h_code" name="h_code" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 50px);"/>
-                                                        <label for="s_code">사이드 코드 - (700~799)</label><span id="codetxt"></span>
+                                                        <label for="h_code">해피밀 코드 - (900~999)</label><span id="codetxt"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="s_name" name="s_name" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="h_name" name="h_name" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);"/>
-                                                        <label for="s_name">사이드 이름</label>
+                                                        <label for="h_name">해피밀 이름</label>
                                                     </div>
                                                 </div>
                                              </div>
                                              <div class="row mb-3">
                                                  <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="s_kcal" name="s_kcal" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="h_kcal" name="h_kcal" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);"/>
-                                                        <label for="s_kcal">사이드 칼로리</label>
+                                                        <label for="h_kcal">해피밀 칼로리</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="s_price" name="s_price" type="text" placeholder="Enter your first name" 
+                                                        <input class="form-control" id="h_price" name="h_price" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 20px);"/>
-                                                        <label for="s_price">사이드 가격</label>
+                                                        <label for="h_price">해피밀 가격</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                    	<select class="form-select" id="s_type" name="s_type" aria-label="Default select example"
+                                                    	<select class="form-select" id="h_type" name="h_type" aria-label="Default select example"
                                                     		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
                                                     		<option selected>기본</option>
                                                         </select>
@@ -246,14 +246,14 @@
                                                 </div>
                                                  <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="s_regdate" name="s_regdate" type="date"/>
-                                                        <label for="s_regdate">사이드등록일</label>
+                                                        <input class="form-control" id="h_regdate" name="h_regdate" type="date"/>
+                                                        <label for="h_regdate">해피밀등록일</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="s_detail" name="s_detail" type="text"/>
-                                                <label for="s_detail">상세설명 / 판매시간</label>
+                                                <input class="form-control" id="h_detail" name="h_detail" type="text"/>
+                                                <label for="h_detail">상세설명 / 판매시간</label>
                                             </div>
                                             <div style="margin-top: 10px;">
 	                                            <button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>	
@@ -268,7 +268,7 @@
 									                        Upload <input type="file" name="file1" id="file1" style="display: none;" multiple>
 									                    </span>
 									                </label>
-									                <input type="text" id="s_img" class="form-control" readonly>
+									                <input type="text" id="h_img" class="form-control" readonly>
 								           		</div>
 								           		<small>기본 이미지 : 사진크기 240*180</small>
                                             </div>
@@ -286,12 +286,12 @@
 									                        Upload <input type="file" name="file2" id="file2" style="display: none;" multiple>
 									                    </span>
 									                </label>
-									                <input type="text" id="s_detail_img" class="form-control" readonly>
+									                <input type="text" id="h_detail_img" class="form-control" readonly>
 								           		</div>
 								           		<small>디테일 이미지 : 사진크기 772*530</small>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">사이드 등록</a></div>
+                                                <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">해피밀 등록</a></div>
                                                 <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle" style="background-color: #0d6efd; border:solid 1px #0d6efd;">취	소</a></div>
                                             </div>
                                         </form>

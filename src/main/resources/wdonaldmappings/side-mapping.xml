@@ -17,4 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO side (s_code, s_name, s_kcal, s_price, s_regdate, s_img_path, s_img, s_detail_img_path, s_status, s_detail_comment, category_code)
 		VALUES (#{s_code},#{s_name},#{s_kcal},#{s_price},#{s_regdate}, #{s_img_path}, #{s_img},#{s_detail_img_path}, #{s_status}, #{s_detail_comment}, 4)
 	</insert>
+	
+	<select id="scodeCheck" resultType="int" parameterType="sideVO">
+		select count(*) from side where s_code = #{s_code}
+	</select>
 </mapper>

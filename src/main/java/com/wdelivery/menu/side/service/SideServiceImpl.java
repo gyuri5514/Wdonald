@@ -29,4 +29,10 @@ public class SideServiceImpl implements SideService {
 		sideDAO.insertSide(sideVO);
 	}
 
+	@Override
+	public int scodeCheck(int s_code) {
+		int result = sideDAO.scodeCheck(s_code);
+		return result;
+	}
+
 }

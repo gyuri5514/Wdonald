@@ -11,5 +11,7 @@ public interface SideDAO {
 	SideVO detailSide(Integer s_code);
 	
 	public void insertSide(SideVO sideVO);
+	
+	int scodeCheck (int s_code);
 
 }
