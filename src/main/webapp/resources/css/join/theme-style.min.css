@@ -1,4 +1,27 @@
 @charset "utf-8";
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
+}
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 500;
+    font-style: normal;
+    src: url("../font/Speedee_K_R.woff") format('woff'), 
+         url("../font/Speedee_K_R.ttf") format('truetype'); 
+}
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../font/Speedee_K_B.woff") format('woff'), 
+         url("../font/Speedee_K_B.ttf") format('truetype'); 
+}
+
 .growing-box {
 	animation-name: resize;
 	animation-duration: 1s;
@@ -2037,9 +2060,10 @@ a:hover .icon-inverse-50, a:hover .icon-inverse-80 {
 }
 
 .btn {
+	font-family: SpeedeeK;
 	padding: 6px 12px;
 	font-size: 14px;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 1.428571429;
 	border-radius: 2px
 }

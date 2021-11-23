@@ -1101,4 +1101,22 @@ font-family:SpeedeeK, Malgun Gothic,'맑은 고딕', Dotum,'돋움', Arial, sans
     background: #fff;
 }
 
+.fa, .fas {
+	font-weight: 900;
+}
+
+.fa, .far, .fas {
+	font-family: "Font Awesome 5 Free";
+}
+
+.fa-chevron-right:before {
+	content: "\f054";
+	font-style: nomal;
+}
+
+.fa-chevron-left:before {
+	content: "\f053";
+	font-style: nomal;
+}
+
 /*# sourceMappingURL=App.css.map */

@@ -50,7 +50,7 @@
 	<div class="wrapper">
    		<header class="header">
 	        <div class="headArea">
-	          <strong class="hLogo">
+	          <strong class="hLogo2">
 	            <a href="main.do" target="_blank" class="logo" title="메인으로 이동">
 	              <img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/logo.png" alt="맥도날드" />
 	            </a>
@@ -157,7 +157,7 @@
 							<fieldset class="srchBox">
 								<legend>질문 검색</legend>
 								<div class="form">
-									<div class="selectWrap" id="selectWrap" style="z-index: 100000; width: 150px">
+									<!-- <div class="selectWrap" id="selectWrap" style="z-index: 100000; width: 150px">
 										<select name="category" id="category" style="display: block; position: absolute; margin-left: -100000px;">
 											<option value="" title="전체">전체</option>
 											<option value="01" title="구매">구매</option>
@@ -169,7 +169,7 @@
 											<option value="08" title="기타">기타</option>
 											<option value="09" title="맥도날드앱">윈도날드앱</option>
 										</select>
-									</div>
+									</div> -->
 									<form NAME="FNAME" class="realForm" method="post" onsubmit="return false;">
 										<input type="hidden" name="RG_EMPL_ID" value=""> 
 										<input type="hidden" name="FAQ_TYPE_CD" id="FAQ_TYPE_CD" value="">
