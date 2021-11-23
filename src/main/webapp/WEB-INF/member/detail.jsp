@@ -30,14 +30,12 @@
 									<p>${detailBurger.b_detail_comment}</p>
 								</div>
 								<div class="other">
-								<c:forEach var="selectBurger" items="selectBurger" varStatus="status">
-								<c:if test="${detailBurger.b_code ne 101}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?b_code=${detailBurger.b_code - 1}';"><span class="arr">이전 메뉴</span></a>
+								<c:if test="${detailBurger.b_code != selectBurger_first}">
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?b_code=${detailBurger.b_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-								<c:if test="${detailBurger.b_code ne 121}">
-									<a href="#" class="arrow next" onclick="location.href='detail.do?b_code=${detailBurger.b_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								<c:if test="${detailBurger.b_code != selectBurger_end}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?b_code=${detailBurger.b_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
-								</c:forEach>
 								</div>
 							</div>
 						</div>
@@ -94,11 +92,11 @@
 									<p>${detailMorning.w_detail_comment}</p>
 								</div>
 								<div class="other">
-								<c:if test="${detailMorning.w_code ne 401}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?w_code=${detailMorning.w_code - 1}';"><span class="arr">이전 메뉴</span></a>
+								<c:if test="${detailMorning.w_code != selectWinMorning_first}">
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?w_code=${detailMorning.w_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-								<c:if test="${detailMorning.w_code ne 409}">
-									<a href="#" class="arrow next" onclick="location.href='detail.do?w_code=${detailMorning.w_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								<c:if test="${detailMorning.w_code != selectWinMorning_end}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?w_code=${detailMorning.w_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
 							</div>
@@ -155,11 +153,11 @@
 									<p>${detailHappyMeal.h_detail_comment}</p>
 								</div>
 								<div class="other">
-								<c:if test="${detailHappyMeal.h_code ne 901}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code - 1}';"><span class="arr">이전 메뉴</span></a>
+								<c:if test="${detailHappyMeal.h_code != selectHappyMeal_first}">
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-								<c:if test="${detailHappyMeal.h_code ne 908}">
-									<a href="#" class="arrow next" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code + 1}';"><span class="arr">다음 메뉴</span></a>
+								<c:if test="${detailHappyMeal.h_code != selectHappyMeal_end}">
+									<a href="#" class="arrow next" onclick="location.href='detail.do?h_code=${detailHappyMeal.h_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
 							</div>
@@ -218,10 +216,10 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailSide.s_code ne 701}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?s_code=${detailSide.s_code - 1}';"><span class="arr">이전 메뉴</span></a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?s_code=${detailSide.s_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
 								<c:if test="${detailSide.s_code ne 708}">
-									<a href="#" class="arrow next" onclick="location.href='detail.do?s_code=${detailSide.s_code + 1}';"><span class="arr">다음 메뉴</span></a>
+									<a href="#" class="arrow next" onclick="location.href='detail.do?s_code=${detailSide.s_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
 							</div>
@@ -279,10 +277,10 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailDrink.d_code ne 301}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?d_code=${detailDrink.d_code - 1}';"><span class="arr">이전 메뉴</span></a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?d_code=${detailDrink.d_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
 								<c:if test="${detailDrink.d_code ne 328}">
-									<a href="#" class="arrow next" onclick="location.href='detail.do?d_code=${detailDrink.d_code + 1}';"><span class="arr">다음 메뉴</span></a>
+									<a href="#" class="arrow next" onclick="location.href='detail.do?d_code=${detailDrink.d_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
 							</div>
@@ -340,10 +338,10 @@
 								</div>
 								<div class="other">
 								<c:if test="${detailDessert.dessert_code ne 801}">
-									<a href="#" class="arrow prev" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code - 1}';"><span class="arr">이전 메뉴</span></a>
+									<a href="#" class="arrow prev" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
 								<c:if test="${detailDessert.dessert_code ne 806}">
-									<a href="#" class="arrow next" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code + 1}';"><span class="arr">다음 메뉴</span></a>
+									<a href="#" class="arrow next" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
 							</div>
@@ -380,6 +378,10 @@
 </form>
 <script>
 $(function() {
+	if(${message != null}) {
+		alert("${message}");
+		location.href="main.do";
+	}
 	toggleButton();
 });
 function toggleButton() {

@@ -21,7 +21,7 @@
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 		<!-- Navbar Brand-->
-		<a class="navbar-brand ps-3" href="index.sdo">${sessionScope.admin.store_name }</a>
+		<a class="navbar-brand ps-3" href="index.sdo">${sessionScope.store_admin.store_name }</a>
 		<!-- Sidebar Toggle-->
 		<button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
 			<i class="fas fa-bars"></i>
@@ -32,13 +32,13 @@
 				<!-- <div class="input-group" > -->
 				<div class="btn-group" style="width: 80%; margin: 0 auto">
 					<select id="store_status" name="store_status" class="btn btn-Default dropdown-toggle"style="background: white;">
-							<c:if test="${sessionScope.admin.store_status eq 1}">
+							<c:if test="${sessionScope.store_admin.store_status eq 1}">
 							<option value="">정상영업</option>
 							</c:if>
-							<c:if test="${sessionScope.admin.store_status eq 2}">
+							<c:if test="${sessionScope.store_admin.store_status eq 2}">
 							<option value="">준비 중</option>
 							</c:if>
-							<c:if test="${sessionScope.admin.store_status eq 0}">
+							<c:if test="${sessionScope.store_admin.store_status eq 0}">
 							<option value="">영업마감</option>
 							</c:if> 
 							<option value="1">정상영업</opstion>
@@ -52,8 +52,8 @@
 		<!-- Navbar-->
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 		<c:choose>
-			<c:when test="${not empty sessionScope.admin }">
-				<h1 class="navbar-brand">${sessionScope.admin.admin_name}님 안녕하세요.</h1>
+			<c:when test="${not empty sessionScope.store_admin }">
+				<h1 class="navbar-brand">${sessionScope.store_admin.admin_name}님 안녕하세요.</h1>
 				<a class="navbar-brand ps-3" style="width: 100px" href="logout.mdo">로그아웃</a>
 			</c:when>
 			<c:otherwise>

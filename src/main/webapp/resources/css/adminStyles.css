@@ -2281,7 +2281,7 @@ progress {
 }
 
 .form-control, .dataTable-input {
-  display: block;
+  /* display: block; */
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -2557,10 +2557,11 @@ textarea.form-control-lg {
 }
 
 .form-check {
-  display: block;
-  min-height: 1.5rem;
-  padding-left: 1.5em;
-  margin-bottom: 0.125rem;
+    display: block;
+    min-height: 1.5rem;
+    padding-top: 5px;
+    padding-left: 20px;
+    margin-bottom: 0.125rem;
 }
 .form-check .form-check-input {
   float: left;
@@ -4683,7 +4684,7 @@ textarea.form-control-lg {
 }
 
 .card-footer {
-  padding: 0.5rem 1rem;
+ /*  padding: 0.5rem 1rem; */
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
