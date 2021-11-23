@@ -72,7 +72,7 @@ public class StoreController {
 
 		model.addAttribute("status", adminVO.getStore_status());
 		List<ToyCountVO> toyCountList = storeService.toyCountSelect(adminVO.getAdmin_seq());
-		System.out.println("index : " +	toyCountList.toString());
+		//System.out.println("index : " +	toyCountList.toString());
 		model.addAttribute("toy", toyCountList);
 
 		return "index";

@@ -33,7 +33,7 @@
       <div class="container-fluid px-4">
          <h1 class="mt-4">차트</h1>
          <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.jsp">WinDelivery</a></li>
+            <li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
             <li class="breadcrumb-item active">Charts</li>
          </ol>
 
@@ -96,6 +96,12 @@
                   </div>
                </div>
 
+<form action="excel.sdo" method="get">
+<div style="margin-left: 600px; margin-bottom: 20px">
+	<button type="submit" class="btn btn-light" value="난 이제 못하겠다"><i class="far fa-file-excel" style="font-size: 20px; color: green;"></i>
+	</button>
+</div> 
+</form>
 <script type="text/javascript">
 //Set new default font family and font color to mimic Bootstrap's default styling
 
