@@ -9,4 +9,6 @@ public interface DrinkService {
 	public List<DrinkVO> selectDrink();
 	
 	DrinkVO detailDrink(Integer d_code);
+	
+	public void insertDrink(DrinkVO drinkVO);
 }

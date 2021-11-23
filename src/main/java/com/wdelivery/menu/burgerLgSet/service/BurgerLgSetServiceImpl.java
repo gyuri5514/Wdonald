@@ -22,4 +22,10 @@ public class BurgerLgSetServiceImpl implements BurgerLgSetService {
 		burgerLgSetDAO.insertBurgerLgSet(burgerLgSetVO);
 	}
 
+	@Override
+	public int bcodeCheck(int b_code) {
+		int result = burgerLgSetDAO.bcodeCheck(b_code);
+		return result;
+	}
+
 }

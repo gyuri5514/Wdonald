@@ -21,4 +21,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<insert id="insertHappyMeal">
+		insert into happymeal(h_code, h_name, h_kcal, h_price, h_regdate, h_img_path, h_img, h_detail_img_path, h_status, h_detail_comment)
+		values (#{h_code}, #{h_name}, #{h_kcal}, #{h_price}, #{h_regdate}, #{h_img_path}, #{h_img}, #{h_detail_img_path}, #{h_status}, #{h_detail_comment})
+	</insert>
+	
+	<select id="hcodeCheck" resultType="int" parameterType="happyMealVO">
+		select count(*) from happymeal where h_code = #{h_code}
+	</select>
 </mapper>

@@ -7,13 +7,17 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthScrollPaneUI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.wdelivery.admin.service.AdminService;
@@ -190,7 +194,7 @@ public class AdminMenuController {
 			burgerService.insertBurger(burgerVO);
 		}
 		else if(burger_type.equals("세트")) {
-			key1 = "img/hamburger_set/" + file1.getOriginalFilename();
+			key1 = "img/hamburger/" + file1.getOriginalFilename();
 			BurgerSetVO burgerSetVO = new BurgerSetVO();
 			burgerSetVO.setB_set_code(Integer.parseInt(burger_code));
 			burgerSetVO.setB_set_img_path(uploadFolder + key1);
@@ -202,7 +206,8 @@ public class AdminMenuController {
 			burgerSetVO.setB_set_img(file1.getOriginalFilename());
 			burgerSetVO.setB_set_status(1);
 			burgerSetService.insertBurgerSet(burgerSetVO);
-			
+		} else if(burger_type.equals("라지세트")) {
+			key1 = "img/hamburger/" + file1.getOriginalFilename();
 			BurgerLgSetVO burgerLgSetVO = new BurgerLgSetVO();
 			burgerLgSetVO.setB_lgset_code(Integer.parseInt(burger_code));
 			burgerLgSetVO.setB_lgset_img_path(uploadFolder + key1);
@@ -214,7 +219,7 @@ public class AdminMenuController {
 			burgerLgSetVO.setB_lgset_img(file1.getOriginalFilename());
 			burgerLgSetVO.setB_lgset_status(1);
 			burgerLgSetService.insertBurgerLgSet(burgerLgSetVO);
-		} 
+		}
 		
 		InputStream is = file1.getInputStream();
         String contentType = file1.getContentType();
@@ -227,6 +232,25 @@ public class AdminMenuController {
         awsS3.upload(is2, key2, contentType2, contentLength2);
         
 		return "redirect:burger.mdo";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "bcodeChk.mdo", method = RequestMethod.GET)
+	public int bcodeCheck(int b_code) {
+		int b_codeResult = 0;
+		//System.out.println("1 " + b_code);
+		if (b_code >=100 && b_code <200) {
+			b_codeResult = burgerService.bcodeCheck(b_code);
+			//System.out.println("단품");
+		}else if (b_code >=200 && b_code <300) {
+			b_codeResult = burgerSetService.bcodeCheck(b_code);
+			//System.out.println("세트");
+		}else if (b_code >=500 && b_code <600) {
+			b_codeResult = burgerLgSetService.bcodeCheck(b_code);
+			//System.out.println("라지");
+		}
+		
+		return b_codeResult;
 	}
 	
 	@GetMapping("/winMorningRegister.mdo")
@@ -296,6 +320,21 @@ public class AdminMenuController {
 		return "redirect:winMorning.mdo";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "wcodeChk.mdo", method = RequestMethod.GET)
+	public int wcodeCheck(int w_code) {
+		int w_codeResult = 0;
+		//System.out.println("1 " + w_code);
+		if (w_code >=400 && w_code <500) {
+			w_codeResult = winMorningService.wcodeCheck(w_code);
+			//System.out.println("단품");
+		}else if (w_code >=600 && w_code <700) {
+			w_codeResult = winMorningSetService.wcodeCheck(w_code);
+			//System.out.println("세트");
+		}
+		return w_codeResult;
+	}
+	
 	@GetMapping("/dessertRegister.mdo")
 	public String dessertRegister() {
 		return "dessertRegister";
@@ -346,6 +385,14 @@ public class AdminMenuController {
 		return "redirect:dessert.mdo";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "dessertCodeChk.mdo", method = RequestMethod.GET)
+	public int dessertCodeCheck(int dessert_code) {
+		int d_codeResult = dessertService.dessertCodeCheck(dessert_code);
+		//System.out.println("1 " + dessert_code);
+		return d_codeResult;
+	}
+	
 	@GetMapping("/sideRegister.mdo")
 	public String sideRegister() {
 		return "sideRegister";
@@ -394,5 +441,118 @@ public class AdminMenuController {
 		
 		return "redirect:side.mdo";
 	}
-
+	
+	@ResponseBody
+	@RequestMapping(value = "scodeChk.mdo", method = RequestMethod.GET)
+	public int scodeCheck(int s_code) {
+		int s_codeResult = sideService.scodeCheck(s_code);
+		System.out.println("1 " + s_code);
+		return s_codeResult;
+	}
+	
+	@GetMapping("/drinkRegister.mdo")
+	public String drinkRegister() {
+		return "drinkRegister";
+	}
+	
+	@PostMapping("/drinkRegister.mdo")
+	public String drinkInsert(@RequestParam(name="file1")MultipartFile file1,
+			@RequestParam(name="file2")MultipartFile file2,
+			@RequestParam(name="d_code") String d_code,
+			@RequestParam(name="d_name") String d_name,
+			@RequestParam(name="d_kcal") String d_kcal,
+			@RequestParam(name="d_price") String d_price,
+			@RequestParam(name="d_type", required = false) String d_type,
+			@RequestParam(name="d_regdate") String d_regdate,
+			@RequestParam(name="d_detail") String d_detail) throws IOException, ParseException {
+			
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key1 = "img/drink" + file1.getOriginalFilename();
+		String key2 = "img/drink" + file2.getOriginalFilename();
+		DrinkVO drinkVO = new DrinkVO();
+		drinkVO.setD_code(Integer.parseInt(d_code));
+		drinkVO.setD_img_path(uploadFolder + key1);
+		drinkVO.setD_detail_img_path(uploadFolder + key2);
+		drinkVO.setD_name(d_name);
+		drinkVO.setD_price(Integer.parseInt(d_price));
+		drinkVO.setD_kcal(Integer.parseInt(d_kcal));
+		drinkVO.setD_regdate(fm.parse(d_regdate));
+		drinkVO.setD_detail_comment(d_detail);
+		drinkVO.setD_img(file1.getOriginalFilename());
+		drinkVO.setD_status(1);
+		System.out.println(drinkVO.toString());
+		drinkService.insertDrink(drinkVO);
+		
+		InputStream is = file1.getInputStream();
+        String contentType = file1.getContentType();
+        long contentLength = file1.getSize();
+        awsS3.upload(is, key1, contentType, contentLength);
+        
+        InputStream is2 = file2.getInputStream();
+        String contentType2 = file2.getContentType();
+        long contentLength2 = file2.getSize();
+        awsS3.upload(is2, key2, contentType2, contentLength2);
+		
+		return "redirect:drink.mdo";
+	}
+	
+	@GetMapping("/happyMealRegister.mdo")
+	public String happyMealRegister() {
+		return "happyMealRegister";
+	}
+	
+	@PostMapping("/happyMealRegister.mdo")
+	public String happyMealInsert(@RequestParam(name="file1")MultipartFile file1,
+			@RequestParam(name="file2")MultipartFile file2,
+			@RequestParam(name="h_code") String h_code,
+			@RequestParam(name="h_name") String h_name,
+			@RequestParam(name="h_kcal") String h_kcal,
+			@RequestParam(name="h_price") String h_price,
+			@RequestParam(name="h_type", required = false) String h_type,
+			@RequestParam(name="h_regdate") String h_regdate,
+			@RequestParam(name="h_detail") String h_detail) throws IOException, ParseException {
+		
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key1 = "img/happymeal" + file1.getOriginalFilename();
+		String key2 = "img/happymeal" + file2.getOriginalFilename();
+		HappyMealVO happyMealVO = new HappyMealVO();
+		happyMealVO.setH_code(Integer.parseInt(h_code));
+		happyMealVO.setH_img_path(uploadFolder + key1); 
+		happyMealVO.setH_detail_img_path(uploadFolder + key2);
+		happyMealVO.setH_name(h_name);
+		happyMealVO.setH_price(Integer.parseInt(h_price));
+		happyMealVO.setH_kcal(Integer.parseInt(h_kcal));
+		happyMealVO.setH_regdate(fm.parse(h_regdate));		
+		happyMealVO.setH_detail_comment(h_detail);
+		happyMealVO.setH_img(file1.getOriginalFilename());
+		happyMealVO.setH_status(1);
+		System.out.println(happyMealVO.toString());
+		happyMealService.insertHappyMeal(happyMealVO);
+		
+		InputStream is = file1.getInputStream();
+        String contentType = file1.getContentType();
+        long contentLength = file1.getSize();
+        awsS3.upload(is, key1, contentType, contentLength);
+        
+        InputStream is2 = file2.getInputStream();
+        String contentType2 = file2.getContentType();
+        long contentLength2 = file2.getSize();
+        awsS3.upload(is2, key2, contentType2, contentLength2);
+		
+		return "redirect:happyMeal.mdo";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "hcodeChk.mdo", method = RequestMethod.GET)
+	public int hcodeCheck(int h_code) {
+		int h_codeResult = happyMealService.hcodeCheck(h_code);
+		//System.out.println("1 " + h_code);
+		return h_codeResult;
+	}
 }

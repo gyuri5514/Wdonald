@@ -11,4 +11,8 @@ public interface HappyMealService {
 	public List<HappyMealVO> selectHappyMealPM();
 
 	HappyMealVO detailHappyMeal(Integer h_code);
+	
+	public void insertHappyMeal(HappyMealVO happyMealVO);
+	
+	int hcodeCheck (int h_code);
 }
