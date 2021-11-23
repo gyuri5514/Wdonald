@@ -6,7 +6,7 @@
 <head profile="http://www.w3.org/2005/10/profile">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>McDonald's Crew</title>
+<title>회원가입</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="">
 <meta name="author" content="Themelize.me">

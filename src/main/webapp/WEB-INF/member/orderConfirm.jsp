@@ -128,7 +128,7 @@
 					<div class="panel panel-lg panel-default">
 						<div class="panel-heading">
 							<h3>	
-								<span>내 주문 정보</span>
+								<span>주문 정보</span>
 							</h3>
 						</div>
 						<div class="panel-body">
@@ -201,6 +201,9 @@
 													</td>
 													<td class="product-name">
 														<div>${cartList.cart_b_name}</div>
+														<ul style="padding-left:3px; padding-top:10px;">
+															<li>단품 - ${cartList.cart_b_name}</li>
+														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_price}"/>
 													<td class="cost">₩${formatPrice}</td>
@@ -407,7 +410,6 @@
 											<td>
 												<div class="when-to-deliver"></div>
 												<div class="how-long-to-deliver">
-																
 													<span>수정필요/2021/11/08 16:20</span>
 												</div>
 											</td>
@@ -417,7 +419,7 @@
 							</section>
 							<section class="panel-section section-promocode">
 								<div>
-									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>쿠폰 코드 입력</span> <i class="fa"></i></a>
+									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>할인 쿠폰</span> <i class="fa"></i></a>
 									<div id="enter-promocode" class="collapse">
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="#">
 											<div class="form-group">

@@ -42,8 +42,8 @@
 							</fieldset>
 							<div class="rBox">
 								<p role="text" class="default" id="default" style="display:inline-block"><strong>검색 결과가 나타납니다.</strong></p>
-								<p role="text" class="result ok" id="ok" style="display:none"><strong>윈딜리버리<br>배달이<br>가능합니다</strong> <span>전화 또는 온라인으로<br> 주문할 수 있습니다.</span></p>
-								<p role="text" class="result fail" id="fail" style="display:none"><strong>윈딜리버리<br>배달이<br>불가능합니다</strong> <span>빠른 시일 내에 고객님이 계신 곳에<br> 서비스가 가능하도록 노력하겠습니다.</span></p>
+								<p role="text" class="result ok" id="ok" style="display:none"><strong style="color: #ffc836">윈딜리버리<br>배달이<br>가능합니다</strong> <span>전화 또는 온라인으로<br> 주문할 수 있습니다.</span></p>
+								<p role="text" class="result fail" id="fail" style="display:none"><strong style="color: #ffc836">윈딜리버리<br>배달이<br>불가능합니다</strong> <span>빠른 시일 내에 고객님이 계신 곳에<br> 서비스가 가능하도록 노력하겠습니다.</span></p>
 							</div>
 						</div>
 						<ul class="listDep1">
@@ -57,10 +57,8 @@
 						<div class="btnArea mcdelivery">
 							<div class="appDown">
 							    <div>
-									<a href="https://www.mcdelivery.co.kr/kr/" class="btnMC btnL action" target="_blank" title="새창 열림">윈딜리버리 온라인 주문하기</a>
+									<a href="burger.do" class="btnMC btnL action" target="_blank" title="새창 열림">윈딜리버리 온라인 주문하기</a>
 								</div>
-
-							
 							</div>
 								<div class="app_store">
 									<div class="android">

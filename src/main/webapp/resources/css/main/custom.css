@@ -1054,7 +1054,8 @@ ul.notiTxt:before {
 	position: relative;
 	min-width: 1280px;
 	min-height: 100%;
-	padding: 140px 0 230px
+	padding: 140px 0 230px;
+	background-color: #ffffff;
 }
 
 .wrapper footer {
@@ -3216,11 +3217,11 @@ p.nutrDesc {
 }
 
 .deliverySrch .rBox .result.ok:before {
-	background: url(../images/store/bg_delivery_result2.png) 0 0 no-repeat
+	background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_delivery_result2.png") 0 0 no-repeat
 }
 
 .deliverySrch .rBox .result.fail:before {
-	background: url(../images/store/bg_delivery_result3.png) 0 0 no-repeat
+	background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_delivery_result3.png") 0 0 no-repeat
 }
 
 .mcdelivery>* {

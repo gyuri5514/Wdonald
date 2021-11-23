@@ -66,7 +66,15 @@
 </style>
 					<div class="bannerImg">
 						<img src="${detailPromotion.p_detail_img_path}" alt="" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code}'">
-						<a href="store.do" class="link link1">가까운 매장 찾기</a>
+						<c:if test="${!empty detailPromotion.p_youtube}">
+						<iframe src="${detailPromotion.p_youtube}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube video1"></iframe>
+						</c:if>
+						<c:if test="${!empty detailPromotion.p_link1}">
+						<a href="${detailPromotion.p_link1}" class="link link1">${detailPromotion.p_link1}</a>
+						</c:if>
+						<c:if test="${!empty detailPromotion.p_link2}">
+						<a href="${detailPromotion.p_link2}" class="link link2">${detailPromotion.p_link2}</a>
+						</c:if>
 					</div>
 				</article>
 				<div class="btnArea">
@@ -187,7 +195,7 @@ $(function(){
 });
 </script> -->
 <div class="aside">
-	<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
+	<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
 </div>
 <button type="button" class="btnTop">맨 위로 가기</button>
 <!-- //container -->

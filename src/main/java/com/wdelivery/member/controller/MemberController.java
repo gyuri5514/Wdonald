@@ -497,7 +497,7 @@ public class MemberController {
 			int w_set_price = 0;
 			int dessert_price = 0;
 			int product_quantity = 0;
-			int delivery_price = 7000;
+			int delivery_price = 2000;
 
 			for (CartVO vo : cartList) {
 				if (vo.getCart_b_Lgset_price() != null)

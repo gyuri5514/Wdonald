@@ -898,6 +898,15 @@ ul.notiTxt:before {
     min-height: 100%;
     padding: 140px 0 230px;
 }
+
+.wrapper_faq {
+    overflow: hidden;
+    position: relative;
+    min-width: 1280px;
+    min-height: 100%;
+    padding: 140px 0 100px;
+}
+
 .wrapper footer {
     position: absolute;
     bottom: 0;
