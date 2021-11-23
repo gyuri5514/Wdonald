@@ -36,18 +36,9 @@
 			 $("#notice_content").focus();
 			 return false;
 		 }
-		 $.ajax({
-			type : 'post',
-			url : '/controller/addboardInsert.mdo',
-			data : {
-				notice_title : $("#notice_title").val()
-			},
-			dataType : 'json',
-			success : function(data) {
-					console.log("성공")
-				}
-				 $('#addBoard').submit(); 
-			}
+		 
+			$('#addBoard').submit(); 
+			
 		 });
 	 });
    	 </script>
@@ -72,8 +63,8 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="notice_regbate" name="notice_regbate" type="date" placeholder="Enter your first name" />
-                                                        <label for="notice_content">등록일</label>
+                                                        <input class="form-control" id="notice_regdate" name="notice_regdate" type="date" placeholder="Enter your first name" />
+                                                        <label for="notice_regdate">등록일</label>
                                                     </div>
                                                 </div>
                                             </div>

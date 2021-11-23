@@ -20,5 +20,5 @@ public interface BurgerService {
 
 	void insertBurger(BurgerVO burgerVO);
 	
-
+	int bcodeCheck (int b_code);
 }

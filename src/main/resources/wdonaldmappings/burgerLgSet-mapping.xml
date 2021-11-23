@@ -13,4 +13,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	(#{b_lgset_code}, #{b_lgset_img}, #{b_lgset_img_path}, #{b_lgset_name}, #{b_lgset_price}, #{b_lgset_kcal},
     	 #{b_lgset_regdate}, #{b_lgset_detail_comment})
   	</insert>
+  	
+  	<select id="bcodeCheck" resultType="int" parameterType="burgerLgSetVO">
+  		select count(*) from burger_lgset where b_lgset_code = #{b_code}
+  	</select>
 </mapper>

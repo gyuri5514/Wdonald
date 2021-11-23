@@ -24,4 +24,9 @@ public class DrinkServiceImpl implements DrinkService {
 		return drinkDAO.detailDrink(d_code); 
 	}
 
+	@Override
+	public void insertDrink(DrinkVO drinkVO) {
+		drinkDAO.insertDrink(drinkVO);
+	}
+
 }

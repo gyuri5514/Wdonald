@@ -11,4 +11,6 @@ public interface BurgerSetService {
 	public BurgerSetVO detailBurgerSet(int b_code);
 	
 	public void insertBurgerSet(BurgerSetVO burgerSetVO);
+	
+	int bcodeCheck (int b_code);
 }

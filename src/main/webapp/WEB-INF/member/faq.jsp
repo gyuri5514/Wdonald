@@ -47,10 +47,10 @@
 </script>
 </head>
 <body>
-	<div class="wrapper">
+	<div class="wrapper_faq">
    		<header class="header">
 	        <div class="headArea">
-	          <strong class="hLogo">
+	          <strong class="hLogo2">
 	            <a href="main.do" target="_blank" class="logo" title="메인으로 이동">
 	              <img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/logo.png" alt="맥도날드" />
 	            </a>
@@ -157,7 +157,8 @@
 							<fieldset class="srchBox">
 								<legend>질문 검색</legend>
 								<div class="form">
-									<div class="selectWrap" id="selectWrap" style="z-index: 100000; width: 150px">
+									<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요">
+									<!-- <div class="selectWrap" id="selectWrap" style="z-index: 100000; width: 150px">
 										<select name="category" id="category" style="display: block; position: absolute; margin-left: -100000px;">
 											<option value="" title="전체">전체</option>
 											<option value="01" title="구매">구매</option>
@@ -169,7 +170,7 @@
 											<option value="08" title="기타">기타</option>
 											<option value="09" title="맥도날드앱">윈도날드앱</option>
 										</select>
-									</div>
+									</div> -->
 									<form NAME="FNAME" class="realForm" method="post" onsubmit="return false;">
 										<input type="hidden" name="RG_EMPL_ID" value=""> 
 										<input type="hidden" name="FAQ_TYPE_CD" id="FAQ_TYPE_CD" value="">
@@ -178,7 +179,6 @@
 										<input type="hidden" name="SELECTED_DATA" id="SELECTED_DATA" value=""> 
 										<!-- <input type="text" placeholder="검색어를 입력해주세요." title="검색어 입력" style="width: 720px"
 											name="srchKeyword" id="srchKeyword"	onkeydown="javascript:if (event.keyCode == 13) {search('','S');}"/> -->
-										<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요">
 									</form>
 									<button type="button" class="btnMC btnM" id="searchBtn" onclick="setSearchTypeSelect();">검색</button>
 								</div>

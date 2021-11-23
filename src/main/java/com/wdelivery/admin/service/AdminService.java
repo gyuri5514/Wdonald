@@ -36,6 +36,10 @@ public interface AdminService {
 	
 	public void addBoard(AdminBoardVO addboard);
 	
+	public void deleteBoard(int notice_seq);
+	
+	public void boardUpdate (AdminBoardVO boardUpdate);
+	
 	public List<AdminBannerVO> selectBannerList();
 
 	public void bannerInsert(AdminBannerVO bannerVO);

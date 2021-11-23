@@ -17,6 +17,29 @@
     </head>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$("#burger_code").blur(function(){
+			var code = $('#burger_code').val();
+			$.ajax({
+				type : "get",
+				url : "bcodeChk.mdo",
+				data : {"b_code" : code},
+				success : function(data){
+					console.log("중복 확인 : " + data);
+					if (data == 1) {
+						$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
+						$("#burger_code").focus();
+						return false;
+					}else{
+						$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
+					}
+				},
+				error : function(){
+					alert("실패");
+				}
+			})
+		});
+		
 		$("#cancle").on("click", function() {
 			location.href = "burger.mdo";
 		})
@@ -185,7 +208,7 @@
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="burger_code" name="burger_code" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 50px);"/>
-                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299)</label>
+                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299),라지(500~599)</label><span id="codetxt"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -219,7 +242,8 @@
                                                     		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
                                                     		<option selected>전체</option>
 															<option value="단품">단품
-															<option value="세트">세트                                                     
+															<option value="세트">세트 
+															<option value="라지세트">라지세트                                                    
                                                         </select>
                                                     </div>
                                                 </div>

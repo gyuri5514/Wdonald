@@ -17,6 +17,29 @@
     </head>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$("#winMorning_code").blur(function(){
+			var code = $('#winMorning_code').val();
+			$.ajax({
+				type : "get",
+				url : "wcodeChk.mdo",
+				data : {"w_code" : code},
+				success : function(data){
+					//console.log("중복 확인 : " + data);
+					if (data == 1) {
+						$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
+						$("#winMorning_code").focus();
+						return false;
+					}else{
+						$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
+					}
+				},
+				error : function(){
+					alert("실패");
+				}
+			})
+		});
+		
 		$("#cancle").on("click", function() {
 			location.href = "burger.mdo";
 		})
@@ -185,7 +208,7 @@
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="winMorning_code" name="winMorning_code" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 50px);"/>
-                                                        <label for="winMorning_code">원모닝 코드 - 단품(400~499),세트(600~699)</label>
+                                                        <label for="winMorning_code">원모닝 코드 - 단품(400~499),세트(600~699)</label><span id="codetxt"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

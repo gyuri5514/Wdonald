@@ -3,313 +3,28 @@
 <%@include file="header.jsp"%>
 <link rel="stylesheet" href="resources/css/menu/menu.css">
 
-<h1 class="container" style="padding-top: 40px">ORDER</h1>
-<div class="configurator-body" role="main">
-	<div class="configurator-scroller scroller">
-		<div class="container">
-			<div class="configurator-step step-choose-meals">
-				<h3 class="step-title">메뉴를 선택하세요</h3>
-				<div class="step-content">
-					<div id="available-sets"></div>
-					<div>
-						<form id="orderForm">
-							<table id="table-select-meal" class="table table-select-meal">
-								<c:if test="${burgerVO != null}">
-									<input type="hidden" id="b_code" value="${burgerVO.b_code}">
-									<thead>
-										<tr>
-											<th class="controls-colum">&nbsp;</th>
-											<th class="picture-column">&nbsp;</th>
-											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-											<th class="calories-column">&nbsp;&nbsp;kcal</th>
-											<th colspan="2" class="side-column">&nbsp;사이드</th>
-											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
-											<th class="change-column">선택</th>
-											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="라지세트" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src= "${burgerLgSetVO.b_lgset_img_path}" alt="" class="img-block1">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${burgerLgSetVO.b_lgset_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerLgSetVO.b_lgset_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${burgerLgSetVO.b_lgset_kcal}kcal</td>
-											<td colspan="2" class="side-column">선택안함</td>
-											<td colspan="2" class="drink-column">선택안함</td>
-											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-											<td colspan="2" class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-												
-											</td>
-										</tr>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src="${burgerSetVO.b_set_img_path}" alt="" class="img-block2">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item2-title">${burgerSetVO.b_set_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerSetVO.b_set_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${burgerSetVO.b_set_kcal}kcal</td>
-											<td colspan="2" class="side-column">선택안함</td>
-											<td colspan="2" class="drink-column">선택안함</td>
-											<td  class="change-column"><a href="#" onclick="sideOpen(1)">변경</a></td>
-											<td colspan="2">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-											</td>
-										</tr>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="단품" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src="${burgerVO.b_img_path}" alt="" class="img-block3">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item3-title">${burgerVO.b_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerVO.b_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${burgerVO.b_kcal}kcal</td>
-											<td colspan="2" class="side-column"></td>
-											<td colspan="2" class="drink-column"></td>
-											<td class="change-column"></td>
-											<td colspan="2">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',3)"disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result3" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',3)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</c:if>
-								<c:if test="${winMorningVO != null}">	
-									<input type="hidden" id="w_code" value="${winMorningVO.w_code}">	
-									<thead>
-										<tr>
-											<th class="controls-colum">&nbsp;</th>
-											<th class="picture-column">&nbsp;</th>
-											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-											<th class="calories-column">&nbsp;&nbsp;kcal</th>
-											<th colspan="2" class="side-column">&nbsp;사이드</th>
-											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
-											<th class="change-column">선택</th>
-											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src= "${winMorningSetVO.w_set_img_path}" alt="" class="img-block1">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${winMorningSetVO.w_set_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningSetVO.w_set_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${winMorningSetVO.w_set_kcal}kcal</td>
-											<td colspan="2" class="side-column">선택안함</td>
-											<td colspan="2" class="drink-column">선택안함</td>
-											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-											<td colspan="2" class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-												
-											</td>
-										</tr>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="단품" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src="${winMorningVO.w_img_path}" alt="" class="img-block2">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item2-title">${winMorningVO.w_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${winMorningVO.w_kcal}kcal</td>
-											<td colspan="2" class="side-column"></td>
-											<td colspan="2" class="drink-column"></td>
-											<td  class="change-column"></td>
-											<td colspan="2">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</c:if>
-								<c:if test="${sideVO != null}">
-									<input type="hidden" id="s_code" value="${sideVO.s_code}">
-									<input type="hidden" id="s_name" value="${sideVO.s_name}">
-									<c:if test="${sideVO.s_code == 704 || sideVO.s_code == 705 || sideVO.s_code == 706}">
-									<thead>
-										<tr>
-											<th class="controls-colum">&nbsp;</th>
-											<th class="picture-column">&nbsp;</th>
-											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-											<th class="calories-column">&nbsp;&nbsp;kcal</th>
-											<th colspan="2" class="side-column">&nbsp;사이드</th>
-											<th class="change-column">선택</th>
-											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-										</tr>
-										</thead>
-										<tbody>
-											<tr id="row" class="rowCheck">
-												<td class="controls-column">
-													<div class="input-group item-quantity item-quantity-picker">
-														<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
-													</div>
-												</td>
-												<td class="picture-column">
-													<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
-												</td>
-												<td colspan="2" class="description-column">
-													<h4 class="item1-title">${sideVO.s_name}</h4>
-													<p class="item-description"></p>
-												</td>
-												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
-												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${sideVO.s_kcal}kcal</td>
-												<td colspan="2" class="side-column">선택안함</td>
-												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-												<td colspan="2">
-													<div class="input-group item-quantity item-quantity-picker">
-														<span class="input-group-btn">
-															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
-														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-														<span class="input-group-btn">
-															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-														</span>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</c:if>
-									<c:if test="${sideVO.s_code != 704 && sideVO.s_code != 705 && sideVO.s_code != 706}">
+<div class="order_layout">
+	<h1 class="container">ORDER</h1>
+	<div class="configurator-body" role="main">
+		<div class="configurator-scroller scroller">
+			<div class="container">
+				<div class="configurator-step step-choose-meals">
+					<h3 class="step-title">메뉴를 선택하세요</h3>
+					<div class="step-content">
+						<div id="available-sets"></div>
+						<div>
+							<form id="orderForm">
+								<table id="table-select-meal" class="table table-select-meal">
+									<c:if test="${burgerVO != null}">
+										<input type="hidden" id="b_code" value="${burgerVO.b_code}">
 										<thead>
 											<tr>
 												<th class="controls-colum">&nbsp;</th>
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<th class="calories-column">&nbsp;&nbsp;kcal</th>
-												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr id="row" class="rowCheck">
-												<td class="controls-column">
-													<div class="input-group item-quantity item-quantity-picker">
-														<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
-													</div>
-												</td>
-												<td class="picture-column">
-													<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
-												</td>
-												<td colspan="2" class="description-column">
-													<h4 class="item1-title">${sideVO.s_name}</h4>
-													<p class="item-description"></p>
-												</td>
-												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
-												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${sideVO.s_kcal}kcal</td>
-												<td colspan="2">
-													<div class="input-group item-quantity item-quantity-picker">
-														<span class="input-group-btn">
-															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
-														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-														<span class="input-group-btn">
-															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-														</span>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</c:if>
-								</c:if>
-								<c:if test="${drinkVO != null}">
-									<input type="hidden" id="d_code" value="${drinkVO.d_code}">
-									<input type="hidden" id="d_name" value="${drinkVO.d_name}">
-									<c:if test="${drinkVO.d_code == 323 || drinkVO.d_code == 324 || drinkVO.d_code == 325 || drinkVO.d_code == 326 || drinkVO.d_code == 327}">
-										<thead>
-											<tr>
-												<th class="controls-colum">&nbsp;</th>
-												<th class="picture-column">&nbsp;</th>
-												<th colspan="2" class="description-column">&nbsp;</th>
-												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
+												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
 												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
@@ -319,37 +34,372 @@
 											<tr id="row" class="rowCheck">
 												<td class="controls-column">
 													<div class="input-group item-quantity item-quantity-picker">
-														<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
+														<input type="checkbox" name="checkbox" value="라지세트" class="form-controla"/> 
 													</div>
 												</td>
 												<td class="picture-column">
-													<img src= "${drinkVO.d_img_path}" alt="" class="img-block1">
+													<img src= "${burgerLgSetVO.b_lgset_img_path}" alt="" class="img-block1">
 												</td>
 												<td colspan="2" class="description-column">
-													<h4 class="item1-title">${drinkVO.d_name}</h4>
+													<h4 class="item1-title">${burgerLgSetVO.b_lgset_name}</h4>
+													<small>${burgerLgSetVO.b_lgset_kcal}kcal</small>
 													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerLgSetVO.b_lgset_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<%-- <td class="calories-column">${burgerLgSetVO.b_lgset_kcal}kcal</td> --%>
+												<td colspan="2" class="side-column">선택안함</td>
+												<td colspan="2" class="drink-column">선택안함</td>
+												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+												<td colspan="2" class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
 													
 												</td>
-												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+											</tr>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src="${burgerSetVO.b_set_img_path}" alt="" class="img-block2">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item2-title">${burgerSetVO.b_set_name}</h4>
+													<small>${burgerSetVO.b_set_kcal}kcal</small>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerSetVO.b_set_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+												<%-- <td class="calories-column">${burgerSetVO.b_set_kcal}kcal</td> --%>
+												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
-												<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
+												<td  class="change-column"><a href="#" onclick="sideOpen(1)">변경</a></td>
 												<td colspan="2">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
-															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="단품" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src="${burgerVO.b_img_path}" alt="" class="img-block3">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item3-title">${burgerVO.b_name}</h4>
+													<small>${burgerVO.b_kcal}kcal</small>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerVO.b_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<%-- <td class="calories-column">${burgerVO.b_kcal}kcal</td> --%>
+												<td colspan="2" class="side-column"></td>
+												<td colspan="2" class="drink-column"></td>
+												<td class="change-column"></td>
+												<td colspan="2">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',3)"disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result3" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',3)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</c:if>
+									<c:if test="${winMorningVO != null}">	
+										<input type="hidden" id="w_code" value="${winMorningVO.w_code}">	
+										<thead>
+											<tr>
+												<th class="controls-colum">&nbsp;</th>
+												<th class="picture-column">&nbsp;</th>
+												<th colspan="2" class="description-column">&nbsp;</th>
+												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<th colspan="2" class="side-column">&nbsp;사이드</th>
+												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+												<th class="change-column">선택</th>
+												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src= "${winMorningSetVO.w_set_img_path}" alt="" class="img-block1">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item1-title">${winMorningSetVO.w_set_name}</h4>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningSetVO.w_set_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${winMorningSetVO.w_set_kcal}kcal</td>
+												<td colspan="2" class="side-column">선택안함</td>
+												<td colspan="2" class="drink-column">선택안함</td>
+												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+												<td colspan="2" class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
 														</span>
 														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>
 													</div>
+													
+												</td>
+											</tr>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="단품" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src="${winMorningVO.w_img_path}" alt="" class="img-block2">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item2-title">${winMorningVO.w_name}</h4>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${winMorningVO.w_kcal}kcal</td>
+												<td colspan="2" class="side-column"></td>
+												<td colspan="2" class="drink-column"></td>
+												<td  class="change-column"></td>
+												<td colspan="2">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
 												</td>
 											</tr>
 										</tbody>
+									</c:if>
+									<c:if test="${sideVO != null}">
+										<input type="hidden" id="s_code" value="${sideVO.s_code}">
+										<input type="hidden" id="s_name" value="${sideVO.s_name}">
+										<c:if test="${sideVO.s_code == 704 || sideVO.s_code == 705 || sideVO.s_code == 706}">
+										<thead>
+											<tr>
+												<th class="controls-colum">&nbsp;</th>
+												<th class="picture-column">&nbsp;</th>
+												<th colspan="2" class="description-column">&nbsp;</th>
+												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<th colspan="2" class="side-column">&nbsp;사이드</th>
+												<th class="change-column">선택</th>
+												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+											</tr>
+											</thead>
+											<tbody>
+												<tr id="row" class="rowCheck">
+													<td class="controls-column">
+														<div class="input-group item-quantity item-quantity-picker">
+															<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
+														</div>
+													</td>
+													<td class="picture-column">
+														<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
+													</td>
+													<td colspan="2" class="description-column">
+														<h4 class="item1-title">${sideVO.s_name}</h4>
+														<p class="item-description"></p>
+													</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
+													<td class="cost-column">&#8361;${formatPrice}</td>
+													<td class="calories-column">${sideVO.s_kcal}kcal</td>
+													<td colspan="2" class="side-column">선택안함</td>
+													<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+													<td colspan="2">
+														<div class="input-group item-quantity item-quantity-picker">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+															</span>
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+															</span>
+														</div>
+													</td>
+												</tr>
+											</tbody>
 										</c:if>
-										<c:if test="${drinkVO.d_code != 323 && drinkVO.d_code != 324 && drinkVO.d_code != 325 && drinkVO.d_code != 326 && drinkVO.d_code != 327}">
+										<c:if test="${sideVO.s_code != 704 && sideVO.s_code != 705 && sideVO.s_code != 706}">
+											<thead>
+												<tr>
+													<th class="controls-colum">&nbsp;</th>
+													<th class="picture-column">&nbsp;</th>
+													<th colspan="2" class="description-column">&nbsp;</th>
+													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+													<th class="calories-column">&nbsp;&nbsp;kcal</th>
+													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr id="row" class="rowCheck">
+													<td class="controls-column">
+														<div class="input-group item-quantity item-quantity-picker">
+															<input type="checkbox" name="checkbox" value="사이드" class="form-controla"/> 
+														</div>
+													</td>
+													<td class="picture-column">
+														<img src= "${sideVO.s_img_path}" alt="" class="img-block1">
+													</td>
+													<td colspan="2" class="description-column">
+														<h4 class="item1-title">${sideVO.s_name}</h4>
+														<p class="item-description"></p>
+													</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
+													<td class="cost-column">&#8361;${formatPrice}</td>
+													<td class="calories-column">${sideVO.s_kcal}kcal</td>
+													<td colspan="2">
+														<div class="input-group item-quantity item-quantity-picker">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+															</span>
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+															</span>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</c:if>
+									</c:if>
+									<c:if test="${drinkVO != null}">
+										<input type="hidden" id="d_code" value="${drinkVO.d_code}">
+										<input type="hidden" id="d_name" value="${drinkVO.d_name}">
+										<c:if test="${drinkVO.d_code == 323 || drinkVO.d_code == 324 || drinkVO.d_code == 325 || drinkVO.d_code == 326 || drinkVO.d_code == 327}">
+											<thead>
+												<tr>
+													<th class="controls-colum">&nbsp;</th>
+													<th class="picture-column">&nbsp;</th>
+													<th colspan="2" class="description-column">&nbsp;</th>
+													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+													<th class="calories-column">&nbsp;&nbsp;kcal</th>
+													<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+													<th class="change-column">선택</th>
+													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr id="row" class="rowCheck">
+													<td class="controls-column">
+														<div class="input-group item-quantity item-quantity-picker">
+															<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
+														</div>
+													</td>
+													<td class="picture-column">
+														<img src= "${drinkVO.d_img_path}" alt="" class="img-block1">
+													</td>
+													<td colspan="2" class="description-column">
+														<h4 class="item1-title">${drinkVO.d_name}</h4>
+														<p class="item-description"></p>
+														
+													</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+													<td class="cost-column">&#8361;${formatPrice}</td>
+													<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+													<td colspan="2" class="drink-column">선택안함</td>
+													<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
+													<td colspan="2">
+														<div class="input-group item-quantity item-quantity-picker">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+															</span>
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+															</span>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+											</c:if>
+											<c:if test="${drinkVO.d_code != 323 && drinkVO.d_code != 324 && drinkVO.d_code != 325 && drinkVO.d_code != 326 && drinkVO.d_code != 327}">
+											<thead>
+												<tr>
+													<th class="controls-colum">&nbsp;</th>
+													<th class="picture-column">&nbsp;</th>
+													<th colspan="2" class="description-column">&nbsp;</th>
+													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+													<th class="calories-column">&nbsp;&nbsp;kcal</th>
+													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr id="row" class="rowCheck">
+													<td class="controls-column">
+														<div class="input-group item-quantity item-quantity-picker">
+															<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
+														</div>
+													</td>
+													<td class="picture-column">
+														<img src= "${drinkVO.d_img_path}" alt="" class="img-block1">
+													</td>
+													<td colspan="2" class="description-column">
+														<h4 class="item1-title">${drinkVO.d_name}</h4>
+														<p class="item-description"></p>
+														
+													</td>
+													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+													<td class="cost-column">&#8361;${formatPrice}</td>
+													<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+													<td colspan="2">
+														<div class="input-group item-quantity item-quantity-picker">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
+															</span>
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<span class="input-group-btn">
+																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+															</span>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</c:if>
+									</c:if>
+									<c:if test="${dessertVO != null}">
+										<input type="hidden" id="dessert_code" value="${dessertVO.dessert_code}">
+										<input type="hidden" id="dessert_name" value="${dessertVO.dessert_name}">
 										<thead>
 											<tr>
 												<th class="controls-colum">&nbsp;</th>
@@ -364,20 +414,19 @@
 											<tr id="row" class="rowCheck">
 												<td class="controls-column">
 													<div class="input-group item-quantity item-quantity-picker">
-														<input type="checkbox" name="checkbox" value="음료" class="form-controla"/> 
+														<input type="checkbox" name="checkbox" value="디저트" class="form-controla"/> 
 													</div>
 												</td>
 												<td class="picture-column">
-													<img src= "${drinkVO.d_img_path}" alt="" class="img-block1">
+													<img src= "${dessertVO.dessert_img_path}" alt="" class="img-block1">
 												</td>
 												<td colspan="2" class="description-column">
-													<h4 class="item1-title">${drinkVO.d_name}</h4>
+													<h4 class="item1-title">${dessertVO.dessert_name}</h4>
 													<p class="item-description"></p>
-													
 												</td>
-												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${dessertVO.dessert_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+												<td class="calories-column">${dessertVO.dessert_kcal}kcal</td>
 												<td colspan="2">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
@@ -392,124 +441,79 @@
 											</tr>
 										</tbody>
 									</c:if>
-								</c:if>
-								<c:if test="${dessertVO != null}">
-									<input type="hidden" id="dessert_code" value="${dessertVO.dessert_code}">
-									<input type="hidden" id="dessert_name" value="${dessertVO.dessert_name}">
-									<thead>
-										<tr>
-											<th class="controls-colum">&nbsp;</th>
-											<th class="picture-column">&nbsp;</th>
-											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-											<th class="calories-column">&nbsp;&nbsp;kcal</th>
-											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="디저트" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src= "${dessertVO.dessert_img_path}" alt="" class="img-block1">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${dessertVO.dessert_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${dessertVO.dessert_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${dessertVO.dessert_kcal}kcal</td>
-											<td colspan="2">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</c:if>
-								<c:if test="${happyMealVO != null}">
-									<input type="hidden" id="h_code" value="${happyMealVO.h_code}">
-									<thead>
-										<tr>
-											<th class="controls-colum">&nbsp;</th>
-											<th class="picture-column">&nbsp;</th>
-											<th colspan="2" class="description-column">&nbsp;</th>
-											<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-											<th class="calories-column">&nbsp;&nbsp;kcal</th>
-											<th colspan="2" class="side-column">&nbsp;사이드</th>
-											<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
-											<th class="change-column">선택</th>
-											<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr id="row" class="rowCheck">
-											<td class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
-												</div>
-											</td>
-											<td class="picture-column">
-												<img src= "${happyMealVO.h_img_path}" alt="" class="img-block1">
-											</td>
-											<td colspan="2" class="description-column">
-												<h4 class="item1-title">${happyMealVO.h_name}</h4>
-												<p class="item-description"></p>
-											</td>
-											<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${happyMealVO.h_price}"/>
-											<td class="cost-column">&#8361;${formatPrice}</td>
-											<td class="calories-column">${happyMealVO.h_kcal}kcal</td>
-											<td colspan="2" class="side-column">선택안함</td>
-											<td colspan="2" class="drink-column">선택안함</td>
-											<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-											<td colspan="2" class="controls-column">
-												<div class="input-group item-quantity item-quantity-picker">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
-													</span>
-													<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
-													<span class="input-group-btn">
-														<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
-													</span>
-												</div>
-												
-											</td>
-										</tr>
-									</tbody>
-								</c:if>
-							</table>
-						</form>
+									<c:if test="${happyMealVO != null}">
+										<input type="hidden" id="h_code" value="${happyMealVO.h_code}">
+										<thead>
+											<tr>
+												<th class="controls-colum">&nbsp;</th>
+												<th class="picture-column">&nbsp;</th>
+												<th colspan="2" class="description-column">&nbsp;</th>
+												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
+												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<th colspan="2" class="side-column">&nbsp;사이드</th>
+												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
+												<th class="change-column">선택</th>
+												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr id="row" class="rowCheck">
+												<td class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<input type="checkbox" name="checkbox" value="세트" class="form-controla"/> 
+													</div>
+												</td>
+												<td class="picture-column">
+													<img src= "${happyMealVO.h_img_path}" alt="" class="img-block1">
+												</td>
+												<td colspan="2" class="description-column">
+													<h4 class="item1-title">${happyMealVO.h_name}</h4>
+													<p class="item-description"></p>
+												</td>
+												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${happyMealVO.h_price}"/>
+												<td class="cost-column">&#8361;${formatPrice}</td>
+												<td class="calories-column">${happyMealVO.h_kcal}kcal</td>
+												<td colspan="2" class="side-column">선택안함</td>
+												<td colspan="2" class="drink-column">선택안함</td>
+												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
+												<td colspan="2" class="controls-column">
+													<div class="input-group item-quantity item-quantity-picker">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
+														</span>
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<span class="input-group-btn">
+															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</c:if>
+								</table>
+							</form>
+						</div>
 					</div>
 				</div>
+				<div class="configurator-step step-upsell-items" id="upsell-section"></div>
 			</div>
-			<div class="configurator-step step-upsell-items" id="upsell-section"></div>
 		</div>
 	</div>
-</div>
-<div class="configurator-footer">
-	<div class="container">
-		<div class="media">
-			<div class="media-left">
-				<a href="list.do" class="h5 text-default text-ucase btn-back action-cancel">
-				<i class="fa fa-caret-left text-primary"></i> 메뉴로 돌아가기</a>
-			</div>
-			<div class="media-body">
-				<div id="cost-section" class="clearfix"></div>
-			</div>
-			<div class="media-right text-center">
-				<button class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder" id="addBtn">
-					<i class="fas fa-shopping-cart"></i>&nbsp;카트에 추가하기
-				</button>
+	<div class="configurator-footer">
+		<div class="container">
+			<div class="media">
+				<div class="media-left">
+					<a href="list.do" class="h5 text-default text-ucase btn-back action-cancel">
+					<i class="fa fa-caret-left text-primary"></i> 메뉴로 돌아가기</a>
+				</div>
+				<div class="media-body">
+					<div id="cost-section" class="clearfix"></div>
+				</div>
+				<div class="media-right text-center">
+					<button class="btn btn-primary btn-red btn-lg btn-block btn-submit btn-saveorder action-saveorder" id="addBtn">
+						<i class="fas fa-shopping-cart"></i>&nbsp;카트에 추가하기
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

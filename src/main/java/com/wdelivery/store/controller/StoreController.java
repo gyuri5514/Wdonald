@@ -59,7 +59,7 @@ public class StoreController {
 	 
 	@GetMapping("/index.sdo")
 	public String index(AdminVO adminVO, ToyCountVO toyCountVO, Model model, HttpSession session) {
-		adminVO = (AdminVO) session.getAttribute("admin");
+		adminVO = (AdminVO) session.getAttribute("store_admin");
 		//System.out.println("bn" + adminVO.toString());
 		
 		if(adminVO==null)

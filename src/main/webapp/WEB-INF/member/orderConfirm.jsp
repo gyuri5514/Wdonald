@@ -22,8 +22,7 @@
 		}
 	});
 	function order() {
-		var address = $('#m_zipcode').val() + $('#m_zipcode2').val();
-		alert($('#m_zipcode2').val());
+		var address = $('#m_zipcode').val() +" "+ $('#m_zipcode2').val();
 		if($('#m_zipcode').val() == "" || $('#m_zipcode2').val() == "") {
 			alert("주소를 입력하세요");
 			return;
@@ -32,6 +31,8 @@
 			return;
 		}
 		$('#address').val(address);
+		var order_comment = $('#order_comment_out').val();
+		$('#order_comment').val(order_comment);
 		document.getElementById("orderForm").action = "paymentWin.do";
 		document.getElementById("orderForm").submit();
 	}
@@ -89,9 +90,11 @@
 			
 			oncomplete : function(data) {
 				document.querySelector("#m_zipcode").value = data.address;
-				
+				document.querySelector("#dm_zipcode").value = data.address;
+				console.log(data);
 				var m_zipcode = $('#m_zipcode').val();
-				$("#m_zipcode").text(data.address);
+				$("#dm_zipcode").text(data.address);
+				$("#dm_zipcode").val(data.address);
 				var geocoder = new kakao.maps.services.Geocoder();
 
 				geocoder.addressSearch(m_zipcode, function(result, status) {
@@ -128,7 +131,7 @@
 					<div class="panel panel-lg panel-default">
 						<div class="panel-heading">
 							<h3>	
-								<span>내 주문 정보</span>
+								<span>주문 정보</span>
 							</h3>
 						</div>
 						<div class="panel-body">
@@ -201,6 +204,9 @@
 													</td>
 													<td class="product-name">
 														<div>${cartList.cart_b_name}</div>
+														<ul style="padding-left:3px; padding-top:10px;">
+															<li>단품 - ${cartList.cart_b_name}</li>
+														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_price}"/>
 													<td class="cost">₩${formatPrice}</td>
@@ -352,9 +358,20 @@
 						<input type="hidden" id="price" name="price" value="${price}">
 						<input type="hidden" id="delivery_price" name="delivery_price" value="${delivery_price}">
 						<input type="hidden" id="userCouponVO" name="coupon">
-						<input type="hidden" id="userAddress_lat" name="lat">
-						<input type="hidden" id="userAddress_lon" name="lon">
-						<input type="hidden" id="address" name="address">
+						<c:if test="${addressList ne null  }">
+										<input type="hidden" id="userAddress_lat" name="lat" value="${addressList[0].address_lat}">
+										<input type="hidden" id="userAddress_lon" name="lon" value="${addressList[0].address_lon}">
+										<input type="hidden" id="address" name="address" value="${addressList[0].address1} ${addressList[0].address2}">
+										<input type="hidden" id="m_zipcode" name="" value="${addressList[0].address1}">
+										<input type="hidden" id="order_comment" name="order_comment" value="">
+						</c:if>
+						<c:if test="${addressList eq null}">
+										<input type="hidden" id="userAddress_lat" name="lat">
+										<input type="hidden" id="userAddress_lon" name="lon">					
+										<input type="hidden" id="address" name="address">
+										<input type="hidden" id="m_zipcode" name="" value="">
+										<input type="hidden" id="order_comment" name="order_comment" value="">
+						</c:if>
 					</form>
 				</div>
 				<div class="col-xs-4" id="col-xs-4">
@@ -367,10 +384,10 @@
 							<section class="panel-section section-delivery-address">
 								<table class="table-default table-delivery-address">
 									<tbody>
-										<c:if test="${address != null }">
+										<c:if test="${addressList ne null  }">
 											<tr>
 												<th scope="row"><span>배달 주소:</span></th>
-												<td><div id="m_zipcode" style="text-align:left; font-size:15px;">${address1}</div></td>
+												<td><div id="dm_zipcode" style="text-align:left; font-size:15px;">${addressList[0].address1}</div></td>
 						 						<td style="width:40px;">
 													<span class="input-group-btn"> 
 													<a href="javascript:openDaumPostcode()" class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
@@ -378,22 +395,35 @@
 												</td>
 											</tr>
 											<tr>
-												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/>${address2}</th>
+												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" value="${addressList[0].address2}" style="height : 30px; color: #999"/></th>
+											</tr>
+											<tr>
+											<th colspan="4" style="height : 30px; color: #999">주문시 요청사항</th>
+											</tr>
+											<tr>
+												<th colspan="4"><input id="order_comment_out" placeholder="요청사항을 적어주세요" type="text" class="form-control" name="order_comment"value="${addressList[0].order_comment}" style="height : 30px; color: #999"/></th>
 											</tr>
 										</c:if>
-										<c:if test="${address == null }">
+										<c:if test="${addressList eq null}">
 											<tr>
 												<th scope="row" ><span>배달 주소:</span></th>
-												<td colspan="2" ><div id="m_zipcode" style="text-align:left; font-size:15px;"></div></td>
+												<td colspan="2" ><div id="dm_zipcode" style="text-align:left; font-size:15px;"></div></td>
 												<td style="width:40px;">
 													<span class="input-group-btn"> 
 													<a href="javascript:openDaumPostcode()" class="btn btn-md btn-default" id="zip_find" zip="m_zipcode" address1="m_address" focus="address2">
 													<i class="fa fa-search"></i></a></span>
 												</td>
+												
 											</tr>
 											<!-- <tr id="d" style="display: none"></tr> -->
 											<tr>
 												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/></th>
+											</tr>
+											<tr>
+											<th colspan="4" style="height : 30px; color: #999">주문시 요청사항</th>
+											</tr>
+											<tr>
+												<th colspan="4"><input id="order_comment_out" placeholder="요청사항을 적어주세요" type="text" class="form-control" name="order_comment"value="" style="height : 30px; color: #999"/></th>
 											</tr>
 										</c:if>
 									</tbody>
@@ -407,8 +437,9 @@
 											<td>
 												<div class="when-to-deliver"></div>
 												<div class="how-long-to-deliver">
-																
-													<span>수정필요/2021/11/08 16:20</span>
+
+													<span>2021/11/08 16:20</span>
+
 												</div>
 											</td>
 										</tr>
@@ -417,7 +448,7 @@
 							</section>
 							<section class="panel-section section-promocode">
 								<div>
-									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>쿠폰 코드 입력</span> <i class="fa"></i></a>
+									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>할인 쿠폰</span> <i class="fa"></i></a>
 									<div id="enter-promocode" class="collapse">
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="#">
 											<div class="form-group">

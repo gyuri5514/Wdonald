@@ -428,14 +428,6 @@ input {
   padding: 30px 0 60px;
 }
 
-
-
-
-
-
-
-
-
 .storeFind {
   display: flex;
   justify-content: center;
@@ -444,7 +436,6 @@ input {
   width: 100%;
   background: #F7F7F7;
   padding: 40px 0;
-  margin-bottom: 50px;
 }
 
 .srvcFilter {
@@ -1099,6 +1090,24 @@ font-family:SpeedeeK, Malgun Gothic,'맑은 고딕', Dotum,'돋움', Arial, sans
     border: 1px solid #d1d1d1;
     border-radius: 5px;
     background: #fff;
+}
+
+.fa, .fas {
+	font-weight: 900;
+}
+
+.fa, .far, .fas {
+	font-family: "Font Awesome 5 Free";
+}
+
+.fa-chevron-right:before {
+	content: "\f054";
+	font-style: nomal;
+}
+
+.fa-chevron-left:before {
+	content: "\f053";
+	font-style: nomal;
 }
 
 /*# sourceMappingURL=App.css.map */

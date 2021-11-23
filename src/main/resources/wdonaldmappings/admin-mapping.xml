@@ -53,7 +53,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBoard" resultType="adminBoardVO">
 		SELECT * FROM admin_notice
 	</select>
-	
+	<insert id="addBoard">
+		INSERT INTO admin_notice (notice_title, notice_regdate, notice_content) VALUES(#{notice_title}, #{notice_regdate}, #{notice_content})
+	</insert>
+	<delete id="deleteBoard" parameterType="int">
+		DELETE FROM admin_notice WHERE notice_seq = #{notice_seq}
+	</delete>
+	<update id="boardUpdate">
+		UPDATE admin_notice SET notice_title = #{notice_title}, notice_content = #{notice_content} WHERE notice_seq = #{notice_seq}
+	</update>
 	<select id="selectBannerList" resultType="adminBannerVO">
 		SELECT * FROM banner ORDER BY banner_seq DESC
 	</select>

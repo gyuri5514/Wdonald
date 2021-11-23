@@ -246,7 +246,7 @@ function orderDetail(merchantUid){
 						total = total + ((res[i].cart_product_price)*(res[i].cart_product_quantity));
 				}
 				if(res.length>0){
-				$('#'+merchantUid).append("&nbsp;&nbsp;&nbsp;<strong><i>합계 : "+(total+2000)+ " 원</i>  (배달료 : 2000 원 )</strong>");
+				$('#'+merchantUid).append("&nbsp;&nbsp;&nbsp;<strong><i>합계 : "+(total+2000)+ " 원</i>  (배달료 : 3000 원 )</strong>");
 				}
 				//var obj = JSON.parse(res);
 			}

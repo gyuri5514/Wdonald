@@ -2,6 +2,40 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<<script type="text/javascript">
+	$(function(){
+		$("#updateBoard").click(function(){
+			var title = $.trim($("#notice_title").val());
+			if(title == ""){
+				alert("제목을 입력하세요.");
+				$("#notice_title").focus();
+				return false;
+			}
+			var content = $.trim($("#notice_content").val());
+			if(content == ""){
+				alert("내용을 입력하세요.");
+				$("#notice_content").focus();
+				return false;
+			}
+			$("#boardUpdate").submit();
+		});
+	});
+	function detail(index){
+		var val = JSON.parse('${Board}');
+		for(var i=0; i<val.length; i++){
+			if(val[i].notice_seq==index){
+				$("#notice_title").val(val[i].notice_title);
+				$("#notice_regdate").val($("#"+index+"").find("#notice_regdate").text());
+				$("#notice_content").val(val[i].notice_content);
+				$("#admin_seq").val(val[i].admin_seq);
+				
+				$("#update").attr("style","block");
+				$("#notice_seq").val(index);
+				return;
+			}
+		}
+	}
+</script>
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -22,6 +56,17 @@
 						style="background-color: #0d6efd; width: 150px; font-size: 15px; padding: 0px; color: white; border-radius: 5px; border: solid 1px #0d6efd;">공지사항
 						등록</button>
 					<hr>
+					<form id="boardUpdate" action="boardUpdate.mdo" method="post">
+					<div class="update" id="update" style="display: none;">
+						제목 : <input name="notice_title" id="notice_title" class="form-control" type="text" style="margin-bottom: 10px">
+						등록일 : <input name="notice_regdate" id="notice_regdate" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px">
+						내용 : <input name="notice_content" id="notice_content" class="form-control" type="text" style="margin-bottom: 10px">
+						작성자 : <input name="admin_seq" id="admin_seq" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px">
+						<button class="boardUpdate" id="updateBoard" type="submit" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">수정</button>
+					</div>
+					<input type="hidden" name="notice_seq" id="notice_seq">
+					</form>
+					<hr>
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
@@ -33,14 +78,13 @@
 							</tr>
 						</thead>
 						<tbody id="ajaxBoard">
-						<c:forEach var="Board" items="${Board}" varStatus="status">
-							<tr>
-								<td>${Board.notice_title}</td>
-								<td>${Board.notice_content}</td>
-								<td><fmt:formatDate value="${Board.notice_regdate}" pattern="yyyy-MM-dd"/></td>
-								<td>${Board.admin_seq}</td>
-								<td><button class="boardDelete" id="boardDelete" onClick="noticeDelete()" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
-								<td><button class="boardUpdate" id="boardUpdate" onClick="noticeUpdate()" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">수정</button></td>
+						<c:forEach var="Board" items="${BoardList}" varStatus="status">
+							<tr class="test" id="${Board.notice_seq}" onclick="detail(${Board.notice_seq})">
+								<td id="notice_title">${Board.notice_title}</td>
+								<td id="notice_content">${Board.notice_content}</td>
+								<td id="notice_regdate"><fmt:formatDate value="${Board.notice_regdate}" pattern="yyyy-MM-dd"/></td>
+								<td id="admin_seq">admin</td>
+								<td><button class="boardDelete" id="boardDelete" onClick="noticeDelete(${Board.notice_seq})" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
 							</tr>					
 						</c:forEach>							
 						</tbody>
@@ -63,7 +107,14 @@
 		</div>
 	</footer>
 </div>
-
+<script type="text/javascript">
+	function noticeDelete(notice_seq){
+		var chk = confirm("정말 삭제하시겠습니까?");
+		if(chk){
+			location.href='deleteBoard.mdo?notice_seq='+notice_seq;
+		}
+	}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>

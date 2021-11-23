@@ -16,6 +16,14 @@
 	float:right;
 }
 </style>
+<script type="text/javascript">
+	$(function(){
+		if(${message != null}) {
+			alert(${message});
+			location.href="login.mdo";
+		}
+	});
+</script>
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
