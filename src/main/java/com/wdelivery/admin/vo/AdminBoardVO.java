@@ -2,11 +2,14 @@ package com.wdelivery.admin.vo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class AdminBoardVO {
 	
 	public int notice_seq;
 	public String notice_title;
 	public String notice_content;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date notice_regdate;
 	public int admin_seq;
 	

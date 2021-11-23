@@ -79,6 +79,16 @@ public class AdminServiceImpl implements AdminService{
 	}
 	
 	@Override
+	public void deleteBoard(int notice_seq) {
+		adminDAO.deleteBoard(notice_seq);
+	}
+	
+	@Override
+	public void boardUpdate (AdminBoardVO boardUpdate) {
+		adminDAO.boardUpdate(boardUpdate);
+	}
+	
+	@Override
 	public List<AdminBannerVO> selectBannerList() {
 		return adminDAO.selectBannerList();
 	}
