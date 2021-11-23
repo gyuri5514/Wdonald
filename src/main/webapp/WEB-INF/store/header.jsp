@@ -32,7 +32,9 @@
 				<!-- <div class="input-group" > -->
 				<div class="btn-group" style="width: 80%; margin: 0 auto">
 					<select id="store_status" name="store_status" class="btn btn-Default dropdown-toggle"style="background: white;">
-							<c:if test="${sessionScope.store_admin.store_status eq 1}">
+
+							<%-- <c:if test="${sessionScope.admin.store_status eq 1}">
+
 							<option value="">정상영업</option>
 							</c:if>
 							<c:if test="${sessionScope.store_admin.store_status eq 2}">
@@ -40,8 +42,8 @@
 							</c:if>
 							<c:if test="${sessionScope.store_admin.store_status eq 0}">
 							<option value="">영업마감</option>
-							</c:if> 
-							<option value="1">정상영업</opstion>
+							</c:if>  --%>
+							<option value="1">정상영업</option>
 							<option value="2">준비 중</option>
 							<option value="0">영업마감</option>
 					</select>
@@ -121,7 +123,7 @@
 											<a class="nav-link" href="adminUpdate.sdo">정보수정</a>	
 										</nav>
 									</div>
-								<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+								<!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
 									Error
 									<div class="sb-sidenav-collapse-arrow">
 										<i class="fas fa-angle-down"></i>
@@ -132,7 +134,7 @@
 											<a class="nav-link" href="401.sdo">401 Page</a> 
 											<a class="nav-link" href="404.sdo">404 Page</a>
 											<a class="nav-link" href="500.sdo">500 Page</a>
-									</div>
+									</div> -->
 							</nav>
 						</div>
 						<div class="sb-sidenav-menu-heading">통계</div>
@@ -156,10 +158,17 @@
 		</div>
 		
 <script type="text/javascript">
+	var status = '${status}';	
+	for(var j = 0; j < $("#store_status option").length; j++) {
+		if(status == $("#store_status option:eq("+j+")").val()){
+			$("#store_status option:eq("+j+")").attr("selected","selected"); 
+		}
+	}
+	
 	function statusSubmit() {
 		
 		var store_status = $("#store_status option:selected").val();
-		alert("click" + store_status);
+		alert("click: " + store_status);
 		
 		$.ajax({
 			url:"storeStatus.sdo",

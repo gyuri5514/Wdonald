@@ -94,15 +94,14 @@
 <script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
 
 <script type="text/javascript">
-	
+//var order_status = $("select[id=order_status"+order_seq+"]").val();
+
 	function orderCheck(order_seq){
 		var order_seq = order_seq;
 		
-		
 		var order_status = $("select[id=order_status"+order_seq+"]").val();
 		
-
-		console.log("엥" + order_status);
+		console.log("엥" + order_status.length);
 
 		$.ajax({
 			url:"tables.sdo",
