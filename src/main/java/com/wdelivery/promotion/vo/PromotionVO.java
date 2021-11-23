@@ -11,14 +11,28 @@ public class PromotionVO {
 	private Date p_regdate;
 	private int p_status;
 	private String p_title;
-	private String p_link;
+	private String p_link1;
 	private int p_count;
-	
-	public String getP_link() {
-		return p_link;
+	private String p_link2;
+	private String p_youtube;
+
+	public String getP_link1() {
+		return p_link1;
 	}
-	public void setP_link(String p_link) {
-		this.p_link = p_link;
+	public void setP_link1(String p_link1) {
+		this.p_link1 = p_link1;
+	}
+	public String getP_link2() {
+		return p_link2;
+	}
+	public void setP_link2(String p_link2) {
+		this.p_link2 = p_link2;
+	}
+	public String getP_youtube() {
+		return p_youtube;
+	}
+	public void setP_youtube(String p_youtube) {
+		this.p_youtube = p_youtube;
 	}
 	public int getP_count() {
 		return p_count;
