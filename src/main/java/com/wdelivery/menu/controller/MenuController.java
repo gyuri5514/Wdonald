@@ -125,7 +125,7 @@ public class MenuController {
 				return "detail";
 			} else {
 				for(int i = 0 ; i < selectBurger.size(); i++) {
-					if(b_code == selectBurger.get(i).getB_code()) {
+					if(b_code.equals(selectBurger.get(i).getB_code())) {
 						if(va.equals("left")) 
 							burgerVO = burgerService.detailBurger(selectBurger.get(i-1).getB_code());
 							

@@ -206,8 +206,7 @@ public class AdminMenuController {
 			burgerSetVO.setB_set_img(file1.getOriginalFilename());
 			burgerSetVO.setB_set_status(1);
 			burgerSetService.insertBurgerSet(burgerSetVO);
-		} else if(burger_type.equals("라지세트")) {
-			key1 = "img/hamburger/" + file1.getOriginalFilename();
+			
 			BurgerLgSetVO burgerLgSetVO = new BurgerLgSetVO();
 			burgerLgSetVO.setB_lgset_code(Integer.parseInt(burger_code));
 			burgerLgSetVO.setB_lgset_img_path(uploadFolder + key1);
