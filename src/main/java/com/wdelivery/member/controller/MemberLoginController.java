@@ -52,10 +52,9 @@ public class MemberLoginController {
 	public List<AdminBannerVO> getBannerList(){
 		return  adminService.selectBannerList();
 	}
-	
-	@ModelAttribute("selectPromotion")
-	public List<PromotionVO> selectPromotion(){
-		return promotionService.selectPromotionAll();
+	@ModelAttribute("selectPromotionIng")
+	public List<PromotionVO> selectPromotionIng(){
+		return promotionService.selectPromotionIng();
 	}
 	
 	/**
