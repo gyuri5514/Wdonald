@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM admin_notice
 	</select>
 	<insert id="addBoard">
-		INSERT INTO admin_notice (notice_title, notice_regdate, notice_content) VALUES(#{notice_title}, #{notice_regdate}, #{notice_content})
+		INSERT INTO admin_notice (notice_title, notice_regdate, notice_content) VALUES(#{notice_title}, now(), #{notice_content})
 	</insert>
 	<delete id="deleteBoard" parameterType="int">
 		DELETE FROM admin_notice WHERE notice_seq = #{notice_seq}

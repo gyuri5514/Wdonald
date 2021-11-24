@@ -60,10 +60,10 @@
 												<c:when test="${email eq '0'}">미동의</c:when>
 												<c:when test="${email eq '1'}">동의</c:when>
 											</c:choose></td>
-										<th><button id="infoDelete" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
-										<button id="infoSuspend${userInfo.user_seq }" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
+										<th><button id="infoDelete" class="btn btn-danger" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
+										<button id="infoSuspend${userInfo.user_seq }" class="btn btn-warning" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
 										<c:if test="${status eq '2'}">
-										<button id="infoActive${userInfo.user_seq }" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name }',1);">활성화</button></c:if></th>
+										<button id="infoActive${userInfo.user_seq }" class="btn btn-success" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name }',1);">활성화</button></c:if></th>
 									</tr>
 									</c:forEach>
 								</tbody>

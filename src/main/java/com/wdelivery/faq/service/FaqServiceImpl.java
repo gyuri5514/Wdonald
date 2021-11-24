@@ -35,4 +35,25 @@ public class FaqServiceImpl implements FaqService {
 	public int totalFaq(Criteria cri) {
 		return faqDAO.totalFaq(cri);
 	}
+	
+	@Override
+	public List<FaqVO> faqBoard(FaqVO faqVO) {
+		return faqDAO.faqBoard(faqVO);
+	}
+	@Override
+	public void insertFaq(FaqVO faqVO) {
+		faqDAO.insertFaq(faqVO);
+	}
+	@Override
+	public void updateFaq(FaqVO faqVO) {
+		faqDAO.updateFaq(faqVO);
+	}
+	@Override
+	public void deleteFaq(int faq_seq) {
+		faqDAO.deleteFaq(faq_seq);
+	}
+	@Override
+	public FaqVO faqDetail(FaqVO faqVO) {
+		return faqDAO.faqDetail(faqVO);
+	}
 }

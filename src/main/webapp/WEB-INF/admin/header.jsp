@@ -26,12 +26,12 @@
       </button>
       <!-- Navbar Search-->
       <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-         <div class="input-group">
+         <!-- <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
             <button class="btn btn-primary" id="btnNavbarSearch" type="button">
                <i class="fas fa-search"></i>
             </button>
-         </div>
+         </div> -->
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
@@ -45,7 +45,7 @@
             <a class="navbar-brand ps-3" style="width: 100px" href="login.mdo">로그인</a>
          </c:otherwise>
       </c:choose>
-         <li class="nav-item dropdown">
+         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                <i class="fas fa-user fa-fw"></i>
             </a>
@@ -55,7 +55,7 @@
                <li><hr class="dropdown-divider" /></li>
                <li><a class="dropdown-item" href="logout.mdo">Logout</a></li>
             </ul>
-         </li>
+         </li> -->
       </ul>
    </nav>
    <div id="layoutSidenav"> <!-- 토글 -->
@@ -115,9 +115,14 @@
 							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
-
-								<a class="nav-link" href="board.mdo">공지사항 관리</a>
-
+								<a class="nav-link" href="board.mdo">관리자 공지사항</a>
+							</nav>
+						</div>
+						<div class="collapse" id="collapseBoard"
+							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav accordion"
+								id="sidenavAccordionPages">
+								<a class="nav-link" href="faqBoard.mdo">FAQ 관리</a>
 							</nav>
 						</div>
 

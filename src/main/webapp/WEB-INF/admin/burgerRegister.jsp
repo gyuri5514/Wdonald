@@ -208,7 +208,7 @@
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="burger_code" name="burger_code" type="text" placeholder="Enter your first name" 
                                                         	style="height: calc(3.5rem + 50px);"/>
-                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299),라지(500~599)</label><span id="codetxt"></span>
+                                                        <label for="burger_code">버거 코드 - 단품(100~199),세트(200~299)</label><span id="codetxt"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -241,9 +241,8 @@
                                                     	<select class="form-select" id="burger_type" name="burger_type" aria-label="Default select example"
                                                     		style="font-size: 13px; font-weight: 1000; padding-top: 1.1rem;">
                                                     		<option selected>전체</option>
-															<option value="단품">단품
-															<option value="세트">세트 
-															<option value="라지세트">라지세트                                                    
+															<option value="단품">단품</option>
+															<option value="세트">세트</option>
                                                         </select>
                                                     </div>
                                                 </div>

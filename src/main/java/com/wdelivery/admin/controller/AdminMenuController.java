@@ -206,14 +206,13 @@ public class AdminMenuController {
 			burgerSetVO.setB_set_img(file1.getOriginalFilename());
 			burgerSetVO.setB_set_status(1);
 			burgerSetService.insertBurgerSet(burgerSetVO);
-		} else if(burger_type.equals("라지세트")) {
-			key1 = "img/hamburger/" + file1.getOriginalFilename();
+	
 			BurgerLgSetVO burgerLgSetVO = new BurgerLgSetVO();
-			burgerLgSetVO.setB_lgset_code(Integer.parseInt(burger_code));
+			burgerLgSetVO.setB_lgset_code(Integer.parseInt(burger_code)+300);
 			burgerLgSetVO.setB_lgset_img_path(uploadFolder + key1);
-			burgerLgSetVO.setB_lgset_name(burger_name);
-			burgerLgSetVO.setB_lgset_price(Integer.parseInt(burger_price));
-			burgerLgSetVO.setB_lgset_kcal(Integer.parseInt(burger_kcal));
+			burgerLgSetVO.setB_lgset_name(burger_name+"라지세트");
+			burgerLgSetVO.setB_lgset_price(Integer.parseInt(burger_price)+1000);
+			burgerLgSetVO.setB_lgset_kcal(Integer.parseInt(burger_kcal)+100);
 			burgerLgSetVO.setB_lgset_regdate(fm.parse(burger_regdate));
 			burgerLgSetVO.setB_lgset_detail_comment(burger_detail);
 			burgerLgSetVO.setB_lgset_img(file1.getOriginalFilename());

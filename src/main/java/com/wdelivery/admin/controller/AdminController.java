@@ -30,6 +30,8 @@ import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.admin.vo.AdminBoardVO;
 import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.faq.service.FaqService;
+import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.store.chart.vo.ChartVO;
 import com.wdelivery.store.service.ChartService;
@@ -45,8 +47,13 @@ public class AdminController {
 
 	@Autowired
 	private AdminStoreService adminStoreService;
+	
 	@Autowired
 	private ChartService chartService;
+	
+	@Autowired
+	private FaqService faqService;
+	
 	@ModelAttribute("adminList")
 	public List<AdminVO> getAdminList(){
 		return adminService.indexView();
@@ -207,6 +214,7 @@ public class AdminController {
 	@PostMapping("/boardUpdate.mdo")
 	public String boardUpdate(AdminBoardVO boardUpdate) {
 		adminService.boardUpdate(boardUpdate);
+		//model.addAttribute("update",boardUpdate);
 		return "redirect:board.mdo";
 	}
 	
@@ -251,5 +259,27 @@ public class AdminController {
 	public int suspendUser(@RequestBody UserVO userVO) {
 		return adminService.supsendUser(userVO);
 	} 
+	
+	//admin faq
+	@GetMapping("/faqBoard.mdo")
+	public String faqBoard(FaqVO faqVO, Model model, HttpSession session) {
+		List<FaqVO> faqList = faqService.faqBoard(faqVO);
+		model.addAttribute("faqList", faqList);
+		
+		return "faqBoard";
+	}
+	
+	@GetMapping("/faqDetail.mdo")
+	public String faqDetail(Model model, FaqVO faqVO) {
+		faqVO = faqService.faqDetail(faqVO);
+		model.addAttribute("faqDetail", faqVO);
+		return "faqDetail";
+	}
+	
+	@GetMapping("/updateFaq.mdo")
+	public String updateFaq(FaqVO faqVO) {
+		faqService.updateFaq(faqVO);
+		return "redirect:faqBoard.mdo";
+	}
 	
 }
