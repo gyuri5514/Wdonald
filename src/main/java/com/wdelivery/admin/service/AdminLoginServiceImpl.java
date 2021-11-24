@@ -22,4 +22,14 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 	public void register(AdminVO registerAdmin) throws Exception {
 		adminLoginDAO.register(registerAdmin);
 	}
+
+	@Override
+	public AdminVO storeUpdate(AdminVO adminVO) {
+		return adminLoginDAO.storeUpdate(adminVO);
+	}
+
+	@Override
+	public void storeUpdatedo(AdminVO adminVO) {
+	
+	}
 }
