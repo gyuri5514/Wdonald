@@ -732,25 +732,4 @@ public class MemberController {
 			@RequestParam("lon") double lon) {
 		return memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4));
 	}
-	
-	@GetMapping("popupCoupon.do")
-	public String popupCoupon(HttpSession session, Model model) {
-		UserVO userVO = SessionClassifier.sessionClassifier(session);
-		
-		if (userVO != null) {
-			model.addAttribute("couponList", memberService.add)
-		}
-	}
-	
-	@GetMapping("/popupAddress.do")
-	public String popupAddress(HttpSession session,Model model) {
-		UserVO userVO = SessionClassifier.sessionClassifier(session);
-		if (userVO != null) {
-			  model.addAttribute("addressList", memberService.addressSelect(userVO.getUser_email())); 
-		}else {
-			model.addAttribute("addressList","emptyAddress");
-		}
-		return "popupAddress";
-	}
-	
 }
