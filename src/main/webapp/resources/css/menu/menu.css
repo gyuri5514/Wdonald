@@ -12593,9 +12593,12 @@ body.show-configurator .root {
 	margin-bottom: 0;
 }
 
+th.change-column, td.change-column {
+	width: 100px;
+}
 th.controls-column, td.controls-column, th.picture-column, td.picture-column,
 th.side-column, td.side-column, th.drink-column, td.drink-column,
-th.change-column, td.chage-column, th.cost-column, td.cost-column {
+th.cost-column, td.cost-column {
 	width: 150px;
 	font-family: SpeedeeK;
 	font-weight: 500;
@@ -12603,7 +12606,7 @@ th.change-column, td.chage-column, th.cost-column, td.cost-column {
 }
 
 th.description-column, td.description-column {
-	width: 210px;
+	width: 240px;
 }
 
 .table-select-meal .description-column .item-title {
