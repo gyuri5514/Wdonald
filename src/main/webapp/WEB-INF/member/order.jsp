@@ -170,7 +170,7 @@
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>
@@ -202,7 +202,7 @@
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
 														</span>
@@ -251,7 +251,7 @@
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -293,7 +293,7 @@
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -344,7 +344,7 @@
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -387,7 +387,7 @@
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -432,7 +432,7 @@
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>
@@ -481,7 +481,7 @@
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>

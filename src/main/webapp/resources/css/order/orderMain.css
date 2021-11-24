@@ -11009,7 +11009,8 @@ ul.ui-selectmenu-menu-popup {
 .main {
 	font-family: SpeedeeK;
 	position: relative;
-	margin: 0 auto;
+	width: 1168px;
+	margin: 50px auto;
 }
 
 .global-header .header-actions {

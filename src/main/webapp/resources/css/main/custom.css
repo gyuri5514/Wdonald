@@ -1055,7 +1055,6 @@ ul.notiTxt:before {
 	min-width: 1280px;
 	min-height: 100%;
 	padding: 140px 0 230px;
-	background-color: #ffffff;
 }
 
 .wrapper footer {
@@ -2208,12 +2207,12 @@ ul.notiTxt:before {
 	left: 0;
 	right: 0;
 	height: 150px;
-	background: #f8f8f8
+	background: #ffffff;
 }
 
 .srchBox .form {
 	position: relative;
-	padding: 40px 0;
+	/* padding: 40px 0; */
 	padding-right: 184px
 }
 

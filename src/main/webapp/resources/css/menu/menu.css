@@ -1260,14 +1260,14 @@ input[type=search] {
 }
 
 input[type=checkbox], input[type=radio] {
-	margin: 4px 0 0;
+	/* margin: 4px 0 0; */
 	margin-top: 1px\9;
 	line-height: normal
 }
 
 .form-control, output {
 	line-height: 1.428571429;
-	color: #555;
+	color: #3d3d3d;
 	display: block
 }
 
@@ -1298,7 +1298,7 @@ output {
 
 .form-controla {
 	/*동그라미!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-	width: 120px;
+	width: 50px;
 	height: 30px;
 	/* padding: 6px 12px; */
 	background-color: #fff;
@@ -1318,16 +1318,16 @@ output {
 }
 
 .form-control::-moz-placeholder {
-	color: #d2d2d2;
+	color: #3d3d3d;
 	opacity: 1
 }
 
 .form-control:-ms-input-placeholder {
-	color: #d2d2d2
+	color: #3d3d3d
 }
 
 .form-control::-webkit-input-placeholder {
-	color: #d2d2d2
+	color: #3d3d3d
 }
 
 .has-success .checkbox, .has-success .checkbox-inline, .has-success .control-label,
@@ -1341,7 +1341,7 @@ output {
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control
 	{
 	cursor: pointer;
-	background-color: #ffffff;
+	/* background-color: #ffffff; */
 	font-family: SpeedeeK;
 	font-size: 8px;
 	font-weight: 500;
@@ -12603,7 +12603,7 @@ th.change-column, td.chage-column, th.cost-column, td.cost-column {
 }
 
 th.description-column, td.description-column {
-	width: 180px;
+	width: 210px;
 }
 
 .table-select-meal .description-column .item-title {
