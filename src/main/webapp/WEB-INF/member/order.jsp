@@ -27,7 +27,7 @@
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
-												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -84,7 +84,7 @@
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td  class="change-column"><a href="#" onclick="sideOpen(1)">변경</a></td>
-												<td colspan="2">
+												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
@@ -116,7 +116,7 @@
 												<td colspan="2" class="side-column"></td>
 												<td colspan="2" class="drink-column"></td>
 												<td class="change-column"></td>
-												<td colspan="2">
+												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',3)"disabled><i class="fas fa-minus"></i></button>
@@ -138,11 +138,11 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
-												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -157,20 +157,21 @@
 												</td>
 												<td colspan="2" class="description-column">
 													<h4 class="item1-title">${winMorningSetVO.w_set_name}</h4>
+													<small>${winMorningSetVO.w_set_kcal}kcal</small>
 													<p class="item-description"></p>
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningSetVO.w_set_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${winMorningSetVO.w_set_kcal}kcal</td>
+												<%-- <td class="calories-column">${winMorningSetVO.w_set_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-												<td colspan="2" class="controls-column">
+												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>
@@ -189,20 +190,21 @@
 												</td>
 												<td colspan="2" class="description-column">
 													<h4 class="item2-title">${winMorningVO.w_name}</h4>
+													<small>${winMorningVO.w_kcal}kcal</small>
 													<p class="item-description"></p>
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${winMorningVO.w_kcal}kcal</td>
+												<%-- <td class="calories-column">${winMorningVO.w_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column"></td>
 												<td colspan="2" class="drink-column"></td>
 												<td  class="change-column"></td>
-												<td colspan="2">
+												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',2)" disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result2" value="0" max="10" class="form-control" readonly="readonly" style="font-size:8px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',2)" disabled><i class="fas fa-plus"></i></button>
 														</span>
@@ -221,10 +223,10 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th class="change-column">선택</th>
-												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
 											</thead>
 											<tbody>
@@ -239,19 +241,20 @@
 													</td>
 													<td colspan="2" class="description-column">
 														<h4 class="item1-title">${sideVO.s_name}</h4>
+														<small>${sideVO.s_kcal}kcal</small>
 														<p class="item-description"></p>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<td class="calories-column">${sideVO.s_kcal}kcal</td>
+													<%-- <td class="calories-column">${sideVO.s_kcal}kcal</td> --%>
 													<td colspan="2" class="side-column">선택안함</td>
 													<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-													<td colspan="2">
+													<td colspan="2" class="quantity-column">
 														<div class="input-group item-quantity item-quantity-picker">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -267,8 +270,9 @@
 													<th class="picture-column">&nbsp;</th>
 													<th colspan="2" class="description-column">&nbsp;</th>
 													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-													<th class="calories-column">&nbsp;&nbsp;kcal</th>
+													<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+													<th colspan="2" class="quantity-column">
 												</tr>
 											</thead>
 											<tbody>
@@ -283,17 +287,18 @@
 													</td>
 													<td colspan="2" class="description-column">
 														<h4 class="item1-title">${sideVO.s_name}</h4>
+														<small>${sideVO.s_kcal}kcal</small>
 														<p class="item-description"></p>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<td class="calories-column">${sideVO.s_kcal}kcal</td>
-													<td colspan="2">
+													<%-- <td class="calories-column">${sideVO.s_kcal}kcal</td> --%>
+													<td colspan="2" class="quantity-column">
 														<div class="input-group item-quantity item-quantity-picker">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -313,10 +318,10 @@
 													<th class="picture-column">&nbsp;</th>
 													<th colspan="2" class="description-column">&nbsp;</th>
 													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-													<th class="calories-column">&nbsp;&nbsp;kcal</th>
+													<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 													<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 													<th class="change-column">선택</th>
-													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+													<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -331,20 +336,20 @@
 													</td>
 													<td colspan="2" class="description-column">
 														<h4 class="item1-title">${drinkVO.d_name}</h4>
+														<small>${drinkVO.d_kcal}kcal</small>
 														<p class="item-description"></p>
-														
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<td class="calories-column">${drinkVO.d_kcal}kcal</td>
+													<%-- <td class="calories-column">${drinkVO.d_kcal}kcal</td> --%>
 													<td colspan="2" class="drink-column">선택안함</td>
 													<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
-													<td colspan="2">
+													<td colspan="2" class="quantity-column">
 														<div class="input-group item-quantity item-quantity-picker">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -360,8 +365,8 @@
 													<th class="picture-column">&nbsp;</th>
 													<th colspan="2" class="description-column">&nbsp;</th>
 													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-													<th class="calories-column">&nbsp;&nbsp;kcal</th>
-													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+													<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
+													<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -376,18 +381,19 @@
 													</td>
 													<td colspan="2" class="description-column">
 														<h4 class="item1-title">${drinkVO.d_name}</h4>
+														<small>${drinkVO.d_kcal}kcal</small>
 														<p class="item-description"></p>
 														
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<td class="calories-column">${drinkVO.d_kcal}kcal</td>
-													<td colspan="2">
+													<%-- <td class="calories-column">${drinkVO.d_kcal}kcal</td> --%>
+													<td colspan="2" class="quantity-column">
 														<div class="input-group item-quantity item-quantity-picker">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 															</span>
-															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+															<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 															<span class="input-group-btn">
 																<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 															</span>
@@ -406,8 +412,8 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<th class="calories-column">&nbsp;&nbsp;kcal</th>
-												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
+												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -422,17 +428,18 @@
 												</td>
 												<td colspan="2" class="description-column">
 													<h4 class="item1-title">${dessertVO.dessert_name}</h4>
+													<small>${dessertVO.dessert_kcal}kcal</small>
 													<p class="item-description"></p>
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${dessertVO.dessert_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${dessertVO.dessert_kcal}kcal</td>
-												<td colspan="2">
+												<%-- <td class="calories-column">${dessertVO.dessert_kcal}kcal</td> --%>
+												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)"disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>
@@ -449,11 +456,11 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<th class="calories-column">&nbsp;&nbsp;kcal</th>
+												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
-												<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
+												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -468,20 +475,21 @@
 												</td>
 												<td colspan="2" class="description-column">
 													<h4 class="item1-title">${happyMealVO.h_name}</h4>
+													<small>${happyMealVO.h_kcal}kcal</small>
 													<p class="item-description"></p>
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${happyMealVO.h_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<td class="calories-column">${happyMealVO.h_kcal}kcal</td>
+												<%-- <td class="calories-column">${happyMealVO.h_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
-												<td colspan="2" class="controls-column">
+												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-decrease action-decrease btn-black" onclick="count('minus',1)" disabled><i class="fas fa-minus"></i></button>
 														</span>
-														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:1px">
+														<input type="number" name="" id="result" value="0" max="10" class="form-control" readonly="readonly" style="font-size:16px">
 														<span class="input-group-btn">
 															<button type="button" class="btn btn-increase action-in crease btn-black" onclick="count('plus',1)" disabled><i class="fas fa-plus"></i></button>
 														</span>
