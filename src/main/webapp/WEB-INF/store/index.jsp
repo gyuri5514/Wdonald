@@ -12,6 +12,7 @@
 <c:if test="${error eq 1}">
 <script type="text/javascript">
 	alert('권한이 필요한 작업입니다. 로그인해주세요.');
+	location.href="login.mdo";
 </script>
 
 </c:if>

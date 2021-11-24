@@ -79,8 +79,6 @@ public class AdminLoginController {
 	@GetMapping("/login.mdo")
 	public String login( HttpSession session) {
 		if(session.getAttribute("store_admin") != null | session.getAttribute("admin") != null) {
-//			session.removeAttribute("store_admin");
-//			session.removeAttribute("admin");
 			session.invalidate();
 		}
 		return "login";
@@ -116,7 +114,7 @@ public class AdminLoginController {
 			return "login";
 		}
 		
-		return "index";
+		return "redirect:index.mdo";
 	}
 
 	

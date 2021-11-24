@@ -31,7 +31,7 @@ public class AdminChartController {
 		AdminVO av = (AdminVO) session.getAttribute("admin");
 		if(av==null) {
 			model.addAttribute("error",1);
-			return "index";
+			return "redirect:index.mdo";
 		}
 		
 	    SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
