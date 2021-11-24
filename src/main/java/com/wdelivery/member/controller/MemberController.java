@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
 import com.wdelivery.admin.vo.AdminBannerVO;
+import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.faq.service.FaqService;
@@ -238,6 +239,11 @@ public class MemberController {
 			@RequestParam(value = "delivery_price", required = false) String deliveryPrice, HttpSession session) {
 
 		List<CartVO> cartList = TypeSafety.sessionCartCaster(session.getAttribute("cartList"));
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
+		if (userVO != null) {
+			List<UserAddressVO> addressList = memberService.addressSelect(userVO.getUser_email());
+			  model.addAttribute("addressList", addressList); 
+		}
 
 		if (va == null) {
 			int price = 0;
@@ -545,11 +551,7 @@ public class MemberController {
 			model.addAttribute("price", price);
 			model.addAttribute("delivery_price", delivery_price);
 			
-			UserVO userVO = SessionClassifier.sessionClassifier(session);
-			if (userVO != null) {
-				List<UserAddressVO> addressList = memberService.addressSelect(userVO.getUser_email());
-				  model.addAttribute("addressList", addressList); 
-			}
+			
 		}
 		return "orderConfirm";
 	}
@@ -732,4 +734,15 @@ public class MemberController {
 			@RequestParam("lon") double lon) {
 		return memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4));
 	}
+	@RequestMapping("couponBook.do")
+	public String getCouponBook(HttpSession session, Model model) {
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
+		if(userVO==null)
+			return "main";
+		
+		//List<AdminCouponVO> couponList = memberService.selectCouponBook();
+		
+		return "couponBook";
+	}
+	
 }

@@ -136,10 +136,14 @@ public class MemberLoginController {
 	
 	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("winMemJoin.do")
-	public String winMemJoin(UserVO userVO, UserAddressVO addressVO) {
+	public String winMemJoin(UserVO userVO, UserAddressVO addressVO) throws Exception {
 		memberService.winMemJoin(userVO);
 		memberService.winAddressJoin(addressVO);
 		memberService.insertAuthData(userVO);
+		
+		if(userVO.getUser_email().equals("dd@dd.co"))
+			throw new Exception();
+		
 		updateAuthKey(userVO.getUser_email(),"join");
 		return "emailConfirm";
 	}
