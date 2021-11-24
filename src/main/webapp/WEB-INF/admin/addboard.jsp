@@ -26,11 +26,11 @@
 			 $("#notice_title").focus();
 			 return false;
 		 }
-		 if($("#notice_regdate").val()==""){
+		 /* if($("#notice_regdate").val()==""){
 			 alert("등록일을 입력하세요.");
 			 $("#notice_regdate").focus();
 			 return false;
-		 }
+		 } */
 		 if($("#notice_content").val()==""){
 			 alert("공지사항 내용을 입력하세요.");
 			 $("#notice_content").focus();
@@ -51,27 +51,30 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">공지사항 등록</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">관리자 공지사항 등록</h3></div>
                                     <div class="card-body">
                                         <form action="addboardInsert.mdo" method="post" id="addBoard">
                                         <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="notice_title" name="notice_title" type="text" placeholder="Enter your first name" />
-                                                        <label for="notice_title">공지사항 제목</label>
-                                                    </div>
+	                                                <div class="input-group mb-3">
+													  <span class="input-group-text" id="inputGroup-sizing-default">제목</span>
+													  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="notice_title" id="notice_title">
+													</div>
                                                 </div>
-                                                <div class="col-md-6">
+                                               <!--  <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="notice_regdate" name="notice_regdate" type="date" placeholder="Enter your first name" />
                                                         <label for="notice_regdate">등록일</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
+                                           <!--  <label for="notice_content">공지사항 내용</label> -->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="notice_content" name="notice_content" type="text" placeholder="Enter your first name" />
-                                                <label for="notice_content">공지사항 내용</label>
-                                            </div>
+                                                <div class="input-group">
+												  <span class="input-group-text">내용</span>
+												  <textarea class="form-control" aria-label="With textarea" id="notice_content" name="notice_content" style="height: 270px;"></textarea>
+												</div>                                            
+											</div>
                                             <div id="content" style="display:none"></div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit" style="background-color: #0d6efd; border:solid 1px #0d6efd;">공지사항 등록</a></div>

@@ -5,7 +5,14 @@ public class FaqVO {
 	private String faq_title;
 	private String faq_content;
 	private String faq_name;
+	private String faq_subject;
 	
+	public String getFaq_subject() {
+		return faq_subject;
+	}
+	public void setFaq_subject(String faq_subject) {
+		this.faq_subject = faq_subject;
+	}
 	public int getFaq_seq() {
 		return faq_seq;
 	}

@@ -14,4 +14,10 @@ public interface FaqService {
 	public List<FaqVO> KeywordSelect(Map<String,String> map);
 	
 	public int totalFaq(Criteria cri);
+	
+	public List<FaqVO> faqBoard(FaqVO faqVO);
+	public void insertFaq(FaqVO faqVO);
+	public void updateFaq(FaqVO faqVO);
+	public void deleteFaq(int faq_seq);
+	public FaqVO faqDetail(FaqVO faqVO);
 }

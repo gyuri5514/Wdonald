@@ -21,13 +21,20 @@
 		});
 	});
 	function detail(index){
+		alert("1");
 		var val = JSON.parse('${Board}');
+		alert("2");
 		for(var i=0; i<val.length; i++){
 			if(val[i].notice_seq==index){
 				$("#notice_title").val(val[i].notice_title);
 				$("#notice_regdate").val($("#"+index+"").find("#notice_regdate").text());
 				$("#notice_content").val(val[i].notice_content);
-				$("#admin_seq").val(val[i].admin_seq);
+				if (val[i].admin_seq = 1) {
+					$("#admin_seq").val('admin');
+				}else if (val[i].admin_seq = 0) {
+					$("#admin_seq").val('admin');
+				}
+				//$("#admin_seq").val(val[i].admin_seq);
 				
 				$("#update").attr("style","block");
 				$("#notice_seq").val(index);
@@ -39,16 +46,16 @@
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
-			<h1 class="mt-4">공지사항 관리</h1> <!-- 최고 관리자: 매장테이블, 매장: 메뉴테이블 -->
+			<h1 class="mt-4">관리자 공지사항 관리</h1> <!-- 최고 관리자: 매장테이블, 매장: 메뉴테이블 -->
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
-				<li class="breadcrumb-item active">공지사항 관리</li>
+				<li class="breadcrumb-item active">관리자 공지사항 관리</li>
 			</ol>
 			<div class="card mb-4">
 			</div>
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table me-1"></i>공지사랑 관리
+					<i class="fas fa-table me-1"></i>관리자 공지사항 관리
 				</div>
 				<div class="card-body">
 					<button class="addboard" id="addboard"
@@ -58,10 +65,11 @@
 					<hr>
 					<form id="boardUpdate" action="boardUpdate.mdo" method="post">
 					<div class="update" id="update" style="display: none;">
-						제목 : <input name="notice_title" id="notice_title" class="form-control" type="text" style="margin-bottom: 10px">
-						등록일 : <input name="notice_regdate" id="notice_regdate" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px">
-						내용 : <input name="notice_content" id="notice_content" class="form-control" type="text" style="margin-bottom: 10px">
+						제목 : <input name="notice_title" id="notice_title" class="form-control" type="text" style="margin-bottom: 10px"/>
+						등록일 : <input name="notice_regdate" id="notice_regdate" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px"/>
+						내용 : <textarea name="notice_content" id="notice_content" class="form-control" style="margin-bottom: 10px"></textarea>
 						작성자 : <input name="admin_seq" id="admin_seq" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px">
+						
 						<button class="boardUpdate" id="updateBoard" type="submit" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">수정</button>
 					</div>
 					<input type="hidden" name="notice_seq" id="notice_seq">
