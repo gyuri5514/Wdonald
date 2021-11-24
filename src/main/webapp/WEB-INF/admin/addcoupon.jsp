@@ -31,10 +31,25 @@
 			 $("#coupon_title").focus();
 			 return false;
 		 }
-		 if($("#coupon_type").val()==""){
-			 alert("분류를 입력하세요.");
+		 if($("#coupon_type").val()=="none"){
+			 alert("쿠폰 분류를 선택하세요.");
 			 $("#coupon_type").focus();
 			 return false;
+		 }else if($("#coupon_type").val()=="discount"){
+			 var coupon_discount = $('#coupon_discount').val();
+			 var regex =  new RegExp(/^[0-9]*$/);
+			 if(coupon_discount!=''){
+					if(!regex.test(coupon_discount)){
+						alert('할인 금액에는 숫자만 입력해주세요.');
+						return false;
+					}else if(coupon_discount<1000||coupon_discount>50000){
+						alert('1000원이상 50000원 이하로만 입력해주세요.')
+						return false;
+					}
+			 }else{
+				 alert('금액을 입력해주세요.')
+				 return false;
+			 }
 		 }
 		 if($("#coupon_regdate").val()==""){
 			 alert("쿠폰등록일을 입력하세요.");
@@ -64,7 +79,16 @@
 			} 	
 		 });
 	 });
-	})
+   	$('#coupon_type').change(function(){
+   		if(this.value=='discount'){
+   			$("#coupon_discount").removeAttr("disabled");
+   		}else{
+   			$("#coupon_discount").val("");
+   			$("#coupon_discount").attr("disabled","disabled");			
+   		}
+   	})
+})
+	
    	 </script>
     <body class="bg-black">
     <div id="map" style="width: 0px; height:0px;"></div>
@@ -88,15 +112,24 @@
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
                                                         <input class="form-control" id="coupon_title" name="coupon_title" type="text" placeholder="Enter your first name" />
-                                                        <label for="coupon_title">쿠폰명</label>
+                                                        <label for="coupon_title"><small>쿠폰명 (분류가 증정이면 증정품을 적어주세요) </small></label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
+                                                    <!-- <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="coupon_type" name="coupon_type" type="text" placeholder="Enter your last name" />
                                                         <label for="coupon_type">분류</label>
+                                                    </div> -->
+                                                    <select class="form-select" id="coupon_type" name="coupon_type" aria-label="Default select example">
+  														<option selected value="none">쿠폰 타입</option>
+  														<option value="freebie">freebie(증정)</option>
+														<option value="discount">discount</option>
+													</select>
+                                                     <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="coupon_discount" name="coupon_discount" type="number"  disabled="disabled"/>
+                                                        <label for="coupon_discount" >할인가격</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">

@@ -49,7 +49,7 @@
             </div>
             <div class="card-body">
                <canvas id="myChart" width="50%" height="30"></canvas>
-               <div class="card mb-4" style="width: 100%; border: 1px solid black; margin-top: 20px; height: 200px; padding-left: 20px; padding-top: 10px;">
+               <div class="card mb-4" style="width: 100%; border: 1px solid black; margin-top: 20px; height: 250px; padding-left: 20px; padding-top: 10px;">
                   <div class="form-check" >
                      <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="date_term"
@@ -89,21 +89,19 @@
                      <br>
                      <div class="form-check" style="padding-left:5px;">
                         <input type="text" name="start_date" id="start_history" class="form-control"
-                           maxlength="10" style="width: 150px;" readonly="readonly" /> &nbsp; ~ &nbsp; 
-                        <input type="text" name="end_date" id="end_history" class="form-control" maxlength="10" style="width: 150px;"
+                           maxlength="10" style="width: 100px;" readonly="readonly" /> &nbsp; ~ &nbsp; 
+                        <input type="text" name="end_date" id="end_history" class="form-control" maxlength="10" style="width: 100px;"
                            readonly="readonly" />
                         <button type="button" class="btn btn-warning form-control"
                            onclick='getNewChart()' style="margin-bottom:3px; margin-left:25px; width:100px;">검색</button>
                      </div>
                   </div>
+                  <form action="excel.sdo" method="get">
+			   		 <div style="margin-left:630px; margin-bottom: 10px">
+						 <button type="submit" class="btn btn-light" value="너는 할수있다"><i class="far fa-file-excel" style="font-size: 20px; color: green;"></i></button>
+					 </div> 
+			  	  </form>
                </div>
-
-<form action="excel.sdo" method="get">
-<div style="margin-left: 600px; margin-bottom: 20px">
-	<button type="submit" class="btn btn-light" value="난 이제 못하겠다"><i class="far fa-file-excel" style="font-size: 20px; color: green;"></i>
-	</button>
-</div> 
-</form>
 <script type="text/javascript">
 //Set new default font family and font color to mimic Bootstrap's default styling
 
@@ -441,7 +439,7 @@ function getNewChart(){
                   <i class="fas fa-chart-pie me-1"></i> 상품 인기순
                </div>
                <div class="card-body">
-                  <canvas id="myPieChart" width="100%" height="96"></canvas>
+                  <canvas id="myPieChart" width="100%" height="111"></canvas>
                </div>
                <script type="text/javascript">
             // Set new default font family and font color to mimic Bootstrap's default styling
@@ -459,8 +457,8 @@ function getNewChart(){
                // Pie Chart Example
                var ptx = document.getElementById("myPieChart");
                var color = [
-               		"#007bff","#dc3545","#ffc107","#28a745","skyblue","#ffc555",
-               		"black","#FF5E00","#ABF200","#00D8FF","#5F00FF","#FF00DD","#8C8C8C","#993800"  
+            	  	"#FF0000","#FF5E00","#FFBB00","#FFE400","#ABF200","#1DDB16",
+           			"#00D8FF","#0054FF","#0100FF","#5F00FF","#FF00DD","#FF007F","#000000","#FFD8D8","#FAECC5","#E4F7BA","#D4F4FA","#DAD9FF"
                   ]
                var myPieChart = new Chart(ptx, {
                  type: 'doughnut',
@@ -479,7 +477,6 @@ function getNewChart(){
             </div>
          </div>
        </main>
-    </div>
    
 
    <%@ include file="footer.jsp"%>

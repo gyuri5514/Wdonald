@@ -152,7 +152,8 @@
                   <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                      	 <a class="nav-link" href="layoutStatic.mdo">회원관리</a>
-                     	 <a class="nav-link" href="register.mdo">매장등록</a>	
+                     	 <a class="nav-link" href="register.mdo">매장등록</a>
+                     	 <a class="nav-link" href="storeUpdate.mdo">매장정보수정</a>
                      </nav>
 
                   </div>

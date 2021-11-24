@@ -131,8 +131,7 @@
 				if (log)
 					alert(log);
 			}
-			var tmppath = URL
-					.createObjectURL(event.target.files[0]);
+			var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#image').attr("src", tmppath);
 		});
 		$(document).on('change',":file",function() {
@@ -157,8 +156,7 @@
 				if (log)
 					alert(log);
 			}
-			var tmppath = URL
-					.createObjectURL(event.target.files[0]);
+			var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#Dimage').attr("src", tmppath);
 		});
 		$(document).on('change',":file",function() {
@@ -181,7 +179,7 @@
 		}
 	};
 	function slideDButton() {
-		var img = $('#dessert-detail-container');
+		var img = $('#burger-detail-container');
 		if (img.attr("style") == "display:none;") {
 			img.attr("style", "display:block;");
 			$('#slideDBtn').text("버거 미리보기 취소");
@@ -259,7 +257,7 @@
                                             </div>
                                             <div style="margin-top: 10px;">
 	                                            <button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>	
-	                                            <div class="dessert-container" id="dessert-container" style="display:none;">
+	                                            <div class="dessert-container" id="burger-container" style="display:none;">
 	                                            	<img style="width:100%;" id="image">
                                             	</div>
                                             </div>

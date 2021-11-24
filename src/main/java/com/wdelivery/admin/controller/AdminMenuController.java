@@ -206,7 +206,7 @@ public class AdminMenuController {
 			burgerSetVO.setB_set_img(file1.getOriginalFilename());
 			burgerSetVO.setB_set_status(1);
 			burgerSetService.insertBurgerSet(burgerSetVO);
-	
+
 			BurgerLgSetVO burgerLgSetVO = new BurgerLgSetVO();
 			burgerLgSetVO.setB_lgset_code(Integer.parseInt(burger_code)+300);
 			burgerLgSetVO.setB_lgset_img_path(uploadFolder + key1);

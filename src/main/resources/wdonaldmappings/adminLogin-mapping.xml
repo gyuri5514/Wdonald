@@ -12,4 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{admin_id}, #{admin_name}, #{admin_password}, #{admin_phone}, #{store_name}, #{store_address}, #{store_code}, #{store_phone}, #{store_lat}, #{store_lon})
 	</insert>
 
+	<select id="storeUpdate" resultType="adminVO" parameterType="adminVO">
+		select * from admin where admin_seq = #{admin_seq}
+	</select>
 </mapper>

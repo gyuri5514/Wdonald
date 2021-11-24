@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wdelivery.admin.dao.AdminStoreDAO;
 import com.wdelivery.admin.vo.AdminVO;
+import com.wdelivery.member.payment.vo.PaymentVO;
 
 @Service
 public class AdminStoreServiceImpl implements AdminStoreService{
@@ -23,6 +24,11 @@ public class AdminStoreServiceImpl implements AdminStoreService{
 	@Override
 	public int selectStore(Map<String,String>map) {
 		return adminStoreDAO.selectStore(map);
+	}
+
+	@Override
+	public List<PaymentVO> orderList() {
+		return adminStoreDAO.orderList();
 	}
 
 }

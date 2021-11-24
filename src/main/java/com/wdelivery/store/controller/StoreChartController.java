@@ -27,7 +27,7 @@ public class StoreChartController {
 	
 	@GetMapping("/charts.sdo")
 	public String charts(Model model,HttpSession session) {
-		AdminVO av = (AdminVO) session.getAttribute("admin");
+		AdminVO av = (AdminVO) session.getAttribute("store_admin");
 		if(av==null) {
 			model.addAttribute("error",1);
 			return "index";
@@ -50,7 +50,7 @@ public class StoreChartController {
 	@ResponseBody
 	@PostMapping("getNewChart.sdo")
 	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
-		AdminVO av = (AdminVO) session.getAttribute("admin");
+		AdminVO av = (AdminVO) session.getAttribute("store_admin");
 		chart.setStore_code(av.getStore_code());
 		return JSONArray.fromObject(chartService.getResponsiveChart(chart));
 	}
