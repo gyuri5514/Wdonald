@@ -27,7 +27,7 @@
 							<div class="info" data-title="${detailBurger.b_name}" data-desc="버거 메뉴">
 								<div class="visual"><img src="${detailBurger.b_detail_img_path}" alt="${detailBurger.b_name}"></div>
 								<div class="desc">
-									<p>${detailBurger.b_detail_comment}</p>
+									<p style="margin-top:20px;">${detailBurger.b_detail_comment}</p>
 								</div>
 								<div class="other">
 								<c:if test="${detailBurger.b_code != selectBurger_first}">
@@ -89,7 +89,7 @@
 							<div class="info" data-title="${detailMorning.w_name}" data-desc="윈모닝 메뉴">
 								<div class="visual"><img src="${detailMorning.w_detail_img_path}" alt="${detailMorning.w_name}"></div>
 								<div class="desc">
-									<p>${detailMorning.w_detail_comment}</p>
+									<p style="margin-top:20px;">${detailMorning.w_detail_comment}</p>
 								</div>
 								<div class="other">
 								<c:if test="${detailMorning.w_code != selectWinMorning_first}">
@@ -150,7 +150,7 @@
 							<div class="info" data-title="${detailHappyMeal.h_name}" data-desc="해피밀 메뉴">
 								<div class="visual"><img src="${detailHappyMeal.h_detail_img_path}" alt="${detailHappyMeal.h_name}"></div>
 								<div class="desc">
-									<p>${detailHappyMeal.h_detail_comment}</p>
+									<p style="margin-top:20px;">${detailHappyMeal.h_detail_comment}</p>
 								</div>
 								<div class="other">
 								<c:if test="${detailHappyMeal.h_code != selectHappyMeal_first}">
@@ -212,13 +212,13 @@
 							<div class="info" data-title="${detailSide.s_name}" data-desc="사이드 메뉴">
 								<div class="visual"><img src="${detailSide.s_detail_img_path}" alt="${detailSide.s_name}"></div>
 								<div class="desc">
-									<p>${detailSide.s_detail_comment}</p>
+									<p style="margin-top:20px;">${detailSide.s_detail_comment}</p>
 								</div>
 								<div class="other">
-								<c:if test="${detailSide.s_code ne 701}">
+								<c:if test="${detailSide.s_code != selectSide_first}">
 									<a href="#" class="arrow prev" onclick="location.href='detail.do?s_code=${detailSide.s_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-								<c:if test="${detailSide.s_code ne 708}">
+								<c:if test="${detailSide.s_code != selectSide_end}">
 									<a href="#" class="arrow next" onclick="location.href='detail.do?s_code=${detailSide.s_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
@@ -273,13 +273,13 @@
 							<div class="info" data-title="${detailDrink.d_name}" data-desc="음료 메뉴">
 								<div class="visual"><img src="${detailDrink.d_detail_img_path}" alt="${detailDrink.d_name}"></div>
 								<div class="desc">
-									<p>${detailDrink.d_detail_comment}</p>
+									<p style="margin-top:20px;">${detailDrink.d_detail_comment}</p>
 								</div>
 								<div class="other">
-								<c:if test="${detailDrink.d_code ne 301}">
+								<c:if test="${detailDrink.d_code != selectDrink_first}">
 									<a href="#" class="arrow prev" onclick="location.href='detail.do?d_code=${detailDrink.d_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-								<c:if test="${detailDrink.d_code ne 328}">
+								<c:if test="${detailDrink.d_code != selectDrink_end}">
 									<a href="#" class="arrow next" onclick="location.href='detail.do?d_code=${detailDrink.d_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>
@@ -337,10 +337,10 @@
 									<%-- <p>${detailDessert.dessert_detail_comment}</p> --%>
 								</div>
 								<div class="other">
-								<c:if test="${detailDessert.dessert_code ne 801}">
+								<c:if test="${detailDessert.dessert_code != selectDessert_first}">
 									<a href="#" class="arrow prev" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code}&va=left';"><span class="arr">이전 메뉴</span></a>
 								</c:if>
-								<c:if test="${detailDessert.dessert_code ne 806}">
+								<c:if test="${detailDessert.dessert_code != selectDessert_end	}">
 									<a href="#" class="arrow next" onclick="location.href='detail.do?dessert_code=${detailDessert.dessert_code}&va=right';"><span class="arr">다음 메뉴</span></a>
 								</c:if>
 								</div>

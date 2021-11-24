@@ -79,7 +79,7 @@ public class StoreController {
 	}
 	@GetMapping("/storeStatus.sdo")
 	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session, Model model) {		
-		adminVO = (AdminVO) session.getAttribute("admin");
+		adminVO = (AdminVO) session.getAttribute("store_admin");
 		if(adminVO == null) {
 			model.addAttribute("error",1);
 			return "index";
@@ -93,7 +93,7 @@ public class StoreController {
 	//adminUpdate
 	@GetMapping("/adminUpdate.sdo")
 	public String adminUpdate(HttpSession session,Model model) {
-		AdminVO admin = (AdminVO) session.getAttribute("admin");
+		AdminVO admin = (AdminVO) session.getAttribute("store_admin");
 		if(admin == null) {
 			model.addAttribute("error",1);
 			return "index";
@@ -103,7 +103,7 @@ public class StoreController {
 	}
 	@GetMapping("/adminUpdatedo.sdo")
 	public String adminUpdate(HttpSession session, AdminVO adminVO) {
-		AdminVO admin = (AdminVO) session.getAttribute("admin");
+		AdminVO admin = (AdminVO) session.getAttribute("store_admin");
 		//if(admin != null) {
 			int admin_seq = admin.getAdmin_seq();
 			adminVO.setAdmin_seq(admin_seq);
@@ -129,7 +129,7 @@ public class StoreController {
 	//adminNotice
 	@GetMapping("/layout-sidenav-light.sdo")
 	public String layout(AdminNoticeVO adminNoticeVO, Model model, HttpSession session) {
-		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 		if(adminVO == null) {
 			model.addAttribute("error",1);
 			return "index";
@@ -154,7 +154,7 @@ public class StoreController {
 	//store 1:1
 	@GetMapping("/layoutStatic.sdo")
 	public String layoutStatic(QnaVO qnaVO, Model model, HttpSession session) {
-		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 		//System.out.println("z" + adminVO);
 		if(adminVO != null) {
 			List<QnaVO> qnaList = storeService.storeQnaSelect(adminVO);

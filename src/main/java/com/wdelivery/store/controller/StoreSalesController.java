@@ -36,7 +36,7 @@ public class StoreSalesController {
 	@GetMapping("tables.sdo")
 	public String tables(@RequestParam(name="order_seq", defaultValue = "0") int order_seq, @RequestParam(name="order_status", defaultValue = "0") String order_status,
 			Model model, HttpSession session, PaymentVO paymentVO) {
-		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 		if(adminVO == null) {
 			model.addAttribute("error",1);
 			return "index";
@@ -52,7 +52,7 @@ public class StoreSalesController {
 	}
 	@GetMapping("orderCancel.sdo")
 	public String orderCancel(PaymentVO paymentVO, Model model, HttpSession session) {
-		AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 		if(adminVO != null) {
 			System.out.println(adminVO.getStore_code());
 			List<PaymentVO> orderCancel = storeSalesService.orderCancel(adminVO.getStore_code());
@@ -68,7 +68,7 @@ public class StoreSalesController {
 
 	 @GetMapping("excel.sdo")
 	 public void excelDownload(PaymentVO paymentVO, HttpSession session, HttpServletResponse response) throws IOException {
-		 AdminVO adminVO = (AdminVO) session.getAttribute("admin");
+		 AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 	       // Workbook wb = new HSSFWorkbook();
 	        Workbook wb = new XSSFWorkbook();
 	        Sheet sheet = wb.createSheet("첫번째 시트");

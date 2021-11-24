@@ -16,7 +16,7 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					매장 취소 관리 <a target="_blank" href="orderCancel.sdo">WinDelivery 취소관리</a>
+					매장 취소 관리 <a href="orderCancel.sdo">WinDelivery 취소관리</a>
 				</div>
 			</div>
 			<div class="card mb-4">
@@ -53,11 +53,10 @@
 								<td>
 									<div class="btn-group" style="width: 80%; margin: 0 auto">
 										<select id="order_status${orderList.order_seq}" name="order_status" class="btn btn-Default dropdown-toggle">
-											<option value="">${orderList.order_status}</option>
-											<option value="주문접수">주문 접수</option>
-											<option value="준비 중">준비 중</option>
-											<option value="배달 중">배달 중</option>
-											<option value="배달 완료">배달 완료</option>
+											<option value="주문 접수" ${orderList.order_status == "주문 접수" ? 'selected="selected"':''}>주문 접수</option>
+											<option value="준비 중" ${orderList.order_status == "준비 중" ? 'selected="selected"':''}>준비 중</option>
+											<option value="배달 중" ${orderList.order_status == "배달 중" ? 'selected="selected"':''}>배달 중</option>
+											<option value="배달 완료" ${orderList.order_status == "배달 완료" ? 'selected="selected"':''}>배달 완료</option>
 										</select>
 									</div>
 									<input type="button" class="btn btn-warning" class="checkBtn" onclick="orderCheck('${orderList.order_seq}')" value="확인"/>
@@ -92,10 +91,10 @@
 <script	src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
-
+<script	src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
 //var order_status = $("select[id=order_status"+order_seq+"]").val();
-
+	
 	function orderCheck(order_seq){
 		var order_seq = order_seq;
 		
@@ -108,10 +107,9 @@
 			data:{ order_seq : order_seq,
 					order_status : order_status
 				},
-			//dataType : "json",
 			type : "get",
 			success:function(data){				
-				//alert("success ???");
+				console.log(order_status);
 
 			},error:function(){
 				alert("failed");

@@ -131,8 +131,7 @@
 				if (log)
 					alert(log);
 			}
-			var tmppath = URL
-					.createObjectURL(event.target.files[0]);
+			var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#image').attr("src", tmppath);
 		});
 		$(document).on('change',":file",function() {
@@ -157,8 +156,7 @@
 				if (log)
 					alert(log);
 			}
-			var tmppath = URL
-					.createObjectURL(event.target.files[0]);
+			var tmppath = URL.createObjectURL(event.target.files[0]);
 			$('#Dimage').attr("src", tmppath);
 		});
 		$(document).on('change',":file",function() {
