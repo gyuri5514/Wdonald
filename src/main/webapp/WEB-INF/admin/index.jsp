@@ -252,7 +252,7 @@ var myBarChart = new Chart(xtx,{
 						<tbody>
 						<c:forEach items="${adminList}" var="adminList">
 							<tr>
-								<td>${adminList.store_name }</td>
+								<td><a href="storeUpdate.mdo?admin_seq=${adminList.admin_seq}">${adminList.store_name}</a></td>
 								<td>${adminList.store_code }</td>
 								<td>${adminList.admin_name }</td>
 								<td>${adminList.store_address }</td>

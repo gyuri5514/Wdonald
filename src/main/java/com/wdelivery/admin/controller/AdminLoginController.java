@@ -135,4 +135,20 @@ public class AdminLoginController {
 		session.invalidate();
 		return "redirect:login.mdo";
 	}
+	
+	//storeUpdate
+	@GetMapping("storeUpdate.mdo")
+	public String storeUpdate(AdminVO adminVO, Model model) {
+		adminVO = adminLoginService.storeUpdate(adminVO);
+		model.addAttribute("storeDetail", adminVO);
+		return "storeUpdate";
+	}
+	@PostMapping("storeUpdatedo.mdo") //하는 중
+	public String storeUpdatedo(AdminVO adminVO) {
+		System.out.println("?" + adminVO.toString());
+		adminLoginService.storeUpdate(adminVO);
+		
+		return "storeUpdate";
+	}
+	
 }

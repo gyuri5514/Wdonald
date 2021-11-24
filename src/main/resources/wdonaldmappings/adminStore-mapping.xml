@@ -19,4 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND store_code = #{store_code}
 		</if>
 	</select>
+	
+	<select id="orderList" resultType="paymentVO">
+		select * from order_list order by store_code desc
+	</select>
 </mapper>

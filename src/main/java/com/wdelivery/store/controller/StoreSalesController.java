@@ -71,13 +71,13 @@ public class StoreSalesController {
 		 AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 	       // Workbook wb = new HSSFWorkbook();
 	        Workbook wb = new XSSFWorkbook();
-	        Sheet sheet = wb.createSheet("Ã¹¹øÂ° ½ÃÆ®");
+	        Sheet sheet = wb.createSheet("ì²«ë²ˆì§¸ ì‹œíŠ¸");
 	        Row row = null;
 	        Cell cell = null;
 	        int rowNum = 0;
 
 	        // Header
-	        String[] header = {"±¸¸ÅÀÚ ¼ºÇÔ", "»ç¿ëÀÚÀÌ¸ŞÀÏ", "°áÁ¦¹æ¹ı", "±İ¾×", "³¯Â¥"};
+	        String[] header = {"êµ¬ë§¤ì ì„±í•¨", "ì‚¬ìš©ìì´ë©”ì¼", "ê²°ì œë°©ë²•", "ê¸ˆì•¡", "ë‚ ì§œ"};
 	        row = sheet.createRow(rowNum++);
 	        for(int i=0; i<header.length; i++) {
 	        	cell = row.createCell(i);
@@ -102,7 +102,7 @@ public class StoreSalesController {
 	            cell.setCellValue(date.format(paymentList.get(i).getOrder_date()));
 	        }
 
-	        // ÄÁÅÙÃ÷ Å¸ÀÔ°ú ÆÄÀÏ¸í ÁöÁ¤
+	        // ì»¨í…ì¸  íƒ€ì…ê³¼ íŒŒì¼ëª… ì§€ì •
 	        response.setContentType("ms-vnd/excel");
 	       // response.setHeader("Content-Disposition", "attachment;filename=example.xls");
 	        response.setHeader("Content-Disposition", "attachment;filename=example.xlsx");
@@ -112,6 +112,4 @@ public class StoreSalesController {
 	        wb.close();
 	    }
 	
-
-
 }
