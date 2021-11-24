@@ -41,10 +41,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addCoupon">
 		INSERT INTO coupon (coupon_code, coupon_title,
 		coupon_type, coupon_regdate,
-		coupon_enddate, coupon_status)
+		coupon_enddate, coupon_status,coupon_discount)
 		VALUES(#{coupon_code}, #{coupon_title}, #{coupon_type},
 		#{coupon_regdate},
-		#{coupon_enddate}, #{coupon_status})
+		#{coupon_enddate}, #{coupon_status},#{coupon_discount})
 	</insert>
 	<update id="statusCoupon">
 		UPDATE coupon SET coupon_status = #{coupon_status} WHERE coupon_code = #{coupon_code} 

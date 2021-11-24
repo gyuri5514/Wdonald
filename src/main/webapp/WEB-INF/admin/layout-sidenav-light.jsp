@@ -25,6 +25,7 @@
 								<th>쿠폰코드</th>
 								<th>쿠폰명</th>
 								<th>분류</th>
+								<th>할인금액</th>
 								<th>쿠폰등록일</th>
 								<th>유효일자</th>
 								<th>사용가능여부</th>
@@ -37,6 +38,7 @@
 								<td id="coupon_code">${vo.coupon_code}</td>
 								<td>${vo.coupon_title}</td>
 								<td>${vo.coupon_type}</td>
+								<td>${vo.coupon_discount }</td>
 								<td><fmt:formatDate value="${vo.coupon_regdate}" pattern="yyyy-MM-dd"/></td>
 								<td><fmt:formatDate value="${vo.coupon_enddate}" pattern="yyyy-MM-dd"/></td>
 								<td style="text-align: center;">
@@ -53,7 +55,7 @@
 										</select>
 									</div>
 								</td>
-								<td><button class="couponDelete" id="couponDelete" onClick="couponDelete()" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
+								<td><button class="couponDelete" id="couponDelete" onClick="couponDelete('${vo.coupon_code}')" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">삭제</button></td>
 							</tr>					
 						</c:forEach>							
 						</tbody>
@@ -78,9 +80,7 @@
 </div>
 
 <script type="text/javascript">
-	function couponDelete(){
-		var index = $("#coupon_code").text();
-		alert(index);
+	function couponDelete(index){
 			$.ajax({
 				type : 'post',
 				url : '/controller/deleteCoupon.mdo',

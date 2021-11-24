@@ -69,6 +69,13 @@ th {
 	width:30%
 }
 </style>
+<script type="text/javascript">
+function onSaleCouponBook(){
+	var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+	var popupY= (window.screen.height / 2) - (300 / 2)-150;
+	window.open('couponBook.do','_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
+}
+</script>
 </head>
 
 <div style="padding: 40px 0px 40px;">
@@ -88,10 +95,12 @@ th {
 			</div>
 		
 			<!-- coupon -->
+	
 <div class="col-md-9">
 	<h3 class="title-divider mt_0">
 		<span>쿠폰</span><small>Coupon</small>
 	</h3>
+	<div><a class="btn btn-red btn-lg" href="javascript:void(0);" onclick="onSaleCouponBook();">쿠폰 발급</a></div><br>
 			<table class="table-default table-panel table-addressbook">
 				<thead>
 					<tr>
@@ -102,10 +111,7 @@ th {
 					</tr>
 				</thead>
 				<tfoot>
-					<td colspan="5" class="actions">
 						<!-- <a class="btn btn-red btn-lg" href="addressupdate.do">새로운 주소 추가</a>	 -->	
-						<a class="btn btn-red btn-lg" href="main.do">메인화면으로 이동</a>
-					</td>
 				</tfoot>
 				<c:forEach items="${UserCouponVO}" var="coupon" varStatus="status"> 
 				<tbody>
@@ -124,8 +130,6 @@ th {
 						<c:if test="${coupon.coupon_status == 0}">
 							사용완료
 						</c:if>
-							<%-- <a class="text-gray-light" title="" onclick="del(${addressBook.address_seq})"><i class="far fa-trash-alt"></i> --%>
-						<!-- <input id="key" value="0" type="text"/> --> </a>
 						</td>
 					</tr>
 				</tbody>

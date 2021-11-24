@@ -157,9 +157,10 @@ public class AdminController {
 	
 	
 	@PostMapping("/addcouponInsert.mdo")
-	public String addcoupon(AdminCouponVO addcoupon) {
-		adminService.addCoupon(addcoupon);
-		addcoupon.setCoupon_status(1);
+	public String addCoupon(AdminCouponVO addCoupon) {
+		System.out.println(addCoupon);
+		adminService.addCoupon(addCoupon);
+		addCoupon.setCoupon_status(1);
 		return "redirect:layout-sidenav-light.mdo";
 	}
 
