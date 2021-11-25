@@ -168,7 +168,6 @@ public class MypageController {
 	@Transactional(rollbackFor = Exception.class)
 	@GetMapping("/orderCancel.do")
 	public String orderCancel(PaymentVO paymentVO, HttpSession session) {
-		System.out.println(paymentVO.toString());
 		memberService.orderCancel(paymentVO);
 		
 		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
