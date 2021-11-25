@@ -36,12 +36,6 @@
 		    console.log("ready!");
 		    init();		    
 		    
-		    $("#category").change(function() {
-		    	//alert($("#category option:selected").val());	// 01, 02
-		    	 //$("#SELECTED_DATA").val = $("#category option:selected").val();
-		    	search($("#category option:selected").val(),'C');
-		    	changeColor($("#category option:selected").val());
-		    });
 	    
 		});
 </script>
@@ -148,7 +142,7 @@
 										<span class="icon"> 
 											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_etc.png" alt="기타" />
 										</span>
-									</label>
+									</label>완정 인천광역시 검단4동
 								</span>
 							</div>
 						</div>
@@ -157,7 +151,7 @@
 							<fieldset class="srchBox">
 								<legend>질문 검색</legend>
 								<div class="form">
-									<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요">
+									<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요" onkeypress = "setSearchTypeSelect();">
 									<!-- <div class="selectWrap" id="selectWrap" style="z-index: 100000; width: 150px">
 										<select name="category" id="category" style="display: block; position: absolute; margin-left: -100000px;">
 											<option value="" title="전체">전체</option>
@@ -177,6 +171,7 @@
 										<input type="hidden" name="BBS_ID" id="BBS_ID" value="">
 										<input type="hidden" name="FAQ_TYPE_CD2" id="FAQ_TYPE_CD2" value=""> 
 										<input type="hidden" name="SELECTED_DATA" id="SELECTED_DATA" value=""> 
+										<input type="hidden" name="category" id="category" value=""> 
 										<!-- <input type="text" placeholder="검색어를 입력해주세요." title="검색어 입력" style="width: 720px"
 											name="srchKeyword" id="srchKeyword"	onkeydown="javascript:if (event.keyCode == 13) {search('','S');}"/> -->
 									</form>
@@ -489,15 +484,14 @@
 <script>
 	function setSearchTypeSelect() {
 		var $keyword = $('#keyword');
+		var category = $('#category').val();
 		
-		$('#searchBtn').on('click',function() {
-			var keywordVal = $keyword.val();
-			
-			var url = "faq.do?page=" + "${pageMaker.cri.page}"
-				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
-				+ "&keyword=" + encodeURIComponent(keywordVal);
-			window.location.href = url;
-		})
+		var keywordVal = $keyword.val();
+		
+		var url = "faq.do?page=" + "${pageMaker.cri.page}"
+			+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
+			+ "&keyword=" + encodeURIComponent(keywordVal) + "&category="+category;
+		window.location.href = url;
 	}
 </script>
 <%@ include file="footer.jsp"%>

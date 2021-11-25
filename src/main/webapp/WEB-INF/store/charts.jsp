@@ -439,7 +439,7 @@ function getNewChart(){
                   <i class="fas fa-chart-pie me-1"></i> 상품 인기순
                </div>
                <div class="card-body">
-                  <canvas id="myPieChart" width="100%" height="111"></canvas>
+                  <canvas id="myPieChart" width="100%" height="104"></canvas>
                </div>
                <script type="text/javascript">
             // Set new default font family and font color to mimic Bootstrap's default styling

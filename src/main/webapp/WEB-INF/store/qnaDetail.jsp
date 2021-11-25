@@ -34,7 +34,7 @@
 				</div>
 				<div style="margin-left: 100px;">
 				<form action = "qnaQaInsert.sdo" method="get">
-					<input type="hidden" name="admin_seq" value="${sessionScope.admin.admin_seq}">
+					<input type="hidden" name="admin_seq" value="${sessionScope.store_admin.admin_seq}">
 					<input type="hidden" name="qa_seq" value="${qnaDetail.qa_seq}">
 					<table style="width: 90%;"> 	
 						<tr>

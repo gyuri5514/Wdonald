@@ -798,7 +798,9 @@ legend {
 }
 
 .faqBg {
-  background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/visual_bg01_new.png") 50% no-repeat;
+
+  background: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/banner/visual_bg01_new.png") 10% no-repeat;
+
   color: #2D2D2D;
   background-color: #f8f2ed;
 }
