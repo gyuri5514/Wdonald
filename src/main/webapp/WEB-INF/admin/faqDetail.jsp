@@ -5,6 +5,14 @@
 		margin-top : 20px;
 		height: 500px;
 	}
+	
+	table, td, th {
+		border : 1px solid #FFD232;
+		border-collapse : collapse;	
+		margin: 15px;
+		padding: 10px;
+		font-size: 20px;
+	};
 </style>
 <body>
 	<div id="layoutSidenav_content">
@@ -25,19 +33,24 @@
 					<i class="fas fa-table me-1"></i> FAQ
 				</div>
 				<form action = "updateFaq.mdo" method="get">
-				<div>
+				<table style="width: 90%;"> 
+				<tr>
+						<td style="text-align: center">카테고리</td>
+					<td>
 					<select id="faq_name" name="faq_name">
 						<option value="채용">채용</option>
 						<option value="구매">구매</option>
 						<option value="매장이용">매장이용</option>
-						<option value="맥딜리버리">맥딜리버리</option>
+						<option value="윈딜리버리">윈딜리버리</option>
 						<option value="메뉴">메뉴</option>
 						<option value="프랜차이즈">프랜차이즈</option>
-						<option value="맥도날드앱">맥도날드앱</option>
+						<option value="윈도날드앱">윈도날드앱</option>
 						<option value="기타">기타</option>
 					</select>
-				</div>
-				<c:set value="${'#faq_name.val()' }" var="subject"></c:set>
+					</td>
+				</tr>	
+						
+				<%-- <c:set value="${'#faq_name.val()' }" var="subject"></c:set>
 				<c:if test="${subject eq '채용' }">
 						<input type="hidden" value="recruit" name="faq_subject"/>
 				</c:if>
@@ -62,21 +75,23 @@
 				<c:if test="${subject eq '맥도날드앱' }">
 					<input type="hidden" value="app" name="faq_subject"/>
 				</c:if>
-			
-				<input type="hidden" name="faq_seq" value="${faqDetail.faq_seq}">
-				<div>
-					<div style="margin: 10px 0px 10px 0px; display:flex; font-size: 30px">
-						<div>FAQ 제목 : &emsp;</div>
-						<textarea id="faq_title" name="faq_title">${faqDetail.faq_title}</textarea>
-					</div>
-					<div class="form-group" style="font-size:30px">
-						<label>내용</label>
- 						<textarea id="faq_content" name="faq_content" style="margin: 10px 0px 10px 0px; text-align:left; margin-left:50px; border:solid 1px lightgray; width:97%">${faqDetail.faq_content}</textarea>
-					<!-- <input type="text" class="form-control" placeholder="anjdi" readonly="readonly"> -->
- 					</div>
-				</div>
+			 --%>
+				 <tr>
+					<td style="text-align: center">제목<input type="hidden" name="faq_seq" value="${faqDetail.faq_seq}"/></td>
+					<td>
+						<textarea id="faq_title" name="faq_title" style="width: 90%;">${faqDetail.faq_title}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: center">공지내용</td>
+					<td style="">
+					<textarea id="faq_content" name="faq_content" style="width: 90%; height: 200px;">${faqDetail.faq_content}</textarea></td>
+	 			</tr>
+			</table>
 					<div style="float:right">
-						<input type="submit" class="btn btn-primary" value="확인">
+						<input type="submit" class="btn btn-primary" value="수정하기">
+						<button class="btn btn-danger" onclick="deleteFaq();" >삭제하기</button>
+						<a href="faqBoard.mdo" class="btn btn-primary">목록</a>
 					</div>
 				</form>
 			</div>
@@ -108,7 +123,16 @@
 			}
 		});
 	}) */
-	
+	function deleteFaq(){
+		if (confirm("정말 삭제하시겠습니까?")==true) {
+			//alert("되나??" + ${faqDetail.faq_seq});
+			
+			location.href = "/controller/deleteFaq.mdo?faq_seq=${faqDetail.faq_seq}";
+			alert("삭제되었습니다.");
+		}else{
+			return;
+		}
+	}
 	var name = '${faqDetail.faq_name}';
 	for (var i = 0; i < $("#faq_name option").length; i++) {
 		if (name == $("#faq_name option:eq("+i+")").val()) {

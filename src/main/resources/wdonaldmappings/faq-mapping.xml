@@ -42,12 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertFaq">
-		INSERT INTO faq (faq_title, faq_content, faq_name, faq_subject)
-		VALUES (#{faq_title}, #{faq_content}, #{faq_name}, #{faq_subject})
+		INSERT INTO faq (faq_title, faq_content, faq_name)
+		VALUES (#{faq_title}, #{faq_content}, #{faq_name})
 	</insert>
 	
 	<update id="updateFaq">
-		UPDATE faq SET faq_title = #{faq_title}, faq_content = #{faq_content}, faq_name = #{faq_name}, faq_subject= #{faq_subject} 
+		UPDATE faq SET faq_title = #{faq_title}, faq_content = #{faq_content}, faq_name = #{faq_name} 
 		WHERE faq_seq = #{faq_seq}
 	</update>
 	

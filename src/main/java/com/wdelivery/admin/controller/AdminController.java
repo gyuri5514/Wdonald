@@ -283,4 +283,23 @@ public class AdminController {
 		return "redirect:faqBoard.mdo";
 	}
 	
+	@GetMapping("/deleteFaq.mdo")
+	public String deleteFaq(@RequestParam(name = "faq_seq")int faq_seq) {
+		faqService.deleteFaq(faq_seq);
+		//System.out.println("faq " + faq_seq);
+		return "redirect:faqBoard.mdo";
+	}
+	
+	@GetMapping("/addFaq.mdo")
+	public String addFaq(){
+		
+		return "addFaq";
+	}
+	@PostMapping("/addFaq.mdo")
+	public String insertFaq(FaqVO faqVO){
+		faqService.insertFaq(faqVO);
+		System.out.println("등록" + faqVO.toString());
+		return "redirect:faqBoard.mdo";
+	}
+	
 }
