@@ -57,6 +57,9 @@ $("#m_email").blur(function(){
         if ($chk_login_pwd  != $chk_login_pwd2 && $.trim($chk_login_pwd2) != "" ) {
             $msgTxt   = "<span class='id_str_msg_x text-danger'><small>[패스워드]와 [패스워드 확인]이 일치하지 않습니다.</small></span><br/>";
             $("#pwd_chk_msg2").html($msgTxt).show();
+        }else{
+        	 $msgTxt   = "<span class='id_str_msg_x text-success'><small>[패스워드]와 [패스워드 확인]이 일치합니다.</small></span><br/>";
+            $("#pwd_chk_msg2").html($msgTxt).show();
         }
 
     }); //$("#m_password2").blur

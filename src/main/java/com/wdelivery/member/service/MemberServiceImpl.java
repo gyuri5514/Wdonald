@@ -235,6 +235,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void toyCancel(ToyCountVO toyCountVO) {
 		memberDAO.toyCancel(toyCountVO);
+  }
+  
+  @Override
+	public List<AdminCouponVO> getUserCoupons(UserVO userVO) {
+		return memberDAO.getUserCoupons(userVO);
 	}
 
 }

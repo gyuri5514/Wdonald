@@ -68,4 +68,6 @@ public interface MemberService {
 
 	int registerUserCoupon(AdminCouponVO acv);
 
+	List<AdminCouponVO> getUserCoupons(UserVO userVO);
+
 }

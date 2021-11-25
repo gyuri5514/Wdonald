@@ -5,11 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.faq.dao.FaqDAO">
 	<select id="faqSelect" resultType="faqVO"> 
 		<![CDATA[
-			SELECT * FROM faq
+			SELECT * FROM faq 
 		]]>
 		
-		<if test="keyword != null">
+		<if test="keyword != null and category == null">
 			WHERE faq_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keyword != null and category != null">
+			WHERE faq_name = #{category} AND faq_title LIKE CONCAT('%', #{keyword}, '%') 
 		</if>
 		<![CDATA[
 			ORDER BY faq_seq ASC
@@ -42,12 +45,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertFaq">
-		INSERT INTO faq (faq_title, faq_content, faq_name, faq_subject)
-		VALUES (#{faq_title}, #{faq_content}, #{faq_name}, #{faq_subject})
+		INSERT INTO faq (faq_title, faq_content, faq_name)
+		VALUES (#{faq_title}, #{faq_content}, #{faq_name})
 	</insert>
 	
 	<update id="updateFaq">
-		UPDATE faq SET faq_title = #{faq_title}, faq_content = #{faq_content}, faq_name = #{faq_name}, faq_subject= #{faq_subject} 
+		UPDATE faq SET faq_title = #{faq_title}, faq_content = #{faq_content}, faq_name = #{faq_name} 
 		WHERE faq_seq = #{faq_seq}
 	</update>
 	

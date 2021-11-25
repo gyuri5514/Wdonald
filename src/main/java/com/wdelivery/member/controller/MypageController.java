@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,9 @@ import com.wdelivery.member.vo.UserVO;
 public class MypageController {
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired 
+	private BCryptPasswordEncoder pwdEncoder;
 
 	@GetMapping("/mypageupdate.do")
 	public String mypageupdate(Model model, HttpSession session, UserVO userVO) {
@@ -43,6 +47,14 @@ public class MypageController {
 
 	@PostMapping("/mypageUpdate.do")
 	public String mypageUpdate(UserVO userVO, HttpSession session) {
+		
+		String rawPw = ""; //주석 MemberLoginController 참고
+		String encodePw = "";
+		
+		rawPw = userVO.getUser_password();
+		encodePw = pwdEncoder.encode(rawPw);
+		userVO.setUser_password(encodePw);
+		
 		memberService.mypageUpdate(userVO);
 		return "redirect:mypageupdate.do";
 	}

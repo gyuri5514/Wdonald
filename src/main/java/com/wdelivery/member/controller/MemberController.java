@@ -1,7 +1,9 @@
 package com.wdelivery.member.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -560,18 +562,62 @@ public class MemberController {
 
 	@GetMapping("/faq.do")
 	public String faq(Model model, Criteria cri) {
+		if(cri.getCategory() == "") 
+			cri.setCategory(null);
+		System.out.println(cri.getCategory());
 		List<FaqVO> vo = faqService.faqSelect(cri);
-
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(faqService.totalFaq(cri));
-
+		
+		model.addAttribute("category",cri.getCategory());
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageMaker", pageMaker);
 
 		return "faq";
 	}
-
+	
+	 @GetMapping("/faqSelect.do")
+	    @ResponseBody
+	    public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect,
+	            @RequestParam(value = "KeywordSelect", required = false) String KeywordSelect) {
+	        List<FaqVO> faqList = new ArrayList<FaqVO>();
+	        if (MenuSelect != null && KeywordSelect == null) {
+	            /*
+	             * System.out.println("MenuSelect : " + MenuSelect);
+	             * System.out.println("KeywordSelect : " + KeywordSelect);
+	             */
+	            faqList = faqService.MenuSelect(MenuSelect);
+	            /*
+	             * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
+	             * System.out.println(faqList1.getFaq_name());
+	             * System.out.println(faqList1.getFaq_title());
+	             * System.out.println(faqList1.getFaq_content());
+	             * 
+	             * }
+	             */
+	        } else if (MenuSelect != null && KeywordSelect != null) {
+	            Map<String, String> map = new HashMap<String, String>();
+	            map.put("MenuSelect", MenuSelect);
+	            map.put("KeywordSelect", KeywordSelect);
+	            /*
+	             * System.out.println("MenuSelect : " + MenuSelect);
+	             * System.out.println("KeywordSelect : " + KeywordSelect);
+	             */
+	            faqList = faqService.KeywordSelect(map);
+	            /*
+	             * for(FaqVO faqKeyword1 : faqList) {
+	             * System.out.println(faqKeyword1.getFaq_seq());
+	             * System.out.println(faqKeyword1.getFaq_name());
+	             * System.out.println(faqKeyword1.getFaq_title());
+	             * System.out.println(faqKeyword1.getFaq_content());
+	             * 
+	             * }
+	             */
+	        }
+	        return faqList;
+	    }
 
 	@GetMapping("/couponSearch.do")
 	@ResponseBody
@@ -702,28 +748,35 @@ public class MemberController {
 	public String paymentWin(Model model, @RequestParam(value = "price", required = false) String price,
 			@RequestParam(value = "delivery_price", required = false) String delivery_price,
 			@RequestParam(value = "address", required = false) String address,
-			@RequestParam(value = "coupon", required = false) String coupon,
 			@RequestParam(value = "lat", required = false) double lat,
 			@RequestParam(value="order_comment",required = false) String order_comment,
-			@RequestParam(value = "lon", required = false) double lon, HttpSession session) {
+			@RequestParam(value = "lon", required = false) double lon,
+			@RequestParam(value="coupon_code",required = false) String coupon_code,
+			@RequestParam(value="coupon_title",required = false) String coupon_title,
+			@RequestParam(value="discount",required = false) int discount,
+			HttpSession session) {
 		// coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액,
 		// delivery_price - 배달료
 		 
 		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
-		
+		System.out.println(coupon_title+" "+coupon_code+" "+discount);
 		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
 		 
 		if (newStore == null) {
 			model.addAttribute("notAvailable", "noStoreNear");
 			return "orderConfirm";
 		}
+		if(coupon_code!=null) {
+			model.addAttribute("coupon_title",coupon_title);
+			model.addAttribute("coupon_code",coupon_code);
+		}
 		model.addAttribute("order_comment",order_comment);
 		model.addAttribute("store", newStore);
 		model.addAttribute("address", address);
 		model.addAttribute("price", Integer.parseInt(price)-Integer.parseInt(delivery_price));
 		model.addAttribute("delivery_cost", delivery_price);
-		model.addAttribute("total_price", price);
-		model.addAttribute("discount", 0);
+		model.addAttribute("total_price", Integer.parseInt(price)-discount);
+		model.addAttribute("discount", discount);
 		return "paymentWin";
 	}
 
@@ -753,7 +806,17 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("registerUserCoupon.do")
 	public int registerUserCoupon(@RequestBody AdminCouponVO acv) {
-		System.out.println("=========================>"+acv.toString());
 		return memberService.registerUserCoupon(acv);
 	}
+	@RequestMapping("myCouponBook.do")
+	public String myCouponBook(HttpSession session, Model model,
+			@RequestParam("price") int price) {
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
+		if(userVO==null) 
+			return "noResult";
+		model.addAttribute("myCouponList",memberService.getUserCoupons(userVO));
+		model.addAttribute("price",price);
+		return "myCouponBook";
+	}
+	
 }

@@ -131,7 +131,7 @@
 		<div class="row row-narrow">
 			<div class="col-xs-8" id="col-xs-8">
 				<form name="orderForm" id="orderForm" role="form"  method="get"  >
-					<div class="panel panel-lg panel-default">
+					<div class="panel panel-lg panel-default" style="width:580px">
 						<div class="panel-heading">
 							<h3>	
 								<span>주문 정보</span>
@@ -164,8 +164,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_Lgset_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_b_set_code != null}">
@@ -212,8 +212,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null}">
@@ -232,8 +232,8 @@
 														<div>${cartList.cart_s_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_s_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null }">
@@ -252,8 +252,8 @@
 														<div>${cartList.cart_d_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_d_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_set_code != null}">
@@ -277,8 +277,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_set_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_code != null && cartList.cart_w_set_code == null}">
@@ -297,8 +297,8 @@
 														<div>${cartList.cart_w_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_h_code != null}">
@@ -321,8 +321,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_h_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_dessert_code != null}">
@@ -341,8 +341,8 @@
 														<div>${cartList.cart_dessert_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_dessert_price}"/>
-													<td class="cost">₩${formatPrice}</td>
 													<td class="many">${cartList.cart_quantity}개</td>
+													<td class="cost">₩${formatPrice}</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -367,6 +367,10 @@
 										<input type="hidden" id="address" name="address" value="${addressList[0].address1} ${addressList[0].address2}">
 										<input type="hidden" id="m_zipcode" name="" value="${addressList[0].address1}">
 										<input type="hidden" id="order_comment" name="order_comment" value="">
+										<input type="hidden" id="coupon_code" name="coupon_code" value="">
+										<input type="hidden" id="coupon_title" name="coupon_title" value="">
+										<input type="hidden" id="discount" name="discount" value="0">
+										
 						</c:if>
 						<c:if test="${addressList eq null}">
 										<input type="hidden" id="userAddress_lat" name="lat">
@@ -379,16 +383,19 @@
 				</div>
 				<div class="col-xs-4" id="col-xs-4">
 					<!-- <form name="form_order_summary" id="form_order_summary" th:action="@{/applyCoupon.html}" method="post" role="form" data-required-symbol="*" accept-charset="utf-8">  -->
-					<div class="panel panel-basic panel-narrow order-summary">
+					<div class="panel panel-basic panel-narrow order-summary" style="width:580px;">
 						<div class="panel-heading">
 							<h3 class="text-center">주문 요약</h3>
 						</div>
 						<script type="text/javascript">
-							function openAddressPopup(){
-								var popupX = (document.body.offsetWidth / 2) - (200 / 2);
-								var popupY= (window.screen.height / 2) - (300 / 2)-150;
-								window.open('popupAddress.do','_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
-							}
+						var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+						var popupY= (window.screen.height / 2) - (300 / 2)-150;
+						function openAddressPopup(){
+							window.open('popupAddress.do','_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
+						}
+						function myCouponBook(price){
+							window.open('myCouponBook.do?price='+price,'_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
+						}
 						</script>
 						<div class="panel-section-group">
 							<section class="panel-section section-delivery-address">
@@ -410,7 +417,7 @@
 												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" value="${addressList[0].address2}" style="height : 30px; color: #999"/></th>
 											</tr>
 											<tr>
-											<th colspan="4" style="height : 30px; color: #999">주문시 요청사항</th>
+											<th colspan="4" style="padding:2px 0;">주문시 요청사항</th>
 											</tr>
 											<tr>
 												<th colspan="4"><input id="order_comment_out" placeholder="요청사항을 적어주세요" type="text" class="form-control" name="order_comment" value="${addressList[0].order_comment}" style="height : 30px; color: #999"/></th>
@@ -432,7 +439,7 @@
 												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/></th>
 											</tr>
 											<tr>
-											<th colspan="4" style="height : 30px; color: #999">주문시 요청사항</th>
+											<th colspan="4" style="padding:2px 0;">주문시 요청사항</th>
 											</tr>
 											<tr>
 												<th colspan="4"><input id="order_comment_out" placeholder="요청사항을 적어주세요" type="text" class="form-control" name="order_comment"value="" style="height : 30px; color: #999"/></th>
@@ -460,24 +467,17 @@
 							</section>
 							<section class="panel-section section-promocode">
 								<div>
-									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span>할인 쿠폰</span> <i class="fa"></i></a>
+									<a href="#" onclick="couponOpen()" class="action-link action-edit action-edit-promocode collapsed" data-toggle="collapse"> <span style="font-familyl: SpeedeeK">할인 쿠폰</span> <i class="fa"></i></a>
 									<div id="enter-promocode" class="collapse">
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="#">
 											<div class="form-group">
 												<div class="input-group">
-													<c:if test="${userInfo == null}">
-														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;" readonly>
+													<c:if test="${!empty sessionScope.userInfo || !empty sessionScope.kakaoSession || !empty sessionScope.naverSession}">
+														<input type="text" name="couponCode" id="couponCode" readonly="readonly" class="form-control"  style="height : 35px;">
 														<div class="input-group-btn">
-														<button type="button" class="btn btn-red" onclick="couponBtn()" disabled>
-															적용
-														</button>
-													</div>
-													</c:if>
-													<c:if test="${userInfo != null}">
-														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;">
-														<div class="input-group-btn">
-														<button type="button" onclick="couponBtn()" class="btn btn-red">
-															적용
+														<!-- <button type="button" onclick="couponBtn()" class="btn btn-red"> -->
+														<button type="button" onclick="myCouponBook('${price}');" class="btn btn-red">
+															내쿠폰함
 														</button>
 													</div>
 													</c:if>
@@ -500,7 +500,7 @@
 												<c:when test="${cartList != null}">
 													<th scope="row"><span>총 주문합계:</span></th>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${price}"/>
-													<td><span>₩${formatPrice} </span></td>
+													<td>₩<span id="spanPrice">${formatPrice} </span></td>
 												</c:when>
 											</c:choose>
 										</tr>
@@ -508,7 +508,8 @@
 									<tbody>
 										<tr>
 											<th scope="row"><span>배달료:</span></th>
-											<td>₩ ${delivery_price}</td>
+											<fmt:formatNumber type="number" maxFractionDigits="3" var="delivery_price" value="${delivery_price}"/>
+											<td><span>+₩${delivery_price}</span></td>
 										</tr>
 										<!-- MDSAP-11635-v1 -->
 										

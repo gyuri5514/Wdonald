@@ -51,6 +51,7 @@
 						</tbody>
 					</table>
 				</div>
+				<a class="btn btn-primary" href="addFaq.mdo">등록하기</a>
 			</div>
 		</div>
 	</main>

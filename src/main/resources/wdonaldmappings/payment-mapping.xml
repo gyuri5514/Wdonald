@@ -10,13 +10,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into order_list (user_type,user_name,order_date,
 						user_address,user_phone,order_status,
 						total_price,discount,final_price,order_comment,
-						payment_type,store_code,coupon_no,merchantuid,
-						pay_status,user_email,exactcash)
+						payment_type,store_code,merchantuid,
+						pay_status,user_email,exactcash,coupon_code,coupon_title)
 						values  (#{user_type},#{user_name},#{order_date}
 						,#{user_address},#{user_phone},'주문 접수',#{total_price}
 						,#{discount},#{final_price},#{order_comment}
-						,#{payment_type},#{store_code},#{coupon_no},#{merchantuid},
-						#{pay_status},#{user_email},#{exactCash})
+						,#{payment_type},#{store_code},#{merchantuid},
+						#{pay_status},#{user_email},#{exactCash},#{coupon_code},#{coupon_title})
 		]]>
 	</insert>
 		<!-- this query might be discarded  -->

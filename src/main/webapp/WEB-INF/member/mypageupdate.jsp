@@ -107,13 +107,8 @@
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-xs-12">
-									<script type="text/javascript"
-										src="resources/js/join/memJoin.js"></script>
-									<form method="post" role="form"
-										data-form-sync="#form_consentnewnumber"
-										class="form form-register" id="form_accountsetting"
-										name="form_accountsetting" data-required-symbol="*"
-										autocomplete="off">
+									<script type="text/javascript" src="resources/js/join/myPage.js"></script>
+									<form method="post" role="form" data-form-sync="#form_consentnewnumber" class="form form-register" id="form_accountsetting" name="form_accountsetting" data-required-symbol="*" autocomplete="off">
 										<c:choose>
 											<c:when test="${not empty sessionScope.userInfo}">
 												<input type="hidden" name="user_seq"
@@ -241,27 +236,21 @@
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="form-group">
-														<label for="m_password">새로운 패스워드</label> <input
-															type="hidden" id="login_pwd_chk" name="login_pwd_chk"
-															value="0" /> <input type="password" id="m_password"
-															name="user_password" value="" maxlength="16"
-															class="form-control placeholder" /> <span
-															id="pwd_chk_msg" class="f11_ment"> <span
-															class="pwd_str_msg" level="0" style="display: none;">
-																<small>패스워드 안전도 : <strong
-																	class="level0 text-danger">사용불가</strong></small>
-														</span> <span class="pwd_str_msg" level="1"
-															style="display: none;"> <small>패스워드 안전도 :
-																	<strong class="level1 text-warning">낮음</strong>
-															</small>
-														</span> <span class="pwd_str_msg" level="2"
-															style="display: none;"> <small>패스워드 안전도 :
-																	<strong class="level2 text-primary">적정</strong>
-															</small>
-														</span> <span class="pwd_str_msg" level="3"
-															style="display: none;"> <small>패스워드 안전도 :
-																	<strong class="level3 text-success">높음</strong>
-															</small>
+														<label for="m_password">새로운 패스워드</label> 
+														<input type="hidden" id="login_pwd_chk" name="login_pwd_chk" value="0" /> 
+														<input type="password" id="m_password" name="user_password" value="" maxlength="16" class="form-control placeholder" /> 
+														<span id="pwd_chk_msg" class="f11_ment"> 
+														<span class="pwd_str_msg" level="0" style="display: none;">
+															<small>패스워드 안전도 : <strong class="level0 text-danger">사용불가</strong></small>
+														</span> 
+														<span class="pwd_str_msg" level="1" style="display: none;"> 
+															<small>패스워드 안전도 :<strong class="level1 text-warning">낮음</strong></small>
+														</span> 
+														<span class="pwd_str_msg" level="2" style="display: none;"> 
+															<small>패스워드 안전도 :<strong class="level2 text-primary">적정</strong></small>
+														</span> 
+														<span class="pwd_str_msg" level="3" style="display: none;"> 
+															<small>패스워드 안전도 :<strong class="level3 text-success">높음</strong></small>
 														</span>
 
 														</span>
