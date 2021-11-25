@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="quartzService" class="com.wdelivery.quartz.service.QuartzWdonaldServiceImpl"/>
+	
+	<bean name="wordCloudJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"><!-- Quartz 2.x 버전 -->
+		<property name="jobClass">
+			<value>com.wdelivery.quartz.QuartzWdonald</value>
+		</property>
+		<property name="jobDataAsMap"> 
+			<map> 
+				<entry key="quartzService" value-ref="quartzService" /> 
+			</map> 
+		</property>
+	</bean>
+	
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"><!-- Quartz 2.x 버전 -->
+		<property name="jobDetail">
+			<ref bean="wordCloudJob"/>
+		</property>
+		<property name="cronExpression">
+			<!-- 주석처리용이 진짜고 주석풀린건 테스트용(1분마다) -->
+			<!-- <value>0 0 0 1/1 * ? *</value> -->			
+			<value>0 0/1 * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+</beans>
