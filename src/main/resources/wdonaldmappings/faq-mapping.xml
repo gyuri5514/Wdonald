@@ -5,11 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.faq.dao.FaqDAO">
 	<select id="faqSelect" resultType="faqVO"> 
 		<![CDATA[
-			SELECT * FROM faq
+			SELECT * FROM faq 
 		]]>
 		
-		<if test="keyword != null">
+		<if test="keyword != null and category == null">
 			WHERE faq_title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keyword != null and category != null">
+			WHERE faq_name = #{category} AND faq_title LIKE CONCAT('%', #{keyword}, '%') 
 		</if>
 		<![CDATA[
 			ORDER BY faq_seq ASC

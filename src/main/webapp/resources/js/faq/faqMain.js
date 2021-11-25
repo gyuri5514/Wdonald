@@ -28,43 +28,23 @@ function init() {
 }
 
 function changeColor(obj) {
-	//document.getElementById(obj).style.backgroundColor = "#ffbc0d";
-
-	for (i = 1; i < document.getElementById("category").options.length + 1; i++) {	// 01 ~ 09
-		// id = 05 는 없다.
-		if (i != 6) {
-			document.getElementById("0" + i).style.backgroundColor = "#fff";
-			document.getElementById("0" + i).style.border = "1px solid #d1d1d1";
-		}
-	}
-	document.getElementById(obj).style.backgroundColor = "#ffbc0d";
-	document.getElementById(obj).style.border = "3px solid #ffbc0d";
-
-	// selectbox selected
-	for (i = 0; i < document.getElementById("category").options.length; i++) {
-		if (document.getElementById("category").options[i].value == obj) {
-			document.getElementById("category").options[i].selected = "selected";
-			var span = document.getElementsByClassName("ui-selectmenu-text");
-
-			if (obj == "01") {
-				span[0].innerHTML = '구매';
-			} else if (obj == "02") {
-				span[0].innerHTML = '매장이용';
-			} else if (obj == "03") {
-				span[0].innerHTML = '맥딜리버리';
-			} else if (obj == "04") {
-				span[0].innerHTML = '메뉴';
-			} else if (obj == "05") {
-				span[0].innerHTML = '채용';
-			} else if (obj == "07") {
-				span[0].innerHTML = '프랜차이즈';
-			} else if (obj == "08") {
-				span[0].innerHTML = '기타';
-			} else if (obj == "09") {
-				span[0].innerHTML = '맥도날드앱';
+	$('span').each(function(){
+		if($(this).attr("id") == obj) {
+			if($(this).hasClass("selected")) {
+				$(this).removeClass("selected");
+				$(this).find('label').css("background","#fff");
+				$(this).find('label').css("border","");
+			} else {
+				$(this).addClass("selected");
+				$(this).find('label').css("background","#ffbc0d");
+				$(this).find('label').css("border","3px solid #ffbc0d");
 			}
+		} else {
+			$(this).removeClass("selected");
+			$(this).find('label').css("background","#fff");
+			$(this).find('label').css("border","");
 		}
-	}
+	})
 }
 
 function search(type,type2)
@@ -100,6 +80,9 @@ function search(type,type2)
    }
    console.log(MenuSelect);
    console.log(KeywordSelect);
+
+	$('#category').val(MenuSelect);
+
    if(type2 == "C")
    {
       //console.log("type2 : C");
