@@ -745,28 +745,35 @@ public class MemberController {
 	public String paymentWin(Model model, @RequestParam(value = "price", required = false) String price,
 			@RequestParam(value = "delivery_price", required = false) String delivery_price,
 			@RequestParam(value = "address", required = false) String address,
-			@RequestParam(value = "coupon", required = false) String coupon,
 			@RequestParam(value = "lat", required = false) double lat,
 			@RequestParam(value="order_comment",required = false) String order_comment,
-			@RequestParam(value = "lon", required = false) double lon, HttpSession session) {
+			@RequestParam(value = "lon", required = false) double lon,
+			@RequestParam(value="coupon_code",required = false) String coupon_code,
+			@RequestParam(value="coupon_title",required = false) String coupon_title,
+			@RequestParam(value="discount",required = false) int discount,
+			HttpSession session) {
 		// coupon - 쿠폰코드, lat - 위도, lon - 경도, address - 주소 + 상세주소, price - 총금액,
 		// delivery_price - 배달료
 		 
 		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
-		
+		System.out.println(coupon_title+" "+coupon_code+" "+discount);
 		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
 		 
 		if (newStore == null) {
 			model.addAttribute("notAvailable", "noStoreNear");
 			return "orderConfirm";
 		}
+		if(coupon_code!=null) {
+			model.addAttribute("coupon_title",coupon_title);
+			model.addAttribute("coupon_code",coupon_code);
+		}
 		model.addAttribute("order_comment",order_comment);
 		model.addAttribute("store", newStore);
 		model.addAttribute("address", address);
 		model.addAttribute("price", Integer.parseInt(price)-Integer.parseInt(delivery_price));
 		model.addAttribute("delivery_cost", delivery_price);
-		model.addAttribute("total_price", price);
-		model.addAttribute("discount", 0);
+		model.addAttribute("total_price", Integer.parseInt(price)-discount);
+		model.addAttribute("discount", discount);
 		return "paymentWin";
 	}
 
@@ -796,7 +803,17 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("registerUserCoupon.do")
 	public int registerUserCoupon(@RequestBody AdminCouponVO acv) {
-		System.out.println("=========================>"+acv.toString());
 		return memberService.registerUserCoupon(acv);
 	}
+	@RequestMapping("myCouponBook.do")
+	public String myCouponBook(HttpSession session, Model model,
+			@RequestParam("price") int price) {
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
+		if(userVO==null) 
+			return "noResult";
+		model.addAttribute("myCouponList",memberService.getUserCoupons(userVO));
+		model.addAttribute("price",price);
+		return "myCouponBook";
+	}
+	
 }

@@ -10,8 +10,8 @@
 <meta name="description" id="description" content="메뉴, 레스토랑, 프로모션 등 안내"/>
 <meta name="keywords" content="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
-<!-- <link rel="stylesheet" type="text/css" href="resources/css/bam.css"> -->
-<link rel="stylesheet" href="resources/css/main/custom.css">
+<link rel="stylesheet" type="text/css" href="resources/css/bam.css">
+<link rel="stylesheet" type="text/css" href="resources/css/main/custom.css">
 <link rel="alternate" href="https://www.mcdonalds.co.kr">
 <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services,clusterer,drawing"></script>
 <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-15032749-2"></script>

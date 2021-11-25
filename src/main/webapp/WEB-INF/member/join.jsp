@@ -149,7 +149,7 @@ ID와 Password를 발급받으신 분을 의미합니다. 법인 혹은 단체�
 
 			</textarea>
 			<div class="form-group mt_5">
-				<label for="checkbox1">
+				<label for="checkbox1" style="color:#000">
 					<input type="checkbox" name="checkbox1" id="checkbox1" value="1" /> 
 					한국 윈도날드의 회원가입 사이트 이용약관에 동의합니다.
 				</label>
@@ -172,7 +172,7 @@ ID와 Password를 발급받으신 분을 의미합니다. 법인 혹은 단체�
 &nbsp;&nbsp;달성할 때까지 귀하의 개인정보를 보유 및 이용합니다.
 			</textarea>
 			<div class="form-group mt_5">
-				<label for="checkbox2"><input type="checkbox" name="checkbox2" id="checkbox2" value="2" /> 개인정보 처리에 동의합니다.</label>
+				<label for="checkbox2" style="color:#000"><input type="checkbox" name="checkbox2" id="checkbox2" value="2" /> 개인정보 처리에 동의합니다.</label>
 			</div>
 			<div class="b_btn_c">
 				<a href="javascript:join_chk()" class="btn btn-md btn-red" >확인</a>
