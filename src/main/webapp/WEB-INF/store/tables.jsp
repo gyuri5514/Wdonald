@@ -31,6 +31,7 @@
 								<th style="display:none;">seq</th>
 								<th>주문 날짜</th>
 								<th>주소</th>
+								<th>쿠폰명</th>
 								<th>주문자</th>
 								<th>주문자번호</th>
 								<th>결제금액</th>
@@ -45,6 +46,7 @@
 								<td style="display:none;">${orderList.order_seq}</td>
 								<td>${orderDate}</td>
 								<td>${orderList.user_address}</td>
+								<td>${orderList.coupon_title }</td>
 								<td>${orderList.user_name}</td>
 								<td>${orderList.user_phone}</td>
 								<td>${orderList.final_price}</td>

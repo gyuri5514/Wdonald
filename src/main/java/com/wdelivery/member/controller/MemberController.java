@@ -796,9 +796,8 @@ public class MemberController {
 		UserVO userVO = SessionClassifier.sessionClassifier(session);
 		if(userVO==null)
 			return "main";
+		
 		List<AdminCouponVO> couponList = memberService.selectCouponBook(userVO);
-		for(AdminCouponVO acv : couponList)
-			System.out.println(acv.toString());
 		model.addAttribute("totalCouponList",couponList);
 			
 		return "couponBook";

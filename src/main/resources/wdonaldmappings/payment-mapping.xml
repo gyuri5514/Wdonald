@@ -71,5 +71,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				 order by RANDOM() LIMIT 1) and toy_count.admin_seq = (select admin_seq from admin where store_code =#{store_code})
 		]]>
 	</update>
+	<update id="updateUserCouponStatus" parameterType="paymentVO">
+		<![CDATA[
+			update user_coupon set user_coupon_status = 1 
+			where user_seq=(select user_seq from user_info where user_email=#{user_email}) 
+			and coupon_code =#{coupon_code}
+		]]>
+	</update>
 	
 </mapper>

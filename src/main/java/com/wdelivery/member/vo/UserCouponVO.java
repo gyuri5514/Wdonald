@@ -11,7 +11,7 @@ public class UserCouponVO {
 	private String coupon_code;
 	private Date coupon_startdate;
 	private Date coupon_enddate;
-	private int coupon_status;
+	private int user_coupon_status;
 	private String coupon_name;
 	public int getUser_seq() {
 		return user_seq;
@@ -37,11 +37,11 @@ public class UserCouponVO {
 	public void setCoupon_enddate(Date coupon_enddate) {
 		this.coupon_enddate = coupon_enddate;
 	}
-	public int getCoupon_status() {
-		return coupon_status;
+	public int getUser_coupon_status() {
+		return user_coupon_status;
 	}
-	public void setCoupon_status(int coupon_status) {
-		this.coupon_status = coupon_status;
+	public void setUser_coupon_status(int user_coupon_status) {
+		this.user_coupon_status = user_coupon_status;
 	}
 	public String getCoupon_name() {
 		return coupon_name;
@@ -52,9 +52,7 @@ public class UserCouponVO {
 	@Override
 	public String toString() {
 		return "UserCouponVO [user_seq=" + user_seq + ", coupon_code=" + coupon_code + ", coupon_startdate="
-				+ coupon_startdate + ", coupon_enddate=" + coupon_enddate + ", coupon_status=" + coupon_status
+				+ coupon_startdate + ", coupon_enddate=" + coupon_enddate + ", user_coupon_status=" + user_coupon_status
 				+ ", coupon_name=" + coupon_name + "]";
 	}
-	
-	
 }

@@ -110,7 +110,7 @@ function applyCoupon(coupon_type,code,discount,enddate,coupon_title){
 	
 }
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return x.toString().replace(/\B(?=( \d{3})+(?!\d))/g, ",");
 }
 
 </script>

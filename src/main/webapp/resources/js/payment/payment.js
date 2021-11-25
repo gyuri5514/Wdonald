@@ -110,7 +110,6 @@ function submitCashless() {
 		(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
 		*/
 	}, function(rsp) {
-		console.log(rsp);
 		$.ajax({
 			type:"POST",
 			url: "payment/verifyIamport.do?imp_uid="+rsp.imp_uid
@@ -162,7 +161,6 @@ function onsitePayment() {
 	var store_code = $("#store_code").val();
 	var coupon_code = $('#coupon_code').val();
 	var coupon_title = $('#coupon_title').val();
-	console.log(coupon_title+' '+coupon_code);
 	var order_comment=  $('#order_comment').val()==null||$('#order_comment').val()==""?"":$('#order_comment').val();
 	var final_price = total_price - discount;
 	
