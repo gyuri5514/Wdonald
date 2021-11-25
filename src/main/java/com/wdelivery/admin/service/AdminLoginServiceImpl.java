@@ -30,6 +30,6 @@ public class AdminLoginServiceImpl implements AdminLoginService {
 
 	@Override
 	public void storeUpdatedo(AdminVO adminVO) {
-	
+		adminLoginDAO.storeUpdatedo(adminVO);
 	}
 }

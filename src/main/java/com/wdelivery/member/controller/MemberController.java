@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.maven.shared.invoker.SystemOutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -647,9 +648,11 @@ public class MemberController {
 	// qnaselect
 	@PostMapping("/qnaSelect.do")
 	@ResponseBody
-	public QnaVO qna(QnaVO qnaVO, @RequestParam(name = "qa_email", defaultValue = "1") String qa_email,
+	public List<QnaVO> qnaSelectList(QnaVO qnaVO, @RequestParam(name = "qa_email", defaultValue = "1") String qa_email,
 			@RequestParam(name = "qa_password", defaultValue = "1") String qa_password) throws Exception {
-		return qnaService.qnaSelect(qnaVO);
+		List<QnaVO> qnaSelectList = qnaService.qnaSelect(qnaVO);
+		System.out.println("ㅇ..ㅇ.." + qnaSelectList);
+		return qnaSelectList;
 	}
 
 	@GetMapping("/qna.do")

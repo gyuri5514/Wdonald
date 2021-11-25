@@ -13,6 +13,7 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.dao.MemberDAO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
@@ -232,6 +233,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public void toyCancel(ToyCountVO toyCountVO) {
+		memberDAO.toyCancel(toyCountVO);
+  }
+  
+  @Override
 	public List<AdminCouponVO> getUserCoupons(UserVO userVO) {
 		return memberDAO.getUserCoupons(userVO);
 	}

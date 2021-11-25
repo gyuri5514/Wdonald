@@ -9,6 +9,6 @@ public interface QnaService {
 	
 	List<AdminVO> storeSelect(String store_address);
 	public void qnaInsert(QnaVO qnaVO);
-	public QnaVO qnaSelect(QnaVO anaVO) throws Exception;
-	
+	//public QnaVO qnaSelect(QnaVO anaVO) throws Exception;
+	List<QnaVO> qnaSelect(QnaVO qnaVO) throws Exception;
 }

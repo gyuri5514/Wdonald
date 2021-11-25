@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wdelivery.admin.service.AdminLoginService;
+import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.payment.vo.ToyCountVO;
@@ -31,6 +33,8 @@ public class StoreController {
 	private StoreService storeService;
 	@Autowired
 	private ChartService chartService;
+	@Autowired
+	private AdminLoginService adminLoginService;
 	
 	public  void getChart(ChartVO chart,Model model){
 		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
@@ -104,11 +108,15 @@ public class StoreController {
 	@GetMapping("/adminUpdatedo.sdo")
 	public String adminUpdate(HttpSession session, AdminVO adminVO) {
 		AdminVO admin = (AdminVO) session.getAttribute("store_admin");
-		//if(admin != null) {
+		
 			int admin_seq = admin.getAdmin_seq();
 			adminVO.setAdmin_seq(admin_seq);
 			storeService.adminUpdate(adminVO);
-		//}
+
+			adminVO = adminLoginService.findAdmin(adminVO);
+			session.setAttribute("store_admin",adminVO);
+			
+		
 		return "redirect:index.sdo";
 	}
 	

@@ -259,8 +259,15 @@ function removeChildm(merchantUid){
 	$('#'+merchantUid).text("");
 	$('#alink'+merchantUid).attr("onclick","orderDetail('"+merchantUid+"');");
 }
-function reqCancel(merchantUid){
+function reqCancel(merchantUid){ //seq 가져온거임
+	alert(merchantUid);
 	var cancelReq = confirm('주문을 취소시겠습니까 ?');
+	if(cancelReq == true){
+		location.href="orderCancel.do?order_seq="+merchantUid;
+		alert("취소되었습니다.");
+	}else{
+		return;
+	}
 	console.log(cancelReq);
 	console.log(merchantUid);
 }
@@ -288,7 +295,7 @@ function reqCancel(merchantUid){
 						<input type="hidden" id="merchantuid" value="${payment.merchantuid }"><a href="javascript:void(0);" id="alink${payment.merchantuid }" onclick="orderDetail('${payment.merchantuid }');"   
 						 title="주문 상세 내역 보기">${payment.merchantuid }</a>
 					</td>
-					<td class="trackorder_td"><c:if test="${payment.order_status eq '주문 접수' }"><a href="orderCancel.do?order_seq=${payment.order_seq}" onclick="reqCancel('${payment.merchantuid }');" class="btn btn-md btn-red" id="btnSearch">주문 취소</a></c:if></td>
+					<td class="trackorder_td"><c:if test="${payment.order_status eq '주문 접수' }"><a onclick="reqCancel(${payment.order_seq});" class="btn btn-md btn-red" id="btnSearch">주문 취소</a></c:if></td>
 					<c:if test="${payment.order_status eq '주문 접수' || payment.order_status eq '준비 중' || payment.order_status eq '배달 중' || payment.order_status eq '배달 완료' }">
 					<td class="trackorder_td_img"><img class="trackorder_receive" src="resources/img/notes.png"></td>
 					</c:if>

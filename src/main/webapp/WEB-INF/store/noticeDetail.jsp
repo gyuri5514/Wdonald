@@ -33,15 +33,15 @@
 					<i class="fas fa-table me-1"></i> 공지사항
 				</div>
 			
-				<div style="margin-left:40px;">
-					<table style="width: 50%;">
+				<div style="margin-left:60px;">
+					<table style="width: 90%;">
 						<tr>
 							<td style="text-align: center;">제목</td>
 							<td>${noticeDetail.notice_title}</td>
 						</tr>
 						<tr>
 							<td style="text-align: center; width: 100">문의내용</td>
-							<td style=""><textarea rows="20" cols="110" readonly="readonly">${noticeDetail.notice_content}</textarea></td>
+							<td style=""><textarea rows="20" cols="90" readonly="readonly">${noticeDetail.notice_content}</textarea></td>
 						</tr>
 					</table>
 					<div>
