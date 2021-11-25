@@ -50,7 +50,6 @@
 								<td>${orderList.user_name}</td>
 								<td>${orderList.user_phone}</td>
 								<td>${orderList.final_price}</td>
-								<%-- <td>${orderList.order_status}</td> --%>
 								<!-- Split button -->
 								<td>
 									<div class="btn-group" style="width: 80%; margin: 0 auto">
