@@ -143,12 +143,11 @@ public class AdminLoginController {
 		model.addAttribute("storeDetail", adminVO);
 		return "storeUpdate";
 	}
-	@PostMapping("storeUpdatedo.mdo") //하는 중
+	@PostMapping("storeUpdatedo.mdo")
 	public String storeUpdatedo(AdminVO adminVO) {
-		System.out.println("?" + adminVO.toString());
-		adminLoginService.storeUpdate(adminVO);
+		adminLoginService.storeUpdatedo(adminVO);
 		
-		return "storeUpdate";
+		return "redirect:index.mdo";
 	}
 	
 }

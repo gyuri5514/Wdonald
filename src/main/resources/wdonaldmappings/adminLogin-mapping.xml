@@ -15,4 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="storeUpdate" resultType="adminVO" parameterType="adminVO">
 		select * from admin where admin_seq = #{admin_seq}
 	</select>
+	<update id="storeUpdatedo">
+      update admin set admin_id = #{admin_id}, admin_name = #{admin_name}, admin_password = #{admin_password}, admin_phone = #{admin_phone},
+      store_address = #{store_address}, store_name = #{store_name}, store_code = #{store_code}, store_phone = #{store_phone}
+      where admin_seq = #{admin_seq}
+   </update>
 </mapper>
