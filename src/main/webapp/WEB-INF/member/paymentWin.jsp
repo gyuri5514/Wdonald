@@ -204,7 +204,7 @@ $(function() {
 									<input type="hidden" value="${delivery_cost }" name="delivery_cost" id="delivery_cost">
 									<input type="hidden" value="${discount }" name="discount" id ="discount">
 									<div class="total_price">
-										<fmt:formatNumber type="number" maxFractionDigits="3" var="total" value="${tatal_price}"/>
+										<fmt:formatNumber type="number" maxFractionDigits="3" var="total" value="${total_price}"/>
 										<span> ₩ ${total}</span>
 									</div>
 								</td>

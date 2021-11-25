@@ -38,48 +38,41 @@
 <div class="wrapper ">
 		<header class="header"><!-- 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->
 			<div class="headArea">
-				<strong class="hLogo"><a href="main.do" class="logo" title="메인으로 이동"><img src="resources/wcdonald.png" alt="맥도날드"></a></strong>
+				<strong class="hLogo"><a href="main.do" class="logo" title="메인으로 이동"><img src="resources/wcdonald.png" alt="윈도날드"></a></strong>
 				<nav class="hMenu">
 					<div class="menu">
 						<ul class="depth1">
 							<li><!-- li 오버시 on 클래스 추가 -->
 								<a href="javascript:gotoMenu(1);" class="dth1">Menu</a><!-- 현재페이지 메뉴에 current 클래스 추가 -->
 								<ul class="depth2">
-									<li><a href="list.do" class="dth2">버거</a></li>
-									<li><a href="javascript:gotoMenu(14);" role="button">맥런치</a></li>
-									<li><a href="javascript:gotoMenu(3);" class="dth2">맥모닝</a></li>
-									<li><a href="javascript:gotoMenu(15);" role="button">해피 스낵</a></li>
-									<li><a href="javascript:gotoMenu(7);" class="dth2">사이드 &amp; 디저트</a></li>
-									<li><a href="javascript:gotoMenu(9);" class="dth2">맥카페 &amp; 음료</a></li>
-									<li><a href="javascript:gotoMenu(5);" class="dth2">해피밀</a></li>
+									<li><a href="burger.do" class="dth2">버거</a></li>
+									<li><a href="morning.do" class="dth2">윈모닝</a></li>
+									<li><a href="side.do" class="dth2">사이드 &amp; 디저트</a></li>
+									<li><a href="drink.do" class="dth2">윈카페 &amp; 음료</a></li>
+									<li><a href="happymeal.do" class="dth2">해피밀</a></li>
 									<!-- <li><a href="javascript:gotoMenu(11);" class="dth2">365일 즐거운 혜택</a></li> -->
 								</ul>
 							</li>
 							<li>
-								<a href="#" class="dth1 ">Store</a>
+								<a href="store.do" class="dth1 ">Store</a>
 								<ul class="depth2">
 									<li><a href="store.do" class="dth2">매장찾기</a></li>
-									<li><a href="/kor/store/mcdelivery.do" class="dth2">맥딜리버리</a></li>
-									<li><a href="/kor/store/mcdrive.do" class="dth2">맥드라이브</a></li>
-									<li><a href="/kor/store/rental.do" class="dth2">임차문의</a></li>
+									<li><a href="delivery.do" class="dth2">윈딜리버리</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="main.do" class="dth1">What’s New</a>
+								<a href="promotion.do" class="dth1">What’s New</a>
 								<ul class="depth2">
 									<li><a href="promotion.do" class="dth2">프로모션</a></li>
-									<li><a href="/kor/news/list.do" class="dth2">새로운 소식</a></li>
-									<!--  li><a href="/kor/kitchen.do" class="dth2">주방공개의 날</a></li -->
-								    <li><a href="/kor/happymeal/list.do" class="dth2">이달의 해피밀</a></li> 
+									<li><a href="news.do" class="dth2">새로운 소식</a></li>
+								    <li><a href="happymealPromotion.do" class="dth2">이달의 해피밀</a></li> 
 								</ul>
 							</li>
 							<li>
-								<a href="/kor/story/main.do" class="dth1">Story</a>
+								<a href="brandintro.do" class="dth1">Story</a>
 								<ul class="depth2">
-									<li><a href="/kor/story/intro/brandintro.do" class="dth2">브랜드 소개</a></li>
-									<li><a href="/kor/story/society/list.do" class="dth2">사회적 책임과 지원</a></li>
-									<li><a href="/kor/story/competition/farmToRestaurant.do" class="dth2">맥도날드 경쟁력</a></li>
-									<li><a href="/kor/story/people/crew.do" class="dth2">맥도날드 사람들</a></li>
+									<li><a href="brandintro.do" class="dth2">브랜드 소개</a></li>
+									<li><a href="crew.do" class="dth2">윈도날드 사람들</a></li>
 								</ul>
 							</li>
 						</ul>

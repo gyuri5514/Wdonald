@@ -87,7 +87,7 @@
 								</ul>
 							</li>
 							<li>
-								<a href="main.do" class="dth1">Story</a>
+								<a href="brandintro.do" class="dth1">Story</a>
 								<ul class="depth2">
 									<li><a href="brandintro.do" class="dth2">브랜드 소개</a></li>
 									<li><a href="crew.do" class="dth2">윈도날드 사람들</a></li>
