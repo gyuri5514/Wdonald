@@ -51,7 +51,8 @@ function submitCashless() {
 	/*var discount = $('#discount').val()==''||*/
 	var discount = $('#discount').val();
 	var store_code = $("#store_code").val();
-	var coupon_no = "i don't care'";
+	var coupon_code = $('#coupon_code').val();
+	var coupon_title = $('#coupon_title').val();
 	var order_comment= $('#order_comment').val();
 	var user_seq = $('#user_seq').val()==null||$('#user_seq').val()=="nm"?"":$('#user_seq').val();
 	var final_price = total_price - discount;
@@ -131,7 +132,8 @@ function submitCashless() {
 						"order_comment": order_comment,
 						"payment_type" : data.response.payMethod,
 						"store_code" : store_code,
-						"coupon_no" : coupon_no,
+						"coupon_code": coupon_code,
+						"coupon_title": coupon_title,
 						"merchantuid" : data.response.merchantUid,
 						"pay_status" : data.response.status,
 						"order_comment" : order_comment
@@ -159,7 +161,9 @@ function onsitePayment() {
 	var discount = $('#discount').val();
 	var order_comment = $('#order_comment').val();
 	var store_code = $("#store_code").val();
-	var coupon_no = "";
+	var coupon_code = $('#coupon_code').val();
+	var coupon_title = $('#coupon_title').val();
+	alert(coupon_title+' '+coupon_code);
 	var order_comment=  $('#order_comment').val()==null||$('#order_comment').val()==""?"":$('#order_comment').val();
 	var final_price = total_price - discount;
 	
@@ -196,13 +200,15 @@ function onsitePayment() {
 						"order_comment": order_comment,
 						"payment_type" : payment_type ,
 						"store_code" : store_code,
-						"coupon_no" : coupon_no,
+						"coupon_code": coupon_code,
+						"coupon_title": coupon_title,
 						"pay_status" : "현장에서 결제",
 						"merchantuid" : 'osp'+codeWdonald.getDay()+codeWdonald.getMonth()
 									+codeWdonald.getFullYear()+codeWdonald.getHours()
 									+codeWdonald.getMinutes()+codeWdonald.getSeconds()+user_seq,
 						"order_comment" : order_comment,
 						"exactCash" : exactCash,
+						
 					}),
 					contentType:"application/json"
 				})

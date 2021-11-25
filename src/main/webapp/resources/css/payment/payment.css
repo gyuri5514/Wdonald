@@ -1,20 +1,45 @@
 @charset "UTF-8";
 /*payment.css*/
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
+}
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 500;
+    font-style: normal;
+    src: url("../font/Speedee_K_R.woff") format('woff'), 
+         url("../font/Speedee_K_R.ttf") format('truetype'); 
+}
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../font/Speedee_K_B.woff") format('woff'), 
+         url("../font/Speedee_K_B.ttf") format('truetype'); 
+}
 div {
 	display: block;
 }
 
+label {
+	font-weight: 500;
+}
+
 .panel {
-	/* margin-top: 35px;
-	margin-left: 170px;
-	margin-bottom: 50px; */
-	margin:auto;
-	border: 1px solid transparent;
+	border: 1px solid #ddd;
 	border-radius: 2px;
-	/* width: 40%; */
-	
-	float: left;
-	
+	width: 580px;	
+}
+
+#user_phone {
+	margin-right: 15px;
+}
+#user_name {
+	margin: 5px 0 0 16px;
 }
 
 .panel-default {
@@ -22,10 +47,8 @@ div {
 }
 
 .h1-area {
-	margin-top: 80px;
-	margin-left: 20%;
-	margin-bottom: 20px;
-	width: 50%;
+	width: 1168px;
+	margin: 0 auto;
 }
 
 .h1-area hr {
@@ -69,6 +92,16 @@ fieldset {
 
 .fieldset:last-child {
 	margin-bottom: 0;
+	font-family: SpeedeeK;
+	font-weight: 500;
+}
+
+.delivery_address {
+	font-size: 16px;
+}
+
+.total_price {
+	font-size: 16px;
 }
 
 fieldset, legend {
@@ -81,6 +114,8 @@ fieldset, legend {
 }
 
 .radio {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	padding: 15px;
 	overflow: hidden;
 	zoom: 1;
@@ -116,15 +151,12 @@ input[type='radio']:checked:after {
 	border: 2px solid white;
 }
 
-.col-xs-4 {
-}
-
 #pay-body{
-	margin-left: 400px;
-	min-width: 590px;
+	min-width: 580px;
 }
 #pay-aside{
-	width:400px;
+	width:580px;
+	padding-left: 10px;
 }
 #cashbillphone{
 	height: 40px;

@@ -28,7 +28,8 @@ public class PaymentVO {
 	//i am
 	private String payment_type;
 	private String store_code;
-	private String coupon_no;
+	private String coupon_code;
+	private String coupon_title;
 	//elon musk
 	private String merchantuid;
 	//if you see this comment, run
@@ -36,11 +37,15 @@ public class PaymentVO {
 	private String exactCash;
 	//not too late to run away
 	private String store_name;
-	public String getStore_name() {
-		return store_name;
-	}
-	public void setStore_name(String store_name) {
-		this.store_name = store_name;
+	@Override
+	public String toString() {
+		return "PaymentVO [order_seq=" + order_seq + ", user_name=" + user_name + ", user_type=" + user_type
+				+ ", order_date=" + order_date + ", delivery_time=" + delivery_time + ", user_address=" + user_address
+				+ ", user_phone=" + user_phone + ", order_status=" + order_status + ", total_price=" + total_price
+				+ ", final_price=" + final_price + ", discount=" + discount + ", order_comment=" + order_comment
+				+ ", user_email=" + user_email + ", payment_type=" + payment_type + ", store_code=" + store_code
+				+ ", coupon_code=" + coupon_code + ", coupon_title=" + coupon_title + ", merchantuid=" + merchantuid
+				+ ", pay_status=" + pay_status + ", exactCash=" + exactCash + ", store_name=" + store_name + "]";
 	}
 	public int getOrder_seq() {
 		return order_seq;
@@ -78,20 +83,32 @@ public class PaymentVO {
 	public String getOrder_comment() {
 		return order_comment;
 	}
+	public String getUser_email() {
+		return user_email;
+	}
 	public String getPayment_type() {
 		return payment_type;
 	}
 	public String getStore_code() {
 		return store_code;
 	}
-	public String getCoupon_no() {
-		return coupon_no;
+	public String getCoupon_code() {
+		return coupon_code;
+	}
+	public String getCoupon_title() {
+		return coupon_title;
 	}
 	public String getMerchantuid() {
 		return merchantuid;
 	}
 	public String getPay_status() {
 		return pay_status;
+	}
+	public String getExactCash() {
+		return exactCash;
+	}
+	public String getStore_name() {
+		return store_name;
 	}
 	public void setOrder_seq(int order_seq) {
 		this.order_seq = order_seq;
@@ -129,14 +146,20 @@ public class PaymentVO {
 	public void setOrder_comment(String order_comment) {
 		this.order_comment = order_comment;
 	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
 	public void setPayment_type(String payment_type) {
 		this.payment_type = payment_type;
 	}
 	public void setStore_code(String store_code) {
 		this.store_code = store_code;
 	}
-	public void setCoupon_no(String coupon_no) {
-		this.coupon_no = coupon_no;
+	public void setCoupon_code(String coupon_code) {
+		this.coupon_code = coupon_code;
+	}
+	public void setCoupon_title(String coupon_title) {
+		this.coupon_title = coupon_title;
 	}
 	public void setMerchantuid(String merchantuid) {
 		this.merchantuid = merchantuid;
@@ -144,27 +167,11 @@ public class PaymentVO {
 	public void setPay_status(String pay_status) {
 		this.pay_status = pay_status;
 	}
-	public String getUser_email() {
-		return user_email;
-	}
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
-	}
-	public String getExactCash() {
-		return exactCash;
-	}
 	public void setExactCash(String exactCash) {
 		this.exactCash = exactCash;
 	}
-	@Override
-	public String toString() {
-		return "PaymentVO [order_seq=" + order_seq + ", user_name=" + user_name + ", user_type=" + user_type
-				+ ", order_date=" + order_date + ", delivery_time=" + delivery_time + ", user_address=" + user_address
-				+ ", user_phone=" + user_phone + ", order_status=" + order_status + ", total_price=" + total_price
-				+ ", final_price=" + final_price + ", discount=" + discount + ", order_comment=" + order_comment
-				+ ", user_email=" + user_email + ", payment_type=" + payment_type + ", store_code=" + store_code
-				+ ", coupon_no=" + coupon_no + ", merchantuid=" + merchantuid + ", pay_status=" + pay_status
-				+ ", exactCash=" + exactCash + "]";
+	public void setStore_name(String store_name) {
+		this.store_name = store_name;
 	}
 	
 }

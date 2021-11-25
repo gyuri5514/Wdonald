@@ -1,19 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<style>
+	.bbsSearch .srchNews button {
+    width: 50px;
+    height: 50px;
+    margin-left: 8px;
+    overflow: hidden;
+    text-indent: -9999px;
+    background: url(https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/btn_search.png) 0 0 no-repeat;
+}
+</style>
 <script>
 	function setSearchTypeSelect() {
 		var $keyword = $('#keyword');
 		
-		$('#searchBtn').on('click',function() {
-			var keywordVal = $keyword.val();
-			
-			var url = "news.do?page=" + "${pageMaker.cri.page}"
-				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
-				+ "&keyword=" + encodeURIComponent(keywordVal);
-			window.location.href = url;
-		})
+		var keywordVal = $keyword.val();
+		
+		var url = "news.do?page=" + "${pageMaker.cri.page}"
+			+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
+			+ "&keyword=" + encodeURIComponent(keywordVal);
+		window.location.href = url;
 	}
 </script>
 
@@ -34,8 +41,9 @@
 		<div class="inner">
 			<fieldset class="bbsSearch">
 				<legend>게시물 검색</legend>
-				<div class="srch">
-					<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요">
+				<div class="srchNews">
+					<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요"
+					style="width: 300px; height: 50px;" onkeypress = "setSearchTypeSelect();">
 					<button type="button" class="btn btn-primary" id="searchBtn" onclick="setSearchTypeSelect();">검색</button>
 				</div>
 			</fieldset>

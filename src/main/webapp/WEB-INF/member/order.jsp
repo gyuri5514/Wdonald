@@ -683,8 +683,8 @@ $(function(){
 	
  	if(b_code == null && s_code == null && d_code == null && dessert_code == null && w_code == null
  			&& h_code == null) {
-		alert("메뉴를 골라라");
-		location.href="main.do";
+		alert("메뉴를 골라주세요");
+		location.href="burger.do";
 	} 
 	
 	$("#sideOkbtn").click(function() {
@@ -819,13 +819,16 @@ $(function(){
 				alert("음료를 선택해주세요");
 				return;
 			}
+			if($('#result').val() == 0){
+				alert("수량을 선택하세요");
+				return;
+			}
 		} else if(va == "단품") {
 			if(side == "") {
 				alert("사이드를 선택하세요");
 				return;
 			} 
-			
-			if($('#result').val() == 0){
+			if($('#result3').val() == 0){
 				alert("수량을 선택하세요");
 				return;
 			}
@@ -837,8 +840,9 @@ $(function(){
 				alert("음료를 선택하세요");
 				return;
 			} else if($('#result').val() == 0 && $('#result2').val() == 0 && $('#result3').val() == 0){
-				alert("수량을 선택하세요");
+				alert("수량을 선택하세요3");
 				return;
+				
 			} else if(h_code != null) {
 				if($('#result').val() == 0){
 					alert("수량을 선택하세요");

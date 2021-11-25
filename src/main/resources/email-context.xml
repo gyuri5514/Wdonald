@@ -9,6 +9,7 @@
 		<property name="port" value="587"></property>
 		<property name="username" value="guyri5514@naver.com"></property>
 		<property name="password" value="password"></property>
+
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.transport.protocol">smtp</prop>

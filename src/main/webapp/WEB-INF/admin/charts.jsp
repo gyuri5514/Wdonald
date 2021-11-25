@@ -88,7 +88,7 @@
                  </div>
                  <div class="form-check" style="padding-left:5px; margin : 10px 0 10px 0;">
                      <input type="text" name="store_code" id="store_code" class="form-control"
-                           maxlength="10" style="width: 150px;" placeholder="매장명 입력" />
+                           maxlength="10" style="width: 150px;" placeholder="매장코드 입력" />
                   </div>
                   <div class="form-check" style="padding-left:5px;">
                      <input type="text" name="start_date" id="start_history" class="form-control"
@@ -446,7 +446,7 @@ function getNewChart(){
                   <i class="fas fa-chart-pie me-1"></i> 상품 인기순
                </div>
                <div class="card-body">
-                  <canvas id="myPieChart" width="100%" height="111"></canvas>
+                  <canvas id="myPieChart" width="100%" height="104"></canvas>
                </div>
                <script type="text/javascript">
             // Set new default font family and font color to mimic Bootstrap's default styling
