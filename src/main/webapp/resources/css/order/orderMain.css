@@ -5425,35 +5425,48 @@ article, section {
 	.h5 .small, .h5 small, .h6 .footer-disclaimer, .h6 .small, .h6 small,
 	h4 .footer-disclaimer, h4 .small, h4 small, h5 .footer-disclaimer, h5 .small,
 	h5 small, h6 .footer-disclaimer, h6 .small, h6 small {
+	font-family: SpeedeeK;
 	font-size: 75%
 }
 
 .h1, h1 {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: 36px;
 	font-size: 2.25rem
 }
 
 .h2, h2 {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: 30px;
 	font-size: 1.875rem
 }
 
 .h3, h3 {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: 24px;
 	font-size: 1.5rem
 }
 
 .h4, h4 {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: 22px;
 	font-size: 1.375rem
 }
 
 .h5, h5 {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: 18px;
 	font-size: 1.125rem
 }
 
 .h6, h6 {
+	font-family: SpeedeeK;
+	font-weight: 500;
 	font-size: 16px;
 	font-size: 1rem
 }
@@ -9426,11 +9439,11 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 
 .table-order-details .picture, .table-order-details .picture-img {
 	width: 20%;
-	font-family: "Flama Condensed Medium", sans-serif
+	font-family: SpeedeeK, "Flama Condensed Medium", sans-serif
 }
 
 .table-order-details .product-name {
-	font-family: "Flama Condensed Medium", sans-serif;
+	font-family: SpeedeeK, "Flama Condensed Medium", sans-serif;
 	font-size: 18px;
 	font-size: 1.125rem
 }
@@ -9439,7 +9452,7 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 	font-size: 12px;
 	font-size: .75rem;
 	color: #999;
-	font-family: Helvetica, Arial, sans-serif
+	font-family: SpeedeeK, Helvetica, Arial, sans-serif
 }
 
 .table-order-details .controls {
@@ -9454,7 +9467,7 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 }
 
 .table-order-details .cost {
-	font-family: "Flama Condensed Medium", sans-serif;
+	font-family: SpeedeeK, "Flama Condensed Medium", sans-serif;
 	text-align: right;
 	white-space: nowrap;
 	width: 20%;
@@ -11009,7 +11022,8 @@ ul.ui-selectmenu-menu-popup {
 .main {
 	font-family: SpeedeeK;
 	position: relative;
-	margin: 0 auto;
+	width: 1168px;
+	margin: 50px auto;
 }
 
 .global-header .header-actions {

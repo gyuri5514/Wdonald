@@ -188,5 +188,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			UPDATE promotion SET p_count = p_count + 1 WHERE p_code = #{p_code}
 		]]>
 	</update>
+	<select id="selectCouponBook" parameterType="userVO" resultType="adminCouponVO">
+		<![CDATA[
+			SELECT C.coupon_code as coupon_code,coupon_title,
+			coupon_type,coupon_regdate,c.coupon_enddate as coupon_enddate,
+			coupon_status,coupon_seq,coupon_discount,u.user_seq as user_seq,
+			coupon_startdate,user_coupon_status as user_coupon_status
+			FROM COUPON C LEFT JOIN USER_COUPON U ON U.COUPON_CODE = C.COUPON_CODE 
+			AND USER_SEQ = #{user_seq} WHERE C.COUPON_STATUS =0 order by coupon_enddate desc
+		]]>
+	</select>
 	
+	<insert id="registerUserCoupon">
+		<![CDATA[
+			INSERT INTO USER_COUPON (USER_SEQ,COUPON_CODE,
+			COUPON_STARTDATE,USER_COUPON_STATUS,
+			COUPON_NAME,COUPON_ENDDATE) 
+			VALUES(#{user_seq},#{coupon_code},NOW(),0,(SELECT COUPON_TITLE FROM COUPON WHERE COUPON_CODE=#{coupon_code}),
+			(SELECT COUPON_ENDDATE FROM COUPON WHERE COUPON_CODE=#{coupon_code}))
+		]]>
+	</insert>
 </mapper>

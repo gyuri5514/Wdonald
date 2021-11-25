@@ -101,7 +101,7 @@ function onSaleCouponBook(){
 		<span>쿠폰</span><small>Coupon</small>
 	</h3>
 	<div><a class="btn btn-red btn-lg" href="javascript:void(0);" onclick="onSaleCouponBook();">쿠폰 발급</a></div><br>
-			<table class="table-default table-panel table-addressbook">
+			<table class="table-default table-panel table-addressbook" id="couponTbody">
 				<thead>
 					<tr>
 						<th scope="colgroup" colspan="2" style="padding-right: 0px;"><h3>쿠폰</h3></th>
@@ -110,13 +110,10 @@ function onSaleCouponBook(){
 						<th scope="col"><h3>사용상태</h3></th>
 					</tr>
 				</thead>
-				<tfoot>
-						<!-- <a class="btn btn-red btn-lg" href="addressupdate.do">새로운 주소 추가</a>	 -->	
-				</tfoot>
 				<c:forEach items="${UserCouponVO}" var="coupon" varStatus="status"> 
 				<tbody>
 					<tr>
-						<td class="table-addressbook">${status.count}</td>
+						<td class="table-addressbook"></td>
 						<td class="address-details">
 							<div>${coupon.coupon_name}</div>
 						</td>
@@ -124,10 +121,10 @@ function onSaleCouponBook(){
 						<fmt:formatDate var="couponEndDate" value="${coupon.coupon_enddate}" pattern="yyyy.MM.dd"/>
 						<td class="special-instructions">${couponEndDate}</td>
 						<td class="controls">
-						<c:if test="${coupon.coupon_status == 1}">
+						<c:if test="${coupon.coupon_status == 0}">
 							미사용
 						</c:if>
-						<c:if test="${coupon.coupon_status == 0}">
+						<c:if test="${coupon.coupon_status == 1}">
 							사용완료
 						</c:if>
 						</td>

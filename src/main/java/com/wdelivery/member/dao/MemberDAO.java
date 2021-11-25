@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -64,6 +65,10 @@ public interface MemberDAO {
 	public List<PromotionVO> selectPromotionIng();
 	
 	public PromotionVO detailPromotion(Integer p_code);
+
+	public List<AdminCouponVO> selectCouponBook(UserVO userVO);
+
+	public int registerUserCoupon(AdminCouponVO acv);
 
 
 }

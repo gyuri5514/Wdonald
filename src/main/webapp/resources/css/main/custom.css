@@ -4,22 +4,22 @@
     font-family: SpeedeeK;
     font-weight: 400;
     font-style: normal;
-    src: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_L.woff") format('woff'); 
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
 }
 
 @font-face {
     font-family: SpeedeeK;
     font-weight: 500;
     font-style: normal;
-    src: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_R.woff") format('woff'), 
-         url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_R.ttf") format('truetype'); 
+    src: url("/resources/font/Speedee_K_R.woff") format('woff'), 
+         url("/resources/font/Speedee_K_R.ttf") format('truetype');
 }
 @font-face {
     font-family: SpeedeeK;
     font-weight: 600;
     font-style: normal;
-    src: url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_B.woff") format('woff'), 
-         url("https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/font/Speedee_K_B.ttf") format('truetype'); 
+    src: url("/resources/font/Speedee_K_B.woff") format('woff'), 
+         url("/resources/font/Speedee_K_B.ttf") format('truetype');
 }
 
 * {
@@ -32,6 +32,7 @@
 html {
 	font-family: SpeedeeK, "Helvetica Neue", Helvetica, Malgun Gothic, '맑은 고딕', Dotum, '돋움', Arial,
 		sans-serif;
+	font-weight: 500;
 	margin: 0;
 	height: 100%
 }
@@ -91,6 +92,7 @@ h1, h2, h3, h4, h5, h6, strong, b {
 }
 
 .h3, h3 {
+	font-family: SpeedeeK;
     font-size: 24px;
     font-size: 1.5rem;
 }
@@ -1055,7 +1057,6 @@ ul.notiTxt:before {
 	min-width: 1280px;
 	min-height: 100%;
 	padding: 140px 0 230px;
-	background-color: #ffffff;
 }
 
 .wrapper footer {
@@ -1604,7 +1605,7 @@ ul.notiTxt:before {
 }
 
 .fa, .far, .fas {
-	font-family: "Font Awesome 5 Free";
+	font-family: SpeedeeK, "Font Awesome 5 Free";
 }
 
 .fa-times:before {
@@ -2208,12 +2209,12 @@ ul.notiTxt:before {
 	left: 0;
 	right: 0;
 	height: 150px;
-	background: #f8f8f8
+	background: #ffffff;
 }
 
 .srchBox .form {
 	position: relative;
-	padding: 40px 0;
+	/* padding: 40px 0; */
 	padding-right: 184px
 }
 
@@ -5699,7 +5700,13 @@ p.nutrDesc {
 }
 
 * {box-sizing: border-box}
-/* body {font-family: SpeedeeK, Verdana, sans-serif; margin:0} */
+body {
+	font-family: SpeedeeK, Verdana, sans-serif; 
+	margin:0;
+	font-weight: 500;
+	color: #808080;
+}
+
 .mySliders {
 	display: none;
 	cursor: pointer;

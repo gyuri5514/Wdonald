@@ -14,6 +14,28 @@ public class AdminCouponVO {
 	private Date coupon_enddate;
 	private int coupon_status;
 	private int coupon_discount;
+	private Date coupon_startdate;
+	private int user_seq;
+	private int user_coupon_status;
+	
+	public Date getCoupon_startdate() {
+		return coupon_startdate;
+	}
+	public void setCoupon_startdate(Date coupon_startdate) {
+		this.coupon_startdate = coupon_startdate;
+	}
+	public int getUser_seq() {
+		return user_seq;
+	}
+	public void setUser_seq(int user_seq) {
+		this.user_seq = user_seq;
+	}
+	public int getUser_coupon_status() {
+		return user_coupon_status;
+	}
+	public void setUser_coupon_status(int user_coupon_status) {
+		this.user_coupon_status = user_coupon_status;
+	}
 	public String getCoupon_code() {
 		return coupon_code;
 	}
@@ -60,8 +82,8 @@ public class AdminCouponVO {
 	public String toString() {
 		return "AdminCouponVO [coupon_code=" + coupon_code + ", coupon_title=" + coupon_title + ", coupon_type="
 				+ coupon_type + ", coupon_regdate=" + coupon_regdate + ", coupon_enddate=" + coupon_enddate
-				+ ", coupon_status=" + coupon_status + ", coupon_discount=" + coupon_discount + "]";
+				+ ", coupon_status=" + coupon_status + ", coupon_discount=" + coupon_discount + ", coupon_startdate="
+				+ coupon_startdate + ", user_seq=" + user_seq + ", user_coupon_status=" + user_coupon_status + "]";
 	}
-	
 	
 }
