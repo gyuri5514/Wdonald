@@ -70,5 +70,7 @@ public interface MemberDAO {
 
 	public int registerUserCoupon(AdminCouponVO acv);
 
+	public List<AdminCouponVO> getUserCoupons(UserVO userVO);
+
 
 }

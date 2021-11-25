@@ -367,6 +367,10 @@
 										<input type="hidden" id="address" name="address" value="${addressList[0].address1} ${addressList[0].address2}">
 										<input type="hidden" id="m_zipcode" name="" value="${addressList[0].address1}">
 										<input type="hidden" id="order_comment" name="order_comment" value="">
+										<input type="hidden" id="coupon_code" name="coupon_code" value="">
+										<input type="hidden" id="coupon_title" name="coupon_title" value="">
+										<input type="hidden" id="discount" name="discount" value="0">
+										
 						</c:if>
 						<c:if test="${addressList eq null}">
 										<input type="hidden" id="userAddress_lat" name="lat">
@@ -384,11 +388,14 @@
 							<h3 class="text-center">주문 요약</h3>
 						</div>
 						<script type="text/javascript">
-							function openAddressPopup(){
-								var popupX = (document.body.offsetWidth / 2) - (200 / 2);
-								var popupY= (window.screen.height / 2) - (300 / 2)-150;
-								window.open('popupAddress.do','_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
-							}
+						var popupX = (document.body.offsetWidth / 2) - (200 / 2);
+						var popupY= (window.screen.height / 2) - (300 / 2)-150;
+						function openAddressPopup(){
+							window.open('popupAddress.do','_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
+						}
+						function myCouponBook(price){
+							window.open('myCouponBook.do?price='+price,'_blank','status=no,width=450,height=350,left='+popupX+',top='+popupY+',scrollbars=yes');
+						}
 						</script>
 						<div class="panel-section-group">
 							<section class="panel-section section-delivery-address">
@@ -465,19 +472,12 @@
 										<form class="form-promocode" role="form" id="form_promocode" name="form_promocode" method="post" accept-charset="UTF-8" action="#">
 											<div class="form-group">
 												<div class="input-group">
-													<c:if test="${userInfo == null}">
-														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;" readonly>
+													<c:if test="${!empty sessionScope.userInfo || !empty sessionScope.kakaoSession || !empty sessionScope.naverSession}">
+														<input type="text" name="couponCode" id="couponCode" readonly="readonly" class="form-control"  style="height : 35px;">
 														<div class="input-group-btn">
-														<button type="button" class="btn btn-red" onclick="couponBtn()" disabled>
-															적용
-														</button>
-													</div>
-													</c:if>
-													<c:if test="${userInfo != null}">
-														<input type="text" name="couponCode" id="couponCode" class="form-control" style="height : 35px;">
-														<div class="input-group-btn">
-														<button type="button" onclick="couponBtn()" class="btn btn-red">
-															적용
+														<!-- <button type="button" onclick="couponBtn()" class="btn btn-red"> -->
+														<button type="button" onclick="myCouponBook('${price}');" class="btn btn-red">
+															내쿠폰함
 														</button>
 													</div>
 													</c:if>
@@ -500,7 +500,7 @@
 												<c:when test="${cartList != null}">
 													<th scope="row"><span>총 주문합계:</span></th>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${price}"/>
-													<td><span>₩${formatPrice} </span></td>
+													<td>₩<span id="spanPrice">${formatPrice} </span></td>
 												</c:when>
 											</c:choose>
 										</tr>
@@ -508,7 +508,7 @@
 									<tbody>
 										<tr>
 											<th scope="row"><span>배달료:</span></th>
-											<td>₩ ${delivery_price}</td>
+											<td>+₩${delivery_price}</td>
 										</tr>
 										<!-- MDSAP-11635-v1 -->
 										

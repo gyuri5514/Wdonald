@@ -231,4 +231,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.registerUserCoupon(acv);
 	}
 
+	@Override
+	public List<AdminCouponVO> getUserCoupons(UserVO userVO) {
+		return memberDAO.getUserCoupons(userVO);
+	}
+
 }

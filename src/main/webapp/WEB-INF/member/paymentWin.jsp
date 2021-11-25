@@ -191,6 +191,14 @@
 								<td><span>+&nbsp; ₩
 										${delivery_cost }</span></td>
 							</tr>
+							<tr>
+								<th scope="row">쿠폰: <small>${coupon_title }</small></th>
+								
+								<td><span>-&nbsp; ₩
+										${discount }</span>
+								<input type="hidden" value="${coupon_code }" name="coupon_code" id="coupon_code">
+								<input type="hidden" value="${coupon_title }" name="coupon_title" id="coupon_title"></td>
+							</tr>
 							<!-- MDSAP-11635 -->
 							<!-- MDSAP-11635 -->
 						</tbody>
