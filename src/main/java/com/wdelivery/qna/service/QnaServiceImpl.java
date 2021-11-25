@@ -24,16 +24,23 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	
-	  @Override
-	  public QnaVO qnaSelect(QnaVO qnaVO) throws Exception{
-		  return qnaDAO.qnaSelect(qnaVO);
-	  }
+	/*
+	 * @Override public QnaVO qnaSelect(QnaVO qnaVO) throws Exception{ return
+	 * qnaDAO.qnaSelect(qnaVO); }
+	 */
 
 
 	@Override
 	public List<AdminVO> storeSelect(String store_address ) {
 		
 		return qnaDAO.storeSelect(store_address);
+	}
+
+
+	@Override
+	public List<QnaVO> qnaSelect(QnaVO qnaVO) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.qnaSelect(qnaVO);
 	}
 	  
 	  

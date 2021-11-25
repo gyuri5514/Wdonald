@@ -8,6 +8,7 @@ import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.member.util.MapPointVO;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
@@ -55,6 +56,7 @@ public interface MemberDAO {
 
 	public List<PaymentVO> getUserPaymentInfo(String user_email);
 	public void orderCancel(int order_seq);
+	public void toyCancel(ToyCountVO toyCountVO);
 
 	public List<CartVO> getCartListByMerchantId(String merchantUid);
 

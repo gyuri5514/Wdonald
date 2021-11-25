@@ -155,6 +155,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       update order_list set order_status = '주문취소' where order_seq = #{order_seq}
    </update>
 	
+	
 	<select id="getCartListByMerchantId" resultType="cartVO" parameterType="String">
 	<![CDATA[
 		select * from cart_list where merchantuid=#{merchantUid}	order by order_seq desc

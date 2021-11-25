@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
+import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.util.SessionClassifier;
+import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
@@ -48,7 +50,7 @@ public class MypageController {
 	@GetMapping("/mypageDelete.do")
 	public String mypageDelete(UserVO userVO, HttpSession session) {
 		String user = (String) session.getAttribute("user_eamil");
-		if (user != null || user != "") { // 하는 중
+		if (user != null || user != "") {
 			memberService.mypageDelete(userVO);
 			session.invalidate();
 		}
@@ -151,11 +153,23 @@ public class MypageController {
 		return "trackOrder";
 	}
 	@GetMapping("/orderCancel.do")
-	public String orderCancel(PaymentVO paymentVO) {
+	public String orderCancel(PaymentVO paymentVO, HttpSession session) {
 		System.out.println("orderCancel " + paymentVO.toString());
 		memberService.orderCancel(paymentVO.getOrder_seq());
 		
-		return "trackOrder";
+		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
+		System.out.println("ii" + cartVO.toString());
+		for(int i=0; i<cartVO.size(); i++) { //toy
+			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
+				System.out.println("toy" + cartVO.get(i).getCart_h_code());
+				ToyCountVO tcv = new ToyCountVO();
+				tcv.setStore_code(paymentVO.getStore_code());
+				memberService.toyCancel(tcv);
+				System.out.println("????????????????");
+			}
+		}
+		
+		return "redirect:trackOrder.do";
 	}
 	
 	@ResponseBody

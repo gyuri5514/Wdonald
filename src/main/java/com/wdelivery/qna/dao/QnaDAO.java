@@ -9,7 +9,7 @@ public interface QnaDAO {
 	
 	List<AdminVO> storeSelect(String store_address);
 	public void qnaInsert(QnaVO qnaVO);
-	public QnaVO qnaSelect(QnaVO qnaVO) throws Exception;
-	
+	//public QnaVO qnaSelect(QnaVO qnaVO) throws Exception;
+	List<QnaVO> qnaSelect(QnaVO qnaVO) throws Exception;
 	
 }

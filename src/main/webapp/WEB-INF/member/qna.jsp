@@ -535,20 +535,65 @@
 						success:function(data){
 							//alert(data);
 							//alert("ajax 성공");
-							var qaaContent = ""; //qaa_content null값 처리
-							var str = "";
-							if(data["qaa_content"] == null ){
-								qaaContent = "";
-							}else{
-								qaaContent = data["qaa_content"];
+							var html = "";
+							for(var i=0; i<data.length; i++){
+								var qaaContent = ""; //qaa_content null값 처리
+								var str = "";
+								if(data[i].qaa_content == null ){
+									qaaContent = "";
+								}else{
+									qaaContent = data[i].qaa_content;
+								}
+								if(data[i].qa_status == 1){
+									console.log(data[i].qa_status);
+									str = "완료";
+								}else{
+									str = "미완료";
+								}
+							
+							
+								html += "<div class='reply-view-area' id='LIST_REPLY_DIV'>"
+								html += "<table class='reply-view' >"
+								html += "<colgroup>"
+								html += "<col style='width: 144px'>"
+								html += "<col style='width: auto'>"
+								html += "<col style='width: 144px'>"
+								html += "<col style='width: 144px'>"
+								html += "<col style='width: 144px'>"
+								html += "</colgroup>"
+								html +="<thead>"
+								html +="<tr>"
+								html +="<th scope='col'>접수번호</th>"
+								html +="<th scope='col'>제목</th>"
+								html +="<th scope='col'>방문매장</th>"
+								html +="<th scope='col'>접수일</th>"
+								html +="<th scope='col'>상태</th>"
+								html +="</tr>"
+								html +="</thead>"
+								html +="<tbody>"
+								html +="<tr>"
+								html +="<th scope='row'>" + data[i].qa_seq+ "</th>"
+								html +="<th>" + data[i].qa_title + "</th>"
+								html +="<th>" + data[i].qa_store + "</th>"
+								html +="<th>" + data[i].qa_regdate + "</th>"
+								html +="<th>" + str + "</th>"
+								html +="</tr>"
+								html +="<tr>"
+								html +="<th scope='row'>내용</th>"
+								html +="<td colspan='4'>" + data[i].qa_content + "</td>"
+								html +="</tr>"
+								html +="<tr>"
+								html +="<th scope='row' class='color-mcdRed'>답변</th>"
+								html +="<td colspan='4' class='color-mcdRed'>" + qaaContent +"</td>"
+								html +="</tr>"
+								html +="</tbody>"
+								html +="</table>"
+								html +="</div>"
+								
+								$("#req").html(html);
+								
 							}
-							if(data["qa_status"] == 1){
-								console.log(data["qa_status"]);
-								str = "완료";
-							}else{
-								str = "미완료";
-							}
-							$("#req").html(
+							/* $("#req").html(
 								"<div class='reply-view-area' id='LIST_REPLY_DIV'>" + 
 									"<table class='reply-view' >" +
 										"<colgroup>" + 
@@ -587,7 +632,7 @@
 								"</table>" + 
 							"</div>"
 								
-							);
+							); */
 						},
 						error:function(data){
 							alert("이메일과 비밀번호를 다시 확인해주세요."); //ajax failed

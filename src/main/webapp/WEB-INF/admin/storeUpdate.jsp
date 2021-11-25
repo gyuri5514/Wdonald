@@ -130,7 +130,14 @@
 			</footer>
 		</div>
 	</div>
-	
+<script type="text/javascript">
+function updateDo() {
+	alert("수정하시겠습니까?");
+	var storeupdateForm = document.getElementById("storeUpdate");
+	storeupdateForm.action = "storeUpdatedo.mdo";
+	storeupdateForm.submit();
+}
+</script>	
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="../resources/js/scripts.js"></script>
 
