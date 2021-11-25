@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <link rel="stylesheet" href="resources/css/order/orderMain.css" />
 <link rel="stylesheet" href="resources/css/order/orderLocal.css" />
@@ -9,6 +11,10 @@
 	history.go(-2);
 </script>
 </c:if>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
 <script type="text/javascript">
 	$(function(){
 		window.onkeydown = function() {	//새로고침시
@@ -439,12 +445,12 @@
 								<table class="table-default table-delivery-datetime">
 									<tbody>
 										<tr>
-											<th scope="row"><input type="hidden" id="delivery_time" name="delivery_time" value="40">예상 배달 시간: 40 분</th>
+											<th scope="row"><input type="hidden" id="delivery_time" name="delivery_time" value="40">예상 배달시간: 40분</th>
 											<td>
 												<div class="when-to-deliver"></div>
 												<div class="how-long-to-deliver">
 
-													<span>2021/11/08 16:20</span>
+													<span><%= sf.format(nowTime) %></span>
 
 												</div>
 											</td>
