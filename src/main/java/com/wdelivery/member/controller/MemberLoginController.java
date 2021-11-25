@@ -9,6 +9,7 @@ import java.util.Random;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -36,7 +37,8 @@ import com.wdelivery.promotion.vo.PromotionVO;
 public class MemberLoginController {
 	
 	
-	/* @Autowired private BCryptPasswordEncoder pwdEncoder; */
+	@Autowired 
+	private BCryptPasswordEncoder pwdEncoder;
 	 
 	@Autowired
 	private MemberService memberService; 
@@ -65,7 +67,10 @@ public class MemberLoginController {
 	
 	@PostMapping("memLogin.do")
 	public String memberLogin(UserVO userVO,HttpSession session,Model model) {
-
+		
+		//String rawPw = "";
+		//String encodePw = "";
+		
 		if(!userVO.getUser_email().equals("")&&userVO.getUser_email()!=null
 				&&userVO.getUser_password()!=null&&!userVO.getUser_password().equals("")) {
 			
@@ -75,8 +80,18 @@ public class MemberLoginController {
 				model.addAttribute("status", 6);
 				return "main";
 			}
-			if(userVO.getUser_password().equals(findUserVO.getUser_password())) {
+			/*일치하는 아이디 존재시 */
+			
+			//rawPw = userVO.getUser_password(); //사용자가 제출한 비밀번호
+			//encodePw = findUserVO.getUser_password(); //데이터베이스에 저장한 인코딩된 비밀번호
+			
+			//if(true == pwdEncoder.matches(rawPw, encodePw)) {  //비밀번호 일치여부 판단
+			/*------인코딩 안한거 로그인되게 하기  ------*/
+			if(userVO.getUser_password().equals(findUserVO.getUser_password())) { 
 				if(findUserVO.getUser_status()==1) {
+					
+					//findUserVO.setUser_password(""); //인코딩된 비밀번호 정보 지움 --뭘까?
+					
 					session.setAttribute("userInfo", findUserVO);
 					model.addAttribute("status" , findUserVO.getUser_status());	
 				}else if(findUserVO.getUser_status()==3){
@@ -136,6 +151,15 @@ public class MemberLoginController {
 	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("winMemJoin.do")
 	public String winMemJoin(UserVO userVO, UserAddressVO addressVO) throws Exception {
+		
+		String rawPw = ""; //인코딩 전 비밀번호
+		String encodePw = ""; //인코딩 후 비밀번호
+		
+		rawPw = userVO.getUser_password(); //비밀번호 데이터 얻음
+		encodePw = pwdEncoder.encode(rawPw); //비밀번호 인코딩
+		userVO.setUser_password(encodePw); //인코딩 된 비밀번호 VO객체에 다시 저장
+		
+		/*회원가입 User 쿼리 실행 */
 		memberService.winMemJoin(userVO);
 		memberService.winAddressJoin(addressVO);
 		memberService.insertAuthData(userVO);

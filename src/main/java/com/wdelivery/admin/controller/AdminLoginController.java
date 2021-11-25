@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,8 @@ public class AdminLoginController {
 	private ChartService chartService;
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
 
 	@ModelAttribute("adminList")
 	public List<AdminVO> getAdminList(){
@@ -87,6 +90,9 @@ public class AdminLoginController {
 	@PostMapping("/login.mdo")
 	public String login(AdminVO adminVO, HttpSession session, Model model) {
 		//System.out.println(adminVO.toString());
+		
+		String rawPw = "";
+		String encodePw = "";
 
 		if(!adminVO.getAdmin_id().equals("") && adminVO.getAdmin_id() != null 
 				&& !adminVO.getAdmin_password().equals("") && adminVO.getAdmin_password() != null) {
