@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>couponBook</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
 table{	
 	border-radius: 3px;
    	box-shadow: inset 0 0 8px #bcbcbc;
-   	width: auto;
+   	width: 100%;
 }
 .table-panel td, .table-panel th {
     padding: 5px 11px;
@@ -45,13 +47,17 @@ th {
 .address-details,.table-addressbook .special-instructions{
 	width:40%
 }
+#takeThis{
+margin-right:10px;
+float : right;
+}
 </style>
-<%-- <c:if test="${addressList eq 'emptyAddress' }">
+<c:if test="${empty totalCouponList }">
 <script>
-	alert('등록된 주소가 없습니다.');
+	alert('진행중인 할인행사가 없습니다.');
 	close();
 </script>
-</c:if> --%>
+</c:if> 
 </head>
 <body>
 	<table class="table-default table-panel table-addressbook">
@@ -60,19 +66,24 @@ th {
 						<th scope="colgroup" colspan="5">쿠폰 목록</th>
 					</tr>
 				</thead>
-				<c:forEach items="${couponList}" var="addressBook"> 
+				<c:forEach items="${totalCouponList}" var="couponBook"> 
 				<tbody>
 					<tr>
-						<td class="address-number" colspan="2"><small>
-						<a href="javascript:void(0);" 
-							onclick="thisOnePlease('${addressBook.address1 }','${addressBook.address2 }','${addressBook.address1 } ${addressBook.address2}','${addressBook.address_lat}','${addressBook.address_lon}','${addressBook.order_comment }')">
-							${addressBook.address1} ${addressBook.address2}</a>
+						<td class="address-number" colspan="3"><small>
+							${couponBook.coupon_title}
+							<c:if test="${couponBook.coupon_type =='freebie' }">(증정)</c:if>
+							<c:if test="${couponBook.coupon_type =='discount' }">(할인)</c:if>
+							&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${couponBook.coupon_enddate}" var="couponEndDate" pattern="yyyy-MM-dd"/>${couponEndDate} 까지
+							<c:choose>
+								<c:when test="${couponBook.user_seq == 0}">
+									<a href="javascript:void(0);" 
+											onclick="userWantThisCoupon('${couponBook.coupon_code}','${sessionScope.userInfo.user_seq }','${couponEndDate }','${couponBook.coupon_title}');" id="takeThis">받기</a>
+								</c:when>
+							<c:otherwise>
+								<font color="green" id="takeThis">수령 완료</font>
+							</c:otherwise>
+						</c:choose>
 							</small>
-						</td>
-					</tr>
-					<tr>
-						<td class="special-instructions" colspan="5">
-							<span style="margin-left: 15px;"><small>배달 시 요청사항 : ${addressBook.order_comment}</small></span>
 						</td>
 					</tr>
 				</tbody>
@@ -80,19 +91,28 @@ th {
 			</table>
 </body>
 <script type="text/javascript">
- function thisOnePlease(address1,address2,address,lat,lon,order_comment){
-	 window.opener.document.getElementById('userAddress_lat').value = lat;
-	 window.opener.document.getElementById('userAddress_lon').value = lon;
-	 
-	 window.opener.document.getElementById('address').value = address;
-	 window.opener.document.getElementById('m_zipcode').value = address1;
-	 
-	 window.opener.document.getElementById('addressLink').text = address1;
-	 window.opener.document.getElementById('order_comment').value = order_comment;
-	 
-	 window.opener.document.getElementById('m_zipcode2').value = address2;
-	 window.opener.document.getElementById('order_comment_out').value = order_comment;
-	 window.close();
- }
+ 	function userWantThisCoupon(code,user_seq,enddate,title){
+ 		var tbodyNode='';
+ 		alert(code+" "+ user_seq);
+ 		$.ajax({
+ 			type:"POST",
+ 			url:"registerUserCoupon.do",
+ 			data:JSON.stringify({
+ 				"user_seq" : user_seq,
+ 				"coupon_code" : code
+ 				}),	
+ 			contentType:"application/json"
+ 		}).done(function(res){
+ 			if(res==1){
+ 				 tbodyNode='<tr><td class="table-addressbook"></td><td class="address-details">'+
+ 				'<div>'+title+'</div></td><td >'+code+'</td>'+
+ 				'<td class="special-instructions">'+enddate+'</td>'+
+ 				'<td class="controls">미사용</td></tr>';
+ 				$('#couponTbody',opener.document).append(tbodyNode);
+ 				close();
+ 			}
+ 		})
+ 	}
+ 
 </script>
 </html>

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -60,5 +61,9 @@ public interface MemberService {
 	public PromotionVO detailPromotion(Integer p_code);
 
 	AdminVO newWhichOneIsNearest(MapPointVO mapPointVO);
+
+	List<AdminCouponVO> selectCouponBook(UserVO userVO);
+
+	int registerUserCoupon(AdminCouponVO acv);
 
 }

@@ -8,6 +8,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.dao.MemberDAO;
@@ -218,6 +219,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public AdminVO newWhichOneIsNearest(MapPointVO mapPointVO) {
 		return storeDAO.newWhichOneIsNearest(mapPointVO);
+	}
+
+	@Override
+	public List<AdminCouponVO> selectCouponBook(UserVO userVO) {
+		return memberDAO.selectCouponBook(userVO);
+	}
+
+	@Override
+	public int registerUserCoupon(AdminCouponVO acv) {
+		return memberDAO.registerUserCoupon(acv);
 	}
 
 }
