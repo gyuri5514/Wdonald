@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -164,20 +165,18 @@ public class MypageController {
 		model.addAttribute("paymentList",memberService.getUserPaymentInfo(userInfo.getUser_email()));
 		return "trackOrder";
 	}
+	@Transactional(rollbackFor = Exception.class)
 	@GetMapping("/orderCancel.do")
 	public String orderCancel(PaymentVO paymentVO, HttpSession session) {
-		System.out.println("orderCancel " + paymentVO.toString());
-		memberService.orderCancel(paymentVO.getOrder_seq());
+		System.out.println(paymentVO.toString());
+		memberService.orderCancel(paymentVO);
 		
 		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
-		System.out.println("ii" + cartVO.toString());
 		for(int i=0; i<cartVO.size(); i++) { //toy
 			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
-				System.out.println("toy" + cartVO.get(i).getCart_h_code());
 				ToyCountVO tcv = new ToyCountVO();
 				tcv.setStore_code(paymentVO.getStore_code());
 				memberService.toyCancel(tcv);
-				System.out.println("????????????????");
 			}
 		}
 		
