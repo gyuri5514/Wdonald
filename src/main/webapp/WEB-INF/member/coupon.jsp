@@ -127,6 +127,9 @@ function onSaleCouponBook(){
 						<c:if test="${coupon.user_coupon_status == 1}">
 							사용완료
 						</c:if>
+						<c:if test="${coupon.user_coupon_status == 2}">
+							기간만료
+						</c:if>
 						</td>
 					</tr>
 				</tbody>
