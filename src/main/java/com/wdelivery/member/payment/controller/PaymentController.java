@@ -57,6 +57,7 @@ public class PaymentController {
 		}else {
 			paymentVO.setUser_type(9);
 		}
+		System.out.println(paymentVO.toString());
 	    paymentVO.setOrder_date(new Date());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
      

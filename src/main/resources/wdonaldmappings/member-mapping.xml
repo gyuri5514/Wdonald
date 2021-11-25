@@ -208,4 +208,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(SELECT COUPON_ENDDATE FROM COUPON WHERE COUPON_CODE=#{coupon_code}))
 		]]>
 	</insert>
+	
+	<select id="getUserCoupons" parameterType="userVO" resultType="adminCouponVO">
+		<![CDATA[
+			select u.coupon_code,c.coupon_title,c.coupon_type,
+			c.coupon_enddate,c.coupon_discount
+			from user_coupon u right join coupon c on 
+			c.coupon_code =u.coupon_code where user_seq = #{user_seq}
+			and user_coupon_status =0 order by coupon_enddate desc
+		]]>
+	</select>
 </mapper>

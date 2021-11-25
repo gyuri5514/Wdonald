@@ -683,8 +683,8 @@ $(function(){
 	
  	if(b_code == null && s_code == null && d_code == null && dessert_code == null && w_code == null
  			&& h_code == null) {
-		alert("메뉴를 골라라");
-		location.href="main.do";
+		alert("메뉴를 골라주세요");
+		location.href="burger.do";
 	} 
 	
 	$("#sideOkbtn").click(function() {
