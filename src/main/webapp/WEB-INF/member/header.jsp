@@ -141,7 +141,7 @@
 							<div>
 								<p class="roboto">Wcdonalds</p>
 								<h3 class="tit01 tit_ico key01">일반 로그인</h3>
-								<form action="memLogin.do" method="post" >
+								<form action="memLogin.do" method="post">
 									<div class="input">
 										<input id="id" type="text" placeholder="아이디를 입력하세요" name="user_email" data-role="textfield">
 									</div>
@@ -149,9 +149,8 @@
 										<input id="password" type="password" placeholder="비밀번호를 입력하세요" name="user_password" data-role="textfield">
 										<button type="button" tabindex="-1" class="btn_view01"></button>
 									</div>
-									
 									<div>
-										<input type="submit" id="loginBtn" value="로그인">
+										<input style="color:#000;" type="submit" id="loginBtn" value="로그인">
 									</div>
 									<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 									<div>
