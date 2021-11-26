@@ -96,7 +96,6 @@ var slider = {
 			var opt = {};
 			if( target.hasClass('basicSwiper') )
 			{
-				// console.log('-- basic -')
 				var transitionVisible = function()
 				{
 					bar.stop().css('width','0');
