@@ -6248,7 +6248,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 input[type=number] {
 	border-radius: 0px;
 	height: 35px;
-	padding: 0 22px;
+	padding: 0 10px;
 }
 
 .form-track-order {

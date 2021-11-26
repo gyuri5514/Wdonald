@@ -74,8 +74,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						]]>
 		<if test="store_code != null and  store_code != ''">and store_code = #{store_code}</if>
   			<![CDATA[ 
-  						GROUP BY product_name
-  						order by sales_count desc limit 5
+
+  						GROUP BY product_name 
+  						order 
+						by sales_amount desc limit 8
+
 		]]>
 	</select>
 	

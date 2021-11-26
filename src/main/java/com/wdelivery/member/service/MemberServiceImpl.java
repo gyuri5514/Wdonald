@@ -72,7 +72,7 @@ public class MemberServiceImpl implements MemberService {
 		params.put("to", user_phone);
 		params.put("from", "01042820579");//input phone number = il sung na 01042**-***9
 		params.put("type", "SMS");
-		params.put("text", "[Wdonald] certification code is [" + numStr + "]");
+		params.put("text", "[Wdonald] 인증번호는 [" + numStr + "]입니다.");
 		params.put("app_version", "test app 1.2");
 
 		try {
@@ -242,6 +242,11 @@ public class MemberServiceImpl implements MemberService {
   @Override
 	public List<AdminCouponVO> getUserCoupons(UserVO userVO) {
 		return memberDAO.getUserCoupons(userVO);
+	}
+
+	@Override
+	public List<CartVO> cartCancel(PaymentVO paymentVO) {
+		return memberDAO.cartCancel(paymentVO);
 	}
 
 }

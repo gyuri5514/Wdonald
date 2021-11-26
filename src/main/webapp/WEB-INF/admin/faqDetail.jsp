@@ -7,7 +7,7 @@
 	}
 	
 	table, td, th {
-		border : 1px solid #FFD232;
+		border : 1px solid #dddddd;
 		border-collapse : collapse;	
 		margin: 15px;
 		padding: 10px;
@@ -32,7 +32,7 @@
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> FAQ
 				</div>
-				<form action = "updateFaq.mdo" method="get">
+				<form action = "updateFaq.mdo" method="get" id="updateFaq">
 				<table style="width: 90%;"> 
 				<tr>
 						<td style="text-align: center">카테고리</td>
@@ -89,7 +89,7 @@
 	 			</tr>
 			</table>
 					<div style="float:right">
-						<input type="submit" class="btn btn-primary" value="수정하기">
+						<input id="submit" type="submit" class="btn btn-primary" value="수정하기">
 						<button class="btn btn-danger" onclick="deleteFaq();" >삭제하기</button>
 						<a href="faqBoard.mdo" class="btn btn-primary">목록</a>
 					</div>
@@ -141,7 +141,19 @@
 	}
 	
 	$(function(){
-		var subject = $('#faq_name option:selected').text();
-		console.log("sub" + subject);
+		$("#submit").on("click", function(){
+			if($("#faq_title").val() == ""){
+				alert("제목을 입력해 주세요.");
+				$("#faq_title").focus();
+				return false;
+			} 
+			if($("#faq_content").val() == ""){
+				alert("내용을 입력해 주세요.");
+				$("#faq_content").focus();
+				return false;
+			} 
+			$("#updateFaq").submit();
+		})
+		
 	})
 </script>
