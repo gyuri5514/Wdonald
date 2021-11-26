@@ -145,12 +145,12 @@ public class AdminController {
 		model.addAttribute("userInfo" , adminService.userSelect());
 		return "layout-static";
 	}
-	
+	//쿠폰 추가창
 	@GetMapping("/addcoupon.mdo")
 	public String addcoupon() {
 		return "addcoupon";
 	}
-	
+	//쿠폰 중복 체크 
 	@PostMapping("/couponCheck.mdo")
 	@ResponseBody
 	public int couponCheck(@RequestParam(name="coupon_code", required=false) String coupon_code,AdminCouponVO addcoupon){
@@ -162,15 +162,14 @@ public class AdminController {
 		return 0;
 	}
 	
-	
+	//쿠폰 추가
 	@PostMapping("/addcouponInsert.mdo")
 	public String addCoupon(AdminCouponVO addCoupon) {
-		System.out.println(addCoupon);
 		adminService.addCoupon(addCoupon);
 		addCoupon.setCoupon_status(1);
 		return "redirect:layout-sidenav-light.mdo";
 	}
-
+	//쿠폰 삭제
 	@PostMapping("/deleteCoupon.mdo")
 	@ResponseBody
 	public int deleteCoupon(AdminCouponVO deleteCoupon) {
@@ -178,7 +177,7 @@ public class AdminController {
 		adminService.deleteCoupon(deleteCoupon);
 		return 1;
 	}
-	
+	//쿠폰 사용가능여부 
 	@PostMapping("/statusCoupon.mdo")
 	public String statusCoupon(@RequestParam(name="coupon_code") String coupon_code, @RequestParam(name="status") int status) {
 		AdminCouponVO vo = new AdminCouponVO();
@@ -187,7 +186,7 @@ public class AdminController {
 		adminService.statusCoupon(vo);
 		return "redirect:layout-sidenav-light.mdo";
 	}
-	
+	//공지사항 관리함
 	@GetMapping("/board.mdo")
 	public String Board(Model model) {
 		List<AdminBoardVO> Board = adminService.selectBoard();
@@ -195,27 +194,27 @@ public class AdminController {
 		model.addAttribute("BoardList", Board);
 		return "board";
 	}
+	//공지사항 추가창
 	@GetMapping("/addboard.mdo")
 	public String addboard() {
 		return "addboard";
 	}
+	//공지사항 추가
 	@PostMapping("/addboardInsert.mdo")
 	public String addboard(AdminBoardVO addboard) {
-		System.out.println(addboard.toString());
 		adminService.addBoard(addboard);
 		return "redirect:board.mdo";
 	}
-	
+	//공지사항 삭제
 	@GetMapping("/deleteBoard.mdo")
 	public String deleteBoard(@RequestParam("notice_seq")int notice_seq) {
 		adminService.deleteBoard(notice_seq);
 		return "redirect:board.mdo";
 	}
-	
+	//공지사항 수정
 	@PostMapping("/boardUpdate.mdo")
 	public String boardUpdate(AdminBoardVO boardUpdate) {
 		adminService.boardUpdate(boardUpdate);
-		//model.addAttribute("update",boardUpdate);
 		return "redirect:board.mdo";
 	}
 	
