@@ -17,5 +17,15 @@ public interface NewsDAO {
 	public void countNews(Integer news_code);
 	
 	public List<NewsVO> selectNewsNotice();
+	
+	public List<NewsVO> news(NewsVO newsVO);
+	
+	public void insertNews(NewsVO newsVO);
+	
+	public void updateNews(NewsVO newsVO);
+	
+	public void deleteNews(int news_code);
+	
+	public NewsVO newsDetail(NewsVO newsVO);
 
 }

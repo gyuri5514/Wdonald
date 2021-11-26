@@ -397,7 +397,7 @@
 									<tbody>
 										<c:if test="${addressList ne null  }">
 											<tr>
-												<th scope="row"><span>배달 주소:</span></th>
+												<th scope="row" style="width: 80px;"><span>배달 주소:</span></th>
 												<td><div id="dm_zipcode" style="text-align:left; font-size:15px;">
 													<a id="addressLink" href="javascript:void(0);" onclick="openAddressPopup();">${addressList[0].address1}</a> 
 												</div></td>
@@ -419,7 +419,7 @@
 										</c:if>
 										<c:if test="${addressList eq null}">
 											<tr>
-												<th scope="row" ><span>배달 주소:</span></th>
+												<th scope="row" style="width: 80px;"><span>배달 주소:</span></th>
 												<td colspan="2" ><div id="dm_zipcode" style="text-align:left; font-size:15px;"></div></td>
 												<td style="width:40px;">
 													<span class="input-group-btn"> 
