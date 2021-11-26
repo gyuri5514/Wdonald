@@ -25,6 +25,7 @@
 <script type="text/javascript" src="resources/js/faq/customer_common.js"></script>
 <script type="text/javascript" src="resources/js/faq/customer_commonTable.js"></script> 
 <script type="text/javascript" src="resources/js/faq/faqMain.js"></script>
+<script src="https://kit.fontawesome.com/d0b304acae.js" crossorigin="anonymous"></script> <!-- fontawesomeCDN -->
 <title>자주 찾는 질문과 답</title>
 <script type="text/javascript">
 		var mobile_yn = "No";
@@ -36,7 +37,25 @@
 		    console.log("ready!");
 		    init();		    
 		    
-	    
+		    $(function(){
+				window.onkeydown = function() {	//새로고침시
+					var kcode = event.keyCode;
+					if(kcode == 116) {
+						history.replaceState({}, null, 'faq.do');
+					}
+				}
+			});
+		   	
+		    console.log($('#category').val() + "1");
+		    if($('#category').val() != null) {
+		    	console.log($('#category').val());
+		    	$('span').each(function(){
+		    		if($(this).find('label').text().trim() == $('#category').val().trim()) {
+		    			$(this).find('label').css("background","#ffbc0d");
+		    			$(this).find('label').css("border","3px solid #ffbc0d");
+		    		}
+		    	});
+		    }
 		});
 </script>
 </head>
@@ -80,7 +99,7 @@
 					<div class="storeFind">
 						<div class="srvcFilter">
 							<div class="service">
-								<span id="04" class="srvc" onclick="javascript:search('04','C');changeColor('04');">
+								<span id="04" class="srvc" onclick="javascript:setSearchTypeSelect('04','C');changeColor('04');">
 									<input type="checkbox" id="1" value="04" disabled /> 
 									<label for="1"> 메뉴 
 										<span class="icon">
@@ -88,7 +107,7 @@
 										</span>
 									</label>
 								</span> 
-								<span id="01" class="srvc"  onclick="javascript:search('01','C');changeColor('01');">
+								<span id="01" class="srvc"  onclick="javascript:setSearchTypeSelect('01','C');changeColor('01');">
 									<input type="checkbox" id="2" value="01" disabled />
 									<label for="2"> 구매 
 										<span class="icon"> 
@@ -96,7 +115,7 @@
 										</span>
 									</label>
 								</span> 
-								<span id="02" class="srvc" onclick="javascript:search('02','C');changeColor('02');">
+								<span id="02" class="srvc" onclick="javascript:setSearchTypeSelect('02','C');changeColor('02');">
 									<input type="checkbox" id="3" value="Y" disabled /> 
 									<label for="3"> 매장이용 
 										<span class="icon"> 
@@ -104,7 +123,7 @@
 										</span>
 									</label>
 								</span> 
-								<span id="03" class="srvc" onclick="javascript:search('03','C');changeColor('03');">
+								<span id="03" class="srvc" onclick="javascript:setSearchTypeSelect('03','C');changeColor('03');">
 									<input type="checkbox" id="4" value="Y" disabled /> 
 									<label for="4"> 윈딜리버리 
 										<span class="icon"> 
@@ -112,7 +131,7 @@
 										</span>
 									</label>
 								</span> 
-								<span id="05" class="srvc" onclick="javascript:search('05','C');changeColor('05');">
+								<span id="05" class="srvc" onclick="javascript:setSearchTypeSelect('05','C');changeColor('05');">
 									<input type="checkbox" id="5" value="Y" disabled /> 
 									<label for="5"> 채용 
 										<span class="icon">
@@ -120,7 +139,7 @@
 										</span>
 									</label>
 								</span> 
-								<span id="07" class="srvc" onclick="javascript:search('07','C');changeColor('07');">
+								<span id="07" class="srvc" onclick="javascript:setSearchTypeSelect('07','C');changeColor('07');">
 									<input type="checkbox" id="6" value="Y" disabled /> 
 									<label for="6"> 프랜차이즈 
 										<span class="icon"> 
@@ -128,7 +147,7 @@
 										</span>
 									</label>
 								</span> 
-								<span id="09" class="srvc" onclick="javascript:search('09','C');changeColor('09');">
+								<span id="09" class="srvc" onclick="javascript:setSearchTypeSelect('09','C');changeColor('09');">
 									<input type="checkbox" id="7" value="Y" disabled /> 
 									<label for="7"> 윈도날드앱 
 										<span class="icon"> 
@@ -136,13 +155,13 @@
 										</span>
 									</label>
 								</span> 
-								<span id="08" class="srvc" onclick="javascript:search('08','C');changeColor('08');">
+								<span id="08" class="srvc" onclick="javascript:setSearchTypeSelect('08','C');changeColor('08');">
 									<input type="checkbox" id="8" value="Y" disabled /> 
 									<label	for="8"> 기타 
 										<span class="icon"> 
 											<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/ic_etc.png" alt="기타" />
 										</span>
-									</label>완정 인천광역시 검단4동
+									</label> 
 								</span>
 							</div>
 						</div>
@@ -151,7 +170,7 @@
 							<fieldset class="srchBox">
 								<legend>질문 검색</legend>
 								<div class="form">
-									<input class="form-control" type="text" id="keyword" name="keyword" value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요" onkeypress = "setSearchTypeSelect();">
+									<input class="form-control" type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요" onkeypress = "if(event.keyCode == 13) setSearchTypeSelect('','');">
 									<!-- <div class="selectWrap" id="selectWrap" style="z-index: 100000; width: 150px">
 										<select name="category" id="category" style="display: block; position: absolute; margin-left: -100000px;">
 											<option value="" title="전체">전체</option>
@@ -171,11 +190,11 @@
 										<input type="hidden" name="BBS_ID" id="BBS_ID" value="">
 										<input type="hidden" name="FAQ_TYPE_CD2" id="FAQ_TYPE_CD2" value=""> 
 										<input type="hidden" name="SELECTED_DATA" id="SELECTED_DATA" value=""> 
-										<input type="hidden" name="category" id="category" value=""> 
+										<input type="hidden" name="category" id="category" value="${category}"> 
 										<!-- <input type="text" placeholder="검색어를 입력해주세요." title="검색어 입력" style="width: 720px"
 											name="srchKeyword" id="srchKeyword"	onkeydown="javascript:if (event.keyCode == 13) {search('','S');}"/> -->
 									</form>
-									<button type="button" class="btnMC btnM" id="searchBtn" onclick="setSearchTypeSelect();">검색</button>
+									<button type="button" class="btnMC btnM" id="searchBtn" onclick="setSearchTypeSelect('','');">검색</button>
 								</div>
 							</fieldset>
 						</div>
@@ -240,7 +259,7 @@
 							            		</c:if>
 							            		<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
 							            		<li class="paging_number_btn ${pageMaker.cri.page == pageNum ? 'active' : ''}">
-							            			<a href="faq.do?page=${pageNum}&keyword=${pageMaker.cri.keyword}"><i class="fa">${pageNum}</i></a>
+							            			<a href="faq.do?page=${pageNum}&keyword=${pageMaker.cri.keyword}&category=${category}"><i class="fa">${pageNum}</i></a>
 							            		</li>
 							            		</c:forEach>
 							            		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -482,16 +501,35 @@
 			};
 </script> -->
 <script>
-	function setSearchTypeSelect() {
+	function setSearchTypeSelect(type,type2) {
 		var $keyword = $('#keyword');
 		var category = $('#category').val();
+		if(type == "04"){
+			category = "메뉴";
+		   }else if(type == "01"){
+			   category = "구매";
+		   }else if(type == "02"){
+			   category = "매장이용";
+		   }else if(type == "03"){
+			   category = "윈딜리버리";
+		   }else if(type == "05"){
+			   category = "채용";
+		   }else if(type == "07"){
+			   category = "프랜차이즈";
+		   }else if(type == "08"){
+			   category = "기타";
+		   }else if(type == "09"){
+			   category = "윈도날드앱";
+		   }else if(type == "80"){
+			   category = "";
+		   }
 		
 		var keywordVal = $keyword.val();
 		
-		var url = "faq.do?page=" + "${pageMaker.cri.page}"
+		var url = "faq.do?page=" + "1"
 			+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
-			+ "&keyword=" + encodeURIComponent(keywordVal) + "&category="+category;
-		window.location.href = url;
+			+ "&keyword=" + encodeURIComponent(keywordVal) + "&category="+category
+		window.location.href = url; 
 	}
 </script>
 <%@ include file="footer.jsp"%>

@@ -25,7 +25,7 @@ $(function() {
 	var user_email = $('#user_email').val();
 	var user_name = $('#user_name').val();
 	
-	$("#confirmBtn").click() {
+	$("#confirmBtn").click(function() {
 	
 		if (user_phone == null || user_email == null || user_name == null) {
 			if (user_phone == null) {

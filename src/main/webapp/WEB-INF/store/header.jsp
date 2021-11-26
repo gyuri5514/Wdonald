@@ -47,7 +47,8 @@
 							<option value="2">준비 중</option>
 							<option value="0">영업마감</option>
 					</select>
-					<input type="submit" class="btn btn-warning" style="margin-left : 10px" onclick="statusSubmit()" value="확인">
+					<input type="button" class="btn btn-warning" style="margin-left : 10px" onclick="statusSubmit()" value="확인">
+					<input type="hidden" id="status2" value="${status}">
 				</div>
 			</div>
 		</form>
@@ -158,27 +159,35 @@
 		</div>
 		
 <script type="text/javascript">
-	var status = '${status}';	
-	for(var j = 0; j < $("#store_status option").length; j++) {
-		if(status == $("#store_status option:eq("+j+")").val()){
-			$("#store_status option:eq("+j+")").attr("selected","selected"); 
+	$(function(){
+		var status = $('#status2').val();
+		for(var j = 0; j < $("#store_status option").length; j++) {
+			if(status == $("#store_status option:eq("+j+")").val()){
+				$("#store_status option:eq("+j+")").attr("selected","selected"); 
+			}
 		}
-	}
+	})
+	
 	
 	function statusSubmit() {
 		
 		var store_status = $("#store_status option:selected").val();
-		alert("click: " + store_status);
 		
 		$.ajax({
 			url:"storeStatus.sdo",
 			data:{ 
 				store_status : store_status
-				},
-			//dataType : "json",
+			},
+			dataType : "json",
 			type : "get",
 			success:function(data){				
-				alert("success ???");
+				console.log(data.store_status);
+				for(var i = 0; i < $("#store_status option").length; i++) {
+					if(data.store_status == $("#store_status option:eq("+i+")").val()){
+						$("#store_status option:eq("+i+")").attr("selected","selected"); 
+					} else
+						$("#store_status option:eq("+i+")").removeAttr("selected"); 
+				}
 
 			},error:function(){
 				alert("failed");

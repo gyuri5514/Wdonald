@@ -12,9 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wdelivery.admin.service.AdminLoginService;
-import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.vo.AdminNoticeVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.payment.vo.ToyCountVO;
@@ -82,16 +82,17 @@ public class StoreController {
 		return "index";
 	}
 	@GetMapping("/storeStatus.sdo")
-	public String storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session, Model model) {		
+	@ResponseBody
+	public AdminVO storeStatus(@RequestParam(name="store_status", defaultValue = "0") int store_status, AdminVO adminVO, HttpSession session, Model model) {		
 		adminVO = (AdminVO) session.getAttribute("store_admin");
 		if(adminVO == null) {
 			model.addAttribute("error",1);
-			return "index";
+			return adminVO;
 		}
 		System.out.println("storeStatus : " + adminVO.toString() + "?" + store_status);
 		adminVO.setStore_status(store_status);
 		storeService.storeStatus(adminVO);
-		return "header";
+		return adminVO;
 	}
 	
 	//adminUpdate
@@ -146,14 +147,15 @@ public class StoreController {
 			List<AdminNoticeVO> noticeList = storeService.noticeSelect();
 			model.addAttribute("noticeList", noticeList);
 		//}
+		model.addAttribute("status", adminVO.getStore_status());
 		return "layout-sidenav-light";
 	}
 	@GetMapping("/noticeDetail.sdo")
-	public String noticeDetail(Model model, AdminNoticeVO adminNoticeVO) {
-		
+	public String noticeDetail(Model model, AdminNoticeVO adminNoticeVO,  HttpSession session) {
+		AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
 		adminNoticeVO = storeService.noticeDetail(adminNoticeVO);
 		model.addAttribute("noticeDetail", adminNoticeVO);
-		
+		model.addAttribute("status", adminVO.getStore_status());
 		return "noticeDetail";
 	}
 	
@@ -167,17 +169,21 @@ public class StoreController {
 		if(adminVO != null) {
 			List<QnaVO> qnaList = storeService.storeQnaSelect(adminVO);
 			model.addAttribute("qnaList", qnaList);
-			
 			//System.out.println("?" + qnaList.toString());
 		}
-		
+		model.addAttribute("status", adminVO.getStore_status());
 		return "layout-static";
 	}
 	@GetMapping("/qnaDetail.sdo")
-	public String qnaDetail(Model model, QnaVO qnaVO) {
+	public String qnaDetail(Model model, QnaVO qnaVO, HttpSession session) {
+		AdminVO adminVO = (AdminVO) session.getAttribute("store_admin");
+		if(adminVO != null) {
+			List<QnaVO> qnaList = storeService.storeQnaSelect(adminVO);
+			model.addAttribute("qnaList", qnaList);
+		}
 		qnaVO = storeService.qnaDetail(qnaVO);
 		model.addAttribute("qnaDetail", qnaVO);
-		//System.out.println(qnaVO.toString());
+		model.addAttribute("status", adminVO.getStore_status());
 		
 		return "qnaDetail";
 	}
