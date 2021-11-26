@@ -92,14 +92,13 @@
 					<fieldset class="fieldset">
 						<div class="fieldset-heading">
 							<h2 class="fieldset-title">배달 받을 주소를 한글로 입력해 주세요.</h2>
-							<p class="instructions">* 필수 항목</p>
 						</div>
 						<div class="wrap">
-							<div class="flow" style="position: absolute center;">
+							<!-- <div class="flow" style="position: absolute center;">
 								<img
 									src="https://www.mdsgisprod.co.kr/mdsgis/resources/old/images/order_floww_01.gif"
 									width="825" height="100" alt="새로운 주소 추가 단계">
-							</div>
+							</div> -->
 							<!-- <form id="jibunSform" name="jibunSform" method="post" action=""> -->
 								<div id="p_inbox gibun_add" style="margin-left: 20px;">
 									<p class="tip01">&nbsp;</p>
