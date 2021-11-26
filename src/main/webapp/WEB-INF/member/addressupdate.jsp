@@ -165,9 +165,9 @@
 								<button type="submit" id="submit_button" name="submit_button" class="btn btn-red btn-lg btn-submit">주소록 추가</button>
 							</div>
 							<div class="form-group">
-								<a class="h5 text-default text-ucase btn-back" href="">
+								<a class="h5 text-default text-ucase btn-back" href="addressBook.do">
 									<i class="text-primary fa fa-caret-left"></i>
-									<span>뒤로 가기</span>
+									뒤로 가기
 								</a>
 							</div>
 						</fieldset>

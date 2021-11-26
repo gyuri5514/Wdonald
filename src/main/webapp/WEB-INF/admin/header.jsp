@@ -125,6 +125,7 @@
 								<a class="nav-link" href="faqBoard.mdo">FAQ 관리</a>
 							</nav>
 						</div>
+						
 
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"> 
@@ -153,7 +154,8 @@
                      <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                      	 <a class="nav-link" href="layoutStatic.mdo">회원관리</a>
                      	 <a class="nav-link" href="register.mdo">매장등록</a>
-                     	 <a class="nav-link" href="storeUpdate.mdo">매장정보수정</a>
+                     	<!--  <a class="nav-link" href="storeUpdate.mdo">매장정보수정</a> -->
+                     	<!-- 이거 도은이가 필요 없단다 -->
                      </nav>
 
                   </div>

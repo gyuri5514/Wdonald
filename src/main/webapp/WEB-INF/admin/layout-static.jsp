@@ -106,10 +106,13 @@
 													}),
 													contentType:"application/json"
 												}).done(function(res){
+													console.log("seq " + user_seq);
 													if(res=='1'){
-													alert('successfully delete '+user_name+' member');
-													$('#'+user_seq).remove();
+														console.log("success");
+														alert('successfully delete '+user_name+' member');
+														$('#'+user_seq).remove();
 													}else{
+														console.log("no");
 														alert('failed : 뭔가 문제가 생겼어요.');
 													}
 												})
