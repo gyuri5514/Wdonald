@@ -23,7 +23,6 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
@@ -47,7 +46,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerLgSetVO.b_lgset_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${burgerLgSetVO.b_lgset_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
@@ -80,7 +78,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerSetVO.b_set_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${burgerSetVO.b_set_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td  class="change-column"><a href="#" onclick="sideOpen(1)">변경</a></td>
@@ -112,7 +109,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${burgerVO.b_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${burgerVO.b_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column"></td>
 												<td colspan="2" class="drink-column"></td>
 												<td class="change-column"></td>
@@ -138,7 +134,6 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
@@ -162,7 +157,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningSetVO.w_set_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${winMorningSetVO.w_set_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
@@ -195,7 +189,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${winMorningVO.w_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${winMorningVO.w_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column"></td>
 												<td colspan="2" class="drink-column"></td>
 												<td  class="change-column"></td>
@@ -223,7 +216,6 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th class="change-column">선택</th>
 												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
@@ -246,7 +238,6 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<%-- <td class="calories-column">${sideVO.s_kcal}kcal</td> --%>
 													<td colspan="2" class="side-column">선택안함</td>
 													<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>
 													<td colspan="2" class="quantity-column">
@@ -270,7 +261,6 @@
 													<th class="picture-column">&nbsp;</th>
 													<th colspan="2" class="description-column">&nbsp;</th>
 													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-													<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 													<th colspan="2" class="change-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 													<th colspan="2" class="quantity-column">
 												</tr>
@@ -292,7 +282,6 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${sideVO.s_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<%-- <td class="calories-column">${sideVO.s_kcal}kcal</td> --%>
 													<td colspan="2" class="quantity-column">
 														<div class="input-group item-quantity item-quantity-picker">
 															<span class="input-group-btn">
@@ -318,7 +307,6 @@
 													<th class="picture-column">&nbsp;</th>
 													<th colspan="2" class="description-column">&nbsp;</th>
 													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-													<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 													<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 													<th class="change-column">선택</th>
 													<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
@@ -341,7 +329,6 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<%-- <td class="calories-column">${drinkVO.d_kcal}kcal</td> --%>
 													<td colspan="2" class="drink-column">선택안함</td>
 													<td class="change-column"><a href="#" onclick="sideOpen(0);">변경</a></td>
 													<td colspan="2" class="quantity-column">
@@ -365,7 +352,6 @@
 													<th class="picture-column">&nbsp;</th>
 													<th colspan="2" class="description-column">&nbsp;</th>
 													<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-													<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 													<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 												</tr>
 											</thead>
@@ -387,7 +373,6 @@
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${drinkVO.d_price}"/>
 													<td class="cost-column">&#8361;${formatPrice}</td>
-													<%-- <td class="calories-column">${drinkVO.d_kcal}kcal</td> --%>
 													<td colspan="2" class="quantity-column">
 														<div class="input-group item-quantity item-quantity-picker">
 															<span class="input-group-btn">
@@ -412,7 +397,6 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="quantity-column">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수량</th>
 											</tr>
 										</thead>
@@ -433,7 +417,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${dessertVO.dessert_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${dessertVO.dessert_kcal}kcal</td> --%>
 												<td colspan="2" class="quantity-column">
 													<div class="input-group item-quantity item-quantity-picker">
 														<span class="input-group-btn">
@@ -456,7 +439,6 @@
 												<th class="picture-column">&nbsp;</th>
 												<th colspan="2" class="description-column">&nbsp;</th>
 												<th class="cost-column">&nbsp;&nbsp;&nbsp;가격</th>
-												<!-- <th class="calories-column">&nbsp;&nbsp;kcal</th> -->
 												<th colspan="2" class="side-column">&nbsp;사이드</th>
 												<th colspan="2"class="drink-column">&nbsp;&nbsp;음료</th>
 												<th class="change-column">선택</th>
@@ -480,7 +462,6 @@
 												</td>
 												<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${happyMealVO.h_price}"/>
 												<td class="cost-column">&#8361;${formatPrice}</td>
-												<%-- <td class="calories-column">${happyMealVO.h_kcal}kcal</td> --%>
 												<td colspan="2" class="side-column">선택안함</td>
 												<td colspan="2" class="drink-column">선택안함</td>
 												<td class="change-column"><a href="#" onclick="sideOpen(0)">변경</a></td>

@@ -1433,6 +1433,7 @@ ul.notiTxt:before {
 
 .tit_ico.key01 {
 	margin-top: 20px;
+	padding-left: 20px;
 }
 
 .tit_ico:before {
@@ -1475,6 +1476,7 @@ ul.notiTxt:before {
 
 .simple_login .tit01 {
 	margin-top: 110px;
+	padding-left: 20px;
 }
 
 .simple_login .list li {

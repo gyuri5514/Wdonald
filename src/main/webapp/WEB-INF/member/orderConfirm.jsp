@@ -164,8 +164,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_Lgset_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_b_set_code != null}">
@@ -212,8 +212,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_b_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_s_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null}">
@@ -232,8 +232,8 @@
 														<div>${cartList.cart_s_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_s_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_d_code != null && cartList.cart_b_code == null && cartList.cart_w_code == null && cartList.cart_h_code == null }">
@@ -252,8 +252,8 @@
 														<div>${cartList.cart_d_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_d_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_set_code != null}">
@@ -277,8 +277,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_set_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_w_code != null && cartList.cart_w_set_code == null}">
@@ -297,8 +297,8 @@
 														<div>${cartList.cart_w_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_w_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_h_code != null}">
@@ -321,8 +321,8 @@
 														</ul>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_h_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 											<c:if test="${cartList.cart_dessert_code != null}">
@@ -341,8 +341,8 @@
 														<div>${cartList.cart_dessert_name}</div>
 													</td>
 													<fmt:formatNumber type="number" maxFractionDigits="3" var="formatPrice" value="${cartList.cart_dessert_price}"/>
-													<td class="many">${cartList.cart_quantity}개</td>
 													<td class="cost">₩${formatPrice}</td>
+													<td class="many">${cartList.cart_quantity}개</td>
 												</tr>
 											</c:if>
 										</c:forEach>
@@ -350,13 +350,7 @@
 									</c:if>
 								</table>
 							</section>
-<!-- 										<section class="panel-section order-remarks">
-											<div class="form-group">
-												<label for="form_review_order_remarks" class="field-label"><h3>배달시 요청 사항:</h3></label> <input type="text" class="form-control input-lg" name="form_review_order_remarks" id="form_review_order_remarks" data-rule-verifyspecialcharacters="true" data-msg-verifyspecialcharacters="form.reviewconfirm.orderverification.orderremark.error.invalid" value="">
-											</div>
-											<label class="control-hint" for="form_review_order_remarks">"&gt;", "", ";"와 같은 특정 특수문자는 사용 불가합니다.</label>											
-										</section>
--->						</div>
+						</div>
 					</div>
 						<input type="hidden" id="price" name="price" value="${price}">
 						<input type="hidden" id="delivery_price" name="delivery_price" value="${delivery_price}">
@@ -378,11 +372,11 @@
 										<input type="hidden" id="address" name="address">
 										<input type="hidden" id="m_zipcode" name="" value="">
 										<input type="hidden" id="order_comment" name="order_comment" value="">
+										<input type="hidden" id="discount" name="discount" value="0">
 						</c:if>
 					</form>
 				</div>
 				<div class="col-xs-4" id="col-xs-4">
-					<!-- <form name="form_order_summary" id="form_order_summary" th:action="@{/applyCoupon.html}" method="post" role="form" data-required-symbol="*" accept-charset="utf-8">  -->
 					<div class="panel panel-basic panel-narrow order-summary" style="width:580px;">
 						<div class="panel-heading">
 							<h3 class="text-center">주문 요약</h3>
@@ -434,7 +428,6 @@
 												</td>
 												
 											</tr>
-											<!-- <tr id="d" style="display: none"></tr> -->
 											<tr>
 												<th colspan="4"><input id="m_zipcode2" placeholder="상세주소입력" type="text" class="form-control" style="height : 30px; color: #999"/></th>
 											</tr>
@@ -475,7 +468,6 @@
 													<c:if test="${!empty sessionScope.userInfo || !empty sessionScope.kakaoSession || !empty sessionScope.naverSession}">
 														<input type="text" name="couponCode" id="couponCode" readonly="readonly" class="form-control"  style="height : 35px;">
 														<div class="input-group-btn">
-														<!-- <button type="button" onclick="couponBtn()" class="btn btn-red"> -->
 														<button type="button" onclick="myCouponBook('${price}');" class="btn btn-red">
 															내쿠폰함
 														</button>
@@ -511,9 +503,6 @@
 											<fmt:formatNumber type="number" maxFractionDigits="3" var="delivery_price" value="${delivery_price}"/>
 											<td><span>+₩${delivery_price}</span></td>
 										</tr>
-										<!-- MDSAP-11635-v1 -->
-										
-										<!-- MDSAP-11635-v1 -->
 									</tbody>
 								</table>
 								<fieldset class="form-actions text-center">
@@ -527,9 +516,6 @@
 									</div>
 								</fieldset>
 							</section>
-							<!-- section class="panel-section">
-					<img src="http://placehold.it/300x100" alt="" class="img-block promotional-banner" />
-				</section-->
 						</div>
 					</div>
 					<!-- </form>  -->

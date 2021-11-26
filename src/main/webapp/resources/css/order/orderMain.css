@@ -2511,7 +2511,8 @@ tbody.collapse.in {
 
 .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group
 	{
-	margin-right: 0px
+	border-radius: 5px;
+	margin-bottom: 5px;	
 }
 
 .nav {
@@ -9119,10 +9120,11 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 	input[type='search'], input[type='email'], input[type='date'] {
 	color: #292929;
 	height: 70px;
-	padding: 0 28 px;
+	padding: 0 10px;
 	line-height: 1;
 	border: 1 px solid #d1d1d1;
-	border-radius: 0;
+	border-radius: 5px;
+	margin: 5px 0;
 	background: #fff;
 }
 
@@ -9453,8 +9455,8 @@ input[type='text'], input[type='password'], input[type='tel'], input[type='numbe
 .table-order-details .quantity {
 	font-size: 24px;
 	font-size: 1.5rem;
-	font-family: "Din Black", sans-serif;
-	width: 5%;
+	font-family: SpeedeeK, "Din Black", sans-serif;
+	width: 40px;
 	line-height: .9
 }
 
@@ -14887,4 +14889,8 @@ supports (-webkit-appearance: -apple-pay-button) { .apple-pay-button {
 	font-family: SpeedeeK;
 	font-weight: 500;
 	font-size: 20px;
+}
+
+.product-name {
+	width: 160px;
 }
