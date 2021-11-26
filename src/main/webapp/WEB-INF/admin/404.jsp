@@ -18,7 +18,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-6">
                                 <div class="text-center mt-4">
-                                    <img class="mb-4 img-error" src="${pageContext.request.contextPath}/resources/assets/img/error-404-monochrome.svg" /> <!-- 이미지 -->
+                                    <img class="mb-4 img-error" src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/icon/bg_noresult.png" /> <!-- 이미지 -->
                                     <p class="lead">This requested URL was not found on this server.</p>
                                     <a href="index.mdo">
                                         <i class="fas fa-arrow-left me-1"></i>

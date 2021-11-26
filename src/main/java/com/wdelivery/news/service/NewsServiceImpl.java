@@ -40,4 +40,29 @@ public class NewsServiceImpl implements NewsService {
 		return newsDAO.selectNewsNotice();
 	}
 
+	@Override
+	public List<NewsVO> news(NewsVO newsVO) {
+		return newsDAO.news(newsVO);
+	}
+
+	@Override
+	public void insertNews(NewsVO newsVO) {
+		newsDAO.insertNews(newsVO);
+	}
+
+	@Override
+	public void updateNews(NewsVO newsVO) {
+		newsDAO.updateNews(newsVO);
+	}
+
+	@Override
+	public void deleteNews(int news_code) {
+		newsDAO.deleteNews(news_code);
+	}
+
+	@Override
+	public NewsVO newsDetail(NewsVO newsVO) {
+		return newsDAO.newsDetail(newsVO);
+	}
+
 }

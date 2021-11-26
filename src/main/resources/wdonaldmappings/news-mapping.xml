@@ -54,4 +54,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</select>
 	
+	<select id="news" resultType="newsVO">
+		SELECT * FROM news ORDER BY news_code
+	</select>
+	
+	<select id="newsDetail" resultType="newsVO">
+		SELECT * FROM news WHERE news_code = #{news_code} ORDER BY news_code
+	</select>
+	
+	<insert id="insertNews">
+		INSERT INTO news (news_code,news_title, news_regdate, news_content) VALUES 
+		((select news_code from news order by news_code desc limit 1)+1,#{news_title}, now(), #{news_content})
+	</insert>
+	
+	<update id="updateNews">
+		UPDATE news SET news_title = #{news_title}, news_content = #{news_content} WHERE news_code = #{news_code}
+	</update>
+	
+	<delete id="deleteNews" parameterType="int">
+		DELETE FROM news WHERE news_code = #{news_code}
+	</delete>
+	
 </mapper>

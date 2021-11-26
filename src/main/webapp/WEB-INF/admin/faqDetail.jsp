@@ -7,7 +7,7 @@
 	}
 	
 	table, td, th {
-		border : 1px solid #FFD232;
+		border : 1px solid #dddddd;
 		border-collapse : collapse;	
 		margin: 15px;
 		padding: 10px;
