@@ -23,7 +23,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">매장 등록</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">매장 정보 수정</h3></div>
                                     <div class="card-body">
                                     
                                         <form action="" id="storeUpdate" method="post">
@@ -59,7 +59,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input name="store_address" class="form-control" value="${storeDetail.store_address}" id="inputFirstName" type="text" placeholder="Enter your first name"/>
+                                                        <input name="store_address" class="form-control" value="${storeDetail.store_address}" id="inputFirstName" type="text" readonly="readonly"/>
                                                         <label for="inputFirstName">매장주소</label>
                                                     </div>
                                                 </div>
