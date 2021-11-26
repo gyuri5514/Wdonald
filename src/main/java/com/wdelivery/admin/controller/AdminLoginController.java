@@ -123,12 +123,12 @@ public class AdminLoginController {
 		return "redirect:index.mdo";
 	}
 
-	
+	//매장 등록창
 	@GetMapping("register.mdo")
 	public String register() {
 		return "register";
 	}
-	
+	//매장 등록
 	@PostMapping("/registerInsert.mdo")
 	public String register(AdminVO registerAdmin) throws Exception {
 		adminLoginService.register(registerAdmin);
