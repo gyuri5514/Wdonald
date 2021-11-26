@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- <link rel="stylesheet" type="text/css" href="resources/css/mdo.css"> -->
 <style>
 .textareaCSS {
@@ -22,6 +23,9 @@ table, td, th {
 	font-weigth: 500;
 }
 </style>
+
+<c:set var="now" value="<%=new java.util.Date() %>" />
+<c:set var="regdate"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/></c:set>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
@@ -33,7 +37,7 @@ table, td, th {
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						WinDelivery 새로운 소식 등록 <a target="_blank" href="main.do">Wcdonald's</a>
+						WinDelivery 새로운 소식 등록 <a target="_blank" href="main.do">WinDelivery</a>
 					</div>
 				</div>
 				<div class="card mb-4">
@@ -41,7 +45,7 @@ table, td, th {
 						<i class="fas fa-table me-1"></i> 새로운 소식 등록
 					</div>
 					<div style="margin-left: 100px;">
-						<form action="addNews.mdo" method="post">
+						<form action = "addNews.mdo" method="post">
 							<table style="width: 90%;">
 								<tr>
 									<td style="text-align: center">제목</td>
@@ -49,14 +53,14 @@ table, td, th {
 										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="news_title" id="news_title" />
 									</td>
 								</tr>
-								<tr>
+								<%-- <tr>
 									<td style="text-align: center">등록날짜</td>
 									<td>
-										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="news_regdate" id="news_regdate" />
+										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="news_regdate" id="news_regdate" value="<c:out value="${regdate}" />"/>
 									</td>
-								</tr>
+								</tr> --%>
 								<tr>
-									<!-- <td style="text-align: center">이미지 등록</td>
+									<td style="text-align: center">이미지 등록</td>
 									<td>
 										<div style="margin-top: 10px;">
 											<button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>
@@ -67,14 +71,14 @@ table, td, th {
 										<div class="row mb-3" style="margin-top: 20px;">
 											<div class="input-group">
 												<label class="input-group-btn">
-													<span class="btn btn-primary"> Upload 
+													<span class="btn btn-primary" role="button"> Upload 
 														<input type="file" name="file1" id="file1" style="display: none;" multiple>
 													</span>
 												</label>
-												<input type="text" id="news_img" class="form-control" readonly>
+												<input type="text" id="news_img_path" class="form-control" readonly>
 											</div>
 										</div>
-									</td> -->
+									</td>
 								<tr>
 									<td style="text-align: center">공지내용</td>
 									<td style="">
@@ -92,7 +96,7 @@ table, td, th {
 		</main>
 <%@ include file="footer.jsp"%>
 <script type="text/javascript">
-/* $(document).ready(function() { */
+$(document).ready(function() {
 	
 	/* $("#news_code").blur(function(){
 		var code = $('#news_code').val();
@@ -118,19 +122,9 @@ table, td, th {
 	
 	/* $("#cancle").on("click", function() {
 		location.href = "news.mdo";
-	})
+	}) */
 	$("#submit").on("click", function() {
 		var regExp = /\s/g;
-		if ($("#news_code").val() == "") {
-			alert("버거코드를 입력하세요.");
-			$("#news_code").focus();
-			return false;
-		}
-		if (regExp.test($("#news_code").val())) {
-			alert("공백을 사용할 수 없습니다.");
-			$("#news_code").focus();
-			return false;
-		}
 		if ($("#news_title").val() == "") {
 			alert("제목을 입력하세요.");
 			$("#news_title").focus();
@@ -198,8 +192,8 @@ table, td, th {
 		input.trigger('fileselect', [
 				numFiles, label ]);
 	});
-}) */
-/* function slideButton() {
+})
+function slideButton() {
 	var img = $('#news-container');
 	if (img.attr("style") == "display:none;") {
 		img.attr("style", "display:block;");
@@ -208,5 +202,5 @@ table, td, th {
 		img.attr("style", "display:none;");
 		$('#slideBtn').text("이미지 미리보기");
 	}
-}; */
+};
 </script>
