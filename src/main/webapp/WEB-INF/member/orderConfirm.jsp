@@ -378,6 +378,7 @@
 										<input type="hidden" id="address" name="address">
 										<input type="hidden" id="m_zipcode" name="" value="">
 										<input type="hidden" id="order_comment" name="order_comment" value="">
+										<input type="hidden" id="discount" name="discount" value="0">
 						</c:if>
 					</form>
 				</div>
