@@ -74,5 +74,7 @@ public interface MemberDAO {
 
 	public List<AdminCouponVO> getUserCoupons(UserVO userVO);
 
+	public void restoreCouponStatus(PaymentVO paymentVO);
+
 
 }

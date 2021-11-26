@@ -18,4 +18,6 @@ public interface PaymentDAO {
 	void insertCartList(ArrayList<CartVO> cartVO);
 	
 	public void toyCount(ToyCountVO toyCountVO);
+
+	void updateUserCouponStatus(PaymentVO paymentVO);
 }

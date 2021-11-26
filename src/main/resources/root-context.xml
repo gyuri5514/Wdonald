@@ -60,7 +60,8 @@
      <mybatis-spring:scan base-package="com.wdelivery.happypromotion.dao"/>
      <mybatis-spring:scan base-package="com.wdelivery.store.chart.dao"/>
 	
-	
+	<mybatis-spring:scan base-package="com.wdelivery.quartz.dao"/>
+	<import resource="context-quartz.xml"/>
 	 <context:component-scan base-package="com.wdelivery"></context:component-scan>
 
 </beans>

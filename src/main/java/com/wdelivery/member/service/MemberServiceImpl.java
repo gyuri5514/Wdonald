@@ -181,8 +181,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getUserPaymentInfo(user_email);
 	}
 	@Override
-	public void orderCancel(int order_seq) { //!!!!!!!!!!!!!!!!!!
-		memberDAO.orderCancel(order_seq);
+	public void orderCancel(PaymentVO paymentVO) { //!!!!!!!!!!!!!!!!!!
+		if(paymentVO.getCoupon_code()!=null&&!paymentVO.getCoupon_code().equals(""))
+			memberDAO.restoreCouponStatus(paymentVO);
+			memberDAO.orderCancel(paymentVO.getOrder_seq());
 	}
 	
 

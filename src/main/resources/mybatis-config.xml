@@ -63,6 +63,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="wdonaldmappings/news-mapping.xml"/>
 		<mapper resource="wdonaldmappings/happyPromotion-mapping.xml"/>
 		<mapper resource="wdonaldmappings/chart-mapping.xml"/>
+		<mapper resource="wdonaldmappings/quartz-mapping.xml"/>
 	</mappers>
 
 </configuration>

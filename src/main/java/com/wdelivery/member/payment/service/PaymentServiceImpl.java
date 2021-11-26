@@ -26,6 +26,11 @@ public class PaymentServiceImpl implements PaymentService {
 	public void toyCount(ToyCountVO toyCountVO) {
 		paymentDAO.toyCount(toyCountVO);
 	}
+
+	@Override
+	public void updateUserCouponStatus(PaymentVO paymentVO) {
+		paymentDAO.updateUserCouponStatus(paymentVO);
+	}
 	
 }
 

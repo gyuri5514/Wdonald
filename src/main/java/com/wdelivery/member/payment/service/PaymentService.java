@@ -9,7 +9,7 @@ import com.wdelivery.member.payment.vo.ToyCountVO;
 public interface PaymentService {
 
 	void insertPaidOrderList(PaymentVO paymentVO, ArrayList<CartVO> cartVO);
-	
 	public void toyCount(ToyCountVO toyCountVO);
+	void updateUserCouponStatus(PaymentVO paymentVO);
 
 }

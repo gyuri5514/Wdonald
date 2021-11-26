@@ -380,16 +380,7 @@
 						</div>						
 						<div class="form-group">
 							<label for="m_mobile1" class="dis_b" >핸드폰</label>
-								<!-- <select	name="m_mobile1" id="m_mobile1" class="form-control dis_ib"	style="width: 30%">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>
-								</select> - 
-								<input name="m_mobile2" id="m_mobile2" maxlength="4" type="text" class="form-control placeholder dis_ib" style="width: 30%" />
-								 -  -->
+								
 								 <input name="user_phone" id="m_mobile3" maxlength="11" type="text"	class="form-control placeholder dis_ib" style="width: 30%" placeholder="'-'은 빼고 입력해주세요!"/>
 								 <button type="button" class="btn btn-md btn-red" id="inputPhone">인증문자보내기</button><br/>
 								 <input name="send_sms" id="send_sms" class="form-control placeholder dis_ib" maxlength="4" type="text" style="width: 30%; margin : 10px 0;" placeholder="숫자 4글자를 입력해주세요."/>

@@ -230,8 +230,8 @@ $(function() {
 								
 								<td><span>-&nbsp; ₩
 										${discount }</span>
-								<input type="hidden" value="${coupon_code }" name="coupon_code" id="coupon_code">
-								<input type="hidden" value="${coupon_title }" name="coupon_title" id="coupon_title"></td>
+								<input type="hidden" value="${coupon_code }" id="coupon_code">
+								<input type="hidden" value="${coupon_title }"  id="coupon_title"></td>
 							</tr>
 							<!-- MDSAP-11635 -->
 							<!-- MDSAP-11635 -->
