@@ -153,7 +153,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<update id="orderCancel">
       update order_list set order_status = '주문취소' where order_seq = #{order_seq}
-   </update>
+	</update>
+	<select id="cartCancel" resultType="cartVO" parameterType="paymentVO">
+		select * from cart_list where order_seq = #{order_seq}
+	</select>
+	<update id="toyCancel">
+		update toy_count set ht_count = (ht_count + #{product_quantity}) 
+		where admin_seq = (select admin_seq from admin, order_list where admin.store_code = order_list.store_code
+		and admin.store_code = (select store_code from order_list where order_seq = #{order_seq}) 
+		and order_seq = #{order_seq}) and ht_code = #{ht_code}
+	</update>
 	
 	<update id="restoreCouponStatus">
 	<![CDATA[

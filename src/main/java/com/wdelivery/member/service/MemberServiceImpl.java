@@ -244,4 +244,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.getUserCoupons(userVO);
 	}
 
+	@Override
+	public List<CartVO> cartCancel(PaymentVO paymentVO) {
+		return memberDAO.cartCancel(paymentVO);
+	}
+
 }
