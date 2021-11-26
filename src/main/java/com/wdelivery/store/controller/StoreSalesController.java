@@ -41,6 +41,7 @@ public class StoreSalesController {
 			model.addAttribute("error",1);
 			return "index";
 		}
+		model.addAttribute("status", adminVO.getStore_status());
 		List<PaymentVO> orderList = storeSalesService.orderList(adminVO);
 		model.addAttribute("orderList", orderList);
 		if(order_seq > 0) {
@@ -61,6 +62,7 @@ public class StoreSalesController {
 		}else {
 			return "redirect:login.mdo";
 		}
+		model.addAttribute("status", adminVO.getStore_status());
 		return "orderCancel";
 	}
 	
