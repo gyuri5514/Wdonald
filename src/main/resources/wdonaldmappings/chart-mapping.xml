@@ -69,11 +69,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						RIGHT join cart_list c on c.merchantuid = o.merchantuid
 						WHERE 1=1 and order_status='배달 완료' 
 						and TO_CHAR(o.order_date, 'yy-MM-dd')
-						between #{start_date} and #{end_date}
+						between #{start_date} and #{end_date} 
+						
 						]]>
 		<if test="store_code != null and  store_code != ''">and store_code = #{store_code}</if>
   			<![CDATA[ 
-  						GROUP BY product_name;
+  						GROUP BY product_name
+  						order by sales_count desc limit 5
 		]]>
 	</select>
 	

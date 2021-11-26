@@ -118,7 +118,7 @@ function onSaleCouponBook(){
 							<div>${coupon.coupon_name}</div>
 						</td>
 						<td >${coupon.coupon_code}</td>
-						<fmt:formatDate var="couponEndDate" value="${coupon.coupon_enddate}" pattern="yyyy.MM.dd"/>
+						<fmt:formatDate var="couponEndDate" value="${coupon.coupon_enddate}" pattern="yyyy-MM-dd"/>
 						<td class="special-instructions">${couponEndDate}</td>
 						<td class="controls">
 						<c:if test="${coupon.user_coupon_status == 0}">
