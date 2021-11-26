@@ -123,18 +123,18 @@ public class AdminController {
 	}
 	
 	//errorPage
-//	@GetMapping("/401.mdo")
-//	public String error401() {
-//		return "401";
-//	}
-//	@GetMapping("/404.mdo")
-//	public String error404() {
-//		return "404";
-//	}
-//	@GetMapping("/500.mdo")
-//	public String error500() {
-//		return "500";
-//	}
+	@GetMapping("/401.mdo")
+	public String error401() {
+		return "401";
+	}
+	@GetMapping("/404.mdo")
+	public String error404() {
+		return "404";
+	}
+	@GetMapping("/500.mdo")
+	public String error500() {
+		return "500";
+	}
 	
 	//쿠폰함
 	@GetMapping("/layout-sidenav-light.mdo")
