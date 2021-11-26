@@ -54,7 +54,6 @@ public class AdminChartController {
 	    String startDate= date.format(week.getTime());
 	    c.setEnd_date(date.format(new Date()));
 	    c.setStart_date(startDate);
-		/* c.setStore_code(av.getStore_code()); */
 
 	    getChart(c,model);
 		
@@ -66,7 +65,6 @@ public class AdminChartController {
 	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
 		if(session.getAttribute("admin")==null)
 			return null;
-		System.out.println(chart.toString());
 		return JSONArray.fromObject(chartService.getResponsiveChart(chart));
 	}
 	
@@ -74,10 +72,6 @@ public class AdminChartController {
 		model.addAttribute("chartList",JSONArray.fromObject( chartService.getinitialChart(chart)));
 	    model.addAttribute("start_date",chart.getStart_date());
 	    model.addAttribute("end_date",chart.getEnd_date());
-	    System.out.println(chart.toString());
-	    ArrayList<ChartVO> pieList = chartService.getPieChart(chart);
-	    for(ChartVO c : pieList)
-	    	System.out.println(c.toString());
 	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
 	}
 	

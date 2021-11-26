@@ -52,20 +52,20 @@ public class PaymentController {
 	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) throws Exception{
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
-		if (userInfo != null) {
+		
+		if (userInfo != null) 
 			paymentVO.setUser_type(userInfo.getUser_status());
-		}else {
+		else 
 			paymentVO.setUser_type(9);
-		}
-		System.out.println(paymentVO.toString());
+		
 	    paymentVO.setOrder_date(new Date());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
-     
-		//if(userInfo!=null) throw new Exception("아제발 들어와라");
+		
+		if(paymentVO.getCoupon_code()!=null&&!paymentVO.getCoupon_code().equals("")) 
+			paymentService.updateUserCouponStatus(paymentVO);
 		
 		for(int i=0; i<cartVO.size(); i++) { //toy
 			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
-				System.out.println("toy" + cartVO.get(i).getCart_h_code());
 				ToyCountVO tcv = new ToyCountVO();
 				tcv.setStore_code(paymentVO.getStore_code());
 				paymentService.toyCount(tcv);

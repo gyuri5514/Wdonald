@@ -204,7 +204,7 @@ $(function() {
 									<input type="hidden" value="${delivery_cost }" name="delivery_cost" id="delivery_cost">
 									<input type="hidden" value="${discount }" name="discount" id ="discount">
 									<div class="total_price">
-										<fmt:formatNumber type="number" maxFractionDigits="3" var="total" value="${tatal_price}"/>
+										<fmt:formatNumber type="number" maxFractionDigits="3" var="total" value="${total_price}"/>
 										<span> ₩ ${total}</span>
 									</div>
 								</td>
@@ -230,8 +230,8 @@ $(function() {
 								
 								<td><span>-&nbsp; ₩
 										${discount }</span>
-								<input type="hidden" value="${coupon_code }" name="coupon_code" id="coupon_code">
-								<input type="hidden" value="${coupon_title }" name="coupon_title" id="coupon_title"></td>
+								<input type="hidden" value="${coupon_code }" id="coupon_code">
+								<input type="hidden" value="${coupon_title }"  id="coupon_title"></td>
 							</tr>
 							<!-- MDSAP-11635 -->
 							<!-- MDSAP-11635 -->

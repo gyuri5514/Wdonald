@@ -155,6 +155,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       update order_list set order_status = '주문취소' where order_seq = #{order_seq}
    </update>
 	
+	<update id="restoreCouponStatus">
+	<![CDATA[
+      update user_coupon set user_coupon_status = 0 
+      where user_seq = (select user_seq from user_info where user_email=#{user_email})
+      and coupon_code=#{coupon_code}
+      ]]>
+   </update>
 	
 	<select id="getCartListByMerchantId" resultType="cartVO" parameterType="String">
 	<![CDATA[

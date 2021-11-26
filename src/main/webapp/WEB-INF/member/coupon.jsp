@@ -121,11 +121,14 @@ function onSaleCouponBook(){
 						<fmt:formatDate var="couponEndDate" value="${coupon.coupon_enddate}" pattern="yyyy.MM.dd"/>
 						<td class="special-instructions">${couponEndDate}</td>
 						<td class="controls">
-						<c:if test="${coupon.coupon_status == 0}">
+						<c:if test="${coupon.user_coupon_status == 0}">
 							미사용
 						</c:if>
-						<c:if test="${coupon.coupon_status == 1}">
+						<c:if test="${coupon.user_coupon_status == 1}">
 							사용완료
+						</c:if>
+						<c:if test="${coupon.user_coupon_status == 2}">
+							기간만료
 						</c:if>
 						</td>
 					</tr>
