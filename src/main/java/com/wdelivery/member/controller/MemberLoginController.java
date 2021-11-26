@@ -68,8 +68,8 @@ public class MemberLoginController {
 	@PostMapping("memLogin.do")
 	public String memberLogin(UserVO userVO,HttpSession session,Model model) {
 		
-		//String rawPw = "";
-		//String encodePw = "";
+		String rawPw = "";
+		String encodePw = "";
 		
 		if(!userVO.getUser_email().equals("")&&userVO.getUser_email()!=null
 				&&userVO.getUser_password()!=null&&!userVO.getUser_password().equals("")) {
@@ -81,13 +81,13 @@ public class MemberLoginController {
 				return "main";
 			}
 			/*일치하는 아이디 존재시 */
+			rawPw = userVO.getUser_password(); //사용자가 제출한 비밀번호
+			encodePw = findUserVO.getUser_password(); //데이터베이스에 저장한 인코딩된 비밀번호
 			
-			//rawPw = userVO.getUser_password(); //사용자가 제출한 비밀번호
-			//encodePw = findUserVO.getUser_password(); //데이터베이스에 저장한 인코딩된 비밀번호
 			
-			//if(true == pwdEncoder.matches(rawPw, encodePw)) {  //비밀번호 일치여부 판단
 			/*------인코딩 안한거 로그인되게 하기  ------*/
-			if(userVO.getUser_password().equals(findUserVO.getUser_password())) { 
+			//if(userVO.getUser_password().equals(findUserVO.getUser_password())) { 
+			if(true == pwdEncoder.matches(rawPw, encodePw)) {  //비밀번호 일치여부 판단
 				if(findUserVO.getUser_status()==1) {
 					
 					//findUserVO.setUser_password(""); //인코딩된 비밀번호 정보 지움 --뭘까?
@@ -190,7 +190,7 @@ public class MemberLoginController {
 			numStr += ran;
 		}
 		memberService.certifiedPhoneNumber(user_phone, numStr);
-		System.out.println("인증 번호 : " + numStr);
+		//System.out.println("인증 번호 : " + numStr);
 		
 		return numStr;
 		

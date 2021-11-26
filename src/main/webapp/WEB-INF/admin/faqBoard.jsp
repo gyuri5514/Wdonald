@@ -19,6 +19,8 @@
 					<i class="fas fa-table me-1"></i> FAQ
 				</div>
 				<div class="card-body">
+				<a class="btn btn-primary" href="addFaq.mdo">등록하기</a>
+				<hr>
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
@@ -39,9 +41,9 @@
 							</tr>
 						</tfoot> -->
 						<tbody>
-						<c:forEach items="${faqList}" var="faqList">
+						<c:forEach items="${faqList}" var="faqList" varStatus="status">
 							<tr>
-								<td>${faqList.faq_seq}</td>
+								<td>${status.count}</td>
 								<td><a href="faqDetail.mdo?faq_seq=${faqList.faq_seq}">${faqList.faq_title}</a></td>
 								<td>${faqList.faq_content}</td>
 								<td>${faqList.faq_name}</td>
@@ -51,7 +53,6 @@
 						</tbody>
 					</table>
 				</div>
-				<a class="btn btn-primary" href="addFaq.mdo">등록하기</a>
 			</div>
 		</div>
 	</main>

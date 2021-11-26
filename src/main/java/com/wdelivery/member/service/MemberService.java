@@ -48,6 +48,7 @@ public interface MemberService {
 
 	List<PaymentVO> getUserPaymentInfo(String user_email);
 	public void orderCancel(PaymentVO paymentVO);
+	public List<CartVO> cartCancel(PaymentVO paymentVO);
 	public void toyCancel(ToyCountVO toyCountVO);
 
 	List<CartVO> getCartListByMerchantId(String merchantUid);

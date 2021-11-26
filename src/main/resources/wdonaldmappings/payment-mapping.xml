@@ -38,7 +38,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							   user_email,
 							   merchantuid, 
 							   cart_product_side_name,
-							   cart_product_drink_name) values ]]> 
+							   cart_product_drink_name,
+							   c_ht_code) values ]]> 
 					   <foreach item="cartVO"  collection="list" separator=",">
 							      <![CDATA[
 							   (#{cartVO.cart_product_code},
@@ -50,7 +51,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							    #{cartVO.user_email},
 							    #{cartVO.merchantuid},
 							    #{cartVO.cart_product_side_name},
-							    #{cartVO.cart_product_drink_name})
+							    #{cartVO.cart_product_drink_name},
+							    #{cartVO.c_ht_code})
 								]]>
 						</foreach>							
 	</insert>
@@ -62,13 +64,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="toyCount" parameterType="toyCountVO">
 		<![CDATA[
-		update toy_count set ht_count = (ht_count - a.cart_product_quantity)
+		update toy_count set ht_count = (ht_count - #{product_quantity})
 		from (select cart_product_quantity
 		from toy_count, cart_list , order_list, admin
 		where cart_list.order_seq = order_list.order_seq
 		and order_list.store_code = admin.store_code order by cart_list.order_seq desc) as a
-		where ht_name = (SELECT ht_name FROM toy_count, admin where toy_count.admin_seq = admin.admin_seq
-				 order by RANDOM() LIMIT 1) and toy_count.admin_seq = (select admin_seq from admin where store_code =#{store_code})
+		where ht_code = #{ht_code} and toy_count.admin_seq = (select admin_seq from admin where store_code =#{store_code})
 		]]>
 	</update>
 	<update id="updateUserCouponStatus" parameterType="paymentVO">

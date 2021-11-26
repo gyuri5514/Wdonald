@@ -33,7 +33,7 @@
 					<i class="fas fa-table me-1"></i> FAQ 등록
 				</div>
 				<div style="margin-left: 100px;">
-				<form action = "addFaq.mdo" method="post">
+				<form action = "addFaq.mdo" method="post" id="addFaq">
 					<table style="width: 90%;"> 
 						<tr>
 							<td style="text-align: center">카테고리</td>
@@ -63,7 +63,7 @@
 						
 					</table>
 					<div>
-					<input type="submit" class="btn btn-warning" style="margin-left: 1000px; margin-bottom: 20px;" value="확인"></div>
+					<input id="submit" type="submit" class="btn btn-warning" style="margin-left: 1000px; margin-bottom: 20px;" value="확인"></div>
 				</form>
 				</div>
 			</div>
@@ -73,14 +73,30 @@
 	
 
 <%@ include file="footer.jsp" %>
+<!-- smartEditor -->
+<script type="text/javascript" src="Editor/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
 <script type="text/javascript">
 /*---smartEditor---*/
-
-	/* $(function() {
-		var oEditors = [];
+ $(function() {
+	 $("#submit").on("click",function(){
+		if($("#faq_title").val() == ""){
+			alert("제목을 입력해 주세요.");
+			$("#faq_title").focus();
+			return false;
+		} 
+		if($("#faq_content").val() == ""){
+			alert("내용을 입력해 주세요.");
+			$("#faq_content").focus();
+			return false;
+		} 
+		
+		$("#addFaq").submit();
+		
+	 });
+		/* var oEditors = [];
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef : oEditors,
-			elPlaceHolder : document.getElementById('ACPT_DESC'), //textareaID
+			elPlaceHolder : document.getElementById('faq_content'), //textareaID
 			sSkinURI : "Editor/SmartEditor2Skin.html", //경로를 맞춰주기 
 			fCreator : "createSEditor2",
 			htParams : {
@@ -93,6 +109,6 @@
 				//모드 탭 (Editor/HTML/TEXT) 사용 여부
 				bUseModeChanger : false
 			}
-		});
-	}) */
+		}); */
+	});
 </script>

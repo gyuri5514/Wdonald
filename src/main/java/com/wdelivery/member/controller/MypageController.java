@@ -170,15 +170,21 @@ public class MypageController {
 	public String orderCancel(PaymentVO paymentVO, HttpSession session) {
 		memberService.orderCancel(paymentVO);
 		
-		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
+		List<CartVO> cartVO = memberService.cartCancel(paymentVO);
+		
 		for(int i=0; i<cartVO.size(); i++) { //toy
 			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
+				
 				ToyCountVO tcv = new ToyCountVO();
+				tcv.setProduct_quantity( cartVO.get(i).getCart_product_quantity());
+				tcv.setOrder_seq(cartVO.get(i).getOrder_seq());
+				tcv.setHt_code(cartVO.get(i).getC_ht_code());
 				tcv.setStore_code(paymentVO.getStore_code());
+				System.out.println(tcv.toString());
 				memberService.toyCancel(tcv);
+				
 			}
-		}
-		
+			}
 		return "redirect:trackOrder.do";
 	}
 	

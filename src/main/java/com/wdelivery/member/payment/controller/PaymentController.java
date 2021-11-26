@@ -49,7 +49,7 @@ public class PaymentController {
 
 	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("paywinCredit.do")
-	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) throws Exception{
+	public String paywinDelivery(@RequestBody PaymentVO paymentVO, HttpSession session) {
 		UserVO userInfo = SessionClassifier.sessionClassifier(session);
 		ArrayList<CartVO> cartVO = TypeSafety.sessionCartCaster(session.getAttribute("cartList"), paymentVO);
 		
@@ -57,19 +57,29 @@ public class PaymentController {
 			paymentVO.setUser_type(userInfo.getUser_status());
 		else 
 			paymentVO.setUser_type(9);
-		
+		for(int i=0; i<cartVO.size(); i++) { //toy
+			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
+				int random = (int)((Math.random() * 4) + 1001);
+				System.out.println("ahf" + random);
+				ToyCountVO tcv = new ToyCountVO();
+				tcv.setHt_code(random);
+				tcv.setProduct_quantity( cartVO.get(i).getCart_product_quantity());
+				tcv.setStore_code(paymentVO.getStore_code());
+				paymentService.toyCount(tcv);
+				cartVO.get(i).setC_ht_code(random);
+				
+			}
+			for(CartVO c : cartVO)
+				System.out.println(c.getC_ht_code());
+			
 	    paymentVO.setOrder_date(new Date());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);
+		
 		
 		if(paymentVO.getCoupon_code()!=null&&!paymentVO.getCoupon_code().equals("")) 
 			paymentService.updateUserCouponStatus(paymentVO);
 		
-		for(int i=0; i<cartVO.size(); i++) { //toy
-			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
-				ToyCountVO tcv = new ToyCountVO();
-				tcv.setStore_code(paymentVO.getStore_code());
-				paymentService.toyCount(tcv);
-			}
+		
 		}
 		
 		session.setAttribute("cartList", new ArrayList<CartVO>());
