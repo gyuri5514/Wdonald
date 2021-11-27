@@ -4,4 +4,5 @@ public interface QuartzWdonaldService {
 
 	void updateExpiredUserCoupon();
 	void updateExpiredAdminCoupon();
+	void updateLastLoginStatus();
 }

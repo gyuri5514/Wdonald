@@ -48,6 +48,11 @@
 		</c:when>
 		<c:when test="${status eq 7}">
 		<script>
+			alert('휴면 계정에서 해제되셨습니다.');
+			</script>
+		</c:when>
+		<c:when test="${status eq 8}">
+		<script>
 			alert('비밀번호가 옳바르지않습니다.');
 			</script>
 		</c:when>

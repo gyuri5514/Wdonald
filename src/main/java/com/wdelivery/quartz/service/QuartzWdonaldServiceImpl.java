@@ -1,6 +1,7 @@
 package com.wdelivery.quartz.service;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,18 @@ public class QuartzWdonaldServiceImpl implements QuartzWdonaldService {
 	
 	@Override
 	public void updateExpiredUserCoupon() {
-		int result = quartzWdonaldDAO.updateExpiredUserCoupon(date.format(new Date()));
-		System.out.println(result);
+		System.out.println(quartzWdonaldDAO.updateExpiredUserCoupon(date.format(new Date())));
 	}
 
 	@Override
 	public void updateExpiredAdminCoupon() {
-		int result = quartzWdonaldDAO.updateExpiredAdminCoupon(date.format(new Date()));
-		System.out.println(result);
+		System.out.println(quartzWdonaldDAO.updateExpiredAdminCoupon(date.format(new Date())));
+	}
+
+	@Override
+	public void updateLastLoginStatus() {
+		 Calendar week = Calendar.getInstance();
+		 week.add(Calendar.DATE , -30);
+		 System.out.println(quartzWdonaldDAO.updateLastLoginStatus(date.format(week.getTime())));
 	}
 }

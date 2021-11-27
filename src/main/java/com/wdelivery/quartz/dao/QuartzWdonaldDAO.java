@@ -5,5 +5,7 @@ public interface QuartzWdonaldDAO {
 	int updateExpiredUserCoupon(String enddate);
 
 	int updateExpiredAdminCoupon(String enddate);
+
+	int updateLastLoginStatus(String format);
 	
 }

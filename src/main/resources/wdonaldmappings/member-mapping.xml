@@ -235,4 +235,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and user_coupon_status =0 order by coupon_enddate desc
 		]]>
 	</select>
+	
+	<update id="restoreSocialMemStatus">
+		<![CDATA[
+			update user_info
+			set user_status = #{user_status} where user_email = #{user_email}
+		]]>
+	</update>
+	
+	<update id="insertLastLogin">
+		<![CDATA[
+			update user_info
+			set last_login = now() where user_email = #{user_email}
+		]]>
+	</update>
 </mapper>
