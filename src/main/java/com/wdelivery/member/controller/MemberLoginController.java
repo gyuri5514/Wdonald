@@ -32,7 +32,6 @@ import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.promotion.service.PromotionService;
 import com.wdelivery.promotion.vo.PromotionVO;
-
 @Controller
 public class MemberLoginController {
 	
@@ -46,10 +45,9 @@ public class MemberLoginController {
 	private MailSendService mss;
 	@Autowired
 	private AdminService adminService;
-  
+		
 	@Autowired
 	private PromotionService promotionService;
-
 	@ModelAttribute("bannerList")
 	public List<AdminBannerVO> getBannerList(){
 		return  adminService.selectBannerList();
@@ -67,7 +65,6 @@ public class MemberLoginController {
 	
 	@PostMapping("memLogin.do")
 	public String memberLogin(UserVO userVO,HttpSession session,Model model) {
-		
 		//String rawPw = "";
 		//String encodePw = "";
 		
