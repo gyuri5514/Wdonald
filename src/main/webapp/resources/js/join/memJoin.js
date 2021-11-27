@@ -86,6 +86,7 @@ $("#m_email").blur(function(){
 						$(".successPhoneChk").text("유효한 번호를 입력해주세요.");
 						$(".successPhoneChk").css("color","red");
 						$("#m_mobile3").attr("autofocus",true);
+						$("#send_sms").attr("disabled",true);
 						$("#sms_chk").val(0);
 		        	}else{	       
 		        		alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오."); 		

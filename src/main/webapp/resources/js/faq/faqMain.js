@@ -38,6 +38,7 @@ function changeColor(obj) {
 				$(this).addClass("selected");
 				$(this).find('label').css("background","#ffbc0d");
 				$(this).find('label').css("border","3px solid #ffbc0d");
+				$('#category').val($(this).find('label').text().trim());
 			}
 		} else {
 			$(this).removeClass("selected");
@@ -66,7 +67,7 @@ function search(type,type2)
    }else if(type == "02"){
       MenuSelect = "매장이용";
    }else if(type == "03"){
-      MenuSelect = "맥딜리버리";
+      MenuSelect = "윈딜리버리";
    }else if(type == "05"){
       MenuSelect = "채용";
    }else if(type == "07"){
@@ -74,14 +75,12 @@ function search(type,type2)
    }else if(type == "08"){
       MenuSelect = "기타";
    }else if(type == "09"){
-      MenuSelect = "맥도날드앱";
+      MenuSelect = "윈도날드앱";
    }else if(type == "80"){
    	  MenuSelect = "";
    }
    console.log(MenuSelect);
    console.log(KeywordSelect);
-
-	$('#category').val(MenuSelect);
 
    if(type2 == "C")
    {
@@ -99,7 +98,7 @@ function search(type,type2)
    
    if(type2 == "S")
    {
-   	KeywordSelect = $("#srchKeyword").val();
+   	KeywordSelect = $("#keyword").val();
    }
    
    $.ajax({
@@ -136,6 +135,8 @@ function search(type,type2)
 				content += "<font color='#920000'>"+data[i].faq_content+"</font></td></tr>"
          }
          }
+		 $('#keyword').val(KeywordSelect);
+		 $('#category').val(MenuSelect);
          $('#ajaxTable').html(content);
       }
    })

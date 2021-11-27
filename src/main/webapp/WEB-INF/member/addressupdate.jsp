@@ -92,14 +92,13 @@
 					<fieldset class="fieldset">
 						<div class="fieldset-heading">
 							<h2 class="fieldset-title">배달 받을 주소를 한글로 입력해 주세요.</h2>
-							<p class="instructions">* 필수 항목</p>
 						</div>
 						<div class="wrap">
-							<div class="flow" style="position: absolute center;">
+							<!-- <div class="flow" style="position: absolute center;">
 								<img
 									src="https://www.mdsgisprod.co.kr/mdsgis/resources/old/images/order_floww_01.gif"
 									width="825" height="100" alt="새로운 주소 추가 단계">
-							</div>
+							</div> -->
 							<!-- <form id="jibunSform" name="jibunSform" method="post" action=""> -->
 								<div id="p_inbox gibun_add" style="margin-left: 20px;">
 									<p class="tip01">&nbsp;</p>
@@ -166,9 +165,9 @@
 								<button type="submit" id="submit_button" name="submit_button" class="btn btn-red btn-lg btn-submit">주소록 추가</button>
 							</div>
 							<div class="form-group">
-								<a class="h5 text-default text-ucase btn-back" href="">
+								<a class="h5 text-default text-ucase btn-back" href="addressBook.do">
 									<i class="text-primary fa fa-caret-left"></i>
-									<span>뒤로 가기</span>
+									뒤로 가기
 								</a>
 							</div>
 						</fieldset>

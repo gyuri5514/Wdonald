@@ -383,7 +383,7 @@
 								
 								 <input name="user_phone" id="m_mobile3" maxlength="11" type="text"	class="form-control placeholder dis_ib" style="width: 30%" placeholder="'-'은 빼고 입력해주세요!"/>
 								 <button type="button" class="btn btn-md btn-red" id="inputPhone">인증문자보내기</button><br/>
-								 <input name="send_sms" id="send_sms" class="form-control placeholder dis_ib" maxlength="4" type="text" style="width: 30%; margin : 10px 0;" placeholder="숫자 4글자를 입력해주세요."/>
+								 <input name="send_sms" disabled="disabled" id="send_sms" class="form-control placeholder dis_ib" maxlength="4" type="text" style="width: 30%; margin : 10px 0;" placeholder="숫자 4글자를 입력해주세요."/>
 								 <button type="submit" class="btn btn-md btn-red" id="inputCertified" style="display : none;">인증번호확인</button>
 								 <span class="successPhoneChk"></span>
 								 <input type="hidden" id="sms_chk" value="0">
@@ -398,9 +398,9 @@
 						<div class="form-group">
 							<label for="m_sex" class="dis_b">성별</label>
 							<label for="m_sex"	class="radio-inline">
-								<input type="radio" name="user_gender" id="m_sex1" value="0" />남자</label>
+								<input type="radio" name="user_gender" id="m_sex1" value="man" />남자</label>
 								 <label for="m_sex" class="radio-inline">
-								 <input type="radio" name="user_gender" id="m_sex2" value="1" />여자</label>
+								 <input type="radio" name="user_gender" id="m_sex2" value="woman" />여자</label>
 						</div>
 
 						<label for="sms_agree_ck" class="checkbox-sms">

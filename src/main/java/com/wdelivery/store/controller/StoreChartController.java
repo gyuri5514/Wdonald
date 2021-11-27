@@ -32,7 +32,7 @@ public class StoreChartController {
 			model.addAttribute("error",1);
 			return "index";
 		}
-		
+		model.addAttribute("status", av.getStore_status());
 	    SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
 	    Calendar week = Calendar.getInstance();
 	    week.add(Calendar.DATE , -7);
@@ -49,9 +49,10 @@ public class StoreChartController {
 	
 	@ResponseBody
 	@PostMapping("getNewChart.sdo")
-	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session){
+	public JSONArray getNewChart(@RequestBody ChartVO chart,HttpSession session, Model model){
 		AdminVO av = (AdminVO) session.getAttribute("store_admin");
 		chart.setStore_code(av.getStore_code());
+		model.addAttribute("status", av.getStore_status());
 		return JSONArray.fromObject(chartService.getResponsiveChart(chart));
 	}
 	

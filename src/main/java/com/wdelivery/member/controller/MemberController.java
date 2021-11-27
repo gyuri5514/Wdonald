@@ -561,17 +561,19 @@ public class MemberController {
 	}
 
 	@GetMapping("/faq.do")
-	public String faq(Model model, Criteria cri) {
-		if(cri.getCategory() == "") 
-			cri.setCategory(null);
-		System.out.println(cri.getCategory());
+	public String faq(Model model, Criteria cri, @RequestParam(name="category", required=false) String category) {
+		if(category == "") 
+			category = null;
+		 
+		cri.setCategory(category);
 		List<FaqVO> vo = faqService.faqSelect(cri);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(faqService.totalFaq(cri));
 		
-		model.addAttribute("category",cri.getCategory());
+		System.out.println("category : " + category);
+		model.addAttribute("category",category);
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageMaker", pageMaker);
 
@@ -581,13 +583,10 @@ public class MemberController {
 	 @GetMapping("/faqSelect.do")
 	    @ResponseBody
 	    public List<FaqVO> faqMenu(@RequestParam(value = "MenuSelect", required = false) String MenuSelect,
-	            @RequestParam(value = "KeywordSelect", required = false) String KeywordSelect) {
+	            @RequestParam(value = "KeywordSelect", required = false) String KeywordSelect, Model model) {
 	        List<FaqVO> faqList = new ArrayList<FaqVO>();
 	        if (MenuSelect != null && KeywordSelect == null) {
-	            /*
-	             * System.out.println("MenuSelect : " + MenuSelect);
-	             * System.out.println("KeywordSelect : " + KeywordSelect);
-	             */
+	             
 	            faqList = faqService.MenuSelect(MenuSelect);
 	            /*
 	             * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
@@ -601,10 +600,7 @@ public class MemberController {
 	            Map<String, String> map = new HashMap<String, String>();
 	            map.put("MenuSelect", MenuSelect);
 	            map.put("KeywordSelect", KeywordSelect);
-	            /*
-	             * System.out.println("MenuSelect : " + MenuSelect);
-	             * System.out.println("KeywordSelect : " + KeywordSelect);
-	             */
+	            
 	            faqList = faqService.KeywordSelect(map);
 	            /*
 	             * for(FaqVO faqKeyword1 : faqList) {

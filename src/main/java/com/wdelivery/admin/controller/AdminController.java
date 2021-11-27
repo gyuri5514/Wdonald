@@ -33,6 +33,8 @@ import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.news.service.NewsService;
+import com.wdelivery.news.vo.NewsVO;
 import com.wdelivery.store.chart.vo.ChartVO;
 import com.wdelivery.store.service.ChartService;
 
@@ -53,6 +55,9 @@ public class AdminController {
 	
 	@Autowired
 	private FaqService faqService;
+	
+	@Autowired
+	private NewsService newsService;
 	
 	@ModelAttribute("adminList")
 	public List<AdminVO> getAdminList(){
@@ -145,12 +150,12 @@ public class AdminController {
 		model.addAttribute("userInfo" , adminService.userSelect());
 		return "layout-static";
 	}
-	
+	//쿠폰 추가창
 	@GetMapping("/addcoupon.mdo")
 	public String addcoupon() {
 		return "addcoupon";
 	}
-	
+	//쿠폰 중복 체크 
 	@PostMapping("/couponCheck.mdo")
 	@ResponseBody
 	public int couponCheck(@RequestParam(name="coupon_code", required=false) String coupon_code,AdminCouponVO addcoupon){
@@ -162,15 +167,14 @@ public class AdminController {
 		return 0;
 	}
 	
-	
+	//쿠폰 추가
 	@PostMapping("/addcouponInsert.mdo")
 	public String addCoupon(AdminCouponVO addCoupon) {
-		System.out.println(addCoupon);
 		adminService.addCoupon(addCoupon);
 		addCoupon.setCoupon_status(1);
 		return "redirect:layout-sidenav-light.mdo";
 	}
-
+	//쿠폰 삭제
 	@PostMapping("/deleteCoupon.mdo")
 	@ResponseBody
 	public int deleteCoupon(AdminCouponVO deleteCoupon) {
@@ -178,7 +182,7 @@ public class AdminController {
 		adminService.deleteCoupon(deleteCoupon);
 		return 1;
 	}
-	
+	//쿠폰 사용가능여부 
 	@PostMapping("/statusCoupon.mdo")
 	public String statusCoupon(@RequestParam(name="coupon_code") String coupon_code, @RequestParam(name="status") int status) {
 		AdminCouponVO vo = new AdminCouponVO();
@@ -187,7 +191,7 @@ public class AdminController {
 		adminService.statusCoupon(vo);
 		return "redirect:layout-sidenav-light.mdo";
 	}
-	
+	//공지사항 관리함
 	@GetMapping("/board.mdo")
 	public String Board(Model model) {
 		List<AdminBoardVO> Board = adminService.selectBoard();
@@ -195,27 +199,27 @@ public class AdminController {
 		model.addAttribute("BoardList", Board);
 		return "board";
 	}
+	//공지사항 추가창
 	@GetMapping("/addboard.mdo")
 	public String addboard() {
 		return "addboard";
 	}
+	//공지사항 추가
 	@PostMapping("/addboardInsert.mdo")
 	public String addboard(AdminBoardVO addboard) {
-		System.out.println(addboard.toString());
 		adminService.addBoard(addboard);
 		return "redirect:board.mdo";
 	}
-	
+	//공지사항 삭제
 	@GetMapping("/deleteBoard.mdo")
 	public String deleteBoard(@RequestParam("notice_seq")int notice_seq) {
 		adminService.deleteBoard(notice_seq);
 		return "redirect:board.mdo";
 	}
-	
+	//공지사항 수정
 	@PostMapping("/boardUpdate.mdo")
 	public String boardUpdate(AdminBoardVO boardUpdate) {
 		adminService.boardUpdate(boardUpdate);
-		//model.addAttribute("update",boardUpdate);
 		return "redirect:board.mdo";
 	}
 	
@@ -301,5 +305,88 @@ public class AdminController {
 		System.out.println("등록" + faqVO.toString());
 		return "redirect:faqBoard.mdo";
 	}
+	
+	// admin news
+	@GetMapping("/news.mdo")
+	public String news(Model model, NewsVO newsVO, HttpSession session) {
+		List<NewsVO> newsList = newsService.news(newsVO);
+		model.addAttribute("newsList", newsList);
+		
+		return "news";
+	}
+	
+	@GetMapping("/newsDetail.mdo")
+	public String newsDetail(Model model, NewsVO newsVO) {
+		newsVO = newsService.newsDetail(newsVO);
+		model.addAttribute("newsDetail", newsVO);
+		
+		return "newsDetail";
+	}
+	
+	@GetMapping("/updateNews.mdo")
+	public String updateNews(NewsVO newsVO) {
+		newsService.updateNews(newsVO);
+		
+		return "redirect:news.mdo";
+	}
+	
+	@GetMapping("/deleteNews.mdo")
+	public String deleteNews(@RequestParam(name = "news_code") int news_code) {
+		newsService.deleteNews(news_code);
+		
+		return "redirect:news.mdo";
+	}
+	
+	@GetMapping("/addNews.mdo")
+	public String addNews() {
+		return "addNews";
+	}
+	
+	@PostMapping("/addNews.mdo")
+	public String insertNews(NewsVO newsVO) {
+		newsVO.setNews_regdate(new Date());
+		newsService.insertNews(newsVO);
+		System.out.println("새로운 소식:" + newsVO.toString());
+		return "redirect:news.mdo";
+	}
+	
+//	@PostMapping("/addNews.mdo")
+//	public String insertNews(@RequestParam(name = "file1") MultipartFile file1, 
+//			@RequestParam(name = "news_code") String news_code,
+//			@RequestParam(name = "news_title") String news_title,
+//			@RequestParam(name = "news_content") String news_content,
+//			@RequestParam(name = "news_regdate") String news_regdate) throws IOException, ParseException {
+//		
+//		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+//		
+//		AwsS3 awsS3 = AwsS3.getInstance();
+//		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+//		String key1 = "";
+//		
+//		key1 = "img/news/" + file1.getOriginalFilename();
+//		NewsVO newsVO = new NewsVO();
+//		newsVO.setNews_code(Integer.parseInt(news_code));
+//		newsVO.setNews_img_path(uploadFolder + key1);
+//		newsVO.setNews_content(news_content);
+//		newsVO.setNews_regdate(fm.parse(news_regdate));
+//		
+//		newsService.insertNews(newsVO);
+//		
+//		InputStream is = file1.getInputStream();
+//		String contentType = file1.getContentType();
+//		long contentLength = file1.getSize();
+//		awsS3.upload(is,  key1, contentType, contentLength);
+//		
+//		return "redirect:news.mdo";
+//	}
+	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = "newscodeChk.mdo", method = RequestMethod.GET) public
+	 * int newscodeChe(int news_code) { int news_codeResult = 0;
+	 * 
+	 * if (news_code >=) }
+	 */
 	
 }
