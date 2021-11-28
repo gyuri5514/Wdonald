@@ -202,12 +202,12 @@ public class AdminController {
 	}
 	//공지사항 추가창
 	@GetMapping("/addboard.mdo")
-	public String addboard() {
+	public String addBoard() {
 		return "addboard";
 	}
 	//공지사항 추가
 	@PostMapping("/addboardInsert.mdo")
-	public String addboard(AdminBoardVO addboard) {
+	public String addBoard(AdminBoardVO addboard) {
 		adminService.addBoard(addboard);
 		return "redirect:board.mdo";
 	}
@@ -219,7 +219,7 @@ public class AdminController {
 	}
 	//공지사항 수정
 	@PostMapping("/boardUpdate.mdo")
-	public String boardUpdate(AdminBoardVO boardUpdate) {
+	public String updateBoard(AdminBoardVO boardUpdate) {
 		adminService.boardUpdate(boardUpdate);
 		return "redirect:board.mdo";
 	}
@@ -231,14 +231,14 @@ public class AdminController {
 		return "banner";
 	}
 	@GetMapping("/bannerRegister.mdo")
-	public String bannerRegister(Model model) {
+	public String registerBanner(Model model) {
 		List<AdminBannerVO> bannerList = adminService.selectBannerList();
 		model.addAttribute("bannerList",bannerList);
 		return "bannerRegister";
 	}
 
 	@PostMapping("/bannerRegister.mdo")
-	public String bannerInsert(@RequestParam(name="file")MultipartFile file, AdminBannerVO bannerVO) throws IOException{
+	public String insertBanner(@RequestParam(name="file")MultipartFile file, AdminBannerVO bannerVO) throws IOException{
 		AwsS3 awsS3 = AwsS3.getInstance();
 		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
 		String key = "img/banner/" + file.getOriginalFilename();

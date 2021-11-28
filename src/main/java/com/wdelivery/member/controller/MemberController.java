@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.maven.shared.invoker.SystemOutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +30,6 @@ import com.wdelivery.faq.utils.PageMaker;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.util.MapPointVO;
-import com.wdelivery.member.util.NearestStore;
 import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.SessionClassifier;
 import com.wdelivery.member.util.TypeSafety;
