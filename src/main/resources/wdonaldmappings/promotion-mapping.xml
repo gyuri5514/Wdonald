@@ -32,4 +32,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			UPDATE promotion SET p_count = p_count + 1 WHERE p_code = #{p_code}
 		]]>
 	</update>
+	
+	<select id="promotion" resultType="promotionVO">
+		SELECT * FROM promotion ORDER BY p_code
+	</select>
+	
+	<select id="promotionDetail" resultType="promotionVO">
+		SELECT * FROM promotion WHERE p_code = #{p_code} ORDER BY p_code
+	</select>
+	
+	<insert id="insertPromotion">
+		INSERT INTO promotion (p_title, p_regdate, p_count, p_status, p_img_path) VALUES
+		(#{p_title}, now(), 1, 1, #{p_img_path})
+	</insert>
+	
+	<update id="updatePromotion">
+		UPDATE promotion SET p_title = #{p_title} WHERE p_code = #{p_code}
+	</update>
+	
+	<delete id="deletePromotion" parameterType="int">
+		DELETE FROM promotion WHERE p_code = #{p_code}
+	</delete>
 </mapper>

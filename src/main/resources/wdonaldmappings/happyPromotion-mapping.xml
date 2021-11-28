@@ -26,4 +26,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			UPDATE happypromotion SET hp_count = hp_count + 1 WHERE hp_code = #{hp_code}
 		]]>
 	</update>
+	
+	<select id="happyPromotion" resultType="happyPromotionVO">
+		SELECT * FROM happypromotion ORDER BY hp_code
+	</select>
+	
+	<select id="happyPromotionDetail" resultType="happyPromotionVO">
+		SELECT * FROM happypromotion WHERE hp_code = #{hp_code} ORDER BY hp_code
+	</select>
 </mapper>

@@ -119,6 +119,8 @@
 								<a class="nav-link" href="board.mdo">관리자 공지사항</a>
 								<a class="nav-link" href="faqBoard.mdo">FAQ 관리</a>
 								<a class="nav-link" href="news.mdo">새로운 소식 관리</a>
+								<a class="nav-link" href="promotion.mdo">프로모션 관리</a>
+								<a class="nav-link" href="happyPromotion.mdo">이 달의 해피밀 관리</a>
 							</nav>
 						</div>
 						<!-- <div class="collapse" id="collapseBoard"

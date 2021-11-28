@@ -35,4 +35,29 @@ public class HappyPromotionServiceImpl implements HappyPromotionService {
 		happyPromotionDAO.countHappyPromotion(hp_code);
 	}
 
+	@Override
+	public List<HappyPromotionVO> happyPromotion(HappyPromotionVO happyPromotionVO) {
+		return happyPromotionDAO.happyPromotion(happyPromotionVO);
+	}
+
+	@Override
+	public HappyPromotionVO happyPromotionDetail(HappyPromotionVO happyPromotionVO) {
+		return happyPromotionDAO.happyPromotionDetail(happyPromotionVO);
+	}
+
+	@Override
+	public void insertHappyPromotion(HappyPromotionVO happyPromotionVO) {
+		happyPromotionDAO.insertHappyPromotion(happyPromotionVO);
+	}
+
+	@Override
+	public void updateHappyPromotion(HappyPromotionVO happyPromotionVO) {
+		happyPromotionDAO.updateHappyPromotion(happyPromotionVO);
+	}
+
+	@Override
+	public void deleteHappyPromotion(int hp_code) {
+		happyPromotionDAO.deleteHappyPromotion(hp_code);
+	}
+
 }

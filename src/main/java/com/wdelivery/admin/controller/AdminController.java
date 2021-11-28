@@ -33,9 +33,13 @@ import com.wdelivery.admin.vo.AdminCouponVO;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.faq.service.FaqService;
 import com.wdelivery.faq.vo.FaqVO;
+import com.wdelivery.happypromotion.service.HappyPromotionService;
+import com.wdelivery.happypromotion.vo.HappyPromotionVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.news.service.NewsService;
 import com.wdelivery.news.vo.NewsVO;
+import com.wdelivery.promotion.service.PromotionService;
+import com.wdelivery.promotion.vo.PromotionVO;
 import com.wdelivery.store.chart.vo.ChartVO;
 import com.wdelivery.store.service.ChartService;
 
@@ -59,6 +63,12 @@ public class AdminController {
 	
 	@Autowired
 	private NewsService newsService;
+	
+	@Autowired
+	private PromotionService promotionService;
+	
+	@Autowired
+	private HappyPromotionService happyPromotionService;
 	
 	@ModelAttribute("adminList")
 	public List<AdminVO> getAdminList(){
@@ -364,6 +374,124 @@ public class AdminController {
 		awsS3.upload(is,  key1, contentType, contentLength);
 		
 		return "redirect:news.mdo";
+	}
+	
+	@GetMapping("/promotion.mdo")
+	public String promotionList(Model model, PromotionVO promotionVO, HttpSession session) {
+		List<PromotionVO> promotionList = promotionService.selectPromotionAll();
+		model.addAttribute("promotionList", promotionList);
+		
+		return "promotion";
+	}
+	
+	@GetMapping("/promotionDetail.mdo")
+	public String promotionDetail(Model model, PromotionVO promotionVO) {
+		promotionVO = promotionService.promotionDetail(promotionVO);
+		model.addAttribute("promotionDetail", promotionVO);
+		
+		return "promotionDetail";
+	}
+	
+	@GetMapping("/updatePromotion.mdo")
+	public String updatePromotion(PromotionVO promotionVO) {
+		promotionService.updatePromotion(promotionVO);
+		
+		return "redirect:promotion.mdo";
+	}
+	
+	@GetMapping("/deletePromotion.mdo")
+	public String deletePromotion(@RequestParam(name = "p_code") int p_code) {
+		promotionService.deletePromotion(p_code);
+		
+		return "redirect:promotion.mdo";
+	}
+	
+	@GetMapping("/addPromotion.mdo")
+	public String addPromotion() {
+		return "addPromotion";
+	}
+	
+	@PostMapping("/addPromotion.mdo")
+	public String insertPromotion(@RequestParam(name = "file1") MultipartFile file1, 
+			@RequestParam(name = "p_title") String p_title,
+			@RequestParam(name = "p_content") String p_content) throws IOException, ParseException {
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key1 = "";
+		
+		key1 = "img/promotion/" + file1.getOriginalFilename();
+		PromotionVO promotionVO = new PromotionVO();
+		promotionVO.setP_title(p_title);
+		promotionVO.setP_img_path(uploadFolder + key1);
+		
+		promotionService.insertPromotion(promotionVO);
+		
+		InputStream is = file1.getInputStream();
+		String contentType = file1.getContentType();
+		long contentLength = file1.getSize();
+		awsS3.upload(is,  key1, contentType, contentLength);
+		
+		return "redirect:promotion.mdo";
+	}
+	
+	@GetMapping("/happyPromotion.mdo")
+	public String happyPromotionList(Model model, HappyPromotionVO happyPromotionVO, HttpSession session) {
+		List<HappyPromotionVO> happyPromotionList = happyPromotionService.happyPromotion(happyPromotionVO);
+		model.addAttribute("happyPromotionList", happyPromotionList);
+		
+		return "happyPromotion";
+	}
+	
+	@GetMapping("/happyPromotionDetail.mdo")
+	public String happyPromotionDetail(Model model, HappyPromotionVO happyPromotionVO) {
+		happyPromotionVO = happyPromotionService.happyPromotionDetail(happyPromotionVO);
+		model.addAttribute("happyPromotionDetail", happyPromotionVO);
+		
+		return "happyPromotionDetail";
+	}
+	
+	@GetMapping("/updatehappyPromotion.mdo")
+	public String updateHappyPromotion(HappyPromotionVO happyPromotionVO) {
+		happyPromotionService.updateHappyPromotion(happyPromotionVO);
+		
+		return "redirect:happyPromotion.mdo";
+	}
+	
+	@GetMapping("/deleteHappyPromotion.mdo")
+	public String deleteHappyPromotion(@RequestParam(name = "hp_code") int hp_code) {
+		happyPromotionService.deleteHappyPromotion(hp_code);
+		
+		return "redirect:happyPromotion.mdo";
+	}
+	
+	@GetMapping("/addHappyPromotion.mdo")
+	public String addHappyPromotion() {
+		return "addHappyPromotion";
+	}
+	
+	@PostMapping("/addHappyPromotion.mdo")
+	public String insertHappyPromotion(@RequestParam(name = "file1") MultipartFile file1, 
+			@RequestParam(name = "file2") MultipartFile file2,
+			@RequestParam(name = "hp_title") String p_title) throws IOException, ParseException {
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key1 = "";
+		
+		key1 = "img/happymeal_promotion/" + file1.getOriginalFilename();
+		HappyPromotionVO happyPromotionVO = new HappyPromotionVO();
+		happyPromotionVO.setHp_title(p_title);
+		happyPromotionVO.setHp_img_path(uploadFolder + key1);
+		
+		happyPromotionService.insertHappyPromotion(happyPromotionVO);
+		
+		InputStream is = file1.getInputStream();
+		String contentType = file1.getContentType();
+		long contentLength = file1.getSize();
+		awsS3.upload(is,  key1, contentType, contentLength);
+		
+		return "redirect:happyPromotion.mdo";
 	}
 	
 }
