@@ -1,4 +1,4 @@
-package com.wdelivery.member.logger;
+package com.wdelivery.admin.logger;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,25 +11,13 @@ import edu.emory.mathcs.backport.java.util.Arrays;
 
 @Aspect
 @Service
-public class WdonaldLoggerAspect {
+public class WdonaldAdminLoggerAspect {
 	private static final Logger logger = 
-			LoggerFactory.getLogger(WdonaldLoggerAspect.class);
+			LoggerFactory.getLogger(WdonaldAdminLoggerAspect.class);
 	private final String aroundText = "[Around]  logic Around-processing ===> ";
 	
-	@Around("execution(public * com.wdelivery..*Login(..))")
-	public Object traceLogin(ProceedingJoinPoint jp) throws Throwable {
-		//before method start
-		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
-		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
-		
-		Object result = jp.proceed();
-		//메서드가 실행된 후
-		logger.warn("method =>"+jp.getSignature().getName()+" finished");
-		return result;
-	}
-	
-	@Around("execution(public * com.wdelivery..logout(..))")
-	public Object traceLogout(ProceedingJoinPoint jp) throws Throwable {
+	@Around("execution(public * com.wdelivery.admin..*Faq(..))")
+	public Object traceFaq(ProceedingJoinPoint jp) throws Throwable {
 		//before method start
 		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
 		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
@@ -40,8 +28,8 @@ public class WdonaldLoggerAspect {
 		return result;
 	}
 	
-	@Around("execution(public * com.wdelivery..*Join(..))")
-	public Object traceMemJoin(ProceedingJoinPoint jp) throws Throwable {
+	@Around("execution(public * com.wdelivery.admin..*News(..))")
+	public Object traceNews(ProceedingJoinPoint jp) throws Throwable {
 		//before method start
 		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
 		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
@@ -52,8 +40,8 @@ public class WdonaldLoggerAspect {
 		return result;
 	}
 	
-	@Around("execution(public * com.wdelivery..qnaInsert(..))")
-	public Object traceQnaInsert(ProceedingJoinPoint jp) throws Throwable {
+	@Around("execution(public * com.wdelivery.admin..*User(..))")
+	public Object traceUserManage(ProceedingJoinPoint jp) throws Throwable {
 		//before method start
 		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
 		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
@@ -64,4 +52,39 @@ public class WdonaldLoggerAspect {
 		return result;
 	}
 	
+	@Around("execution(public * com.wdelivery.admin..*Banner(..))")
+	public Object traceBanner(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
+	
+	@Around("execution(public * com.wdelivery.admin..*Board(..))")
+	public Object traceBoard(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
+	
+	@Around("execution(public * com.wdelivery.admin..*Coupon(..))")
+	public Object traceCoupon(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
 }

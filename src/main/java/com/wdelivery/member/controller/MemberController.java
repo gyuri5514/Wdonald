@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.maven.shared.invoker.SystemOutHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +30,6 @@ import com.wdelivery.faq.utils.PageMaker;
 import com.wdelivery.faq.vo.FaqVO;
 import com.wdelivery.member.service.MemberService;
 import com.wdelivery.member.util.MapPointVO;
-import com.wdelivery.member.util.NearestStore;
 import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.SessionClassifier;
 import com.wdelivery.member.util.TypeSafety;
@@ -572,7 +570,6 @@ public class MemberController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(faqService.totalFaq(cri));
 		
-		System.out.println("category : " + category);
 		model.addAttribute("category",category);
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageMaker", pageMaker);
@@ -647,7 +644,6 @@ public class MemberController {
 	public List<QnaVO> qnaSelectList(QnaVO qnaVO, @RequestParam(name = "qa_email", defaultValue = "1") String qa_email,
 			@RequestParam(name = "qa_password", defaultValue = "1") String qa_password) throws Exception {
 		List<QnaVO> qnaSelectList = qnaService.qnaSelect(qnaVO);
-		System.out.println("ㅇ..ㅇ.." + qnaSelectList);
 		return qnaSelectList;
 	}
 
@@ -755,7 +751,6 @@ public class MemberController {
 		// delivery_price - 배달료
 		 
 		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
-		System.out.println(coupon_title+" "+coupon_code+" "+discount);
 		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
 		 
 		if (newStore == null) {
