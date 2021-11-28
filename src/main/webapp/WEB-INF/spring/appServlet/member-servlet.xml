@@ -28,9 +28,6 @@
 	<context:component-scan base-package="com.wdelivery.promotion" />
 	<context:component-scan base-package="com.wdelivery.news" />
 	<context:component-scan base-package="com.wdelivery.happypromotion" />
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSource"/>
-	</bean>
 	
 	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 </beans>
