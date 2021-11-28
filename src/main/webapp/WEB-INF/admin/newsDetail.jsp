@@ -38,16 +38,16 @@ table, td, th {
 						<table style="width: 95%;">
 							<tr>
 								<td style="text-align: center">제목
-									<input type="hidden" name="faq_seq" value="${newsDetail.news_code}" />
+									<input type="hidden" name="news_code" value="${newsDetail.news_code}" />
 								</td>
 								<td>
-									<textarea id="faq_title" name="faq_title" style="width: 100%;">${newsDetail.news_title}</textarea>
+									<textarea id="news_title" name="news_title" style="width: 100%;">${newsDetail.news_title}</textarea>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: center">공지내용</td>
 								<td style="">
-									<textarea id="faq_content" name="faq_content" style="width: 100%; height: 200px;">${newsDetail.news_content}</textarea>
+									<textarea id="news_content" name="news_content" style="width: 100%; height: 200px;">${newsDetail.news_content}</textarea>
 								</td>
 							</tr>
 						</table>
