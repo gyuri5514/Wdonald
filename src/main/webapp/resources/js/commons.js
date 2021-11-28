@@ -184,7 +184,7 @@ function kakaoLogin() {
 						contentType: "application/json",
 						
 					}).done(function(res){
-						window.location.href = "http://localhost:8080/controller/main.do";
+						window.location.href = "/controller/main.do";
 					})
 					
 				},
@@ -206,7 +206,6 @@ function kakaoLogout() {
 		return;
 	}
 	Kakao.Auth.logout();
-	/*window.location.href="http://localhost:8080/controller/main.do";*/
 }
 function naverLogout(accessKey) {
 	$.post("logout.do", function() {
@@ -214,6 +213,6 @@ function naverLogout(accessKey) {
 			"delete&client_id=Xh_il_8tTurOD_pU6D37&client_secret=JHDMkT0G7N&access_token="
 			+ accessKey + "&service_provider=NAVER";
 	})
-	window.location.href = "http://localhost:8080/controller/main.do";
+	window.location.href = "/controller/main.do";
 }
 

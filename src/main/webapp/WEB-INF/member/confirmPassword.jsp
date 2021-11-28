@@ -73,7 +73,7 @@ legend {
 <c:if test="${eamilResult ne 'success' }">
 <script>
 	alert('정상적인 경로로 접근해주세요.');
-	window.location.href='http://localhost:8080/controller/main.do';
+	window.location.href='/controller/main.do';
 </script>
 </c:if>
 <script>
