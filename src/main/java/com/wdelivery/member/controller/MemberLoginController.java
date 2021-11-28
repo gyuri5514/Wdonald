@@ -133,12 +133,13 @@ public class MemberLoginController {
 	
 	@RequestMapping("kakaoLogin.do")
 	@ResponseBody
-	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session) {
+	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session,Model model) {
 		UserVO kakaoUserVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
 		if(kakaoUserVO!=null) {
 			if(kakaoUserVO.getUser_status()==0||kakaoUserVO.getUser_status()==7) {
 				kakaoUserVO.setUser_status(4);
 				restoreSocialMemStatus(kakaoUserVO);
+				model.addAttribute("status",7);
 			}
 		session.setAttribute("kakaoSession", kakaoUserVO);
 		session.setAttribute("status", kakaoUserVO.getUser_status());
@@ -218,12 +219,13 @@ public class MemberLoginController {
 	}
 	
 	@RequestMapping("naverLogin.do")
-	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session) {
+	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session,Model model) {
 		UserVO naverUserVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
 		if(naverUserVO!=null) {
 			if(naverUserVO.getUser_status()==0||naverUserVO.getUser_status()==7) {
 				naverUserVO.setUser_status(5);
 				restoreSocialMemStatus(naverUserVO);
+				model.addAttribute("status",7);
 			}
 		session.setAttribute("naverSession", naverUserVO);
 		session.setAttribute("status", naverUserVO.getUser_status());
