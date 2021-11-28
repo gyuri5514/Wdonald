@@ -5,12 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wdelivery.quartz.dao.QuartzWdonaldDAO">
 	<update id="updateExpiredUserCoupon" parameterType="String">
 			<![CDATA[
-			update coupon set coupon_status = 1 where TO_CHAR(coupon_enddate, 'yyyy-MM-dd') < #{enddate}
+			update coupon set coupon_status = 1 where TO_CHAR(coupon_enddate, 'yyyy-MM-dd') < #{enddate} and coupon_status != 1 
 			]]>
 	</update>
 	<update id="updateExpiredAdminCoupon" parameterType="String">
 	<![CDATA[
-	update user_coupon set user_coupon_status = 2 where TO_CHAR(coupon_enddate, 'yyyy-MM-dd') < #{enddate}
+	update user_coupon set user_coupon_status = 2 where TO_CHAR(coupon_enddate, 'yyyy-MM-dd') < #{enddate} and user_coupon_status != 2
+	]]>
+	</update>
+	<update id="updateLastLoginStatus" parameterType="String">
+	<![CDATA[
+		update user_info
+			set user_status = 7 where TO_CHAR(last_login,'yyyy-MM-dd') < #{format} and user_status != 7
 	]]>
 	</update>
 </mapper>

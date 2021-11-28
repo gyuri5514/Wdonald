@@ -22,8 +22,8 @@
 		</property>
 		<property name="cronExpression">
 			<!-- 주석처리용이 진짜고 주석풀린건 테스트용(1분마다) -->
-			<!-- <value>0 0 0 1/1 * ? *</value> -->			
-			<value>0 0/1 * * * ?</value>
+			<!--  <value>0 0 0 1/1 * ? *</value>  -->			
+			 <value>0 0/1 * * * ?</value> 
 		</property>
 	</bean>
 	

@@ -36,7 +36,7 @@ public class StoreController {
 	@Autowired
 	private AdminLoginService adminLoginService;
 	
-	public  void getChart(ChartVO chart,Model model){
+	public void getChart(ChartVO chart,Model model){
 		SimpleDateFormat date = new SimpleDateFormat("yy-MM-dd");
 	    Calendar week = Calendar.getInstance();
 	    week.add(Calendar.DATE , -7);
@@ -97,7 +97,7 @@ public class StoreController {
 	
 	//adminUpdate
 	@GetMapping("/adminUpdate.sdo")
-	public String adminUpdate(HttpSession session,Model model) {
+	public String updateAdmin(HttpSession session,Model model) {
 		AdminVO admin = (AdminVO) session.getAttribute("store_admin");
 		if(admin == null) {
 			model.addAttribute("error",1);
@@ -107,7 +107,7 @@ public class StoreController {
 		return "register";
 	}
 	@GetMapping("/adminUpdatedo.sdo")
-	public String adminUpdate(HttpSession session, AdminVO adminVO) {
+	public String updateAdmin(HttpSession session, AdminVO adminVO) {
 		AdminVO admin = (AdminVO) session.getAttribute("store_admin");
 		
 			int admin_seq = admin.getAdmin_seq();
@@ -188,7 +188,7 @@ public class StoreController {
 		return "qnaDetail";
 	}
 	@GetMapping("/qnaQaInsert.sdo")
-	public String qnaQaInsert(QaaVO qaaVO, QnaVO qnaVO) {
+	public String insertQnaQa(QaaVO qaaVO, QnaVO qnaVO) {
 		storeService.qnaQaInsert(qaaVO);
 		
 		if(qaaVO.getQaa_content() != null && qaaVO.getQaa_content() != "") {

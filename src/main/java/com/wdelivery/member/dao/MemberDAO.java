@@ -77,5 +77,9 @@ public interface MemberDAO {
 
 	public void restoreCouponStatus(PaymentVO paymentVO);
 
+	public void restoreSocialMemStatus(UserVO userVO);
+
+	public void insertLastLogin(UserVO userVO);
+
 
 }

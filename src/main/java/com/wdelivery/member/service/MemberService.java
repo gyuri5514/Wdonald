@@ -71,4 +71,8 @@ public interface MemberService {
 
 	List<AdminCouponVO> getUserCoupons(UserVO userVO);
 
+	void restoreSocialMemStatus(UserVO userVO);
+
+	void insertLastLogin(UserVO userVO);
+
 }

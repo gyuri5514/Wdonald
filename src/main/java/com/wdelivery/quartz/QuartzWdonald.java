@@ -15,6 +15,7 @@ public class QuartzWdonald extends QuartzJobBean {
 			throws JobExecutionException {
 			quartzService.updateExpiredUserCoupon();
 			quartzService.updateExpiredAdminCoupon();
+			quartzService.updateLastLoginStatus();
 	}
 
 	public void setQuartzService(QuartzWdonaldService quartzService) {

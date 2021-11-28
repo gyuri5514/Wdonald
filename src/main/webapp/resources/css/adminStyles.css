@@ -3259,14 +3259,18 @@ textarea.form-control-lg {
 }
 
 .btn-warning {
-  color: #000;
-  background-color: #ffc107;
-  border-color: #ffc107;
+	margin-left: 937px;
+	margin-bottom: 12px;
+	color: #ffffff;
+	background-color: #0b5ed7;
+	border-color: #0b5ed7;
 }
 .btn-warning:hover {
-  color: #000;
-  background-color: #ffca2c;
-  border-color: #ffc720;
+ 	margin-left: 937px;
+	margin-bottom: 12px;
+	color: #ffffff;
+	background-color: #0b5ed7;
+	border-color: #0b5ed7;
 }
 .btn-check:focus + .btn-warning, .btn-warning:focus {
   color: #000;

@@ -14,30 +14,53 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wdelivery.admin.service.AdminService;
+import com.wdelivery.admin.vo.AdminBannerVO;
 import com.wdelivery.cart.vo.CartVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
 import com.wdelivery.member.payment.vo.ToyCountVO;
 import com.wdelivery.member.service.MemberService;
+import com.wdelivery.member.util.OrderTimer;
 import com.wdelivery.member.util.SessionClassifier;
 import com.wdelivery.member.util.TypeSafety;
 import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserCouponVO;
 import com.wdelivery.member.vo.UserVO;
+import com.wdelivery.promotion.service.PromotionService;
+import com.wdelivery.promotion.vo.PromotionVO;
 
 @Controller
 public class MypageController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private AdminService adminService;
+
+
+	@Autowired
+	private PromotionService promotionService;
+
+	@ModelAttribute("bannerList")
+	public List<AdminBannerVO> getBannerList() {
+		return adminService.selectBannerList();
+	}
+
+	@ModelAttribute("selectPromotionIng")
+	public List<PromotionVO> selectPromotionIng() {
+		return promotionService.selectPromotionIng();
+	}
+	
 	@Autowired 
 	private BCryptPasswordEncoder pwdEncoder;
 
 	@GetMapping("/mypageupdate.do")
-	public String mypageupdate(Model model, HttpSession session, UserVO userVO) {
+	public String mypageUpdate(Model model, HttpSession session, UserVO userVO) {
 		
 		if(SessionClassifier.sessionClassifier(session)==null)
 			 return "redirect:main.do";
@@ -45,9 +68,9 @@ public class MypageController {
 		session.setAttribute("session", userVO);
 		return "mypageupdate";
 	}
-
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("/mypageUpdate.do")
-	public String mypageUpdate(UserVO userVO, HttpSession session) {
+	public String mypageUpdateConfirm(UserVO userVO, HttpSession session) {
 		
 		String rawPw = ""; //주석 MemberLoginController 참고
 		String encodePw = "";
@@ -61,10 +84,11 @@ public class MypageController {
 	}
 
 	@GetMapping("/mypageDelete.do")
-	public String mypageDelete(UserVO userVO, HttpSession session) {
-		String user = (String) session.getAttribute("user_eamil");
-		if (user != null || user != "") {
-			memberService.mypageDelete(userVO);
+	public String mypageDelete(HttpSession session) {
+		
+		UserVO userV = SessionClassifier.sessionClassifier(session);
+		if (userV.getUser_email() != null || userV.getUser_email() != "") {
+			memberService.mypageDelete(userV);
 			session.invalidate();
 		}
 		return "main";

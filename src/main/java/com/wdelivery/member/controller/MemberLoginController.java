@@ -32,7 +32,6 @@ import com.wdelivery.member.vo.UserAddressVO;
 import com.wdelivery.member.vo.UserVO;
 import com.wdelivery.promotion.service.PromotionService;
 import com.wdelivery.promotion.vo.PromotionVO;
-
 @Controller
 public class MemberLoginController {
 	
@@ -46,10 +45,9 @@ public class MemberLoginController {
 	private MailSendService mss;
 	@Autowired
 	private AdminService adminService;
-  
+		
 	@Autowired
 	private PromotionService promotionService;
-
 	@ModelAttribute("bannerList")
 	public List<AdminBannerVO> getBannerList(){
 		return  adminService.selectBannerList();
@@ -64,9 +62,10 @@ public class MemberLoginController {
 	   0 = 탈퇴 / 1 = 정상 / 2 = 회원정지 / 3= 이메일 미인증/ 4= 카카오톡 / 5= 네이버
 	   6 = 아이디 없음 / 7 = 비밀번호 오류/
 	 */
-	
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("memLogin.do")
 	public String memberLogin(UserVO userVO,HttpSession session,Model model) {
+
 		
 		String rawPw = "";
 		String encodePw = "";
@@ -91,7 +90,7 @@ public class MemberLoginController {
 				if(findUserVO.getUser_status()==1) {
 					
 					//findUserVO.setUser_password(""); //인코딩된 비밀번호 정보 지움 --뭘까?
-					
+					insertLastLogin(findUserVO);
 					session.setAttribute("userInfo", findUserVO);
 					model.addAttribute("status" , findUserVO.getUser_status());	
 				}else if(findUserVO.getUser_status()==3){
@@ -100,6 +99,12 @@ public class MemberLoginController {
 				}else if(findUserVO.getUser_status()==2){
 					//user_status = 2, 
 					model.addAttribute("status", findUserVO.getUser_status());
+				}else if(findUserVO.getUser_status()==7){
+					insertLastLogin(findUserVO);
+					session.setAttribute("userInfo", findUserVO);
+					model.addAttribute("status" , findUserVO.getUser_status());
+					findUserVO.setUser_status(1);
+					restoreSocialMemStatus(findUserVO);
 				}else {
 					//user_status = 0
 					model.addAttribute("status", findUserVO.getUser_status());
@@ -113,7 +118,7 @@ public class MemberLoginController {
 				return "main";
 				}else {
 					//incorrect password
-					model.addAttribute("status", 7);
+					model.addAttribute("status", 8);
 					return "main";
 				}
 			}
@@ -122,18 +127,27 @@ public class MemberLoginController {
 		return "main";
 	}
 	
+	public void restoreSocialMemStatus(UserVO userVO) {
+		memberService.restoreSocialMemStatus(userVO); 
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
 	@RequestMapping("kakaoLogin.do")
 	@ResponseBody
-	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session) {
+	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session,Model model) {
 		UserVO kakaoUserVO = memberService.isMemberInService("kakao", "kakao#"+kakaoVO.getEmail());
 		if(kakaoUserVO!=null) {
+			if(kakaoUserVO.getUser_status()==0||kakaoUserVO.getUser_status()==7) {
+				kakaoUserVO.setUser_status(4);
+				restoreSocialMemStatus(kakaoUserVO);
+			}
 		session.setAttribute("kakaoSession", kakaoUserVO);
 		session.setAttribute("status", kakaoUserVO.getUser_status());
 		}else {
 			UserVO userVO = new UserVO();
 			userVO.setUser_email("kakao#"+kakaoVO.getEmail());
 			if(kakaoVO.getGender()==null) {
-				userVO.setUser_gender("선택안함");
+				userVO.setUser_gender("no Gender");
 			}else {
 			userVO.setUser_gender((kakaoVO.getGender().equals("male")?"man":"woman"));
 			}
@@ -145,6 +159,7 @@ public class MemberLoginController {
 			session.setAttribute("kakaoSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
+		memberService.insertLastLogin(kakaoUserVO);
 		return "true";
 	}                                                                                                                                            
 	
@@ -202,11 +217,15 @@ public class MemberLoginController {
 		session.invalidate();
 		return "redirect:main.do";
 	}
-	
+	@Transactional(rollbackFor = Exception.class)
 	@RequestMapping("naverLogin.do")
-	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session) {
+	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session,Model model) {
 		UserVO naverUserVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
 		if(naverUserVO!=null) {
+			if(naverUserVO.getUser_status()==0||naverUserVO.getUser_status()==7) {
+				naverUserVO.setUser_status(5);
+				restoreSocialMemStatus(naverUserVO);
+			}
 		session.setAttribute("naverSession", naverUserVO);
 		session.setAttribute("status", naverUserVO.getUser_status());
 		}else {
@@ -222,7 +241,7 @@ public class MemberLoginController {
 			session.setAttribute("naverSession", userVO);
 			session.setAttribute("status", userVO.getUser_status());
 		}
-		
+		memberService.insertLastLogin(naverUserVO);
 		session.setAttribute("accessToken", naverVO.getAccessToken());
 		return "main";
 	}
@@ -280,5 +299,9 @@ public class MemberLoginController {
 	
 	public boolean isAuthKeyAvailable(Map<String,String> emailMap) {
 		return memberService.isAuthKeyAvailable(emailMap);
+	}
+	
+	public void insertLastLogin(UserVO userVO) {
+		memberService.insertLastLogin(userVO);
 	}
 }

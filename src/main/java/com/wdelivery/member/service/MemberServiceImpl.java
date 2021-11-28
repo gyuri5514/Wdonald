@@ -249,4 +249,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.cartCancel(paymentVO);
 	}
 
+	@Override
+	public void restoreSocialMemStatus(UserVO userVO) {
+		memberDAO.restoreSocialMemStatus(userVO);
+	}
+
+	@Override
+	public void insertLastLogin(UserVO userVO) {
+		memberDAO.insertLastLogin(userVO);
+	}
+
 }
