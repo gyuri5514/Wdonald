@@ -15,7 +15,7 @@
 	
 
 	  <appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="file" value="d://logs//spring.Log"/>
+        <param name="file" value="c://logs//spring.Log"/>
         <param name="Append" value="true"/>
         <param name="dataPattern" value=".yyyy-MM-dd"/>
         <layout class="org.apache.log4j.PatternLayout">
