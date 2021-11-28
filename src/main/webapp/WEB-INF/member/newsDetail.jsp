@@ -29,7 +29,12 @@
 					<div align="" style="">
 						<div align="" style="">
 							<p>
-								<img src="${detailNews.news_img_path}" title="pc_1168.png" width="100%"><br style="clear: both;">&nbsp;
+								<img src="${detailNews.news_img_path}" width="100%"><br style="clear: both;">&nbsp;
+							</p>
+						</div>
+						<div>
+							<p>
+								${detailNews.news_content}
 							</p>
 						</div>
 						<p>&nbsp;</p>

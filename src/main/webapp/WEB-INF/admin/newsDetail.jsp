@@ -15,6 +15,12 @@ table, td, th {
 	font-size: 20px;
 }
 
+.modify_btn {
+	float: right;
+	margin-right: 15px;
+	margin-bottom: 10px;
+}
+
 </style>
 <body>
 	<div id="layoutSidenav_content">
@@ -35,23 +41,23 @@ table, td, th {
 						<i class="fas fa-table me-1"></i> 새로운 소식
 					</div>
 					<form action="updateNews.mdo" method="get">
-						<table style="width: 95%;">
+						<table style="width: 97.5%;">
 							<tr>
 								<td style="text-align: center">제목
-									<input type="hidden" name="faq_seq" value="${newsDetail.news_code}" />
+									<input type="hidden" name="news_code" value="${newsDetail.news_code}" />
 								</td>
 								<td>
-									<textarea id="faq_title" name="faq_title" style="width: 100%;">${newsDetail.news_title}</textarea>
+									<textarea id="news_title" name="news_title" style="width: 100%;">${newsDetail.news_title}</textarea>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: center">공지내용</td>
 								<td style="">
-									<textarea id="faq_content" name="faq_content" style="width: 100%; height: 200px;">${newsDetail.news_content}</textarea>
+									<textarea id="news_content" name="news_content" style="width: 100%; height: 200px;">${newsDetail.news_content}</textarea>
 								</td>
 							</tr>
 						</table>
-						<div style="float: right">
+						<div class="modify_btn">
 							<input type="submit" class="btn btn-primary" value="수정하기">
 							<button class="btn btn-danger" onclick="deleteFaq();">삭제하기</button>
 							<a href="news.mdo" class="btn btn-primary">목록</a>

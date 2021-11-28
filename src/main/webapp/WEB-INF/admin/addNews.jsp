@@ -24,8 +24,6 @@ table, td, th {
 }
 </style>
 
-<c:set var="now" value="<%=new java.util.Date() %>" />
-<c:set var="regdate"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/></c:set>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
@@ -45,7 +43,7 @@ table, td, th {
 						<i class="fas fa-table me-1"></i> 새로운 소식 등록
 					</div>
 					<div style="margin-left: 100px;">
-						<form action = "addNews.mdo" method="post">
+						<form action = "addNews.mdo" method="post" enctype="multipart/form-data">
 							<table style="width: 90%;">
 								<tr>
 									<td style="text-align: center">제목</td>
@@ -53,12 +51,6 @@ table, td, th {
 										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="news_title" id="news_title" />
 									</td>
 								</tr>
-								<%-- <tr>
-									<td style="text-align: center">등록날짜</td>
-									<td>
-										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="news_regdate" id="news_regdate" value="<c:out value="${regdate}" />"/>
-									</td>
-								</tr> --%>
 								<tr>
 									<td style="text-align: center">이미지 등록</td>
 									<td>
