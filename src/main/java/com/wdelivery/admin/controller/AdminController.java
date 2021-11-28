@@ -124,18 +124,18 @@ public class AdminController {
 	}
 	
 	//errorPage
-//	@GetMapping("/401.mdo")
-//	public String error401() {
-//		return "401";
-//	}
-//	@GetMapping("/404.mdo")
-//	public String error404() {
-//		return "404";
-//	}
-//	@GetMapping("/500.mdo")
-//	public String error500() {
-//		return "500";
-//	}
+	@GetMapping("/401.mdo")
+	public String error401() {
+		return "401";
+	}
+	@GetMapping("/404.mdo")
+	public String error404() {
+		return "404";
+	}
+	@GetMapping("/500.mdo")
+	public String error500() {
+		return "500";
+	}
 	
 	//쿠폰함
 	@GetMapping("/layout-sidenav-light.mdo")
@@ -341,13 +341,6 @@ public class AdminController {
 		return "addNews";
 	}
 	
-//	@PostMapping("/addNews.mdo")
-//	public String insertNews(NewsVO newsVO) {
-//		newsVO.setNews_regdate(new Date());
-//		newsService.insertNews(newsVO);
-//		return "redirect:news.mdo";
-//	}
-	
 	@PostMapping("/addNews.mdo")
 	public String insertNews(@RequestParam(name = "file1") MultipartFile file1, 
 			@RequestParam(name = "news_title") String news_title,
@@ -372,14 +365,5 @@ public class AdminController {
 		
 		return "redirect:news.mdo";
 	}
-	
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = "newscodeChk.mdo", method = RequestMethod.GET) public
-	 * int newscodeChe(int news_code) { int news_codeResult = 0;
-	 * 
-	 * if (news_code >=) }
-	 */
 	
 }

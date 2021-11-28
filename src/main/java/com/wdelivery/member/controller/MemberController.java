@@ -572,7 +572,6 @@ public class MemberController {
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(faqService.totalFaq(cri));
 		
-		System.out.println("category : " + category);
 		model.addAttribute("category",category);
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageMaker", pageMaker);
@@ -647,7 +646,6 @@ public class MemberController {
 	public List<QnaVO> qnaSelectList(QnaVO qnaVO, @RequestParam(name = "qa_email", defaultValue = "1") String qa_email,
 			@RequestParam(name = "qa_password", defaultValue = "1") String qa_password) throws Exception {
 		List<QnaVO> qnaSelectList = qnaService.qnaSelect(qnaVO);
-		System.out.println("ㅇ..ㅇ.." + qnaSelectList);
 		return qnaSelectList;
 	}
 
@@ -755,7 +753,6 @@ public class MemberController {
 		// delivery_price - 배달료
 		 
 		 /*AdminVO store = nearestStore.whichOneIsNearest(findProximateStore(lat, lon), lat, lon);*/
-		System.out.println(coupon_title+" "+coupon_code+" "+discount);
 		 AdminVO newStore = memberService.newWhichOneIsNearest(new MapPointVO(lat,lon, 4)); 
 		 
 		if (newStore == null) {
