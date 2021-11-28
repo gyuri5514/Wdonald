@@ -3,6 +3,7 @@ package com.wdelivery.admin.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -123,18 +124,18 @@ public class AdminController {
 	}
 	
 	//errorPage
-	@GetMapping("/401.mdo")
-	public String error401() {
-		return "401";
-	}
-	@GetMapping("/404.mdo")
-	public String error404() {
-		return "404";
-	}
-	@GetMapping("/500.mdo")
-	public String error500() {
-		return "500";
-	}
+//	@GetMapping("/401.mdo")
+//	public String error401() {
+//		return "401";
+//	}
+//	@GetMapping("/404.mdo")
+//	public String error404() {
+//		return "404";
+//	}
+//	@GetMapping("/500.mdo")
+//	public String error500() {
+//		return "500";
+//	}
 	
 	//쿠폰함
 	@GetMapping("/layout-sidenav-light.mdo")
@@ -290,7 +291,6 @@ public class AdminController {
 	@GetMapping("/deleteFaq.mdo")
 	public String deleteFaq(@RequestParam(name = "faq_seq")int faq_seq) {
 		faqService.deleteFaq(faq_seq);
-		//System.out.println("faq " + faq_seq);
 		return "redirect:faqBoard.mdo";
 	}
 	
@@ -302,7 +302,6 @@ public class AdminController {
 	@PostMapping("/addFaq.mdo")
 	public String insertFaq(FaqVO faqVO){
 		faqService.insertFaq(faqVO);
-		System.out.println("등록" + faqVO.toString());
 		return "redirect:faqBoard.mdo";
 	}
 	
@@ -342,43 +341,37 @@ public class AdminController {
 		return "addNews";
 	}
 	
-	@PostMapping("/addNews.mdo")
-	public String insertNews(NewsVO newsVO) {
-		newsVO.setNews_regdate(new Date());
-		newsService.insertNews(newsVO);
-		System.out.println("새로운 소식:" + newsVO.toString());
-		return "redirect:news.mdo";
-	}
-	
 //	@PostMapping("/addNews.mdo")
-//	public String insertNews(@RequestParam(name = "file1") MultipartFile file1, 
-//			@RequestParam(name = "news_code") String news_code,
-//			@RequestParam(name = "news_title") String news_title,
-//			@RequestParam(name = "news_content") String news_content,
-//			@RequestParam(name = "news_regdate") String news_regdate) throws IOException, ParseException {
-//		
-//		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-//		
-//		AwsS3 awsS3 = AwsS3.getInstance();
-//		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
-//		String key1 = "";
-//		
-//		key1 = "img/news/" + file1.getOriginalFilename();
-//		NewsVO newsVO = new NewsVO();
-//		newsVO.setNews_code(Integer.parseInt(news_code));
-//		newsVO.setNews_img_path(uploadFolder + key1);
-//		newsVO.setNews_content(news_content);
-//		newsVO.setNews_regdate(fm.parse(news_regdate));
-//		
+//	public String insertNews(NewsVO newsVO) {
+//		newsVO.setNews_regdate(new Date());
 //		newsService.insertNews(newsVO);
-//		
-//		InputStream is = file1.getInputStream();
-//		String contentType = file1.getContentType();
-//		long contentLength = file1.getSize();
-//		awsS3.upload(is,  key1, contentType, contentLength);
-//		
 //		return "redirect:news.mdo";
 //	}
+	
+	@PostMapping("/addNews.mdo")
+	public String insertNews(@RequestParam(name = "file1") MultipartFile file1, 
+			@RequestParam(name = "news_title") String news_title,
+			@RequestParam(name = "news_content") String news_content) throws IOException, ParseException {
+		
+		AwsS3 awsS3 = AwsS3.getInstance();
+		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
+		String key1 = "";
+		
+		key1 = "img/news/" + file1.getOriginalFilename();
+		NewsVO newsVO = new NewsVO();
+		newsVO.setNews_title(news_title);
+		newsVO.setNews_img_path(uploadFolder + key1);
+		newsVO.setNews_content(news_content);
+		
+		newsService.insertNews(newsVO);
+		
+		InputStream is = file1.getInputStream();
+		String contentType = file1.getContentType();
+		long contentLength = file1.getSize();
+		awsS3.upload(is,  key1, contentType, contentLength);
+		
+		return "redirect:news.mdo";
+	}
 	
 	/*
 	 * @ResponseBody

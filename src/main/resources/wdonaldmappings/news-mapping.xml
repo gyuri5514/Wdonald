@@ -63,8 +63,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertNews">
-		INSERT INTO news (news_title, news_regdate, news_content) VALUES 
-		(#{news_title}, now(), #{news_content})
+		INSERT INTO news (news_title, news_regdate, news_content, news_count, news_status, news_img_path) VALUES 
+		(#{news_title}, now(), #{news_content}, 1, 2, #{news_img_path})
 	</insert>
 	
 	<update id="updateNews">

@@ -43,7 +43,7 @@ table, td, th {
 						<i class="fas fa-table me-1"></i> 새로운 소식 등록
 					</div>
 					<div style="margin-left: 100px;">
-						<form action = "addNews.mdo" method="post">
+						<form action = "addNews.mdo" method="post" enctype="multipart/form-data">
 							<table style="width: 90%;">
 								<tr>
 									<td style="text-align: center">제목</td>
