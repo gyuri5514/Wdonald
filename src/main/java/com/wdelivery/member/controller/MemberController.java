@@ -585,29 +585,12 @@ public class MemberController {
 	        if (MenuSelect != null && KeywordSelect == null) {
 	             
 	            faqList = faqService.MenuSelect(MenuSelect);
-	            /*
-	             * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
-	             * System.out.println(faqList1.getFaq_name());
-	             * System.out.println(faqList1.getFaq_title());
-	             * System.out.println(faqList1.getFaq_content());
-	             * 
-	             * }
-	             */
 	        } else if (MenuSelect != null && KeywordSelect != null) {
 	            Map<String, String> map = new HashMap<String, String>();
 	            map.put("MenuSelect", MenuSelect);
 	            map.put("KeywordSelect", KeywordSelect);
 	            
 	            faqList = faqService.KeywordSelect(map);
-	            /*
-	             * for(FaqVO faqKeyword1 : faqList) {
-	             * System.out.println(faqKeyword1.getFaq_seq());
-	             * System.out.println(faqKeyword1.getFaq_name());
-	             * System.out.println(faqKeyword1.getFaq_title());
-	             * System.out.println(faqKeyword1.getFaq_content());
-	             * 
-	             * }
-	             */
 	        }
 	        return faqList;
 	    }
@@ -620,7 +603,7 @@ public class MemberController {
 			return 0;
 		}
 
-		UserVO userVO = (UserVO) session.getAttribute("userInfo");
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
 		if (userVO != null) {
 			List<UserCouponVO> userCouponVO = memberService.userCouponSelect(userVO.getUser_seq());
 			for (int i = 0; i < userCouponVO.size(); i++) {

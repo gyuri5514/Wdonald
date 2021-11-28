@@ -39,5 +39,16 @@ public class WdonaldStoreLoggerAspect {
 		logger.warn("method => "+jp.getSignature().getName()+" finished");
 		return result;
 	}
+	@Around("execution(public * com.wdelivery.store..storeStatus(..))")
+	public Object traceStoreStatus(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
 	
 }
