@@ -492,7 +492,7 @@
 		<div class="container">
 			<div class="media">
 				<div class="media-left">
-					<a href="list.do" class="h5 text-default text-ucase btn-back action-cancel">
+					<a href="burger.do" class="h5 text-default text-ucase btn-back action-cancel">
 					<i class="fa fa-caret-left text-primary"></i> 메뉴로 돌아가기</a>
 				</div>
 				<div class="media-body">

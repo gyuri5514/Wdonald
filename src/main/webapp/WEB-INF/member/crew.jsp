@@ -3,18 +3,18 @@
 <%@ include file="header.jsp"%>
 <div id="container">
 	<div class="content">
-		<div class="visualArea bgStory04" data-title="맥도날드 사람들"
+		<div class="visualArea bgStory04" data-title="윈도날드 사람들"
 			data-desc="크루 이야기">
 			<div class="inner">
-				<h1 class="titDep1">맥도날드 사람들</h1>
+				<h1 class="titDep1">윈도날드 사람들</h1>
 				<p class="subCopy">
-					끊임없는 변화와 도전을 통해 성장해온 맥도날드<br>이 변화의 중심에는 맥도날드와 함께 변화하며 성장하는
-					&lsquo;맥도날드 사람들&rsquo;이 있습니다.
+					끊임없는 변화와 도전을 통해 성장해온 윈도날드<br>이 변화의 중심에는 윈도날드와 함께 변화하며 성장하는
+					&lsquo;윈도날드 사람들&rsquo;이 있습니다.
 				</p>
 				<ul class="navPath">
 					<li><a href="main.do">Home</a></li>
 					<li><a href="brandintro.do">Story</a></li>
-					<li><a href="crew.do">맥도날드 사람들</a></li>
+					<li><a href="crew.do">윈도날드 사람들</a></li>
 				</ul>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 				</ul>
 				<h2 class="hide">크루이야기</h2>
 				<h2 class="titDep2">변화를 만나는 곳, 변화를 만드는 곳.</h2>
-				<p role="text" class="txtInfo">맥도날드 크루들의 이야기를 영상으로 만나보세요.</p>
+				<p role="text" class="txtInfo">윈도날드 크루들의 이야기를 영상으로 만나보세요.</p>
 				<div class="crewCont01">
 					<div class="videoArea">
 						<!-- 영상 삽입 영역  -->
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 				<div class="crewCont02">
-					<h3 class="titDep3">크루들이 만들어가는 맥도날드의 변화 이야기</h3>
+					<h3 class="titDep3">크루들이 만들어가는 윈도날드의 변화 이야기</h3>
 					<!-- 수정 -->
 					<ul class="crewList">
 						<li>
@@ -72,7 +72,7 @@
 							<a href="javascript:commonJs.popup.basic.show($('#crew_4'));" class="crewThumb">
 								<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/crew/crew_04.png" alt="석촌역점 이나라 크루">
 							</a></a>
-							<strong class="tit">맥도날드를 넘어,<br>
+							<strong class="tit">윈도날드를 넘어,<br>
 							나 자신의 변화까지
 							</strong> 
 							<span class="crewInfo">석촌역점 이나라 크루</span>
