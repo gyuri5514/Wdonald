@@ -12,7 +12,7 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					Wcdonald 관리자 공지사항 <a target="_blank" href="main.do">Wcdonald's</a> .
+					WinDelivery 관리자 공지사항 <a target="_blank" href="main.do">WinDelivery</a>
 				</div>
 			</div>
 			<div class="card mb-4">

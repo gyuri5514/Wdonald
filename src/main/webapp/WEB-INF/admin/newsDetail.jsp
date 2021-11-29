@@ -33,7 +33,7 @@ table, td, th {
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						WinDelivery 새로운 소식 <a target="_blank" href="main.do">Wcdonald's</a>
+						WinDelivery 새로운 소식 <a target="_blank" href="main.do">WinDelivery</a>
 					</div>
 				</div>
 				<div class="card mb-4">

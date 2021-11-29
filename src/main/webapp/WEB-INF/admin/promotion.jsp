@@ -41,7 +41,7 @@ body {
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					WinDelivery의 프로모션<a target="_blank" href="main.do">WinDelivery</a>
+					WinDelivery의 프로모션&nbsp;&nbsp;<a target="_blank" href="main.do">WinDelivery</a>
 				</div>
 			</div>
 			<div class="card mb-4">
