@@ -9,7 +9,6 @@
 					<li><a href="sitemap.do">사이트맵</a></li>
 					<li><a href="faq.do" target="_blank" title="새창 열림">고객문의</a></li>
 					<!-- <li><a href="javascript:systemCheck('https://voc.mcd.co.kr/MC/HOM/faqMain.jsp')" title="새창 열림">고객문의</a></li> -->					
-				    <li><a href="/kor/story/people/recruit.do">인재채용</a></li> 
 				</ul>
 				<ul class="fSns">
 					<li><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank" title="새창 열림">맥도날드 페이스북</a></li>
@@ -25,8 +24,8 @@
 					<ul class="info">
 						<li>윈도날드(유)</li> 
 						<li>대표이사: Tommy.Lee</li>
-						<li>사업자등록번호: KG아이티뱅크 종로점 402호</li>
-						<li>전화주문: 119</li>
+						<li>사업자등록번호: 282828</li>
+						<li>전화주문: 1600-1818</li>
 					</ul>
 					<p class="copy">COPYRIGHT &copy; 2021 ALL RIGHTS RESERVED BY WcDonald's.</p>
 				</div>
