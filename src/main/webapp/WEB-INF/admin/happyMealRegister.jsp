@@ -41,7 +41,7 @@
 		});
 		
 		$("#cancle").on("click", function() {
-			location.href = "s.mdo";
+			location.href = "happyMeal.mdo";
 		})
 		$("#submit").on("click", function() {
 			var regExp = /\s/g;
