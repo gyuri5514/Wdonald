@@ -98,4 +98,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						by sales_amount desc limit 5
 		]]>
 	</select>
+	
+	<select id="getUserGender" resultType="chartVO" parameterType="chartVO">
+		<![CDATA[
+			select count(*) as sales_count, user_gender from user_info 
+			group by user_gender 
+			order by sales_count desc
+		]]>
+	</select>
 </mapper>

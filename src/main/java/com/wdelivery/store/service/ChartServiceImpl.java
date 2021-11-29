@@ -35,4 +35,9 @@ public class ChartServiceImpl implements ChartService {
 		return chartDAO.getSalesRank(c);
 	}
 
+	@Override
+	public List<ChartVO> getUserGender(ChartVO chartVO) {
+		return chartDAO.getUserGender(chartVO);
+	}
+
 }
