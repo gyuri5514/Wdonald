@@ -28,30 +28,39 @@ table, td, th {
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
-				<h1 class="mt-4">새로운 소식 등록</h1>
+				<h1 class="mt-4">이 달의 해피밀 등록</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
-					<li class="breadcrumb-item active">새로운 소식 등록</li>
+					<li class="breadcrumb-item active"><a href="happypromotion.mdo">이 달의 해피밀 등록</a></li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						WinDelivery 새로운 소식 등록 <a target="_blank" href="main.do">WinDelivery</a>
+						WinDelivery 이 달의 해피밀 등록 <a target="_blank" href="main.do">WinDelivery</a>
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 새로운 소식 등록
+						<i class="fas fa-table me-1"></i> 이 달의 해피밀 등록
 						<div>
 							<input type="submit" class="btn btn-warning" value="확인">
 						</div>
 					</div>
 					<div style="margin-left: 100px;">
-						<form action = "addNews.mdo" method="post" enctype="multipart/form-data">
+						<form action = "addHappyPromotion.mdo" method="post" enctype="multipart/form-data">
 							<table style="width: 90%;">
 								<tr>
 									<td style="text-align: center">제목</td>
 									<td>
-										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="news_title" id="news_title" />
+										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="hp_title" id="hp_title" />
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align: center">진행 여부</td>
+									<td>
+										<select name="hp_status" id="hp_status">
+											<option value=1>활성화</option>
+											<option value=2>비활성화</option>
+										</select>
 									</td>
 								</tr>
 								<tr>
@@ -59,7 +68,7 @@ table, td, th {
 									<td>
 										<div style="margin-top: 10px;">
 											<button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>
-											<div class="news-container" id="news-container" style="display: none;">
+											<div class="happypromotion-container" id="happypromotion-container" style="display: none;">
 												<img style="width: 100%;" id="image">
 											</div>
 										</div>
@@ -70,18 +79,33 @@ table, td, th {
 														<input type="file" name="file1" id="file1" style="display: none;" multiple>
 													</span>
 												</label>
-												<input type="text" id="news_img_path" class="form-control" readonly>
+												<input type="text" id="hp_img_path" class="form-control" readonly>
 											</div>
 										</div>
 									</td>
+								</tr>
 								<tr>
-									<td style="text-align: center">공지내용</td>
-									<td style="">
-										<textarea style="width: 100%; height: 500px;" id="news_content" name="news_content"></textarea>
+									<td style="text-align: center">상세페이지 이미지 등록</td>
+									<td>
+										<div style="margin-top: 10px;">
+											<button type="button" id="slideBtn" onclick="slideButton();" class="btn btn-primary">이미지 미리보기</button>
+											<div class="happypromotion-container" id="happypromotion-container" style="display: none;">
+												<img style="width: 100%;" id="image">
+											</div>
+										</div>
+										<div class="row mb-3" style="margin-top: 20px;">
+											<div class="input-group">
+												<label class="input-group-btn">
+													<span class="btn btn-primary" role="button"> Upload 
+														<input type="file" name="file2" id="file2" style="display: none;" multiple>
+													</span>
+												</label>
+												<input type="text" id="hp_detail_img_path" class="form-control" readonly>
+											</div>
+										</div>
 									</td>
 								</tr>
 							</table>
-							
 						</form>
 					</div>
 				</div>
@@ -91,17 +115,17 @@ table, td, th {
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	/* $("#news_code").blur(function(){
-		var code = $('#news_code').val();
+	/* $("#p_code").blur(function(){
+		var code = $('#p_code').val();
 		$.ajax({
 			type : "get",
-			url : "newscodeChk.mdo",
-			data : {"news_code" : code},
+			url : "pcodeChk.mdo",
+			data : {"p_code" : code},
 			success : function(data){
 				console.log("중복 확인 : " + data);
 				if (data == 1) {
 					$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
-					$("#news_code").focus();
+					$("#p_code").focus();
 					return false;
 				}else{
 					$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
@@ -114,26 +138,26 @@ $(document).ready(function() {
 	}); */
 	
 	/* $("#cancle").on("click", function() {
-		location.href = "news.mdo";
+		location.href = "p.mdo";
 	}) */
 	$("#submit").on("click", function() {
 		var regExp = /\s/g;
-		if ($("#news_title").val() == "") {
+		if ($("#p_title").val() == "") {
 			alert("제목을 입력하세요.");
-			$("#news_title").focus();
+			$("#p_title").focus();
 			return false;
 		}
-		if ($("#news_content").val() == "") {
+		if ($("#p_content").val() == "") {
 			alert("공지내용을 입력하세요.");
-			$("#news_content").focus();
+			$("#p_content").focus();
 			return false;
 		}
-		if ($("#news_regdate").val() == "") {
+		if ($("#p_regdate").val() == "") {
 			alert("등록일을 입력하세요.");
-			$("#news_regdate").focus();
+			$("#p_regdate").focus();
 			return false;
 		}
-		$('#addNews').submit();
+		$('#addp').submit();
 	});
 
 	$('#file1').on('fileselect', function(event, numFiles, label) {
@@ -187,7 +211,7 @@ $(document).ready(function() {
 	});
 })
 function slideButton() {
-	var img = $('#news-container');
+	var img = $('#promotion-container');
 	if (img.attr("style") == "display:none;") {
 		img.attr("style", "display:block;");
 		$('#slideBtn').text("이미지 미리보기 취소");

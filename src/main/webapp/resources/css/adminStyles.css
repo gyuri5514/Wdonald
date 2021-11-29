@@ -10,6 +10,29 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ 
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
+}
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 500;
+    font-style: normal;
+    src: url("../font/Speedee_K_R.woff") format('woff'), 
+         url("../font/Speedee_K_R.ttf") format('truetype'); 
+}
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../font/Speedee_K_B.woff") format('woff'), 
+         url("../font/Speedee_K_B.ttf") format('truetype'); 
+}
+ 
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -57,7 +80,7 @@
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-family: SpeedeeK, var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
@@ -79,7 +102,7 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-body-font-family);
+  font-family: SpeedeeK, var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
@@ -339,7 +362,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--bs-font-monospace);
+  font-family: SpeedeeK, var(--bs-font-monospace);
   font-size: 1em;
   direction: ltr /* rtl:ignore */;
   unicode-bidi: bidi-override;
@@ -435,7 +458,7 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
+  font-family: SpeedeeK, inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -3259,18 +3282,20 @@ textarea.form-control-lg {
 }
 
 .btn-warning {
-	margin-left: 937px;
-	margin-bottom: 12px;
+	margin-top: -20px;
+	margin-bottom: 2px;
 	color: #ffffff;
 	background-color: #0b5ed7;
 	border-color: #0b5ed7;
+	float: right;
 }
 .btn-warning:hover {
- 	margin-left: 937px;
-	margin-bottom: 12px;
+	margin-top: -20px;
+	margin-bottom: 2px;
 	color: #ffffff;
 	background-color: #0b5ed7;
 	border-color: #0b5ed7;
+	float: right;
 }
 .btn-check:focus + .btn-warning, .btn-warning:focus {
   color: #000;
@@ -5876,7 +5901,7 @@ textarea.form-control-lg {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: var(--bs-font-sans-serif);
+  font-family: SpeedeeK, var(--bs-font-sans-serif);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5978,7 +6003,7 @@ textarea.form-control-lg {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: var(--bs-font-sans-serif);
+  font-family: SpeedeeK, var(--bs-font-sans-serif);
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -7700,7 +7725,7 @@ textarea.form-control-lg {
 }
 
 .font-monospace {
-  font-family: var(--bs-font-monospace) !important;
+  font-family: SpeedeeK, var(--bs-font-monospace) !important;
 }
 
 .fs-1 {

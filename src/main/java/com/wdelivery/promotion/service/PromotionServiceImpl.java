@@ -40,4 +40,29 @@ public class PromotionServiceImpl implements PromotionService {
 		
 	}
 
+	@Override
+	public PromotionVO promotionDetail(PromotionVO promotionVO) {
+		return promotionDAO.promotionDetail(promotionVO);
+	}
+
+	@Override
+	public List<PromotionVO> promotion(PromotionVO promotionVO) {
+		return promotionDAO.promotion(promotionVO);
+	}
+
+	@Override
+	public void insertPromotion(PromotionVO promotionVO) {
+		promotionDAO.insertPromotion(promotionVO);
+	}
+
+	@Override
+	public void updatePromotion(PromotionVO promotionVO) {
+		promotionDAO.updatePromotion(promotionVO);
+	}
+
+	@Override
+	public void deletePromotion(PromotionVO promotionVO) {
+		promotionDAO.deletePromotion(promotionVO);
+	}
+
 }

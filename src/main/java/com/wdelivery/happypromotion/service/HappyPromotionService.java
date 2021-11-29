@@ -13,4 +13,14 @@ public interface HappyPromotionService {
 	public HappyPromotionVO detailHappyPromotion(Integer hp_code);
 
 	public void countHappyPromotion(Integer hp_code);
+
+	public List<HappyPromotionVO> happyPromotion(HappyPromotionVO happyPromotionVO);
+
+	public HappyPromotionVO happyPromotionDetail(HappyPromotionVO happyPromotionVO);
+
+	public void insertHappyPromotion(HappyPromotionVO happyPromotionVO);
+
+	public void updateHappyPromotion(HappyPromotionVO happyPromotionVO);
+
+	public void deleteHappyPromotion(HappyPromotionVO happyPromotionVO);
 }

@@ -9,7 +9,8 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>관리자 로그인</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css">
+<link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-black">

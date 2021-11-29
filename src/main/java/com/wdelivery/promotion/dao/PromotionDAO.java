@@ -15,5 +15,15 @@ public interface PromotionDAO {
 	public PromotionVO detailPromotion(Integer p_code);
 	
 	public void countPromotion(Integer p_code);
+	
+	public List<PromotionVO> promotion(PromotionVO promotionVO);
+	
+	public PromotionVO promotionDetail(PromotionVO promotionVO);
+	
+	public void insertPromotion(PromotionVO promotionVO);
+	
+	public void updatePromotion(PromotionVO promotionVO);
+	
+	public void deletePromotion(PromotionVO promotionVO);
 
 }
