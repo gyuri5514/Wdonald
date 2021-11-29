@@ -61,7 +61,7 @@
 						<div class="inner" style="padding-bottom: 0px;">
 							<h1 class="titDep1">1:1 고객문의</h1>
 							<p class="subCopy">
-								맥도날드에 대한 깊은 관심에 감사드립니다. 제품이나 서비스에 대한 문의, 불만, 제안, 칭찬과 격려사항을
+								윈도날드에 대한 깊은 관심에 감사드립니다. 제품이나 서비스에 대한 문의, 불만, 제안, 칭찬과 격려사항을
 								알려주세요.<br /> CS center (080-208-1588)로도 문의하실 수 있습니다. 주말 및 공휴일 등
 								운영 시간(평일 09:00~18:00)외에 접수해 주신 내용은<br /> 잘 보관하였다가 CS center 운영
 								시작 후 신속히 답변드리겠습니다.
@@ -167,7 +167,7 @@
 												<td>상동</td>
 											</tr>
 											<tr>
-												<th scope="row">맥도날드 가맹점</th>
+												<th scope="row">윈도날드 가맹점</th>
 												<td>고객불만사항 해결</td>
 												<td>상동</td>
 												<td>상동</td>
@@ -177,7 +177,7 @@
 									<p>
 										* 가맹점은 <a
 											href="http://www.mcdonalds.co.kr/www/kor/util/private.do"
-											target="_blank" style="color: #C86C37;"><strong>http://www.mcdonalds.co.kr/www/kor/util/private.do</strong></a>
+											target="_blank" style="color: #C86C37;"><strong>http://www.windonalds.co.kr/www/kor/util/private.do</strong></a>
 										에서 확인하실 수 있습니다.<br> 위와 같이 개인정보를 처리하는데 동의를 거부할 권리가 있습니다.
 										그러나 동의를 거부할 경우 서비스 제공이 제한 될 수 있습니다.
 									</p>
