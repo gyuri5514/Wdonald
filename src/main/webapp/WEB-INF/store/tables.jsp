@@ -52,7 +52,7 @@
 								<td>${orderList.final_price}</td>
 								<!-- Split button -->
 								<td>
-									<div class="btn-group" style="width: 80%; margin: 0 auto">
+									<div class="btn-group" style="width: 75%; margin: 0 auto">
 										<select id="order_status${orderList.order_seq}" name="order_status" class="btn btn-Default dropdown-toggle">
 										<option style="background-color:#C3C3C3;"value="">${orderList.order_status}</option>
 											<option value="주문 접수" ${orderList.order_status == "주문 접수" ? 'selected="selected"':''}>주문 접수</option>
