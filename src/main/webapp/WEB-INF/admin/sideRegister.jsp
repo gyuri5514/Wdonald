@@ -41,7 +41,7 @@
 		});
 		
 		$("#cancle").on("click", function() {
-			location.href = "s.mdo";
+			location.href = "side.mdo";
 		})
 		$("#submit").on("click", function() {
 			var regExp = /\s/g;
