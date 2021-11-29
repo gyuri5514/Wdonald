@@ -73,7 +73,6 @@ table, td, th {
 							</td>
 						</tr>
 					</table>
-
 				</form>
 				</div>
 			</div>

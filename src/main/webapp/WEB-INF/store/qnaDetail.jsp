@@ -7,7 +7,7 @@
 	}
 	
 	table, td, th {
-		border : 1px solid #FFD232;
+		border : 1px solid #dddddd;
 		border-collapse : collapse;	
 		margin: 15px;
 		padding: 10px;
@@ -25,12 +25,15 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					WinDelivery 1:1 고객문의 <a target="_blank" href="main.do">Wcdonald's</a> .
+					WinDelivery 1:1 고객문의 <a target="_blank" href="main.do">WinDelivery</a>
 				</div>
 			</div>
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> 고객문의
+					<div>
+						<input type="submit" class="btn btn-warning" style="margin-left:1000px; margin-top: -20px; float: right;" value="확인">
+					</div>
 				</div>
 				<div style="margin-left: 100px;">
 				<form action = "qnaQaInsert.sdo" method="get">
@@ -43,7 +46,7 @@
 						</tr>
 						<tr>
 							<td style="text-align: center">문의내용</td>
-							<td style="">${qnaDetail.qa_content}</td>
+							<td style="margin-bottom: 0;">${qnaDetail.qa_content}</td>
 						</tr>
 						<tr>
 							<td style="text-align: center">답변</td>
@@ -55,8 +58,6 @@
 							</c:if>
 						</tr>
 					</table>
-					<div>
-					<input type="submit" class="btn btn-warning" style="margin-left: 1000px; margin-bottom: 20px;" value="확인"></div>
 				</form>
 				</div>
 			</div>

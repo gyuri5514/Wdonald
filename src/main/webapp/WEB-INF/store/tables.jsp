@@ -5,7 +5,6 @@
 	/* th:nth-of-type(1) {display:none;}
 	td:nth-of-tpye(1) {display:none;} */
 </style>
-
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -40,7 +39,6 @@
 						</thead>
 						<tbody>
 						<c:forEach items="${orderList}" var="orderList">
-						
 						<fmt:formatDate var="orderDate" value="${orderList.order_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
 							<tr>
 								<td style="display:none;">${orderList.order_seq}</td>
@@ -53,8 +51,8 @@
 								<!-- Split button -->
 								<td>
 									<div class="btn-group" style="width: 75%; margin: 0 auto">
-										<select id="order_status${orderList.order_seq}" name="order_status" class="btn btn-Default dropdown-toggle">
-										<option style="background-color:#C3C3C3;"value="">${orderList.order_status}</option>
+										<select id="order_status${orderList.order_seq}" style="border: 1px solid #dddddd;" name="order_status" class="btn btn-Default dropdown-toggle">
+										<option style="background-color:#C3C3C3; border: 1px solid #dddddd;"value="">${orderList.order_status}</option>
 											<option value="주문 접수" ${orderList.order_status == "주문 접수" ? 'selected="selected"':''}>주문 접수</option>
 											<option value="준비 중" ${orderList.order_status == "준비 중" ? 'selected="selected"':''}>준비 중</option>
 											<option value="배달 중" ${orderList.order_status == "배달 중" ? 'selected="selected"':''}>배달 중</option>
@@ -66,61 +64,10 @@
 							</tr>
 							</c:forEach>
 						</tbody>
-					
 					</table>
 				</div>
 				</form>
 			</div>
-			
 		</div>
 	</main>
-
-
-	<footer class="py-4 bg-light mt-auto">
-		<div class="container-fluid px-4">
-			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
-				<div>
-					<a href="main.do">WinDelivery</a> &middot; <a href="#">Team &amp; 2</a>
-				</div>
-			</div>
-		</div>
-	</footer>
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script	src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
-<script	src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-	function orderCheck(order_seq){
-		var order_seq = order_seq;
-		
-		var order_status = $("select[id=order_status"+order_seq+"]").val();
-		
-		console.log("엥" + order_status.length);
-
-		$.ajax({
-			url:"tables.sdo",
-			data:{ order_seq : order_seq,
-					order_status : order_status
-				},
-			type : "get",
-			success:function(data){				
-				console.log(order_status);
-
-			},error:function(){
-				alert("failed");
-			}
-		})
-		
-		//var tdArr = new Array();
-		console.log("zz?" + order_seq);
-	}
-	
-</script>
-
-</body>
-</html>
+<%@ include file="footer.jsp" %>

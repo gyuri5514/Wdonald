@@ -32,8 +32,8 @@
 			<div style="display: inline-block;">
 				<!-- <div class="input-group" > -->
 				<div class="btn-group" style="width: 80%; margin: 0 auto">
-					<select id="store_status" name="store_status" class="btn btn-Default dropdown-toggle"style="background: white;">
-
+					<select id="store_status" name="store_status" class="btn btn-Default dropdown-toggle" style="background: #ffffff;
+					border-radius: 5px; font-weight: 500; font-family: 'SpeedeeK';">
 							<%-- <c:if test="${sessionScope.admin.store_status eq 1}">
 
 							<option value="">정상영업</option>
@@ -48,7 +48,8 @@
 							<option value="2">준비 중</option>
 							<option value="0">영업마감</option>
 					</select>
-					<input type="button" class="btn btn-warning" style="margin-left : 10px" onclick="statusSubmit()" value="확인">
+					<input type="button" class="btn btn-warning" style="margin: auto; background-color: #ffffff; color: #000000; margin-left : 5px; 
+					font-weight: 500;font-family: 'SpeedeeK';border-radius: 5px;" onclick="statusSubmit()" value="확인">
 					<input type="hidden" id="status2" value="${status}">
 				</div>
 			</div>
@@ -64,7 +65,7 @@
 				<a class="navbar-brand ps-3" style="width: 100px" href="login.mdo">로그인</a>
 			</c:otherwise>
 		</c:choose>
-			<li class="nav-item dropdown">
+			<!-- <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 					<i class="fas fa-user fa-fw"></i>
 				</a>
@@ -74,7 +75,7 @@
 					<li><hr class="dropdown-divider" /></li>
 					<li><a class="dropdown-item" href="logout.mdo">Logout</a></li>
 				</ul>
-			</li>
+			</li> -->
 		</ul>
 	</nav>
 	<div id="layoutSidenav"> <!-- 토글 -->

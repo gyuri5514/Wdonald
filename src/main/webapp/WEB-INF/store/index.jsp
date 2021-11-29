@@ -14,7 +14,6 @@
 	alert('권한이 필요한 작업입니다. 로그인해주세요.');
 	location.href="login.mdo";
 </script>
-
 </c:if>
 <!-- !! Admin Main !! -->
 <style>
@@ -25,7 +24,7 @@
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
-			<h1 class="mt-4">Dashboard    <span id="today_total"><fmt:formatNumber value="${today_total }" type="currency" var="currencyType"/>${currencyType}</span></h1> 
+			<h1 class="mt-4">Dashboard<span id="today_total"><fmt:formatNumber value="${today_total }" type="currency" var="currencyType"/>${currencyType}</span></h1> 
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item active">WinDelivery</li>
 			</ol>
@@ -266,8 +265,6 @@ var myBarChart = new Chart(xtx,{
     data:chartData,
     options: options
   });
-
-
 							</script>
 						</div>
 					</div>
@@ -301,6 +298,4 @@ var myBarChart = new Chart(xtx,{
 			</div>
 		</div>
 	</main>
-
-
 <%@ include file="footer.jsp" %>
