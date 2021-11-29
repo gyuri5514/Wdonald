@@ -22,5 +22,5 @@ public interface HappyPromotionService {
 
 	public void updateHappyPromotion(HappyPromotionVO happyPromotionVO);
 
-	public void deleteHappyPromotion(int hp_code);
+	public void deleteHappyPromotion(HappyPromotionVO happyPromotionVO);
 }

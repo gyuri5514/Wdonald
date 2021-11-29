@@ -4,12 +4,10 @@
 		<footer class="footer">
 			<div class="footArea">
 				<ul class="fUtil">
-					<li class="privacy"><a href="private.do">개인정보 처리방침</a></li>
-					<li><a href="location.do">위치정보 이용약관</a></li><!-- 추가 -->
-					<li><a href="sitemap.do">사이트맵</a></li>
+					<li class="privacy"><a href="privateSite.do">개인정보 처리방침</a></li>
+					<li><a href="locationSite.do">위치정보 이용약관</a></li><!-- 추가 -->
+					<li><a href="siteMap.do">사이트맵</a></li>
 					<li><a href="faq.do" target="_blank" title="새창 열림">고객문의</a></li>
-					<!-- <li><a href="javascript:systemCheck('https://voc.mcd.co.kr/MC/HOM/faqMain.jsp')" title="새창 열림">고객문의</a></li> -->					
-				    <li><a href="/kor/story/people/recruit.do">인재채용</a></li> 
 				</ul>
 				<ul class="fSns">
 					<li><a href="https://www.facebook.com/McDonaldsKorea" class="fb" target="_blank" title="새창 열림">맥도날드 페이스북</a></li>

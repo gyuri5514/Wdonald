@@ -56,8 +56,8 @@ public class HappyPromotionServiceImpl implements HappyPromotionService {
 	}
 
 	@Override
-	public void deleteHappyPromotion(int hp_code) {
-		happyPromotionDAO.deleteHappyPromotion(hp_code);
+	public void deleteHappyPromotion(HappyPromotionVO happyPromotionVO) {
+		happyPromotionDAO.deleteHappyPromotion(happyPromotionVO);
 	}
 
 }

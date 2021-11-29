@@ -42,12 +42,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertPromotion">
-		INSERT INTO promotion (p_title, p_regdate, p_count, p_status, p_img_path) VALUES
-		(#{p_title}, now(), 1, 1, #{p_img_path})
+		INSERT INTO promotion (p_title, p_regdate, p_count, p_status, p_img_path, p_detail_img_path) VALUES
+		(#{p_title}, now(), 1, #{p_status}, #{p_img_path}, #{p_detail_img_path})
 	</insert>
 	
 	<update id="updatePromotion">
-		UPDATE promotion SET p_title = #{p_title} WHERE p_code = #{p_code}
+		UPDATE promotion SET p_title = #{p_title}, p_status = #{p_status} WHERE p_code = #{p_code}
 	</update>
 	
 	<delete id="deletePromotion" parameterType="int">

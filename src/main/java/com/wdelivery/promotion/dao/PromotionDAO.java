@@ -24,6 +24,6 @@ public interface PromotionDAO {
 	
 	public void updatePromotion(PromotionVO promotionVO);
 	
-	public void deletePromotion(int p_code);
+	public void deletePromotion(PromotionVO promotionVO);
 
 }

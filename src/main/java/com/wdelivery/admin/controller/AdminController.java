@@ -378,7 +378,7 @@ public class AdminController {
 	
 	@GetMapping("/promotion.mdo")
 	public String promotionList(Model model, PromotionVO promotionVO, HttpSession session) {
-		List<PromotionVO> promotionList = promotionService.selectPromotionAll();
+		List<PromotionVO> promotionList = promotionService.promotion(promotionVO);
 		model.addAttribute("promotionList", promotionList);
 		
 		return "promotion";
@@ -393,15 +393,16 @@ public class AdminController {
 	}
 	
 	@GetMapping("/updatePromotion.mdo")
-	public String updatePromotion(PromotionVO promotionVO) {
+	public String updatePromotion(@RequestParam(name = "p_code") int p_code, PromotionVO promotionVO) {
+		
 		promotionService.updatePromotion(promotionVO);
 		
 		return "redirect:promotion.mdo";
 	}
 	
 	@GetMapping("/deletePromotion.mdo")
-	public String deletePromotion(@RequestParam(name = "p_code") int p_code) {
-		promotionService.deletePromotion(p_code);
+	public String deletePromotion(@RequestParam(name = "p_code") int p_code, PromotionVO promotionVO) {
+		promotionService.deletePromotion(promotionVO);
 		
 		return "redirect:promotion.mdo";
 	}
@@ -413,17 +414,22 @@ public class AdminController {
 	
 	@PostMapping("/addPromotion.mdo")
 	public String insertPromotion(@RequestParam(name = "file1") MultipartFile file1, 
+			@RequestParam(name = "file2") MultipartFile file2,
 			@RequestParam(name = "p_title") String p_title,
-			@RequestParam(name = "p_content") String p_content) throws IOException, ParseException {
+			@RequestParam(name = "p_status") int p_status) throws IOException, ParseException {
 		
 		AwsS3 awsS3 = AwsS3.getInstance();
 		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
 		String key1 = "";
+		String key2 = "";
 		
 		key1 = "img/promotion/" + file1.getOriginalFilename();
+		key2 = "img/promotion/promotion_detail/" + file2.getOriginalFilename();
 		PromotionVO promotionVO = new PromotionVO();
 		promotionVO.setP_title(p_title);
 		promotionVO.setP_img_path(uploadFolder + key1);
+		promotionVO.setP_detail_img_path(uploadFolder + key2);
+		promotionVO.setP_status(p_status);
 		
 		promotionService.insertPromotion(promotionVO);
 		
@@ -431,6 +437,11 @@ public class AdminController {
 		String contentType = file1.getContentType();
 		long contentLength = file1.getSize();
 		awsS3.upload(is,  key1, contentType, contentLength);
+		
+		InputStream is2 = file2.getInputStream();
+		String contentType2 = file2.getContentType();
+		long contentLength2 = file2.getSize();
+		awsS3.upload(is2,  key2, contentType2, contentLength2);
 		
 		return "redirect:promotion.mdo";
 	}
@@ -451,16 +462,17 @@ public class AdminController {
 		return "happyPromotionDetail";
 	}
 	
-	@GetMapping("/updatehappyPromotion.mdo")
+	@GetMapping("/updateHappyPromotion.mdo")
 	public String updateHappyPromotion(HappyPromotionVO happyPromotionVO) {
+		
 		happyPromotionService.updateHappyPromotion(happyPromotionVO);
 		
 		return "redirect:happyPromotion.mdo";
 	}
 	
 	@GetMapping("/deleteHappyPromotion.mdo")
-	public String deleteHappyPromotion(@RequestParam(name = "hp_code") int hp_code) {
-		happyPromotionService.deleteHappyPromotion(hp_code);
+	public String deleteHappyPromotion(@RequestParam(name = "hp_code") int hp_code, HappyPromotionVO happyPromotionVO) {
+		happyPromotionService.deleteHappyPromotion(happyPromotionVO);
 		
 		return "redirect:happyPromotion.mdo";
 	}
@@ -473,16 +485,21 @@ public class AdminController {
 	@PostMapping("/addHappyPromotion.mdo")
 	public String insertHappyPromotion(@RequestParam(name = "file1") MultipartFile file1, 
 			@RequestParam(name = "file2") MultipartFile file2,
-			@RequestParam(name = "hp_title") String p_title) throws IOException, ParseException {
+			@RequestParam(name = "hp_title") String hp_title,
+			@RequestParam(name = "hp_status") int hp_status) throws IOException, ParseException {
 		
 		AwsS3 awsS3 = AwsS3.getInstance();
 		String uploadFolder = "https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/";
 		String key1 = "";
+		String key2 = "";
 		
-		key1 = "img/happymeal_promotion/" + file1.getOriginalFilename();
+		key1 = "img/happmeal_promotion/" + file1.getOriginalFilename();
+		key2 = "img/happmeal_promotion/happymeal_promotion_detail/" + file2.getOriginalFilename();
 		HappyPromotionVO happyPromotionVO = new HappyPromotionVO();
-		happyPromotionVO.setHp_title(p_title);
+		happyPromotionVO.setHp_title(hp_title);
 		happyPromotionVO.setHp_img_path(uploadFolder + key1);
+		happyPromotionVO.setHp_detail_img_path(uploadFolder + key2);
+		happyPromotionVO.setHp_status(hp_status);
 		
 		happyPromotionService.insertHappyPromotion(happyPromotionVO);
 		
@@ -490,6 +507,11 @@ public class AdminController {
 		String contentType = file1.getContentType();
 		long contentLength = file1.getSize();
 		awsS3.upload(is,  key1, contentType, contentLength);
+		
+		InputStream is2 = file2.getInputStream();
+		String contentType2 = file2.getContentType();
+		long contentLength2 = file2.getSize();
+		awsS3.upload(is2,  key2, contentType2, contentLength2);
 		
 		return "redirect:happyPromotion.mdo";
 	}

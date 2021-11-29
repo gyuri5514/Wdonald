@@ -26,36 +26,36 @@ table, td, th {
 	<div id="layoutSidenav_content">
 		<main>
 			<div class="container-fluid px-4">
-				<h1 class="mt-4">프로모션</h1>
+				<h1 class="mt-4">이 달의 해피밀</h1>
 				<ol class="breadcrumb mb-4">
 					<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
-					<li class="breadcrumb-item active">프로모션</li>
+					<li class="breadcrumb-item active"><a href="happyPromotion.mdo">이 달의 해피밀</a></li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						WinDelivery 프로모션 <a target="_blank" href="main.do">WinDelivery</a>
+						WinDelivery 이 달의 해피밀 <a target="_blank" href="main.do">WinDelivery</a>
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 프로모션
+						<i class="fas fa-table me-1"></i> 이 달의 해피밀
 					</div>
-					<form action="updatePromotion.mdo" method="get" enctype="multipart/form-data">
+					<form action="updateHappyPromotion.mdo" method="get" enctype="multipart/form-data">
 						<table style="width: 97.5%;">
 							<tr>
 								<td style="text-align: center">제목
-									<input type="hidden" name="p_code" value="${promotionDetail.p_code}" />
+									<input type="hidden" name="hp_code" value="${happyPromotionDetail.hp_code}" />
 								</td>
 								<td>
-									<textarea id="p_title" name="p_title" style="width: 100%;">${promotionDetail.p_title}</textarea>
+									<textarea id="hp_title" name="hp_title" style="width: 100%;">${happyPromotionDetail.hp_title}</textarea>
 								</td>
 							</tr>
 							<tr>
 								<td style="text-align: center">진행 여부</td>
 								<td>
-									<select name="p_status" id="p_status">
-										<option value="1">활성화</option>
-										<option value="2">비활성화</option>
+									<select name="hp_status" id="hp_status">
+										<option value=1>활성화</option>
+										<option value=2>비활성화</option>
 									</select>
 								</td>
 							</tr>
@@ -63,7 +63,7 @@ table, td, th {
 						<div class="modify_btn">
 							<input type="submit" class="btn btn-primary" value="수정하기">
 							<button class="btn btn-danger" onclick="deleteFaq();">삭제하기</button>
-							<a href="promotion.mdo" class="btn btn-primary">목록</a>
+							<a href="happyPromotion.mdo" class="btn btn-primary">목록</a>
 						</div>
 					</form>
 				</div>
@@ -95,7 +95,7 @@ table, td, th {
 			function deleteFaq() {
 				if (confirm("정말 삭제하시겠습니까?") == true) {
 
-					location.href = "/controller/deletePromotion.mdo?p_code=${promotionDetail.p_code}";
+					location.href = "/controller/deleteHappyPromotion.mdo?hp_code=${happyPromotionDetail.hp_code}";
 					alert("삭제되었습니다.");
 				} else {
 					return;

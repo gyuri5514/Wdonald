@@ -34,4 +34,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="happyPromotionDetail" resultType="happyPromotionVO">
 		SELECT * FROM happypromotion WHERE hp_code = #{hp_code} ORDER BY hp_code
 	</select>
+	
+	<insert id="insertHappyPromotion">
+		INSERT INTO happypromotion (hp_title, hp_regdate, hp_count, hp_status, hp_img_path, hp_detail_img_path) VALUES
+		(#{hp_title}, now(), 1, #{hp_status}, #{hp_img_path}, #{hp_detail_img_path})
+	</insert>
+	
+	<update id="updateHappyPromotion">
+		UPDATE happypromotion SET hp_title = #{hp_title}, hp_status = #{hp_status} WHERE hp_code = #{hp_code}
+	</update>
+	
+	<delete id="deleteHappyPromotion" parameterType="int">
+		DELETE FROM happypromotion WHERE hp_code = #{hp_code}
+	</delete>
 </mapper>

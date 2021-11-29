@@ -7,7 +7,7 @@
 	}
 	
 	table, td, th {
-		border : 1px solid #FFD232;
+		border : 1px solid #dddddd;
 		border-collapse : collapse;	
 		margin: 15px;
 		padding: 10px;
@@ -31,6 +31,9 @@
 			<div class="card mb-4">
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> FAQ 등록
+					<div>
+						<input type="submit" class="btn btn-warning" value="확인">
+					</div>
 				</div>
 				<div style="margin-left: 100px;">
 				<form action = "addFaq.mdo" method="post" id="addFaq">
@@ -57,21 +60,15 @@
 						<tr>
 							<td style="text-align: center">공지내용</td>
 							<td style="">
-							<textarea style="width: 90%; height: 500px;" id="faq_content" name="faq_content"></textarea>
+								<textarea style="width: 100%; height: 500px;" id="faq_content" name="faq_content"></textarea>
 							</td>
 						</tr>
-						
 					</table>
-					<div>
-					<input id="submit" type="submit" class="btn btn-warning" style="margin-left: 1000px; margin-bottom: 20px;" value="확인"></div>
 				</form>
 				</div>
 			</div>
 		</div>
 	</main>
-	
-	
-
 <%@ include file="footer.jsp" %>
 <!-- smartEditor -->
 <script type="text/javascript" src="Editor/js/service/HuskyEZCreator.js" charset="UTF-8"></script>

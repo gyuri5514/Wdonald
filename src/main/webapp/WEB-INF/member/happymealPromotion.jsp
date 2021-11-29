@@ -50,7 +50,7 @@
 									</div>
 									<div class="con">
 										<strong class="tit">
-											${end.hp_title}
+											${selectHappyPromotionEnd.hp_title}
 										</strong>
 										<span id="statusSpan">종료된 행사입니다.</span>
 									</div>

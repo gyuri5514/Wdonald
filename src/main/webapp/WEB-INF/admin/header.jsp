@@ -11,12 +11,42 @@
 <meta name="author" content="" />
 <title>WDelivery 관리자</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css?ver=1.1"> 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css"> 
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 </head>
+
+<style>
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 400;
+    font-style: normal;
+    src: url("/resources/font/Speedee_K_L.woff") format('woff'); 
+}
+
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 500;
+    font-style: normal;
+    src: url("../font/Speedee_K_R.woff") format('woff'), 
+         url("../font/Speedee_K_R.ttf") format('truetype'); 
+}
+@font-face {
+    font-family: SpeedeeK;
+    font-weight: 600;
+    font-style: normal;
+    src: url("../font/Speedee_K_B.woff") format('woff'), 
+         url("../font/Speedee_K_B.ttf") format('truetype'); 
+}
+
+body {
+	font-family: SpeedeeK;
+	font-weight: 400;
+}
+</style>
+
 <body class="sb-nav-fixed">
    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <!-- Navbar Brand-->
@@ -123,22 +153,6 @@
 								<a class="nav-link" href="happyPromotion.mdo">이 달의 해피밀 관리</a>
 							</nav>
 						</div>
-						<!-- <div class="collapse" id="collapseBoard"
-							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion"
-								id="sidenavAccordionPages">
-								<a class="nav-link" href="faqBoard.mdo">FAQ 관리</a>
-							</nav>
-						</div>
-
-						<div class="collapse" id="collapseBoard"
-							aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion"
-								id="sidenavAccordionPages">
-								<a class="nav-link" href="news.mdo">새로운 소식 관리</a>
-							</nav>
-						</div> -->
-
 						<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"> 
                            <i class="fas fa-columns"></i>

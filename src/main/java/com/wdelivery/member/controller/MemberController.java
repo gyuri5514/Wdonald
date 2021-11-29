@@ -809,4 +809,22 @@ public class MemberController {
 		return "myCouponBook";
 	}
 	
+	@GetMapping("/privateSite.do")
+	public String privateSite(Model model) {
+		
+		return "privateSite";
+	}
+	
+	@GetMapping("/locationSite.do")
+	public String locationSite(Model model) {
+		
+		return "locationSite";
+	}
+	
+	@GetMapping("/siteMap.do")
+	public String siteMap(Model model) {
+		
+		return "siteMap";
+	}
+	
 }

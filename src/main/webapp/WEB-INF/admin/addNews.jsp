@@ -41,6 +41,9 @@ table, td, th {
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 새로운 소식 등록
+						<div>
+							<input type="submit" class="btn btn-warning" value="확인">
+						</div>
 					</div>
 					<div style="margin-left: 100px;">
 						<form action = "addNews.mdo" method="post" enctype="multipart/form-data">
@@ -78,9 +81,7 @@ table, td, th {
 									</td>
 								</tr>
 							</table>
-							<div>
-								<input type="submit" class="btn btn-warning" value="확인">
-							</div>
+							
 						</form>
 					</div>
 				</div>

@@ -24,14 +24,16 @@
 							<tr>
 								<th>번호</th>
 								<th>제목</th>
+								<th>진행 여부</th>
 								<th>등록날짜</th>
 							</tr>
 						</thead>
 						<tbody>
 						<c:forEach items="${happyPromotionList}" var="happyPromotionList">
 							<tr>
-								<td>${promotionList.hp_code}</td>
-								<td><a href="happyPromotionDetail.mdo?hp_code=${happyPromotionList.hp_code}">${happyPromotionList.hp_title}</a></td>
+								<td>${happyPromotionList.hp_code}</td>
+								<td><a href="happyPromotionDetail.mdo?hp_code=${happyPromotionList.hp_code}">${happyPromotionList.hp_name}</a></td>
+								<td>${happyPromotionList.hp_status}</td>
 								<td><fmt:formatDate value="${happyPromotionList.hp_regdate}" pattern="yyyy.MM.dd" var="regdate"/>${regdate}</td>
 							</tr>
 						</c:forEach>

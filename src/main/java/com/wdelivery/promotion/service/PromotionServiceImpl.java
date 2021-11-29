@@ -61,8 +61,8 @@ public class PromotionServiceImpl implements PromotionService {
 	}
 
 	@Override
-	public void deletePromotion(int p_code) {
-		promotionDAO.deletePromotion(p_code);
+	public void deletePromotion(PromotionVO promotionVO) {
+		promotionDAO.deletePromotion(promotionVO);
 	}
 
 }
