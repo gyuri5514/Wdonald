@@ -20,7 +20,6 @@ public class TypeSafety {
 					if (o instanceof CartVO ) {
 						CartVO v = (CartVO) o;
 						cartVO.add(v);
-						System.out.println(v.toString());
 					}
 				}
 			}
@@ -40,7 +39,6 @@ public class TypeSafety {
 						CartVO v = (CartVO) o;
 						v.setMerchantuid(paymentVO.getMerchantuid());
 						cartVO.add(v);
-						System.out.println(v.toString());
 					}
 				}
 			}
