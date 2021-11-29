@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
+<style>
+th {
+	width: auto;
+}
+
+.btn-warning {
+	background-color: #0d6efd;
+}
+</style>
 <script>
 	$('#dataTable-selector').click(function(){
 		alert('perPageNum' + $('#dataTable-selector').val());
@@ -44,14 +53,14 @@
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>회원 이름</th>
-									<th>회원 이메일</th>
-									<th>회원 전화번호</th>
-									<th>회원 등록일</th>
-									<th>회원 상태</th>
-									<th>문자 수신동의</th>
-									<th>이메일 수신동의</th>
-									<th>회원 삭제</th>
+									<th style="width: auto;">회원 이름</th>
+									<th style="width: auto;">회원 이메일</th>
+									<th style="width: auto;">회원 전화번호</th>
+									<th style="width: auto;">회원 등록일</th>
+									<th style="width: auto;">회원 상태</th>
+									<th style="width: auto;">문자 수신동의</th>
+									<th style="width: auto;">이메일 수신동의</th>
+									<th style="width: auto;">회원 삭제</th>
 								</tr>
 							</thead>
 								<tbody>
@@ -64,13 +73,14 @@
 												pattern="yyyy-MM-dd" /></td>
 										<td><c:set var="status" value="${userInfo.user_status }" />
 											<c:choose>
-												<c:when test="${status eq '0'}">탈퇴</c:when>
-												<c:when test="${status eq '1'}">정상</c:when>
-												<c:when test="${status eq '2'}">회원정지</c:when>
-												<c:when test="${status eq '3'}">이메일 미인증</c:when>
-												<c:when test="${status eq '4'}">카카오 로그인</c:when>
-												<c:when test="${status eq '5'}">네이버 로그인</c:when>
-												<c:when test="${status eq '9'}">비회원</c:when>
+												<c:when test="${status eq 0}">탈퇴</c:when>
+												<c:when test="${status eq 1}">정상</c:when>
+												<c:when test="${status eq 2}">회원정지</c:when>
+												<c:when test="${status eq 3}">이메일 미인증</c:when>
+												<c:when test="${status eq 4}">카카오 로그인</c:when>
+												<c:when test="${status eq 5}">네이버 로그인</c:when>
+												<c:when test="${status eq 9}">비회원</c:when>
+												<c:when test="${status eq 7}">휴면계정</c:when>
 											</c:choose></td>
 										<td><c:set value="${userInfo.sms_agree }" var="sms" /> <c:choose>
 												<c:when test="${sms eq '0'}">미동의</c:when>
@@ -82,7 +92,7 @@
 												<c:when test="${email eq '1'}">동의</c:when>
 											</c:choose></td>
 										<th><button id="infoDelete" class="btn btn-danger" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
-										<button id="infoSuspend${userInfo.user_seq }" class="btn btn-warning" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
+										<button id="infoSuspend${userInfo.user_seq }" style="width:auto; margin: auto;" class="btn btn-warning" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
 										<c:if test="${status eq '2'}">
 										<button id="infoActive${userInfo.user_seq }" class="btn btn-success" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name }',1);">활성화</button></c:if></th>
 									</tr>
