@@ -60,7 +60,6 @@ public class PaymentController {
 		for(int i=0; i<cartVO.size(); i++) { //toy
 			if(900 <= cartVO.get(i).getCart_product_code() && cartVO.get(i).getCart_product_code() < 1000) {
 				int random = (int)((Math.random() * 4) + 1001);
-				System.out.println("ahf" + random);
 				ToyCountVO tcv = new ToyCountVO();
 				tcv.setHt_code(random);
 				tcv.setProduct_quantity( cartVO.get(i).getCart_product_quantity());
@@ -69,8 +68,6 @@ public class PaymentController {
 				cartVO.get(i).setC_ht_code(random);
 				
 			}
-			for(CartVO c : cartVO)
-				System.out.println(c.getC_ht_code());
 			
 	    paymentVO.setOrder_date(new Date());
 		paymentService.insertPaidOrderList(paymentVO, cartVO);

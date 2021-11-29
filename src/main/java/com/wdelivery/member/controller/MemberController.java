@@ -512,6 +512,7 @@ public class MemberController {
 			int b_Lgset_price = 0;
 			int b_price = 0;
 			int b_set_price = 0;
+			int h_price = 0;
 			int d_price = 0;
 			int s_price = 0;
 			int w_price = 0;
@@ -541,9 +542,11 @@ public class MemberController {
 					dessert_price += vo.getCart_dessert_price();
 				if (vo.getCart_quantity() != null)
 					product_quantity += vo.getCart_quantity();
+				if (vo.getCart_h_price() != null)
+					h_price += vo.getCart_h_price();
 
 			}
-			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price + dessert_price + w_price + w_set_price)
+			price = (b_Lgset_price + b_price + b_set_price + h_price + d_price + s_price + dessert_price + w_price + w_set_price)
 					+ delivery_price;
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
@@ -636,7 +639,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/store.do")
-	public String store(AdminVO adminVO, Model model) { // 하는 중...........
+	public String store(AdminVO adminVO, Model model) { // 다함 -도은-...........
 
 		List<AdminVO> storeList = memberService.getStoreList(adminVO);
 		model.addAttribute("storeList", JSONArray.fromObject(storeList));
