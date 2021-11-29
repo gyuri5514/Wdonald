@@ -103,7 +103,6 @@ function submitCashless() {
 		buyer_tel: user_phone,
 		buyer_addr: user_address,
 		buyer_postcode: '',
-/*		m_redirect_url: 'https://localhost:8080/controller/main.do'*/		
 /*
 		모바일 결제시,
 		결제가 끝나고 랜딩되는 URL을 지정
@@ -139,7 +138,7 @@ function submitCashless() {
 					}),
 					contentType:"application/json"
 				}).done(function(){
-					window.location.href = "http://localhost:8080/controller/main.do";
+					window.location.href = "/controller/main.do";
 				})
 			}else{
 					alert("결제 및 결제검증 실패");
@@ -209,5 +208,5 @@ function onsitePayment() {
 					}),
 					contentType:"application/json"
 				})
-	window.location.href = "http://localhost:8080/controller/main.do";
+	window.location.href = "/controller/main.do";
 }
