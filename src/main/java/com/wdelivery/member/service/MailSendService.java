@@ -47,7 +47,7 @@ public class MailSendService {
 			MailUtils sendMail = new MailUtils(mailSender);
 			sendMail.setSubject((type.equals("join")?"회원가입 이메일 인증":"비밀번호 찾기 인증"));
 			sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
-					.append("<a href='http://localhost:8080/controller/signUpConfirm.do?type=")
+					.append("<a href='http://ec2-13-125-85-206.ap-northeast-2.compute.amazonaws.com/controller/signUpConfirm.do?type=")
 					.append(type)
 					.append("&email=")
 					.append(email)

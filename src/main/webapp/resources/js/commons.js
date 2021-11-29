@@ -137,7 +137,7 @@ $(document).ready(function() {
 	var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "Xh_il_8tTurOD_pU6D37", //내 애플리케이션 정보에 clientId를 입력해준다 
-			callbackUrl: "http://localhost:8080/controller/naverCallback.do", //내 애플리케이션 API설정의 CallbackURL을 입력해준다.
+			callbackUrl: "/controller/naverCallback.do", //내 애플리케이션 API설정의 CallbackURL을 입력해준다.
 			isPopup: false,
 			callbackHandle: true
 		}
@@ -184,7 +184,7 @@ function kakaoLogin() {
 						contentType: "application/json",
 						
 					}).done(function(res){
-						window.location.href = "http://localhost:8080/controller/main.do";
+						window.location.href = "/controller/main.do";
 					})
 					
 				},
@@ -206,7 +206,6 @@ function kakaoLogout() {
 		return;
 	}
 	Kakao.Auth.logout();
-	/*window.location.href="http://localhost:8080/controller/main.do";*/
 }
 function naverLogout(accessKey) {
 	$.post("logout.do", function() {
@@ -214,6 +213,6 @@ function naverLogout(accessKey) {
 			"delete&client_id=Xh_il_8tTurOD_pU6D37&client_secret=JHDMkT0G7N&access_token="
 			+ accessKey + "&service_provider=NAVER";
 	})
-	window.location.href = "http://localhost:8080/controller/main.do";
+	window.location.href = "/controller/main.do";
 }
 

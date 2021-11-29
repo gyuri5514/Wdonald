@@ -23,8 +23,8 @@
 					<ul class="info">
 						<li>윈도날드(유)</li> 
 						<li>대표이사: Tommy.Lee</li>
-						<li>사업자등록번호: KG아이티뱅크 종로점 402호</li>
-						<li>전화주문: 119</li>
+						<li>사업자등록번호: 282828</li>
+						<li>전화주문: 1600-1818</li>
 					</ul>
 					<p class="copy">COPYRIGHT &copy; 2021 ALL RIGHTS RESERVED BY WcDonald's.</p>
 				</div>

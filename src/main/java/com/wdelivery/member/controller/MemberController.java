@@ -512,6 +512,7 @@ public class MemberController {
 			int b_Lgset_price = 0;
 			int b_price = 0;
 			int b_set_price = 0;
+			int h_price = 0;
 			int d_price = 0;
 			int s_price = 0;
 			int w_price = 0;
@@ -541,9 +542,11 @@ public class MemberController {
 					dessert_price += vo.getCart_dessert_price();
 				if (vo.getCart_quantity() != null)
 					product_quantity += vo.getCart_quantity();
+				if (vo.getCart_h_price() != null)
+					h_price += vo.getCart_h_price();
 
 			}
-			price = (b_Lgset_price + b_price + b_set_price + d_price + s_price + dessert_price + w_price + w_set_price)
+			price = (b_Lgset_price + b_price + b_set_price + h_price + d_price + s_price + dessert_price + w_price + w_set_price)
 					+ delivery_price;
 			session.setAttribute("total_price", price);
 			session.setAttribute("delivery_price", delivery_price);
@@ -585,29 +588,12 @@ public class MemberController {
 	        if (MenuSelect != null && KeywordSelect == null) {
 	             
 	            faqList = faqService.MenuSelect(MenuSelect);
-	            /*
-	             * for (FaqVO faqList1 : faqList) { System.out.println(faqList1.getFaq_seq());
-	             * System.out.println(faqList1.getFaq_name());
-	             * System.out.println(faqList1.getFaq_title());
-	             * System.out.println(faqList1.getFaq_content());
-	             * 
-	             * }
-	             */
 	        } else if (MenuSelect != null && KeywordSelect != null) {
 	            Map<String, String> map = new HashMap<String, String>();
 	            map.put("MenuSelect", MenuSelect);
 	            map.put("KeywordSelect", KeywordSelect);
 	            
 	            faqList = faqService.KeywordSelect(map);
-	            /*
-	             * for(FaqVO faqKeyword1 : faqList) {
-	             * System.out.println(faqKeyword1.getFaq_seq());
-	             * System.out.println(faqKeyword1.getFaq_name());
-	             * System.out.println(faqKeyword1.getFaq_title());
-	             * System.out.println(faqKeyword1.getFaq_content());
-	             * 
-	             * }
-	             */
 	        }
 	        return faqList;
 	    }
@@ -620,7 +606,7 @@ public class MemberController {
 			return 0;
 		}
 
-		UserVO userVO = (UserVO) session.getAttribute("userInfo");
+		UserVO userVO = SessionClassifier.sessionClassifier(session);
 		if (userVO != null) {
 			List<UserCouponVO> userCouponVO = memberService.userCouponSelect(userVO.getUser_seq());
 			for (int i = 0; i < userCouponVO.size(); i++) {
@@ -653,7 +639,7 @@ public class MemberController {
 	}
 
 	@GetMapping("/store.do")
-	public String store(AdminVO adminVO, Model model) { // 하는 중...........
+	public String store(AdminVO adminVO, Model model) { // 다함 -도은-...........
 
 		List<AdminVO> storeList = memberService.getStoreList(adminVO);
 		model.addAttribute("storeList", JSONArray.fromObject(storeList));

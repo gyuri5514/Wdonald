@@ -10,4 +10,5 @@ public interface ChartDAO {
 	ArrayList<ChartVO> getResponsiveChart(ChartVO chart);
 	ArrayList<ChartVO> getPieChart(ChartVO c);
 	List<ChartVO> getSalesRank(ChartVO c);
+	List<ChartVO> getUserGender(ChartVO chartVO);
 }

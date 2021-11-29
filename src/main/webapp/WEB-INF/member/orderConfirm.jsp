@@ -8,7 +8,7 @@
 <c:if test="${notAvailable eq 'noStoreNear' }">
 <script>
 	alert('배달 가능한 매장이 없습니다.');
-	history.go(-2);
+	history.go(-1);
 </script>
 </c:if>
 <%

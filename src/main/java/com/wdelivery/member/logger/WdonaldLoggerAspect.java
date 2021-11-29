@@ -64,4 +64,59 @@ public class WdonaldLoggerAspect {
 		return result;
 	}
 	
+	@Around("execution(public * com.wdelivery..paywinDelivery(..))")
+	public Object tracePayment(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
+	@Around("execution(public * com.wdelivery..mypageUpdateConfirm(..))||execution(public * com.wdelivery..mypageDelete(..))")
+	public Object tracemyPageUpdate(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
+	@Around("execution(public * com.wdelivery..addressUpdate(..))||execution(public * com.wdelivery..addressInsert(..))||execution(public * com.wdelivery..addressDelete(..))")
+	public Object traceAddressProcess(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
+	@Around("execution(public * com.wdelivery..orderCancel(..))")
+	public Object traceOrderCancel(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
+	@Around("execution(public * com.wdelivery..registerUserCoupon(..))")
+	public Object traceUserCouponRegister(ProceedingJoinPoint jp) throws Throwable {
+		//before method start
+		logger.warn(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		System.out.println(aroundText+jp.getSignature().toShortString()+" : "+Arrays.toString(jp.getArgs()));
+		
+		Object result = jp.proceed();
+		//메서드가 실행된 후
+		logger.warn("method => "+jp.getSignature().getName()+" finished");
+		return result;
+	}
 }

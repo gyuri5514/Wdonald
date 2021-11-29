@@ -60,7 +60,7 @@ public class MypageController {
 	private BCryptPasswordEncoder pwdEncoder;
 
 	@GetMapping("/mypageupdate.do")
-	public String mypageupdate(Model model, HttpSession session, UserVO userVO) {
+	public String mypageUpdate(Model model, HttpSession session, UserVO userVO) {
 		
 		if(SessionClassifier.sessionClassifier(session)==null)
 			 return "redirect:main.do";
@@ -68,9 +68,9 @@ public class MypageController {
 		session.setAttribute("session", userVO);
 		return "mypageupdate";
 	}
-
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("/mypageUpdate.do")
-	public String mypageUpdate(UserVO userVO, HttpSession session) {
+	public String mypageUpdateConfirm(UserVO userVO, HttpSession session) {
 		
 		String rawPw = ""; //주석 MemberLoginController 참고
 		String encodePw = "";

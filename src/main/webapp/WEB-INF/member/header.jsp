@@ -57,7 +57,7 @@
 			</script>
 		</c:when>
 	</c:choose>
-</c:if>
+</c:if><!-- 도망쳐ㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕㅕ -->
 	<div class="skipMenu"><a href="#container">본문 바로가기</a></div>
 	<div class="wrapper ">
 		<header class="header"><!-- 상단 고정 fixed 클래스 추가, 메뉴의 depth1 오버시 open 클래스 추가 -->

@@ -62,7 +62,7 @@ public class MemberLoginController {
 	   0 = 탈퇴 / 1 = 정상 / 2 = 회원정지 / 3= 이메일 미인증/ 4= 카카오톡 / 5= 네이버
 	   6 = 아이디 없음 / 7 = 비밀번호 오류/
 	 */
-	
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping("memLogin.do")
 	public String memberLogin(UserVO userVO,HttpSession session,Model model) {
 
@@ -131,6 +131,7 @@ public class MemberLoginController {
 		memberService.restoreSocialMemStatus(userVO); 
 	}
 	
+	@Transactional(rollbackFor = Exception.class)
 	@RequestMapping("kakaoLogin.do")
 	@ResponseBody
 	public String kakaoLogin(@RequestBody KakaoUserVO kakaoVO,HttpSession session,Model model) {
@@ -139,7 +140,6 @@ public class MemberLoginController {
 			if(kakaoUserVO.getUser_status()==0||kakaoUserVO.getUser_status()==7) {
 				kakaoUserVO.setUser_status(4);
 				restoreSocialMemStatus(kakaoUserVO);
-				model.addAttribute("status",7);
 			}
 		session.setAttribute("kakaoSession", kakaoUserVO);
 		session.setAttribute("status", kakaoUserVO.getUser_status());
@@ -217,7 +217,7 @@ public class MemberLoginController {
 		session.invalidate();
 		return "redirect:main.do";
 	}
-	
+	@Transactional(rollbackFor = Exception.class)
 	@RequestMapping("naverLogin.do")
 	public String naverLogin(@RequestBody NaverUserVO naverVO,HttpSession session,Model model) {
 		UserVO naverUserVO = memberService.isMemberInService("naver", "naver#"+naverVO.getEmail());
@@ -225,7 +225,6 @@ public class MemberLoginController {
 			if(naverUserVO.getUser_status()==0||naverUserVO.getUser_status()==7) {
 				naverUserVO.setUser_status(5);
 				restoreSocialMemStatus(naverUserVO);
-				model.addAttribute("status",7);
 			}
 		session.setAttribute("naverSession", naverUserVO);
 		session.setAttribute("status", naverUserVO.getUser_status());

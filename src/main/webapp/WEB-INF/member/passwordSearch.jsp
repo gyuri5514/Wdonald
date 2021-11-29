@@ -133,7 +133,7 @@ function searchMyEmail(){
 					console.log(res);
 					$('#btnSearch').prop("onclick", null).off("click");
 				})
-				window.location.replace="http://localhost:8080/emailConfirm.do";
+				window.location.replace="/emailConfirm.do";
 			}else if(res!=1){
 				$('#emailChecktxt').html("<font id='chk-span'><small>등록하신 이메일이 아닙니다.</small></font>")
 			}
