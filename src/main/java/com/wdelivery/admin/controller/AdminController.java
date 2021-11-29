@@ -145,11 +145,11 @@ public class AdminController {
 	}
 	
 	//회원정보 게시판
-	@GetMapping("/layoutStatic.mdo")
-	public String layoutStatic(Model model) {
-		model.addAttribute("userInfo" , adminService.userSelect());
-		return "layout-static";
-	}
+	/*
+	 * @GetMapping("/layoutStatic.mdo") public String layoutStatic(Model model) {
+	 * model.addAttribute("userInfo" , adminService.userSelect()); return
+	 * "layout-static"; }
+	 */
 	//쿠폰 추가창
 	@GetMapping("/addcoupon.mdo")
 	public String addcoupon() {

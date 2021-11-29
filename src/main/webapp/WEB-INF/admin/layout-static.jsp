@@ -6,6 +6,26 @@
 		alert('perPageNum' + $('#dataTable-selector').val());
 	})
 </script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+   crossorigin="anonymous"></script>
+<!--  -->
+<script src="https://kit.fontawesome.com/d0b304acae.js"
+   crossorigin="anonymous"></script>
+<!-- fontawesomeCDN -->
+
+<!-- Bootstrap CSS -->
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+   href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<!--  -->
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<link
+   href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Rambla|Calligraffitti'
+   rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css"
+   href="/js/jquery/ui/themes/base/jquery-ui.css" />
 <div id="layoutSidenav_content">
 	<main>
 		<div class="container-fluid px-4">
@@ -14,7 +34,8 @@
 				<li class="breadcrumb-item"><a href="index.mdo">HOME</a></li>
 				<li class="breadcrumb-item active">윈딜리버리 회원</li>
 			</ol>
-			<div style="height: 100vh">
+				<canvas id="myPieChart" style="width:50%; height:50%; margin-bottom: 10px"></canvas>
+			<div style="height: 100">
 				<div class="card mb-4">
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 윈딜리버리 회원 내역
@@ -70,6 +91,38 @@
 							
 						</table>
 						<script type="text/javascript">
+							Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	   		                Chart.defaults.global.defaultFontColor = '#292b2c';
+	   		                
+	   		             var jsonpieChart =  ${genderPie};
+	   					
+	   	               var plabels = jsonpieChart.map(function(e){
+	   	                  return e.user_gender;
+	   	               })
+
+	   	               var pdata = jsonpieChart.map(function(e){
+	   	                    return e.sales_count;
+	   	               })
+	   	               // Pie Chart Example
+	   	               var ptx = document.getElementById("myPieChart");
+	   	               var color = [
+	   	            		"#FF0000","#FF5E00","#FFBB00","#FFE400","#ABF200","#1DDB16",
+	   	            		"#00D8FF","#0054FF","#0100FF","#5F00FF","#FF00DD","#FF007F","#000000","#FFD8D8",
+	   	            		"#FAECC5","#E4F7BA","#D4F4FA","#DAD9FF","#FFD9FA","#FFA7A7","#FFE08C","#CEF279",
+	   	            		"#B2CCFF","#D1B2FF","#CC723D","#CCA63D","#9FC93C","#47C83E","#4374D9","#8041D9"
+	   	               ]
+	   	               var myPieChart = new Chart(ptx, {
+	   	                 type: 'pie',
+	   	                 data: {
+	   	                   labels: plabels,
+	   	                   datasets: [{
+	   	                     data: pdata,
+	   	                     backgroundColor: color,
+	   	                   }],
+	   	                 },
+	   	               });
+						
+						
 								function suspendUser(user_seq,user_name,user_status){
 									if(confirm(user_name+'님 (회원번호 : '+user_seq+')을 '+(user_status==2?'정지':'활성화')+'하시겠습니까?')){
 										

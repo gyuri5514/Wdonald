@@ -21,8 +21,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wdelivery.admin.service.AdminService;
 import com.wdelivery.admin.service.AdminStoreService;
 import com.wdelivery.admin.vo.AdminVO;
 import com.wdelivery.member.payment.vo.PaymentVO;
@@ -35,6 +37,10 @@ import net.sf.json.JSONArray;
 public class AdminChartController {
 	@Autowired
 	private ChartService chartService;
+	
+	@Autowired
+	private AdminService adminService;
+
 	
 	@Autowired
 	private AdminStoreService adminStoreService;
@@ -73,6 +79,13 @@ public class AdminChartController {
 	    model.addAttribute("start_date",chart.getStart_date());
 	    model.addAttribute("end_date",chart.getEnd_date());
 	    model.addAttribute("pieList",JSONArray.fromObject(chartService.getPieChart(chart)));
+	}
+	
+	@RequestMapping("/layoutStatic.mdo")
+	public String getUserGenderPie(ChartVO chartVO, Model model) {
+		model.addAttribute("userInfo" , adminService.userSelect());
+		model.addAttribute("genderPie", JSONArray.fromObject(chartService.getUserGender(chartVO)));
+		return "layout-static";
 	}
 	
 	

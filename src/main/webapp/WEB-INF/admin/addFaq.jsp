@@ -1,18 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <style>
-	.textareaCSS{
-		margin-top : 20px;
-		height: 500px;
-	}
-	
-	table, td, th {
-		border : 1px solid #FFD232;
-		border-collapse : collapse;	
-		margin: 15px;
-		padding: 10px;
-		font-size: 20px;
-	};
+.textareaCSS {
+	margin-top: 20px;
+	height: 500px;
+	border: 1px solid #ddd;
+}
+
+textarea {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+table, td, th {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	margin: 15px;
+	padding: 10px;
+	font-size: 16px;
+	font-weigth: 500;
+}
 </style>
 <body>
 	<div id="layoutSidenav_content">
@@ -63,7 +70,7 @@
 						
 					</table>
 					<div>
-					<input id="submit" type="submit" class="btn btn-warning" style="margin-left: 1000px; margin-bottom: 20px;" value="확인"></div>
+					<input id="submit" type="submit" class="btn btn-primary" style="margin-left: 1000px; margin-bottom: 20px;" value="확인"></div>
 				</form>
 				</div>
 			</div>
