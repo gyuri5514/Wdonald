@@ -52,7 +52,7 @@
 					</p>
 					<h3>1. 회사가 수집하는 개인정보 항목과 수집,이용 목적, 수집방법은 무엇인가요?</h3>
 					<p>
-						윈딜리버리서비스(&ldquo;MDS&rdquo;) 제공을 위하여 전화주문시 고객이 제공하는 고객의 성명, 전화번호,
+						윈도날드서비스(&ldquo;MDS&rdquo;) 제공을 위하여 전화주문시 고객이 제공하는 고객의 성명, 전화번호,
 						배달주소를 수집합니다. <br>고객문의, 민원처리, 손해배상(보험처리) 등을 위하여 고객센터 전화, 홈페이지
 						1:1 고객문의, 우편접수를 통해 고객의 성명, 연락처, 이용매장명, 이메일 주소, 문의 또는 민원 사항,
 						손해증빙서류(진단서, 의무기록, 견적서, 영수증)상 기재된 개인정보를 수집합니다. <br>매장/MDS오픈행사시
@@ -988,7 +988,7 @@
 		</div>
 	</div>
 	<div class="aside">
-		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Windelivery</a>
+		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>

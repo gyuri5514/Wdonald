@@ -26,7 +26,9 @@
 						<li>사업자등록번호: 282828</li>
 						<li>전화주문: 1600-1818</li>
 					</ul>
-					<p class="copy">COPYRIGHT &copy; 2021 ALL RIGHTS RESERVED BY WinDonald's.</p>
+
+					<p class="copy">COPYRIGHT &copy; 2021 ALL RIGHTS RESERVED BY WDonald.</p>
+
 				</div>
 			</div>	
 		</footer>

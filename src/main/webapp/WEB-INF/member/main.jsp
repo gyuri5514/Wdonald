@@ -44,7 +44,7 @@
 		<!-- //mainEvent -->
 		<div class="contArea mainCont">
 			<div class="inner">
-				<h2 class="titMain">WDonald's LIVE</h2>
+				<h2 class="titMain">WDonald LIVE</h2>
 				<ul class="whatsNew" id="menuList">
 					<c:forEach items="${selectPromotionIng}" var="main">
 					<li id="promotion_ing">
@@ -71,7 +71,7 @@
 		</form>
 	</div>
 	<div class="aside">
-		<a href="burger.do" class="goDelivery" title="새창 열림">Wcdelivery</a>
+		<a href="burger.do" class="goDelivery" title="새창 열림">WDonald</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>

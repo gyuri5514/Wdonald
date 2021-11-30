@@ -23,6 +23,11 @@ table, td, th {
 }
 
 </style>
+<<script type="text/javascript">
+function faqSubmit(){
+	$('#addFaq').submit();
+}
+</script>
 <body>
 	<div id="layoutSidenav_content">
 	<main>
@@ -41,7 +46,7 @@ table, td, th {
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> FAQ 등록
 					<div>
-						<input type="submit" class="btn btn-warning" value="확인">
+						<input type="button" onclick="faqSubmit();" class="btn btn-warning" value="확인">
 					</div>
 				</div>
 				<div style="margin-left: 100px;">

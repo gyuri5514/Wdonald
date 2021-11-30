@@ -262,7 +262,6 @@ public class MemberLoginController {
 		if(isAuthKeyAvailable(emailMap)) {
 			
 			model.addAttribute("emailResult","success");
-			
 			if(type.equals("join"))
 				memberService.signUpConfirm(email);
 			else if(type.equals("findPw"))
