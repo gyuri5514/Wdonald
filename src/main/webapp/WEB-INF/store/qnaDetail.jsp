@@ -32,13 +32,14 @@
 				<div class="card-header">
 					<i class="fas fa-table me-1"></i> 고객문의
 					<div>
-						<input type="submit" class="btn btn-warning" style="margin-left:1000px; margin-top: -20px; float: right;" value="확인">
+						<input type="button" onclick="formSubmit()" class="btn btn-warning" style="margin-left:1000px; margin-top: -20px; float: right;" value="확인">
 					</div>
 				</div>
 				<div style="margin-left: 100px;">
-				<form action = "qnaQaInsert.sdo" method="get">
+				<form id="qaaForm" method="post" action="qnaQaInsert.sdo">
+					
 					<input type="hidden" name="admin_seq" value="${sessionScope.store_admin.admin_seq}">
-					<input type="hidden" name="qa_seq" value="${qnaDetail.qa_seq}">
+					<input type="hidden" id="qa_seq" name="qa_seq" value="${qnaDetail.qa_seq}">
 					<table style="width: 90%;"> 	
 						<tr>
 							<td style="text-align: center">제목</td>
@@ -58,6 +59,8 @@
 							</c:if>
 						</tr>
 					</table>
+					
+					
 				</form>
 				</div>
 			</div>
@@ -68,6 +71,10 @@
 
 <%@ include file="footer.jsp" %>
 <script type="text/javascript">
+function formSubmit() {
+	var qaForm = document.getElementById("qaaForm");
+	qaForm.submit();
+}
 /*---smartEditor---*/
 
 	/* $(function() {

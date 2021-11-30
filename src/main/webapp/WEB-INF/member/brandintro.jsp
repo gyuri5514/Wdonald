@@ -76,7 +76,7 @@
 											<strong>2019</strong>
 											<div class="yearCont">
 												<div class="txt">
-													<span>제주, 광주 지역 윈딜리버리 바이크를 친환경 전기 바이크로 전면 교체</span>
+													<span>제주, 광주 지역 윈윈도날드 바이크를 친환경 전기 바이크로 전면 교체</span>
 													<span>서울시와 전기바이크 교체 업무협약(MOU) 체결</span>
 												</div>
 												<div class="thum"><img src="resources/img/img_histoy_kor_2019.png" alt="전기바이크 이미지"></div>
@@ -180,7 +180,7 @@
 											<strong>2007</strong>
 											<div class="yearCont">
 												<div class="txt">
-													<span>윈딜리버리(McDelivery) 서비스 시작</span>
+													<span>윈윈도날드(WDonald) 서비스 시작</span>
 													<span>트랜스 지방(TFA)을 낮춘 후렌치 후라이로 전면 교체</span>
 													<span>로날드 윈도날드 어린이 축구 교실 ‘방과후 프로그램’ 시작</span>
 													<span>한국RMHC, 양산 부산대학교 어린이 병원에 어린이 병원 학교 설립</span>
@@ -269,7 +269,7 @@
 											<strong>2017</strong>
 											<div class="yearCont">
 												<div class="txt">
-													<span>우버이츠(UberEATS)와의 윈딜리버리의 글로벌 런칭을 기념하며<br>7월 26일을 윈딜리버리 데이로 선정</span>
+													<span>우버이츠(UberEATS)와의 윈윈도날드의 글로벌 런칭을 기념하며<br>7월 26일을 윈윈도날드 데이로 선정</span>
 												</div>
 											</div>
 										</li>
@@ -444,7 +444,7 @@
 
 			</div>
 			<div class="aside">
-				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
+				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
 		</div>
@@ -675,7 +675,7 @@
 				<div class="contBtm crewCont">
 					<h2 class="tit">변화는 나의 자부심</h2>
 					<p class="txt">처음엔 ‘그냥 아르바이트 하는 곳’이라는 생각으로 시작 하였던 것이 어느 것 16년을 함께 하고 있습니다. 윈도날드의 다양한 경험을 통해 항상 새로운 시도와 변화를 먼저 이끌어 나가는 기업이라는 것을 자연스럽게 느낄 수 있었습니다.</p>
-					<p class="txt">윈드라이브, 윈딜리버리, 최근의 미래형 매장까지&middot;&middot;&middot;<br>멈추지 않는 다양한 시도들은 저에게 변화를 함께 만들어 가면서 최초라는 자부심을 갖고 일할 수 있게 해주었습니다.</p>
+					<p class="txt">윈드라이브, 윈도날드, 최근의 미래형 매장까지&middot;&middot;&middot;<br>멈추지 않는 다양한 시도들은 저에게 변화를 함께 만들어 가면서 최초라는 자부심을 갖고 일할 수 있게 해주었습니다.</p>
 					<p class="txt">윈도날드의 변화는 곧 저의 즐거움이자 자부심이며,<br>이러한 새로운 변화를 계속해서 이끌어갈 것입니다.</p>
 					<p class="crewInfo">목포 남악 DT점 김지웅 매니저</p>
 				</div>

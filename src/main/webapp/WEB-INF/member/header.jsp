@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Wcdonald's</title>
+<title>WDonald</title>
 <meta name="description" id="description" content="메뉴, 레스토랑, 프로모션 등 안내"/>
 <meta name="keywords" content="McDonald's, McDrive, McDelivery, McMorning, Happy Meal, Signature Burger, McAllday, McCafe"/>
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
@@ -80,7 +80,7 @@
 								<a href="store.do" class="dth1 ">Store</a>
 								<ul class="depth2">
 									<li><a href="store.do" class="dth2">매장찾기</a></li>
-									<li><a href="delivery.do" class="dth2">윈딜리버리</a></li>
+									<li><a href="delivery.do" class="dth2">윈도날드</a></li>
 								</ul>
 							</li>
 							<li>
@@ -144,7 +144,7 @@
 					<div id="login_pop" class="close">
 						<div class="wrapper shadow clearfix">
 							<div>
-								<p class="roboto">Wcdonalds</p>
+								<p class="roboto">Wdonald</p>
 								<h3 class="tit01 tit_ico key01">일반 로그인</h3>
 								<form action="memLogin.do" method="post">
 									<div class="input">
@@ -159,7 +159,7 @@
 									</div>
 									<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 									<div>
-										<a href="memberJoin.do">회원가입</a> 
+										<a href="join.do">회원가입</a> 
 										<a href="passwordSearch.do">비밀번호 찾기</a>
 									</div>
 								</form>

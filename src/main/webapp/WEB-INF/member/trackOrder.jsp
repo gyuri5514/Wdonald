@@ -8,7 +8,7 @@
 <script src="/resources/js/mypage/jquery-3.6.0.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>McDonald's Crew</title>
+<title>WDonald's Crew</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 <!-- @todo: fill with your company info or remove -->

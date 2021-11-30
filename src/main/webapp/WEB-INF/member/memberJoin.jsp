@@ -88,7 +88,7 @@
 								<a href="store.do" class="dth1 ">Store</a>
 								<ul class="depth2">
 									<li><a href="store.do" class="dth2">매장찾기</a></li>
-									<li><a href="delivery.do" class="dth2">윈딜리버리</a></li>
+									<li><a href="delivery.do" class="dth2">윈도날드</a></li>
 								</ul>
 							</li>
 							<li>
@@ -140,7 +140,7 @@
 					<div id="login_pop" class="close">
 						<div class="wrapper shadow clearfix">
 							<div>
-								<p class="roboto">Wcdonalds</p>
+								<p class="roboto">Wdonald</p>
 								<h3 class="tit01 tit_ico key01">일반 로그인</h3>
 								<form action="#" method="post">
 									<div class="input">

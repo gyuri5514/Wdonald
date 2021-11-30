@@ -7,7 +7,7 @@
 	<div class="content">
 		<div class="visualArea bgWhats01">
 			<div class="inner">
-				<h1 class="titDep1" data-title="윈딜리버리 프로모션" data-desc="윈딜리버리 프로모션">윈딜리버리 프로모션</h1>
+				<h1 class="titDep1" data-title="윈딜리버리 프로모션" data-desc="윈딜리버리 프로모션">윈도날드 프로모션</h1>
 				<ul class="navPath">
 					<li><a href="/controller/main.do">Home</a></li>
 					<li><a href="/controller/promotion.do">What's New</a></li>
@@ -67,7 +67,7 @@
 		<!-- //contArea -->
 	</div>
 	<div class="aside">
-		<a href="/controller/main.do" class="goDelivery" target="_blank" title="새창 열림">Wdelivery</a>
+		<a href="/controller/main.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 	</div>
 	<script>
 		$(document).ready(function() {

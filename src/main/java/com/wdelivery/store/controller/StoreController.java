@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -187,12 +188,14 @@ public class StoreController {
 		
 		return "qnaDetail";
 	}
-	@GetMapping("/qnaQaInsert.sdo")
-	public String insertQnaQa(QaaVO qaaVO, QnaVO qnaVO) {
+	@RequestMapping("/qnaQaInsert.sdo")
+	public String insertQnaQa(@RequestParam(name = "qa_seq")int qa_seq, QaaVO qaaVO, QnaVO qnaVO) {
+		qaaVO.setQa_seq(qa_seq);
+		System.out.println(qaaVO.toString());
 		storeService.qnaQaInsert(qaaVO);
-		
+		System.out.println("?");
 		if(qaaVO.getQaa_content() != null && qaaVO.getQaa_content() != "") {
-			//System.out.println("qaaVO : " + qaaVO.toString());
+			System.out.println("qaaVO : " + qaaVO.toString());
 			storeService.qaaCompletion(qnaVO);
 		}
 		return "redirect:layoutStatic.sdo";
