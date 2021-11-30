@@ -20,12 +20,12 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">1:1 고객문의</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.sdo">WDonald</a></li>
 				<li class="breadcrumb-item active">1:1 고객문의</li>
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					WinDelivery 1:1 고객문의 <a target="_blank" href="main.do">WinDelivery</a>
+					WDonald 1:1 고객문의 <a target="_blank" href="main.do">WDonald</a>
 				</div>
 			</div>
 			<div class="card mb-4">

@@ -20,12 +20,12 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">공지사항</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.sdo">WDonald</a></li>
 				<li class="breadcrumb-item active">공지사항</li>
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					WinDelivery 관리자 공지사항 <a target="_blank" href="main.do">WinDelivery</a>
+					WDonald 관리자 공지사항 <a target="_blank" href="main.do">WDonald</a>
 				</div>
 			</div>
 			<div class="card mb-4">
