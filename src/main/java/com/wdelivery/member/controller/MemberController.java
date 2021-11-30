@@ -110,7 +110,13 @@ public class MemberController {
 
 	@ModelAttribute("bannerList")
 	public List<AdminBannerVO> getBannerList() {
-		return adminService.selectBannerList();
+		
+		List<AdminBannerVO> bannerList = adminService.selectBannerList();
+		if (bannerList.size() > 7) {
+			bannerList.remove(bannerList.size()-1);
+		}
+		//System.out.println(bannerList.size());
+		return bannerList;
 	}
 
 	@ModelAttribute("selectPromotionIng")
