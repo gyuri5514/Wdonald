@@ -70,4 +70,33 @@
 			</div>
 		</div>
 	</main>
+	
+	
+
+<script type="text/javascript">
+   function orderCheck(order_seq){
+      var order_seq = order_seq;
+      
+      var order_status = $("select[id=order_status"+order_seq+"]").val();
+      
+      console.log("엥" + order_status.length);
+      $.ajax({
+         url:"tables.sdo",
+         data:{ order_seq : order_seq,
+               order_status : order_status
+            },
+         type : "get",
+         success:function(data){            
+            console.log(order_status);
+         },error:function(){
+            alert("failed");
+         }
+      })
+      
+      //var tdArr = new Array();
+      console.log("zz?" + order_seq);
+   }
+   
+</script>
+	
 <%@ include file="footer.jsp" %>
