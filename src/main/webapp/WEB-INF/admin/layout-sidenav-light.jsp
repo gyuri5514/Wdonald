@@ -43,7 +43,7 @@
 								<td><fmt:formatDate value="${vo.coupon_enddate}" pattern="yyyy-MM-dd"/></td>
 								<td style="text-align: center;">
 									<div class="coupon_status" style="width: 80%; margin: 0 auto">
-										<select id="coupon_status${vo.coupon_code}" name="coupon_status" onchange="stateChanged('${vo.coupon_code }')" class="btn btn-Default dropdown-toggle">
+										<select id="coupon_status${vo.coupon_code}" name="coupon_status" onchange="stateChanged('${vo.coupon_code }')" style="border: 1px solid #dddddd;" class="btn btn-Default dropdown-toggle">
 											<c:if test="${vo.coupon_status == 0}">
 												<option value="0" selected>Y</option>
 												<option value="1">N</option>
