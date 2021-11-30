@@ -82,17 +82,17 @@
 						<br>
 						<div class="form-check" style="padding-left: 5px;">
 							<input type="text" name="start_date" id="start_history"
-								class="form-control" maxlength="10" style="width: 110px; text-align: center;"
+								class="form-control" maxlength="10" style="width: 120px; text-align: center;"
 								readonly="readonly" /> &nbsp; ~ &nbsp; <input type="text"
 								name="end_date" id="end_history" class="form-control"
-								maxlength="10" style="width: 110px; text-align: center;" readonly="readonly" />
+								maxlength="10" style="width: 120px; text-align: center;" readonly="readonly" />
 							<button type="button" class="btn btn-warning form-control" onclick='getNewChart()'
 								style="margin-bottom: 3px; margin-left: 25px; width: 100px;">검색</button>
 						</div>
 					</div>
 					<form action="excel.sdo" method="get">
-						<div style="margin: auot; float: right;">
-							<button type="submit" style="font-weight: 500; font-family: SpeedeeK;"class="btn btn-light" value="너는 할수있다">
+						<div style="margin: auto; float: right;">
+							<button type="submit" style="font-weight: 500; font-family: SpeedeeK;" class="btn btn-light" value="너는 할수있다">
 								<i class="far fa-file-excel" style="font-size: 20px; color: green;"></i> &nbsp;&nbsp;&nbsp;&nbsp;Excel
 							</button>
 						</div>
