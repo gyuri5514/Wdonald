@@ -23,7 +23,11 @@ table, td, th {
 	font-weigth: 500;
 }
 </style>
-
+<<script type="text/javascript">
+function submitNews(){
+	$('#newsForm').submit();
+}
+</script>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
@@ -42,11 +46,11 @@ table, td, th {
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 새로운 소식 등록
 						<div>
-							<input type="submit" class="btn btn-warning" value="확인">
+							<input type="button" onclick="submitNews();" class="btn btn-warning" value="확인">
 						</div>
 					</div>
 					<div style="margin-left: 100px;">
-						<form action = "addNews.mdo" method="post" enctype="multipart/form-data">
+						<form action = "addNews.mdo" method="post" id="newsForm" enctype="multipart/form-data">
 							<table style="width: 90%;">
 								<tr>
 									<td style="text-align: center">제목</td>

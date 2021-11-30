@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="faqBoard" resultType="faqVO">
-		select * from faq
+		select * from faq order by faq_seq asc
 	</select>
 	
 	<select id="faqDetail" resultType="faqVO">
