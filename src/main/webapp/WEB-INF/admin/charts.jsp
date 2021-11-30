@@ -34,7 +34,7 @@
       <div class="container-fluid px-4">
          <h1 class="mt-4">차트</h1>
          <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.jsp">WinDelivery</a></li>
+            <li class="breadcrumb-item"><a href="index.jsp">WDonald</a></li>
             <li class="breadcrumb-item active">Charts</li>
          </ol>
          <div class="card mb-4" style="width: 50%; height: 20%; float: left;">

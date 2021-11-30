@@ -24,8 +24,6 @@
     			<div class="contArea">
 					<div class="inner">
 						<ul class="tabType01">
-							<!-- <li data-title="버거" data-desc="버거메뉴"><a href="burger.do" role="button" aria-selected="true">메뉴</a></li>선택 된 태그에 aria-selected="true" 추가 -->
-							<!-- <li><a href="javascript:gotoMenu(2);" role="button">세트메뉴</a></li> -->
 						</ul>
 						<div class="mcMenu">
 							<p class="count" id="count"><b>${selectBurger.size()}</b> Products</p>

@@ -6,12 +6,12 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">새로운 소식</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.mdo">WDonald</a></li>
 				<li class="breadcrumb-item active">새로운 소식</li>
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					WinDelivery의 새로운 소식<a target="_blank" href="main.do">WinDelivery</a>
+					WDonald의 새로운 소식<a target="_blank" href="main.do">WDonald</a>
 				</div>
 			</div>
 			<div class="card mb-4">
@@ -19,6 +19,9 @@
 					<i class="fas fa-table me-1"></i>새로운 소식
 				</div>
 				<div class="card-body">
+					<div class="regBtn" style="margin-bottom: 15px;">
+						<a class="btn btn-primary" href="addNews.mdo">등록하기</a>
+					</div>
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
@@ -38,9 +41,7 @@
 						</tbody>
 					</table>
 				</div>
-				<a class="btn btn-primary" href="addNews.mdo">등록하기</a>
 			</div>
 		</div>
 	</main>
-
 <%@ include file="footer.jsp" %>
