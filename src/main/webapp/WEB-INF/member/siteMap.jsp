@@ -44,7 +44,7 @@
 					<li><a href="store.do">Store</a>
 						<ul class="depth">
 							<li><a href="store.do" class="dth2">매장찾기</a></li>
-							<li><a href="delivery.do" class="dth2">윈딜리버리</a></li>
+							<li><a href="delivery.do" class="dth2">윈도날드</a></li>
 						</ul></li>
 					<li><a href="promotion.do">What's New</a>
 						<ul class="depth">
@@ -70,7 +70,7 @@
 
 	</div>
 	<div class="aside">
-		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Windelivery</a>
+		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>

@@ -4,18 +4,18 @@
 <div id="container">
 	<div class="content">
 
-		<div class="visualArea bgStory04" data-title="윈딜리버리 사람들"
+		<div class="visualArea bgStory04" data-title="윈도날드 사람들"
 			data-desc="업무 소개">
 			<div class="inner">
-				<h1 class="titDep1">윈딜리버리 사람들</h1>
+				<h1 class="titDep1">윈도날드 사람들</h1>
 				<p class="subCopy">
-					끊임없는 변화와 도전을 통해 성장해온 윈딜리버리<br>이 변화의 중심에는 윈딜리버리와 함께 변화하며 성장하는
-					&lsquo;윈딜리버리 사람들&rsquo;이 있습니다.
+					끊임없는 변화와 도전을 통해 성장해온 윈도날드<br>이 변화의 중심에는 윈도날드와 함께 변화하며 성장하는
+					&lsquo;윈도날드 사람들&rsquo;이 있습니다.
 				</p>
 				<ul class="navPath">
 					<li><a href="main.do">Home</a></li>
 					<li><a href="main.do">Story</a></li>
-					<li><a href="crew.do">윈딜리버리 사람들</a></li>
+					<li><a href="crew.do">윈도날드 사람들</a></li>
 				</ul>
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 				</ul>
 				<h2 class="titDep2">업무 소개 (Restaurant Department Management)</h2>
 				<p role="text" class="txtInfo">
-					윈딜리버리에서는 각 레스토랑에서 근무하는 정규 직원을 Manager 라고 부릅니다.<br>Manager는 업무와
+					윈도날드에서는 각 레스토랑에서 근무하는 정규 직원을 Manager 라고 부릅니다.<br>Manager는 업무와
 					교육 과정 수료 여부에 따라 다양한 단계로 나누어집니다.
 				</p>
 				<div class="managerTbl">
@@ -77,7 +77,7 @@
 						</tbody>
 					</table>
 				</div>
-				<h2 class="titDep3">윈딜리버리 교육의 힘</h2>
+				<h2 class="titDep3">윈도날드 교육의 힘</h2>
 				<div class="txtCont01">
 					<div class="img">
 						<img src="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/crew/crew_02_01.jpg" alt="">
@@ -85,18 +85,18 @@
 					<h3 class="titDep4 color01">햄버거 철학을 배우다.</h3>
 					<div class="col2">
 						<p>
-							윈딜리버리 Learning &amp; Development 센터는 각 직무와 직급에 맞는 교육을 현장 경험이<br>풍부한
+							윈도날드 Learning &amp; Development 센터는 각 직무와 직급에 맞는 교육을 현장 경험이<br>풍부한
 							강사진을 토대로 실무 중심의 교육을 실현하고 있습니다. <br>교육 과정은 각 직무 및 직급에 맞도록 다양한
 							커리큘럼으로 구성되어 있습니다.<br>특히 개인의 성장과 팀 발전을 도울 수 있도록 글로벌과 동일한
 							커리큘럼을 통해 동일한<br>교육 과정으로 진행되고 있습니다.
 						</p>
 						<p>
-							윈딜리버리 정직원의 50% 이상이 크루(파트타이머) 출신이라는 사실만 봐도 윈딜리버리 교육의 힘을 느낄 수 있습니다.
-							윈딜리버리에 첫발을 디딘 여러분들은 크루 시절부터 레스토랑 매니저가 되기까지 매장 운영 방식, QSC&V의 서비스
+							윈도날드 정직원의 50% 이상이 크루(파트타이머) 출신이라는 사실만 봐도 윈도날드 교육의 힘을 느낄 수 있습니다.
+							윈도날드에 첫발을 디딘 여러분들은 크루 시절부터 레스토랑 매니저가 되기까지 매장 운영 방식, QSC&V의 서비스
 							정신, 그리고 장비 관리 기술은 물론 리더십, 경영 기획에 이르기까지 각 단계별로 다양하고 완벽한 교육을 받게
-							됩니다.<br>세계 어디서나 똑같은 윈딜리버리의 음식과 서비스를 제공할 수 있는 것, 그리고 세계 어디서나
+							됩니다.<br>세계 어디서나 똑같은 윈도날드의 음식과 서비스를 제공할 수 있는 것, 그리고 세계 어디서나
 							똑같이 직원 한 사람, 한 사람에게 무한한 자기 성장의 기회를 제공할 수 있는 것, <br>이것이 바로
-							윈딜리버리 교육의 힘입니다.
+							윈도날드 교육의 힘입니다.
 						</p>
 					</div>
 				</div>
@@ -106,7 +106,7 @@
 	</div>
 	<div class="aside">
 		<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery"
-			target="_blank" title="새창 열림">Mcdelivery</a>
+			target="_blank" title="새창 열림">WDonald</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>

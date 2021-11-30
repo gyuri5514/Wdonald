@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>McDonald's</title>
+<title>WDonald</title>
 <!-- <script type="text/javascript" src="resources/js/faq/jquery-1.7.min.js"></script> -->
 <link type="text/css" rel="stylesheet" media="all" href="resources/css/faq/app_popup.css" />
 <link type="text/css" rel="stylesheet" media="all" href="resources/css/faq/app_popup_common.css" />

@@ -104,7 +104,7 @@
 
 			</div>
 			<div class="aside">
-				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
+				<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 			</div>
 			<button type="button" class="btnTop">맨 위로 가기</button>
 		</div>
@@ -337,7 +337,7 @@
 				<div class="contBtm crewCont">
 					<h2 class="tit">변화는 나의 자부심</h2>
 					<p class="txt">처음엔 ‘그냥 아르바이트 하는 곳’이라는 생각으로 시작 하였던 것이 어느 것 16년을 함께 하고 있습니다. 윈도날드의 다양한 경험을 통해 항상 새로운 시도와 변화를 먼저 이끌어 나가는 기업이라는 것을 자연스럽게 느낄 수 있었습니다.</p>
-					<p class="txt">윈드라이브, 윈딜리버리, 최근의 미래형 매장까지&middot;&middot;&middot;<br>멈추지 않는 다양한 시도들은 저에게 변화를 함께 만들어 가면서 최초라는 자부심을 갖고 일할 수 있게 해주었습니다.</p>
+					<p class="txt">윈드라이브, 윈도날드, 최근의 미래형 매장까지&middot;&middot;&middot;<br>멈추지 않는 다양한 시도들은 저에게 변화를 함께 만들어 가면서 최초라는 자부심을 갖고 일할 수 있게 해주었습니다.</p>
 					<p class="txt">윈도날드의 변화는 곧 저의 즐거움이자 자부심이며,<br>이러한 새로운 변화를 계속해서 이끌어갈 것입니다.</p>
 					<p class="crewInfo">목포 남악 DT점 김지웅 매니저</p>
 				</div>
