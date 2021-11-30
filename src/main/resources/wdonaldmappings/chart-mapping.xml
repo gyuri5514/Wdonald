@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="chartVO">
 	<![CDATA[
 						SELECT 	sum(o.total_price) as sales_amount,
-						COUNT(*) as sales_count,
+						sum(c.cart_product_quantity) as sales_count,
 						c.cart_product_name as product_name
 						FROM order_list as o
 						RIGHT join cart_list c on c.merchantuid = o.merchantuid
@@ -77,7 +77,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
   						GROUP BY product_name 
   						order 
-						by sales_amount desc limit 8
+						by sales_count desc limit 8
 
 		]]>
 	</select>

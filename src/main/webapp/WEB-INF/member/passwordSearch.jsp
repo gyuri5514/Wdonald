@@ -130,10 +130,9 @@ function searchMyEmail(){
 					url: "findPw.do?email="+user_email,
 					contentType:"application/json"
 				}).done(function(res){
-					console.log(res);
 					$('#btnSearch').prop("onclick", null).off("click");
 				})
-				window.location.replace="/emailConfirm.do";
+				window.location.href="/controller/emailConfirm.do";
 			}else if(res!=1){
 				$('#emailChecktxt').html("<font id='chk-span'><small>등록하신 이메일이 아닙니다.</small></font>")
 			}

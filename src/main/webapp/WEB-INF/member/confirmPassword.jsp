@@ -70,7 +70,7 @@ legend {
 }
 
 </style>
-<c:if test="${eamilResult ne 'success' }">
+<c:if test="${emailResult ne 'success' }">
 <script>
 	alert('정상적인 경로로 접근해주세요.');
 	window.location.href='/controller/main.do';

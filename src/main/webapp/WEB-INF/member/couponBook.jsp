@@ -93,7 +93,6 @@ float : right;
 <script type="text/javascript">
  	function userWantThisCoupon(code,user_seq,enddate,title){
  		var tbodyNode='';
- 		alert(enddate);
  		$.ajax({
  			type:"POST",
  			url:"registerUserCoupon.do",
