@@ -10,12 +10,12 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">주문</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.sdo">WDonald</a></li>
 				<li class="breadcrumb-item active">주문</li>
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					매장 취소 관리 <a href="orderCancel.sdo">WinDelivery 취소관리</a>
+					매장 취소 관리 <a href="orderCancel.sdo">WDonald 취소관리</a>
 				</div>
 			</div>
 			<div class="card mb-4">

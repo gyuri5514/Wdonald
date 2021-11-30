@@ -7,12 +7,12 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">주문</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.sdo">WDonald</a></li>
 				<li class="breadcrumb-item active">주문</li>
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					매장 주문 관리 <a target="_blank" href="tables.sdo">WinDelivery 주문관리</a>
+					매장 주문 관리 <a target="_blank" href="tables.sdo">WDonald 주문관리</a>
 				</div>
 			</div>
 			<div class="card mb-4">
@@ -55,24 +55,21 @@
 			
 		</div>
 	</main>
-
-
-	<footer class="py-4 bg-light mt-auto">
+<%@ include file="footer.jsp" %>
+	<%-- <!-- <footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
+				<div class="text-muted">WDonald &copy; 대표이사 : Tommy.Lee </div>
 				<div>
-					<a href="main.do">WinDelivery</a> &middot; <a href="#">Team &amp; 2</a>
+					<a href="main.do">WDonald</a> &middot; <a href="#">Team &amp; 2</a>
 				</div>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
 </body>
-</html>
+</html> --%>

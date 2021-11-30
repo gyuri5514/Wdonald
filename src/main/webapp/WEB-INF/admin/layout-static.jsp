@@ -2,13 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 <style>
-th {
-	width: auto;
-}
-
 .btn-warning {
 	background-color: #0d6efd;
-}
+};
 </style>
 <script>
 	$('#dataTable-selector').click(function(){
@@ -40,14 +36,14 @@ th {
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">회원 관리</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.mdo">HOME</a></li>
-				<li class="breadcrumb-item active">윈딜리버리 회원</li>
+				<li class="breadcrumb-item"><a href="index.mdo">WDonald</a></li>
+				<li class="breadcrumb-item active">윈도날드 회원</li>
 			</ol>
 				<canvas id="myPieChart" style="width:50%; height:50%; margin-bottom: 10px"></canvas>
 			<div style="height: 100">
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 윈딜리버리 회원 내역
+						<i class="fas fa-table me-1"></i> 윈도날드 회원 내역
 					</div>
 					<div class="card-body">
 						<table id="datatablesSimple">
@@ -91,10 +87,13 @@ th {
 												<c:when test="${email eq '0'}">미동의</c:when>
 												<c:when test="${email eq '1'}">동의</c:when>
 											</c:choose></td>
-										<th><button id="infoDelete" class="btn btn-danger" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
-										<button id="infoSuspend${userInfo.user_seq }" style="width:auto; margin: auto;" class="btn btn-warning" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
-										<c:if test="${status eq '2'}">
-										<button id="infoActive${userInfo.user_seq }" class="btn btn-success" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name }',1);">활성화</button></c:if></th>
+										<th style="width: 135px;">
+											<button id="infoDelete" class="btn btn-danger" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
+											<button id="infoSuspend${userInfo.user_seq }" style="width:auto; margin: auto;" class="btn btn-warning" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
+											<c:if test="${status eq '2'}">
+											<button id="infoActive${userInfo.user_seq }" class="btn btn-success" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name }',1);">활성화</button>
+											</c:if>
+										</th>
 									</tr>
 									</c:forEach>
 								</tbody>

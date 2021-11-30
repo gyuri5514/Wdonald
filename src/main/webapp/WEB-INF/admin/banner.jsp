@@ -7,7 +7,7 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">배너관리</h1> <!-- 최고 관리자: 매장테이블, 매장: 메뉴테이블 -->
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.mdo">WDonald</a></li>
 				<li class="breadcrumb-item active">배너관리</li>
 			</ol>
 			<div class="card mb-4">
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 	</main>
-	<footer class="py-4 bg-light mt-auto">
+	<%-- <footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
 				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
@@ -63,3 +63,5 @@
 <script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
 </body>
 </html>
+ --%>
+ <%@include file = "footer.jsp" %>

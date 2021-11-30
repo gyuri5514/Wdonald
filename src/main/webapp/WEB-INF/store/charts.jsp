@@ -33,7 +33,7 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">차트</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.sdo">WDonald</a></li>
 				<li class="breadcrumb-item active">Charts</li>
 			</ol>
 			<div class="card mb-4" style="width: 50%; height: 20%; float: left;">
@@ -430,7 +430,7 @@ function getNewChart(){
 			<div class="card-footer small text-muted"></div>
 		</div>
 		<div class="row" style="border: 1px solid #ffffff;">
-			<div class="card mb-4" style="height: 100%; width: 95%;">
+			<div class="card mb-4" style="height: 500px; width: 95%;">
 				<div class="card-header" style="height: auto; width: auto;">
 					<i class="fas fa-chart-pie me-1"></i> 상품 인기순
 				</div>

@@ -62,17 +62,17 @@
 	left: 50%;
 }
 </style>
-					<div class="bannerImg">
+					<div class="bannerImg">	
 						<img src="${happyPromotionDetail.hp_detail_img_path}" alt="" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${happyPromotionDetail.hp_code}'">
 						<a href="store.do" class="link link1">가까운 매장 찾기</a>
 					</div>
 				</article>
 				<div class="btnArea">
-					<c:if test="${happyPromotionDetail.hp_code ne 3001}">
+					<c:if test="${happyPromotionDetail.hp_code != selectHappyPromotion_first}">
 						<button type="button" onclick="javascript:location.href='happyProtionDetail.do?hp_code=${happyPromotionDetail.hp_code - 1}'" class="prev">이전 글 보기</button>
 					</c:if>
 					<a href="happymealPromotion.do" role="button" class="btnMC btnM"><span>목록보기</span></a>
-					<c:if test="${happyPromotionDetail.hp_code ne 3006}">
+					<c:if test="${happyPromotionDetail.hp_code != selectHappyPromotionEnd_end}">
 						<button type="button" onclick="javascript:location.href='happyPromotionDetail.do?hp_code=${happyPromotionDetail.hp_code + 1}'" class="next">다음 글 보기</button>
 					</c:if>
 				</div>
@@ -82,7 +82,7 @@
 	<!-- //contArea -->
 </div>
 <div class="aside">
-	<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
+	<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Windelivery</a>
 </div>
 <div class="promo_landing_wrap">
 	<div class="promo_landing_mask"></div>
@@ -96,10 +96,6 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="aside">
-	<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery"
-		target="_blank" title="새창 열림">Mcdelivery</a>
 </div>
 <button type="button" class="btnTop">맨 위로 가기</button>
 <!-- //container -->
