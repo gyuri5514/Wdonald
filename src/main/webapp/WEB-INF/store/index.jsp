@@ -26,7 +26,7 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">Dashboard<span id="today_total"><fmt:formatNumber value="${today_total }" type="currency" var="currencyType"/>${currencyType}</span></h1> 
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item active">WinDelivery</li>
+				<li class="breadcrumb-item active">WDonald</li>
 			</ol>
 			<div class="row">
 				<!-- <div class="col-xl-3 col-md-6">

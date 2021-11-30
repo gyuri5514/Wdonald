@@ -96,11 +96,11 @@
 					</div>
 				</article>
 				<div class="btnArea">
-					<c:if test="${detailPromotion.p_code ne 2001}">
+					<c:if test="${detailPromotion.p_code != selectPromotion_first}">
 						<button type="button" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code - 1}'" class="prev">이전 글 보기</button>
 					</c:if>
 					<a href="promotion.do" role="button" class="btnMC btnM"><span>목록보기</span></a>
-					<c:if test="${detailPromotion.p_code ne 2012}">
+					<c:if test="${detailPromotion.p_code != selectPromotion_end}">
 						<button type="button" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code + 1}'" class="next">다음 글 보기</button>
 					</c:if>
 				</div>

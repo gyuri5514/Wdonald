@@ -33,7 +33,7 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">차트</h1>
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.sdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.sdo">WDonald</a></li>
 				<li class="breadcrumb-item active">Charts</li>
 			</ol>
 			<div class="card mb-4" style="width: 50%; height: 20%; float: left;">
@@ -82,17 +82,17 @@
 						<br>
 						<div class="form-check" style="padding-left: 5px;">
 							<input type="text" name="start_date" id="start_history"
-								class="form-control" maxlength="10" style="width: 110px; text-align: center;"
+								class="form-control" maxlength="10" style="width: 120px; text-align: center;"
 								readonly="readonly" /> &nbsp; ~ &nbsp; <input type="text"
 								name="end_date" id="end_history" class="form-control"
-								maxlength="10" style="width: 110px; text-align: center;" readonly="readonly" />
+								maxlength="10" style="width: 120px; text-align: center;" readonly="readonly" />
 							<button type="button" class="btn btn-warning form-control" onclick='getNewChart()'
 								style="margin-bottom: 3px; margin-left: 25px; width: 100px;">검색</button>
 						</div>
 					</div>
 					<form action="excel.sdo" method="get">
-						<div style="margin: auot; float: right;">
-							<button type="submit" style="font-weight: 500; font-family: SpeedeeK;"class="btn btn-light" value="너는 할수있다">
+						<div style="margin: auto; float: right;">
+							<button type="submit" style="font-weight: 500; font-family: SpeedeeK;" class="btn btn-light" value="너는 할수있다">
 								<i class="far fa-file-excel" style="font-size: 20px; color: green;"></i> &nbsp;&nbsp;&nbsp;&nbsp;Excel
 							</button>
 						</div>
@@ -430,7 +430,7 @@ function getNewChart(){
 			<div class="card-footer small text-muted"></div>
 		</div>
 		<div class="row" style="border: 1px solid #ffffff;">
-			<div class="card mb-4" style="height: 100%; width: 95%;">
+			<div class="card mb-4" style="height: 500px; width: 95%;">
 				<div class="card-header" style="height: auto; width: auto;">
 					<i class="fas fa-chart-pie me-1"></i> 상품 인기순
 				</div>

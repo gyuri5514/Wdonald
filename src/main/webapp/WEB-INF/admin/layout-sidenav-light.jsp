@@ -7,7 +7,7 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">쿠폰관리</h1> <!-- 최고 관리자: 매장테이블, 매장: 메뉴테이블 -->
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.mdo">WDonald</a></li>
 				<li class="breadcrumb-item active">쿠폰관리</li>
 			</ol>
 			<div class="card mb-4">
@@ -43,7 +43,7 @@
 								<td><fmt:formatDate value="${vo.coupon_enddate}" pattern="yyyy-MM-dd"/></td>
 								<td style="text-align: center;">
 									<div class="coupon_status" style="width: 80%; margin: 0 auto">
-										<select id="coupon_status${vo.coupon_code}" name="coupon_status" onchange="stateChanged('${vo.coupon_code }')" class="btn btn-Default dropdown-toggle">
+										<select id="coupon_status${vo.coupon_code}" name="coupon_status" onchange="stateChanged('${vo.coupon_code }')" style="border: 1px solid #dddddd;" class="btn btn-Default dropdown-toggle">
 											<c:if test="${vo.coupon_status == 0}">
 												<option value="0" selected>Y</option>
 												<option value="1">N</option>
@@ -69,7 +69,7 @@
 	<footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
-				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
+				<div class="text-muted">WDonald &copy; 대표이사 : Tommy.Lee </div>
 				<div>
 					<a href="../main.mdo">Privacy Policy</a> &middot; <a href="#">Term
 						&amp; Conditions</a>

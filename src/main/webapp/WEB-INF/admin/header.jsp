@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>WDelivery 관리자</title>
+<title>WDonald 관리자</title>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminStyles.css"> 
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
@@ -43,14 +43,14 @@
 
 body {
 	font-family: SpeedeeK;
-	font-weight: 400;
+	font-weight: 500;
 }
 </style>
 
 <body class="sb-nav-fixed">
    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <!-- Navbar Brand-->
-      <a class="navbar-brand ps-3" href="index.mdo">관리자 Win Delivery</a>
+      <a class="navbar-brand ps-3" href="index.mdo">관리자 WDonald</a>
       <!-- Sidebar Toggle-->
       <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
          <i class="fas fa-bars"></i>
@@ -66,7 +66,6 @@ body {
       </form>
       <!-- Navbar-->
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-      
       <c:choose>
          <c:when test="${not empty sessionScope.admin }">
             <h1 class="navbar-brand">${sessionScope.admin.admin_name}님 안녕하세요.</h1>
@@ -196,7 +195,7 @@ body {
             </div>
             <div class="sb-sidenav-footer">
                <div class="small">Logged in as:</div>
-               WinDelivery
+               WDonald
             </div>
          </nav>
       </div>

@@ -30,12 +30,12 @@ table, td, th {
 			<div class="container-fluid px-4">
 				<h1 class="mt-4">프로모션 등록</h1>
 				<ol class="breadcrumb mb-4">
-					<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
+					<li class="breadcrumb-item"><a href="index.mdo">WDonald</a></li>
 					<li class="breadcrumb-item active">프로모션 등록</li>
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						WinDelivery 프로모션 등록 <a target="_blank" href="main.do">WinDelivery</a>
+						WDonald 프로모션 등록 <a target="_blank" href="main.do">WDonald</a>
 					</div>
 				</div>
 				<div class="card mb-4">
