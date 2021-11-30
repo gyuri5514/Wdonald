@@ -19,6 +19,9 @@
 					<i class="fas fa-table me-1"></i>새로운 소식
 				</div>
 				<div class="card-body">
+					<div class="regBtn" style="margin-bottom: 15px;">
+						<a class="btn btn-primary" href="addNews.mdo">등록하기</a>
+					</div>
 					<table id="datatablesSimple">
 						<thead>
 							<tr>
@@ -38,9 +41,7 @@
 						</tbody>
 					</table>
 				</div>
-				<a class="btn btn-primary" href="addNews.mdo">등록하기</a>
 			</div>
 		</div>
 	</main>
-
 <%@ include file="footer.jsp" %>
