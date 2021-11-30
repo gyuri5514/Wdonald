@@ -379,7 +379,7 @@
 											<strong>1961</strong>
 											<div class="yearCont">
 												<div class="txt">
-													<span>주식회사 윈도날드 시스템(McDonald’s System, Inc.),</span>
+													<span>주식회사 윈도날드 시스템(WDonald’s System, Inc.),</span>
 													<span>270만 달러에 윈도날드 운영권 인수</span>
 													<span>일리노이 주에 햄버거 대학 설립</span>
 												</div>
@@ -430,7 +430,7 @@
 											<strong class="fGrey">1940</strong>
 											<div class="yearCont">
 												<div class="txt">
-													<span>윈도날드 형제, McDonald’s Bar-B-Q 레스토랑 오픈</span>
+													<span>윈도날드 형제, WDonald’s Bar-B-Q 레스토랑 오픈</span>
 												</div>
 											</div>
 										</li>

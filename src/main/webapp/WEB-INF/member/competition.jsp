@@ -380,7 +380,7 @@
 					<li>전화주문: 1600-5252</li>
 				</ul>
 				<p class="copy">COPYRIGHT &copy; 2019 ALL RIGHTS RESERVED BY
-					McDonald's.</p>
+					WDonald's.</p>
 			</div>
 		</div>
 	</footer>

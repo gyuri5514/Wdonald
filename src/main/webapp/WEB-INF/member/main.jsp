@@ -44,7 +44,7 @@
 		<!-- //mainEvent -->
 		<div class="contArea mainCont">
 			<div class="inner">
-				<h2 class="titMain">WcDonald's LIVE</h2>
+				<h2 class="titMain">WDonald's LIVE</h2>
 				<ul class="whatsNew" id="menuList">
 					<c:forEach items="${selectPromotionIng}" var="main">
 					<li id="promotion_ing">
