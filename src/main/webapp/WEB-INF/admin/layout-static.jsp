@@ -87,7 +87,7 @@
 												<c:when test="${email eq '0'}">미동의</c:when>
 												<c:when test="${email eq '1'}">동의</c:when>
 											</c:choose></td>
-										<th style="width: 135px;">
+										<th style="width: 160px;">
 											<button id="infoDelete" class="btn btn-danger" onclick="deleteUser('${userInfo.user_seq}','${userInfo.user_name}');">삭제</button><c:if test="${status ne '2'}">
 											<button id="infoSuspend${userInfo.user_seq }" style="width:auto; margin: auto;" class="btn btn-warning" onclick="suspendUser('${userInfo.user_seq}','${userInfo.user_name}',2);">정지</button></c:if>
 											<c:if test="${status eq '2'}">

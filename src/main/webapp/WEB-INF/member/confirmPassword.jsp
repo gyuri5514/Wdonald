@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Wdonald - find password</title>
+<title>WDonald - find password</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="">
 <meta name="author" content="Themelize.me">
@@ -70,7 +70,7 @@ legend {
 }
 
 </style>
-<c:if test="${eamilResult ne 'success' }">
+<c:if test="${emailResult ne 'success' }">
 <script>
 	alert('정상적인 경로로 접근해주세요.');
 	window.location.href='/controller/main.do';

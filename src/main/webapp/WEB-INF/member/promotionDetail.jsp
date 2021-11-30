@@ -58,11 +58,11 @@
 <div class="content">
 	<div class="visualArea bgWhats01">
 		<div class="inner">
-			<h1 class="titDep1" data-title="맥도날드 프로모션" data-desc="맥도날드 프로모션">윈딜리버리 프로모션</h1>
+			<h1 class="titDep1" data-title="맥도날드 프로모션" data-desc="맥도날드 프로모션">윈도날드 프로모션</h1>
 			<ul class="navPath">
 				<li><a href="/kor/main.do">Home</a></li>
 				<li><a href="/kor/promotion/list.do">What's New</a></li>
-				<li><a href="/kor/promotion/list.do">윈딜리버리 프로모션</a></li>
+				<li><a href="/kor/promotion/list.do">윈도날드 프로모션</a></li>
 			</ul>
 		</div>
 	</div>
@@ -111,7 +111,7 @@
 </div>
 </div>
 <div class="aside">
-	<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">Mcdelivery</a>
+	<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 </div>
 <form id="searchForm" method="post">
 	<input type="hidden" name="page" id="page" value="1">

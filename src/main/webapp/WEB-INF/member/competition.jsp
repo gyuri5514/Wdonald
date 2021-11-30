@@ -7,15 +7,15 @@
 		<div class="visualArea bgStory03" data-title="맥도날드 경쟁력"
 			data-desc="농장에서 레스토랑까지">
 			<div class="inner">
-				<h1 class="titDep1">윈딜리버리 경쟁력</h1>
+				<h1 class="titDep1">윈도날드 경쟁력</h1>
 				<p class="subCopy">
-					윈딜리버리는 어떤 곳 보다 햄버거 비즈니스를 진지하게 생각합니다.<br> 엄격한 품질 관리 시스템을 통해
+					윈도날드는 어떤 곳 보다 햄버거 비즈니스를 진지하게 생각합니다.<br> 엄격한 품질 관리 시스템을 통해
 					고품질의 음식을 제공하며,조리 과정에서 고객이 궁금한 모든 것을 알려드립니다.
 				</p>
 				<ul class="navPath">
 					<li><a href="main.do">Home</a></li>
 					<li><a href="brandintro.do">Story</a></li>
-					<li><a href="competition.do">윈딜리버리 경쟁력</a></li>
+					<li><a href="competition.do">윈도날드 경쟁력</a></li>
 				</ul>
 			</div>
 		</div>
@@ -337,7 +337,7 @@
 	</div>
 	<div class="aside">
 		<a href="https://www.mcdelivery.co.kr/kr/" class="goDelivery"
-			target="_blank" title="새창 열림">Mcdelivery</a>
+			target="_blank" title="새창 열림">WDonald</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 	</div>
@@ -638,7 +638,7 @@
 						함께 하고 있습니다. 맥도날드의 다양한 경험을 통해 항상 새로운 시도와 변화를 먼저 이끌어 나가는 기업이라는 것을
 						자연스럽게 느낄 수 있었습니다.</p>
 					<p class="txt">
-						맥드라이브, 맥딜리버리, 최근의 미래형 매장까지&middot;&middot;&middot;<br>멈추지 않는
+						맥드라이브, 맥도날드, 최근의 미래형 매장까지&middot;&middot;&middot;<br>멈추지 않는
 						다양한 시도들은 저에게 변화를 함께 만들어 가면서 최초라는 자부심을 갖고 일할 수 있게 해주었습니다.
 					</p>
 					<p class="txt">

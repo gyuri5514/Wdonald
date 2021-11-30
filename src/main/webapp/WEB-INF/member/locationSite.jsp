@@ -175,7 +175,7 @@
 		</div>
 	</div>
 	<div class="aside">
-		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">Windelivery</a>
+		<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 	</div>
 	<button type="button" class="btnTop">맨 위로 가기</button>
 </div>

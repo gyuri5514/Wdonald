@@ -49,7 +49,7 @@
             </div>
             <div class="card-body">
                <canvas id="myChart" width="50%" height="30"></canvas>
-               <div class="card mb-4" style="width: 100%; border: 1px solid black; margin-top: 20px; height: 250px; padding-left: 20px; padding-top: 10px;">
+               <div class="card mb-4" style="width: 100%; border: 1px solid #dddddd; margin-top: 20px; height: 250px; padding-left: 20px; padding-top: 10px;">
                <div class="form-check" >
 	               <div class="form-check form-check-inline">
 	                  <input class="form-check-input" type="radio" name="date_term"
@@ -86,22 +86,24 @@
                            class="form-check-label" for="flexRadioDefault1"> 결제 유형</label>
                      </div>
                  </div>
-                 <div class="form-check" style="padding-left:5px; margin : 10px 0 10px 0;">
+                 <div class="form-check" style="padding-left:5px;">
                      <input type="text" name="store_code" id="store_code" class="form-control"
                            maxlength="10" style="width: 150px;" placeholder="매장코드 입력" />
                   </div>
                   <div class="form-check" style="padding-left:5px;">
                      <input type="text" name="start_date" id="start_history" class="form-control"
-                        maxlength="10" style="width: 120px;" readonly="readonly" /> &nbsp; ~ &nbsp; 
-                        <input type="text" name="end_date" id="end_history" class="form-control" maxlength="10" style="width: 120px;"
+                        maxlength="10" style="width: 120px; text-align: center;" readonly="readonly" /> &nbsp; ~ &nbsp; 
+                        <input type="text" name="end_date" style="width: 120px; text-align: center;" id="end_history" class="form-control" maxlength="10" style="width: 120px;"
                         readonly="readonly" />
                      <button type="button" class="btn btn-primary"
                         onclick='getNewChart()' style="margin-bottom:3px; margin-left:25px; width:100px;">검색</button>
                   </div>
        		 	</div>
        		 	<form action="excel.mdo" method="get">
-			   		 <div style="margin-left:630px; margin-bottom: 10px">
-						 <button type="submit" class="btn btn-light" value="너는 할수있다"><i class="far fa-file-excel" style="font-size: 20px; color: green;"></i></button>
+			   		 <div style="margin: auto; float: right;">
+						 <button type="submit" style="font-weight: 500; font-family: SpeedeeK;" class="btn btn-light" value="너는 할수있다">
+						 	<i class="far fa-file-excel" style="font-size: 20px; color: green;"></i> &nbsp;&nbsp;&nbsp;&nbsp;Excel
+						 </button>
 					 </div> 
 			  	  </form>
              </div>
@@ -441,12 +443,12 @@ function getNewChart(){
             <div class="card-footer small text-muted"></div>
          </div>
          <div class="row">
-            <div class="card mb-4">
-               <div class="card-header" style="height:53px;">
+            <div class="card mb-4" style="height: 500px; width: 95%;">
+               <div class="card-header" style="height:auto; width: auto;">
                   <i class="fas fa-chart-pie me-1"></i> 상품 인기순
                </div>
                <div class="card-body">
-                  <canvas id="myPieChart" width="100%" height="104"></canvas>
+                  <canvas id="myPieChart" style="width:95%; height: 100%;"></canvas>
                </div>
                <script type="text/javascript">
             // Set new default font family and font color to mimic Bootstrap's default styling

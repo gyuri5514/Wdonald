@@ -23,7 +23,11 @@ table, td, th {
 	font-weigth: 500;
 }
 </style>
-
+<script type="text/javascript">
+function promotionSubmit(){
+	$('#promotionForm').submit();
+}
+</script>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
@@ -42,11 +46,11 @@ table, td, th {
 					<div class="card-header">
 						<i class="fas fa-table me-1"></i> 프로모션 등록
 						<div>
-							<input type="submit" class="btn btn-warning" value="확인">
+							<input type="button" onclick="promotionSubmit();" class="btn btn-warning" value="확인">
 						</div>
 					</div>
 					<div style="margin-left: 100px">
-						<form action = "addPromotion.mdo" method="post" enctype="multipart/form-data">
+						<form action = "addPromotion.mdo" id="promotionForm" method="post" enctype="multipart/form-data">
 							<table style="width: 90%;">
 								<!-- <th style="text-align: center; width: 300px; display: none;"></th>
 								<th style="text-align: center; display: none;"></th> -->
