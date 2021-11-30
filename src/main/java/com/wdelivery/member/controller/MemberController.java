@@ -138,6 +138,10 @@ public class MemberController {
 	public String passwordSearch() {
 		return "passwordSearch";
 	}
+	@GetMapping("emailConfirm.do")
+	public String emailConfirm() {
+		return "emailConfirm";
+	}
 
 	@GetMapping("/order.do")
 	public String orderPage(Model model, @RequestParam(value = "b_code", required = false) String b_code,
