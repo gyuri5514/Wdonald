@@ -12,7 +12,7 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					Wcdonald의 1:1 고객문의 <a target="_blank" href="main.do">Wcdonald's</a> .
+					WinDelivery의 1:1 고객문의 <a target="_blank" href="main.do">WinDelivery</a>
 				</div>
 			</div>
 			<div class="card mb-4">
@@ -28,7 +28,6 @@
 								<th>제목</th>
 								<th>날짜</th>
 								<th>답변 상태</th>
-								
 							</tr>
 						</thead>
 						<tfoot>
@@ -38,7 +37,6 @@
 								<th>Office</th>
 								<th>Age</th>
 								<th>Start date</th>
-								
 							</tr>
 						</tfoot>
 						<tbody>
@@ -57,11 +55,9 @@
 							</tr>
 						</c:forEach>
 						</tbody>
-						
 					</table>
 				</div>
 			</div>
 		</div>
 	</main>
-	
 <%@ include file="footer.jsp" %>

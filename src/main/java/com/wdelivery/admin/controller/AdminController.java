@@ -415,7 +415,7 @@ public class AdminController {
 	@PostMapping("/addPromotion.mdo")
 	public String insertPromotion(@RequestParam(name = "file1") MultipartFile file1, 
 			@RequestParam(name = "file2") MultipartFile file2,
-			@RequestParam(name = "p_title") String p_title,
+			@RequestParam(name = "p_name") String p_name,
 			@RequestParam(name = "p_status") int p_status) throws IOException, ParseException {
 		
 		AwsS3 awsS3 = AwsS3.getInstance();
@@ -426,7 +426,7 @@ public class AdminController {
 		key1 = "img/promotion/" + file1.getOriginalFilename();
 		key2 = "img/promotion/promotion_detail/" + file2.getOriginalFilename();
 		PromotionVO promotionVO = new PromotionVO();
-		promotionVO.setP_title(p_title);
+		promotionVO.setP_name(p_name);
 		promotionVO.setP_img_path(uploadFolder + key1);
 		promotionVO.setP_detail_img_path(uploadFolder + key2);
 		promotionVO.setP_status(p_status);
@@ -485,7 +485,7 @@ public class AdminController {
 	@PostMapping("/addHappyPromotion.mdo")
 	public String insertHappyPromotion(@RequestParam(name = "file1") MultipartFile file1, 
 			@RequestParam(name = "file2") MultipartFile file2,
-			@RequestParam(name = "hp_title") String hp_title,
+			@RequestParam(name = "hp_name") String hp_name,
 			@RequestParam(name = "hp_status") int hp_status) throws IOException, ParseException {
 		
 		AwsS3 awsS3 = AwsS3.getInstance();
@@ -496,7 +496,7 @@ public class AdminController {
 		key1 = "img/happmeal_promotion/" + file1.getOriginalFilename();
 		key2 = "img/happmeal_promotion/happymeal_promotion_detail/" + file2.getOriginalFilename();
 		HappyPromotionVO happyPromotionVO = new HappyPromotionVO();
-		happyPromotionVO.setHp_title(hp_title);
+		happyPromotionVO.setHp_name(hp_name);
 		happyPromotionVO.setHp_img_path(uploadFolder + key1);
 		happyPromotionVO.setHp_detail_img_path(uploadFolder + key2);
 		happyPromotionVO.setHp_status(hp_status);
@@ -515,5 +515,4 @@ public class AdminController {
 		
 		return "redirect:happyPromotion.mdo";
 	}
-	
 }

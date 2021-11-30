@@ -51,7 +51,7 @@ table, td, th {
 								<tr>
 									<td style="text-align: center">제목</td>
 									<td>
-										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="hp_title" id="hp_title" />
+										<input style="border: 1px solid #ddd; border-radius: 5px;" type="text" class="form-control" name="hp_name" id="hp_name" />
 									</td>
 								</tr>
 								<tr>

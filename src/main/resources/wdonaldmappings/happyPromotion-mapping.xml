@@ -36,12 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insertHappyPromotion">
-		INSERT INTO happypromotion (hp_title, hp_regdate, hp_count, hp_status, hp_img_path, hp_detail_img_path) VALUES
-		(#{hp_title}, now(), 1, #{hp_status}, #{hp_img_path}, #{hp_detail_img_path})
+		INSERT INTO happypromotion (hp_name, hp_regdate, hp_count, hp_status, hp_img_path, hp_detail_img_path) VALUES
+		(#{hp_name}, now(), 1, #{hp_status}, #{hp_img_path}, #{hp_detail_img_path})
 	</insert>
 	
 	<update id="updateHappyPromotion">
-		UPDATE happypromotion SET hp_title = #{hp_title}, hp_status = #{hp_status} WHERE hp_code = #{hp_code}
+		UPDATE happypromotion SET hp_name= #{hp_name}, hp_status = #{hp_status} WHERE hp_code = #{hp_code}
 	</update>
 	
 	<delete id="deleteHappyPromotion" parameterType="int">

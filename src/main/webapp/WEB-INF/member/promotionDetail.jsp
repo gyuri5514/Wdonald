@@ -2,6 +2,57 @@
 <%@ include file="header.jsp"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
+<style>
+.bannerImg {
+	position: relative;
+	width: 1168px;
+	margin: 0 auto;
+}
+
+.bannerImg img {
+	width: 1168px;
+}
+
+.bannerImg .blind {
+	position: absolute;
+	left: -1000%;
+	top: 0;
+	width: 1px;
+	height: 1px;
+	font-size: 0;
+	line-height: 0;
+	overflow: hidden;
+}
+
+.bannerImg .inner {
+   position: absolute;
+   width: 72.8%;
+   top: 18%;
+   left: 13.61%;
+   height: 11.35%;
+}
+.bannerImg .inner .video{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+}
+
+
+.bannerImg .link {
+	display: block;
+	position: absolute;
+	font-size: 0;
+	line-height: 0;
+	color: transparent;
+	top: 1800px;
+	width: 342px;
+	height: 94px;
+	transform: translateX(-50%);
+	left: 50%;
+};
+</style>
 
 <div class="content">
 <div class="content">
@@ -29,62 +80,11 @@
 					</span>
 				</div>
 				<article class="bbsCon">
-					<style>
-.bannerImg {
-	position: relative;
-	width: 1168px;
-	margin: 0 auto;
-}
-
-.bannerImg img {
-	width: 1168px;
-}
-
-.bannerImg .blind {
-	position: absolute;
-	left: -1000%;
-	top: 0;
-	width: 1px;
-	height: 1px;
-	font-size: 0;
-	line-height: 0;
-	overflow: hidden;
-}
-
-.bannerImg .inner {
-   position: absolute;
-   width: 60%;
-   top: 11.9%;
-   left: 20%;
-   height: 10%;
-}
-.bannerImg .inner .video{
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-}
-
-
-.bannerImg .link {
-	display: block;
-	position: absolute;
-	font-size: 0;
-	line-height: 0;
-	color: transparent;
-	top: 1800px;
-	width: 342px;
-	height: 94px;
-	transform: translateX(-50%);
-	left: 50%;
-}
-</style>
 					<div class="bannerImg">
 						<img src="${detailPromotion.p_detail_img_path}" alt="" onclick="javascript:location.href='promotionDetail.do?p_code=${detailPromotion.p_code}'">
 						<div class="inner">
 						<c:if test="${!empty detailPromotion.p_youtube}">
-						<iframe class="video" src="${detailPromotion.p_youtube}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube video1"></iframe>
+						<iframe width="560" height="315" class="video" src="${detailPromotion.p_youtube}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="youtube video1"></iframe>
 						</c:if>
 						</div>
 						<c:if test="${!empty detailPromotion.p_link1}">

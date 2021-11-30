@@ -47,7 +47,7 @@ table, td, th {
 									<input type="hidden" name="p_code" value="${promotionDetail.p_code}" />
 								</td>
 								<td>
-									<textarea id="p_title" name="p_title" style="width: 100%;">${promotionDetail.p_title}</textarea>
+									<textarea id="p_name" name="p_name" style="width: 100%;">${promotionDetail.p_name}</textarea>
 								</td>
 							</tr>
 							<tr>

@@ -32,7 +32,7 @@
 									<img src="${selectPromotionIng.p_img_path}" alt="${selectPromotionIng.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotionIng.p_code}'">
 								</div>
 								<div class="con">
-									<strong class="tit"> ${selectPromotionIng.p_title} </strong> 
+									<strong class="tit"> ${selectPromotionIng.p_name} </strong> 
 									<span id="statusSpan"></span>
 								</div>
 							</a>
@@ -49,7 +49,7 @@
 									<img src="${selectPromotion.p_img_path}" alt="${selectPromotion.p_name}" onclick="javascript:location.href='promotionDetail.do?p_code=${selectPromotion.p_code}'">
 								</div>
 								<div class="con">
-									<strong class="tit"> ${selectPromotion.p_title} </strong> 
+									<strong class="tit"> ${selectPromotion.p_name} </strong> 
 									<span id="statusSpan">종료된 행사입니다</span>
 								</div>
 							</a>
