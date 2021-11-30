@@ -8,7 +8,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Password Reset - SB Admin</title>
+<title>패스워드</title>
 <link rel="stylesheet" href="../resources/css/adminStyles.css">
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>

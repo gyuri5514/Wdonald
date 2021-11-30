@@ -55,13 +55,13 @@
 			<h1 class="mt-4">HappyMeal</h1>
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item"><a href="index.mdo">HOME</a></li>
-				<li class="breadcrumb-item active">윈딜리버리 해피밀</li>
+				<li class="breadcrumb-item active">윈도날드 해피밀</li>
 			</ol>
 			<div style="height: 100vh">
 				<!-- 표 -->
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 윈딜리버리 해피밀 내역
+						<i class="fas fa-table me-1"></i> 윈도날드 해피밀 내역
 					</div>
 					<div class="card-body">
 

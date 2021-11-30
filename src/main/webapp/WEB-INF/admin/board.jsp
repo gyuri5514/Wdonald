@@ -48,7 +48,7 @@
 		<div class="container-fluid px-4">
 			<h1 class="mt-4">관리자 공지사항 관리</h1> <!-- 최고 관리자: 매장테이블, 매장: 메뉴테이블 -->
 			<ol class="breadcrumb mb-4">
-				<li class="breadcrumb-item"><a href="index.mdo">WinDelivery</a></li>
+				<li class="breadcrumb-item"><a href="index.mdo">WDonald</a></li>
 				<li class="breadcrumb-item active">관리자 공지사항 관리</li>
 			</ol>
 			<div class="card mb-4">
@@ -101,9 +101,17 @@
 			</div>
 		</div>	
 	</main>
+	<script type="text/javascript">
+	function noticeDelete(notice_seq){
+		var chk = confirm("정말 삭제하시겠습니까?");
+		if(chk){
+			location.href='deleteBoard.mdo?notice_seq='+notice_seq;
+		}
+	}
+	</script>
 
 
-	<footer class="py-4 bg-light mt-auto">
+	<%-- <footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
 				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
@@ -128,4 +136,6 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
 </body>
-</html>
+</html> --%>
+
+<%@ include file="footer.jsp" %>

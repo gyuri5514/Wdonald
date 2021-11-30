@@ -40,11 +40,15 @@ public class PromotionController {
 	public String detailPromotion(Model model, @RequestParam(value = "p_code", required = false) Integer p_code) {
 
 		if (p_code != null) {
-			PromotionVO promotionVO = promotionService.detailPromotion(p_code);
+			PromotionVO promotionVO = new PromotionVO();
+			List<PromotionVO> selectPromotion = promotionService.selectPromotionAll();
 			
+			promotionVO = promotionService.detailPromotion(p_code);
 			promotionService.countPromotion(p_code);
 			
 			model.addAttribute("detailPromotion", promotionVO);
+			model.addAttribute("selectPromotion_first", selectPromotion.get(0).getP_code());
+			model.addAttribute("selectPromotion_end", selectPromotion.get(selectPromotion.size()-1).getP_code());
 
 			return "promotionDetail";
 
@@ -68,9 +72,17 @@ public class PromotionController {
 	public String selectHappyPromotionDetail(Model model, @RequestParam(value = "hp_code", required = false) Integer hp_code) {
 		
 		if (hp_code != null) {
-			HappyPromotionVO happyPromotionVO = happyPromotionService.detailHappyPromotion(hp_code);
-			happyPromotionService.countHappyPromotion(hp_code);
+			HappyPromotionVO happyPromotionVO = new HappyPromotionVO();
+			List<HappyPromotionVO> selectHappyPromotion = happyPromotionService.selectHappyPromotion();
+			List<HappyPromotionVO> selectHappyPromotionEnd = happyPromotionService.selectHappyPromotionEnd();
 			
+			happyPromotionVO = happyPromotionService.detailHappyPromotion(hp_code);
+			happyPromotionService.countHappyPromotion(hp_code);
+
+			model.addAttribute("selectHappyPromotion_first", selectHappyPromotion.get(0).getHp_code());
+			model.addAttribute("selectHappyPromotion_end", selectHappyPromotion.get(selectHappyPromotion.size()-1).getHp_code());
+			model.addAttribute("selectHappyPromotionEnd_first", selectHappyPromotionEnd.get(0).getHp_code());
+			model.addAttribute("selectHappyPromotionEnd_end", selectHappyPromotionEnd.get(selectHappyPromotionEnd.size()-1).getHp_code());
 			model.addAttribute("happyPromotionDetail", happyPromotionVO);
 			
 			return "happyPromotionDetail";
