@@ -21,7 +21,7 @@
     		 location.href = "/controller/index.mdo";
     	 })
     	 $("#submit").on("click",function(){
-    		 var regExp = /\s/g;
+     		 var regExp = /\s/g;
     		 if($("#admin_id").val()==""){
     			 alert("아이디를 입력해주세요.");
     			 $("#admin_id").focus();
@@ -31,7 +31,7 @@
 				 alert("공백을 사용할 수 없습니다.");
 				 $("#admin_id").focus();
     			 return false;
-    		 }
+    		 } 
     		 if($("#admin_password").val()==""){
     			 alert("비밀번호를 입력해주세요.");
     			 $("#admin_password").focus();
@@ -56,17 +56,17 @@
     			 alert("공백을 사용할 수 없습니다.");
     			 $("#admin_name").focus();
     			 return false;
-    		 }
+    		 } 
     		 if($("#store_name").val()==""){
     			 alert("매장명을 입력해주세요.");
     			 $("#store_name").focus();
     			 return false;
     		 }
-    		 if(regExp.test($("#store_name").val())){
+    	     if(regExp.test($("#store_name").val())){
     			 alert("공백을 사용할 수 없습니다.");
     			 $("#store_name").focus();
     			 return false;
-    		 }
+    		 } 
     		 if($("#store_address").val()==""){
     			 alert("매장 위치를 입력해주세요.");
     			 $("#store_address").focus();
@@ -81,7 +81,7 @@
     			 alert("공백을 사용할 수 없습니다.");
     			 $("#store_code").focus();
     			 return false;
-    		 }
+    		 } 
     		 if($("#store_phone").val()==""){
     			 alert("매장 번호를 입력해주세요.");
     			 $("#store_phone").focus();
@@ -91,25 +91,23 @@
     			 alert("공백을 사용할 수 없습니다.");
     			 $("#store_phone").focus();
     			 return false;
-    		 }
+    		 } 
+    		 
     		 $.ajax({
     			type : 'post',
     			url : '/controller/adminCheck.mdo',
     			data : {
-    				admin_id : $("#admin_id").val()		
+    				 admin_id : $("#admin_id").val() 	
     			},
     			dataType : 'json',
+    			async : false,
     			success : function(data) {
-
-    				console.log(data);
-
     				if(data == 1) {
     					$('#content').attr("style", "display:block; color:red;");
     					$('#content').text("이미 존재하는 관리자 아이디입니다.");
     					$('#content').fadeOut(2000);
     					return;
     				} else {
-    					console.log(data);
     					$.ajax({
     						type : 'post',
     		    			url : '/controller/adminCheck.mdo',
@@ -117,32 +115,39 @@
     		    				store_name : $("#store_name").val()
     		    			},
     		    			dataType : 'json',
+    		    			async : false,
     		    			success : function(data) {
     		    				if(data == 1) {
     		    					$('#content').attr("style", "display:block; color:red;");
     		    					$('#content').text("이미 존재하는 매장명입니다.");
     		    					$('#content').fadeOut(2000);
     		    					return;    		    					
-    		    				} else {
-    		    					console.log(data);
-	    		    				$.ajax({
-	    	    						type : 'post',
-	    	    		    			url : '/controller/adminCheck.mdo',
-	    	    		    			data : {
-	    	    		    				store_code : $("#store_code").val()
+    		    				} 
+    		    				 else {
+    		    					$.ajax({
+    		    						type : 'post',
+    		    		    			url : '/controller/adminCheck.mdo',
+    		    		    			data : {
+    		    		    				storeCode : $("#store_code").val()
 	    	    		    			},
+	    	    		    			async : false,
 	    	    		    			dataType : 'json',
 	    	    		    			success : function(data) {
 	    	    		    				if(data == 1) {
+	    	    		    					alert("dddd");
 	    	    		    					$('#content').attr("style", "display:block; color:red;");
 	    	    		    					$('#content').text("이미 존재하는 매장코드입니다.");
 	    	    		    					$('#content').fadeOut(2000);
 	    	    		    					return;   
-	    	    		    				} 
-	    	    		    			 $('#registerAdmin').submit(); 
+	    	    		    				} else {
+	    	    		    				 $('#registerAdmin').submit();  
+	    	    		    				}
+	    	    		    			},
+	    	    		    			error : function(message) {
+	    	    		    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
 	    	    		    			}
 	    		    				});
-    		    				}
+    		    				} 
     		    			}
     					});
     				}

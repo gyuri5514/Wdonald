@@ -121,13 +121,17 @@ public class AdminController {
 	@ResponseBody
 	public int adminCheck(@RequestParam(name="admin_id", required=false) String admin_id, 
 			@RequestParam(name="store_name", required=false) String store_name,
-			@RequestParam(name="store_code", required=false) String store_code) {
+			@RequestParam(name="storeCode", required=false) String store_code) {
+		System.out.println("admin_id : " + admin_id);
+		System.out.println("store_name : " + store_name);
+		System.out.println("storeCode : " + store_code);
 		Map<String, String> map = new HashMap<String,String>();
 		map.put("admin_id", admin_id);
 		map.put("store_name", store_name);
 		map.put("store_code", store_code);
 		
 		int id_check = adminStoreService.selectStore(map);
+		
 		if(id_check == 1)
 			return 1;
 		return 0;
