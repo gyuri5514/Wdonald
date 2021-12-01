@@ -9,19 +9,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="">
 <meta name="author" content="Themelize.me">
-
 <link rel="stylesheet" href="resources/css/main/custom.css?t=20211126">
 <link rel="stylesheet" type="text/css" href="resources/css/bam.css">
-
 <script src="https://kit.fontawesome.com/d0b304acae.js" crossorigin="anonymous"></script> <!-- fontawesomeCDN -->
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 <script src="resources/js/join/datepicker.js"></script>
 <script src="resources/js/commons.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/join/bootstrap.min.css">
@@ -63,7 +60,6 @@
 	</c:choose>
 </c:if>
 </head>
-
 <body class="page page-join">
 <div id="map" style="width: 0%; height: 0px;"></div>
 <div class="wrapper ">
@@ -189,7 +185,6 @@
 <script>
 	/* 
 	 $(document).on( "click", "#zip_find", function( e ) {
-
 	 $addressType   = $(this).attr("addressType");
 	 $zip           = $(this).attr("zip");
 	 $zip1          = $(this).attr("zip1");
@@ -199,10 +194,8 @@
 	 $address2      = $(this).attr("address2");
 	 $addressOption = $(this).attr("addressOption");
 	 $focus         = $(this).attr("focus");
-
 	 openDaumPostcode($addressType, $zip, $zip1, $zip2, $address, $address1, $address2, $addressOption, $focus);
 	 });
-
 	 });
 	 addrType, zip, zip1, zip2, addr, addr1, addr2, addrOpt, addrFocus
 	 */
@@ -215,25 +208,22 @@
 			
 			oncomplete : function(data) {
 				document.querySelector("#m_zipcode").value = data.address;
-
 				var m_zipcode = $('#m_zipcode').val();
 				//alert("da?" + m_zipcode);
-
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-
+				mapOption = {
+				    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				    level: 3 // 지도의 확대 레벨
+				};  
 				// 지도를 생성
 				//var map = new kakao.maps.Map(mapContainer, mapOption); 
-
 				
 				// 주소-좌표 변환 객체
 				var geocoder = new kakao.maps.services.Geocoder();
-
 				// 주소로 좌표를 검색
 				geocoder.addressSearch(m_zipcode, function(result, status) {
-
 				// 정상적으로 검색이 완료 시
 				 if (status === kakao.maps.services.Status.OK) {
-
 				    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 				    
 				   document.getElementById("address_lat").value = result[0].y;
@@ -250,13 +240,11 @@
 				        map: map,
 				        position: coords
 				    }); */
-
 				    // 인포윈도우로 장소에 대한 설명 표시
 				   /*  var infowindow = new kakao.maps.InfoWindow({
 				        content: '<div style="width:150px;text-align:center;padding:6px 0;">장소</div>'
 				    });
 				    infowindow.open(map, marker); */
-
 				    // 지도의 중심을 결과값으로 받은 위치로 이동
 				    //map.setCenter(coords);
 				} 
@@ -272,7 +260,6 @@
 	
 	 
 </script>
-
 		<div id="content">
 		<div class="container" id="sub-page-content">
 			<div class="row">
@@ -398,7 +385,6 @@
 								 <label for="m_sex" class="radio-inline">
 								 <input type="radio" name="user_gender" id="m_sex2" value="woman" />여자</label>
 						</div>
-
 						<label for="sms_agree_ck" class="checkbox-sms">
 							 <input	type="checkbox" name="sms_agree" id="sms_agree_ck" value="1" />광고성 SMS 수신동의
 						</label> <br> 
@@ -410,9 +396,7 @@
 						<a href="javascript:history.back();" class="btn btn-md btn-default">뒤로</a>
 					</div>
 					</form>
-
 				</div>
-
 			</div>
 			<!-- //.row -->
 		</div>
