@@ -25,6 +25,22 @@ table, td, th {
 </style>
 <script type="text/javascript">
 function promotionSubmit(){
+	var regExp = /\s/g;
+	if ($("#p_name").val() == "") {
+		alert("제목을 입력하세요.");
+		$("#p_name").focus();
+		return false;
+	}
+	if ($("#p_content").val() == "") {
+		alert("공지내용을 입력하세요.");
+		$("#p_content").focus();
+		return false;
+	}
+	if ($("#p_regdate").val() == "") {
+		alert("등록일을 입력하세요.");
+		$("#p_regdate").focus();
+		return false;
+	}
 	$('#promotionForm').submit();
 }
 </script>
@@ -43,9 +59,9 @@ function promotionSubmit(){
 					</div>
 				</div>
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 프로모션 등록
-						<div>
+					<div class="card-header"><div>
+						<i class="fas fa-table me-1"></i> 프로모션 등록</div>
+						<div style="float: right; margin-top: -20px;">
 							<input type="button" onclick="promotionSubmit();" class="btn btn-warning" value="확인">
 						</div>
 					</div>
@@ -120,51 +136,7 @@ function promotionSubmit(){
 <%@ include file="footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	/* $("#p_code").blur(function(){
-		var code = $('#p_code').val();
-		$.ajax({
-			type : "get",
-			url : "pcodeChk.mdo",
-			data : {"p_code" : code},
-			success : function(data){
-				console.log("중복 확인 : " + data);
-				if (data == 1) {
-					$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
-					$("#p_code").focus();
-					return false;
-				}else{
-					$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
-				}
-			},
-			error : function(){
-				alert("실패");
-			}
-		})
-	}); */
-	
-	/* $("#cancle").on("click", function() {
-		location.href = "p.mdo";
-	}) */
-	$("#submit").on("click", function() {
-		var regExp = /\s/g;
-		if ($("#p_title").val() == "") {
-			alert("제목을 입력하세요.");
-			$("#p_title").focus();
-			return false;
-		}
-		if ($("#p_content").val() == "") {
-			alert("공지내용을 입력하세요.");
-			$("#p_content").focus();
-			return false;
-		}
-		if ($("#p_regdate").val() == "") {
-			alert("등록일을 입력하세요.");
-			$("#p_regdate").focus();
-			return false;
-		}
-		$('#addp').submit();
-	});
+		
 
 	$('#file1').on('fileselect', function(event, numFiles, label) {
 		var input = $(this).parents(

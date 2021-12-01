@@ -25,6 +25,22 @@ table, td, th {
 </style>
 <<script type="text/javascript">
 function submitNews(){
+	var regExp = /\s/g;
+	if ($("#news_title").val() == "") {
+		alert("제목을 입력하세요.");
+		$("#news_title").focus();
+		return false;
+	}
+	if ($("#news_content").val() == "") {
+		alert("공지내용을 입력하세요.");
+		$("#news_content").focus();
+		return false;
+	}
+	if ($("#news_regdate").val() == "") {
+		alert("등록일을 입력하세요.");
+		$("#news_regdate").focus();
+		return false;
+	}
 	$('#newsForm').submit();
 }
 </script>
@@ -43,9 +59,9 @@ function submitNews(){
 					</div>
 				</div>
 				<div class="card mb-4">
-					<div class="card-header">
-						<i class="fas fa-table me-1"></i> 새로운 소식 등록
-						<div>
+					<div class="card-header"><div>
+						<i class="fas fa-table me-1"></i> 새로운 소식 등록</div>
+						<div style="float:right; margin-top: -20px;">
 							<input type="button" onclick="submitNews();" class="btn btn-warning" value="확인">
 						</div>
 					</div>
@@ -94,51 +110,8 @@ function submitNews(){
 <%@ include file="footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	/* $("#news_code").blur(function(){
-		var code = $('#news_code').val();
-		$.ajax({
-			type : "get",
-			url : "newscodeChk.mdo",
-			data : {"news_code" : code},
-			success : function(data){
-				console.log("중복 확인 : " + data);
-				if (data == 1) {
-					$("#codetxt").html('<small><strong class="text-danger">이미 사용중인 코드 입니다.</strong></small>');
-					$("#news_code").focus();
-					return false;
-				}else{
-					$("#codetxt").html('<small><strong class="text-success">사용 가능한 코드 입니다.</strong></small>');
-				}
-			},
-			error : function(){
-				alert("실패");
-			}
-		})
-	}); */
-	
-	/* $("#cancle").on("click", function() {
-		location.href = "news.mdo";
-	}) */
-	$("#submit").on("click", function() {
-		var regExp = /\s/g;
-		if ($("#news_title").val() == "") {
-			alert("제목을 입력하세요.");
-			$("#news_title").focus();
-			return false;
-		}
-		if ($("#news_content").val() == "") {
-			alert("공지내용을 입력하세요.");
-			$("#news_content").focus();
-			return false;
-		}
-		if ($("#news_regdate").val() == "") {
-			alert("등록일을 입력하세요.");
-			$("#news_regdate").focus();
-			return false;
-		}
-		$('#addNews').submit();
-	});
+
+		
 
 	$('#file1').on('fileselect', function(event, numFiles, label) {
 		var input = $(this).parents(
