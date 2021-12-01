@@ -13,7 +13,7 @@
 			<div class="visualArea bgMenu01">
 					<div class="inner">
 						<h1 class="titDep1">버거</h1>
-						<p class="subCopy">빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문 즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.</p>
+						<p class="subCopy">빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문 즉시 바로 조리해 더욱 맛있는, 윈도날드의 다양한 버거를 소개합니다.</p>
 						<ul class="navPath">
 							<li><a href="/">Home</a></li>
 							<li><a href="burger.do">Menu</a></li>

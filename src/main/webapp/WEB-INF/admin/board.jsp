@@ -21,7 +21,7 @@
 		});
 	});
 	function detail(index){
-		var val =${Board};
+		var val =JSON.parse('${Board}');
 		console.log(val);
 		for(var i=0; i<val.length; i++){
 			if(val[i].notice_seq==index){
