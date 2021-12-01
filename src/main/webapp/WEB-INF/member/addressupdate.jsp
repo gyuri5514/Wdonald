@@ -4,7 +4,7 @@
 <%@ include file="mypage.jsp"%>
 <link rel="stylesheet" href="resources/css/address/addressupdate.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services"></script>
 <script>
 	/*------------ DaumPost ------------*/
 	function openDaumPostcode() {
