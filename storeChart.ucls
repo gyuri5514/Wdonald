@@ -13,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="com.wdelivery.store.chart.vo.ChartVO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/store/chart/vo/ChartVO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1325" y="588"/>    
+    <position height="-1" width="-1" x="1230" y="566"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -22,13 +22,52 @@
   </class>  
   <interface id="3" language="java" name="com.wdelivery.store.chart.dao.ChartDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/store/chart/dao/ChartDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="903" y="592"/>    
+    <position height="-1" width="-1" x="846" y="530"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
+  <interface id="4" language="java" name="com.wdelivery.store.service.ChartService" project="wcdonald" 
+    file="/wcdonald/src/main/java/com/wdelivery/store/service/ChartService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="254" y="538"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="com.wdelivery.store.service.ChartServiceImpl" project="wcdonald" 
+    file="/wcdonald/src/main/java/com/wdelivery/store/service/ChartServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="247" y="946"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="6">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="7" name="chartService"/>      
+      <multiplicity id="8" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="9">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <association id="10">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="11" name="chartDAO"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

@@ -4,7 +4,7 @@
   <class id="1" language="java" name="com.wdelivery.member.controller.MemberController" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/member/controller/MemberController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2328" y="1355"/>    
+    <position height="-1" width="-1" x="2054" y="1341"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +13,7 @@
   </class>  
   <interface id="2" language="java" name="com.wdelivery.menu.burger.dao.BurgerDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burger/dao/BurgerDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="256" width="295" x="1711" y="-56"/>    
+    <position height="256" width="295" x="1437" y="-70"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
   <class id="3" language="java" name="com.wdelivery.menu.burger.service.BurgerServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burger/service/BurgerServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1872" y="414"/>    
+    <position height="-1" width="-1" x="1598" y="400"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -33,7 +33,7 @@
   <interface id="4" language="java" name="com.wdelivery.menu.burgerLgSet.dao.BurgerLgSetDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burgerLgSet/dao/BurgerLgSetDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2188" y="120"/>    
+    <position height="-1" width="-1" x="1914" y="106"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -43,7 +43,7 @@
   <interface id="5" language="java" name="com.wdelivery.menu.burgerLgSet.service.BurgerLgSetService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burgerLgSet/service/BurgerLgSetService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2193" y="651"/>    
+    <position height="-1" width="-1" x="1919" y="637"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -53,7 +53,7 @@
   <class id="6" language="java" name="com.wdelivery.menu.burgerLgSet.service.BurgerLgSetServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burgerLgSet/service/BurgerLgSetServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2187" y="367"/>    
+    <position height="-1" width="-1" x="1913" y="353"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -63,7 +63,7 @@
   <interface id="7" language="java" name="com.wdelivery.menu.burgerSet.dao.BurgerSetDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burgerSet/dao/BurgerSetDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2527" y="110"/>    
+    <position height="-1" width="-1" x="2253" y="96"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -73,7 +73,7 @@
   <interface id="8" language="java" name="com.wdelivery.menu.burgerSet.service.BurgerSetService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burgerSet/service/BurgerSetService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2519" y="658"/>    
+    <position height="-1" width="-1" x="2245" y="644"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -83,7 +83,7 @@
   <class id="9" language="java" name="com.wdelivery.menu.burgerSet.service.BurgerSetServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burgerSet/service/BurgerSetServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2521" y="359"/>    
+    <position height="-1" width="-1" x="2247" y="345"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -92,7 +92,7 @@
   </class>  
   <interface id="10" language="java" name="com.wdelivery.menu.dessert.dao.DessertDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/dessert/dao/DessertDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2846" y="111"/>    
+    <position height="-1" width="-1" x="2572" y="97"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   <class id="11" language="java" name="com.wdelivery.menu.dessert.service.DessertServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/dessert/service/DessertServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2844" y="360"/>    
+    <position height="-1" width="-1" x="2570" y="346"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -112,7 +112,7 @@
   <interface id="12" language="java" name="com.wdelivery.menu.dessert.service.DessertService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/dessert/service/DessertService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2835" y="656"/>    
+    <position height="-1" width="-1" x="2561" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -121,7 +121,7 @@
   </interface>  
   <interface id="13" language="java" name="com.wdelivery.menu.drink.dao.DrinkDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/drink/dao/DrinkDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3127" y="122"/>    
+    <position height="-1" width="-1" x="2853" y="108"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -131,7 +131,7 @@
   <class id="14" language="java" name="com.wdelivery.menu.drink.service.DrinkServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/drink/service/DrinkServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3121" y="367"/>    
+    <position height="-1" width="-1" x="2847" y="353"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -141,7 +141,7 @@
   <interface id="15" language="java" name="com.wdelivery.menu.drink.service.DrinkService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/drink/service/DrinkService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3111" y="655"/>    
+    <position height="-1" width="-1" x="2837" y="641"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -151,7 +151,7 @@
   <interface id="16" language="java" name="com.wdelivery.menu.happymeal.dao.HappyMealDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/happymeal/dao/HappyMealDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1531" y="61"/>    
+    <position height="-1" width="-1" x="1257" y="47"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -161,7 +161,7 @@
   <class id="17" language="java" name="com.wdelivery.menu.happymeal.service.HappyMealServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/happymeal/service/HappyMealServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1541" y="327"/>    
+    <position height="-1" width="-1" x="1267" y="313"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -171,7 +171,7 @@
   <interface id="18" language="java" name="com.wdelivery.menu.happymeal.service.HappyMealService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/happymeal/service/HappyMealService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1550" y="615"/>    
+    <position height="-1" width="-1" x="1276" y="601"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -180,7 +180,7 @@
   </interface>  
   <interface id="19" language="java" name="com.wdelivery.menu.side.service.SideService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/side/service/SideService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="851" y="595"/>    
+    <position height="-1" width="-1" x="577" y="581"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -190,7 +190,7 @@
   <class id="20" language="java" name="com.wdelivery.menu.side.service.SideServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/side/service/SideServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="851" y="341"/>    
+    <position height="-1" width="-1" x="577" y="327"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -199,7 +199,7 @@
   </class>  
   <interface id="21" language="java" name="com.wdelivery.menu.side.dao.SideDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/side/dao/SideDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="849" y="69"/>    
+    <position height="-1" width="-1" x="575" y="55"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -209,7 +209,7 @@
   <interface id="22" language="java" name="com.wdelivery.menu.winMorning.dao.WinMorningDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/winMorning/dao/WinMorningDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1182" y="60"/>    
+    <position height="-1" width="-1" x="908" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -219,7 +219,7 @@
   <class id="23" language="java" name="com.wdelivery.menu.winMorning.service.WinMorningServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/winMorning/service/WinMorningServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1191" y="320"/>    
+    <position height="-1" width="-1" x="917" y="306"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -229,7 +229,7 @@
   <interface id="24" language="java" name="com.wdelivery.menu.winMorning.service.WinMorningService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/winMorning/service/WinMorningService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1199" y="602"/>    
+    <position height="-1" width="-1" x="925" y="588"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -239,7 +239,7 @@
   <interface id="25" language="java" name="com.wdelivery.menu.winMorningSet.dao.WinMorningSetDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/winMorningSet/dao/WinMorningSetDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3494" y="99"/>    
+    <position height="-1" width="-1" x="3220" y="85"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -250,7 +250,7 @@
     project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/winMorningSet/service/WinMorningSetServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3495" y="367"/>    
+    <position height="-1" width="-1" x="3221" y="353"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -260,7 +260,7 @@
   <interface id="27" language="java" name="com.wdelivery.menu.winMorningSet.service.WinMorningSetService" 
     project="wcdonald" file="/wcdonald/src/main/java/com/wdelivery/menu/winMorningSet/service/WinMorningSetService.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3485" y="645"/>    
+    <position height="-1" width="-1" x="3211" y="631"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -270,7 +270,7 @@
   <interface id="28" language="java" name="com.wdelivery.menu.burger.service.BurgerService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/menu/burger/service/BurgerService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1881" y="751"/>    
+    <position height="-1" width="-1" x="1607" y="737"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -279,7 +279,7 @@
   </interface>  
   <interface id="29" language="java" name="com.wdelivery.qna.service.QnaService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/qna/service/QnaService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3028" y="1179"/>    
+    <position height="-1" width="-1" x="2754" y="1165"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -288,7 +288,7 @@
   </interface>  
   <interface id="30" language="java" name="com.wdelivery.qna.dao.QnaDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/qna/dao/QnaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3678" y="908"/>    
+    <position height="-1" width="-1" x="3404" y="894"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -297,7 +297,7 @@
   </interface>  
   <class id="31" language="java" name="com.wdelivery.qna.service.QnaServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/qna/service/QnaServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3366" y="1075"/>    
+    <position height="-1" width="-1" x="3092" y="1061"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -306,7 +306,7 @@
   </class>  
   <interface id="32" language="java" name="com.wdelivery.faq.service.FaqService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/faq/service/FaqService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3037" y="1519"/>    
+    <position height="-1" width="-1" x="2763" y="1505"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -315,7 +315,7 @@
   </interface>  
   <class id="33" language="java" name="com.wdelivery.faq.service.FaqServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/faq/service/FaqServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3469" y="1524"/>    
+    <position height="-1" width="-1" x="3195" y="1510"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -324,7 +324,7 @@
   </class>  
   <interface id="34" language="java" name="com.wdelivery.faq.dao.FaqDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/faq/dao/FaqDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3708" y="1196"/>    
+    <position height="-1" width="-1" x="3434" y="1182"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -333,7 +333,7 @@
   </interface>  
   <interface id="35" language="java" name="com.wdelivery.member.dao.MemberDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/member/dao/MemberDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1078" y="2191"/>    
+    <position height="-1" width="-1" x="804" y="2177"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -342,7 +342,7 @@
   </interface>  
   <interface id="36" language="java" name="com.wdelivery.member.service.MemberService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/member/service/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2131" y="2234"/>    
+    <position height="-1" width="-1" x="1857" y="2220"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -352,7 +352,7 @@
   <class id="37" language="java" name="com.wdelivery.member.service.MemberServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/member/service/MemberServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1599" y="2199"/>    
+    <position height="-1" width="-1" x="1325" y="2185"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -362,7 +362,7 @@
   <interface id="38" language="java" name="com.wdelivery.admin.service.AdminStoreService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/admin/service/AdminStoreService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1574" y="855"/>    
+    <position height="-1" width="-1" x="1300" y="841"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -371,7 +371,7 @@
   </interface>  
   <interface id="39" language="java" name="com.wdelivery.admin.service.AdminService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/admin/service/AdminService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1571" y="1321"/>    
+    <position height="-1" width="-1" x="1297" y="1307"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -380,7 +380,7 @@
   </interface>  
   <class id="40" language="java" name="com.wdelivery.member.util.OrderTimer" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/member/util/OrderTimer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3067" y="917"/>    
+    <position height="-1" width="-1" x="2793" y="903"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -390,568 +390,532 @@
   <interface id="41" language="java" name="com.wdelivery.promotion.service.PromotionService" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/promotion/service/PromotionService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2938" y="1979"/>    
+    <position height="-1" width="-1" x="2664" y="1965"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="42" language="java" name="com.wdelivery.cart.vo.CartVO" project="wcdonald" 
-    file="/wcdonald/src/main/java/com/wdelivery/cart/vo/CartVO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="152" y="496"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="false"/>      
-      <operations public="false" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="43" language="java" name="com.wdelivery.admin.dao.AdminStoreDAO" project="wcdonald" 
+  <interface id="42" language="java" name="com.wdelivery.admin.dao.AdminStoreDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/admin/dao/AdminStoreDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="768" y="840"/>    
+    <position height="-1" width="-1" x="494" y="826"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="44" language="java" name="com.wdelivery.admin.service.AdminStoreServiceImpl" project="wcdonald" 
+  <class id="43" language="java" name="com.wdelivery.admin.service.AdminStoreServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/admin/service/AdminStoreServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1171" y="846"/>    
+    <position height="-1" width="-1" x="897" y="832"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="45" language="java" name="com.wdelivery.admin.service.AdminServiceImpl" project="wcdonald" 
+  <class id="44" language="java" name="com.wdelivery.admin.service.AdminServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/admin/service/AdminServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1127" y="1326"/>    
+    <position height="-1" width="-1" x="853" y="1312"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="46" language="java" name="com.wdelivery.admin.dao.AdminDAO" project="wcdonald" 
+  <interface id="45" language="java" name="com.wdelivery.admin.dao.AdminDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/admin/dao/AdminDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="706" y="1322"/>    
+    <position height="-1" width="-1" x="432" y="1308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="47" language="java" name="com.wdelivery.promotion.dao.PromotionDAO" project="wcdonald" 
+  <interface id="46" language="java" name="com.wdelivery.promotion.dao.PromotionDAO" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/promotion/dao/PromotionDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3765" y="1972"/>    
+    <position height="-1" width="-1" x="3491" y="1958"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="48" language="java" name="com.wdelivery.promotion.service.PromotionServiceImpl" project="wcdonald" 
+  <class id="47" language="java" name="com.wdelivery.promotion.service.PromotionServiceImpl" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/promotion/service/PromotionServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3345" y="1982"/>    
+    <position height="-1" width="-1" x="3071" y="1968"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="49" language="java" name="com.wdelivery.qna.vo.QnaVO" project="wcdonald" 
-    file="/wcdonald/src/main/java/com/wdelivery/qna/vo/QnaVO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="420" y="480"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="50" language="java" name="com.wdelivery.faq.vo.FaqVO" project="wcdonald" 
-    file="/wcdonald/src/main/java/com/wdelivery/faq/vo/FaqVO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="134" y="1256"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="51" language="java" name="com.wdelivery.qna.vo.QaaVO" project="wcdonald" 
-    file="/wcdonald/src/main/java/com/wdelivery/qna/vo/QaaVO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="388" y="1242"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="52" language="java" name="com.wdelivery.faq.utils.PageMaker" project="wcdonald" 
+  <class id="48" language="java" name="com.wdelivery.faq.utils.PageMaker" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/faq/utils/PageMaker.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="472" y="2036"/>    
+    <position height="-1" width="-1" x="418" y="1998"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="53" language="java" name="com.wdelivery.faq.utils.Criteria" project="wcdonald" 
+  <class id="49" language="java" name="com.wdelivery.faq.utils.Criteria" project="wcdonald" 
     file="/wcdonald/src/main/java/com/wdelivery/faq/utils/Criteria.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="130" y="1726"/>    
+    <position height="-1" width="-1" x="120" y="1844"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="54">    
-    <end type="SOURCE" refId="48" navigable="false">      
-      <attribute id="55" name="promotionDAO">        
-        <position height="0" width="0" x="485" y="1692"/>      
-      </attribute>      
-      <multiplicity id="56" minimum="0" maximum="1">        
-        <position height="0" width="0" x="485" y="1692"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="47" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="57">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="58" name="faqService">        
-        <position height="0" width="0" x="1540" y="686"/>      
-      </attribute>      
-      <multiplicity id="59" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1540" y="686"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="32" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="60">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="61" name="winMorningDAO">        
-        <position height="0" width="0" x="-1885" y="-2623"/>      
-      </attribute>      
-      <multiplicity id="62" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1885" y="-2623"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="63">    
-    <end type="SOURCE" refId="45"/>    
-    <end type="TARGET" refId="39"/>  
+  <realization id="50">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="24"/>  
   </realization>  
-  <association id="64">    
-    <end type="SOURCE" refId="37" navigable="false">      
-      <attribute id="65" name="memberDAO">        
-        <position height="0" width="0" x="827" y="1161"/>      
+  <association id="51">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="52" name="promotionDAO">        
+        <position height="0" width="0" x="211" y="1678"/>      
       </attribute>      
-      <multiplicity id="66" minimum="0" maximum="1">        
-        <position height="0" width="0" x="827" y="1161"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="35" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="67">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="68" name="burgerSetService">        
-        <position height="0" width="0" x="-1187" y="36"/>      
-      </attribute>      
-      <multiplicity id="69" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1187" y="36"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="70">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="71">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="72" name="burgerSetDAO">        
-        <position height="0" width="0" x="-1068" y="40"/>      
-      </attribute>      
-      <multiplicity id="73" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1068" y="40"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="74">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="18"/>  
-  </realization>  
-  <association id="75">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="76" name="winMorningSetService">        
-        <position height="0" width="0" x="245" y="-1186"/>      
-      </attribute>      
-      <multiplicity id="77" minimum="0" maximum="1">        
-        <position height="0" width="0" x="245" y="-1186"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="78">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="79" name="drinkService">        
-        <position height="0" width="0" x="-324" y="-712"/>      
-      </attribute>      
-      <multiplicity id="80" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-324" y="-712"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="81">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <association id="82">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="83" name="drinkDAO">        
-        <position height="0" width="0" x="-490" y="-716"/>      
-      </attribute>      
-      <multiplicity id="84" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-490" y="-716"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="85">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="86" name="sideService">        
-        <position height="0" width="0" x="-1810" y="-1423"/>      
-      </attribute>      
-      <multiplicity id="87" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1810" y="-1423"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="88">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="29"/>  
-  </realization>  
-  <realization id="89">    
-    <end type="SOURCE" refId="48"/>    
-    <end type="TARGET" refId="41"/>  
-  </realization>  
-  <association id="90">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="91" name="sideDAO">        
-        <position height="0" width="0" x="-1772" y="-2611"/>      
-      </attribute>      
-      <multiplicity id="92" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1772" y="-2611"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <end type="SOURCE" refId="33" navigable="false">      
-      <attribute id="94" name="faqDAO">        
-        <position height="0" width="0" x="2413" y="1020"/>      
-      </attribute>      
-      <multiplicity id="95" minimum="0" maximum="1">        
-        <position height="0" width="0" x="2413" y="1020"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="34" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="96">    
-    <end type="SOURCE" refId="37"/>    
-    <end type="TARGET" refId="36"/>  
-  </realization>  
-  <association id="97">    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="98" name="adminDAO">        
-        <position height="0" width="0" x="16" y="72"/>      
-      </attribute>      
-      <multiplicity id="99" minimum="0" maximum="1">        
-        <position height="0" width="0" x="16" y="72"/>      
+      <multiplicity id="53" minimum="0" maximum="1">        
+        <position height="0" width="0" x="211" y="1678"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="46" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="100">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="12"/>  
+  <association id="54">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="55" name="adminStoreDAO">        
+        <position height="0" width="0" x="-2446" y="558"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2446" y="558"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="57">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="41"/>  
   </realization>  
-  <realization id="101">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="102">    
+  <association id="58">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="103" name="promotionService">        
-        <position height="0" width="0" x="-118" y="1194"/>      
+      <attribute id="59" name="qnaService">        
+        <position height="0" width="0" x="1666" y="269"/>      
       </attribute>      
-      <multiplicity id="104" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-118" y="1194"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="41" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="105">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="106" name="winMorningSetDAO">        
-        <position height="0" width="0" x="-155" y="-1986"/>      
-      </attribute>      
-      <multiplicity id="107" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-155" y="-1986"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="108">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="109" name="burgerDAO">        
-        <position height="0" width="0" x="-7" y="-107"/>      
-      </attribute>      
-      <multiplicity id="110" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-7" y="-107"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="111">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="28"/>  
-  </realization>  
-  <realization id="112">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="24"/>  
-  </realization>  
-  <association id="113">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="114" name="orderTimer">        
-        <position height="0" width="0" x="511" y="566"/>      
-      </attribute>      
-      <multiplicity id="115" minimum="0" maximum="1">        
-        <position height="0" width="0" x="511" y="566"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="40" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="116">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="117" name="burgerService">        
-        <position height="0" width="0" x="-44" y="0"/>      
-      </attribute>      
-      <multiplicity id="118" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-44" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="119">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="120" name="adminStoreService">        
-        <position height="0" width="0" x="-1104" y="41"/>      
-      </attribute>      
-      <multiplicity id="121" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1104" y="41"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="38" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="122">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="123" name="burgerLgSetDAO">        
-        <position height="0" width="0" x="-135" y="-13"/>      
-      </attribute>      
-      <multiplicity id="124" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-135" y="-13"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="125">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="27"/>  
-  </realization>  
-  <realization id="126">    
-    <end type="SOURCE" refId="33"/>    
-    <end type="TARGET" refId="32"/>  
-  </realization>  
-  <association id="127">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="128" name="adminService">        
-        <position height="0" width="0" x="14" y="-244"/>      
-      </attribute>      
-      <multiplicity id="129" minimum="0" maximum="1">        
-        <position height="0" width="0" x="14" y="-244"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="130">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="131" name="burgerLgSetService">        
-        <position height="0" width="0" x="-89" y="-41"/>      
-      </attribute>      
-      <multiplicity id="132" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-89" y="-41"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="133">    
-    <end type="SOURCE" refId="52" navigable="false">      
-      <attribute id="134" name="cri">        
-        <position height="0" width="0" x="-2444" y="606"/>      
-      </attribute>      
-      <multiplicity id="135" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-2444" y="606"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="53" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="136">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="137" name="happyMealDAO">        
-        <position height="0" width="0" x="-647" y="-2636"/>      
-      </attribute>      
-      <multiplicity id="138" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-647" y="-2636"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="139">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="140" name="qnaDAO">        
-        <position height="0" width="0" x="2973" y="777"/>      
-      </attribute>      
-      <multiplicity id="141" minimum="0" maximum="1">        
-        <position height="0" width="0" x="2973" y="777"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="30" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="142">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="143" name="dessertService">        
-        <position height="0" width="0" x="-246" y="-852"/>      
-      </attribute>      
-      <multiplicity id="144" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-246" y="-852"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="145">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <association id="146">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="147" name="dessertDAO">        
-        <position height="0" width="0" x="-464" y="-951"/>      
-      </attribute>      
-      <multiplicity id="148" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-464" y="-951"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="149">    
-    <end type="SOURCE" refId="44"/>    
-    <end type="TARGET" refId="38"/>  
-  </realization>  
-  <association id="150">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="151" name="qnaService">        
-        <position height="0" width="0" x="1940" y="283"/>      
-      </attribute>      
-      <multiplicity id="152" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1940" y="283"/>      
+      <multiplicity id="60" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1666" y="269"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="153">    
-    <end type="SOURCE" refId="44" navigable="false">      
-      <attribute id="154" name="adminStoreDAO">        
-        <position height="0" width="0" x="-2172" y="572"/>      
+  <association id="61">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="62" name="winMorningSetService">        
+        <position height="0" width="0" x="-29" y="-1200"/>      
       </attribute>      
-      <multiplicity id="155" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-2172" y="572"/>      
+      <multiplicity id="63" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-29" y="-1200"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="43" navigable="true"/>    
+    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="156">    
+  <association id="64">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="157" name="winMorningService">        
-        <position height="0" width="0" x="-1825" y="-1430"/>      
+      <attribute id="65" name="dessertService">        
+        <position height="0" width="0" x="-520" y="-866"/>      
       </attribute>      
-      <multiplicity id="158" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1825" y="-1430"/>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-520" y="-866"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="67">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="32"/>  
+  </realization>  
+  <association id="68">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="69" name="winMorningService">        
+        <position height="0" width="0" x="-2099" y="-1444"/>      
+      </attribute>      
+      <multiplicity id="70" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2099" y="-1444"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="159">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="160" name="happyMealService">        
-        <position height="0" width="0" x="-707" y="-1397"/>      
+  <association id="71">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="72" name="qnaDAO">        
+        <position height="0" width="0" x="2699" y="763"/>      
       </attribute>      
-      <multiplicity id="161" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-707" y="-1397"/>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="2699" y="763"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="162">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="163" name="memberService">        
-        <position height="0" width="0" x="673" y="-178"/>      
+  <realization id="74">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="39"/>  
+  </realization>  
+  <association id="75">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="76" name="adminDAO">        
+        <position height="0" width="0" x="-258" y="58"/>      
       </attribute>      
-      <multiplicity id="164" minimum="0" maximum="1">        
-        <position height="0" width="0" x="673" y="-178"/>      
+      <multiplicity id="77" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-258" y="58"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="78">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="79" name="cri">        
+        <position height="0" width="0" x="-2454" y="724"/>      
+      </attribute>      
+      <multiplicity id="80" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2454" y="724"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="81">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="82" name="drinkService">        
+        <position height="0" width="0" x="-598" y="-726"/>      
+      </attribute>      
+      <multiplicity id="83" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-598" y="-726"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="85" name="memberService">        
+        <position height="0" width="0" x="399" y="-192"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="1">        
+        <position height="0" width="0" x="399" y="-192"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="36" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="88" name="sideDAO">        
+        <position height="0" width="0" x="-2046" y="-2625"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2046" y="-2625"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="90">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="91" name="happyMealDAO">        
+        <position height="0" width="0" x="-921" y="-2650"/>      
+      </attribute>      
+      <multiplicity id="92" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-921" y="-2650"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="93">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="94">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="95" name="dessertDAO">        
+        <position height="0" width="0" x="-738" y="-965"/>      
+      </attribute>      
+      <multiplicity id="96" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-738" y="-965"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="97">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <association id="98">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="99" name="faqService">        
+        <position height="0" width="0" x="1266" y="672"/>      
+      </attribute>      
+      <multiplicity id="100" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1266" y="672"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="102" name="memberDAO">        
+        <position height="0" width="0" x="553" y="1147"/>      
+      </attribute>      
+      <multiplicity id="103" minimum="0" maximum="1">        
+        <position height="0" width="0" x="553" y="1147"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="35" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="104">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <realization id="105">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="28"/>  
+  </realization>  
+  <realization id="106">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="27"/>  
+  </realization>  
+  <association id="107">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="108" name="adminStoreService">        
+        <position height="0" width="0" x="-1378" y="27"/>      
+      </attribute>      
+      <multiplicity id="109" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1378" y="27"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="111" name="adminService">        
+        <position height="0" width="0" x="-260" y="-258"/>      
+      </attribute>      
+      <multiplicity id="112" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-260" y="-258"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="113">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <association id="114">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="115" name="burgerSetService">        
+        <position height="0" width="0" x="-1461" y="22"/>      
+      </attribute>      
+      <multiplicity id="116" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1461" y="22"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="118" name="burgerDAO">        
+        <position height="0" width="0" x="-281" y="-121"/>      
+      </attribute>      
+      <multiplicity id="119" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-281" y="-121"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="120">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="121" name="burgerSetDAO">        
+        <position height="0" width="0" x="-1342" y="26"/>      
+      </attribute>      
+      <multiplicity id="122" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-1342" y="26"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="123">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="124" name="winMorningDAO">        
+        <position height="0" width="0" x="-2159" y="-2637"/>      
+      </attribute>      
+      <multiplicity id="125" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2159" y="-2637"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="127" name="promotionService">        
+        <position height="0" width="0" x="-392" y="1180"/>      
+      </attribute>      
+      <multiplicity id="128" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-392" y="1180"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="130" name="burgerLgSetService">        
+        <position height="0" width="0" x="-363" y="-55"/>      
+      </attribute>      
+      <multiplicity id="131" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-363" y="-55"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="132">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="133" name="burgerService">        
+        <position height="0" width="0" x="-318" y="-14"/>      
+      </attribute>      
+      <multiplicity id="134" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-318" y="-14"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="135">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="136" name="drinkDAO">        
+        <position height="0" width="0" x="-764" y="-730"/>      
+      </attribute>      
+      <multiplicity id="137" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-764" y="-730"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="138">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="29"/>  
+  </realization>  
+  <realization id="139">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="140">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="38"/>  
+  </realization>  
+  <realization id="141">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="142">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="143" name="winMorningSetDAO">        
+        <position height="0" width="0" x="-429" y="-2000"/>      
+      </attribute>      
+      <multiplicity id="144" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-429" y="-2000"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="25" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="145">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="146" name="happyMealService">        
+        <position height="0" width="0" x="-981" y="-1411"/>      
+      </attribute>      
+      <multiplicity id="147" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-981" y="-1411"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="148">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="149" name="sideService">        
+        <position height="0" width="0" x="-2084" y="-1437"/>      
+      </attribute>      
+      <multiplicity id="150" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-2084" y="-1437"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="152" name="orderTimer">        
+        <position height="0" width="0" x="237" y="552"/>      
+      </attribute>      
+      <multiplicity id="153" minimum="0" maximum="1">        
+        <position height="0" width="0" x="237" y="552"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="155" name="burgerLgSetDAO">        
+        <position height="0" width="0" x="-409" y="-27"/>      
+      </attribute>      
+      <multiplicity id="156" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-409" y="-27"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="158" name="faqDAO">        
+        <position height="0" width="0" x="2139" y="1006"/>      
+      </attribute>      
+      <multiplicity id="159" minimum="0" maximum="1">        
+        <position height="0" width="0" x="2139" y="1006"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="160">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
