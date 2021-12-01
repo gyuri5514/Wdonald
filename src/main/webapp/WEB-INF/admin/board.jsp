@@ -21,9 +21,8 @@
 		});
 	});
 	function detail(index){
-		//alert("1");
-		var val = JSON.parse('${Board}');
-		//alert("2");
+		var val =${Board};
+		console.log(val);
 		for(var i=0; i<val.length; i++){
 			if(val[i].notice_seq==index){
 				$("#notice_title").val(val[i].notice_title);
@@ -34,8 +33,6 @@
 				}else if (val[i].admin_seq = 0) {
 					$("#admin_seq").val('admin');
 				}
-				//$("#admin_seq").val(val[i].admin_seq);
-				
 				$("#update").attr("style","block");
 				$("#notice_seq").val(index);
 				return;
@@ -111,7 +108,7 @@
 	</script>
 
 
-	<%-- <footer class="py-4 bg-light mt-auto">
+	<footer class="py-4 bg-light mt-auto">
 		<div class="container-fluid px-4">
 			<div class="d-flex align-items-center justify-content-between small">
 				<div class="text-muted">WinDelivery &copy; 대표이사 : Tommy.Lee </div>
@@ -123,19 +120,12 @@
 		</div>
 	</footer>
 </div>
-<script type="text/javascript">
-	function noticeDelete(notice_seq){
-		var chk = confirm("정말 삭제하시겠습니까?");
-		if(chk){
-			location.href='deleteBoard.mdo?notice_seq='+notice_seq;
-		}
-	}
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminScripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script	src="${pageContext.request.contextPath}/resources/js/adminDatatables-simple-demo.js"></script>
 </body>
-</html> --%>
+</html>
 
-<%@ include file="footer.jsp" %>
+
