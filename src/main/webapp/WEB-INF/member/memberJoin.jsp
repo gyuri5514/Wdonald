@@ -21,7 +21,7 @@
 <script src="resources/js/commons.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/join/bootstrap.min.css">
@@ -220,10 +220,6 @@
 				//alert("da?" + m_zipcode);
 
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-				mapOption = {
-				    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-				    level: 3 // 지도의 확대 레벨
-				};  
 
 				// 지도를 생성
 				//var map = new kakao.maps.Map(mapContainer, mapOption); 
