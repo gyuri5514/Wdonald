@@ -25,6 +25,17 @@ table, td, th {
 </style>
 <<script type="text/javascript">
 function faqSubmit(){
+	
+			if($("#faq_title").val() == ""){
+				alert("제목을 입력해 주세요.");
+				$("#faq_title").focus();
+				return false;
+			} 
+			if($("#faq_content").val() == ""){
+				alert("내용을 입력해 주세요.");
+				$("#faq_content").focus();
+				return false;
+			} 
 	$('#addFaq').submit();
 }
 </script>
@@ -44,8 +55,9 @@ function faqSubmit(){
 			</div>
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table me-1"></i> FAQ 등록
-					<div>
+				<div>
+					<i class="fas fa-table me-1"></i> FAQ 등록</div>
+					<div style="float: right; margin-top: -20px;">
 						<input type="button" onclick="faqSubmit();" class="btn btn-warning" value="확인">
 					</div>
 				</div>
@@ -86,40 +98,3 @@ function faqSubmit(){
 <%@ include file="footer.jsp" %>
 <!-- smartEditor -->
 <script type="text/javascript" src="Editor/js/service/HuskyEZCreator.js" charset="UTF-8"></script>
-<script type="text/javascript">
-/*---smartEditor---*/
- $(function() {
-	 $("#submit").on("click",function(){
-		if($("#faq_title").val() == ""){
-			alert("제목을 입력해 주세요.");
-			$("#faq_title").focus();
-			return false;
-		} 
-		if($("#faq_content").val() == ""){
-			alert("내용을 입력해 주세요.");
-			$("#faq_content").focus();
-			return false;
-		} 
-		
-		$("#addFaq").submit();
-		
-	 });
-		/* var oEditors = [];
-		nhn.husky.EZCreator.createInIFrame({
-			oAppRef : oEditors,
-			elPlaceHolder : document.getElementById('faq_content'), //textareaID
-			sSkinURI : "Editor/SmartEditor2Skin.html", //경로를 맞춰주기 
-			fCreator : "createSEditor2",
-			htParams : {
-				//툴바 사용 여부 (true:사용)
-				bUseToolbar : true,
-
-				//입력창 크기 조절바 사용 여부 (true : 사용)
-				bUseVerticalResizer : false,
-
-				//모드 탭 (Editor/HTML/TEXT) 사용 여부
-				bUseModeChanger : false
-			}
-		}); */
-	});
-</script>
