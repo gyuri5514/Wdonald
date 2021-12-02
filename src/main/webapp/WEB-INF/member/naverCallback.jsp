@@ -11,7 +11,7 @@
 var naverLogin = new naver.LoginWithNaverId(
 		{
 			clientId: "Xh_il_8tTurOD_pU6D37", //내 애플리케이션 정보에 clientId를 입력해준다 
-			callbackUrl: "/controller/naverCallback.do", //내 애플리케이션 API설정의 CallbackURL을 입력해준다.
+			callbackUrl: "http://ec2-13-125-85-206.ap-northeast-2.compute.amazonaws.com/controller/naverCallback.do", //내 애플리케이션 API설정의 CallbackURL을 입력해준다.
 			isPopup: false,
 			callbackHandle: true
 		}

@@ -18,7 +18,7 @@
 <script src="resources/js/commons.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cc50f0bdab0c2e48e4552db155399164&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services"></script>
 <link rel="shortcut icon" type="image/x-icon" href="https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/favicon.ico">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/join/bootstrap.min.css">
@@ -267,7 +267,7 @@
 					<div class="section-menu">
 						<ul class="nav nav-list">
 							<li class="nav-header lnb-header">회원가입<span>Join Us</span></li>
-							<li class="active"><a href="join.asp" class="first">회원가입<small>Join Us</small><i class="fa fa-angle-right"></i></a></li>
+							<li class="active"><a href="join.do" class="first">회원가입<small>Join Us</small><i class="fa fa-angle-right"></i></a></li>
 						</ul>
 					</div>
 				</div>

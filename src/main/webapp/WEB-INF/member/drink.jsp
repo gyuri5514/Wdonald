@@ -10,7 +10,7 @@
 						<h1 class="titDep1">윈카페 &amp; 음료</h1>
 						<p class="subCopy">언제나 즐겁게, 윈카페와 다양한 음료를 부담없이 즐기세요!</p>
 						<ul class="navPath">
-							<li><a href="/">Home</a></li>
+							<li><a href="main.do">Home</a></li>
 							<li><a href="burger.do">Menu</a></li>
 							<li><a href="drink.do">윈카페 &amp; 음료</a></li>
 						</ul>
