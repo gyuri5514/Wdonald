@@ -852,20 +852,31 @@ $(function(){
 	//사이드변경 라디오버튼 설정
 	$('.iradio1').click(function() {
 		$(this).find('.form-radio1').prop('checked', true);
-		if(s_code == 704) 
-			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
-		else if(s_code == 705)
-			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_nugget_4pieces.png");
-		else if(s_code == 706)
-			$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_sipcey_chicken_tender_4pieces.png");
-		else {
-			if($(this).find('.form-radio1').attr("id") == "side-label2"){
-				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/golden_mozzarella_cheese_stick_4pieces.png");
-			} else {
+		if(s_code != null) {
+			if(s_code == 704) 
 				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
+			else if(s_code == 705)
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_nugget_4pieces.png");
+			else if(s_code == 706)
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_sipcey_chicken_tender_4pieces.png");
+			else {
+				if($(this).find('.form-radio1').attr("id") == "side-label2"){
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/golden_mozzarella_cheese_stick_4pieces.png");
+				} else {
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
+				}
 			}
+		} else {
+			if($('#d_code').val() == 323) {
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/cocacola2.png");
+			} else if($('#d_code').val() == 326) {
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/fanta2.png");
+			} else if($('#d_code').val() == 325) {
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/sprite2.png");
+			} else if($('#d_code').val() == 324) {
+				$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/cocacola_zero2.png");
+			} 
 		}
-			
 		if($(this).find('.form-radio1').prop('checked')) {
 			$('.form-radio1').prop('checked', false);
 			$('.form-radio1').closest('.iradio1').removeClass("checked");
@@ -920,11 +931,26 @@ function sideOpen(index) {
 				console.log($('label[for="side2"]').text());
 				console.log($('#side-label2').val());
 			} else if(val == "사이드"){ 
+				if($('#s_code').val() == 704) 
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/french_fries.png");
+				else if($('#s_code').val() == 705)
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_nugget_4pieces.png");
+				else if($('#s_code').val() == 706)
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/snack%26side/mc_sipcey_chicken_tender_4pieces.png");
 				$('label[for="side1"]').text($('#s_name').val() + " - 라지 + 1000원");
 				$('#side-label1').val($('#s_name').val() + " - 라지");
 				$('label[for="side2"]').text($('#s_name').val() + " - 미디움 + 700원");
 				$('#side-label2').val($('#s_name').val() + " - 미디움");
 			} else if(val == "음료"){ 
+				if($('#d_code').val() == 323) {
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/cocacola2.png");
+				} else if($('#d_code').val() == 326) {
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/fanta2.png");
+				} else if($('#d_code').val() == 325) {
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/sprite2.png");
+				} else if($('#d_code').val() == 324) {
+					$('#image-choice').attr("src","https://kgitmacbucket.s3.ap-northeast-2.amazonaws.com/img/drink/cocacola_zero2.png");
+				}
 				$('label[for="side1"]').text($('#d_name').val() + " - 라지 + 1000원");
 				$('#side-label1').val($('#d_name').val()+" - 라지");
 				$('label[for="side2"]').text($('#d_name').val() + " - 미디움 + 700원");

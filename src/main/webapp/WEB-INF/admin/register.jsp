@@ -187,6 +187,7 @@
          theme: themeObj 
       }).open();
    }
+
     </script>
     <body class="bg-black">
     <div id="map" style="width: 0px; height:0px;"></div>

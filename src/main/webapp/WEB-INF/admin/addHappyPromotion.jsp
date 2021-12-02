@@ -23,7 +23,7 @@ table, td, th {
 	font-weigth: 500;
 }
 </style>
-<<script type="text/javascript">
+<script type="text/javascript">
 function submitPromotion(){
 		var regExp = /\s/g;
 		if ($("#hp_name").val() == "") {
@@ -33,55 +33,7 @@ function submitPromotion(){
 		}
 		
 
-	$('#file1').on('fileselect', function(event, numFiles, label) {
-		var input = $(this).parents(
-				'.input-group').find(
-				':text'), log = numFiles > 1 ? numFiles
-				+ ' files selected'
-				: label;
-
-		if (input.length) {
-			input.val(log);
-		} else {
-			if (log)
-				alert(log);
-		}
-		var tmppath = URL.createObjectURL(event.target.files[0]);
-		$('#image').attr("src", tmppath);
-	});
-	$(document).on('change',":file",function() {
-		var input = $(this), numFiles = input
-				.get(0).files ? input
-				.get(0).files.length : 1, label = input
-				.val();
-		input.trigger('fileselect', [
-				numFiles, label ]);
-	});
-
-	$('#file2').on('fileselect', function(event, numFiles, label) {
-		var input = $(this).parents(
-				'.input-group').find(
-				':text'), log = numFiles > 1 ? numFiles
-				+ ' files selected'
-				: label;
-
-		if (input.length) {
-			input.val(log);
-		} else {
-			if (log)
-				alert(log);
-		}
-		var tmppath = URL.createObjectURL(event.target.files[0]);
-		$('#Dimage').attr("src", tmppath);
-	});
-	$(document).on('change',":file",function() {
-		var input = $(this), numFiles = input
-				.get(0).files ? input
-				.get(0).files.length : 1, label = input
-				.val();
-		input.trigger('fileselect', [
-				numFiles, label ]);
-	});
+	
 	$('#submitPromotion').submit();
 }
 </script>
@@ -175,7 +127,55 @@ function submitPromotion(){
 <%@ include file="footer.jsp"%>
 <script type="text/javascript">
 $(document).ready(function() {
-	
+	$('#file1').on('fileselect', function(event, numFiles, label) {
+		var input = $(this).parents(
+				'.input-group').find(
+				':text'), log = numFiles > 1 ? numFiles
+				+ ' files selected'
+				: label;
+
+		if (input.length) {
+			input.val(log);
+		} else {
+			if (log)
+				alert(log);
+		}
+		var tmppath = URL.createObjectURL(event.target.files[0]);
+		$('#image').attr("src", tmppath);
+	});
+	$(document).on('change',":file",function() {
+		var input = $(this), numFiles = input
+				.get(0).files ? input
+				.get(0).files.length : 1, label = input
+				.val();
+		input.trigger('fileselect', [
+				numFiles, label ]);
+	});
+
+	$('#file2').on('fileselect', function(event, numFiles, label) {
+		var input = $(this).parents(
+				'.input-group').find(
+				':text'), log = numFiles > 1 ? numFiles
+				+ ' files selected'
+				: label;
+
+		if (input.length) {
+			input.val(log);
+		} else {
+			if (log)
+				alert(log);
+		}
+		var tmppath = URL.createObjectURL(event.target.files[0]);
+		$('#Dimage').attr("src", tmppath);
+	});
+	$(document).on('change',":file",function() {
+		var input = $(this), numFiles = input
+				.get(0).files ? input
+				.get(0).files.length : 1, label = input
+				.val();
+		input.trigger('fileselect', [
+				numFiles, label ]);
+	});
 })
 function slideButton() {
 	var img = $('#promotion-container');

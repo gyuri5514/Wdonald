@@ -111,7 +111,7 @@
 </div>
 </div>
 <div class="aside">
-	<a href="cart.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
+	<a href="burger.do" class="goDelivery" target="_blank" title="새창 열림">WDonald</a>
 </div>
 <form id="searchForm" method="post">
 	<input type="hidden" name="page" id="page" value="1">
