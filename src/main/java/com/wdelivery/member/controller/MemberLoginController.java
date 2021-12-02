@@ -291,6 +291,8 @@ public class MemberLoginController {
 	
 	@PostMapping("confirmPassword.do")
 	public String confirmPassword(Model model,UserVO userVO) {
+		String temp = userVO.getUser_password();
+		userVO.setUser_password(pwdEncoder.encode(temp));
 		memberService.updatePassword(userVO);
 		model.addAttribute("passwordChanged","success");
 		return "main";

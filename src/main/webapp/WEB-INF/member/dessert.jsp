@@ -10,7 +10,7 @@
 						<p class="subCopy">가볍게 즐겨도, 버거와 함께 푸짐하게 즐겨도,<br>
 						언제나 맛있는 사이드와 디저트 메뉴!</p>
 						<ul class="navPath">
-							<li><a href="/">Home</a></li>
+							<li><a href="main.do">Home</a></li>
 							<li><a href="burger.do">Menu</a></li>
 							<li><a href="side.do">사이드 &amp; 디저트</a></li>
 						</ul>

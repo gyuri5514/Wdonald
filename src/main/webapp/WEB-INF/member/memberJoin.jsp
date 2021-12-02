@@ -261,7 +261,7 @@
 					<div class="section-menu">
 						<ul class="nav nav-list">
 							<li class="nav-header lnb-header">회원가입<span>Join Us</span></li>
-							<li class="active"><a href="join.asp" class="first">회원가입<small>Join Us</small><i class="fa fa-angle-right"></i></a></li>
+							<li class="active"><a href="join.do" class="first">회원가입<small>Join Us</small><i class="fa fa-angle-right"></i></a></li>
 						</ul>
 					</div>
 				</div>

@@ -12,181 +12,182 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services"></script>
+       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=66de1c95d1d79be93897b045b9aca54a&libraries=services"></script>
     </head>
     <script type="text/javascript">
-    	$(document).ready(function(){
-    	 $("#cancle").on("click",function(){ 
-    		
-    		 location.href = "/controller/index.mdo";
-    	 })
-    	 $("#submit").on("click",function(){
-     		 var regExp = /\s/g;
-    		 if($("#admin_id").val()==""){
-    			 alert("아이디를 입력해주세요.");
-    			 $("#admin_id").focus();
-    			 return false;
-    		 } 
-    		 if(regExp.test($("#admin_id").val())) {
-				 alert("공백을 사용할 수 없습니다.");
-				 $("#admin_id").focus();
-    			 return false;
-    		 } 
-    		 if($("#admin_password").val()==""){
-    			 alert("비밀번호를 입력해주세요.");
-    			 $("#admin_password").focus();
-    			 return false;
-    		 }
-    		 if($("#admin_name").val()==""){
-    			 alert("관리자 이름을 입력해주세요.");
-    			 $("#admin_name").focus();
-    			 return false;
-    		 }
-    		 if(regExp.test($("#admin_name").val())){
-    			 alert("공백을 사용할 수 없습니다.");
-    			 $("#admin_name").focus();
-    			 return false;
-    		 }
-    		 if($("#admin_phone").val()==""){
-    			 alert("관리자 번호를 입력해주세요.");
-    			 $("#admin_phone").focus();
-    			 return false;
-    		 }
-    		 if(regExp.test($("#admin_phone").val())){
-    			 alert("공백을 사용할 수 없습니다.");
-    			 $("#admin_name").focus();
-    			 return false;
-    		 } 
-    		 if($("#store_name").val()==""){
-    			 alert("매장명을 입력해주세요.");
-    			 $("#store_name").focus();
-    			 return false;
-    		 }
-    	     if(regExp.test($("#store_name").val())){
-    			 alert("공백을 사용할 수 없습니다.");
-    			 $("#store_name").focus();
-    			 return false;
-    		 } 
-    		 if($("#store_address").val()==""){
-    			 alert("매장 위치를 입력해주세요.");
-    			 $("#store_address").focus();
-    			 return false;
-    		 }
-    		 if($("#store_code").val()==""){
-    			 alert("매장 코드를 입력해주세요.");
-    			 $("#store_code").focus();
-    			 return false;
-    		 }
-    		 if( regExp.test($("#store_code").val())){
-    			 alert("공백을 사용할 수 없습니다.");
-    			 $("#store_code").focus();
-    			 return false;
-    		 } 
-    		 if($("#store_phone").val()==""){
-    			 alert("매장 번호를 입력해주세요.");
-    			 $("#store_phone").focus();
-    			 return false;
-    		 }
-    		 if(regExp.test($("#store_phone").val())){
-    			 alert("공백을 사용할 수 없습니다.");
-    			 $("#store_phone").focus();
-    			 return false;
-    		 } 
-    		 
-    		 $.ajax({
-    			type : 'post',
-    			url : '/controller/adminCheck.mdo',
-    			data : {
-    				 admin_id : $("#admin_id").val() 	
-    			},
-    			dataType : 'json',
-    			async : false,
-    			success : function(data) {
-    				if(data == 1) {
-    					$('#content').attr("style", "display:block; color:red;");
-    					$('#content').text("이미 존재하는 관리자 아이디입니다.");
-    					$('#content').fadeOut(2000);
-    					return;
-    				} else {
-    					$.ajax({
-    						type : 'post',
-    		    			url : '/controller/adminCheck.mdo',
-    		    			data : {
-    		    				store_name : $("#store_name").val()
-    		    			},
-    		    			dataType : 'json',
-    		    			async : false,
-    		    			success : function(data) {
-    		    				if(data == 1) {
-    		    					$('#content').attr("style", "display:block; color:red;");
-    		    					$('#content').text("이미 존재하는 매장명입니다.");
-    		    					$('#content').fadeOut(2000);
-    		    					return;    		    					
-    		    				} 
-    		    				 else {
-    		    					$.ajax({
-    		    						type : 'post',
-    		    		    			url : '/controller/adminCheck.mdo',
-    		    		    			data : {
-    		    		    				storeCode : $("#store_code").val()
-	    	    		    			},
-	    	    		    			async : false,
-	    	    		    			dataType : 'json',
-	    	    		    			success : function(data) {
-	    	    		    				if(data == 1) {
-	    	    		    					alert("dddd");
-	    	    		    					$('#content').attr("style", "display:block; color:red;");
-	    	    		    					$('#content').text("이미 존재하는 매장코드입니다.");
-	    	    		    					$('#content').fadeOut(2000);
-	    	    		    					return;   
-	    	    		    				} else {
-	    	    		    				 $('#registerAdmin').submit();  
-	    	    		    				}
-	    	    		    			},
-	    	    		    			error : function(message) {
-	    	    		    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
-	    	    		    			}
-	    		    				});
-    		    				} 
-    		    			}
-    					});
-    				}
-    			}, 
-    			error : function(message) {
-    				alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
-    			}
-    		 });
-    	 });
-    	})
-    	
-    	//매장검색
-    	function openDaumPostcode() {
-		 var themeObj = {
-				 bgColor: "#F8B01B"
-				};
-			new daum.Postcode({
-			
-			oncomplete : function(data) {
-				document.querySelector("#store_address").value = data.address;
-				
-				var m_zipcode = $("#store_address").val();
-				var map = document.getElementById("map");
-		
-				var geocoder = new kakao.maps.services.Geocoder();
-				
-				geocoder.addressSearch(m_zipcode, function(result, status){
-					if(status === kakao.maps.services.Status.OK){
-						var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-						document.getElementById("store_lat").value = result[0].y; //위도
-						document.getElementById("store_lon").value = result[0].x; //경도
-						
-					}
-				});
-				
-			},
-			theme: themeObj 
-		}).open();
-	}
+       $(document).ready(function(){
+        $("#cancle").on("click",function(){ 
+          
+           location.href = "/controller/index.mdo";
+        })
+        $("#submit").on("click",function(){
+            var regExp = /\s/g;
+           if($("#admin_id").val()==""){
+              alert("아이디를 입력해주세요.");
+              $("#admin_id").focus();
+              return false;
+           } 
+           if(regExp.test($("#admin_id").val())) {
+             alert("공백을 사용할 수 없습니다.");
+             $("#admin_id").focus();
+              return false;
+           } 
+           if($("#admin_password").val()==""){
+              alert("비밀번호를 입력해주세요.");
+              $("#admin_password").focus();
+              return false;
+           }
+           if($("#admin_name").val()==""){
+              alert("관리자 이름을 입력해주세요.");
+              $("#admin_name").focus();
+              return false;
+           }
+           if(regExp.test($("#admin_name").val())){
+              alert("공백을 사용할 수 없습니다.");
+              $("#admin_name").focus();
+              return false;
+           }
+           if($("#admin_phone").val()==""){
+              alert("관리자 번호를 입력해주세요.");
+              $("#admin_phone").focus();
+              return false;
+           }
+           if(regExp.test($("#admin_phone").val())){
+              alert("공백을 사용할 수 없습니다.");
+              $("#admin_name").focus();
+              return false;
+           } 
+           if($("#store_name").val()==""){
+              alert("매장명을 입력해주세요.");
+              $("#store_name").focus();
+              return false;
+           }
+            if(regExp.test($("#store_name").val())){
+              alert("공백을 사용할 수 없습니다.");
+              $("#store_name").focus();
+              return false;
+           } 
+           if($("#store_address").val()==""){
+              alert("매장 위치를 입력해주세요.");
+              $("#store_address").focus();
+              return false;
+           }
+           if($("#store_code").val()==""){
+              alert("매장 코드를 입력해주세요.");
+              $("#store_code").focus();
+              return false;
+           }
+           if( regExp.test($("#store_code").val())){
+              alert("공백을 사용할 수 없습니다.");
+              $("#store_code").focus();
+              return false;
+           } 
+           if($("#store_phone").val()==""){
+              alert("매장 번호를 입력해주세요.");
+              $("#store_phone").focus();
+              return false;
+           }
+           if(regExp.test($("#store_phone").val())){
+              alert("공백을 사용할 수 없습니다.");
+              $("#store_phone").focus();
+              return false;
+           } 
+           
+           $.ajax({
+             type : 'post',
+             url : '/controller/adminCheck.mdo',
+             data : {
+                 admin_id : $("#admin_id").val()    
+             },
+             dataType : 'json',
+             async : false,
+             success : function(data) {
+                if(data == 1) {
+                   $('#content').attr("style", "display:block; color:red;");
+                   $('#content').text("이미 존재하는 관리자 아이디입니다.");
+                   $('#content').fadeOut(2000);
+                   return;
+                } else {
+                   $.ajax({
+                      type : 'post',
+                       url : '/controller/adminCheck.mdo',
+                       data : {
+                          store_name : $("#store_name").val()
+                       },
+                       dataType : 'json',
+                       async : false,
+                       success : function(data) {
+                          if(data == 1) {
+                             $('#content').attr("style", "display:block; color:red;");
+                             $('#content').text("이미 존재하는 매장명입니다.");
+                             $('#content').fadeOut(2000);
+                             return;                             
+                          } 
+                           else {
+                             $.ajax({
+                                type : 'post',
+                                 url : '/controller/adminCheck.mdo',
+                                 data : {
+                                    storeCode : $("#store_code").val()
+                                 },
+                                 async : false,
+                                 dataType : 'json',
+                                 success : function(data) {
+                                    if(data == 1) {
+                                       alert("dddd");
+                                       $('#content').attr("style", "display:block; color:red;");
+                                       $('#content').text("이미 존재하는 매장코드입니다.");
+                                       $('#content').fadeOut(2000);
+                                       return;   
+                                    } else {
+                                     $('#registerAdmin').submit();  
+                                    }
+                                 },
+                                 error : function(message) {
+                                    alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+                                 }
+                             });
+                          } 
+                       }
+                   });
+                }
+             }, 
+             error : function(message) {
+                alert("상태 : " +message.status+ "\n\n메세지 : " +message.responseText+ "\n\nerror : " +message.error);
+             }
+           });
+        });
+       })
+       
+       //매장검색
+       function openDaumPostcode() {
+       var themeObj = {
+             bgColor: "#F8B01B"
+            };
+         new daum.Postcode({
+         
+         oncomplete : function(data) {
+            document.querySelector("#store_address").value = data.address;
+            
+            var m_zipcode = $("#store_address").val();
+            var map = document.getElementById("map");
+      
+            var geocoder = new kakao.maps.services.Geocoder();
+            
+            geocoder.addressSearch(m_zipcode, function(result, status){
+               if(status === kakao.maps.services.Status.OK){
+                  var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                  document.getElementById("store_lat").value = result[0].y; //위도
+                  document.getElementById("store_lon").value = result[0].x; //경도
+                  
+               }
+            });
+            
+         },
+         theme: themeObj 
+      }).open();
+   }
+
     </script>
     <body class="bg-black">
     <div id="map" style="width: 0px; height:0px;"></div>
@@ -237,8 +238,8 @@
                                                 <label for="store_address">매장 위치</label>
                                                 <a onclick="openDaumPostcode();" class="btn btn-danger btn-block" style="margin-left: 10px;">검색</a>
                                                 <input type="hidden" name="store_lat" id="store_lat">
-												<input type="hidden" name="store_lon" id="store_lon">
-												
+                                    <input type="hidden" name="store_lon" id="store_lon">
+                                    
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
@@ -257,7 +258,7 @@
                                             <div id="content" style="display:none; color:red;"></div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><a class="btn btn-danger btn-block" id="submit">사업자 등록</a></div>
-                                                <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle">취	소</a></div>
+                                                <div class="d-grid" style="padding-top: 5px"><a class="btn btn-danger btn-block" id="cancle">취   소</a></div>
                                             </div>
                                         </form>
                                     </div>
@@ -285,6 +286,6 @@
                 </footer>
             </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="../resources/js/scripts.js"></script>	
+        <script src="../resources/js/scripts.js"></script>   
     </body>
 </html>

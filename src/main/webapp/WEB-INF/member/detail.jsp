@@ -10,7 +10,7 @@
 					<h1 class="titDep1">버거</h1>
 					<p class="subCopy">빅맥<sub class="reg">®</sub>에서 맥스파이시<sub class="reg">®</sub> 상하이버거까지, <br>주문 즉시 바로 조리해 더욱 맛있는, 맥도날드의 다양한 버거를 소개합니다.</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a>
+						<li><a href="main.do">Home</a>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="burger.do">버거</a></li>
 					</ul>
@@ -72,7 +72,7 @@
 					<p class="subCopy">새벽 4시부터 오전 10시 30분까지<br>
 					갓 구워내 신선한 맥모닝으로 따뜻한 아침 식사를 챙겨 드세요!</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="morning.do">윈모닝</a></li>
 					</ul>
@@ -133,7 +133,7 @@
 					<h1 class="titDep1">해피밀</h1>
 					<p class="subCopy">맛과 즐거움 모두 해피밀을 통해 느껴보세요!</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="happymeal.co">해피밀</a></li>
 					</ul>
@@ -195,7 +195,7 @@
 					<p class="subCopy">가볍게 즐겨도, 버거와 함께 푸짐하게 즐겨도,<br>
 					언제나 맛있는 사이드와 디저트 메뉴!</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="side.do">사이드 &amp; 디저트</a></li>
 					</ul>
@@ -256,7 +256,7 @@
 					<h1 class="titDep1">맥카페 &amp; 음료</h1>
 					<p class="subCopy">언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="drink.co">맥카페 &amp; 음료</a></li>
 					</ul>
@@ -317,7 +317,7 @@
 					<h1 class="titDep1">맥카페 &amp; 음료</h1>
 					<p class="subCopy">언제나 즐겁게, 맥카페와 다양한 음료를 부담없이 즐기세요!</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="dessert.co">사이드 &amp; 디저트</a></li>
 					</ul>

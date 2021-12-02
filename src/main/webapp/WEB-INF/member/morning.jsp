@@ -16,7 +16,7 @@
 					<p class="subCopy">새벽 4시부터 오전 10시 30분까지<br>
 					갓 구워내 신선한 맥모닝으로 따뜻한 아침 식사를 챙겨 드세요!</p>
 					<ul class="navPath">
-						<li><a href="/">Home</a></li>
+						<li><a href="main.do">Home</a></li>
 						<li><a href="burger.do">Menu</a></li>
 						<li><a href="morning.do">윈모닝</a></li>
 					</ul>

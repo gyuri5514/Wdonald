@@ -260,7 +260,7 @@ function removeChildm(merchantUid){
 	$('#alink'+merchantUid).attr("onclick","orderDetail('"+merchantUid+"');");
 }
 function reqCancel(merchantUid,coupon_code,email){ //seq 가져온거임 알겠습니다 도은님
-	var cancelReq = confirm('주문을 취소시겠습니까 ?');
+	var cancelReq = confirm('주문을 취소하시겠습니까 ?');
 	if(cancelReq == true){
 		location.href="orderCancel.do?order_seq="+merchantUid+"&coupon_code="+coupon_code+"&user_email="+email;
 		alert("취소되었습니다.");

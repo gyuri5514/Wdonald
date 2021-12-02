@@ -42,6 +42,9 @@ public class MypageController {
 	@Autowired
 	private AdminService adminService;
 
+	@Autowired 
+	private BCryptPasswordEncoder pwdEncoder;
+
 
 	@Autowired
 	private PromotionService promotionService;
@@ -56,9 +59,6 @@ public class MypageController {
 		return promotionService.selectPromotionIng();
 	}
 	
-	@Autowired 
-	private BCryptPasswordEncoder pwdEncoder;
-
 	@GetMapping("/mypageupdate.do")
 	public String mypageUpdate(Model model, HttpSession session, UserVO userVO) {
 		

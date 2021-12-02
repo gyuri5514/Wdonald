@@ -21,17 +21,14 @@
 		});
 	});
 	function detail(index){
+
 		var val =${Board};
+
 		for(var i=0; i<val.length; i++){
 			if(val[i].notice_seq==index){
 				$("#notice_title").val(val[i].notice_title);
 				$("#notice_regdate").val($("#"+index+"").find("#notice_regdate").text());
 				$("#notice_content").val(val[i].notice_content);
-				if (val[i].admin_seq = 1) {
-					$("#admin_seq").val('admin');
-				}else if (val[i].admin_seq = 0) {
-					$("#admin_seq").val('admin');
-				}
 				$("#update").attr("style","block");
 				$("#notice_seq").val(index);
 				return;
@@ -64,7 +61,7 @@
 						제목 : <input name="notice_title" id="notice_title" class="form-control" type="text" style="margin-bottom: 10px"/>
 						등록일 : <input name="notice_regdate" id="notice_regdate" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px"/>
 						내용 : <textarea name="notice_content" id="notice_content" class="form-control" style="margin-bottom: 10px"></textarea>
-						작성자 : <input name="admin_seq" id="admin_seq" class="form-control" type="text" readonly="readonly" style="margin-bottom: 10px">
+						작성자 : <input name="admin_seq" id="admin_seq" class="form-control" type="text" readonly="readonly" value="1" style="margin-bottom: 10px">
 						
 						<button class="boardUpdate" id="updateBoard" type="submit" style="background-color: #0d6efd; color:white; border-radius: 5px; border : solid 1px #0d6efd;">수정</button>
 					</div>
