@@ -86,7 +86,7 @@ public class MemberLoginController {
 			
 			/*------인코딩 안한거 로그인되게 하기  ------*/
 			//if(userVO.getUser_password().equals(findUserVO.getUser_password())) { 
-			if(true == pwdEncoder.matches(rawPw, encodePw)) {  //비밀번호 일치여부 판단
+			if(pwdEncoder.matches(rawPw, encodePw)) {  //비밀번호 일치여부 판단
 				if(findUserVO.getUser_status()==1) {
 					
 					//findUserVO.setUser_password(""); //인코딩된 비밀번호 정보 지움 --뭘까?

@@ -4,8 +4,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class Criteria {
 
-	private int page;
-	private int perPageNum;
+	private int page; // 현재 페이지 번호
+	private int perPageNum; // 한 페이지당 보여줄 게시글의 개수
 
 	private String keyword;
 
@@ -17,6 +17,7 @@ public class Criteria {
 		this.keyword = keyword;
 	}
 
+	// 특정 페이지의 게시글 시작 번호, 게시글 시작 행 번호
 	public int getPageStart() {
 		return (this.page - 1) * perPageNum;
 	}
