@@ -19,33 +19,33 @@ public class NewsController {
 
 	@Autowired
 	NewsService newsService;
-	
+
 	@GetMapping("/news.do")
 	public ModelAndView selectNews(Criteria cri) {
-		
+
 		ModelAndView mav = new ModelAndView("news");
-		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(newsService.totalNews(cri));
-		
+
 		List<NewsVO> list = newsService.selectNews(cri);
 		List<NewsVO> notice = newsService.selectNewsNotice();
 		mav.addObject("list", list);
 		mav.addObject("pageMaker", pageMaker);
 		mav.addObject("notice", notice);
-		
+
 		return mav;
 	}
-	
+
 	@GetMapping("/newsDetail.do")
 	public String detailNews(Model model, @RequestParam(value = "news_code", required = false) Integer news_code) {
 		NewsVO newsVO = newsService.detailNews(news_code);
-		
+
 		newsService.countNews(news_code);
-		
+
 		model.addAttribute("detailNews", newsVO);
-		
+
 		return "newsDetail";
 	}
 }
